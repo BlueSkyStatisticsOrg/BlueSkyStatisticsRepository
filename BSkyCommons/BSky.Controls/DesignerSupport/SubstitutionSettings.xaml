@@ -1,0 +1,71 @@
+﻿<Window xmlns:my="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"  
+    x:Class="BSky.Controls.DesignerSupport.SubstitutionSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="600" Height="685" Title="Substitution Settings">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="102*" />
+            <ColumnDefinition Width="176*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Variable formatting options" Height="247" HorizontalAlignment="Left" Margin="22,47,0,0" Name="groupBox1" VerticalAlignment="Top" Width="544" Grid.ColumnSpan="2">
+            <Grid Height="217" Width="523">
+                <TextBlock Height="16" HorizontalAlignment="Left" Margin="8,6,0,0" Name="textBlock1" Text="Select how each variable selected will display in the command" VerticalAlignment="Top" Width="335" />
+                <TextBlock Height="29" HorizontalAlignment="Left" Margin="37,42,0,0" Name="textBlock2" Text="No prefix will be added to the variable name" VerticalAlignment="Top" Width="470" />
+                <TextBlock Height="41" HorizontalAlignment="Left" Margin="37,82,0,0" Name="textBlock3" Text="For example, if the dataset named Dataset1 has a variable named var1 the variable var1 will be replaced by Dataset$var1 in the syntax "  TextWrapping="Wrap" VerticalAlignment="Top" Width="480" />
+                <RadioButton Content="No prefix" Height="16" HorizontalAlignment="Left" Margin="21,28,0,0" Name="NoPrefix" VerticalAlignment="Top" />
+                <RadioButton Content="Prefix variable by the dataset name followed by $" Height="16" HorizontalAlignment="Left" Margin="21,68,0,0" Name="Prefix" VerticalAlignment="Top" />
+                <RadioButton Content="Display each variable in the format var1 =dataset$var1" Height="16" HorizontalAlignment="Left" Margin="21,119,0,0" Name="custFormat" VerticalAlignment="Top" />
+                <CheckBox Content="Enclose variable name by '" Height="15" HorizontalAlignment="Left" Margin="22,155,0,0" Name="encloseByCharacters" VerticalAlignment="Top" Width="158" />
+                <TextBlock Height="35" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="37,176,0,0" Name="textBlock9" Text="If the variable name is var1, the string that will be substituted is 'var1'. This setting controls whether the variable name is accessed as an object or a string." VerticalAlignment="Top" Width="470" />
+                <Separator Height="1" HorizontalAlignment="Left" Margin="24,145,0,0" Name="separator1" VerticalAlignment="Top" Width="479" />
+            </Grid>
+        </GroupBox>
+        
+        <!--  <GroupBox Header="Separator Settings" Height="221" HorizontalAlignment="Left" Margin="24,252,0,0" Name="groupBox2" VerticalAlignment="Top" Width="342" Grid.ColumnSpan="2"> -->
+       
+        <GroupBox Grid.ColumnSpan="2" Header="Seperator Settings" Height="178" HorizontalAlignment="Left" Margin="24,292,0,0" Name="groupBox2" VerticalAlignment="Top" Width="542">
+            <Grid Height="145" Width="524">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="141*" />
+                    <ColumnDefinition Width="17*" />
+                    <ColumnDefinition Width="298" />
+                </Grid.ColumnDefinitions>
+                <!--    <RadioButton Content="Use a plus '+' " Height="18" Name="radioButton4" Width="305" Margin="46,388,27,255" Grid.ColumnSpan="2" /> -->
+           <!--     <TextBlock Height="43" HorizontalAlignment="Left" Margin="48,273,0,0" Name="textBlock5" TextWrapping="Wrap" Text="When substituting multiple variables from a variable control, select an appropriate separator" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="304" /> -->
+          <!--      <TextBlock Height="53" HorizontalAlignment="Left" Margin="45,403,0,0" Name="textBlock6" Text="If your variables are 'var1', var2', the string that will be substituted is 'var1 + var2', this is ideal for the formula class in R, i.e. xtabs(~var1+var2) " TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="296" />
+                <RadioButton Content="Use a comma ','" Height="17" Name="radioButton3" Width="296" Grid.ColumnSpan="2" Margin="46,110,36,134" /> -->
+                <TextBlock Height="56" TextWrapping ="Wrap" HorizontalAlignment="Left" Margin="46,333,0,0" Name="textBlock7" Text="If your variables are 'var1', var2', the string that will be substituted is 'var1, var2', this is ideal for the formula class in R, i.e. xtabs(~var1+var2)" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="293" />
+                <RadioButton Content="Use a plus '+'" Height="16" HorizontalAlignment="Left" Margin="19,61,0,0" Name="UsePlus" VerticalAlignment="Top" />
+                <TextBlock Height="21" HorizontalAlignment="Left" Margin="15,6,0,0" Name="textBlock8" TextWrapping="Wrap" Text="When substituting multiple variables from a variable control, select an appropriate separator" VerticalAlignment="Top" Grid.ColumnSpan="3" />
+                <TextBlock Height="15" HorizontalAlignment="Left" Margin="19,40,0,0" Name="textBlock5" TextWrapping ="Wrap" Text="If your variables are var1, var2, the string that will be substituted is var1 , var2 " VerticalAlignment="Top" Grid.ColumnSpan="3" Width="443" />
+                <RadioButton Content="Use a comma ','"  Height="16" HorizontalAlignment="Left" Margin="18,23,0,0" Name="UseComma" VerticalAlignment="Top" />
+                <TextBlock Height="37" HorizontalAlignment="Left" Margin="19,83,0,0" Name="textBlock6" TextWrapping ="Wrap" Text="If your variables are var1, var2, the string that will be substituted is var1 + var2, this is ideal for the formula class in R, i.e. xtabs(~var1+var2)" VerticalAlignment="Top" Grid.ColumnSpan="3" />
+                <RadioButton Content="Enter a character to use as a separator" Grid.ColumnSpan="3" Height="17" HorizontalAlignment="Left" Margin="18,122,0,0" Name="UseSeperator" VerticalAlignment="Top" Width="496" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="26,119,0,0" Name="SepCharacter" VerticalAlignment="Top" Width="120" Grid.Column="2" />
+            </Grid>
+
+        </GroupBox>
+        
+        
+        
+        <GroupBox Grid.ColumnSpan="2" Header="Enclose variable name" Height="128" HorizontalAlignment="Left" Margin="24,476,0,0" Name="groupBox3" VerticalAlignment="Top" Width="540">
+            <Grid Name="grid1" Width="525" Height="104">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="99*" />
+                    <ColumnDefinition Width="125*" />
+                    <ColumnDefinition Width="233*" />
+                </Grid.ColumnDefinitions>
+                <CheckBox Content="Prefix contents of the variable list by a string" Height="18" HorizontalAlignment="Left" Margin="19,61,0,0" Name="StringPrefix" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="254" />
+                <Label Content="Enter string to prefix contents of the variable list by" Height="25" HorizontalAlignment="Left" Margin="50,75,0,0" Name="label1" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="264" />
+                <TextBox Grid.Column="2" Height="23" HorizontalAlignment="Left" Margin="65,75,0,0" Name="PrefixString" VerticalAlignment="Top" Width="141" />
+                <CheckBox Content="Enclose all the variables by c() in syntax command" Height="23" HorizontalAlignment="Left" Margin="19,6,0,0" Name="CreateArray" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="286" />
+                <Label Content="If variables in the list are var1,var2,var3, c(var1,var2,var3) is substituted." Height="28" HorizontalAlignment="Left" Margin="33,17,0,0" Name="label2" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="403" />
+                <CheckBox Content="Enclose all the variables by () in syntax command" Grid.ColumnSpan="3" Height="23" HorizontalAlignment="Left" Margin="19,40,0,0" Name="EncloseBrackets" VerticalAlignment="Top" Width="286" Checked="checkBox1_Checked" />
+            </Grid>
+        </GroupBox>
+        <Button Content="Ok" Height="23" HorizontalAlignment="Left" Margin="33,612,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="114,612,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="Cancel_Click" />
+        <TextBlock Height="39" HorizontalAlignment="Left" Margin="22,12,0,0" Name="textBlock4" TextWrapping="Wrap" Text="Make selections to determine how variables in the variable list get substituted in the syntax associated with the command. " VerticalAlignment="Top" Grid.ColumnSpan="2" Width="544" />
+    </Grid>
+
+</Window>

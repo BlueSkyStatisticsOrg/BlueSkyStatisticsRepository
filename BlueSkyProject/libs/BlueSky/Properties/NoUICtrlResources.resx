@@ -1,0 +1,906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AAA" xml:space="preserve">
+    <value>AAA</value>
+    <comment>AAA: .CS or. XAML name : Details : Comment</comment>
+  </data>
+  <data name="buttonHelp" xml:space="preserve">
+    <value>Help</value>
+    <comment>InspectDialog.xaml : help button text</comment>
+  </data>
+  <data name="buttonOk" xml:space="preserve">
+    <value>OK</value>
+    <comment>InspectDialog.xaml : ok button text</comment>
+  </data>
+  <data name="buttonSyntax" xml:space="preserve">
+    <value>Syntax</value>
+    <comment>InspectDialog.xaml : syntax button text</comment>
+  </data>
+  <data name="CommandEditorPanelTitle" xml:space="preserve">
+    <value>R Command Editor</value>
+    <comment>OutputWindow.xaml : Title for R command editor panel</comment>
+  </data>
+  <data name="InspectHelpText" xml:space="preserve">
+    <value>Preview the dialog and sub dialogs associated with the command below." +"Clicking on the Syntax button will bring up the syntax in the Command Editor. "+ "Clicking on the HELP button will bring up the Help. Clicking on the buttons in the dialog will bring up sub-dialogs. The property grid displays the properties of the dialog.</value>
+    <comment>InspectDialog.xaml : Window help text</comment>
+  </data>
+  <data name="InspectWinTitle" xml:space="preserve">
+    <value>Inspect Dialog Window</value>
+    <comment>InspectDialog.xaml : Window title text</comment>
+  </data>
+  <data name="MenuOutputEdit" xml:space="preserve">
+    <value>Edit</value>
+    <comment>OutputWindow.xaml : Edit menu in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditCopy" xml:space="preserve">
+    <value>Copy</value>
+    <comment>OutputWindow.xaml : Edit &gt;Copy in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditCut" xml:space="preserve">
+    <value>Cut</value>
+    <comment>OutputWindow.xaml : Edit &gt;Cut in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditPaste" xml:space="preserve">
+    <value>Paste</value>
+    <comment>OutputWindow.xaml : Edit &gt;Paste in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditRedo" xml:space="preserve">
+    <value>Redo</value>
+    <comment>OutputWindow.xaml : Edit &gt;Redo in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditUndo" xml:space="preserve">
+    <value>Undo</value>
+    <comment>OutputWindow.xaml : Edit &gt;Undo in Output panel.</comment>
+  </data>
+  <data name="MenuOutputFile" xml:space="preserve">
+    <value>File</value>
+    <comment>OutputWindow.xaml : File menu in Output panel. </comment>
+  </data>
+  <data name="MenuOutputFileClose" xml:space="preserve">
+    <value>Close Window</value>
+    <comment>OutputWindow.xaml : File &gt;Close in Output panel.</comment>
+  </data>
+  <data name="MenuOutputFileOpenOutput" xml:space="preserve">
+    <value>Open BlueSky Saved Output</value>
+    <comment>OutputWindow.xaml : File &gt;Open output in Output panel.</comment>
+  </data>
+  <data name="MenuOutputFileSaveAs" xml:space="preserve">
+    <value>Save As</value>
+    <comment>OutputWindow.xaml : File &gt;Save As in Output panel.</comment>
+  </data>
+  <data name="MenuOutputFileSaveAsPDF" xml:space="preserve">
+    <value>Save As PDF</value>
+    <comment>OutputWindow.xaml : File &gt;Save As PDF in Output panel.</comment>
+  </data>
+  <data name="MenuOutputImageSize" xml:space="preserve">
+    <value>Image Size</value>
+    <comment>OutputWindow.xaml : ImageSize menu in Output panel.</comment>
+  </data>
+  <data name="MenuOutputImageSizeChange" xml:space="preserve">
+    <value>Change Graphic Size</value>
+    <comment>OutputWindow.xaml : ImageSize &gt;Change in Output panel.</comment>
+  </data>
+  <data name="MenuOutputImageSizeDefault" xml:space="preserve">
+    <value>Set Default Graphic Size</value>
+    <comment>OutputWindow.xaml : ImageSize &gt;Default in Output panel.</comment>
+  </data>
+  <data name="MenuOutputLayout" xml:space="preserve">
+    <value>Layout</value>
+    <comment>OutputWindow.xaml : Layout menu in Output panel.</comment>
+  </data>
+  <data name="MenuOutputLayoutHorizontal" xml:space="preserve">
+    <value>Horizontal</value>
+    <comment>OutputWindow.xaml : Layout &gt;Horizontal in Output panel.</comment>
+  </data>
+  <data name="MenuOutputLayoutShowNavTree" xml:space="preserve">
+    <value>Show Navigation Tree</value>
+    <comment>OutputWindow.xaml : Layout &gt; Show navigation tree on left in Output panel.</comment>
+  </data>
+  <data name="MenuOutputLayoutVertical" xml:space="preserve">
+    <value>Vertical</value>
+    <comment>OutputWindow.xaml : Layout &gt;Vertical in Output panel.</comment>
+  </data>
+  <data name="MenuSynEdit" xml:space="preserve">
+    <value>_Edit</value>
+    <comment>OutputWindow.xaml : Edit menu in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditCopy" xml:space="preserve">
+    <value>_Copy</value>
+    <comment>OutputWindow.xaml : Edit &gt; Copy in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditCut" xml:space="preserve">
+    <value>Cu_t</value>
+    <comment>OutputWindow.xaml : Edit &gt; Cut in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditFindReplace" xml:space="preserve">
+    <value>Find/Replace</value>
+    <comment>OutputWindow.xaml : Edit &gt; Find/Replace in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditPaste" xml:space="preserve">
+    <value>_Paste</value>
+    <comment>OutputWindow.xaml : Edit &gt; Paste in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditRedo" xml:space="preserve">
+    <value>_Redo</value>
+    <comment>OutputWindow.xaml : Edit &gt; Redo in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditUndo" xml:space="preserve">
+    <value>_Undo</value>
+    <comment>OutputWindow.xaml : Edit &gt; Undo in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFile" xml:space="preserve">
+    <value>_File</value>
+    <comment>OutputWindow.xaml : File menu in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileNew" xml:space="preserve">
+    <value>_New</value>
+    <comment>OutputWindow.xaml : File &gt; New in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileOpen" xml:space="preserve">
+    <value>_Open</value>
+    <comment>OutputWindow.xaml : File &gt; Open in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileRecent" xml:space="preserve">
+    <value>Recent</value>
+    <comment>OutputWindow.xaml : File &gt; Recent in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileSave" xml:space="preserve">
+    <value>_Save</value>
+    <comment>OutputWindow.xaml : File &gt; Save in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileSaveAs" xml:space="preserve">
+    <value>Save _As</value>
+    <comment>OutputWindow.xaml : File &gt; SaveAs in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="OutputPanelTitle" xml:space="preserve">
+    <value>Results of Analysis</value>
+    <comment>OutputWindow.xaml : Title for output panel</comment>
+  </data>
+  <data name="syncomment" xml:space="preserve">
+    <value># Syntax generated by dialog</value>
+    <comment>InspectDialog.xaml : comment text</comment>
+  </data>
+  <data name="syncomment2" xml:space="preserve">
+    <value>#There is no syntax associated with dialog</value>
+    <comment>InspectDialog.xaml : comment text2</comment>
+  </data>
+  <data name="NavTreeCheckboxTooltip" xml:space="preserve">
+    <value>Select/Unselect this node to show/hide in right pane</value>
+    <comment>OutputWindow.xaml.cs : Tooltip for navigation tree checkbox</comment>
+  </data>
+  <data name="NavTreeNodeTBTooltip" xml:space="preserve">
+    <value>Click to bring the item in the view</value>
+    <comment>OutputWindow.xaml.cs : Tooltip for navigation tree text</comment>
+  </data>
+  <data name="OutputWinSavePromptPart1" xml:space="preserve">
+    <value>Do you want to save the output of</value>
+    <comment>OutputWindow.xaml.cs : Save prompt message, part 1</comment>
+  </data>
+  <data name="OutputWinSavePromptPart2" xml:space="preserve">
+    <value>Yes : Save all and Close,</value>
+    <comment>OutputWindow.xaml.cs : Save prompt message, part 2</comment>
+  </data>
+  <data name="OutputWinSavePromptPart3" xml:space="preserve">
+    <value>Cancel: Do not Save/Close this window.</value>
+    <comment>OutputWindow.xaml.cs : Save prompt message, part 3</comment>
+  </data>
+  <data name="OutputWinSavePromptTitle" xml:space="preserve">
+    <value>Save Output?</value>
+    <comment>OutputWindow.xaml.cs : Save prompt messagebox title</comment>
+  </data>
+  <data name="REditorCloseSaveScriptPrompt" xml:space="preserve">
+    <value>Do you want to save commands before closing Command Editor?</value>
+    <comment>OutputWindow.xaml.cs : Save R script prompt when closing the output &amp; Syntax window.</comment>
+  </data>
+  <data name="REditorFileTypeSupportedMsg" xml:space="preserve">
+    <value>Only .r (R script) and .txt(plain text) files are supported.</value>
+    <comment>OutputWindow.xaml.cs : Message about file type supported by Rcommand editor.</comment>
+  </data>
+  <data name="REditorFindNextEndsMsg" xml:space="preserve">
+    <value>End of text: No more occurrences. Search pointer will start from the begining.</value>
+    <comment>OutputWindow.xaml.cs : Message for end of text when running find-next in R Command Editor</comment>
+  </data>
+  <data name="REditorFindNextEndsMsgbxTitle" xml:space="preserve">
+    <value>No more match</value>
+    <comment>OutputWindow.xaml.cs : MessageBox title for end of text reached in R Command Editor</comment>
+  </data>
+  <data name="REditorReplaceAllInSelectedMsg" xml:space="preserve">
+    <value>Please select some text in R Command Editor first</value>
+    <comment>OutputWindow.xaml.cs : Msg for replace-all in selected option</comment>
+  </data>
+  <data name="REditorReplaceAllInSelectedMsgboxTitle" xml:space="preserve">
+    <value>Nothing Selected</value>
+    <comment>OutputWindow.xaml.cs : MsgBx title for replace-all in selected option</comment>
+  </data>
+  <data name="REditorSavePromptMsgBoxTitle" xml:space="preserve">
+    <value>Save &amp; Close current command script?</value>
+    <comment>OutputWindow.xaml.cs : Command editor script save prompt message box title</comment>
+  </data>
+  <data name="REditorSaveScriptPrompt" xml:space="preserve">
+    <value>Do you want to save current script?</value>
+    <comment>OutputWindow.xaml.cs : Command editor script save prompt</comment>
+  </data>
+  <data name="RScriptFilenameFilter" xml:space="preserve">
+    <value>BSky R scripts,</value>
+    <comment>OutputWindow.xaml.cs : Filename filter prefix message</comment>
+  </data>
+  <data name="SynGetStrtMsg1" xml:space="preserve">
+    <value>### This is R syntax editor ###</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line1) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg2" xml:space="preserve">
+    <value>### You can enter some R statements here and execute them.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line2) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg3" xml:space="preserve">
+    <value>### Type in few R statements.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line3) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg4" xml:space="preserve">
+    <value>### Select one or more, complete R statements.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line4) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg5" xml:space="preserve">
+    <value>### Click Run (blue triangle icon) from the toolbar above.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line5) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg6" xml:space="preserve">
+    <value>### See the generated output on the output panel(on the left).</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line6) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynRecentXmlNotFound" xml:space="preserve">
+    <value>SyntaxRecent.xml not found.</value>
+    <comment>OutputWindow.xaml.cs : Message about SyntaxRexcent.xml file missing</comment>
+  </data>
+  <data name="RecentXMLnotfound" xml:space="preserve">
+    <value>Recent.xml not found...</value>
+    <comment>Window1.xaml.cs : Message when recent.xml file not foud when populating File-&gt;Recent menu in main window.</comment>
+  </data>
+  <data name="FileRecentRScriptNotFound" xml:space="preserve">
+    <value>does not exist!</value>
+    <comment>OutputWindow.xaml.cs : Message when a file is clicked from file&gt;recent (Command Editor)which does not exists anymore</comment>
+  </data>
+  <data name="HideNavTreeText" xml:space="preserve">
+    <value>Hide Navigation Tree</value>
+    <comment>OutputWindow.xaml.cs : Text for hiding navigation tree</comment>
+  </data>
+  <data name="HistoryMenuName" xml:space="preserve">
+    <value>History</value>
+    <comment>CommandHistoryMenuHandler.cs : Name(Header) for the history menu</comment>
+  </data>
+  <data name="MenuGenerationFailedMsg" xml:space="preserve">
+    <value>Menus can't be generated...</value>
+    <comment>Window1.xaml.cs : Error message if for some reason there is some issue generating the menus</comment>
+  </data>
+  <data name="OutputWindowMainTitle" xml:space="preserve">
+    <value>Ouput and Syntax Window-</value>
+    <comment>OutputWindowContainer.cs : Output Window title text</comment>
+  </data>
+  <data name="OutputWindowTitleStatus" xml:space="preserve">
+    <value>(Active)</value>
+    <comment>OutputWindowContainer.cs : Output Window title text postfix if window is active window or not</comment>
+  </data>
+  <data name="RecentScriptNotFoundMsgBoxTitle" xml:space="preserve">
+    <value>File not found!</value>
+    <comment>OutputWindows.xaml.cs : Title for message box. File &gt; Recent in Rcommand Editor) file not found case.</comment>
+  </data>
+  <data name="ShowNavTreeText" xml:space="preserve">
+    <value>Show Navigation Tree</value>
+    <comment>OutputWindow.xaml.cs : Text for showing navigation tree</comment>
+  </data>
+  <data name="AppExitConfirmMsg" xml:space="preserve">
+    <value>Do you want to close this application?</value>
+    <comment>Window1.xaml : App exit confirmation message</comment>
+  </data>
+  <data name="AppExitConfirmMsgTitle" xml:space="preserve">
+    <value>Exit Application?</value>
+    <comment>Window1.xaml : App exit confirmation messagebox title</comment>
+  </data>
+  <data name="AppExitOnErrorMsg" xml:space="preserve">
+    <value>Error Occured. App will Exit.</value>
+    <comment>Window1.xaml : App exit message when error occurred</comment>
+  </data>
+  <data name="AppExitOnErrorMsgTitle" xml:space="preserve">
+    <value>Exiting Application!</value>
+    <comment>Window1.xaml : App exit messagebox title when error occurred</comment>
+  </data>
+  <data name="ScoringSectionTitle" xml:space="preserve">
+    <value>Score Current Dataset</value>
+    <comment>Window1.xaml : Title for top right scoring section.</comment>
+  </data>
+  <data name="StatusbarLicInfo" xml:space="preserve">
+    <value>(For details, go to Help -&gt; Licensing).</value>
+    <comment>Window1.xaml : Main window status bar license info</comment>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>SelectTableWindow.xaml : Cancel button text</comment>
+  </data>
+  <data name="SelTableOrSheet" xml:space="preserve">
+    <value>Select One Table/Sheet</value>
+    <comment>SelectTableWindow.xaml : For selecting excel worksheet from the list</comment>
+  </data>
+  <data name="SelWorksheetWin" xml:space="preserve">
+    <value>Select Worksheet Window</value>
+    <comment>SelectTableWindow.xaml : For selecting excel worksheet from the list</comment>
+  </data>
+  <data name="AskPkgNameExample1" xml:space="preserve">
+    <value>Example 1: foreign</value>
+    <comment>AskPackageNameWindoe.xaml : Example one</comment>
+  </data>
+  <data name="AskPkgNameExample2" xml:space="preserve">
+    <value>Example 2: foreign, car, MASS</value>
+    <comment>AskPackageNameWindoe.xaml : Example two</comment>
+  </data>
+  <data name="EnterPkgNamesLine1" xml:space="preserve">
+    <value>Please enter the name(s) of one or more package(s)</value>
+    <comment>AskPackageNameWindoe.xaml : Asking for package names to install from CRAN. Msg line1</comment>
+  </data>
+  <data name="EnterPkgNamesLine2" xml:space="preserve">
+    <value>separated by comma.(package names are case sensitive)</value>
+    <comment>AskPackageNameWindoe.xaml : Asking for package names to install from CRAN. Msg line2</comment>
+  </data>
+  <data name="AddModelClassWinTitle" xml:space="preserve">
+    <value>Add Model Class Window</value>
+    <comment>AddModelClassWindow.xaml : Title</comment>
+  </data>
+  <data name="buttonAdd" xml:space="preserve">
+    <value>Add</value>
+    <comment>CustomSettingsWindow.xaml : button label for add item to list</comment>
+  </data>
+  <data name="buttonAddClass" xml:space="preserve">
+    <value>Add Class</value>
+    <comment>AddModelClassWindow.xaml : Add model class button text</comment>
+  </data>
+  <data name="buttonApply" xml:space="preserve">
+    <value>Apply</value>
+    <comment>CustomSettingsWindow.xaml : button text for Apply button in settings</comment>
+  </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>Browse</value>
+    <comment>InstallRequiredPackagesFromZip.xaml : Browse button text</comment>
+  </data>
+  <data name="buttonClose" xml:space="preserve">
+    <value>Close</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window close button text</comment>
+  </data>
+  <data name="buttonDefault" xml:space="preserve">
+    <value>Default</value>
+    <comment>CustomSettingsWindow.xaml : button text for Default button in settings</comment>
+  </data>
+  <data name="buttonFindNext" xml:space="preserve">
+    <value>Find Next</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window find next button text</comment>
+  </data>
+  <data name="buttonMoveDown" xml:space="preserve">
+    <value>Move Down</value>
+    <comment>CustomSettingsWindow.xaml : button label for move down</comment>
+  </data>
+  <data name="buttonMoveUp" xml:space="preserve">
+    <value>Move Up</value>
+    <comment>CustomSettingsWindow.xaml : button label for move up</comment>
+  </data>
+  <data name="buttonRemove" xml:space="preserve">
+    <value>Remove</value>
+    <comment>CustomSettingsWindow.xaml : button label for remove item from list</comment>
+  </data>
+  <data name="buttonReplace" xml:space="preserve">
+    <value>Replace</value>
+    <comment>FindReplaceWindow.xaml : text for replace button</comment>
+  </data>
+  <data name="buttonReplaceAll" xml:space="preserve">
+    <value>Replace All</value>
+    <comment>FindReplaceWindow.xaml : text for replace-all button</comment>
+  </data>
+  <data name="buttonReset" xml:space="preserve">
+    <value>Reset</value>
+    <comment>CustomSettingsWindow.xaml : button label for reset to default</comment>
+  </data>
+  <data name="CantAddFactorToScaleVar" xml:space="preserve">
+    <value>Cannot add factors to Measure=Scale(Numeric) type.</value>
+    <comment>DataPanel.xaml : text for warning msg about adding factors levels to scale</comment>
+  </data>
+  <data name="ChangeImgSizDlgTitle" xml:space="preserve">
+    <value>Change Image Size Dialog</value>
+    <comment>ChangeImageSizeDialog.xaml : Title</comment>
+  </data>
+  <data name="ConfigWindowTitle" xml:space="preserve">
+    <value>Options Window</value>
+    <comment>CustomSettingsWindow.xaml : Title</comment>
+  </data>
+  <data name="confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+    <comment>DataPanel.xaml : confirmation title for deleteing variable</comment>
+  </data>
+  <data name="DeleteVarConfirmation" xml:space="preserve">
+    <value>Do you want to delete variable?</value>
+    <comment>DataPanel.xaml : confirmation text for deleteing variable</comment>
+  </data>
+  <data name="DupColMsg" xml:space="preserve">
+    <value>Another column with same name exists. Please try another name.</value>
+    <comment>DataPanel.xaml : text for duplicate column name found</comment>
+  </data>
+  <data name="DupColNameTitle" xml:space="preserve">
+    <value>Duplicate Column Name</value>
+    <comment>DataPanel.xaml : title for duplicate column name </comment>
+  </data>
+  <data name="EnterImgSizePrompt" xml:space="preserve">
+    <value>Enter graphic image dimensions (in pixel) :</value>
+    <comment>ChangeImageSizeDialog.xaml : Message about entring new dimensions for image</comment>
+  </data>
+  <data name="EnterModelClassPrompt" xml:space="preserve">
+    <value>Enter model class name (case sensitive):</value>
+    <comment>AddModelClassWindow.xaml : Message for entering model class name to be added to the list.</comment>
+  </data>
+  <data name="ExistingLabel" xml:space="preserve">
+    <value>Existing Label</value>
+    <comment>DataPanel.xaml : text for existing label (for factor vars)</comment>
+  </data>
+  <data name="FindDatagridNarrowSearch" xml:space="preserve">
+    <value>Narrow search by selecting one or more columns:</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window  narrow serach text</comment>
+  </data>
+  <data name="findDatagridTitle" xml:space="preserve">
+    <value>Find Datagrid Window</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window title</comment>
+  </data>
+  <data name="FindReplaceWinTitle" xml:space="preserve">
+    <value>Find Replace Window</value>
+    <comment>FindReplaceWindow.xaml : Title</comment>
+  </data>
+  <data name="FindVarGridWinTitle" xml:space="preserve">
+    <value>Find Variable Window</value>
+    <comment>FindVargridWindow.xaml : Title</comment>
+  </data>
+  <data name="FindVarName" xml:space="preserve">
+    <value>Find Variable Name:</value>
+    <comment>FindVargridWindow.xaml : Label for 'find var name'</comment>
+  </data>
+  <data name="findwhat" xml:space="preserve">
+    <value>Find What:</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window find what label</comment>
+  </data>
+  <data name="ImgHeight" xml:space="preserve">
+    <value>Image Height:</value>
+    <comment>ChangeImageSizeDialog.xaml : Image height text msg</comment>
+  </data>
+  <data name="ImgWidth" xml:space="preserve">
+    <value>Image Width:</value>
+    <comment>ChangeImageSizeDialog.xaml : Image width text msg</comment>
+  </data>
+  <data name="InSelTextChkBox" xml:space="preserve">
+    <value>In selected text</value>
+    <comment>FindReplaceWindow.xaml : text for 'in selected text' checkbox</comment>
+  </data>
+  <data name="InstallFromZipTitle" xml:space="preserve">
+    <value>Install Packages From Folder</value>
+    <comment>InstallRequiredPackagesFromZip.xaml : Title</comment>
+  </data>
+  <data name="InvalidDateTimeMsg" xml:space="preserve">
+    <value>You entered an invalid date/time.</value>
+    <comment>DataPanel.xaml : text for invalid date time entered by user</comment>
+  </data>
+  <data name="InvalidDateTimeTitle" xml:space="preserve">
+    <value>Invalid Date/Time.</value>
+    <comment>DataPanel.xaml : title for invalid date time entered by user</comment>
+  </data>
+  <data name="InvalidOperationOnScale" xml:space="preserve">
+    <value>This operation is not valid for variable of type Measure = Scale(Numeric)</value>
+    <comment>DataPanel.xaml : text for invalid operation performed on scale var</comment>
+  </data>
+  <data name="lbl1UserPkg" xml:space="preserve">
+    <value>User's Packages (manually loaded by user from</value>
+    <comment>CustomSettingsWindow.xaml : First part of the label for user R packages</comment>
+  </data>
+  <data name="lbl2UserPkg" xml:space="preserve">
+    <value>Tools &gt; Packages &gt; Load user session package(s) )</value>
+    <comment>CustomSettingsWindow.xaml : Second part of the label for user R packages</comment>
+  </data>
+  <data name="lblAdvancedLogging" xml:space="preserve">
+    <value>Advanced Logging:</value>
+    <comment>CustomSettingsWindow.xaml : label for advanced logging</comment>
+  </data>
+  <data name="lblCharToFactor" xml:space="preserve">
+    <value>While loading CSV/Excel files, convert "character" columns to "factor".</value>
+    <comment>CustomSettingsWindow.xaml : label for character to factor conversion if CSV/Excel files are loaded.</comment>
+  </data>
+  <data name="lblCommandTitleColor" xml:space="preserve">
+    <value>Command Title Color:</value>
+    <comment>CustomSettingsWindow.xaml : label for command color</comment>
+  </data>
+  <data name="lblDataTab" xml:space="preserve">
+    <value>Data</value>
+    <comment>DataPanel.xaml : Datagrid Data tab title</comment>
+  </data>
+  <data name="lblDefaultInstanceName" xml:space="preserve">
+    <value>Default instance name for MSSQL Full is MSSQLSERVER and for MSSQL Express is SQLEXPRESS</value>
+    <comment>CustomSettingsWindow.xaml : label for specifying default instance names</comment>
+  </data>
+  <data name="lblDefPkg" xml:space="preserve">
+    <value>Default Packages (loads with application:)</value>
+    <comment>CustomSettingsWindow.xaml : label for default package list</comment>
+  </data>
+  <data name="lblDropdownModels" xml:space="preserve">
+    <value>List of Model classes that will appear in the 'Model Type' dropdown.</value>
+    <comment>CustomSettingsWindow.xaml : label for model classes shown in dropdown</comment>
+  </data>
+  <data name="lblErrorColor" xml:space="preserve">
+    <value>Error Color:</value>
+    <comment>CustomSettingsWindow.xaml : label for error color</comment>
+  </data>
+  <data name="lblExampleRHomeDir" xml:space="preserve">
+    <value>Example: C:/Program Files/R/R-3.2.1 (use forward slash '/' for path)</value>
+    <comment>CustomSettingsWindow.xaml : text for example of RHome Dir</comment>
+  </data>
+  <data name="lblFind" xml:space="preserve">
+    <value>Find:</value>
+    <comment>FindReplaceWindow.xaml : label for Find</comment>
+  </data>
+  <data name="lblImageHeight" xml:space="preserve">
+    <value>Output Image Height:</value>
+    <comment>CustomSettingsWindow.xaml : label for image height</comment>
+  </data>
+  <data name="lblImageWidth" xml:space="preserve">
+    <value>Output Image Width:</value>
+    <comment>CustomSettingsWindow.xaml : label for image width</comment>
+  </data>
+  <data name="lblInitialDirectory" xml:space="preserve">
+    <value>Initial Directory:</value>
+    <comment>CustomSettingsWindow.xaml : label for initial directory</comment>
+  </data>
+  <data name="lblInstanceName" xml:space="preserve">
+    <value>Enter server instance name :</value>
+    <comment>CustomSettingsWindow.xaml : label for instance name prompt</comment>
+  </data>
+  <data name="lblInstanceNameNote" xml:space="preserve">
+    <value>Please modify the server instance name if its different from the default.</value>
+    <comment>CustomSettingsWindow.xaml : label for a note about instance name</comment>
+  </data>
+  <data name="lblLicNotifyDays" xml:space="preserve">
+    <value>Enter comma separated list of days (how many days before expiry, reminder should notify you. Blank field loads defaults. Enter 0 or 1 if you dont want to set any days):</value>
+    <comment>CustomSettingsWindow.xaml : lable for notify days before license expires</comment>
+  </data>
+  <data name="lblLoadMissing" xml:space="preserve">
+    <value>Load SAV file's missing values:</value>
+    <comment>CustomSettingsWindow.xaml : label for loading missing values when SAV file is opened</comment>
+  </data>
+  <data name="lblLogLevel" xml:space="preserve">
+    <value>Log Level:</value>
+    <comment>CustomSettingsWindow.xaml : lable for log level</comment>
+  </data>
+  <data name="lblMatchCaseChkBox" xml:space="preserve">
+    <value>Match Case</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window text for Match Case checkbox</comment>
+  </data>
+  <data name="lblMatchOptions" xml:space="preserve">
+    <value>Options:</value>
+    <comment>FindReplaceWindow.xaml : label for Find/Replace Options</comment>
+  </data>
+  <data name="lblMaxCharsNavTree" xml:space="preserve">
+    <value>Max. No. Of Chars in Left Tree:</value>
+    <comment>CustomSettingsWindow.xaml : label for max chars in nav tree</comment>
+  </data>
+  <data name="lblMaxFactor" xml:space="preserve">
+    <value>Enter maximum number of factor you want:</value>
+    <comment>CustomSettingsWindow.xaml : label for max number of factor allowed</comment>
+  </data>
+  <data name="lblMouseHoverBoxColor" xml:space="preserve">
+    <value>Mouse hover box color (in output pane):</value>
+    <comment>CustomSettingsWindow.xaml : label for mouse hover box color</comment>
+  </data>
+  <data name="lblNavTreeSelColor" xml:space="preserve">
+    <value>Navigation tree selected item box color (in output pane):</value>
+    <comment>CustomSettingsWindow.xaml : label for navigation tree selected item color</comment>
+  </data>
+  <data name="lblNoDecimalDigits" xml:space="preserve">
+    <value>No. Of Decimal Digits:</value>
+    <comment>CustomSettingsWindow.xaml : label for number of decimals option</comment>
+  </data>
+  <data name="lblOpenOptions" xml:space="preserve">
+    <value>Show Options window when opening dataset:</value>
+    <comment>CustomSettingsWindow.xaml : label for showing options while opening dataset</comment>
+  </data>
+  <data name="lblPageSize" xml:space="preserve">
+    <value>Page Size:</value>
+    <comment>CustomSettingsWindow.xaml : label for PDFpage size</comment>
+  </data>
+  <data name="lblPDFFontSize" xml:space="preserve">
+    <value>Font Size:</value>
+    <comment>CustomSettingsWindow.xaml : label for PDF font size</comment>
+  </data>
+  <data name="lblPDFMargins" xml:space="preserve">
+    <value>Enter comma separated margin values (Left, Top, Right, Bottom):</value>
+    <comment>CustomSettingsWindow.xaml : label for margins for PDF</comment>
+  </data>
+  <data name="lblPDFMaxCols" xml:space="preserve">
+    <value>Enter maximum number of table columns per page(including row header columns):</value>
+    <comment>CustomSettingsWindow.xaml : label for max cols in a PDF page</comment>
+  </data>
+  <data name="lblPDFMaxRows" xml:space="preserve">
+    <value>Enter maximum number of table rows per page(including column header rows):</value>
+    <comment>CustomSettingsWindow.xaml : label for max rows in a PDF page</comment>
+  </data>
+  <data name="lblReplaceWith" xml:space="preserve">
+    <value>Replace With:</value>
+    <comment>FindReplaceWindow.xaml : label for Replace With</comment>
+  </data>
+  <data name="lblRetainSciNotation" xml:space="preserve">
+    <value>Retain scientific notation for a very small number (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5).</value>
+    <comment>CustomSettingsWindow.xaml : label for retain sci notation option</comment>
+  </data>
+  <data name="lblRHomeDir" xml:space="preserve">
+    <value>R Home Directory:</value>
+    <comment>CustomSettingsWindow.xaml : label for R Home directory</comment>
+  </data>
+  <data name="lblRSynColor" xml:space="preserve">
+    <value>R Syntax Color:</value>
+    <comment>CustomSettingsWindow.xaml : label for R syntax color</comment>
+  </data>
+  <data name="lblShowHideNumericHeaders" xml:space="preserve">
+    <value>The R object that contains the results of the analytical function may contain numeric row headers. This option determine whether the row headers are displayed or hidden. When checked, numeric row headers are shown in output grid:</value>
+    <comment>CustomSettingsWindow.xaml : label for display/hide numeric headers in output tables.</comment>
+  </data>
+  <data name="lblTempFolder" xml:space="preserve">
+    <value>Temp Folder:</value>
+    <comment>CustomSettingsWindow.xaml : label for temporary folder</comment>
+  </data>
+  <data name="lblThresholdCount" xml:space="preserve">
+    <value>Threshold number of values per output table for which warning will be displayed informing 
+                        the user that table generation will be time consuming and giving the user the choice to 
+                        display the partial results.</value>
+    <comment>CustomSettingsWindow.xaml : label for threshold number of cells in output table</comment>
+  </data>
+  <data name="lblTitleDriverPath" xml:space="preserve">
+    <value>Micosoft SQL server Driver path:</value>
+    <comment>CustomSettingsWindow.xaml : Main title for driver path</comment>
+  </data>
+  <data name="lblTitleDriverPathExample" xml:space="preserve">
+    <value>Example: C:/Program Files/Microsoft SQL Server JDBC Driver 3.0/sqljdbc_3.0/enu/sqljdbc4.jar</value>
+    <comment>CustomSettingsWindow.xaml : label giving example of driver path</comment>
+  </data>
+  <data name="lblTitleDriverPathNote" xml:space="preserve">
+    <value>NOTE: You must use forward slash(/) in path.</value>
+    <comment>CustomSettingsWindow.xaml : label for important note while entering driver path</comment>
+  </data>
+  <data name="lblTitleServerInstance" xml:space="preserve">
+    <value>MSSQL Server Instance:</value>
+    <comment>CustomSettingsWindow.xaml : Main title for server instance </comment>
+  </data>
+  <data name="lblVarGridContext" xml:space="preserve">
+    <value>Right click on the row number to access functions, for eg. Add Factor Level, Change Label, Make Factor, Insert New Variable and Delete Variable</value>
+    <comment>DataPanel.xaml : Vargrid context menu related message</comment>
+  </data>
+  <data name="lblVariablesTab" xml:space="preserve">
+    <value>Variables</value>
+    <comment>DataPanel.xaml : Vargrid Variable tab title</comment>
+  </data>
+  <data name="lblWholeWordChkBox" xml:space="preserve">
+    <value>Whole Word</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window text for Whole Word checkbox</comment>
+  </data>
+  <data name="LocateZipMsg" xml:space="preserve">
+    <value>Click 'Browse' and locate your folder that contains R package zip files.</value>
+    <comment>InstallRequiredPackagesFromZip.xaml : Message to locate the zip R package</comment>
+  </data>
+  <data name="MatchEndReached" xml:space="preserve">
+    <value>Reached end. No more matches.</value>
+    <comment>DataPanel.xaml : text for end is reached and there is no match</comment>
+  </data>
+  <data name="ModelClassExample" xml:space="preserve">
+    <value>Example: type lm without quotes and click 'Add Class'</value>
+    <comment>AddModelClassWindow.xaml : Example text for adding model class</comment>
+  </data>
+  <data name="NewLabel" xml:space="preserve">
+    <value>New Label</value>
+    <comment>DataPanel.xaml : text for new label (for factor vars)</comment>
+  </data>
+  <data name="NoMatch" xml:space="preserve">
+    <value>No Match</value>
+    <comment>DataPanel.xaml : text for no match</comment>
+  </data>
+  <data name="NoMatchFound" xml:space="preserve">
+    <value>No match found</value>
+    <comment>DataPanel.xaml : text for no match</comment>
+  </data>
+  <data name="NoMoreMatch" xml:space="preserve">
+    <value>No more matches</value>
+    <comment>DataPanel.xaml : text for no more match</comment>
+  </data>
+  <data name="NonNumForNumVar" xml:space="preserve">
+    <value>Invalid value, you have entered a non-numeric value for a numeric variable. If you want to enter a non-numeric values make this variable a factor and enter non-numeric levels</value>
+    <comment>DataPanel.xaml : Non numeric valud entered for numeric var</comment>
+  </data>
+  <data name="NoteMsg" xml:space="preserve">
+    <value>NOTE: All the files in the folder must be R package .zip files.</value>
+    <comment>InstallRequiredPackagesFromZip.xaml : Important note</comment>
+  </data>
+  <data name="SelOneOrMore" xml:space="preserve">
+    <value>Select one or more packages:</value>
+    <comment>SelectPackageWindow.xaml : Label message to select one or more R packages</comment>
+  </data>
+  <data name="SelOneOrMoreTip" xml:space="preserve">
+    <value>( Tip: Use Ctrl or Shift key for multi-select.)</value>
+    <comment>SelectPackageWindow.xaml : Tip for how to multi-select</comment>
+  </data>
+  <data name="SelPkgWinTitle" xml:space="preserve">
+    <value>Select Packages Window</value>
+    <comment>SelectPackageWindow.xaml : Title</comment>
+  </data>
+  <data name="StatusbarSplitInfo" xml:space="preserve">
+    <value>Split on :</value>
+    <comment>DataPanel.xaml : text for split info on the status bar of main window</comment>
+  </data>
+  <data name="TabTitleAdvanced" xml:space="preserve">
+    <value>Advanced</value>
+    <comment>CustomSettingsWindow.xaml : Title for Advanced tab in settings</comment>
+  </data>
+  <data name="TabTitleColors" xml:space="preserve">
+    <value>Colors</value>
+    <comment>CustomSettingsWindow.xaml : Title  for Colors tab in settings</comment>
+  </data>
+  <data name="TabTitleDefaultPackages" xml:space="preserve">
+    <value>Default Packages</value>
+    <comment>CustomSettingsWindow.xaml : Title for Default Packages tab in settings</comment>
+  </data>
+  <data name="TabTitleImage" xml:space="preserve">
+    <value>Image</value>
+    <comment>CustomSettingsWindow.xaml : Title for Image tab in settings</comment>
+  </data>
+  <data name="TabTitleModels" xml:space="preserve">
+    <value>Models</value>
+    <comment>CustomSettingsWindow.xaml : Title for Models tab in settings</comment>
+  </data>
+  <data name="TabTitleOthers" xml:space="preserve">
+    <value>Others</value>
+    <comment>CustomSettingsWindow.xaml : Title for Others tab in settings</comment>
+  </data>
+  <data name="TabTitlePathSettings" xml:space="preserve">
+    <value>Path Settings</value>
+    <comment>CustomSettingsWindow.xaml : Title  for Path Settings tab in settings</comment>
+  </data>
+  <data name="TabTitlePDFSettings" xml:space="preserve">
+    <value>PDF Settings</value>
+    <comment>CustomSettingsWindow.xaml : Title for PDF Settings tab in settings</comment>
+  </data>
+  <data name="TabTitleSQLSettings" xml:space="preserve">
+    <value>SQL Settings</value>
+    <comment>CustomSettingsWindow.xaml : Title for SQLSettings tab in settings</comment>
+  </data>
+  <data name="TabTitleUserPackages" xml:space="preserve">
+    <value>User Packages</value>
+    <comment>CustomSettingsWindow.xaml : Title for User Packages tab in settings</comment>
+  </data>
+  <data name="ToolTipCloseDataset" xml:space="preserve">
+    <value>Close this dataset</value>
+    <comment>DataPanel.xaml : text for tool tip for closing current dataset when mouse is over cross in current dataset tab</comment>
+  </data>
+  <data name="ToolTipSorted" xml:space="preserve">
+    <value>Sorted</value>
+    <comment>DataPanel.xaml : text for tool tip for sorted col</comment>
+  </data>
+  <data name="WarningAddRemoveLabel" xml:space="preserve">
+    <value>Add/Remove Level Warning:</value>
+    <comment>DataPanel.xaml : text for title of warning message about adding levels to scale</comment>
+  </data>
+  <data name="WarningChangeLevel" xml:space="preserve">
+    <value>Change Level Warning:</value>
+    <comment>DataPanel.xaml : text for title for chaning level</comment>
+  </data>
+</root>

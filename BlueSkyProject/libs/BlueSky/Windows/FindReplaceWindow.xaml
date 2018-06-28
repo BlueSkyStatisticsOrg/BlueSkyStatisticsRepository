@@ -1,0 +1,42 @@
+﻿<Window x:Class="BlueSky.Windows.FindReplaceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        Title="{x:Static uires:UICtrlResources.FindReplaceWinTitle}" Height="150" MinWidth="500" MaxWidth="600" SizeToContent="Width" ResizeMode="NoResize" Closed="Window_Closed" Background="WhiteSmoke">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblFind}"></Label>
+        <TextBox Grid.Row="0"  Grid.Column="1" Margin="2" Name="findtxt" ></TextBox>
+
+
+        <Label Grid.Row="1" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblReplaceWith}"></Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Name="replacetxt"  ></TextBox>
+
+        <Label Grid.Column="0" Grid.Row="2" Content="{x:Static uires:UICtrlResources.lblMatchOptions}"></Label>
+        <StackPanel Grid.Column="1" Grid.Row="2" Margin="2,5" Orientation="Horizontal" >
+            <CheckBox Name="MatchCaseCheckbox"  >Match Case</CheckBox>
+            <CheckBox Name="MatchWordCheckbox" Margin="15,1" >Whole Word</CheckBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+            <Button Name="findnextbutton" MinWidth="70" Margin="1,1,10,1" Click="findnextbutton_Click"  VerticalAlignment="Center" Content="{x:Static uires:UICtrlResources.buttonFindNext}"></Button>
+            <Button Name="replacebutton" MinWidth="70"  Margin="10,1" Click="replacebutton_Click"  VerticalAlignment="Center" Content="{x:Static uires:UICtrlResources.buttonReplace}"></Button>
+            <Border BorderBrush="DarkGray" BorderThickness="1" >
+            <StackPanel Orientation="Horizontal">
+                    <Button Name="replaceallbutton" MinWidth="70" Margin="10,1" Click="replaceallbutton_Click"  VerticalAlignment="Center" Content="{x:Static uires:UICtrlResources.buttonReplaceAll}"></Button>
+                    <CheckBox Margin="5" Name="InSelectionCheck" Checked="InSelectionCheck_Checked" Unchecked="InSelectionCheck_Checked" Content="{x:Static uires:UICtrlResources.InSelTextChkBox}"></CheckBox>
+            </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

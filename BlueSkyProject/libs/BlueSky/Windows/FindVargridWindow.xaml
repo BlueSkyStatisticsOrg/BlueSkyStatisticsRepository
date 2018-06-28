@@ -1,0 +1,31 @@
+﻿<Window x:Class="BlueSky.Windows.FindVargridWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        Title="{x:Static uires:UICtrlResources.FindVarGridWinTitle}" Height="100" MinWidth="450" MaxWidth="600" SizeToContent="Width" ResizeMode="NoResize" Closed="Window_Closed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="{x:Static uires:UICtrlResources.FindVarName}"></Label>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" MinWidth="310" Name="searchtext" TextChanged="searchtext_TextChanged"></TextBox>
+        
+
+            <!--<CheckBox Grid.Row="1" Grid.Column="1"  Name="matchcaseChkbox" Margin="3" Checked="matchcaseChkbox_Changed" Unchecked="matchcaseChkbox_Changed">Match Case:</CheckBox>-->
+
+
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" >
+            <CheckBox  Name="matchcaseChkbox" Margin="10,5" Checked="matchcaseChkbox_Changed" Unchecked="matchcaseChkbox_Changed" Content="{x:Static uires:UICtrlResources.lblMatchCaseChkBox}"></CheckBox>
+            <Button Name="findnextbutton" Margin="3" MinWidth="70"  Click="findnextbutton_Click" Content="{x:Static uires:UICtrlResources.buttonFindNext}"></Button>
+            <Button Name="closebutton" Margin="3" MinWidth="50" Click="closebutton_Click" Content="{x:Static uires:UICtrlResources.buttonClose}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

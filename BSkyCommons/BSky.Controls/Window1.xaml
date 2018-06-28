@@ -1,0 +1,266 @@
+﻿<Window xmlns:my="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"  
+    x:Class="BSky.Controls.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="BlueSky Dialog Designer" MinHeight="650" MinWidth="1000"  Loaded="Window_Loaded" 
+    xmlns:w="clr-namespace:BSky.Controls.Commands"
+    xmlns:local="clr-namespace:BSky.Controls"
+    WindowState="Maximized"  Closing="Window_Closing"
+    xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml" Icon="/BSky.Controls;component/Resources/BDialog-icon_1.png">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <!-- Added by Aaron 03/02/2014-->
+            <!-- Setting Min Height ="500" ensures that when I minimize the window to make the heigh very small -->
+            <!-- and then I resizse to make it large, the commands on the left hand size of the screen display correctly-->
+            <RowDefinition Height="*" MinHeight ="500"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu IsMainMenu="True" Name ="mainmenu" Grid.ColumnSpan="5">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" >
+                    <MenuItem Header="Function with dialog" Command="New"></MenuItem>
+                    <MenuItem Header="Function w/o dialog" Command="w:DesignerCommands.RCommand"></MenuItem>
+                </MenuItem>
+
+                <MenuItem Header="_Open" Command="Open"></MenuItem>
+                <MenuItem Header="_Save" Command="Save"></MenuItem>
+                <MenuItem Header="Recent"  ></MenuItem>
+                <MenuItem Header="SaveAs" Command="SaveAs"></MenuItem>
+                <!--  Aaron 01/12/2013         <MenuItem Header="Save and Package" Command="w:DesignerCommands.SaveAndPackage"></MenuItem> -->
+                <MenuItem Header="Save and Close" Command="w:DesignerCommands.SaveSubDialog"></MenuItem>
+                <MenuItem Header="Close" Command="Close"></MenuItem>
+                <MenuItem Header="Exit" Command="w:DesignerCommands.Exit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Dialog">
+                <MenuItem Header="_Properties" Command="Properties"></MenuItem>
+                <MenuItem Header="_DialogDesigner" Name="DialogDesign" Command="w:DesignerCommands.DesignDialog"></MenuItem>
+                <MenuItem Header="_Command" Command="w:DesignerCommands.RCommand"></MenuItem>
+                <MenuItem Header="_Preview" Command="w:DesignerCommands.Preview"></MenuItem>
+                <MenuItem Header="Menu _Location" Command="w:DesignerCommands.MenuLocation"></MenuItem>
+                <MenuItem Header="Output Definition" Command="w:DesignerCommands.OutputDefinition"></MenuItem>
+                <MenuItem Header="Inspect Dialog" Command="w:DesignerCommands.Inspection"></MenuItem>
+                <MenuItem Header="Show Grid Lines" Command="w:DesignerCommands.EnableGridLines"></MenuItem>
+                <MenuItem Header="Remove Grid Lines" Command="w:DesignerCommands.removeGridLines"></MenuItem>
+                
+            </MenuItem>
+        </Menu>
+
+
+        <!--<StackPanel Grid.Column="0" Name="controlsPanel" Grid.Row="1">
+            <Button   Name="SourceListBox" Click="GrpBox_Click">Source List</Button>
+            <Button   Name="TargetListBox" Click="GrpBox_Click">Target List</Button>
+            <Button  Name="textbox" Click="GrpBox_Click">TextBox</Button>
+            <Button  Name="Label" Click="GrpBox_Click">Label</Button>
+            <Button  Name="Combo" Click="GrpBox_Click" >Combo</Button>
+            <Button  Name="GrpBox" Click="GrpBox_Click" >Group Box</Button>
+            <Button  Name="ChkBox" Click="GrpBox_Click" >Check Box</Button>
+            <Button  Name="Rdbtn" Click="GrpBox_Click" >Radio Box</Button>
+            <Button  Name="Button" Click="GrpBox_Click" >Button</Button>
+            <Button  Name="MoveButton" Click="GrpBox_Click" >Move Button</Button>
+            <Button  Name="RadioGroup" Click="GrpBox_Click" >Radio Group</Button>
+        </StackPanel>-->
+        <Grid Grid.Column="2" Grid.Row="1" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".7*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height=".3*"></RowDefinition>
+                <!--<RowDefinition Height="33"></RowDefinition>-->
+            </Grid.RowDefinitions>
+            <!-- Added by Aaron 03/02/2013-->
+            <!-- Added the Scroll Viewer around the Border around Grid.Row =0 -->
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <Border Name="CanvasHost" Grid.Row ="0" BorderThickness="2"  BorderBrush="Black" Background="Gray" SnapsToDevicePixels="False">
+
+                </Border>
+            </ScrollViewer>
+            <my:WindowsFormsHost Name="CanvasPropHost" Grid.Row="2" />
+            <!--<Rectangle Height="30" Grid.Row="3"></Rectangle>-->
+            <GridSplitter 
+                Height="2"
+                Grid.Row="1"
+                Margin="2" 
+                Panel.ZIndex="1" 
+                VerticalAlignment="Stretch" 
+                ResizeBehavior="BasedOnAlignment" 
+                ResizeDirection="Rows" HorizontalAlignment="Stretch" />
+        </Grid>
+
+        <GridSplitter 
+            Width="2" 
+            Grid.Row="1"
+            Grid.Column="3" 
+            HorizontalAlignment="Center" 
+            Margin="0,5,0,5" 
+            Panel.ZIndex="1" 
+            VerticalAlignment="Stretch" 
+            ResizeBehavior="BasedOnAlignment" 
+            ResizeDirection="Columns"/>
+
+        <my:WindowsFormsHost Name="host" Grid.Row="1" Grid.Column="4" />
+        
+        <c1:C1ToolbarStrip Grid.Column="0" Grid.Row="1" Name="c1ToolbarStrip1" Orientation="Vertical" >
+            <c1:C1ToolbarButton Name="SourceListBox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Source Variable List"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+            <c1:C1ToolbarButton Name="TargetListBox" Height="25" Click="GrpBox_Click" HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Destination Variable List"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="SourceDatasetList" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Source Dataset List"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="DestinationDatasetList" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Destination Dataset List"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="textbox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/textbox.png" />
+                    <TextBlock Text="TextBox"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+            <c1:C1ToolbarButton Name="Label" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Lable.png" />
+                    <TextBlock Text="Label"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="MultiLabel" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left" MinHeight="20">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Lable.png" />
+                    <TextBlock Text="Multi-line Label"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+            <c1:C1ToolbarButton Name="EditCombo" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Combo.png" />
+                    <TextBlock Text="Editable Combo Box"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="NonEditCombo" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Combo.png" />
+                    <TextBlock Text="Non Editable Combo Box"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+            <c1:C1ToolbarButton Name="GrpBox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/group.png" />
+                    <TextBlock Text="Group Box"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+            <c1:C1ToolbarButton Name="ChkBox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/checkbox.png" />
+                    <TextBlock Text="Check Box"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+            <c1:C1ToolbarButton Name="RdBtn" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Radio.png" />
+                    <TextBlock Text="Radio Button"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+            <c1:C1ToolbarButton Name="Button" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/button.png" />
+                    <TextBlock Text="Button"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="MoveButton" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Button.png" />
+                    <TextBlock Text="Move Button" Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="RadioGroup" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/RadioGrp.png" />
+                    <TextBlock Text="Radio Group" Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+            <c1:C1ToolbarButton Name="Browse" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/RadioGrp.png" />
+                    <TextBlock Text="Browse" Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="GroupingVariable" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/RadioGrp.png" />
+                    <TextBlock Text="Grouping Variable" Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="gridForSymbols" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Radio.png" />
+                    <TextBlock Text="Mathematical Operators for Formulas"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="ListBox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="ListBox"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="MasterListBox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Master ListBox"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="GridforCompute" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Grid for Compute"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="AggregateCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Aggregate Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="SortCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Sort Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
+
+
+
+
+
+        </c1:C1ToolbarStrip>
+    </Grid>
+
+</Window>

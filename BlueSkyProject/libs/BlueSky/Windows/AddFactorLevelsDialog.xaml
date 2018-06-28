@@ -1,0 +1,32 @@
+﻿<Window x:Class="BlueSky.Windows.AddFactorLevelsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Factor Levels Dialog" Height="260"  MaxWidth="600" 
+        SizeToContent="Width" ResizeMode="NoResize">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="1"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="2"  Name="textBlock1" Text="New factor level:"  />
+        <TextBox Grid.Row="1" Grid.Column="0" Margin="2" Height="20" Name="faclvltxt" VerticalAlignment="Top" MinWidth="182" />
+        
+        <TextBlock  Grid.Row="2" Grid.Column="0" Margin="2" Name="textBlock2" Text="Current Factor Levels:"  />
+        <ListBox  Grid.Row="3" Margin="2" VerticalAlignment="Stretch"  Name="levelsListBox"  MinWidth="182" />
+        <Button Grid.Row="1" Grid.Column="2" Margin="2" Content="Add New Level"  Name="addlvlButton" MinWidth="90" Click="addlvlButton_Click"/>
+        <Button Grid.Row="3" Grid.Column="2" Margin="2" Content="Remove Level" VerticalAlignment="Top" Name="removelvlbutton" Height="20" MinWidth="90" Click="removelvlbutton_Click"/>
+        <StackPanel Grid.Row="4" Grid.Column="0" Margin="2" Orientation="Horizontal">
+        <Button   Content="OK" Height="20" Margin="2" Name="okbutton" VerticalAlignment="Top" MinWidth="50" Click="okbutton_Click"/>
+        <Button  Content="Cancel" Height="20" Margin="2" Name="cancelbutton" VerticalAlignment="Top" MinWidth="50" Click="cancelbutton_Click" />
+        </StackPanel>
+
+    </Grid>
+</Window>

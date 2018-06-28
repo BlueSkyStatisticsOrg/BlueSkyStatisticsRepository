@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="BSky.Controls.Controls.BSkySimpleColorPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="120" d:DesignWidth="300">
+    <StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="11*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0"  Height="23" Margin="3" HorizontalAlignment="Left"  Name="redtextBlock" Text="Red:" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="1" Grid.Column="0"  Height="23" Margin="3" HorizontalAlignment="Left"  Name="greentextBlock" Text="Green:" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Height="23" Margin="3" HorizontalAlignment="Left"  Name="bluetextBlock" Text="Blue:" VerticalAlignment="Center" />
+
+            <Slider Grid.Row="0" Grid.Column="1" Height="23" Margin="3" Minimum="0" Maximum="255" Value="0" HorizontalAlignment="Left"  Name="redslider" VerticalAlignment="Center" Width="180"  ValueChanged="colorslider_ValueChanged"/>
+            <Slider Grid.Row="1" Grid.Column="1" Height="23" Margin="3" HorizontalAlignment="Left" Minimum="0" Maximum="255" Value="0" Name="greenslider" VerticalAlignment="Center" Width="180"  ValueChanged="colorslider_ValueChanged" />
+            <Slider Grid.Row="2" Grid.Column="1" Height="23" Margin="3" HorizontalAlignment="Left" Minimum="0" Maximum="255" Value="0"  Name="blueslider" VerticalAlignment="Center" Width="180"  ValueChanged="colorslider_ValueChanged"/>
+
+            <TextBox Grid.Row="0" Grid.Column="2"  Height="23" Margin="3" HorizontalAlignment="Left"  Name="redbyte" VerticalAlignment="Center" Width="30"  TextChanged="colorbyte_TextChanged"/>
+            <TextBox Grid.Row="1" Grid.Column="2" Height="23" Margin="3" HorizontalAlignment="Left"  Name="greenbyte" VerticalAlignment="Center" Width="30" TextChanged="colorbyte_TextChanged" />
+            <TextBox Grid.Row="2" Grid.Column="2" Height="23" Margin="3" HorizontalAlignment="Left"  Name="bluebyte" VerticalAlignment="Center" Width="30" TextChanged="colorbyte_TextChanged" />
+    </Grid>
+            <Rectangle Name="rect" Fill="Transparent" Width="30" Margin="3"/>
+        </StackPanel>
+        <TextBlock Margin="3"> Either move sliders or enter 0-255 in value boxes.</TextBlock>    
+    </StackPanel>
+</UserControl>

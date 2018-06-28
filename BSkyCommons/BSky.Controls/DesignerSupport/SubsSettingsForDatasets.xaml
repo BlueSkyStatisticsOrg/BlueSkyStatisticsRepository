@@ -1,0 +1,65 @@
+﻿<Window xmlns:my="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"  
+    x:Class="BSky.Controls.DesignerSupport.SubsSettingsForDatasets"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="600" Height="670" Title="Substitution Settings">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="102*" />
+            <ColumnDefinition Width="176*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Dataset formatting options" Height="142" HorizontalAlignment="Left" Margin="22,47,0,0" Name="groupBox1" VerticalAlignment="Top" Width="544" Grid.ColumnSpan="2">
+            <Grid Height="110" Width="523">
+                <TextBlock Height="16" HorizontalAlignment="Left" Margin="8,6,0,0" Name="textBlock1" Text="Select how each dataset selected will display in the command" VerticalAlignment="Top" Width="335" />
+                <CheckBox Content="Enclose dataset name by '" Height="15" HorizontalAlignment="Left" Margin="10,28,0,0" Name="encloseByCharacters" VerticalAlignment="Top" Width="158" />
+                <TextBlock Height="35" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="30,49,0,0" Name="textBlock9" Text="If the dataset name is dataset1, the string that will be substituted is 'dataset1'. This setting controls whether the dataset name is accessed as an object or a string." VerticalAlignment="Top" Width="470" />
+                <Separator Height="0" HorizontalAlignment="Left" Margin="24,145,0,0" Name="separator1" VerticalAlignment="Top" Width="479" />
+            </Grid>
+        </GroupBox>
+
+        <!--  <GroupBox Header="Separator Settings" Height="221" HorizontalAlignment="Left" Margin="24,252,0,0" Name="groupBox2" VerticalAlignment="Top" Width="342" Grid.ColumnSpan="2"> -->
+
+        <GroupBox Grid.ColumnSpan="2" Header="Seperator Settings" HorizontalAlignment="Left" Margin="22,212,0,0" Name="groupBox2" Width="542" Height="214" VerticalAlignment="Top">
+            <Grid Height="178" Width="524">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="141*" />
+                    <ColumnDefinition Width="17*" />
+                    <ColumnDefinition Width="298" />
+                </Grid.ColumnDefinitions>
+                <!--    <RadioButton Content="Use a plus '+' " Height="18" Name="radioButton4" Width="305" Margin="46,388,27,255" Grid.ColumnSpan="2" /> -->
+                <!--     <TextBlock Height="43" HorizontalAlignment="Left" Margin="48,273,0,0" Name="textBlock5" TextWrapping="Wrap" Text="When substituting multiple variables from a variable control, select an appropriate separator" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="304" /> -->
+                <!--      <TextBlock Height="53" HorizontalAlignment="Left" Margin="45,403,0,0" Name="textBlock6" Text="If your variables are 'var1', var2', the string that will be substituted is 'var1 + var2', this is ideal for the formula class in R, i.e. xtabs(~var1+var2) " TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="296" />
+                <RadioButton Content="Use a comma ','" Height="17" Name="radioButton3" Width="296" Grid.ColumnSpan="2" Margin="46,110,36,134" /> -->
+                <TextBlock Height="56" TextWrapping ="Wrap" HorizontalAlignment="Left" Margin="46,333,0,0" Name="textBlock7" Text="If your datasets are dataset1, dataset2, the string that will be substituted is 'dataset1,dataset2', this is ideal for the formula class in R, i.e. xtabs(~var1+var2)" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="293" />
+                <RadioButton Content="Use a plus '+'" Height="16" HorizontalAlignment="Left" Margin="17,79,0,0" Name="UsePlus" VerticalAlignment="Top" />
+                <TextBlock Height="21" HorizontalAlignment="Left" Margin="15,11,0,0" Name="textBlock8" TextWrapping="Wrap" Text="When substituting multiple datasets from a control, select an appropriate separator" VerticalAlignment="Top" Grid.ColumnSpan="3" />
+                <TextBlock Height="32" HorizontalAlignment="Left" Margin="17,53,0,0" Name="textBlock5" TextWrapping ="Wrap" Text="If your datasets are dataset1, dataset2, the string that will be substituted is dataset1, dataset2" VerticalAlignment="Top" Grid.ColumnSpan="3" />
+                <RadioButton Content="Use a comma ','"  Height="16" HorizontalAlignment="Left" Margin="17,36,0,0" Name="UseComma" VerticalAlignment="Top" />
+                <TextBlock Height="37" HorizontalAlignment="Left" Margin="19,101,0,0" Name="textBlock6" TextWrapping ="Wrap" Text="If your datasets are dataset1, dataset2, the string that will be substituted is dataset1 + dataset2." VerticalAlignment="Top" Grid.ColumnSpan="3" />
+                <RadioButton Content="Enter a character to use as a separator" Height="17" HorizontalAlignment="Left" Margin="18,135,0,0" Name="UseSeperator" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="496" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="24,135,0,0" Name="SepCharacter" VerticalAlignment="Top" Width="120" Grid.Column="2" />
+            </Grid>
+
+        </GroupBox>
+
+
+
+        <GroupBox Grid.ColumnSpan="2" Header="Enclose dataset name" Height="129" HorizontalAlignment="Left" Margin="23,449,0,0" Name="groupBox3" VerticalAlignment="Top" Width="540">
+            <Grid Name="grid1" Width="525" Height="97">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="99*" />
+                    <ColumnDefinition Width="125*" />
+                    <ColumnDefinition Width="233*" />
+                </Grid.ColumnDefinitions>
+                <CheckBox Content="Prefix contents of the dataset list by a string" Height="18" HorizontalAlignment="Left" Margin="19,48,0,0" Name="StringPrefix" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="254" />
+                <Label Content="Enter string to prefix contents of the dataset list by" Height="25" HorizontalAlignment="Left" Margin="33,63,0,0" Name="label1" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="264" />
+                <TextBox Grid.Column="2" Height="23" HorizontalAlignment="Left" Margin="45,68,0,0" Name="PrefixString" VerticalAlignment="Top" Width="141" />
+                <CheckBox Content="Enclose all the datasets by c() in syntax command" Height="23" HorizontalAlignment="Left" Margin="19,6,0,0" Name="CreateArray" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="286" />
+                <Label Content="If datasets in the list are dataset1 and dataset2, then c(dataset1,dataset2) is substituted." Height="25" HorizontalAlignment="Left" Margin="33,17,0,0" Name="label2" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="492" />
+            </Grid>
+        </GroupBox>
+        <Button Content="Ok" Height="23" HorizontalAlignment="Left" Margin="24,601,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="125,601,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="Cancel_Click" />
+        <TextBlock Height="39" HorizontalAlignment="Left" Margin="22,12,0,0" Name="textBlock4" TextWrapping="Wrap" Text="Make selections to determine how datasets in the dataset list get substituted in the syntax associated with the command." VerticalAlignment="Top" Grid.ColumnSpan="2" Width="544" />
+    </Grid>
+
+</Window>

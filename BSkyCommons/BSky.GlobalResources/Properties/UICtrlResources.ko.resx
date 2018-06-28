@@ -1,0 +1,1280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AAA" xml:space="preserve">
+    <value>AAA</value>
+    <comment>AAA: .CS or. XAML name : Details : Comment</comment>
+  </data>
+  <data name="buttonHelp" xml:space="preserve">
+    <value>도움</value>
+    <comment>InspectDialog.xaml : help button text</comment>
+  </data>
+  <data name="buttonOk" xml:space="preserve">
+    <value>승인</value>
+    <comment>InspectDialog.xaml : ok button text</comment>
+  </data>
+  <data name="buttonSyntax" xml:space="preserve">
+    <value>통사론</value>
+    <comment>InspectDialog.xaml : syntax button text</comment>
+  </data>
+  <data name="CommandEditorPanelTitle" xml:space="preserve">
+    <value>R 명령 편집기</value>
+    <comment>OutputWindow.xaml : Title for R command editor panel</comment>
+  </data>
+  <data name="InspectHelpText" xml:space="preserve">
+    <value>아래 명령과 관련된 대화 상자 및 하위 대화 상자를 미리 봅니다. "+"구문 단추를 클릭하면 명령 편집기에 구문이 표시됩니다. "+"HELP 버튼을 클릭하면 도움말이 나타납니다. 대화 상자의 버튼을 클릭하면 하위 대화 상자가 나타납니다. 속성 그리드는 대화 상자의 속성을 표시합니다.</value>
+    <comment>InspectDialog.xaml : Window help text</comment>
+  </data>
+  <data name="InspectWinTitle" xml:space="preserve">
+    <value>대화 상자 창 검사</value>
+    <comment>InspectDialog.xaml : Window title text</comment>
+  </data>
+  <data name="MenuOutputEdit" xml:space="preserve">
+    <value>편집하다</value>
+    <comment>OutputWindow.xaml : Edit menu in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditCopy" xml:space="preserve">
+    <value>부</value>
+    <comment>OutputWindow.xaml : Edit &gt;Copy in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditCut" xml:space="preserve">
+    <value>절단</value>
+    <comment>OutputWindow.xaml : Edit &gt;Cut in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditPaste" xml:space="preserve">
+    <value>풀</value>
+    <comment>OutputWindow.xaml : Edit &gt;Paste in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditRedo" xml:space="preserve">
+    <value>다시 하다</value>
+    <comment>OutputWindow.xaml : Edit &gt;Redo in Output panel.</comment>
+  </data>
+  <data name="MenuOutputEditUndo" xml:space="preserve">
+    <value>끄르다</value>
+    <comment>OutputWindow.xaml : Edit &gt;Undo in Output panel.</comment>
+  </data>
+  <data name="MenuOutputFile" xml:space="preserve">
+    <value>파일</value>
+    <comment>OutputWindow.xaml : File menu in Output panel. </comment>
+  </data>
+  <data name="MenuOutputFileClose" xml:space="preserve">
+    <value>창 닫기</value>
+    <comment>OutputWindow.xaml : File &gt;Close in Output panel.</comment>
+  </data>
+  <data name="MenuOutputFileOpenOutput" xml:space="preserve">
+    <value>BlueSky 저장된 출력 열기</value>
+    <comment>OutputWindow.xaml : File &gt;Open output in Output panel.</comment>
+  </data>
+  <data name="MenuOutputFileSaveAs" xml:space="preserve">
+    <value>다른 이름으로 저장</value>
+    <comment>OutputWindow.xaml : File &gt;Save As in Output panel.</comment>
+  </data>
+  <data name="MenuOutputFileSaveAsPDF" xml:space="preserve">
+    <value>PDF로 저장</value>
+    <comment>OutputWindow.xaml : File &gt;Save As PDF in Output panel.</comment>
+  </data>
+  <data name="MenuOutputImageSize" xml:space="preserve">
+    <value>이미지 크기</value>
+    <comment>OutputWindow.xaml : ImageSize menu in Output panel.</comment>
+  </data>
+  <data name="MenuOutputImageSizeChange" xml:space="preserve">
+    <value>그래픽 크기 변경</value>
+    <comment>OutputWindow.xaml : ImageSize &gt;Change in Output panel.</comment>
+  </data>
+  <data name="MenuOutputImageSizeDefault" xml:space="preserve">
+    <value>기본 그래픽 크기 설정</value>
+    <comment>OutputWindow.xaml : ImageSize &gt;Default in Output panel.</comment>
+  </data>
+  <data name="MenuOutputLayout" xml:space="preserve">
+    <value>형세</value>
+    <comment>OutputWindow.xaml : Layout menu in Output panel.</comment>
+  </data>
+  <data name="MenuOutputLayoutHorizontal" xml:space="preserve">
+    <value>수평</value>
+    <comment>OutputWindow.xaml : Layout &gt;Horizontal in Output panel.</comment>
+  </data>
+  <data name="MenuOutputLayoutShowNavTree" xml:space="preserve">
+    <value>탐색 트리 표시</value>
+    <comment>OutputWindow.xaml : Layout &gt; Show navigation tree on left in Output panel.</comment>
+  </data>
+  <data name="MenuOutputLayoutVertical" xml:space="preserve">
+    <value>수직선</value>
+    <comment>OutputWindow.xaml : Layout &gt;Vertical in Output panel.</comment>
+  </data>
+  <data name="MenuSynEdit" xml:space="preserve">
+    <value>_편집하다</value>
+    <comment>OutputWindow.xaml : Edit menu in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditCopy" xml:space="preserve">
+    <value>_부</value>
+    <comment>OutputWindow.xaml : Edit &gt; Copy in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditCut" xml:space="preserve">
+    <value>Cu_t</value>
+    <comment>OutputWindow.xaml : Edit &gt; Cut in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditFindReplace" xml:space="preserve">
+    <value>찾기 / 바꾸기</value>
+    <comment>OutputWindow.xaml : Edit &gt; Find/Replace in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditPaste" xml:space="preserve">
+    <value>_풀</value>
+    <comment>OutputWindow.xaml : Edit &gt; Paste in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditRedo" xml:space="preserve">
+    <value>_다시 하다</value>
+    <comment>OutputWindow.xaml : Edit &gt; Redo in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynEditUndo" xml:space="preserve">
+    <value>_끄르다</value>
+    <comment>OutputWindow.xaml : Edit &gt; Undo in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFile" xml:space="preserve">
+    <value>_파일</value>
+    <comment>OutputWindow.xaml : File menu in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileNew" xml:space="preserve">
+    <value>_새로운</value>
+    <comment>OutputWindow.xaml : File &gt; New in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileOpen" xml:space="preserve">
+    <value>_열다</value>
+    <comment>OutputWindow.xaml : File &gt; Open in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileRecent" xml:space="preserve">
+    <value>충적세</value>
+    <comment>OutputWindow.xaml : File &gt; Recent in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileSave" xml:space="preserve">
+    <value>_구하다</value>
+    <comment>OutputWindow.xaml : File &gt; Save in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="MenuSynFileSaveAs" xml:space="preserve">
+    <value>다른 이름으로 저장</value>
+    <comment>OutputWindow.xaml : File &gt; SaveAs in Syntax editor panel. Underscore for Alt shortcut</comment>
+  </data>
+  <data name="OutputPanelTitle" xml:space="preserve">
+    <value>분석 결과</value>
+    <comment>OutputWindow.xaml : Title for output panel</comment>
+  </data>
+  <data name="syncomment" xml:space="preserve">
+    <value># 대화 상자에서 생성 된 구문</value>
+    <comment>InspectDialog.xaml : comment text</comment>
+  </data>
+  <data name="syncomment2" xml:space="preserve">
+    <value>#대화와 관련된 구문이 없습니다.</value>
+    <comment>InspectDialog.xaml : comment text2</comment>
+  </data>
+  <data name="NavTreeCheckboxTooltip" xml:space="preserve">
+    <value>오른쪽 창에서 표시하거나 숨기려면이 노드 선택 / 선택 취소를 선택하십시오.</value>
+    <comment>OutputWindow.xaml.cs : Tooltip for navigation tree checkbox</comment>
+  </data>
+  <data name="NavTreeNodeTBTooltip" xml:space="preserve">
+    <value>보기에서 항목을 가져 오려면 클릭하십시오.</value>
+    <comment>OutputWindow.xaml.cs : Tooltip for navigation tree text</comment>
+  </data>
+  <data name="OutputWinSavePromptPart1" xml:space="preserve">
+    <value>분석 결과를 저장 하시겠습니까?</value>
+    <comment>OutputWindow.xaml.cs : Save prompt message, part 1</comment>
+  </data>
+  <data name="OutputWinSavePromptPart2" xml:space="preserve">
+    <value>예 : 모두 저장하고 닫기.</value>
+    <comment>OutputWindow.xaml.cs : Save prompt message, part 2</comment>
+  </data>
+  <data name="OutputWinSavePromptPart3" xml:space="preserve">
+    <value>아니오 : 저장하지 않고 닫습니다.</value>
+    <comment>OutputWindow.xaml.cs : Save prompt message, part 3</comment>
+  </data>
+  <data name="OutputWinSavePromptTitle" xml:space="preserve">
+    <value>출력 저장 하시겠습니까?</value>
+    <comment>OutputWindow.xaml.cs : Save prompt messagebox title</comment>
+  </data>
+  <data name="REditorCloseSaveScriptPrompt" xml:space="preserve">
+    <value>R 구문을 저장 하시겠습니까?</value>
+    <comment>OutputWindow.xaml.cs : Save R script prompt when closing the output &amp; Syntax window.</comment>
+  </data>
+  <data name="REditorFileTypeSupportedMsg" xml:space="preserve">
+    <value>.r (R 스크립트) 및 .txt (일반 텍스트) 파일 만 지원됩니다.</value>
+    <comment>OutputWindow.xaml.cs : Message about file type supported by Rcommand editor.</comment>
+  </data>
+  <data name="REditorFindNextEndsMsg" xml:space="preserve">
+    <value>텍스트의 끝 : 더 이상 발생하지 않습니다. 검색 포인터가 처음부터 시작됩니다.</value>
+    <comment>OutputWindow.xaml.cs : Message for end of text when running find-next in R Command Editor</comment>
+  </data>
+  <data name="REditorFindNextEndsMsgbxTitle" xml:space="preserve">
+    <value>더 이상 일치하지 않음</value>
+    <comment>OutputWindow.xaml.cs : MessageBox title for end of text reached in R Command Editor</comment>
+  </data>
+  <data name="REditorReplaceAllInSelectedMsg" xml:space="preserve">
+    <value>먼저 R 명령어 편집기에서 텍스트를 선택하십시오</value>
+    <comment>OutputWindow.xaml.cs : Msg for replace-all in selected option</comment>
+  </data>
+  <data name="REditorReplaceAllInSelectedMsgboxTitle" xml:space="preserve">
+    <value>선택된 것이 없습니다.</value>
+    <comment>OutputWindow.xaml.cs : MsgBx title for replace-all in selected option</comment>
+  </data>
+  <data name="REditorSavePromptMsgBoxTitle" xml:space="preserve">
+    <value>현재 명령 스크립트를 저장하고 닫으시겠습니까?</value>
+    <comment>OutputWindow.xaml.cs : Command editor script save prompt message box title</comment>
+  </data>
+  <data name="REditorSaveScriptPrompt" xml:space="preserve">
+    <value>현재 스크립트를 저장 하시겠습니까?</value>
+    <comment>OutputWindow.xaml.cs : Command editor script save prompt</comment>
+  </data>
+  <data name="RScriptFilenameFilter" xml:space="preserve">
+    <value>BSky R 스크립트,</value>
+    <comment>OutputWindow.xaml.cs : Filename filter prefix message</comment>
+  </data>
+  <data name="SynGetStrtMsg1" xml:space="preserve">
+    <value>### 이것은 R 구문 편집기입니다. ###</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line1) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg2" xml:space="preserve">
+    <value>### 여기에 R 문을 입력하고 실행할 수 있습니다.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line2) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg3" xml:space="preserve">
+    <value>### 몇 개의 R 문을 입력하십시오.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line3) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg4" xml:space="preserve">
+    <value>### 하나 이상의 R 문을 선택하십시오.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line4) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg5" xml:space="preserve">
+    <value>### 위의 도구 모음에서 실행 (파란색 삼각형 아이콘)을 클릭하십시오.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line5) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynGetStrtMsg6" xml:space="preserve">
+    <value>### 출력 패널 (왼쪽)에서 생성 된 출력을 참조하십시오.</value>
+    <comment>OutputWindow.xaml.cs : Getting started message(line6) show in syntax panel when the gettingstarted file is missing.</comment>
+  </data>
+  <data name="SynRecentXmlNotFound" xml:space="preserve">
+    <value>SyntaxRecent.xml을 (를) 찾을 수 없습니다.</value>
+    <comment>OutputWindow.xaml.cs : Message about SyntaxRexcent.xml file missing</comment>
+  </data>
+  <data name="RecentXMLnotfound" xml:space="preserve">
+    <value>Recent.xml을 (를) 찾을 수 없습니다 ...</value>
+    <comment>Window1.xaml.cs : Message when recent.xml file not foud when populating File-&gt;Recent menu in main window.</comment>
+  </data>
+  <data name="FileRecentRScriptNotFound" xml:space="preserve">
+    <value>존재하지 않는다!</value>
+    <comment>OutputWindow.xaml.cs : Message when a file is clicked from file&gt;recent (Command Editor)which does not exists anymore</comment>
+  </data>
+  <data name="HideNavTreeText" xml:space="preserve">
+    <value>탐색 트리 숨기기</value>
+    <comment>OutputWindow.xaml.cs : Text for hiding navigation tree</comment>
+  </data>
+  <data name="HistoryMenuName" xml:space="preserve">
+    <value>역사</value>
+    <comment>CommandHistoryMenuHandler.cs : Name(Header) for the history menu</comment>
+  </data>
+  <data name="MenuGenerationFailedMsg" xml:space="preserve">
+    <value>메뉴를 생성 할 수 없습니다 ...</value>
+    <comment>Window1.xaml.cs : Error message if for some reason there is some issue generating the menus</comment>
+  </data>
+  <data name="OutputWindowMainTitle" xml:space="preserve">
+    <value>출력 및 구문 윈도우 -</value>
+    <comment>OutputWindowContainer.cs : Output Window title text</comment>
+  </data>
+  <data name="OutputWindowTitleStatus" xml:space="preserve">
+    <value>(유효한)</value>
+    <comment>OutputWindowContainer.cs : Output Window title text postfix if window is active window or not</comment>
+  </data>
+  <data name="RecentScriptNotFoundMsgBoxTitle" xml:space="preserve">
+    <value>파일을 찾을 수 없습니다!</value>
+    <comment>OutputWindows.xaml.cs : Title for message box. File &gt; Recent in Rcommand Editor) file not found case.</comment>
+  </data>
+  <data name="ShowNavTreeText" xml:space="preserve">
+    <value>탐색 트리 표시</value>
+    <comment>OutputWindow.xaml.cs : Text for showing navigation tree</comment>
+  </data>
+  <data name="AppExitConfirmMsg" xml:space="preserve">
+    <value>종료하기 전에 출력 및 / 또는 구문을 저장하려면 예를 클릭하십시오.</value>
+    <comment>Window1.xaml : App exit confirmation message</comment>
+  </data>
+  <data name="AppExitConfirmMsgTitle" xml:space="preserve">
+    <value>신청서를 종료 하시겠습니까</value>
+    <comment>Window1.xaml : App exit confirmation messagebox title</comment>
+  </data>
+  <data name="AppExitOnErrorMsg" xml:space="preserve">
+    <value>오류가 발생했습니다. 앱이 종료됩니다.</value>
+    <comment>Window1.xaml : App exit message when error occurred</comment>
+  </data>
+  <data name="AppExitOnErrorMsgTitle" xml:space="preserve">
+    <value>종료 응용 프로그램!</value>
+    <comment>Window1.xaml : App exit messagebox title when error occurred</comment>
+  </data>
+  <data name="ScoringSectionTitle" xml:space="preserve">
+    <value>현재 데이터 세트 점수</value>
+    <comment>Window1.xaml : Title for top right scoring section.</comment>
+  </data>
+  <data name="StatusbarLicInfo" xml:space="preserve">
+    <value>자세한 내용은 도움말 -&gt; 라이센스로 이동하십시오.</value>
+    <comment>Window1.xaml : Main window status bar license info</comment>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>취소</value>
+    <comment>SelectTableWindow.xaml : Cancel button text</comment>
+  </data>
+  <data name="SelTableOrSheet" xml:space="preserve">
+    <value>하나의 테이블 / 시트 선택</value>
+    <comment>SelectTableWindow.xaml : For selecting excel worksheet from the list</comment>
+  </data>
+  <data name="SelWorksheetWin" xml:space="preserve">
+    <value>워크 시트 창 선택</value>
+    <comment>SelectTableWindow.xaml : For selecting excel worksheet from the list</comment>
+  </data>
+  <data name="AskPkgNameExample1" xml:space="preserve">
+    <value>예 1: foreign</value>
+    <comment>AskPackageNameWindoe.xaml : Example one</comment>
+  </data>
+  <data name="AskPkgNameExample2" xml:space="preserve">
+    <value>예 2: foreign, car, MASS</value>
+    <comment>AskPackageNameWindoe.xaml : Example two</comment>
+  </data>
+  <data name="EnterPkgNamesLine1" xml:space="preserve">
+    <value>하나 이상의 패키지 (들)의 이름을 입력하십시오.</value>
+    <comment>AskPackageNameWindoe.xaml : Asking for package names to install from CRAN. Msg line1</comment>
+  </data>
+  <data name="EnterPkgNamesLine2" xml:space="preserve">
+    <value>쉼표로 구분됩니다 (패키지 이름은 대소 문자를 구분합니다).</value>
+    <comment>AskPackageNameWindoe.xaml : Asking for package names to install from CRAN. Msg line2</comment>
+  </data>
+  <data name="AddModelClassWinTitle" xml:space="preserve">
+    <value>모델 클래스 추가 창</value>
+    <comment>AddModelClassWindow.xaml : Title</comment>
+  </data>
+  <data name="buttonAdd" xml:space="preserve">
+    <value>더하다</value>
+    <comment>CustomSettingsWindow.xaml : button label for add item to list</comment>
+  </data>
+  <data name="buttonAddClass" xml:space="preserve">
+    <value>수업 추가</value>
+    <comment>AddModelClassWindow.xaml : Add model class button text</comment>
+  </data>
+  <data name="buttonApply" xml:space="preserve">
+    <value>대다</value>
+    <comment>CustomSettingsWindow.xaml : button text for Apply button in settings</comment>
+  </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>검색</value>
+    <comment>InstallRequiredPackagesFromZip.xaml : Browse button text</comment>
+  </data>
+  <data name="buttonClose" xml:space="preserve">
+    <value>닫기</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window close button text</comment>
+  </data>
+  <data name="buttonDefault" xml:space="preserve">
+    <value>기본값 재설정</value>
+    <comment>CustomSettingsWindow.xaml : button text for Default button in settings</comment>
+  </data>
+  <data name="buttonFindNext" xml:space="preserve">
+    <value>다음 찾기</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window find next button text</comment>
+  </data>
+  <data name="buttonMoveDown" xml:space="preserve">
+    <value>아래로 이동</value>
+    <comment>CustomSettingsWindow.xaml : button label for move down</comment>
+  </data>
+  <data name="buttonMoveUp" xml:space="preserve">
+    <value>이동</value>
+    <comment>CustomSettingsWindow.xaml : button label for move up</comment>
+  </data>
+  <data name="buttonRemove" xml:space="preserve">
+    <value>풀다</value>
+    <comment>CustomSettingsWindow.xaml : button label for remove item from list</comment>
+  </data>
+  <data name="buttonReplace" xml:space="preserve">
+    <value>바꾸다</value>
+    <comment>FindReplaceWindow.xaml : text for replace button</comment>
+  </data>
+  <data name="buttonReplaceAll" xml:space="preserve">
+    <value>모두 바꾸기</value>
+    <comment>FindReplaceWindow.xaml : text for replace-all button</comment>
+  </data>
+  <data name="buttonReset" xml:space="preserve">
+    <value>다시 놓기</value>
+    <comment>CustomSettingsWindow.xaml : button label for reset to default</comment>
+  </data>
+  <data name="CantAddFactorToScaleVar" xml:space="preserve">
+    <value>요소를 추가 할 수 없습니다. Measure=Scale(Numeric) 유형.</value>
+    <comment>DataPanel.xaml : text for warning msg about adding factors levels to scale</comment>
+  </data>
+  <data name="ChangeImgSizDlgTitle" xml:space="preserve">
+    <value>이미지 크기 변경 대화 상자</value>
+    <comment>ChangeImageSizeDialog.xaml : Title</comment>
+  </data>
+  <data name="ConfigWindowTitle" xml:space="preserve">
+    <value>옵션 창</value>
+    <comment>CustomSettingsWindow.xaml : Title</comment>
+  </data>
+  <data name="confirmation" xml:space="preserve">
+    <value>확인</value>
+    <comment>DataPanel.xaml : confirmation title for deleteing variable</comment>
+  </data>
+  <data name="DeleteVarConfirmation" xml:space="preserve">
+    <value>변수를 삭제 하시겠습니까?</value>
+    <comment>DataPanel.xaml : confirmation text for deleteing variable</comment>
+  </data>
+  <data name="DupColMsg" xml:space="preserve">
+    <value>이름이 같은 다른 열이 있습니다. 다른 이름을 사용해보십시오.</value>
+    <comment>DataPanel.xaml : text for duplicate column name found</comment>
+  </data>
+  <data name="DupColNameTitle" xml:space="preserve">
+    <value>중복 된 열 이름</value>
+    <comment>DataPanel.xaml : title for duplicate column name </comment>
+  </data>
+  <data name="EnterImgSizePrompt" xml:space="preserve">
+    <value>그래픽 이미지 크기 입력 (픽셀 단위) :</value>
+    <comment>ChangeImageSizeDialog.xaml : Message about entring new dimensions for image</comment>
+  </data>
+  <data name="EnterModelClassPrompt" xml:space="preserve">
+    <value>모델 클래스 이름 입력 (대소 문자 구분) :</value>
+    <comment>AddModelClassWindow.xaml : Message for entering model class name to be added to the list.</comment>
+  </data>
+  <data name="ExistingLabel" xml:space="preserve">
+    <value>기존 레이블</value>
+    <comment>DataPanel.xaml : text for existing label (for factor vars)</comment>
+  </data>
+  <data name="FindDatagridNarrowSearch" xml:space="preserve">
+    <value>하나 이상의 열을 선택하여 좁은 검색 :</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window  narrow serach text</comment>
+  </data>
+  <data name="findDatagridTitle" xml:space="preserve">
+    <value>Datagrid 창 찾기</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window title</comment>
+  </data>
+  <data name="FindReplaceWinTitle" xml:space="preserve">
+    <value>바꾸기 창 찾기</value>
+    <comment>FindReplaceWindow.xaml : Title</comment>
+  </data>
+  <data name="FindVarGridWinTitle" xml:space="preserve">
+    <value>변수 창 찾기</value>
+    <comment>FindVargridWindow.xaml : Title</comment>
+  </data>
+  <data name="FindVarName" xml:space="preserve">
+    <value>변수 이름 찾기 :</value>
+    <comment>FindVargridWindow.xaml : Label for 'find var name'</comment>
+  </data>
+  <data name="findwhat" xml:space="preserve">
+    <value>무엇을 찾다:</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window find what label</comment>
+  </data>
+  <data name="ImgHeight" xml:space="preserve">
+    <value>이미지 높이 :</value>
+    <comment>ChangeImageSizeDialog.xaml : Image height text msg</comment>
+  </data>
+  <data name="ImgWidth" xml:space="preserve">
+    <value>이미지 너비 :</value>
+    <comment>ChangeImageSizeDialog.xaml : Image width text msg</comment>
+  </data>
+  <data name="InSelTextChkBox" xml:space="preserve">
+    <value>선택한 텍스트에서</value>
+    <comment>FindReplaceWindow.xaml : text for 'in selected text' checkbox</comment>
+  </data>
+  <data name="InstallFromZipTitle" xml:space="preserve">
+    <value>폴더에서 패키지 설치</value>
+    <comment>InstallRequiredPackagesFromZip.xaml : Title</comment>
+  </data>
+  <data name="InvalidDateTimeMsg" xml:space="preserve">
+    <value>잘못된 날짜 / 시간을 입력했습니다.</value>
+    <comment>DataPanel.xaml : text for invalid date time entered by user</comment>
+  </data>
+  <data name="InvalidDateTimeTitle" xml:space="preserve">
+    <value>날짜 / 시간이 잘못되었습니다.</value>
+    <comment>DataPanel.xaml : title for invalid date time entered by user</comment>
+  </data>
+  <data name="InvalidOperationOnScale" xml:space="preserve">
+    <value>이 연산은 Measure = Scale (Numeric) 유형의 변수에는 유효하지 않습니다.</value>
+    <comment>DataPanel.xaml : text for invalid operation performed on scale var</comment>
+  </data>
+  <data name="lbl1UserPkg" xml:space="preserve">
+    <value>사용자 패키지 (사용자가 수동으로로드 한 패키지)</value>
+    <comment>CustomSettingsWindow.xaml : First part of the label for user R packages</comment>
+  </data>
+  <data name="lbl2UserPkg" xml:space="preserve">
+    <value>도구&gt; 패키지&gt; 사용자 세션 패키지로드)</value>
+    <comment>CustomSettingsWindow.xaml : Second part of the label for user R packages</comment>
+  </data>
+  <data name="lblAdvancedLogging" xml:space="preserve">
+    <value>고급 로깅 ​​:</value>
+    <comment>CustomSettingsWindow.xaml : label for advanced logging</comment>
+  </data>
+  <data name="lblCharToFactor" xml:space="preserve">
+    <value>CSV / Excel 파일을로드하는 동안 "문자"열을 "요소"로 변환하십시오.</value>
+    <comment>CustomSettingsWindow.xaml : label for character to factor conversion if CSV/Excel files are loaded.</comment>
+  </data>
+  <data name="lblCommandTitleColor" xml:space="preserve">
+    <value>명령 제목 색상 :</value>
+    <comment>CustomSettingsWindow.xaml : label for command color</comment>
+  </data>
+  <data name="lblDataTab" xml:space="preserve">
+    <value>데이터</value>
+    <comment>DataPanel.xaml : Datagrid Data tab title</comment>
+  </data>
+  <data name="lblDefaultInstanceName" xml:space="preserve">
+    <value>MSSQL Full의 기본 인스턴스 이름은 MSSQLSERVER이고 MSSQL Express의 기본 인스턴스 이름은 SQLEXPRESS입니다.</value>
+    <comment>CustomSettingsWindow.xaml : label for specifying default instance names</comment>
+  </data>
+  <data name="lblDefPkg" xml:space="preserve">
+    <value>기본 패키지 (응용 프로그램과 함께로드) :</value>
+    <comment>CustomSettingsWindow.xaml : label for default package list</comment>
+  </data>
+  <data name="lblDropdownModels" xml:space="preserve">
+    <value>'모델 유형'드롭 다운에 나타날 모델 클래스 목록입니다.</value>
+    <comment>CustomSettingsWindow.xaml : label for model classes shown in dropdown</comment>
+  </data>
+  <data name="lblErrorColor" xml:space="preserve">
+    <value>오류 색상 :</value>
+    <comment>CustomSettingsWindow.xaml : label for error color</comment>
+  </data>
+  <data name="lblExampleRHomeDir" xml:space="preserve">
+    <value>예 : C : / Program Files / R / R-3.2.1 (경로에 슬래시 '/'사용)</value>
+    <comment>CustomSettingsWindow.xaml : text for example of RHome Dir</comment>
+  </data>
+  <data name="lblFind" xml:space="preserve">
+    <value>발견:</value>
+    <comment>FindReplaceWindow.xaml : label for Find</comment>
+  </data>
+  <data name="lblImageHeight" xml:space="preserve">
+    <value>출력 이미지 높이 :</value>
+    <comment>CustomSettingsWindow.xaml : label for image height</comment>
+  </data>
+  <data name="lblImageWidth" xml:space="preserve">
+    <value>출력 이미지 너비 :</value>
+    <comment>CustomSettingsWindow.xaml : label for image width</comment>
+  </data>
+  <data name="lblInitialDirectory" xml:space="preserve">
+    <value>초기 디렉토리 :</value>
+    <comment>CustomSettingsWindow.xaml : label for initial directory</comment>
+  </data>
+  <data name="lblInstanceName" xml:space="preserve">
+    <value>서버 인스턴스 이름 입력 :</value>
+    <comment>CustomSettingsWindow.xaml : label for instance name prompt</comment>
+  </data>
+  <data name="lblInstanceNameNote" xml:space="preserve">
+    <value>기본값과 다른 경우 서버 인스턴스 이름을 수정하십시오.</value>
+    <comment>CustomSettingsWindow.xaml : label for a note about instance name</comment>
+  </data>
+  <data name="lblLicNotifyDays" xml:space="preserve">
+    <value>쉼표로 구분 된 요일 목록을 입력하십시오 (만료되기 몇 일 전에 미리 알림에서 사용자에게 알려야 함) 빈 필드는 기본값을로드합니다. 일을 설정하지 않으려면 0 또는 1을 입력하십시오.</value>
+    <comment>CustomSettingsWindow.xaml : lable for notify days before license expires</comment>
+  </data>
+  <data name="lblLoadMissing" xml:space="preserve">
+    <value>SAV 파일의 누락 값로드 :</value>
+    <comment>CustomSettingsWindow.xaml : label for loading missing values when SAV file is opened</comment>
+  </data>
+  <data name="lblLogLevel" xml:space="preserve">
+    <value>로그 수준 :</value>
+    <comment>CustomSettingsWindow.xaml : lable for log level</comment>
+  </data>
+  <data name="lblMatchCaseChkBox" xml:space="preserve">
+    <value>대소 문자 일치</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window text for Match Case checkbox</comment>
+  </data>
+  <data name="lblMatchOptions" xml:space="preserve">
+    <value>옵션 :</value>
+    <comment>FindReplaceWindow.xaml : label for Find/Replace Options</comment>
+  </data>
+  <data name="lblMaxCharsNavTree" xml:space="preserve">
+    <value>맥스. 왼쪽 트리의 챠리스 중 :</value>
+    <comment>CustomSettingsWindow.xaml : label for max chars in nav tree</comment>
+  </data>
+  <data name="lblMaxFactor" xml:space="preserve">
+    <value>원하는 최대 요소 수를 입력하십시오.</value>
+    <comment>CustomSettingsWindow.xaml : label for max number of factor allowed</comment>
+  </data>
+  <data name="lblMouseHoverBoxColor" xml:space="preserve">
+    <value>마우스를 가져 가면 상자 색상 (출력 창에 있음) :</value>
+    <comment>CustomSettingsWindow.xaml : label for mouse hover box color</comment>
+  </data>
+  <data name="lblNavTreeSelColor" xml:space="preserve">
+    <value>탐색 트리에서 선택한 항목 상자 색상 (출력 창에서) :</value>
+    <comment>CustomSettingsWindow.xaml : label for navigation tree selected item color</comment>
+  </data>
+  <data name="lblNoDecimalDigits" xml:space="preserve">
+    <value>소수 자릿수 :</value>
+    <comment>CustomSettingsWindow.xaml : label for number of decimals option</comment>
+  </data>
+  <data name="lblOpenOptions" xml:space="preserve">
+    <value>데이터 집합을 열 때 옵션 창 표시 :</value>
+    <comment>CustomSettingsWindow.xaml : label for showing options while opening dataset</comment>
+  </data>
+  <data name="lblPageSize" xml:space="preserve">
+    <value>페이지 크기 :</value>
+    <comment>CustomSettingsWindow.xaml : label for PDFpage size</comment>
+  </data>
+  <data name="lblPDFFontSize" xml:space="preserve">
+    <value>글자 크기 :</value>
+    <comment>CustomSettingsWindow.xaml : label for PDF font size</comment>
+  </data>
+  <data name="lblPDFMargins" xml:space="preserve">
+    <value>쉼표로 구분 된 여백 값 입력 (왼쪽, 위쪽, 오른쪽, 아래쪽) :</value>
+    <comment>CustomSettingsWindow.xaml : label for margins for PDF</comment>
+  </data>
+  <data name="lblPDFMaxCols" xml:space="preserve">
+    <value>페이지 당 최대 테이블 열 수를 입력하십시오 (행 헤더 열 포함).</value>
+    <comment>CustomSettingsWindow.xaml : label for max cols in a PDF page</comment>
+  </data>
+  <data name="lblPDFMaxRows" xml:space="preserve">
+    <value>페이지 당 최대 테이블 행 수를 입력하십시오 (열 헤더 행 포함).</value>
+    <comment>CustomSettingsWindow.xaml : label for max rows in a PDF page</comment>
+  </data>
+  <data name="lblReplaceWith" xml:space="preserve">
+    <value>바꿀 내용 :</value>
+    <comment>FindReplaceWindow.xaml : label for Replace With</comment>
+  </data>
+  <data name="lblRetainSciNotation" xml:space="preserve">
+    <value>매우 적은 숫자 (예 : 0.00001234, 1.234e-5, -0.00001234, -1.234e-5)의 과학 표기법을 보유하십시오.</value>
+    <comment>CustomSettingsWindow.xaml : label for retain sci notation option</comment>
+  </data>
+  <data name="lblRHomeDir" xml:space="preserve">
+    <value>R 홈 디렉토리 :</value>
+    <comment>CustomSettingsWindow.xaml : label for R Home directory</comment>
+  </data>
+  <data name="lblRSynColor" xml:space="preserve">
+    <value>R 구문 색상 :</value>
+    <comment>CustomSettingsWindow.xaml : label for R syntax color</comment>
+  </data>
+  <data name="lblShowHideNumericHeaders" xml:space="preserve">
+    <value>분석 함수의 결과를 포함하는 R 객체는 숫자 행 헤더를 포함 할 수 있습니다. 이 옵션은 행 머리글 표시 또는 숨기기 여부를 결정합니다. 이 옵션을 선택하면 출력 행에 숫자 행 헤더가 표시됩니다.</value>
+    <comment>CustomSettingsWindow.xaml : label for display/hide numeric headers in output tables.</comment>
+  </data>
+  <data name="lblTempFolder" xml:space="preserve">
+    <value>임시 폴더 :</value>
+    <comment>CustomSettingsWindow.xaml : label for temporary folder</comment>
+  </data>
+  <data name="lblThresholdCount" xml:space="preserve">
+    <value>사용자에게 테이블 생성에 시간이 많이 걸리고 부분 결과를 표시 할 수있는 선택권을 제공한다는 경고 메시지가 표시되는 출력 테이블 당 임계 값 수입니다.</value>
+    <comment>CustomSettingsWindow.xaml : label for threshold number of cells in output table</comment>
+  </data>
+  <data name="lblTitleDriverPath" xml:space="preserve">
+    <value>Micosoft SQL 서버 드라이버 경로 :</value>
+    <comment>CustomSettingsWindow.xaml : Main title for driver path</comment>
+  </data>
+  <data name="lblTitleDriverPathExample" xml:space="preserve">
+    <value>예: C:/Program Files/Microsoft SQL Server JDBC Driver 3.0/sqljdbc_3.0/enu/sqljdbc4.jar</value>
+    <comment>CustomSettingsWindow.xaml : label giving example of driver path</comment>
+  </data>
+  <data name="lblTitleDriverPathNote" xml:space="preserve">
+    <value>참고 : 경로에는 슬래시 (/)를 사용해야합니다.</value>
+    <comment>CustomSettingsWindow.xaml : label for important note while entering driver path</comment>
+  </data>
+  <data name="lblTitleServerInstance" xml:space="preserve">
+    <value>MSSQL 서버 인스턴스 :</value>
+    <comment>CustomSettingsWindow.xaml : Main title for server instance </comment>
+  </data>
+  <data name="lblVarGridContext" xml:space="preserve">
+    <value>예를 들어 기능에 액세스 할 행을 마우스 오른쪽 버튼으로 클릭하십시오. 요인 수준 추가, 레이블 변경, 요인 만들기, 새 변수 삽입 및 변수 삭제</value>
+    <comment>DataPanel.xaml : Vargrid context menu related message</comment>
+  </data>
+  <data name="lblVariablesTab" xml:space="preserve">
+    <value>변수</value>
+    <comment>DataPanel.xaml : Vargrid Variable tab title</comment>
+  </data>
+  <data name="lblWholeWordChkBox" xml:space="preserve">
+    <value>전체 단어</value>
+    <comment>FindDatagridWindow.xaml : Find datagrid window text for Whole Word checkbox</comment>
+  </data>
+  <data name="LocateZipMsg" xml:space="preserve">
+    <value>'찾아보기'를 클릭하고 R 패키지 zip 파일이 들어있는 폴더를 찾습니다.</value>
+    <comment>InstallRequiredPackagesFromZip.xaml : Message to locate the zip R package</comment>
+  </data>
+  <data name="MatchEndReached" xml:space="preserve">
+    <value>도달했습니다. 더 이상 일치하지 않습니다.</value>
+    <comment>DataPanel.xaml : text for end is reached and there is no match</comment>
+  </data>
+  <data name="ModelClassExample" xml:space="preserve">
+    <value>예 : 따옴표없이 lm을 입력하고 '클래스 추가'를 클릭하십시오.</value>
+    <comment>AddModelClassWindow.xaml : Example text for adding model class</comment>
+  </data>
+  <data name="NewLabel" xml:space="preserve">
+    <value>새 레이블</value>
+    <comment>DataPanel.xaml : text for new label (for factor vars)</comment>
+  </data>
+  <data name="NoMatch" xml:space="preserve">
+    <value>경기 없음</value>
+    <comment>DataPanel.xaml : text for no match</comment>
+  </data>
+  <data name="NoMatchFound" xml:space="preserve">
+    <value>일치하는 항목 없음</value>
+    <comment>DataPanel.xaml : text for no match</comment>
+  </data>
+  <data name="NoMoreMatch" xml:space="preserve">
+    <value>경기가 더 이상 없습니다.</value>
+    <comment>DataPanel.xaml : text for no more match</comment>
+  </data>
+  <data name="NonNumForNumVar" xml:space="preserve">
+    <value>값이 잘못되었습니다. 숫자 변수에 숫자가 아닌 값을 입력했습니다. 숫자가 아닌 값을 입력하려면이 변수를 인수로 설정하고 숫자가 아닌 레벨을 입력하십시오</value>
+    <comment>DataPanel.xaml : Non numeric valud entered for numeric var</comment>
+  </data>
+  <data name="NoteMsg" xml:space="preserve">
+    <value>참고 : 폴더의 모든 파일은 R 패키지 .zip 파일이어야합니다.</value>
+    <comment>InstallRequiredPackagesFromZip.xaml : Important note</comment>
+  </data>
+  <data name="SelOneOrMore" xml:space="preserve">
+    <value>하나 이상의 패키지를 선택하십시오.</value>
+    <comment>SelectPackageWindow.xaml : Label message to select one or more R packages</comment>
+  </data>
+  <data name="SelOneOrMoreTip" xml:space="preserve">
+    <value>(팁 : 다중 선택에는 Ctrl 또는 Shift 키를 사용하십시오.)</value>
+    <comment>SelectPackageWindow.xaml : Tip for how to multi-select</comment>
+  </data>
+  <data name="SelPkgWinTitle" xml:space="preserve">
+    <value>패키지 선택 창</value>
+    <comment>SelectPackageWindow.xaml : Title</comment>
+  </data>
+  <data name="StatusbarSplitInfo" xml:space="preserve">
+    <value>분할 :</value>
+    <comment>DataPanel.xaml : text for split info on the status bar of main window</comment>
+  </data>
+  <data name="TabTitleAdvanced" xml:space="preserve">
+    <value>많은</value>
+    <comment>CustomSettingsWindow.xaml : Title for Advanced tab in settings</comment>
+  </data>
+  <data name="TabTitleColors" xml:space="preserve">
+    <value>그림 물감</value>
+    <comment>CustomSettingsWindow.xaml : Title  for Colors tab in settings</comment>
+  </data>
+  <data name="TabTitleDefaultPackages" xml:space="preserve">
+    <value>기본 패키지</value>
+    <comment>CustomSettingsWindow.xaml : Title for Default Packages tab in settings</comment>
+  </data>
+  <data name="TabTitleImage" xml:space="preserve">
+    <value>영상</value>
+    <comment>CustomSettingsWindow.xaml : Title for Image tab in settings</comment>
+  </data>
+  <data name="TabTitleModels" xml:space="preserve">
+    <value>모델</value>
+    <comment>CustomSettingsWindow.xaml : Title for Models tab in settings</comment>
+  </data>
+  <data name="TabTitleOthers" xml:space="preserve">
+    <value>기타</value>
+    <comment>CustomSettingsWindow.xaml : Title for Others tab in settings</comment>
+  </data>
+  <data name="TabTitlePathSettings" xml:space="preserve">
+    <value>경로 설정</value>
+    <comment>CustomSettingsWindow.xaml : Title  for Path Settings tab in settings</comment>
+  </data>
+  <data name="TabTitlePDFSettings" xml:space="preserve">
+    <value>PDF 설정</value>
+    <comment>CustomSettingsWindow.xaml : Title for PDF Settings tab in settings</comment>
+  </data>
+  <data name="TabTitleSQLSettings" xml:space="preserve">
+    <value>SQL 설정</value>
+    <comment>CustomSettingsWindow.xaml : Title for SQLSettings tab in settings</comment>
+  </data>
+  <data name="TabTitleUserPackages" xml:space="preserve">
+    <value>사용자 패키지</value>
+    <comment>CustomSettingsWindow.xaml : Title for User Packages tab in settings</comment>
+  </data>
+  <data name="ToolTipCloseDataset" xml:space="preserve">
+    <value>이 데이터 집합 닫기</value>
+    <comment>DataPanel.xaml : text for tool tip for closing current dataset when mouse is over cross in current dataset tab</comment>
+  </data>
+  <data name="ToolTipSorted" xml:space="preserve">
+    <value>정렬 된</value>
+    <comment>DataPanel.xaml : text for tool tip for sorted col</comment>
+  </data>
+  <data name="WarningAddRemoveLabel" xml:space="preserve">
+    <value>레벨 추가 / 제거 경고 :</value>
+    <comment>DataPanel.xaml : text for title of warning message about adding levels to scale</comment>
+  </data>
+  <data name="WarningChangeLevel" xml:space="preserve">
+    <value>레벨 변경 경고 :</value>
+    <comment>DataPanel.xaml : text for title for chaning level</comment>
+  </data>
+  <data name="buttonConnect" xml:space="preserve">
+    <value>잇다</value>
+    <comment>DataSourceSelectorWindow.xaml : connect button text</comment>
+  </data>
+  <data name="DataSrcSelectorWinTitle" xml:space="preserve">
+    <value>데이터 소스 선택기 창</value>
+    <comment>DataSourceSelectorWindow.xaml : Title</comment>
+  </data>
+  <data name="lblSQLConnectionParams" xml:space="preserve">
+    <value>연결 매개 변수 지정 :</value>
+    <comment>DataSourceSelectorWindow.xaml : label for connection parameters groupbox</comment>
+  </data>
+  <data name="lblSQLDatabaseName" xml:space="preserve">
+    <value>데이터베이스 이름 :</value>
+    <comment>DataSourceSelectorWindow.xaml : label for SQL database name</comment>
+  </data>
+  <data name="lblSQLHostServer" xml:space="preserve">
+    <value>호스트 / 서버 :</value>
+    <comment>DataSourceSelectorWindow.xaml : label for SQL host/server</comment>
+  </data>
+  <data name="lblSQLPassword" xml:space="preserve">
+    <value>암호:</value>
+    <comment>DataSourceSelectorWindow.xaml : label for SQL password</comment>
+  </data>
+  <data name="lblSQLSelDataSrc" xml:space="preserve">
+    <value>데이터 소스 선택 :</value>
+    <comment>DataSourceSelectorWindow.xaml : label for select data source</comment>
+  </data>
+  <data name="lblSQLUserID" xml:space="preserve">
+    <value>사용자 ID :</value>
+    <comment>DataSourceSelectorWindow.xaml : label for SQL userid</comment>
+  </data>
+  <data name="PlzWaitSQL" xml:space="preserve">
+    <value>연결이 진행 중입니다. 기다려주십시오 ....</value>
+    <comment>BSkyWaitProgressBar.xaml.cs : Please wait message while connecting to SQL server</comment>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value />
+    <comment>DataSourceSelectorWindow.xaml : Title</comment>
+  </data>
+  <data name="buttonBack" xml:space="preserve">
+    <value>뒤로</value>
+    <comment>TableColumnSelectorWindow.xaml : back button text</comment>
+  </data>
+  <data name="buttonConnectFServer" xml:space="preserve">
+    <value>서버에 연결</value>
+    <comment>BSkyFloatingLicUI.xaml : text for connect button for floating license server </comment>
+  </data>
+  <data name="chkboxTables" xml:space="preserve">
+    <value>테이블</value>
+    <comment>TableColumnSelectorWindow.xaml : label for tables checkbox</comment>
+  </data>
+  <data name="chkboxViews" xml:space="preserve">
+    <value>조회수</value>
+    <comment>TableColumnSelectorWindow.xaml : label for views checkbox</comment>
+  </data>
+  <data name="FLicGrpBox1Title" xml:space="preserve">
+    <value>유동 라이센스 서버 세부 정보 :</value>
+    <comment>BSkyFloatingLicUI.xaml : First GroupBox title</comment>
+  </data>
+  <data name="FLicGrpBox2Title" xml:space="preserve">
+    <value>라이센스 정보 :</value>
+    <comment>BSkyFloatingLicUI.xaml : Second GroupBox title</comment>
+  </data>
+  <data name="FLicGrpBox3Title" xml:space="preserve">
+    <value>라이센스 대상 :</value>
+    <comment>BSkyFloatingLicUI.xaml : Third GroupBox title</comment>
+  </data>
+  <data name="lblColumns" xml:space="preserve">
+    <value>열 :</value>
+    <comment>TableColumnSelectorWindow.xaml : label just above listbox on right</comment>
+  </data>
+  <data name="lblFLicEnterServerIP" xml:space="preserve">
+    <value>유동 라이센스 서버의 IP 주소 및 포트 번호를 입력하십시오 (예 : 127.0.0.1:16090).</value>
+    <comment>BSkyFloatingLicUI.xaml : Floating license- enter ip address message</comment>
+  </data>
+  <data name="lblFLicEnterServerIPTip" xml:space="preserve">
+    <value>이 응용 프로그램을 처음 사용하는 경우 Floating 라이센스 서버의 IP 주소와 포트 번호를 입력하십시오. 조직의 라이센스 서버가 이동 / 수정 된 경우 위의 필드에 새 IP 주소 및 포트 번호를 입력하십시오. 마지막으로 IP 주소와 포트 번호를 입력 한 후 '서버에 연결'버튼을 클릭하십시오.</value>
+    <comment>BSkyFloatingLicUI.xaml : F.Lic tip below the ip addredd textbox</comment>
+  </data>
+  <data name="lblFLicExpiryDate" xml:space="preserve">
+    <value>라이센스 만료일 :</value>
+    <comment>BSkyFloatingLicUI.xaml : label for floating license expiry date</comment>
+  </data>
+  <data name="lblFLicOwnerCompany" xml:space="preserve">
+    <value>회사:</value>
+    <comment>BSkyFloatingLicUI.xaml : label for floating license owner company</comment>
+  </data>
+  <data name="lblFLicOwnerEmail" xml:space="preserve">
+    <value>이메일:</value>
+    <comment>BSkyFloatingLicUI.xaml : label for floating license owner email</comment>
+  </data>
+  <data name="lblFLicOwnerName" xml:space="preserve">
+    <value>이름:</value>
+    <comment>BSkyFloatingLicUI.xaml : label for floating license owner name</comment>
+  </data>
+  <data name="lblFLicServerConnectingPlzWait" xml:space="preserve">
+    <value>라이선스 유효성 검사를 위해 라이선스 서버에 연결 중입니다. 잠시만 기다려주십시오 ...</value>
+    <comment>BSkyFloatingLicUI.xaml : While connecting to Floating Lic server this msg is shown in the status bar of floating lic window.</comment>
+  </data>
+  <data name="lblFLicStatus" xml:space="preserve">
+    <value>라이센스 상태 :</value>
+    <comment>BSkyFloatingLicUI.xaml : label for floating license status</comment>
+  </data>
+  <data name="lblSelDatabase" xml:space="preserve">
+    <value>데이터베이스 선택 :</value>
+    <comment>TableColumnSelectorWindow.xaml : label for select database</comment>
+  </data>
+  <data name="lblSelTableView" xml:space="preserve">
+    <value>테이블 / 뷰 목록을 보려면 테이블 / 뷰를 확인하십시오. 오른쪽 창에서 열을 보려면 표 /보기 이름을 클릭하십시오.</value>
+    <comment>TableColumnSelectorWindow.xaml : label for informing user about cheking views or tables option</comment>
+  </data>
+  <data name="lblShowsCols" xml:space="preserve">
+    <value>선택한 테이블의 열을 표시합니다.</value>
+    <comment>TableColumnSelectorWindow.xaml : label for header on top of colum listbox</comment>
+  </data>
+  <data name="lblSQLExample1" xml:space="preserve">
+    <value>1. MS-SQL 예 : SELECT * FROM Owner.TABLE-NAME</value>
+    <comment>TableColumnSelectorWindow.xaml : label for SQLexample 1</comment>
+  </data>
+  <data name="lblSQLExample2" xml:space="preserve">
+    <value>2. MySQL / Postgres / MS-ACCESS 예제 : SELECT * FROM TABLE-NAME</value>
+    <comment>TableColumnSelectorWindow.xaml : label for SQL example 2</comment>
+  </data>
+  <data name="lblSQLtip" xml:space="preserve">
+    <value>아래의 텍스트 상자에 'SELECT'쿼리를 작성하십시오. SQL 서버에서 지원하는 복잡한 쿼리, 하위 쿼리 및 조인을 입력 할 수 있습니다.</value>
+    <comment>TableColumnSelectorWindow.xaml : label for wiriting SQLquerry tip</comment>
+  </data>
+  <data name="lblTableView" xml:space="preserve">
+    <value>테이블 / 뷰 :</value>
+    <comment>TableColumnSelectorWindow.xaml : label for tables/views</comment>
+  </data>
+  <data name="menuCloseWindow" xml:space="preserve">
+    <value>창 닫기</value>
+    <comment>OutpuViewerWindow.xaml : Close window menu option text</comment>
+  </data>
+  <data name="menuOpen" xml:space="preserve">
+    <value>열다</value>
+    <comment>OutpuViewerWindow.xaml : Open output menu option text</comment>
+  </data>
+  <data name="OutputViewerOptionsMenu" xml:space="preserve">
+    <value>옵션</value>
+    <comment>OutpuViewerWindow.xaml : Options menu text</comment>
+  </data>
+  <data name="OutputViewerTitle" xml:space="preserve">
+    <value>BlueSky 출력 뷰어</value>
+    <comment>OutpuViewerWindow.xaml : Title</comment>
+  </data>
+  <data name="SQLSelTableWinTitle" xml:space="preserve">
+    <value>표 및 열 선택기 창</value>
+    <comment>TableColumnSelectorWindow.xaml : Title</comment>
+  </data>
+  <data name="AddCategory" xml:space="preserve">
+    <value>카테고리 추가</value>
+    <comment>AddCategoryDialog.xaml : title</comment>
+  </data>
+  <data name="AddCategoryErrMsg1" xml:space="preserve">
+    <value>카테고리 이름을 입력하고 확인을 클릭하십시오.</value>
+    <comment>AddCategoryDialog.xaml.cs : Error message one</comment>
+  </data>
+  <data name="AddCategoryErrMsg2" xml:space="preserve">
+    <value>오류 : 카테고리 이름을 입력하거나 종료하려면 취소를 클릭하십시오.</value>
+    <comment>AddCategoryDialog.xaml.cs : Error message two</comment>
+  </data>
+  <data name="buttonDisplayAllOutput" xml:space="preserve">
+    <value>모든 출력 표시</value>
+    <comment>LargeResultWarningWindow.xaml : button text</comment>
+  </data>
+  <data name="buttonDisplayPartialOutput" xml:space="preserve">
+    <value>부분 출력 표시</value>
+    <comment>LargeResultWarningWindow.xaml : button text</comment>
+  </data>
+  <data name="LargeResultWarningMsg1" xml:space="preserve">
+    <value>구성된 임계 값 {0}을 (를) 초과하는 출력 테이블을 생성했습니다.</value>
+    <comment>LargeResultWarningWindow.xaml.cs : msg1</comment>
+  </data>
+  <data name="LargeResultWarningMsg1b" xml:space="preserve">
+    <value>이 테이블은 출력에 렌더링하는 데 오랜 시간이 걸립니다.</value>
+    <comment>LargeResultWarningWindow.xaml : msg1b</comment>
+  </data>
+  <data name="LargeResultWarningMsg2" xml:space="preserve">
+    <value>- 총 {1} 행 중 첫 번째 {0}을 표시하려면 \ "부분 출력 표시 \"를 클릭하십시오.</value>
+    <comment>LargeResultWarningWindow.xaml : msg2</comment>
+  </data>
+  <data name="LargeResultWarningSecMsg2" xml:space="preserve">
+    <value>- 부분 결과를 표시하려면 \ "부분 출력 표시 \"를 클릭하십시오.</value>
+    <comment>LargeResultWarningWindow.xaml : msg2 for another constructor</comment>
+  </data>
+  <data name="LargeResultWarningWindowStmt1" xml:space="preserve">
+    <value>- 전체 출력을 표시하려면 "모든 출력 표시"를 클릭하십시오.</value>
+    <comment>LargeResultWarningWindow.xaml : Statement1</comment>
+  </data>
+  <data name="LargeResultWarningWindowStmt2" xml:space="preserve">
+    <value>- 매우 큰 출력 테이블의 경우 BlueSky R 명령 편집기에서 직접 개체를 인쇄하여보다 신속하게 텍스트 출력을 표시 할 수도 있습니다. 예 : SkyFormat (tableobj)이 너무 오래 걸리면 BlueSky R 명령 편집기에서 tableobj를 입력하여 텍스트 출력을 얻으십시오.</value>
+    <comment>LargeResultWarningWindow.xaml : Statement2</comment>
+  </data>
+  <data name="LargeResultWarningWindowStmt3" xml:space="preserve">
+    <value>- 테이블 생성을 중단하려면 "취소"를 클릭하십시오.</value>
+    <comment>LargeResultWarningWindow.xaml : Statement3</comment>
+  </data>
+  <data name="lblCategoryName" xml:space="preserve">
+    <value>카테고리 이름 :</value>
+    <comment>AddCategoryDialog.xaml : label msg for adding category from dialog designer</comment>
+  </data>
+  <data name="MenuAboveBelowDialogOption1" xml:space="preserve">
+    <value>목표보다 위 (형제로서)</value>
+    <comment>MenuAboveBelowDialog.xaml : Option1</comment>
+  </data>
+  <data name="MenuAboveBelowDialogOption2" xml:space="preserve">
+    <value>타겟 아래 (형제로서)</value>
+    <comment>MenuAboveBelowDialog.xaml : Option2</comment>
+  </data>
+  <data name="MenuAboveBelowDialogOption3" xml:space="preserve">
+    <value>대상 내부 (어린이)</value>
+    <comment>MenuAboveBelowDialog.xaml : Option3</comment>
+  </data>
+  <data name="MenuAboveBelowDialogPrompt" xml:space="preserve">
+    <value>드래그 한 항목을 배치 할 대상 위치는 어디입니까?</value>
+    <comment>MenuAboveBelowDialog.xaml : Question</comment>
+  </data>
+  <data name="MenuAboveBelowDialogTitle" xml:space="preserve">
+    <value>드래그 된 항목 위치 대화 상자.</value>
+    <comment>MenuAboveBelowDialog.xaml : Title</comment>
+  </data>
+  <data name="buttonLoadModel" xml:space="preserve">
+    <value>모델 불러 오기</value>
+    <comment>GetModelsControl.xaml : Load Model</comment>
+  </data>
+  <data name="buttonSaveModel" xml:space="preserve">
+    <value>모델 저장</value>
+    <comment>GetModelsControl.xaml : Save Model</comment>
+  </data>
+  <data name="buttonScore" xml:space="preserve">
+    <value>점수</value>
+    <comment>GetModelsControl.xaml : Score Model </comment>
+  </data>
+  <data name="lblModelType" xml:space="preserve">
+    <value>모델 유형 :</value>
+    <comment>GetModelsControl.xaml : Model Type</comment>
+  </data>
+  <data name="lblPickModel" xml:space="preserve">
+    <value>모델 선택 :</value>
+    <comment>GetModelsControl.xaml : Pick a model</comment>
+  </data>
+  <data name="CSVTXTCommaDeciChar" xml:space="preserve">
+    <value>쉼표 (,) [예 : 1234]</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : Text for comma decimal character</comment>
+  </data>
+  <data name="CSVTXTCommaText" xml:space="preserve">
+    <value>콤마 ( , )</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : Text for comma</comment>
+  </data>
+  <data name="CSVTXTDeciCharTitle" xml:space="preserve">
+    <value>소수점 문자 지정 (숫자 데이터 용) :</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : Title for decimal character section</comment>
+  </data>
+  <data name="CSVTXTFieldSepTitle" xml:space="preserve">
+    <value>필드 구분 기호 지정 :</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : Title for filed separator section</comment>
+  </data>
+  <data name="CSVTXTFirstChkBoxLbl" xml:space="preserve">
+    <value>CSV / TXT 파일의 첫 번째 행에 열 헤더가 포함되어 있습니다.</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : First checkbox lable text</comment>
+  </data>
+  <data name="CSVTXTotherText" xml:space="preserve">
+    <value>다른</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : text for 'other'</comment>
+  </data>
+  <data name="CSVTXTPointDeciChar" xml:space="preserve">
+    <value>소수점 (.) [. 1.234]</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : Text for dot decimal character</comment>
+  </data>
+  <data name="CSVTXTSecChkBoxHint" xml:space="preserve">
+    <value>[Apriori / Market Basket Analysis의 바구니 형식의 경우 모든 항목은 단락 기호로 구분 된 단일 변수 / 열에 있습니다. 우유, 버터, 브라운 빵, ...]</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : hint below Sec checkbox lable text</comment>
+  </data>
+  <data name="CSVTXTSecChkBoxLbl" xml:space="preserve">
+    <value>쉼표로 구분 된 모든 값을 단일 열 / 변수에로드하십시오.</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : Sec checkbox lable text</comment>
+  </data>
+  <data name="CSVTXTSemicolonText" xml:space="preserve">
+    <value>세미콜론 ( ; )</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : Text for semicolon</comment>
+  </data>
+  <data name="CSVTXTspecifyText" xml:space="preserve">
+    <value>지정:</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : text for 'specify'</comment>
+  </data>
+  <data name="CSVTXTtabtext" xml:space="preserve">
+    <value>탭</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : text for tabs</comment>
+  </data>
+  <data name="CSVTXTwhiteSpaceText" xml:space="preserve">
+    <value>여백</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : text for white space</comment>
+  </data>
+  <data name="CSVTXTWinTitle" xml:space="preserve">
+    <value>CSV / TXT 열기 옵션 창</value>
+    <comment>OpenCSVTXTOptionsWindows.xaml : Title</comment>
+  </data>
+  <data name="DontShowAgain" xml:space="preserve">
+    <value>이 메시지를 다시 표시하지 않음</value>
+    <comment>RDataWarningMessageBox.xaml : Do not show checkbox message string</comment>
+  </data>
+  <data name="RDataWarningTitle" xml:space="preserve">
+    <value>RData 파일 열기</value>
+    <comment>RDataWarningMessageBox.xaml : Title string</comment>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>오래가다</value>
+    <comment>CustomSettingsWindow.xaml : button text for SAVE</comment>
+  </data>
+  <data name="ConfSettingOverwriteDefaults" xml:space="preserve">
+    <value>모든 구성 설정은 기본값으로 덮어 씁니다. 계속 하시겠습니까?</value>
+    <comment>CustomSettingsWindow.xaml.cs : Overwrite settings with defaults, confirmation message.</comment>
+  </data>
+  <data name="ConfSettingOverwriteDefaultsTitle" xml:space="preserve">
+    <value>기본값으로 덮어 쓰시겠습니까?</value>
+    <comment>CustomSettingsWindow.xaml.cs : Overwrite settings with defaults, confirmation messagebox title</comment>
+  </data>
+  <data name="ConfSettingSaveConfirmation" xml:space="preserve">
+    <value>창을 닫기 전에 변경 사항을 저장 하시겠습니까?</value>
+    <comment>CustomSettingsWindow.xaml.cs : Confirmation text when configuration settings dialog is closed from top right cross</comment>
+  </data>
+  <data name="ConfSettingSaveConfirmTitle" xml:space="preserve">
+    <value>변경 사항을 저장하다?</value>
+    <comment>CustomSettingsWindow.xaml.cs : Save settings confirmation messagebox title.</comment>
+  </data>
+  <data name="ImgDefaultDimSetMsg" xml:space="preserve">
+    <value>기본 이미지 높이 및 너비는 각각 600 픽셀로 설정됩니다.</value>
+    <comment>OutputWindow.xml.cs : Message shown when default image dimensions are set from menu in output window</comment>
+  </data>
+  <data name="ImgDefaultDimSetMsgTitle" xml:space="preserve">
+    <value>기본 이미지 크기 설정</value>
+    <comment>OutputWindow.xml.cs : Messagebox title which shown when default image dimensions are set from menu in output window</comment>
+  </data>
+  <data name="NumericLevels" xml:space="preserve">
+    <value>숫자 수준</value>
+    <comment>DataPanel.xaml.cs : Header text for numeric levels</comment>
+  </data>
+  <data name="ShowOutputInAPA" xml:space="preserve">
+    <value>출력 테이블을 APA (American Psychological Association) 스타일로 표시하십시오.</value>
+    <comment>CustomSettingsWindow.xaml : To switch ON APA style for output tables.</comment>
+  </data>
+  <data name="ShowRDataWarningMessage" xml:space="preserve">
+    <value>RData 파일을 열면 경고 메시지 상자를 표시하십시오.</value>
+    <comment>CustomSettingsWindow.xaml : Turn ON/OFF the warning messagebox when RData file is opened. Opening RData can overwrite existing R objects.</comment>
+  </data>
+  <data name="AppExitConfirmMsg2" xml:space="preserve">
+    <value>저장하지 않고 종료하려면 아니오를 클릭하십시오.</value>
+    <comment>Window1.xaml : App exit confirmation message line 2</comment>
+  </data>
+  <data name="AddFactorLevelMsg" xml:space="preserve">
+    <value>새로운 레벨을 쉼표로 구분하여 입력하십시오 (예 : level1, level2, level3).</value>
+    <comment>DataPAnel.xaml : text for ValueLabelsSubDialog providing field for user to enter new level</comment>
+  </data>
+  <data name="lblExampleRHomeDir2" xml:space="preserve">
+    <value>예 : C : / Program Files / R / R-3.4.2</value>
+    <comment>RHomeConfigWindow.xaml : Example below RHome text field</comment>
+  </data>
+  <data name="RHomeDirLabel" xml:space="preserve">
+    <value>R 홈 디렉토리 :</value>
+    <comment>RHomeConfigWindow.xaml : Label on the left of RHome text field</comment>
+  </data>
+  <data name="SetRHomeLabelTextAtLaunchFail" xml:space="preserve">
+    <value>올바르지 않은 경우 'R 홈 디렉토리'경로를 수정하고 앱을 다시 시작하십시오. (중요 : 아래 예제와 같이 경로 구분 기호로 슬래시를 사용하십시오.)</value>
+    <comment>RHomeConfigWindow.xaml : Message on top of RHome text field</comment>
+  </data>
+  <data name="SelDataframeToLoad" xml:space="preserve">
+    <value>하나 이상의 R data.frame 개체를 선택하여 UI 데이터 격자에로드합니다.</value>
+    <comment>SelectRdataDataframesWindow.xaml : Select message on top</comment>
+  </data>
+  <data name="ShowHideSyntaxPanel" xml:space="preserve">
+    <value>R 명령 편집기 패널 표시 / 숨기기</value>
+    <comment>OutputWindow.xaml : Tooltip and/or text for show-hide button for showing and hiding syntax panel.</comment>
+  </data>
+</root>

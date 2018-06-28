@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="BSky.Controls.AUXGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:grid="clr-namespace:BSky.Controls"
+             xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"   
+             xmlns:mycomm ="clr-namespace:BSky.Controls.Commands"
+             mc:Ignorable="d" BorderThickness="0" MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave" 
+             >
+    <Border Name="outerborder" BorderBrush="Transparent" BorderThickness="1" Margin="1,25,0,0">
+        <Grid Background="Transparent" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Name="tblborder" Margin="2" BorderThickness="2" BorderBrush="LightGray">
+                <Grid Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*" ></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ContextMenu>
+                        <ContextMenu Name="augriduccontextmenu">
+                            <MenuItem  Header="Export To Excel" Command="{x:Static mycomm:CustomMenuCommands.ExportToExcel}" Name="export" >
+                                <MenuItem.CommandBindings>
+                                    <CommandBinding Command="{x:Static mycomm:CustomMenuCommands.ExportToExcel}"
+                                    CanExecute="ContextMenuExportCanExecute" 
+                                    Executed="ContextMenuExportExecuted" />
+                                </MenuItem.CommandBindings>
+                            </MenuItem>
+                            <MenuItem  Header="Export To Word" Command="{x:Static mycomm:CustomMenuCommands.ExportAPAToWord}" Name="exportAPAtoWord" >
+                                <MenuItem.CommandBindings>
+                                    <CommandBinding Command="{x:Static mycomm:CustomMenuCommands.ExportAPAToWord}"
+                                    CanExecute="ContextMenuExportAPAWordCanExecute" 
+                                    Executed="ContextMenuExportAPAWordExecuted" />
+                                </MenuItem.CommandBindings>
+                            </MenuItem>
+                            <MenuItem  Header="Export To PDF" Command="{x:Static mycomm:CustomMenuCommands.ExportFGridToPDF}" Name="exportFGtoPDF" >
+                                <MenuItem.CommandBindings>
+                                    <CommandBinding Command="{x:Static mycomm:CustomMenuCommands.ExportFGridToPDF}"
+                                    CanExecute="ContextMenuExportToPDFCanExecute" 
+                                    Executed="ContextMenuExportToPDFExecuted" />
+                                </MenuItem.CommandBindings>
+                            </MenuItem>
+                            <MenuItem  Header="Copy to Clipboard" Command="Copy" Name="saveall" >
+                                <MenuItem.CommandBindings>
+                                    <CommandBinding Command="ApplicationCommands.Copy" 
+                                    CanExecute="ContextMenuCopyCanExecute" 
+                                    Executed="ContextMenuCopyExecuted" />
+                                </MenuItem.CommandBindings>
+                            </MenuItem>
+                            <!--<MenuItem  Header="Copy to Clipboard without headers" Command="Copy" Name="copycell" >
+                        <MenuItem.CommandBindings>
+                            <CommandBinding Command="ApplicationCommands.Copy" 
+                                    CanExecute="ContextMenuCopyCellCanExecute" 
+                                    Executed="ContextMenuCopyCellExecuted" />
+                        </MenuItem.CommandBindings>
+                    </MenuItem>-->
+                        </ContextMenu>
+                    </Grid.ContextMenu>
+
+                    <grid:AUParagraph Grid.Row="0" x:Name="tbltitle" Foreground="red"  FontWeight="Normal" HorizontalAlignment="Left" FontSize="18" FontFamily="Arial" Visibility="Collapsed"/>
+                    <grid:AUParagraph Grid.Row="1" x:Name="txtHeader" FontWeight="Normal" HorizontalAlignment="Left" FontSize="16" FontFamily="Arial"/>
+                    <Border Grid.Row="2" Name="fgborder"  BorderThickness="0" BorderBrush="Black">
+                        <StackPanel Name="gridpanel" CanHorizontallyScroll="True" CanVerticallyScroll="True">
+                            <!--<StackPanel.ContextMenu>
+                    <ContextMenu Name="augridcm">
+                            <MenuItem  Header="Copy Selection" Command="Copy" Name="selected" >
+                            <MenuItem.CommandBindings>
+                                <CommandBinding Command="ApplicationCommands.Copy" 
+                                    CanExecute="ContextMenuCopyCanExecute" 
+                                    Executed="ContextMenuCopyExecuted" />
+                            </MenuItem.CommandBindings>
+                        </MenuItem>
+                    </ContextMenu>
+                </StackPanel.ContextMenu>-->
+                            <!--Background="WhiteSmoke" Foreground="Black" 
+                             CursorBackground="CornflowerBlue" 
+                             RowBackground="#FFFFFF"  
+                             SelectionBackground="#8EB1F2" TopLeftCellBackground="#FFFFFF"
+                             GroupRowBackground="Aqua"
+                             ColumnHeaderBackground="#FFFFFF" ColumnHeaderForeground="Black" 
+                             ColumnHeaderSelectedBackground="#AD77DDFF"  
+                             RowHeaderBackground="#FFFFFF" RowHeaderForeground="Black" 
+                             RowHeaderSelectedBackground="#AD77DDFF" BorderBrush="Gray"-->
+
+                            <grid:AUGrid x:Name="augrid" Margin="3" LostFocus="AUXGrid_LostFocus" 
+                             FontWeight="Normal"   IsReadOnly="True"
+                             ClipboardCopyMode="IncludeAllHeaders" 
+                             FontSize="14" HorizontalAlignment="Left"
+                             AutoGenerateColumns="True" 
+                             ShowSort="True"
+
+                            MaxHeight="800" MaxWidth="1400"
+                             >
+                                <c1:C1FlexGridFilterService.FlexGridFilter>
+                                    <c1:C1FlexGridFilter></c1:C1FlexGridFilter>
+                                </c1:C1FlexGridFilterService.FlexGridFilter>
+
+                            </grid:AUGrid>
+                            <!--<grid:AUGrid x:Name="augrid"  MaxHeight="400" MaxWidth="400"></grid:AUGrid>-->
+                            <!-- RowHeaderBackground="#7092BE"  GridLinesBrush="Black" GridLinesVisibility="All"  RowBackground="Smoke"  -->
+                        </StackPanel>
+                    </Border>
+                    <grid:AUParagraph Grid.Row="3" x:Name="starText"  FontWeight="Light" HorizontalAlignment="Left" FontSize="14" FontFamily="Arial"/>
+
+
+                </Grid>
+            </Border>
+            <grid:AUParagraph Grid.Row="1" x:Name="tableno" FontWeight="Light" HorizontalAlignment="Left" FontSize="14" FontFamily="Arial" Visibility="Collapsed"/>
+        </Grid>
+    </Border>
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="Focusable" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+    </UserControl.Style>
+</UserControl>

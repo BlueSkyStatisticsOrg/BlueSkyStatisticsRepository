@@ -1,0 +1,64 @@
+﻿<Window x:Class="BSky.Controls.DesignerSupport.MainDialogForPreviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
+              MinWidth="310"
+        Title="SubDialogWindow" ResizeMode="NoResize">
+        <Window.Resources>
+            <LinearGradientBrush x:Key="purple" EndPoint="0,1" StartPoint="0,0">
+                <GradientStop Color="#FF6CaaD6" Offset="0"/>
+                <GradientStop Color="#FFEDEFF3" Offset="1"/>
+                <GradientStop Color="#FFDDDDDD" Offset="1"/>
+                <GradientStop Color="#FFEDEFF3" Offset="1"/>
+            </LinearGradientBrush>
+        </Window.Resources>
+        <Grid Background="#FFEDefFf">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Name="expndrcol" Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>            
+            <Border Name="Host"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" >
+                <Button Padding="0" Name="Ok" Margin="5" Width="50" Height="24" Click="Ok_Click" Background="{StaticResource purple}" >
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect> OK
+                </Button>
+                <Button Padding="0" Name="Cancel" Margin="5"  Width="50" Height="24" Click="Cancel_Click" Background="{StaticResource purple}">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect> Cancel
+                </Button>
+                <Button Name="help" Padding="0" Margin="5" Width="50" Height="24" Click="help_Click" Background="{StaticResource purple}" Visibility="Hidden">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect> Help
+                </Button>
+            </StackPanel>
+        <Expander Margin="0,10,0,1" MaxWidth="320" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
+                  ExpandDirection="Right" Name="dlgexpander" Background="#FFEDefFf" IsExpanded="False" 
+                  HorizontalAlignment="Left" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"  
+                  Expanded="dlgexpander_Expanded" Collapsed="dlgexpander_Collapsed" Header="Help" BorderThickness="0">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="*"></RowDefinition>-->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--<TextBlock Grid.Row="0" Name="helptext" TextWrapping="Wrap" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Dialog Help:</TextBlock>-->
+                <c1:C1RichTextBox Grid.Row="0"  Margin="2" Name="dialoghelptext" IsReadOnly="True" />
+                <Button Grid.Row="1" Name="rhelpbutton" Height="24" Width="70" HorizontalAlignment="Left" Margin="1,0" Click="rhelpbutton_Click" Background="{StaticResource purple}">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect> Get R Help
+
+                </Button>
+            </Grid>
+        </Expander>
+
+    </Grid>
+    </Window>

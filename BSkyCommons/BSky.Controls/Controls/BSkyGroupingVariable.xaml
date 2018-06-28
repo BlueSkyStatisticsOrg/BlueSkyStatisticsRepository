@@ -1,0 +1,16 @@
+﻿<Grid x:Class="BSky.Controls.BSkyGroupingVariable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:w="clr-namespace:BSky.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="100"
+           >
+
+ <!--   <w:SingleItemList Height="25"  AutoVar="True" MoveVariables="True"  renderVars="False"   Width="100 ">
+
+    </w:SingleItemList> 
+    <Button Height="25" Name ="bvws" Width="50"></Button> -->
+   <!-- <w:SingleItemList  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  /> -->
+</Grid>

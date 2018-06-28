@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="BSky.Controls.AUParagraph"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              x:Name="aupara"
+              HorizontalAlignment="Left" MouseEnter="aupara_MouseEnter" MouseLeave="aupara_MouseLeave">
+    <Border Name="outerborder" BorderBrush="Transparent" BorderThickness="1" >
+        <Grid Margin="1" >
+            <Grid.ContextMenu>
+                <ContextMenu Name="auparauccontextmenu">
+                    <MenuItem  Header="Copy to clipboard" Command="Copy" Name="saveall" >
+                        <MenuItem.CommandBindings>
+                            <CommandBinding Command="ApplicationCommands.Copy" 
+                                    CanExecute="ContextMenuCopyCanExecute" 
+                                    Executed="CommandBinding_Executed" />
+                        </MenuItem.CommandBindings>
+                    </MenuItem>
+                </ContextMenu>
+            </Grid.ContextMenu>            
+        <TextBlock Name="MyBlock" MouseDown="MyBlock_MouseDown" ContextMenuOpening="MyBlock_ContextMenuOpening" Text="{Binding ElementName=aupara, Path=Text}" FontFamily="Courier New"  />
+            <TextBox Visibility="Collapsed" Name="MyBox"  LostFocus="MyBox_LostFocus" TextWrapping="Wrap" FontFamily="Courier New"  HorizontalAlignment="Left">
+            <TextBox.Text>
+                <Binding Path="Text" ElementName="aupara" UpdateSourceTrigger="PropertyChanged" />
+            </TextBox.Text>
+        </TextBox>
+    </Grid>
+        </Border>
+</UserControl>

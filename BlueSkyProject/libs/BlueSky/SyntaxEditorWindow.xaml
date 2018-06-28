@@ -1,0 +1,159 @@
+﻿<Window x:Class="BlueSky.SyntaxEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BSky Command Editor" Closing="Window_Closing" mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:scintilla="clr-namespace:ScintillaNET;assembly=ScintillaNET"
+        Icon="/BlueSky;component/Images/BCommand-icon_1.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="78"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Name="SMenu" DockPanel.Dock="Top" Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Click ="MenuItem_Click" />
+                <MenuItem Header="_Open" Click="MenuItemOpen_Click" />
+                <MenuItem Header="_Save As" Click="MenuItemSaveAs_Click" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Undo" Command="Undo" />
+                <MenuItem Header="_Redo" Command="Redo" />                
+                <MenuItem Header="Cu_t" Command="ApplicationCommands.Cut" />
+                <MenuItem Header="_Copy" Command="ApplicationCommands.Copy" />
+                <MenuItem Header="_Paste" Command="ApplicationCommands.Paste" />
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1">
+            <Button Click="MenuItem_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/New.png"  ToolTip="New Script"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>            
+            <Button Click="MenuItemOpen_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/Open.png"  ToolTip="Open Script"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Click="MenuItemSaveAs_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/Save.png"  ToolTip="Save Script"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Separator Margin="5,0,5,0" Width="2"></Separator>
+            <Button Command="Cut">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/Cut.png"  ToolTip="Cut"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Command="Copy">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/Copy.png" ToolTip="Copy"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Command="Paste">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/Paste.png"  ToolTip="Paste"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Command="Undo">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/arrow_undo.png"  ToolTip="Undo"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Command= "Redo">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/arrow_redo.png"  ToolTip="Redo"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Separator Margin="5,0,5,0" Width="2"></Separator>
+            <Button Click="runButton_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/ExecuteScript.png"  ToolTip="Execute"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Click="MenuItem_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/BlueSky;component/Images/refresh.png"  ToolTip="Refresh"></Image>
+                        <TextBlock></TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>            
+        </ToolBar>
+        <WindowsFormsHost Grid.Row="2" Margin="3"  HorizontalAlignment="Stretch" Name="windowsFormsHost1" VerticalAlignment="Stretch"  >
+            <WindowsFormsHost.Child>
+                <scintilla:Scintilla></scintilla:Scintilla>
+            </WindowsFormsHost.Child>
+        </WindowsFormsHost>
+        <!--<TextBox Grid.Row="2" Margin="3" Name="inputTextbox" AcceptsReturn="True" Padding="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextChanged="inputTextbox_TextChanged" />-->
+        <Grid Grid.Row="3" Margin="3" Width="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+               <!--  <RowDefinition Height="*"></RowDefinition>-->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="352"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="77"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="1" FontSize="11">Output File Details:</Label>
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="5,1,0,0" >
+                <CheckBox Name="saveoutput" Margin="0,3,0,0"   Height="15" Width="15"> </CheckBox>
+                <Label FontSize="11" >Save Ouput to a File. Output will also be shown in Output Window.</Label>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
+                <Label Margin="1" FontSize="11">Output File Name :</Label>
+                <TextBox  Width="150" Margin="2" Name="fullpathfilename" IsEnabled="{Binding Path=IsChecked, ElementName=saveoutput}" ToolTip="{Binding Path=Text, ElementName=fullpathfilename}"></TextBox>
+                <Button Height="21" Margin="2,1,1,1" Name="browse" IsEnabled="{Binding Path=IsChecked, ElementName=saveoutput}" Click="browse_Click"> Browse</Button>
+            </StackPanel>
+            <!--
+            <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
+                <Label Margin="1">Output File Type :</Label>
+                <RadioButton VerticalAlignment="Center" Margin="5" Name="bso" IsEnabled="{Binding Path=IsChecked, ElementName=saveoutput}">.BSO</RadioButton>
+                <RadioButton VerticalAlignment="Center" Margin="5" Name="csv" IsEnabled="{Binding Path=IsChecked, ElementName=saveoutput}">.CSV</RadioButton>
+                <RadioButton VerticalAlignment="Center" Margin="5" Name="html" IsEnabled="{Binding Path=IsChecked, ElementName=saveoutput}">.HTML</RadioButton>
+            </StackPanel>
+            -->
+            <Button Grid.Row="0" Grid.Column="3" Content="Run"  Width="38" Height="21" Margin="2,0,4,2" Name="runButton" Click="runButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Button Content="Refresh Grid" Grid.Column="3" Grid.Row="2" Height="23" HorizontalAlignment="Right"  Margin="2,0,0,0" Name="Refresh" VerticalAlignment="Top" Width="75" Click="Refresh_Click" />
+            <!-- <Button Grid.Row="1" Grid.Column="2" Content="Save"  Width="40" Height="21" Margin="2,0,4,2" Name="save" Click="save_Click"  HorizontalAlignment="Right" VerticalAlignment="Top"/> -->
+            
+        </Grid>
+    </Grid>
+
+</Window>

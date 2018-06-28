@@ -1,0 +1,23 @@
+﻿<Window x:Class="BlueSky.Commands.File.SelectRdataDataframesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlueSky.Commands.File"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        mc:Ignorable="d"
+        Title="Select Dataframe(s) Window" MaxHeight="220" MaxWidth="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.SelDataframeToLoad}"></TextBlock>
+        <ListBox Grid.Row="1" Name="DFListbox" SelectionMode="Multiple" MinHeight="100" ></ListBox>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="okButton" Content="{x:Static uires:UICtrlResources.buttonOk}" Margin="5" Height="28" MinWidth="50" Click="okButton_Click"></Button>
+            <Button Name="cancelButton" Content="{x:Static uires:UICtrlResources.buttonCancel}" Margin="5" Height="28" MinWidth="50" Click="cancelButton_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

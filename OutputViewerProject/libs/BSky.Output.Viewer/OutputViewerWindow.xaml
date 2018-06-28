@@ -1,0 +1,36 @@
+﻿<Window x:Class="BSky.Output.Viewer.OuputViewerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        Title="{x:Static uires:UICtrlResources.OutputViewerTitle}" Icon="/BSky.Output.Viewer;component/BOutput-icon_1.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="1,1,1,1" Background="DarkGray">
+            <Menu Name="menu1" Grid.Row="0">
+                <MenuItem Header="{x:Static uires:UICtrlResources.OutputViewerOptionsMenu}" >
+                    <MenuItem Header="{x:Static uires:UICtrlResources.menuOpen}" Click="open_Click"></MenuItem>
+                    <MenuItem Header="{x:Static uires:UICtrlResources.menuCloseWindow}" Click="MenuItemClose_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <!--<Button Name="open" Content="Open" FontSize="10" Width="45" Height="19" HorizontalAlignment="Left" Margin="1,1,1,1" Click="open_Click"></Button>-->
+        </StackPanel>
+        <Grid Name="outwingrid" Grid.Row="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TreeView Name="NavTree" Margin="0,0,4,0">
+        </TreeView>
+        <ScrollViewer Name="scrollviewer" Grid.Column="1">
+            <Grid Name="panelcontainer">
+                    <StackPanel Name="mypanel"  Background="#FFEDEFE9">
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+            <GridSplitter HorizontalAlignment="Right"  Name="gridSplitter1" VerticalAlignment="Stretch" Width="4" Grid.Column="0" Grid.Row="0" Margin="1" Background="LightGray" />
+        </Grid>
+    </Grid>
+</Window>

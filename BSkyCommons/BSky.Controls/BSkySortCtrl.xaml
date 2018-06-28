@@ -1,0 +1,45 @@
+﻿<Grid x:Class="BSky.Controls.BSkySortCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:w="clr-namespace:BSky.Controls"
+             mc:Ignorable="d" Height="202" Width="280" 
+             d:DesignHeight="202" d:DesignWidth="280"
+           >
+
+    <Grid.RowDefinitions>
+       
+        <RowDefinition Height="53"/>
+        <RowDefinition Height="32"/>
+        <RowDefinition Height="22"/>
+        <RowDefinition Height="90"/>
+                
+    </Grid.RowDefinitions>
+    <!--   <w:SingleItemList Height="25"  AutoVar="True" MoveVariables="True"  renderVars="False"   Width="100 ">
+    
+    </w:SingleItemList> 
+    <Button Height="25" Name ="bvws" Width="50"></Button> -->
+    <!-- <w:SingleItemList  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  /> -->
+    
+    <GroupBox Margin ="5,2,5,2" Grid.RowSpan="4" Header="Sort Options"></GroupBox>
+    <TextBlock Grid.Row="0" Margin ="10,20,10,0" TextWrapping="Wrap">Specify a sort order, select asc for ascending, desc for descending.</TextBlock>
+     
+   
+        <ComboBox Grid.Row="1" Height="28" HorizontalAlignment="Stretch" Margin="10,2,10,2"  VerticalAlignment="Top" >
+            <ComboBoxItem  IsSelected="True">asc</ComboBoxItem>
+            <ComboBoxItem >desc</ComboBoxItem>
+       </ComboBox>
+   
+    
+        <TextBlock Grid.Row="2" Margin ="10,0,10,2" TextWrapping="Wrap">Drag and drop the variables you want to sort</TextBlock>
+
+    <w:TargetAggregate Grid.Row="3"  Margin ="10,2,10,0" Height ="82" HorizontalAlignment="Stretch"   VerticalAlignment="Top"  /> 
+   
+
+</Grid>
+
+
+        
+
+        

@@ -1,0 +1,415 @@
+﻿<Window xmlns:my1="clr-namespace:BSky.Controls.Controls;assembly=BSky.Controls" 
+        xmlns:my="clr-namespace:BSky.Controls;assembly=BSky.Controls" 
+        
+        x:Class="BlueSky.Windows.CustomSettingsWindow"
+
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        Title="{x:Static uires:UICtrlResources.ConfigWindowTitle}" Height="370" MinWidth="750" MaxWidth="850" SizeToContent="Width" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Closing="Window_Closing" >
+    
+    <!--<Window.Resources>
+        <loc:InverseBooleanConverter x:Key="inverseBoolConverter"></loc:InverseBooleanConverter>
+            xmlns:loc="clr-namespace:BlueSky.Windows"
+    </Window.Resources>-->
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Name="options" Grid.Row="0" >
+            <TabItem Name="PathTab" Header="{x:Static uires:UICtrlResources.TabTitlePathSettings}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <!--Content="{x:Static p:Resources.tempfolder}"-->
+                    <Label Grid.Row="0" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblTempFolder}" Name="label1" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Name="tempfolder" MinWidth="200" Text="{Binding Path=[tempfolder], UpdateSourceTrigger=PropertyChanged}"  />
+                    <Button Grid.Row="0" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2"  Margin="3" Name="tempfolderbrowse" MinWidth="50" Click="tempfolderbrowse_Click" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblInitialDirectory}" Name="label2"  />
+                    <TextBox Grid.Row="1" Grid.Column="1"  Margin="3" Name="test" MinWidth="200" Text="{Binding Path=[test], UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}" Padding="2"  Margin="3" Name="initfolderbrowse" MinWidth="50" Click="initialfolderbrowse_Click" />
+
+                    <Label Grid.Row="2" Content="{x:Static uires:UICtrlResources.lblRHomeDir}"  Name="labelrhome" />
+                    <StackPanel Grid.Row="2" Grid.Column="1">
+                        <TextBox  Height="24" Margin="3" Name="rhome" MinWidth="200" Text="{Binding Path=[rhome], UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Margin="4,0" Text="{x:Static uires:UICtrlResources.lblExampleRHomeDir}"></TextBlock>
+                    </StackPanel>
+                    <Button Grid.Row="2" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2" Margin="3" Name="rhomebrowse" VerticalAlignment="Top" MinWidth="50" Click="rhomebrowse_Click" />
+
+                </Grid>
+            </TabItem>
+            <TabItem Name="ColorsTab" Header="{x:Static uires:UICtrlResources.TabTitleColors}">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="4" Text="{x:Static uires:UICtrlResources.lblCommandTitleColor}"></TextBlock>
+                    <Rectangle Grid.Row="0" Grid.Column="2" Width="20" Name="dctitlecol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[dctitlecol], UpdateSourceTrigger=PropertyChanged}" />
+
+                    <!--<TextBlock Grid.Row="1" Grid.Column="0" Margin="4">Batch Command Title Color:</TextBlock>
+                    <Rectangle Grid.Row="1" Grid.Column="2" Name="syntitlecol" Margin="4" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[syntitlecol]}" />-->
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblRSynColor}"></TextBlock>
+                    <Rectangle Grid.Row="1" Grid.Column="2" Width="20" Name="rcommcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[rcommcol], UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblErrorColor}"></TextBlock>
+                    <Rectangle Grid.Row="2" Grid.Column="2" Width="20" Name="errorcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[errorcol], UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblMouseHoverBoxColor}"></TextBlock>
+                    <Rectangle Grid.Row="3" Grid.Column="2" Width="20" Name="outputmousehovercol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[outputmousehovercol], UpdateSourceTrigger=PropertyChanged}" />
+
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblNavTreeSelColor}"></TextBlock>
+                    <Rectangle Grid.Row="4" Grid.Column="2" Width="20" Name="navtreeselectedcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[navtreeselectedcol], UpdateSourceTrigger=PropertyChanged}" />
+
+                </Grid>
+            </TabItem>
+            <TabItem Name="ImageTab" Header="{x:Static uires:UICtrlResources.TabTitleImage}">
+                <Grid   >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="70"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblImageWidth}"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Height="22"  Margin="5,0" Text="{Binding Path=[imagewidth], UpdateSourceTrigger=PropertyChanged}"   GotKeyboardFocus="TextBox_GotKeyboardFocus" TextChanged="TextBox_TextChanged"></TextBox>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0"  Text="{x:Static uires:UICtrlResources.lblImageHeight}"></TextBlock>
+                    <TextBox Grid.Row="3" Grid.Column="1" Height="22" Margin="5,0" Text="{Binding Path=[imageheight], UpdateSourceTrigger=PropertyChanged}" GotKeyboardFocus="TextBox_GotKeyboardFocus" TextChanged="TextBox_TextChanged" ></TextBox>
+                    <TextBlock Grid.Row="6" Grid.Column="0"  Text=""></TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Name="DefaultPkgTab" Header="{x:Static uires:UICtrlResources.TabTitleDefaultPackages}" Loaded="DefltPkgTab_Loaded" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <!--<RowDefinition Height="Auto"></RowDefinition>-->
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Name="dfltMoveUpButton" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="70" Click="dfltMoveUpButton_Click" Content="{x:Static uires:UICtrlResources.buttonMoveUp}"></Button>
+                    <Button Name="dfltMoveDownButton"  Grid.Row="4" Grid.Column="1" Margin="3" MinWidth="70" Click="dfltMoveDownButton_Click" Content="{x:Static uires:UICtrlResources.buttonMoveDown}"></Button>
+
+                    <Label Grid.Row="0" Grid.Column="2"  VerticalAlignment="Stretch" VerticalContentAlignment="Top" Content="{x:Static uires:UICtrlResources.lblDefPkg}"></Label>
+                    <ListBox Name="dfltpackagelistbox" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" SelectionMode="Extended"></ListBox>
+
+                    <Button Name="dfltAddPackageButton"  Grid.Row="1" Grid.Column="3" Margin="3" MinWidth="70" Click="dfltAddPackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonAdd}"></Button>
+                    <Button Name="dfltRemovePackageButton"  Grid.Row="2" Grid.Column="3" Margin="3" MinWidth="70" VerticalAlignment="Center" Click="dfltRemovePackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonRemove}"></Button>
+                    <Button Name="dfltResetPackageButton"  Grid.Row="4" Grid.Column="3" Margin="3" MinWidth="70" Click="dfltResetPackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonReset}"></Button>
+                    <!--<Button Name="ApplyPackageButton" Grid.Row="3" Margin="10,8,40,8" Click="ApplyPackageButton_Click">Save</Button>-->
+                </Grid>
+            </TabItem>
+
+            <TabItem Name="UserPkgTab" Header="{x:Static uires:UICtrlResources.TabTitleUserPackages}" Loaded="UserPkgTab_Loaded" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <!--<RowDefinition Height="Auto"></RowDefinition>-->
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Name="MoveUpButton" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="70" Click="MoveUpButton_Click"  Content="{x:Static uires:UICtrlResources.buttonMoveUp}"></Button>
+                    <Button Name="MoveDownButton" Grid.Row="4" Grid.Column="1" Margin="3" MinWidth="70" Click="MoveDownButton_Click"  Content="{x:Static uires:UICtrlResources.buttonMoveDown}"></Button>
+
+                    <StackPanel Grid.Row="0" Grid.Column="2">
+                        <Label  Margin="2,0,1,0"  Content="{x:Static uires:UICtrlResources.lbl1UserPkg}"></Label>
+                        <Label Margin="2,0,1,0"   VerticalAlignment="Top" Content="{x:Static uires:UICtrlResources.lbl2UserPkg}"></Label>
+                    </StackPanel>
+
+                    <ListBox Name="packagelistbox" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" SelectionMode="Extended"></ListBox>
+                    <Button Name="AddPackageButton" Grid.Row="1" Grid.Column="3" Margin="3" MinWidth="70" Click="AddPackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonAdd}"></Button>
+                    <Button Name="RemovePackageButton" Grid.Row="2" Grid.Column="3" Margin="3" MinWidth="70" VerticalAlignment="Center" Click="RemovePackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonRemove}"></Button>
+                    <Button Name="ResetPackageButton" Grid.Row="4" Grid.Column="3" Margin="3" MinWidth="70" Click="ResetPackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonReset}"></Button>
+                    <!--<Button Name="ApplyPackageButton" Grid.Row="3" Margin="10,8,40,8" Click="ApplyPackageButton_Click">Save</Button>-->
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Name="AdvTab" Header="{x:Static uires:UICtrlResources.TabTitleAdvanced}">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="70"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" TextWrapping="Wrap" MaxWidth="650" Text="{x:Static uires:UICtrlResources.lblLicNotifyDays}"></TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1"  Margin="3" VerticalAlignment="Center" Name="daysleft" Text="{Binding Path=[daysleftreminder], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBlock Grid.Row="1" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblMaxFactor}"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1"  Margin="3"  Name="maxfactor" Text="{Binding Path=[maxfactorcount], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBlock Grid.Row="2" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblAdvancedLogging}"></TextBlock>
+                    <CheckBox  Grid.Row="2" Grid.Column="1"  Margin="3" Name="advancedlog" IsChecked="{Binding Path=[advancedlogging], UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Grid.Row="3" Grid.Column="0"  Margin="3" Text="{x:Static uires:UICtrlResources.lblLogLevel}" Name="loglabel"  />
+                    <ComboBox Grid.Row="3"  Grid.Column="1" Margin="1,5" Name="loglevel">
+                        <ComboBoxItem Content="Debug" />
+                        <ComboBoxItem Content="Info" />
+                        <ComboBoxItem Content="Warn" />
+                        <ComboBoxItem Content="Error" />
+                        <ComboBoxItem Content="Fatal" />
+                        <ComboBoxItem Content="All" IsSelected="True" />
+                    </ComboBox>
+                    <TextBlock Grid.Row="4" Grid.Column="0"  Margin="3" MaxWidth="650"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblThresholdCount}">
+
+                    </TextBlock>
+                    <TextBox Grid.Row="4" Grid.Column="1"  Margin="3" VerticalAlignment="Center" Name="maxflexgridcells" Text="{Binding Path=[maxflexgridcells], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+                    <TextBlock Grid.Row="5" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblCharToFactor}">
+
+                    </TextBlock>
+                    <CheckBox  Grid.Row="5" Grid.Column="1"  Margin="3"  Name="CSVcharToFactor" IsChecked="{Binding Path=[CSVcharToFactor], UpdateSourceTrigger=PropertyChanged}"  />
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Name="OthersTab" Header="{x:Static uires:UICtrlResources.TabTitleOthers}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.lblRetainSciNotation}" Name="label3"  Margin="3"  TextWrapping="Wrap"   />
+                    <CheckBox Grid.Row="0" Grid.Column="1" Height="16"  Margin="3" Name="scientific" IsChecked="{Binding Path=[scientific], UpdateSourceTrigger=PropertyChanged}"  />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblNoDecimalDigits}"  Margin="3" Name="label4"   />
+                    <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=[noofdecimals], UpdateSourceTrigger=PropertyChanged}"  Margin="3" Name="noofdecimals" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}"  Margin="3" Name="label5"   />
+                    <TextBox Grid.Row="2" Grid.Column="1"   Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}" Margin="3" Name="noofchars" />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblLoadMissing}"   Margin="3" Name="label6"   />
+                    <CheckBox Grid.Row="3" Grid.Column="1"  Height="16"  Margin="3" Name="loadMissingCheckbox" IsChecked="{Binding Path=[loadSavMissingValue], UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblOpenOptions}" Margin="3" Name="label7"  />
+                    <CheckBox Grid.Row="4" Grid.Column="1" Height="16"  Margin="3" Name="openDatasetOptionChkbx" IsChecked="{Binding Path=[openDatasetOption], UpdateSourceTrigger=PropertyChanged}"  />
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.lblShowHideNumericHeaders}"    Margin="3" Name="label8" TextWrapping="Wrap" />
+                    <CheckBox Grid.Row="5" Grid.Column="1" Height="16"  Margin="3" Name="showNumRowHeadersChkbx" IsChecked="{Binding Path=[numericrowheaders], UpdateSourceTrigger=PropertyChanged}"   />
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.ShowOutputInAPA}"></TextBlock>
+                    <CheckBox Grid.Row="6" Grid.Column="1" Height="16"  Margin="3" Name="APAstyleChkbx" IsChecked="{Binding Path=[outTableInAPAStyle], UpdateSourceTrigger=PropertyChanged}"   />
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.ShowRDataWarningMessage}"></TextBlock>
+                    <CheckBox Grid.Row="7" Grid.Column="1" Height="16"  Margin="3" Name="RDataOpenWarningChkbx" IsChecked="{Binding Path=[RDataOpenWarning], UpdateSourceTrigger=PropertyChanged}"   />
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Name="SQLTab" Header="{x:Static uires:UICtrlResources.TabTitleSQLSettings}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblTitleServerInstance}" Margin="3"></Label>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="3">
+                        <TextBlock Text="{x:Static uires:UICtrlResources.lblInstanceName}" Margin="3"></TextBlock>
+                        <TextBox Name="severInstanceNametxt" Text="{Binding Path=[servInstanceName], UpdateSourceTrigger=PropertyChanged}" Height="23" MinWidth="507" Margin="3"/>
+                        <TextBlock Name="textBlock1" Margin="3" Text="{x:Static uires:UICtrlResources.lblInstanceNameNote}"  />
+                        <TextBlock Name="textBlock2" Margin="3" Text="{x:Static uires:UICtrlResources.lblDefaultInstanceName}"  TextWrapping="Wrap" />
+                    </StackPanel>
+                    <!-- second row-->
+                    <Label Grid.Row="1" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblTitleDriverPath}"></Label>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="3">
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBox  MinWidth="450" Height="23" Name="mssqlDrvPathtxt" Text="{Binding Path=[mssqldrvpath], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            <Button Margin="2" Padding="2" MinWidth="50" Name="mssqlBrowseButton" Click="mssqlBrowseButton_Click" Content="{x:Static uires:UICtrlResources.buttonBrowse}"></Button>
+                        </StackPanel>
+                        <TextBlock Margin="3" Text="{x:Static uires:UICtrlResources.lblTitleDriverPathExample}"></TextBlock>
+                        <TextBlock Margin="3" Text="{x:Static uires:UICtrlResources.lblTitleDriverPathNote}"></TextBlock>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Name="PDFTab" Header="{x:Static uires:UICtrlResources.TabTitlePDFSettings}">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblPageSize}" Name="PDFpageSize"  Margin="3"  />
+                    <ComboBox Grid.Row="0"  Grid.Column="1" Margin="3" Height="26" Name="PDFpageCombo" IsEnabled="False">
+                        <ComboBoxItem Content="A0" />
+                        <ComboBoxItem Content="A1" />
+                        <ComboBoxItem Content="A2" />
+                        <ComboBoxItem Content="A3" />
+                        <ComboBoxItem Content="A4" IsSelected="True" />
+                        <ComboBoxItem Content="A5" />
+                        <ComboBoxItem Content="A6" />
+                        <ComboBoxItem Content="A7" />
+                        <ComboBoxItem Content="A8" />
+                        <ComboBoxItem Content="A9" />
+                        <ComboBoxItem Content="A10" />
+
+                        <ComboBoxItem Content="B0" />
+                        <ComboBoxItem Content="B1" />
+                        <ComboBoxItem Content="B2" />
+                        <ComboBoxItem Content="B3" />
+                        <ComboBoxItem Content="B4" />
+                        <ComboBoxItem Content="B5" />
+                        <ComboBoxItem Content="B6" />
+                        <ComboBoxItem Content="B7" />
+                        <ComboBoxItem Content="B8" />
+                        <ComboBoxItem Content="B9" />
+                        <ComboBoxItem Content="B10" />
+
+                        <ComboBoxItem Content="Legal" />
+                        <ComboBoxItem Content="Letter" />
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMargins}"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="3"  Name="pdfMargins" Text="{Binding Path=[PDFPageMargins], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMaxCols}"></TextBlock>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="3"  Name="pdfColCount" Text="{Binding Path=[PDFMaxColCount]}" IsEnabled="False"></TextBox>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMaxRows}"></TextBlock>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="3"  Name="pdfRowCount" Text="{Binding Path=[PDFMaxRowCount]}" IsEnabled="False"></TextBox>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFFontSize}"></TextBlock>
+                    <TextBox Grid.Row="4" Grid.Column="1" Margin="3"  Name="pdfTblFontSize" Text="{Binding Path=[PDFTblFontSize], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                </Grid>
+
+            </TabItem>
+            <TabItem Name="ModelsTab" Header="{x:Static uires:UICtrlResources.TabTitleModels}" Loaded="ModelsTab_Loaded" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--<Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Name="modMoveUpButton" Grid.Row="0" Margin="10,8,16,8" Click="" Height="24">Move Up</Button>
+                        <Button Name="modMoveDownButton" Grid.Row="3" Margin="10,8,16,8" Click="" Height="24">Move Down</Button>
+                    </Grid>-->
+                    <Label Grid.Column="1" Content="{x:Static uires:UICtrlResources.lblDropdownModels}"></Label>
+                    <ListBox Name="modclasslistbox" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="3" SelectionMode="Extended"></ListBox>
+
+                    <Button Name="modAddClassButton" Grid.Row="1" Grid.Column="2" Margin="3" MinWidth="50" Click="modAddClassButton_Click" Content="{x:Static uires:UICtrlResources.buttonAdd}"></Button>
+                    <Button Name="modRemoveClassButton" Grid.Row="3" Grid.Column="2" Margin="3" MinWidth="50" Click="modRemoveClassButton_Click" Content="{x:Static uires:UICtrlResources.buttonRemove}"></Button>
+                    <!--<Button Name="modResetClassButton" Grid.Row="2" Margin="10,8,40,8" Click="modResetClassButton_Click" Height="24">Reset</Button>-->
+                    <!--<Button Name="ApplyPackageButton" Grid.Row="3" Margin="10,8,40,8" Click="ApplyPackageButton_Click">Save</Button>-->
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+        <!--<StackPanel  Grid.Row="1" Orientation="Horizontal"  >-->
+        <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Name="DefaultBut" Content="{x:Static uires:UICtrlResources.buttonDefault}" Grid.Column="0" Margin="3" MinWidth="50" Click="DefaultBut_Click"  Padding="2"></Button>
+                <Button Name="ApplyBut" Content="{x:Static uires:UICtrlResources.buttonSave}" Grid.Column="2" Margin="3" MinWidth="50" Click="ApplyBut_Click"   Padding="2"></Button>
+                <Button Name="CancelBut" Content="{x:Static uires:UICtrlResources.buttonCancel}" Grid.Column="3" Margin="0,3,3,3" MinWidth="50" Click="CancelBut_Click"  Padding="2" HorizontalAlignment="Right" Width="50"></Button>
+                
+                
+            </Grid>
+        <!--</StackPanel>-->
+    </Grid>
+</Window>

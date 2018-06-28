@@ -1,0 +1,31 @@
+﻿# this is a single line comment
+# one line must contain only one graphic command, its optional width and optional height. These 3 values must be comma separated.
+# If height is not provided, height is assighed same value as width. So it will be square shaped image.
+# If width and height are not assigned, defaults are used from configiguration set from Options window.
+# If dimensions provided are smaller for the graphics to fit in, 
+# you will see error message in output after execution.
+# If you wish to provide height, you must also provide width. Otherwise defaults will be used for both dimensions.
+
+bsky.plot
+bsky.fullhistogram
+Hist
+with
+# graphic commandname, desired width, desired height of the graphic
+plot, 500, 500
+
+scatterplot, 500, 500
+
+county_choropleth, 900, 600
+
+BSkyPlotSeriesWithCorrelations, 600, 600
+
+BSkyPlotTimeSeries, 600, 600
+
+state_choropleth, 800, 600
+
+country_choropleth, 800, 600
+
+BSkyStandardizeVars
+
+BSkyHeatMap
+

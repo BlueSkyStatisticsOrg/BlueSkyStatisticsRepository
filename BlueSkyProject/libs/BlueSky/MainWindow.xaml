@@ -1,0 +1,8 @@
+﻿<Window x:Class="BlueSky.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Main Window" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        
+    </Grid>
+</Window>

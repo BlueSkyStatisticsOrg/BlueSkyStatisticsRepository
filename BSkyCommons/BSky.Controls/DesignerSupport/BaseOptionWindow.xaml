@@ -1,0 +1,70 @@
+﻿<Window x:Class="BSky.Interfaces.Commands.BaseOptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:y="clr-namespace:BSky.Interfaces.Commands"
+        xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
+              MinWidth="310"
+        Title="BaseOptionsWindow" ResizeMode="NoResize">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="purple" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FF6CaaD6" Offset="0"/>
+            <GradientStop Color="#FFEDEFF3" Offset="1"/>
+            <GradientStop Color="#FFDDDDDD" Offset="1"/>
+            <GradientStop Color="#FFEDEFF3" Offset="1"/>
+        </LinearGradientBrush>
+        <!--   <SolidColorBrush x:Key="BrushFFXXXXXX">#FFEDefFf</SolidColorBrush> -->
+
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static y:BaseOptionWindow.KillCommand}" Executed="kill_Click"/>
+    </Window.CommandBindings>
+    <Grid Background="#FFEDefFf">
+        <!-- <Grid Background="#FFFFFFFF"> -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Name="expndrcol" Width="*"></ColumnDefinition>
+            <!--<ColumnDefinition Width="5"></ColumnDefinition>-->
+        </Grid.ColumnDefinitions>
+        <!-- <Canvas Name="Host" Background="{StaticResource BrushFFXXXXXX}"/> -->
+        <Canvas Name="Host" Height="Auto"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Padding="0" Name="Ok" Margin="5,1,5,4" Width="50" Height="22" Content="OK" Click="Ok_Click" />
+
+            <Button Padding="0" Name="Cancel" Margin="5,1,5,4"  Width="50" Height="22" Content="Cancel" Click="Cancel_Click" />
+
+            <Button Name="Paste" Padding="0" Margin="5,1,5,4" Width="50" IsEnabled="False" Height="22" Click="Paste_Click"  Content="Syntax"/>
+
+            <Button Name="kill" Visibility="Collapsed" Padding="0" Margin="5,1,5,4" Width="70" Height="22" Click="kill_Click" ToolTip="Removes cached dialog. Get the fresh dialog, on next dialog launch." />
+
+            <Button Name="help" Padding="0" Margin="5,1,5,4" Width="50" Height="22" Click="help_Click"  Visibility="Hidden"/>
+
+
+        </StackPanel>
+        <Expander  Margin="0,10,0,1" MaxWidth="320" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
+                  ExpandDirection="Right" Name="dlgexpander" Background="#FFEDefFf" IsExpanded="False"  
+                  HorizontalAlignment="Left" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"
+                  Expanded="dlgexpander_Expanded" Collapsed="dlgexpander_Collapsed" Header="Help:" BorderThickness="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="*"></RowDefinition>-->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="3"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="1"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--<TextBlock Grid.Row="0" Name="helptext" TextWrapping="Wrap" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Dialog Help:</TextBlock>-->
+                <c1:C1RichTextBox Grid.Row="0"  Margin="3" Name="dialoghelptext" IsReadOnly="True" />
+                <Button Grid.Row="2" Name="rhelpbutton" Height="22" Width="70" HorizontalAlignment="Left" Margin="1,0" Click="rhelpbutton_Click" Background="{StaticResource purple}">
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect> Get R Help
+                    
+                </Button>
+            </Grid>
+        </Expander>
+    </Grid>
+</Window>

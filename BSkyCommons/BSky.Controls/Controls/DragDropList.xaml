@@ -1,0 +1,78 @@
+﻿<ListBox x:Class="BSky.Controls.DragDropList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:b="clr-namespace:BSky.Statistics.Common;assembly=BSky.Statistics.Common"
+             mc:Ignorable="d" 
+             AllowDrop="True" 
+            Style="{StaticResource ListBoxStyle}"
+            Template="{StaticResource ListBoxTemplate}"
+            DragOver="ListBox_DragOver"
+             Drop="ListBox_Drop"
+             d:DesignHeight="300" d:DesignWidth="300" Grid.IsSharedSizeScope="True">
+    <!--Template="{StaticResource ListBoxTemplate}"-->
+    <!--<ListBox.Template>
+        <ControlTemplate TargetType="ListBox">
+            
+                <Border CornerRadius="3">
+                    
+                </Border>
+            
+        </ControlTemplate>
+    </ListBox.Template>-->
+
+
+    <!--<ListBox.Style >
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+    </ListBox.Style>-->
+
+
+    <!--<ListBox.ItemContainerStyle>
+        <Style TargetType="ListBoxItem">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </ListBox.ItemContainerStyle>-->
+    　
+
+    <ListBox.ItemTemplate>
+        <DataTemplate DataType="{x:Type b:DataSourceVariable}">
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Image Source="{Binding ImgURL}" Height="16" Width="16"></Image>
+                <!--
+                Added by Aaron on 06/09/2012
+                The original code was  <Label Content="{Binding Name}" Width="Auto"</Label>
+                Got a hint for this code at 
+                http://stackoverflow.com/questions/14803225/how-do-i-change-the-selected-item-text-foreground-color-in-a-listbox
+                -->
+                <Label  Width="Auto"  Foreground="{Binding Foreground,
+                            RelativeSource={RelativeSource Mode=FindAncestor,
+                                            AncestorType=ListBoxItem}}">
+                        <TextBlock Text="{Binding RName}"></TextBlock>
+                </Label>
+
+            </StackPanel>
+        </DataTemplate>
+    </ListBox.ItemTemplate>
+    <!--<ListBox.Effect>
+
+        <DropShadowEffect Color="Beige"></DropShadowEffect>
+
+    </ListBox.Effect>-->
+
+    <!--<ListBox.Resources>
+        <Style  TargetType="Border">
+            <Setter Property="CornerRadius" Value="5" />
+           
+
+        </Style>
+    </ListBox.Resources>-->
+
+</ListBox>
+

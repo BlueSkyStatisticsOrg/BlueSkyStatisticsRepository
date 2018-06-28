@@ -1,0 +1,79 @@
+﻿<Window x:Class="BSky.Interfaces.Commands.RCommandDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="600" Width="537"
+        Title="Command Syntax" mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        d:DesignHeight="164" d:DesignWidth="420"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Window.Resources>
+        <Style x:Key="itemstyle" TargetType="{x:Type ListViewItem}">
+            <EventSetter Event="MouseDoubleClick" Handler="HandleDoubleClick" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Name}" Value="">
+                    <Setter Property="IsEnabled" Value="false" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+        <GroupBox Margin="1" Header="Controls" Name="groupBox1"  >
+            <Grid >
+                <ListView Name="mylist" MinWidth="450" MinHeight="100" ItemContainerStyle="{StaticResource itemstyle}" Margin="2,2,2,2">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="120" Header="Name" DisplayMemberBinding="{Binding Name}" />
+                            <GridViewColumn Width="120" Header="Type" DisplayMemberBinding="{Binding Type}" />
+                            <GridViewColumn Width="120" Header="Parent" DisplayMemberBinding="{Binding Parent}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </GroupBox>
+        </Grid>
+        <!--<StackPanel Orientation="Vertical" Margin="5" Grid.Column="0"  Grid.Row="1">
+            <TextBlock Text="Command"  Margin="5"  ></TextBlock>
+            <TextBox Name="txtCommand"    ></TextBox>
+        </StackPanel>-->
+        <Grid Name="forSyntax" Grid.Row="2" Margin="2">
+            <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+          
+        </Grid.ColumnDefinitions>-->
+            <!--<TextBlock Text="Command" Grid.Column="0" Margin="5"  ></TextBlock>-->
+            <!--<TextBox Name="txtCommand" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" Grid.Column="1"   ></TextBox>-->
+            <GroupBox Margin="2" Header="Command and Syntax" Name="groupBox2" >
+                <TextBox Name="txtCommand" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" ></TextBox>
+                     <!--  <TextBlock Name="txtCommand"></TextBlock> -->
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="1">
+        <TextBlock  HorizontalAlignment="Stretch" Margin="10,2" Name="textBlock4" TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.RowSpan="1"> To use a control more than once in syntax with different substitution settings, the destination variable and grouping variable control names can be prefixed by $ or ! to override the default substitution settings
+        <LineBreak /> To substitute current dataset name enter {{%DATASET%}}
+            <LineBreak /> To substitute current model name enter {{%MODEL%}}
+            <LineBreak /> $ forces each variable to be substituted in format datasetX$var1
+            <LineBreak /> ! forces each variable to be substituted in format var1=datasetX$var1.
+            <LineBreak /> # force the use of the , seperator (Valid for destination listbox only).
+        </TextBlock>
+        </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">
+            <Button Name="Ok" Margin="5,1" Width="70" Height="26" Click="Ok_Click">OK</Button>
+            <Button Name="Cancel" Margin="5,1" Width="70" Height="26" Click="Cancel_Click">Cancel</Button>
+        </StackPanel>
+    </Grid>
+        
+</Window>

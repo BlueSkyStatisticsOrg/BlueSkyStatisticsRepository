@@ -1,0 +1,1564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AAA" xml:space="preserve">
+    <value>AAA</value>
+    <comment>AAA: .CS or. XAML name : Details : Comment</comment>
+  </data>
+  <data name="ErrLoadingRPkg" xml:space="preserve">
+    <value>Error loading following R package(s):</value>
+    <comment>App.xaml.cs : Error msg for missing pkgs</comment>
+  </data>
+  <data name="CantLaunchBSkyApp" xml:space="preserve">
+    <value>Error: Can't Launch BlueSky Application!</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="ErrReqRPkgMissing" xml:space="preserve">
+    <value>Error: Required R Package(s) Missing</value>
+    <comment>App.xaml.cs : Msg box title for missing pkg box</comment>
+  </data>
+  <data name="BSkyPkgMissing" xml:space="preserve">
+    <value>BlueSky package missing</value>
+    <comment>App.xaml.cs : MBox title for loading failed  for new dataset.</comment>
+  </data>
+  <data name="FloatingLicError" xml:space="preserve">
+    <value>Floating License Error</value>
+    <comment>App.xaml.cs : Msg box title for floating server error</comment>
+  </data>
+  <data name="AllFloatingLicInUse" xml:space="preserve">
+    <value>All floating licenses in use.</value>
+    <comment>App.xaml.cs : Floating error message box title</comment>
+  </data>
+  <data name="InstallReqRPkgFrmCRAN" xml:space="preserve">
+    <value>Install required R packages from CRAN by clicking:</value>
+    <comment>App.xaml.cs : Msg to install from CRAN</comment>
+  </data>
+  <data name="StatMsgPkgLoad" xml:space="preserve">
+    <value>Please wait... Loading required R packages.</value>
+    <comment>App.xaml.cs :Launch time statusbar message for R package loading</comment>
+  </data>
+  <data name="MakeSureRInstalled" xml:space="preserve">
+    <value>1. R is installed. BlueSky Statistics requires R. To download R visit: (http://cran.r-project.org)</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="CantCreateTemplate" xml:space="preserve">
+    <value>Could not create template from</value>
+    <comment>CommandExecutionHelper.cs : error msg for loading xaml dialog</comment>
+  </data>
+  <data name="CantExecuteCommand" xml:space="preserve">
+    <value>Couldn't Execute the command</value>
+    <comment>CommandExecutionHelper.cs : error msg for executing xaml dialog</comment>
+  </data>
+  <data name="DatasetBecameNull" xml:space="preserve">
+    <value>has been set to NULL. The reason may be, running some analysis or command on the dataset.</value>
+    <comment>CommandExecutionHelper.cs : Dataset become null msg</comment>
+  </data>
+  <data name="DatasetNull" xml:space="preserve">
+    <value>NULL Dataset.</value>
+    <comment>CommandExecutionHelper.cs : Dataset become null msg title</comment>
+  </data>
+  <data name="MakeSure32x64Compatibility" xml:space="preserve">
+    <value>2. Binary compatibility between BlueSky Statistics and R. 64bit BlueSky Statistics requires 64bit R and 32bit BlueSky Statistics requires 32bit R. (To find about BlueSky version : Go to 'Help &gt; About' in BlueSky Statistics. To find about R version: Launch R GUI (Start &gt; run &gt; RGUI.exe) and execute R.version command on the console).</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="MakeSureAnotherBSkySession" xml:space="preserve">
+    <value>3. Another session of the BlueSky application is not already running.</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="MakeSureRHOME2LatestR" xml:space="preserve">
+    <value>4. R_HOME environment variable is pointing to the latest version of R.</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="PleaseMakeSure" xml:space="preserve">
+    <value>Please make sure:</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="ErrLoadingNewDS" xml:space="preserve">
+    <value>Error Loading new dataset. Make sure you have BlueSky R package installed</value>
+    <comment>App.xaml.cs : Loading new blank dataset failed message</comment>
+  </data>
+  <data name="ConnectCurrFloatingServer" xml:space="preserve">
+    <value>Unable to reach License Server.(Go to [ Help -&gt; Licensing ] and connect to the current floating license server).</value>
+    <comment>App.xaml.cs : Error Message for Floating server unreachable</comment>
+  </data>
+  <data name="ContactAdmin" xml:space="preserve">
+    <value>Please contact your administrator.</value>
+    <comment>App.xaml.cs : Floating error message</comment>
+  </data>
+  <data name="FloatingServerUnreachable2" xml:space="preserve">
+    <value>Floating License Server Unreachable.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message about floating server unreachable.</comment>
+  </data>
+  <data name="FloatingServerUnreachable" xml:space="preserve">
+    <value>Warning: Floating License Server Unreachable.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message about floating server unreachable.</comment>
+  </data>
+  <data name="BSkyDownloadingReqPkgs" xml:space="preserve">
+    <value>BlueSky is downloading and installing required R packages.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky downloading and installing required R packages.</comment>
+  </data>
+  <data name="BSkyFormatSupportedTypes" xml:space="preserve">
+    <value>array, matrix dataframe and BSky return structure.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : BSkyFormat()  supported types list.</comment>
+  </data>
+  <data name="bskygrphctrlimgConfigKeyNotFound" xml:space="preserve">
+    <value>Key 'bskygrphcntrlimage' not found in config file. Aborting...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : 'bskygrphcntrlimage' key is not found in configuration file</comment>
+  </data>
+  <data name="BSkyNeedsRPkgs" xml:space="preserve">
+    <value>BlueSky application needs following R package(s):</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky application needs following listed R packages.</comment>
+  </data>
+  <data name="CantBSkyFormatErrorMsg" xml:space="preserve">
+    <value>This Object cannot be formatted using BSKyFormat. BSkyFormat can be used on Array, Matrix, Data Frame and BSky List objects only</value>
+    <comment>SyntaxEditorWindow.xaml.cs : BSkyFormat()error message for supported types.</comment>
+  </data>
+  <data name="cantopen" xml:space="preserve">
+    <value>Unable to open</value>
+    <comment>FileNewCommand.cs : cant open dataset</comment>
+  </data>
+  <data name="CantSaveAsExcel" xml:space="preserve">
+    <value>File cannot be saved to '.XLS' format. Click OK to choose a different format like XLSX, RData etc.</value>
+    <comment>FileSaveCommand.cs : File can't be save in excel format.</comment>
+  </data>
+  <data name="CloseConfirmation" xml:space="preserve">
+    <value>Do you want to close</value>
+    <comment>FileCloseCommand.cs : Close dataset confirmation</comment>
+  </data>
+  <data name="CloseDatasetConfirmation" xml:space="preserve">
+    <value>Do you want to close Dataset?</value>
+    <comment>FileCloseCommand.cs : Close dataset confirmation complete message</comment>
+  </data>
+  <data name="CriticalError" xml:space="preserve">
+    <value>Critical Error Occurred!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message for critical error return from R for error code -2</comment>
+  </data>
+  <data name="dataset" xml:space="preserve">
+    <value>Dataset?</value>
+    <comment>FileCloseCommand.cs : dataset name followed by this message</comment>
+  </data>
+  <data name="DatasetObjNotExists" xml:space="preserve">
+    <value>Error: Dataset object does not exist.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Dataset object does not exist.</comment>
+  </data>
+  <data name="DFNotExists" xml:space="preserve">
+    <value>-Dataframe does not exist (or is NULL or has no rows/columns)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : data frame does not exist</comment>
+  </data>
+  <data name="DlgNeedTheseRPkgs" xml:space="preserve">
+    <value>needs the following R package(s):</value>
+    <comment>AUAnalysisCommandBase.cs : To run the dialog following packages are needed.</comment>
+  </data>
+  <data name="DoesNotExist" xml:space="preserve">
+    <value>does not exist.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg says obj does not exists</comment>
+  </data>
+  <data name="ErrCantLodRefDataset" xml:space="preserve">
+    <value>Error: Cannot Load/Refresh Dataset</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't load refresh dataset</comment>
+  </data>
+  <data name="ErrCurlyMismatch" xml:space="preserve">
+    <value>Error in block declaration. Mismatch { or }</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Curly brackets creat a block of statements. If there are mismatch between opening and closing curly brackets then this the error msg shown.</comment>
+  </data>
+  <data name="ErrExecutingCommand" xml:space="preserve">
+    <value>Error executing the command.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error executing command</comment>
+  </data>
+  <data name="ErrInRCommand" xml:space="preserve">
+    <value>R Command Error</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error in R command</comment>
+  </data>
+  <data name="ErrNoValidNodeLic" xml:space="preserve">
+    <value>You do not have a valid license to run this application. For help, go to Help -&gt; Licensing.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : No valid node license message</comment>
+  </data>
+  <data name="ErrOpeningDataset" xml:space="preserve">
+    <value>Error Opening Dataset</value>
+    <comment>FileNewCommand.cs : Error opening dataset</comment>
+  </data>
+  <data name="ErrOpeningDataset2" xml:space="preserve">
+    <value>Error Opening Dataset.(probably not a data frame)</value>
+    <comment>FileOpenCommand.cs : error message</comment>
+  </data>
+  <data name="ErrOpeningFile" xml:space="preserve">
+    <value>Unable to open the file</value>
+    <comment>FileOpenCommand.cs : Error in opening file</comment>
+  </data>
+  <data name="ErrOpeningRegGrpLst" xml:space="preserve">
+    <value>Error opening registered graphic command list.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error opening the registered graphic command list.</comment>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Error Occurred!</value>
+    <comment>ToolsMenuEditorCommand.cs, SyntaxEditorWindow.xaml.cs : Message for critical error return from R for error code -1</comment>
+  </data>
+  <data name="ErrParenthesisMismatch" xml:space="preserve">
+    <value>Error in block declaration. Mismatch ( or )</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg for round brackets mismatch in opening and closing brackets.</comment>
+  </data>
+  <data name="ErrReqModelNotSelected" xml:space="preserve">
+    <value>Error: Required Model type not selected</value>
+    <comment>AUAnalysisCommandBase.cs : Required model not selected. </comment>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found</value>
+    <comment>FileOpenCommand.cs : file not found</comment>
+  </data>
+  <data name="FloatingAllinUseMsg" xml:space="preserve">
+    <value>All floating licenses in use. (Please contact your administrator)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Status bar message for floating licenses all in use</comment>
+  </data>
+  <data name="FloatingFixIPPortMsg" xml:space="preserve">
+    <value>Go to [ Help -&gt; Licensing ] to check the license status or to change the Floating License Server's IP address and port.</value>
+    <comment>App.xaml.cs, SyntaxEditorWindow.xaml.cs : Message about fixing floating server port and ip adress.</comment>
+  </data>
+  <data name="FloatingLicValid" xml:space="preserve">
+    <value>Floating License Valid</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Floating license valid message</comment>
+  </data>
+  <data name="FloatingPortIncorrectlySet" xml:space="preserve">
+    <value>Go to [ Help -&gt; Licensing ]  if server IP address and port are not set (or incorrectly set)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Floating license server port ip incorrectly set message</comment>
+  </data>
+  <data name="FormatNotSupported" xml:space="preserve">
+    <value>-Format not supported.</value>
+    <comment>FileNewCommand.cs : cant open dataset, format not supported</comment>
+  </data>
+  <data name="FormatNotSupported2" xml:space="preserve">
+    <value>2. File format not supported (or corrupt file or duplicate column names).</value>
+    <comment>FileOpenCommand.cs : Error msg - file format not supported or dataset have duplicate column names</comment>
+  </data>
+  <data name="IncorrectModelOrModelType" xml:space="preserve">
+    <value>The model type and model is not specified OR you have selected invalid model type and model</value>
+    <comment>AUAnalysisCommandBase.cs : Model type or Model selection is incorrect.</comment>
+  </data>
+  <data name="InstallAbvMentionedRPkgs" xml:space="preserve">
+    <value>Please install the above mentioned R package(s).</value>
+    <comment>AUAnalysisCommandBase.cs : Install R packages mentioned above. These  are required by the current dialog that is under execution.</comment>
+  </data>
+  <data name="InstallRPkgRunDialogAgain" xml:space="preserve">
+    <value>Install missing R package(s) and execute the dialog again.</value>
+    <comment>AUAnalysisCommandBase.cs : Install dialog required R package and re-run the dialog.</comment>
+  </data>
+  <data name="InstallUpdatePkgMenuPath" xml:space="preserve">
+    <value>Go to: Tools -&gt; Package -&gt; Install/Update package(s) from CRAN.</value>
+    <comment>AUAnalysisCommandBase.cs : Install or update required R package by going to this particular menu option.</comment>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>Internal Error: Operation Failed</value>
+    <comment>FileSaveAsCommand.cs, FileSaveAsExcelCommand.cs, FileSaveCommand.cs : Save-As failed, internal error</comment>
+  </data>
+  <data name="invalidDir" xml:space="preserve">
+    <value>Invalid Directory path!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : invalid dir path</comment>
+  </data>
+  <data name="invalidFilename" xml:space="preserve">
+    <value>Invalid Filename!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : invalid file name</comment>
+  </data>
+  <data name="isNull" xml:space="preserve">
+    <value>is null.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg says obj is null</comment>
+  </data>
+  <data name="MayTake1530Min" xml:space="preserve">
+    <value>It may take 15 to 30 minutes to finish depending on your internet connection.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky downloading and installing required R packages may take 15 to 30 mins.</comment>
+  </data>
+  <data name="MisingRPkgs" xml:space="preserve">
+    <value>Error: Missing R Package(s)</value>
+    <comment>AUAnalysisCommandBase.cs : Missing Rpackages those are required by the current dialog.</comment>
+  </data>
+  <data name="missing" xml:space="preserve">
+    <value>missing</value>
+    <comment>SyntaxEditorWindow.xaml.cs : if missing brackets in syntax</comment>
+  </data>
+  <data name="ModelsSupportedAre" xml:space="preserve">
+    <value>The following model types are supported:</value>
+    <comment>AUAnalysisCommandBase.cs : Models supported are listed below</comment>
+  </data>
+  <data name="NoCommToExecute" xml:space="preserve">
+    <value>No command to execute</value>
+    <comment>AUAnalysisCommandBase.cs :No command in dialog syntax to execute.</comment>
+  </data>
+  <data name="NoRowsColsPresent" xml:space="preserve">
+    <value>3. Dataframe does not have row(s) or column(s).</value>
+    <comment>FileOpenCommand.cs : Error msg - dataset does not have row/cols</comment>
+  </data>
+  <data name="NoTablesReturned" xml:space="preserve">
+    <value>No tables to show in output!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message for nooftables is zero. </comment>
+  </data>
+  <data name="NotDataframe" xml:space="preserve">
+    <value>-OR not 'data.frame' type</value>
+    <comment>SyntaxEditorWindow.xaml.cs : not a data.frame type</comment>
+  </data>
+  <data name="NotDataframe2" xml:space="preserve">
+    <value>1. Not a data frame object.</value>
+    <comment>FileOpenCommand.cs : Error msg - not a data.frame</comment>
+  </data>
+  <data name="NotdataframeType" xml:space="preserve">
+    <value>Error: Dataset is not a data.frame type.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Dataset is not a data.frame type.</comment>
+  </data>
+  <data name="NoValidLic" xml:space="preserve">
+    <value>No Valid License</value>
+    <comment>SyntaxEditorWindow.xaml.cs : No valid license message</comment>
+  </data>
+  <data name="ObjCantBSkyFormat" xml:space="preserve">
+    <value>Object cannot be formatted using BSKyFormat. Object:</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't format object using BSkyFormat(). Object probably does not exist.</comment>
+  </data>
+  <data name="ObjCantBSkyFormat2" xml:space="preserve">
+    <value>Object cannot be formatted using BSkyFormat. Type not supported. Supported types are :</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't format object using BSkyFormat(). Object type is not supported.</comment>
+  </data>
+  <data name="OldSessionRunning" xml:space="preserve">
+    <value>-R.Net server from old session still running. Use task manager to close it.</value>
+    <comment>FileNewCommand.cs : cant open dataset, BSky old session is running</comment>
+  </data>
+  <data name="OldSessionRunning2" xml:space="preserve">
+    <value>4. R.Net server from the old session still running (use task manager to kill it).</value>
+    <comment>FileOpenCommand.cs : Error msg - Old session running</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine1" xml:space="preserve">
+    <value>Loading RDATA file may overwrite your current variables/objects in memory if variables/objects with the same name are already present in the RDATA file.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 1</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine2" xml:space="preserve">
+    <value>You can cancel and save all the current R objects which you can load later if required.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 2</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine3" xml:space="preserve">
+    <value>To save and subsequently load the R objects run commands below from BlueSky R command editor.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 3</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine4" xml:space="preserve">
+    <value>To save:  save.image(file='filename.rdata') # filename.rdata is the file name where objects will be saved.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 4</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine5" xml:space="preserve">
+    <value>To load:  load(file='filename.rdata') # filename.rdata is the file name from which objects will be loaded.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 5</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine6" xml:space="preserve">
+    <value>'filename.rdata' is filename with forward slashed path e.g. 'C:/myfolder/myobjects.rdata'</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 6</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine7" xml:space="preserve">
+    <value>To proceed and open RData file click OK.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 7</comment>
+  </data>
+  <data name="OpenRScriptInSynWin" xml:space="preserve">
+    <value>To open a R script, you need to switch to the 'Output and Syntax' window.</value>
+    <comment>FileOpenCommand.cs : If anyone opens Rscript from main window then we guide them to open script in R command editor.</comment>
+  </data>
+  <data name="OpenRScriptMenuPath" xml:space="preserve">
+    <value>Go to the right hand pane of the 'Output and Syntax' window and click File -&gt; Open in the 'R Command Editor'.</value>
+    <comment>FileOpenCommand.cs : If anyone opens Rscript from main window then we guide them to menu option in Rcommand Editor</comment>
+  </data>
+  <data name="PlzConfirm" xml:space="preserve">
+    <value>Please Confirm...</value>
+    <comment>FileOpenCommand.cs : Please confirm message</comment>
+  </data>
+  <data name="PlzSavB4AppUnusable" xml:space="preserve">
+    <value>PLEASE SAVE YOUR WORK BEFORE APP BECOMES UNUSABLE.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message  about saving your work when floating server unreachable.</comment>
+  </data>
+  <data name="PlzWait" xml:space="preserve">
+    <value>Please wait...</value>
+    <comment>AUAnalysisCommandBase.cs : Please wait message</comment>
+  </data>
+  <data name="PlzWaitDatasetLoading" xml:space="preserve">
+    <value>Please wait while Dataset is Loading...</value>
+    <comment>RefreshDatagridCommand.cs : Please wait while dataset loading message</comment>
+  </data>
+  <data name="reasonsAre" xml:space="preserve">
+    <value>Reasons could be one or more of the following:</value>
+    <comment>FileNewCommand.cs : cant open dataset, reasons are</comment>
+  </data>
+  <data name="RegPkgsMenuPath" xml:space="preserve">
+    <value>Installation &gt; Install All required package(s) from CRAN.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky required packages menu path</comment>
+  </data>
+  <data name="RemoveSplit" xml:space="preserve">
+    <value>Remove Split First</value>
+    <comment>AUAnalysisCommandBase.cs : Remove split before running data manupulation command on a dataset</comment>
+  </data>
+  <data name="RemoveSplitForDataManipulation" xml:space="preserve">
+    <value>This function manipulates the dataset. Please remove the split and rerun the command.</value>
+    <comment>AUAnalysisCommandBase.cs : Dataset manipulation command is executing on a split dataset.</comment>
+  </data>
+  <data name="ReqRPkgMissing" xml:space="preserve">
+    <value>-OR required R package(s) are missing</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Required Rpackage is missing due to which load-refresh failed</comment>
+  </data>
+  <data name="ReqRPkgNotInstalled" xml:space="preserve">
+    <value>-Required R package is not installed.</value>
+    <comment>FileNewCommand.cs : cant open dataset, req R pkg not installed</comment>
+  </data>
+  <data name="RSideIssue" xml:space="preserve">
+    <value>-Some issue on R side (like: required R package not loaded).</value>
+    <comment>FileNewCommand.cs : cant open dataset, some issue on R side.</comment>
+  </data>
+  <data name="RSideIssue2" xml:space="preserve">
+    <value>5. Some issue on R side (like: required library not loaded, incorrect syntax).</value>
+    <comment>FileOpenCommand.cs : Error msg - R side issue</comment>
+  </data>
+  <data name="SaveAsFailed" xml:space="preserve">
+    <value>Save-As failed.</value>
+    <comment>FileSaveAsCommand.cs, FileSaveAsExcelCommand.cs, FileSaveCommand.cs : Save-As failed message</comment>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Save Changes?</value>
+    <comment>FileCloseCommand.cs : Save confirmation</comment>
+  </data>
+  <data name="SaveConfirmation" xml:space="preserve">
+    <value>Do you want to save changes?</value>
+    <comment>FileCloseCommand.cs : Save dataset confirmation</comment>
+  </data>
+  <data name="SaveExitCommandEditor" xml:space="preserve">
+    <value>Save &amp; Exit Command Editor?</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Save and Exit prompt for Rcommand editor</comment>
+  </data>
+  <data name="SaveScriptPromptBeforeOpen" xml:space="preserve">
+    <value>Do you want to save commands before loading new script?</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Save and open another script prompt for Rcommand editor</comment>
+  </data>
+  <data name="SaveToOtherFormat" xml:space="preserve">
+    <value>Save to other formats</value>
+    <comment>FileSaveCommand.cs : File can't be save in excel format, better save to other formats.</comment>
+  </data>
+  <data name="SelectModelTypeAndModel" xml:space="preserve">
+    <value>Select 'Model Type' and 'Model' from the dropdowns on the right of the toolbar of the BlueSky Statistics main window</value>
+    <comment>AUAnalysisCommandBase.cs : Select appropriate Model and Model type</comment>
+  </data>
+  <data name="sinkimageConfigKeyNotFound" xml:space="preserve">
+    <value>Key 'sinkimage' not found in config file. Aborting...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : sinkimage key is not found in configuration file</comment>
+  </data>
+  <data name="sinkregstrdgrphConfigKeyNotFound" xml:space="preserve">
+    <value>Key 'sinkregstrdgrph' not found in config file. You cannot run Graphics from Command Editor.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : singregstrdgrph key is not found in configuration file</comment>
+  </data>
+  <data name="tempsinkConfigKeyNotFound" xml:space="preserve">
+    <value>Key 'tempsink' not found in config file. Aborting...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : tempsink key is not found in configuration file</comment>
+  </data>
+  <data name="unexpected" xml:space="preserve">
+    <value>unexpected</value>
+    <comment>SyntaxEditorWindow.xaml.cs : if extra brackets in syntax</comment>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Warning</value>
+    <comment>FileOpenCommand.cs : warning</comment>
+  </data>
+  <data name="BSkyNotWorkReqPkgMissing" xml:space="preserve">
+    <value>BlueSky application may not work properly if the required R packages are missing.</value>
+    <comment>InstallRequiredPackagesCommand.cs : Required packages missing so BlueSky  may not work properly</comment>
+  </data>
+  <data name="CantInstallDialog" xml:space="preserve">
+    <value>Couldn't install Dialog</value>
+    <comment>ToolsInstallDialogs.cs : Dialog can't be installed.</comment>
+  </data>
+  <data name="CantInstallDialogNoOutFile" xml:space="preserve">
+    <value>Dialog cannot be installed as output file is not mentioned</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because output xml file is not mentioned.</comment>
+  </data>
+  <data name="CantInstallDialogNoTitle" xml:space="preserve">
+    <value>Title cannot be empty, Exiting Dialog install</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because title is not mentioned.</comment>
+  </data>
+  <data name="CantOpenFile" xml:space="preserve">
+    <value>Cannot open the file</value>
+    <comment>InspectorCommand.cs : Cant open file</comment>
+  </data>
+  <data name="CantOpenREditor" xml:space="preserve">
+    <value>Can't Open Command Editor. UAMenuCommand properties not set.</value>
+    <comment>ToolsSyntaxEditorCommand.cs : Unable to open R command editor</comment>
+  </data>
+  <data name="ConfirmDialogInstall" xml:space="preserve">
+    <value>Do you want to continue to install dialog?</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for installing the dialog.</comment>
+  </data>
+  <data name="ConfirmDialogOverwrite" xml:space="preserve">
+    <value>Do you want to overwrite the command</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for overwriting the dialog.</comment>
+  </data>
+  <data name="DialogInstalled" xml:space="preserve">
+    <value>Dialog installed.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog is installed.</comment>
+  </data>
+  <data name="DialogTitleEmpty" xml:space="preserve">
+    <value>Dialog Title Empty.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because title is not mentioned.</comment>
+  </data>
+  <data name="EnterPkgNameToLoad" xml:space="preserve">
+    <value>Enter package name that you want to load.</value>
+    <comment>LoadPackageCommand.cs : Enter the R package name that you want to load</comment>
+  </data>
+  <data name="ErrGettingInstalledPkgs" xml:space="preserve">
+    <value>Error Getting Installed Packages</value>
+    <comment>ShowInstalledPackagesCommand.cs : Error getting installed R packages</comment>
+  </data>
+  <data name="ErrGettingInstalledPkgs2" xml:space="preserve">
+    <value>Error while getting installed packages.</value>
+    <comment>ShowInstalledPackagesCommand.cs : Error getting installed R packages</comment>
+  </data>
+  <data name="ErrGettingLoadedPkgs" xml:space="preserve">
+    <value>Error Getting Loaded Packages</value>
+    <comment>ShowLoadedPackagesCommand.cs : Error getting loaded packages</comment>
+  </data>
+  <data name="ErrGettingLoadedPkgs2" xml:space="preserve">
+    <value>Error while getting loaded packages.</value>
+    <comment>ShowLoadedPackagesCommand.cs : Error getting loaded packages</comment>
+  </data>
+  <data name="ErrInstallingFromCRAN" xml:space="preserve">
+    <value>Error Installing CRAN Package</value>
+    <comment>InstallCRANPackageCommand.cs : Error Installing packages from CRAN</comment>
+  </data>
+  <data name="ErrInstallingRPkg" xml:space="preserve">
+    <value>Error Installing Package</value>
+    <comment>InstallPackageCommand.cs : Error Installing R package from zip</comment>
+  </data>
+  <data name="ErrInstallingRPkg2" xml:space="preserve">
+    <value>Error while installing package.</value>
+    <comment>InstallPackageCommand.cs : Error Installing R package from zip</comment>
+  </data>
+  <data name="ErrInstallReqPkgFrmCRAN" xml:space="preserve">
+    <value>Error while installing required packages from CRAN.</value>
+    <comment>InstallRequiredPackagesCRANCommand.cs : Error installing required R packages from CRAN</comment>
+  </data>
+  <data name="ErrLoadingRPkg2" xml:space="preserve">
+    <value>Error while loading package.</value>
+    <comment>InstallCRANPackageCommand.cs : R package loading error</comment>
+  </data>
+  <data name="ErrLoadingRPkgs" xml:space="preserve">
+    <value>Error Loading Package(s)</value>
+    <comment>LoadPackageFromListCommand.cs :  Error while Loading one or more pkgs</comment>
+  </data>
+  <data name="ErrLoadingUsrSessionPkg" xml:space="preserve">
+    <value>Error Loading User Session Package.</value>
+    <comment>LoadPackageCommand.cs : Error while loading user session R pkgs</comment>
+  </data>
+  <data name="ErrLoadingUsrSessionPkgs" xml:space="preserve">
+    <value>Error while loading user session package(s).</value>
+    <comment>LoadUserSessionPackagesCommand.cs : Error loading user session R packages</comment>
+  </data>
+  <data name="ErrModifyingMenu" xml:space="preserve">
+    <value>Error while modifying menu.</value>
+    <comment>ToolsMenuEditorCommand.cs : Error in editing menu (menu.xml)</comment>
+  </data>
+  <data name="ErrUninstallingPkg" xml:space="preserve">
+    <value>Error Uninstalling Package</value>
+    <comment>UninstallPackageCommand.cs : Error uninstalling R package</comment>
+  </data>
+  <data name="ErrUninstallingPkg2" xml:space="preserve">
+    <value>Error while uninstalling package.</value>
+    <comment>UninstallPackageCommand.cs : Error uninstalling R package</comment>
+  </data>
+  <data name="ErrUnloadingPkg" xml:space="preserve">
+    <value>Error Unloading Package</value>
+    <comment>UnloadPackageCommand.cs : Error in unloading R package</comment>
+  </data>
+  <data name="ErrUnloadingPkg2" xml:space="preserve">
+    <value>Error while unloading package.</value>
+    <comment>UnloadPackageCommand.cs : Error in unloading R package</comment>
+  </data>
+  <data name="InstallFailed" xml:space="preserve">
+    <value>Installation failed</value>
+    <comment>ToolsInstallDialogs.cs : Dialog installation failed.</comment>
+  </data>
+  <data name="InstallingFromCRAN" xml:space="preserve">
+    <value>Installing package(s) from CRAN</value>
+    <comment>InstallCRANPackageCommand.cs : Installing packages from CRAN</comment>
+  </data>
+  <data name="InstallingRPkgFromLocal" xml:space="preserve">
+    <value>Installing required R packages from local drive</value>
+    <comment>InstallRequiredPackagesCommand.cs : Installing required Rpkgs from local drive</comment>
+  </data>
+  <data name="InstallNewDialog" xml:space="preserve">
+    <value>Install New Dialog?</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for installing the dialog.</comment>
+  </data>
+  <data name="InstallPkg" xml:space="preserve">
+    <value>Install Package</value>
+    <comment>InstallPackageCommand.cs : Install R package from zip</comment>
+  </data>
+  <data name="InstallPkgsFromCRAN" xml:space="preserve">
+    <value>Install Package From CRAN</value>
+    <comment>PackageHelperMethods.cs : Install packages from CRAN</comment>
+  </data>
+  <data name="InstallReqRPkgFrmCRAN2" xml:space="preserve">
+    <value>Installing required R packages from CRAN</value>
+    <comment>InstallRequiredPackagesCRANCommand.cs :  installing required R packages from CRAN</comment>
+  </data>
+  <data name="InvalidPath" xml:space="preserve">
+    <value>Invalid Path.</value>
+    <comment>InstallRequiredPackagesCommand.cs : Invalid Path for zip pkgs</comment>
+  </data>
+  <data name="InvalidPath2" xml:space="preserve">
+    <value>Path not valid</value>
+    <comment>InstallRequiredPackagesCommand.cs : Invalid Path for zip pkgs</comment>
+  </data>
+  <data name="LoadLibrary" xml:space="preserve">
+    <value>Load Package</value>
+    <comment>LoadPackageCommand.cs : Load a R package</comment>
+  </data>
+  <data name="LoadPackages" xml:space="preserve">
+    <value>Load Package(s)</value>
+    <comment>LoadPackageFromListCommand.cs : Load one or more pkgs</comment>
+  </data>
+  <data name="NoRPkgFound" xml:space="preserve">
+    <value>No R package files found</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package zip files are not found in the given location</comment>
+  </data>
+  <data name="PkgMustAlreadyInstalled" xml:space="preserve">
+    <value>Note: package must be already installed using 'install package' option.</value>
+    <comment>LoadPackageCommand.cs : The R package must already be installed on the system before loading it in memory</comment>
+  </data>
+  <data name="RestartBSkyApp" xml:space="preserve">
+    <value>Restart BlueSky Application</value>
+    <comment>UpdateBlueSkyPacakgesCommand.cs : Restart BlueSky application after updating BlueSky R package</comment>
+  </data>
+  <data name="RestartToApplyChanges" xml:space="preserve">
+    <value>You have to restart the Application for the changes to take effect.</value>
+    <comment>ToolsInstallDialogs.cs : Restart BlueSky applicaion to apply changes.</comment>
+  </data>
+  <data name="RestartToApplyChanges2" xml:space="preserve">
+    <value>Changes will take effect after restarting the application!</value>
+    <comment>ToolsInstallDialogs.cs : Restart BlueSky applicaion to apply changes.</comment>
+  </data>
+  <data name="RPkgInstallStatus" xml:space="preserve">
+    <value>Package(s) Installation Status:</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package install status</comment>
+  </data>
+  <data name="RPkgNameCaseSensitive" xml:space="preserve">
+    <value>Package names are case sensitive. Please check your R package name.</value>
+    <comment>InstallCRANPackageCommand.cs : R package names are case sensitive.</comment>
+  </data>
+  <data name="RZipPkgNotInPath" xml:space="preserve">
+    <value>The path you have selected does not contain any R zip package files. Try again.</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package zip files are not found in the given location</comment>
+  </data>
+  <data name="ShowInstalledRPkgs" xml:space="preserve">
+    <value>Show Installed Packages</value>
+    <comment>ShowInstalledPackagesCommand.cs : Show installed R packages</comment>
+  </data>
+  <data name="ShowLoadedPkgs" xml:space="preserve">
+    <value>Show Loaded Packages</value>
+    <comment>ShowLoadedPackagesCommand.cs : Show loaded packages</comment>
+  </data>
+  <data name="UninstallPkg" xml:space="preserve">
+    <value>Uninstall Package</value>
+    <comment>UninstallPackageCommand.cs : Unistall R package</comment>
+  </data>
+  <data name="UnloadPkg" xml:space="preserve">
+    <value>Unload Package</value>
+    <comment>UnloadPackageCommand.cs : Unload a R package</comment>
+  </data>
+  <data name="UserPkgs" xml:space="preserve">
+    <value>User Package(s)</value>
+    <comment>LoadUserSessionPackagesCommand.cs :User packages from the list. Maintained from configuration window</comment>
+  </data>
+  <data name="UserSessListEmpty" xml:space="preserve">
+    <value>- User's Session List is Empty</value>
+    <comment>LoadUserSessionPackagesCommand.cs : User session package list is empty</comment>
+  </data>
+  <data name="UsrSessPkgsLoadFailed" xml:space="preserve">
+    <value>One or more User Session Package(s) failed to load.</value>
+    <comment>LoadUserSessionPackagesCommand.cs : One of more user packages failed to load</comment>
+  </data>
+  <data name="WarnOverwrite" xml:space="preserve">
+    <value>Warning! Overwrite?</value>
+    <comment>ToolsInstallDialogs.cs : warningfor overwriting the dialog.</comment>
+  </data>
+  <data name="CloseDataset" xml:space="preserve">
+    <value>Close Dataset</value>
+    <comment>DyVIBlendAnalyser.cs : Close Dataset header text</comment>
+  </data>
+  <data name="OpenDataset" xml:space="preserve">
+    <value>Open Dataset</value>
+    <comment>DyVIBlendAnalyser.cs : Open Dataset header text</comment>
+  </data>
+  <data name="SaveDataset" xml:space="preserve">
+    <value>Save Dataset</value>
+    <comment>DyVIBlendAnalyser.cs : Save Dataset header text</comment>
+  </data>
+  <data name="BSkyOutFileBadFormat" xml:space="preserve">
+    <value>Corrupt file or not a BlueSky Output format!</value>
+    <comment>BSkyOutputGenerator.cs : message when output file is corrupt or different format</comment>
+  </data>
+  <data name="BSkyOutFileNotFound" xml:space="preserve">
+    <value>BSky Ouput File not Found!</value>
+    <comment>BSkyOutputGenerator.cs : message when output file is not found</comment>
+  </data>
+  <data name="ErrorExecuting" xml:space="preserve">
+    <value>Error executing:</value>
+    <comment>RService.cs : text - error executing</comment>
+  </data>
+  <data name="ErrorExecutingTitle" xml:space="preserve">
+    <value>R Syntax Execution Error!</value>
+    <comment>RService.cs : text - error executing title for message box</comment>
+  </data>
+  <data name="FloatingLicServerUnreachable" xml:space="preserve">
+    <value>Unable to reach license server</value>
+    <comment>BSkyFloatingLicenseService.cs : Title for messagebox about server connection error</comment>
+  </data>
+  <data name="FloatingLicWarningSaveWork" xml:space="preserve">
+    <value>PLEASE SAVE YOUR WORK BEFORE APP BECOMES UNUSABLE.</value>
+    <comment>BSkyFloatingLicenseService.cs : Warning message to save before app becomes unusable as the connection to server is lost</comment>
+  </data>
+  <data name="MsgChosingRFromRegistry" xml:space="preserve">
+    <value>The configuration setting for overriding the default R installation is incorrect. We will choose the R version by inspecting the registry.</value>
+    <comment>RService.cs : R Home will be picked from registry</comment>
+  </data>
+  <data name="MsgSetRHome" xml:space="preserve">
+    <value>You can set the correct path in configuration settings, once application is launched</value>
+    <comment>RService.cs : set RHome path after BSky launch</comment>
+  </data>
+  <data name="MultiRPkgInstallMsg" xml:space="preserve">
+    <value>Mulitple packages must be comma separated and no quotes should be used.</value>
+    <comment>RPackageManager.cs : message about format to be used when installing multiple Rpackages</comment>
+  </data>
+  <data name="BSkyListBox_TypeDescription" xml:space="preserve">
+    <value>ListBox Control allows you to display a listbox with pre-configured items. This is a read only property. Click on each property in the grid to see the configuration options for this listbox control.</value>
+    <comment>BSkyListBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="ControlNameEntered" xml:space="preserve">
+    <value>The control name you have entered </value>
+    <comment>Behaviour.cs : a Message </comment>
+  </data>
+  <data name="ControlPropertyNotValid" xml:space="preserve">
+    <value>is not a valid property for the control</value>
+    <comment>Behaviour.cs : a Message</comment>
+  </data>
+  <data name="EnteredEmptyControlName" xml:space="preserve">
+    <value>You have entered an empty value for control name, please review the control names of your controls in the grid and enter a valid value</value>
+    <comment>Behaviour.cs : a Message about entering empty control name</comment>
+  </data>
+  <data name="EnteredEmptyPropertyName" xml:space="preserve">
+    <value>You have entered an empty property name, please review the property names in the grid and enter a valid value</value>
+    <comment>Behaviour.cs : a Message</comment>
+  </data>
+  <data name="EnteredInvalidControlName" xml:space="preserve">
+    <value>You have entered an invalid control name or the control is not valid for defining behaviours (you cannot set behaviours on labels and button control types), please review the control names of your controls in the grid and enter a valid value</value>
+    <comment>Behaviour.cs : a Message about entering invalid control name</comment>
+  </data>
+  <data name="EnteredInvalidProperty" xml:space="preserve">
+    <value>You have entered an invalid property name, please review the property names in the grid and enter a valid value</value>
+    <comment>Behaviour.cs : a Message about entring invalid property</comment>
+  </data>
+  <data name="PropertyNameEntered" xml:space="preserve">
+    <value>The property name you have entered</value>
+    <comment>Behaviour.cs : a Message</comment>
+  </data>
+  <data name="UnmatchingPropertyName" xml:space="preserve">
+    <value> does not match the property name</value>
+    <comment>Behaviour.cs : a Message</comment>
+  </data>
+  <data name="BSkyBrowse_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled.   To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyBrowse_EnabledDescription" xml:space="preserve">
+    <value>Default is True(enabled). This property controls whether the default state of this browse control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can click this control to select a file, when disabled, you cannot click the control.For example, you may want the initial state of the control to be disabled, however you may want to enable it based on a selection made in another control</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyBrowse_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyBrowse_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyBrowse_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyBrowse_TextDescription" xml:space="preserve">
+    <value>Optional property. Enter a caption for this browse control.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyBrowse_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyBrowse_TypeDescription" xml:space="preserve">
+    <value>The browse control allows you select files from your desktop. This is a read only property. Click on each property in the grid to see the configuration options for this browse control.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyBrowse_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyButton_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled.</value>
+    <comment>BSkyButton.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyButton_DesignerDescription" xml:space="preserve">
+    <value>This property allows you to create a sub dialog. Click the property and then click the ellipses button to create a sub-dialog.</value>
+    <comment>BSkyButton.cs : Description attribute text for Designer property</comment>
+  </data>
+  <data name="BSkyButton_EnabledDescription" xml:space="preserve">
+    <value>Default is True(enabled). This property controls whether the default state of this button control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can click on the button, when disabled, you cannot click on the button.For example, you may want the initial state of the button to be disabled, however you may want to enable it based on an entry made in a textbox control.</value>
+    <comment>BSkyButton.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyButton_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyButton.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyButton_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyButton.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyButton_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog . You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyButton.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyButton_TextDescription" xml:space="preserve">
+    <value>Optional property. Enter a caption for the button.</value>
+    <comment>BSkyButton.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyButton_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyButton.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyButton_TypeDescription" xml:space="preserve">
+    <value>The Button control allows you to create a button which when clicked brings up a sub-dialog. The sub-dialog property allows you to define a sub-dialog. Click on each property in the grid to see the configuration options for the button control.</value>
+    <comment>BSkyButton.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyButton_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyButton.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyCanvas_splitProcessingDescription" xml:space="preserve">
+    <value>Determines whether split processing is enabled or disabled. For example for data manipulation commands, split processing should be turned off.</value>
+    <comment>BSkyCanvas.cs : Description attribute text for splitProcessing property</comment>
+  </data>
+  <data name="BSkyCheckBox_CheckedChangeBehaviourDescription" xml:space="preserve">
+    <value>Default is empty(no rule). Use this optional property to define rules that trigger property changes in other controls, based on the change in state of this checkbox control. For example, if a user checks the checkbox, enable a textbox control to capture additional parameters. To define a rule, click in the property and click the elipses button.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for CheckedChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyCheckBox_EnabledDescription" xml:space="preserve">
+    <value>Default is True(enabled). This property controls whether the default state of the control is enabled or disabled. For enabled, select True, for disabled select False. For example, you may want the initial state of the checkbox to be disabled, however you may want to enable it based on a selection made in another control</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyCheckBox_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyCheckBox_IsSelectedDescription" xml:space="preserve">
+    <value>Default value is False(unchecked). This property sets the default state of the checkbox. For checked, select True, for unchecked, select False</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for IsSelected property</comment>
+  </data>
+  <data name="BSkyCheckBox_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyCheckBox_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the canvas. You will not be able to save a dialog definition unless every control on the dialog has a unique name.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyCheckBox_TextDescription" xml:space="preserve">
+    <value>Optional property. Enter descriptive text to be displayed with this checkbox.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyCheckBox_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyCheckBox_TypeDescription" xml:space="preserve">
+    <value>Checkbox Control. This is a read only property. Click on each property in the grid to see the configuration options for the checkbox control.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyCheckBox_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyComboBox_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled. For example, to ensure that the dialog cannot be executed unless one or more items are selected in this combobox control, set the default value of canexecute for this control to false, then define a rule that triggers when the NoItemsSelected property is greater than 0 (This happens when one or more variables are selected in this combobox control) and sets the canexecute property to 'true' which enables the OK button on the dialog . Remember to set another rule to set canexecute to false when All items are deselected from this control and the value of the NoItemsSelected property is 0).  To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyComboBox_ComboBoxEntriesDescription" xml:space="preserve">
+    <value>Click the property name and then click the lookup button to enter entries that will display when you click the combobox control</value>
+    <comment>BSkyComboBox.cs : Description attribute text for ComboBoxEntries property</comment>
+  </data>
+  <data name="BSkyComboBox_DefaultSelectionDescription" xml:space="preserve">
+    <value>Optional property. This is the item that will be displayed by default in the combobox.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for DefaultSelection property</comment>
+  </data>
+  <data name="BSkyComboBox_EnabledDescription" xml:space="preserve">
+    <value>Default is True(enabled). This property controls whether the default state of this combobox control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can select items in this control, when disabled, you cannot interact with the control. For example, you may want the initial state of the combobox control to be disabled, however you may want to enable it based on a selection made in another control</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Enabled  property</comment>
+  </data>
+  <data name="BSkyComboBox_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyComboBox_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyComboBox_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyComboBox_NoItemsSelectedDescription" xml:space="preserve">
+    <value>This is a read only property. Its value gets set automatically to the number of items in the combobox that are selected. This property can be used for defining rules. For example, you want the OK button disabled unless there are one or more items selected in the combobox. If nothing is selected in the combobox you define a rule that checks the NoItemsSelected property, if it is 0, set canexecute to false.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for NoItemsSelected property</comment>
+  </data>
+  <data name="BSkyComboBox_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>Default is empty(no rules). Use this optional property to define rules that trigger property changes in this or other controls, based on the changes in the items selected in this combobox control. For example, to ensure that the dialog cannot be executed unless one or more items are selected in this combobox control, set the default value of the canexecute property for this control to false, then define a rule that triggers when the NoItemsSelected property is greater than 0 (This happens when one or more items are selected in this combobox control) and sets the canexecute property to 'true' which enables the OK button on the dialog. (Remember to set another rule to set canexecute to false when all items are deselected from this combobox control and the value of the itemscount property is 0). This ensures that the dialog cannot be executed unless there are one or more items selected in this control. To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for SelectionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyComboBox_SyntaxDescription" xml:space="preserve">
+    <value>Default value of %%VALUE%% indicates that all the selected items in the combobox control will be replaced by the control name in the syntax. These values will be used to parameterize the syntax string created when the dialog is executed. If you want a different value, for example 'test' to replace the control name, replace %%VALUE%% with 'test' (you don't need to enter the single quotes)</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkyComboBox_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyComboBox_TypeDescription" xml:space="preserve">
+    <value>A ComboBox Control is a combination of a drop-down list or list box and a single-line editable textbox. A combobox control allows the user to either type a value directly into the control or pick a value from a listbox.This is a read only property. Click on each property in the grid to see the configuration options for the combobox control.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyComboBox_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled. For example, to ensure that the dialog cannot be executed unless a selection is made in this combobox control, set the default value of canexecute for this control to false, then define a rule that triggers when a selection is made and sets the canexecute property to 'true' which enables the OK button on the dialog. To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_ComboBoxEntriesDescription" xml:space="preserve">
+    <value>Click the property name and then click the lookup button to enter entries that will display when you click the combobox control</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for ComboBoxEntries property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_DefaultSelectionDescription" xml:space="preserve">
+    <value>Optional property. This is the item that will be displayed by default in the combobox.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for DefaultSelection property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_EnabledDescription" xml:space="preserve">
+    <value>Default is True(enabled). This property controls whether the default state of this combobox control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can select items in this control, when disabled, you cannot interact with the control. For example, you may want the initial state of the combobox control to be disabled, however you may want to enable it based on a selection made in another control</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_NothingSelectedDescription" xml:space="preserve">
+    <value>Default value is the empty string. This is the value that substitutes the control name in the syntax when no items are selected in the combobox.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for NothingSelected property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_prefixSelectedValueDescription" xml:space="preserve">
+    <value>Default value is the empty string. If an item is selected in the combobox, the item is prefixed with this string.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for prefixSelectedValue property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>Default is empty(no rules). Use this optional property to define rules that trigger property changes in this or other controls, based on a change in the item selected in this combobox control. For example, to ensure that the dialog cannot be executed unless one item is selected in this combobox control, set the default value of the canexecute property for this control to false, then define a rule that triggers when an item is selected that sets the canexecute property to 'true' which enables the OK button on the dialog. This ensures that the dialog cannot be executed unless there is one item selected in this control. To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for SelectionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_SyntaxDescription" xml:space="preserve">
+    <value>Default value of %%VALUE%% indicates that the selected item in the combobox control will be replaced by the control name in the syntax. These values will be used to parameterize the syntax string created when the dialog is executed. If you want a different value, for example 'test' to replace the control name, replace %%VALUE%% with 'test' (you don't need to enter the single quotes)</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_TypeDescription" xml:space="preserve">
+    <value>An Editable ComboBox Control is a combination of a drop-down list or list box and a single-line editable textbox. A combobox control allows the user to either type a value directly into the control or pick a value from a listbox.This is a read only property. Click on each property in the grid to see the configuration options for the combobox control.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyGroupBox_HeaderTextDescription" xml:space="preserve">
+    <value>Optional property. Enter a caption for this groupbox</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for HeaderText property</comment>
+  </data>
+  <data name="BSkyGroupBox_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyGroupBox_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyGroupBox_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyGroupBox_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyGroupBox_TypeDescription" xml:space="preserve">
+    <value>GroupBox Control allows you to group related controls. This is a read only property. Click on each property in the grid to see the configuration options for the groupbox control.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyGroupBox_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyLabel_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyLabel_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyLabel_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyLabel_TextDescription" xml:space="preserve">
+    <value>Optional property. Enter a caption (descriptive text) that will be displayed.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyLabel_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyLabel_TypeDescription" xml:space="preserve">
+    <value>Allows you to add descriptive text associated with another control, for example you can use the label control to display a caption above your source variable list titled 'Source Variable List' .</value>
+    <comment>BSkyLabel.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyLabel_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyListBox_MappingMasterSlaveEntriesDescription" xml:space="preserve">
+    <value>Click this property and then click the lookup button to create a mapping between items in the master listbox and the items that will be displayed in the slave listbox.</value>
+    <comment>BSkyMasterListBox.cs : Description attribute text for MappingMasterSlave property</comment>
+  </data>
+  <data name="BSkyListBox_SlaveListBoxNameDescription" xml:space="preserve">
+    <value>This is the name of the slave listbox which will get populated with predefined items based on the items selected in the master listbox. Any listbox control can be a slave listbox.</value>
+    <comment>BSkyMasterListBox.cs : Description attribute text for SlaveListBoxNameproperty</comment>
+  </data>
+  <data name="BSkyListBox_TypeCategory" xml:space="preserve">
+    <value>Control Settings</value>
+    <comment>BSkyListBox.cs : Category attribute text for Type property</comment>
+  </data>
+  <data name="BSkyMasterListBox_TypeDescription" xml:space="preserve">
+    <value>A Master listbox allows you to setup a listbox with items which when selected populate another listbox with predefined values. This is a read only property. Click on each property in the grid to see the configuration options for this listbox control.</value>
+    <comment>BSkyMasterListBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled. For example, to ensure that the dialog cannot be executed unless a selection is made in this combobox control, set the default value of canexecute for this control to false, then define a rule that triggers when a selection is made and sets the canexecute property to 'true' which enables the OK button on the dialog. To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyLabel.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_ComboBoxEntriesDescription" xml:space="preserve">
+    <value>Click the property name and then click the lookup button to enter entries that will display when you click the combobox control</value>
+    <comment>BSkyLabel.cs : Description attribute text for ComboBoxEntries property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_EnabledDescription" xml:space="preserve">
+    <value>Default is True(enabled). This property controls whether the default state of this combobox control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can select items in this control, when disabled, you cannot interact with the control. For example, you may want the initial state of the combobox control to be disabled, however you may want to enable it based on a selection made in another control</value>
+    <comment>BSkyLabel.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_NothingSelectedDescription" xml:space="preserve">
+    <value>Default value is the empty string. This is the value that substitutes the control name in the syntax when no items are selected in the combobox.</value>
+    <comment>BSkyLabel.cs : Description attribute text for NothingSelected property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>Default is empty(no rules). Use this optional property to define rules that trigger property changes in this or other controls, based on a change in the item selected in this combobox control. For example, to ensure that the dialog cannot be executed unless one item is selected in this combobox control, set the default value of the canexecute property for this control to false, then define a rule that triggers when an item is selected that sets the canexecute property to 'true' which enables the OK button on the dialog. This ensures that the dialog cannot be executed unless there is one item selected in this control. To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyLabel.cs : Description attribute text for SelectionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_SyntaxDescription" xml:space="preserve">
+    <value>Default value of %%VALUE%% indicates that the selected item in the combobox control will be replaced by the control name in the syntax. These values will be used to parameterize the syntax string created when the dialog is executed. If you want a different value, for example 'test' to replace the control name, replace %%VALUE%% with 'test' (you don't need to enter the single quotes)</value>
+    <comment>BSkyLabel.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_TypeDescription" xml:space="preserve">
+    <value>A Non Editable ComboBox Control allows you to select a single item from predefined items. This is a read only property. Click on each property in the grid to see the configuration options for the combobox control.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyRadioButton_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled.  To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyRadioButton_CheckedChangeBehaviourDescription" xml:space="preserve">
+    <value>Default is empty(no rules). Use this optional property to define rules that trigger property changes in this or other controls, based on the changes in state of this radiobutton control. For example, lets assume that a certain textbox control needs to be enabled when this radiobutton is selected, you will set the default state of this radio button as unselected and then define a rule that gets triggered when the radiobutton is selected (the radiobuttons isselected property is set to true) and sets the Enabled property on the textbox control to true.  To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for CheckedChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyRadioButton_EnabledDescription" xml:space="preserve">
+    <value>Default is True(enabled). This property controls whether the default state of this radiobutton control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can select this radiobutton, when disabled, you cannot select the radiobutton.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyRadioButton_GroupNameDescription" xml:space="preserve">
+    <value>This is a required property. This is the name of the radio group control that contains the radiobutton. All radiobuttons in the same radio group control must have the same name. For example radiobuttons A, B and C belong to the same radio group control, if B is selected, and you then click on A, A gets selected and B deselected.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for GroupName property</comment>
+  </data>
+  <data name="BSkyRadioButton_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyRadioButton_IsSelectedDescription" xml:space="preserve">
+    <value>Default value is False(unchecked). This property determines whether the radiobutton is checked or unchecked.  For checked, select True, for unchecked, select False</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for IsSelected property</comment>
+  </data>
+  <data name="BSkyRadioButton_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyRadioButton_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyRadioButton_SyntaxDescription" xml:space="preserve">
+    <value>Default value of %%VALUE%% indicates that the name of the radiogroup control that this radiobutton belongs to will be replaced by TRUE in the syntax when this radiobutton is selected. If you want a different value to replace the name of the radiogroup control i.e. instead of TRUE replace 1, then replace %%VALUE%% by 1. You can also type in %DATASET% to replace the name of the current dataset when the radiobutton is selected. The syntax property allows you to parameterize the syntax string created when the dialog is executed.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkyRadioButton_TextDescription" xml:space="preserve">
+    <value>Optional property. Enter a caption for this radiobutton.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyRadioButton_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyRadioButton_TypeDescription" xml:space="preserve">
+    <value>RadioButton Control. This is a read only property. Click on each property in the grid to see the configuration options for the radiobutton control.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyRadioButton_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyRadioGroup_HeaderTextDescription" xml:space="preserve">
+    <value>Optional property. Enter a caption for this RadioGroup control.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for HeaderText property</comment>
+  </data>
+  <data name="BSkyRadioGroup_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyRadioGroup_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyRadioGroup_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyRadioGroup_RadioButtonsDescription" xml:space="preserve">
+    <value>Add one or more radiobuttons to the radio group control by clicking in the property and clicking the ellipses button.  When adding radiobuttons, you need to enter a name, a descriptive text and select the default state (selected or unselected) for each radiobutton. Hit the Enter key to add the next radiobutton.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for RadioButtons property</comment>
+  </data>
+  <data name="BSkyRadioGroup_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyRadioGroup_TypeDescription" xml:space="preserve">
+    <value>The RadioGroup control allows you to setup a group of radiobuttons. This is a read only property. Click on each property in the grid to see the configuration options for the radiogroup control.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyRadioGroup_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkySourceList_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled.</value>
+    <comment>BSkySourceList.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkySourceList_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>Default is empty(no rule). Use this optional property to define rules that trigger property changes in this or other controls, based on the change in state of this variable list control.</value>
+    <comment>BSkySourceList.cs : Description attribute text for SelectionChangeBehaviour  property</comment>
+  </data>
+  <data name="BSkySourceList_SyntaxDescription" xml:space="preserve">
+    <value>Default value of %%VALUE%% indicates that all the variables in the variable list will be replaced by the control name in the syntax. These values will be used to parameterize the syntax string created when the dialog is executed. If you want a different value, for example 'test' to replace the control name, replace %%VALUE%% with 'test' (you don't need to enter the single quotes). You typically will not use a source variable list in your syntax.</value>
+    <comment>BSkySourceList.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkySourceList_TypeDescription" xml:space="preserve">
+    <value>The source variable list control displays all the variables from the active dataset. Apply filters if you want to filter out variables from this control. This is a read only property. Click on each property in the grid to see the configuration options for the source variable list control.</value>
+    <comment>BSkySourceList.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyTargetList_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled. For example, to ensure that the dialog cannot be executed unless one or more items are dragged and dropped into this variable list control, set the default value of canexecute for this control to false, then define a rule that triggers when the itemscount property is greater than 0 (This happens when one or more variables are dragged and droped into this variable control) and sets the canexecute property to 'true' which enables the OK button on the dialog . Remember to set another rule to set canexecute to false when All items are removed from this variable list and the value of the itemscount property is 0).  To define a rule, click in the property and then click the elipses button.</value>
+    <comment>BSkyTargetList.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyTargetList_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>Default is empty(no rules). Use this optional property to define rules that trigger property changes in this or other controls, based on the changes in state of this variable list control. For example, to ensure that the dialog cannot be executed unless one or more items are dragged and dropped into this variable list control, set the default value of the canexecute property for this control to false, then define a rule that triggers when the itemscount property is greater than 0 (This happens when one or more variables are dragged and droped into this variable control) and sets the canexecute property to 'true' which enables the OK button on the dialog (remember to set another rule to set canexecute to false when All items are removed from this variable list and the value of the itemscount property is 0). This ensures that the dialog cannot be executed unless there are one or more items in this variable list control. To define a rule, click in the property and then click the elipses button.</value>
+    <comment>BSkyTargetList.cs : Description attribute text for SelctionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyTargetList_SyntaxDescription" xml:space="preserve">
+    <value>Default value of %%VALUE%% indicates that all the variables in the variable list control will be replaced by the control name in the syntax. These values will be used to parameterize the syntax string created when the dialog is executed. If you want a different value, for example 'test' to replace the control name, replace %%VALUE%% with 'test' (you don't need to enter the single quotes)</value>
+    <comment>BSkyTargetList.cs : Description attribute text for SelctionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyTargetList_TypeDescription" xml:space="preserve">
+    <value>The destination variable list contains the variables you want to analyze. Variables are copied/moved from the source variable list to the destination variable list. This is a read only property. Click on each property in the grid to see the configuration options for the destination variable list control.</value>
+    <comment>BSkyTargetList.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyVariableList_SyntaxDescription" xml:space="preserve">
+    <value>Default value of %%VALUE%% indicates that all the variables in the listbox will be replaced by the control name in the syntax. These values will be used to parameterize the syntax string created when the dialog is executed. If you want a different value, for example 'test' to replace the control name, replace %%VALUE%% with 'test' (you don't need to enter the single quotes)</value>
+    <comment>BSkyVariableList.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="CantAssignToProp" xml:space="preserve">
+    <value>cannot be assigned to the property</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="CantFind" xml:space="preserve">
+    <value>cannot be found.</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="CantSetValue" xml:space="preserve">
+    <value>cannot be set to value</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="CanvasPropNotSet1" xml:space="preserve">
+    <value>The propertyname for a behavior on the control</value>
+    <comment>BSkyCanvas.cs : msg for property not set -part1</comment>
+  </data>
+  <data name="CanvasPropNotSet2" xml:space="preserve">
+    <value>is not set. Please open the dialog in dialog editor and click define rules on the control</value>
+    <comment>BSkyCanvas.cs : msg for property not set -part2</comment>
+  </data>
+  <data name="CanvasPropNotSet3" xml:space="preserve">
+    <value>and check the value for propertyname.</value>
+    <comment>BSkyCanvas.cs : msg for property not set -part3</comment>
+  </data>
+  <data name="CheckBehaviour" xml:space="preserve">
+    <value>Please check the behaviours of the control</value>
+    <comment>BSkyCanvas.cs : msg for  check behaviour of the control</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect1" xml:space="preserve">
+    <value>A behaviour of the control</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part1</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect2" xml:space="preserve">
+    <value>is configured incorrectly.</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part2</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect3" xml:space="preserve">
+    <value>There is a type mismatch between the property name</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part3</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect4" xml:space="preserve">
+    <value>and the value</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part4</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect5" xml:space="preserve">
+    <value>Please open the dialog in the dialog editor program and correct</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part5</comment>
+  </data>
+  <data name="CtrlListBox_CanExecuteDescription" xml:space="preserve">
+    <value>Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. If CanExecute =true for all controls on the dialog and contained sub-dialogs, the OK button is enabled, if CanExecute =false for any one control on the dialog or contained sub-dialogs, the OK button is disabled.</value>
+    <comment>CtrlListBox.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="CtrlListBox_EnabledDescription" xml:space="preserve">
+    <value>Default is True(enabled). This property controls whether the default state of this variable list control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can select items in this control, when disabled, you cannot interact with the control. For example, you may want the initial state of the variable list control to be disabled, however you may want to enable it based on a selection made in another control</value>
+    <comment>CtrlListBox.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="CtrlListBox_HeightDescription" xml:space="preserve">
+    <value>Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="CtrlListBox_LeftDescription" xml:space="preserve">
+    <value>Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="CtrlListBox_ListBoxEntriesDescription" xml:space="preserve">
+    <value>This property allows you to enter the items that will be displayed in this listbox. Click in the property and then click the button to enter values.</value>
+    <comment>CtrlListBox.cs : Description attribute text for ListBoxEntries property</comment>
+  </data>
+  <data name="CtrlListBox_MultiSelectDescription" xml:space="preserve">
+    <value>Default is false(you can only select a single item). This property controls whether you can select a single item or multiple items in this control. You can select a single item if MultiSelect =false, multiple items if MultiSelect =true.</value>
+    <comment>CtrlListBox.cs : Description attribute text for MultiSelect property</comment>
+  </data>
+  <data name="CtrlListBox_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="CtrlListBox_SelectedItemsCountDescription" xml:space="preserve">
+    <value>This property keep tracks off the number of items that are selected. You can use this property to define rules. This is a readonly property.</value>
+    <comment>CtrlListBox.cs : Description attribute text for SelectedItemsCount property</comment>
+  </data>
+  <data name="CtrlListBox_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>Default is empty(no rules). Use this optional property to define rules that trigger property changes in this or other controls, based on the changes in state of this listbox control. To define a rule, click in the property and then click the ellipses button.</value>
+    <comment>CtrlListBox.cs : Description attribute text for SelectionChangeBehaviour property</comment>
+  </data>
+  <data name="CtrlListBox_SubstituteSettingsDescription" xml:space="preserve">
+    <value>Default value is UseComma. This setting allows you to set how the variables contained in this variable list control will replace the control name in the syntax string. To see additional details, click in the property and click the ellipses button.</value>
+    <comment>CtrlListBox.cs : Description attribute text for SubstituteSettings  property</comment>
+  </data>
+  <data name="CtrlListBox_SyntaxDescription" xml:space="preserve">
+    <value>Default value of %%VALUE%% indicates that all the items in the listbox will be replaced by the control name in the syntax. These values will be used to parameterize the syntax string created when the dialog is executed. If you want a different value, for example 'test' to replace the control name, replace %%VALUE%% with 'test' (you don't need to enter the single quotes)</value>
+    <comment>CtrlListBox.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="CtrlListBox_TopDescription" xml:space="preserve">
+    <value>Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="CtrlListBox_WidthDescription" xml:space="preserve">
+    <value>Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="CtrlNameUsedInSyntax" xml:space="preserve">
+    <value>Name is used in CommandString in Dialog XAML.</value>
+    <comment>OutputHelper.cs : a message part2</comment>
+  </data>
+  <data name="CtrlNotInXaml" xml:space="preserve">
+    <value>Dialog XAML does not define control named:</value>
+    <comment>OutputHelper.cs : a message part1</comment>
+  </data>
+  <data name="HelpMustBeValidFileURL" xml:space="preserve">
+    <value>The help file must be a valid file name or Url</value>
+    <comment>BSkyCanvas.cs : msg about help file name or URL</comment>
+  </data>
+  <data name="InCtrl" xml:space="preserve">
+    <value>in control</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="InDialogEditor" xml:space="preserve">
+    <value>in the dialog editor program</value>
+    <comment>BSkyCanvas.cs : msg for - in dialog designer program</comment>
+  </data>
+  <data name="NotValidCtrlProp" xml:space="preserve">
+    <value>is not a valid property of the control</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="PropCantAcceptVal" xml:space="preserve">
+    <value>as the property type cannot accept that value.</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="SubDialogNotCreated" xml:space="preserve">
+    <value>Sub dialog has not been created</value>
+    <comment>BSkyButton.cs : Message text about sub dialog not created</comment>
+  </data>
+  <data name="TheCtrlName" xml:space="preserve">
+    <value>The control name</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="TheExceptionGenerated" xml:space="preserve">
+    <value>The following exception was generated</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="ThePropName" xml:space="preserve">
+    <value>The property name</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="TheValue" xml:space="preserve">
+    <value>The value</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="UndefCtrl" xml:space="preserve">
+    <value>Undefined Control!</value>
+    <comment>OutputHelper.cs : title of msg box</comment>
+  </data>
+  <data name="EnterValidMasterNameProp" xml:space="preserve">
+    <value>You need to enter a valid value for the Master Name property in the property grid</value>
+    <comment>MasterSlaveEditor.cs : msg</comment>
+  </data>
+  <data name="EnterValidNameSlave" xml:space="preserve">
+    <value>You need to enter a valid name for the slave listbox in the property grid</value>
+    <comment>MasterSlaveEditor.cs : msg</comment>
+  </data>
+  <data name="EnterValidSlaveNameProp" xml:space="preserve">
+    <value>You need to enter a valid value for the Slave Name property in the property grid</value>
+    <comment>MasterSlaveEditor.cs : msg</comment>
+  </data>
+  <data name="EnterValidValue" xml:space="preserve">
+    <value>You need to enter a valid value for the Name property in the property grid</value>
+    <comment>ComboBoxEditor.cs , ListBoxEditor.cs : message about entering the valid value.</comment>
+  </data>
+  <data name="NameCantBeEmpty" xml:space="preserve">
+    <value>Name should not be empty</value>
+    <comment>RadioGroupEditor.cs : msg</comment>
+  </data>
+  <data name="PlzEnterUniqueName" xml:space="preserve">
+    <value>You have already created a control with the name  \"{0}\", please enter a unique name</value>
+    <comment>RadioGroupEditor.cs : msg</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine1a" xml:space="preserve">
+    <value>BlueSky Statistics will open a R data file that contains an object of class data.frame in the grid, to proceed click OK.</value>
+    <comment>FileOpenCommand.cs : First line of warning message that is related to opening a .RData file</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine1b" xml:space="preserve">
+    <value>For EXPERIENCED R PROGRAMMERS ONLY who have used the R syntax editor to create R objects, opening R data files that contain objects with the same name can overwrite the existing objects you created.</value>
+    <comment>FileOpenCommand.cs : Second line of warning message that is related to opening a .RData file</comment>
+  </data>
+  <data name="NewOutputWin" xml:space="preserve">
+    <value>New Output Window</value>
+    <comment>OutputMenuHandler.cs : Output menu sub item, New Output Window</comment>
+  </data>
+  <data name="OpenOutput" xml:space="preserve">
+    <value>Open Output</value>
+    <comment>OutputMenuHandler.cs : Output menu sub item, Open output from file</comment>
+  </data>
+  <data name="OutputMenu" xml:space="preserve">
+    <value>Output</value>
+    <comment>OutputMenuHandler.cs : Output menu name</comment>
+  </data>
+  <data name="SaveOutput" xml:space="preserve">
+    <value>Save Output</value>
+    <comment>OutputMenuHandler.cs : Output menu sub item, save output to file</comment>
+  </data>
+  <data name="SaveAsSucces" xml:space="preserve">
+    <value>Saved successfully:</value>
+    <comment>FileSaveAsCommand.cs : Save-As on the current dataset is successfull</comment>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>File Saved</value>
+    <comment>FileSaveAsCommand.cs : Title for messagebox 'Save-As on the current dataset is successfull'</comment>
+  </data>
+  <data name="MsgboxTitleForReloadFromDisk" xml:space="preserve">
+    <value>Invalid Operation</value>
+    <comment>AUAnalysisCommandBase.cs : Title for the message box that is shown when reload from disk file is run on memory data.frame</comment>
+  </data>
+  <data name="MsgForReloadFromDiskForMemoryDF" xml:space="preserve">
+    <value>This is a memory dataset you can not reload it using</value>
+    <comment>AUAnalysisCommandBase.cs : Message shown when user tries to run Reload dataset from disk file. For memory data.frame we do not support reloading. Its not needed actually.</comment>
+  </data>
+  <data name="MsgForReloadFromDiskForMemoryDF2" xml:space="preserve">
+    <value>Data -&gt; Reload Dataset from File</value>
+    <comment>AUAnalysisCommandBase.cs : Message shown when user tries to run Reload dataset from disk file. For memory data.frame we do not support reloading. Its not needed actually.</comment>
+  </data>
+</root>

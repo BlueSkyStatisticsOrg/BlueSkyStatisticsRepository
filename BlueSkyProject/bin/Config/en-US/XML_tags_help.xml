@@ -1,0 +1,160 @@
+<!-- Tags and Attributes for creating XML output template -->
+
+<Commenttag>
+UI controls in xmltextbed.xaml dialog
+
+Control Type		Name(can be used in this XML)
+------------		-----------------------------
+SourceListBox		source
+TargetListbox		target1, target2
+Group Var			groupvar
+Checkbox			cb1, cb2, cb3, cb4, cb5
+Textbox				tb1, tb2
+R Function			BSkyOutputTestDriver() must be called in XAML dialog. Later replace it with your func name.
+
+Type your XML output format in xmltestbed.xml. For now use UI control names given above.
+Using "Tools" > "Xml test Bed"  from menu, test it. 
+After success, move all the text from xmltestbed.xml to another file. Name it whatever you like. 
+This is your output xml template file. In this file, now you must also replace UI control names
+(if you used UI control names from list above) with matching UI control names in your real dialog XAML .    
+</Commenttag>
+
+<!-- ---------------------------------------------MINIMUM REQUIRED------------------------------------------------ -->
+<!-- Minimum XML output template -->
+<?xml version="1.0" encoding="utf-8"?>
+<output>
+	<output.header >
+		<text stringformat="{0}">
+		  <statictext>Main title of my output</statictext>
+		</text>
+	</output.header>
+	<repeatlist>
+	</repeatlist>
+	<tablelist>
+	</tablelist>
+</output>
+
+<!-- ---------------------------------------------TABLE----------------------------------------------------------- -->
+<!-- To create tables, use minimum XML and then inside <tablelist> tags, define your tables -->
+ <table ID="mytableid">
+	<table.header>
+		<text stringformat="{0}">
+			<statictext>This is table header</statictext>
+		</text>
+	</table.header>
+	
+	<columns>
+		<column>
+		</column>
+	</columns>
+	
+	<rows>
+		<row>
+		</row>
+	</rows>
+	
+</table>
+
+<!-- ---------------------------------------------COLUMN---------------------------------------------------------- -->	
+<!-- <column> tag can be further expanded  -->	
+		<column>
+			<labels grouping="" factors="no">
+			</labels>
+			<subcolumns>
+			
+				<column>
+				</column>
+				
+				<column>
+				</column>	
+				
+			</subcolumns>
+		</column>
+		
+<!-- ---------------------------------------------ROW------------------------------------------------------------- -->		
+<!-- <row> tag can be further expanded  -->	
+		<row>
+			<labels grouping="" factors="no">
+			</labels>
+			<subrows>
+			
+				<row>
+					<labels grouping="" factors="no">
+					</labels>
+				</row>
+				
+				<row>
+				</row>	
+				
+			</subrows>
+		</row>	
+
+
+<!-- ---------------------------------------------LABELS---------------------------------------------------------- -->		
+<!-- Labels are used to put headers in row or column under which they are defined -->
+<!-- <labels> tag be further expanded in two ways.  -->
+
+		<!--Method 1, options based with or without condition (checkbox based ) -->
+		  <labels grouping="options" factors="no">
+		      <option-value-pairs>
+					<option-value condition="" text="Show this always"/>
+					<option-value condition="cb1" text="Show this if CB1 checked"/>
+			  </option-value-pairs>
+		  </labels>		
+		  
+		<!--Method 2, options based onlistbox in UI dialog -->
+		  <labels grouping="list" factors="no">
+			<list listname = "target1"/>
+		  </labels>		
+		  
+<!-- <option-value> tag can be further expanded. This one is not condition based  -->	
+		  <option-value condition="">
+			<text stringformat="{0}">
+			  <statictext>This will go to output </statictext>
+			</text>
+		  </option-value>	  
+	
+<!-- ---------------------------------------------TEXT------------------------------------------------------------ -->
+<!-- <text> tag is a text to be shown and it has following 3 variations, plus a mixed one  -->
+			
+			<!-- Using static text string -->
+			<text stringformat="{0}">
+			  <statictext>This text will be shown as it is </statictext>
+			</text>
+
+			<!-- Using a MACRO whose value will be set at run time using this XML and will be retrieved later -->
+			<text stringformat="{0}">
+			  <macro>%MYMACRO%</macro>
+			</text>			
+			
+			<!-- Using a text from UI control TextBox -->
+			<text stringformat="Textbox Value = {0}">
+			  <param datamember="tb1" delimiter=""></param>
+			</text>			
+			
+			<!-- You can also mix above three on one text string -->
+			<text stringformat="{0}-{1}-{2}">
+			  <statictext>This text will take index 0 in line above.</statictext>
+			  <macro>%MYMACRO%</macro>    <!-- macro value will take index 1 -->
+			  <param datamember="tb1" delimiter=""></param> <!-- textbox value will take index 2 -->
+			</text>	
+
+<!-- ------------------------------------------------------------------------------------------------------------- -->			
+<!-- Do not have much info about repeat tags -->			
+<!-- Repeat list tags those can set repeat on tables and can also set the MACROS -->
+  <repeatlist>
+	<repeatalltable>  <!-- Repeat all tables -->
+		<repeat condition=""  repeaton="target1" variablename="%Row%" tabletorepeat="mytableid">
+		  <foreach condition="" repeaton="target2" variablename="%Column%"></foreach>
+		</repeat>
+	</repeatalltable>
+	<repeatselectivetable>  <!-- Repeat tables, those are here -->
+		<repeat condition=""  repeaton="target1" variablename="%Row%" tabletorepeat="mytableid">
+		  <foreach condition="" repeaton="target2" variablename="%Column%"></foreach>
+		</repeat>	
+		<repeat condition=""  repeaton="target1" variablename="%Row%" tabletorepeat="table2id">
+		  <foreach condition="" repeaton="target2" variablename="%Column%"></foreach>
+		</repeat>		
+	</repeatselectivetable>
+  </repeatlist>			
+			

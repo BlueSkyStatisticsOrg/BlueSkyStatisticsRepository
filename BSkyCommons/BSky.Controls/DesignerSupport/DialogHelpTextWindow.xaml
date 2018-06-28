@@ -1,0 +1,28 @@
+﻿<Window x:Class="BSky.Controls.DesignerSupport.DialogHelpTextWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
+             Title="Help Editor Window" Height="470" Width="730">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="3,1" FontSize="12">Provide properly formatted dialog related help text in editable area below:</TextBlock>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Margin="1,2,0,0" Name="SP"
+            VerticalAlignment="Top"  Grid.ColumnSpan="2"
+            Grid.Column="1">
+            <c1:C1RichTextBoxToolbar Margin="1" RichTextBox="{Binding ElementName=c1RichTextBox1}" Name="C1RTBTB" />            <c1:C1RichTextBox Margin="1" Name="c1RichTextBox1" Height="260" Html="{Binding Path=FormattedHelpHTMLText, Mode=TwoWay}"/>
+        </StackPanel>
+        <Grid Grid.Row="2" Margin="1,3">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="ok" Margin="0,0,10,0" Width="40" Click="ok_Click">Ok</Button>
+                <Button Name="cancel" Margin="0,0,10,0" Width="40" Click="cancel_Click">Cancel</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</Window>

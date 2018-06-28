@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<output>
+	<output.header >
+		<text stringformat="{0}">
+		  <statictext>Main title of my output</statictext>
+		</text>
+	</output.header>
+
+	<tablelist>
+
+	 <table ID="mytableid">
+		<table.header>
+			<text stringformat="{0}">
+				<statictext>This is table header</statictext>
+			</text>
+		</table.header>
+		
+		<columns>
+			<column>
+				<labels grouping="options" factors="no">
+				  <option-value-pairs>
+						<option-value condition="" text="N"/>
+						<option-value condition="" text="Mean"/>
+						<option-value condition="" text="Show always"/>
+						<option-value condition="" text="Show this always"/>
+				  </option-value-pairs>				
+				
+				</labels>
+			</column>
+		</columns>
+		
+		<rows>
+			<row>
+			  <labels grouping="list" factors="no">
+				<list listname = "target1"/>
+			  </labels>				
+			</row>
+		</rows>
+	
+	</table>
+	
+ <table ID="mytableid2">
+	<table.header>
+		<text stringformat="{0}">
+			<statictext>This is 2 table header</statictext>
+		</text>
+	</table.header>
+	<columns>
+		<column>
+			<labels grouping="options" factors="no">
+				<option-value-pairs>
+				  <option-value condition="">
+					<text stringformat="Test Value = {0}">
+					  <param datamember="tb1" delimiter=""></param>
+					</text>
+				  </option-value>
+				</option-value-pairs>			  
+			</labels>
+			<subcolumns>
+			
+				<column>
+				  <labels grouping="options" factors="no">
+					  <option-value-pairs>
+							<option-value condition="" text="Show "/>
+							<option-value condition="" text="Show  always"/>
+							<option-value condition="" text="Show this "/>
+							<option-value condition="" text="Show this always"/>
+					  </option-value-pairs>
+				  </labels>	
+				  
+				</column>
+				<column>
+				  <labels grouping="options" factors="no">
+					  <option-value-pairs>
+							<option-value condition="" text="Confidence"/>
+					  </option-value-pairs>
+				  </labels>	
+				<subcolumns>
+				
+					<column>
+					  <labels grouping="options" factors="no">
+						  <option-value-pairs>
+								<option-value condition="" text="Lower"/>
+								<option-value condition="" text="Upper"/>
+						  </option-value-pairs>
+					  </labels>						
+					</column>
+				
+				</subcolumns>						
+				</column>				
+			</subcolumns>			
+		</column>
+	</columns>
+	
+		<rows>
+			<row>
+			  <labels grouping="list" factors="no">
+				<list listname = "target1"/>
+			  </labels>				
+			</row>
+		</rows>
+	
+</table>
+	
+	
+	 </tablelist>
+</output>

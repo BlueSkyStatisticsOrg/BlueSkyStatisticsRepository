@@ -1,0 +1,39 @@
+﻿<Window xmlns:my="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"  
+    x:Class="BSky.Controls.VariableFilterSelection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="427" Height="352" Title="Filter Selection">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="102*" />
+            <ColumnDefinition Width="176*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Type" Height="110" HorizontalAlignment="Left" Margin="12,12,0,0" Name="groupBox1" VerticalAlignment="Top" Width="393" Grid.ColumnSpan="2">
+            <Grid Width="376">
+                <CheckBox Name="chkString" Content="String" Height="16" HorizontalAlignment="Left" Margin="17,6,0,0" VerticalAlignment="Top" />
+                <CheckBox Name="chkNumeric" Content="Numeric" Height="16" HorizontalAlignment="Left" Margin="17,28,0,0"  VerticalAlignment="Top" />
+                <CheckBox Name="chkDate" Content="Date" Height="16" HorizontalAlignment="Left" Margin="17,51,0,0"  VerticalAlignment="Top" />
+                <CheckBox Name="chkLogical" Content="Logical" Height="16" HorizontalAlignment="Left" Margin="17,71,0,0"  VerticalAlignment="Top" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Measure" Height="134" HorizontalAlignment="Left" Margin="12,128,0,0" Name="groupBox2" VerticalAlignment="Top" Width="393" Grid.ColumnSpan="2">
+            <Grid Width="376">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="334*" />
+                    <ColumnDefinition Width="42*" />
+                </Grid.ColumnDefinitions>
+                <CheckBox Name="chkOrdinal" Unchecked="resetordlevels" Content="Ordinal" Height="16" HorizontalAlignment="Left" Margin="17,39,0,0"  VerticalAlignment="Top" />
+                <CheckBox Name="chkNominal" Unchecked="resetnomlevels"  Content="Nominal" Height="16" HorizontalAlignment="Left" Margin="17,10,0,0" VerticalAlignment="Top" />
+                <CheckBox Name="chkScale" Content="Scale" Height="16" HorizontalAlignment="Left" Margin="17,65,0,0" VerticalAlignment="Top" />
+                <Label Content="Display only ordinal variables with " Height="34" HorizontalAlignment="Left" Margin="89,34,0,0" Name="label1" VerticalAlignment="Top" Width="202" />
+                <TextBox Height="25" HorizontalAlignment="Left" Margin="281,36,0,0" Name="chkordlevels" VerticalAlignment="Top" Width="29" />
+                <Label Content="levels" Height="27" HorizontalAlignment="Left" Margin="316,34,0,0" Name="label2" VerticalAlignment="Top" Width="47" Grid.ColumnSpan="2" />
+                <Label Content="Display only nominal variables with " Height="34" HorizontalAlignment="Left" Margin="89,4,0,0" Name="label3" VerticalAlignment="Top" Width="202" />
+                <TextBox Height="25" HorizontalAlignment="Left" Margin="283,6,0,0" Name="chkNomlevels" VerticalAlignment="Top" Width="29" />
+                <Label Content="levels" Height="27" HorizontalAlignment="Left" Margin="316,4,0,0" Name="label4" VerticalAlignment="Top" Width="47" Grid.ColumnSpan="2" />
+            </Grid>
+        </GroupBox>
+        <Button Content="Ok" Height="23" HorizontalAlignment="Left" Margin="47,276,0,0" Name="button1" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="button1_Click" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="55,276,0,0" Name="button2" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="Cancel_Click"/>
+    </Grid>
+ 
+</Window>

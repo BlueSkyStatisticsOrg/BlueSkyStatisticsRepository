@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AAA" xml:space="preserve">
+    <value>AAA</value>
+    <comment>AAA: .CS or. XAML name : Details : Comment</comment>
+  </data>
+  <data name="ErrLoadingRPkg" xml:space="preserve">
+    <value>Error loading following R package(s):</value>
+    <comment>App.xaml.cs : Error msg for missing pkgs</comment>
+  </data>
+  <data name="CantLaunchBSkyApp" xml:space="preserve">
+    <value>Error: Can't Launch BlueSky Application!</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="ErrReqRPkgMissing" xml:space="preserve">
+    <value>Error: Required R Package(s) Missing</value>
+    <comment>App.xaml.cs : Msg box title for missing pkg box</comment>
+  </data>
+  <data name="BSkyPkgMissing" xml:space="preserve">
+    <value>BlueSky package missing</value>
+    <comment>App.xaml.cs : MBox title for loading failed  for new dataset.</comment>
+  </data>
+  <data name="FloatingLicError" xml:space="preserve">
+    <value>Floating License Error</value>
+    <comment>App.xaml.cs : Msg box title for floating server error</comment>
+  </data>
+  <data name="AllFloatingLicInUse" xml:space="preserve">
+    <value>All floating licenses in use.</value>
+    <comment>App.xaml.cs : Floating error message box title</comment>
+  </data>
+  <data name="InstallReqRPkgFrmCRAN" xml:space="preserve">
+    <value>Install required R packages from CRAN by clicking:</value>
+    <comment>App.xaml.cs : Msg to install from CRAN</comment>
+  </data>
+  <data name="StatMsgPkgLoad" xml:space="preserve">
+    <value>Please wait... Loading required R packages.</value>
+    <comment>App.xaml.cs :Launch time statusbar message for R package loading</comment>
+  </data>
+  <data name="MakeSureRInstalled" xml:space="preserve">
+    <value>1. R is installed. BlueSky Statistics requires R. To download R visit: (http://cran.r-project.org)</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="CantCreateTemplate" xml:space="preserve">
+    <value>Could not create template from</value>
+    <comment>CommandExecutionHelper.cs : error msg for loading xaml dialog</comment>
+  </data>
+  <data name="CantExecuteCommand" xml:space="preserve">
+    <value>Couldn't Execute the command</value>
+    <comment>CommandExecutionHelper.cs : error msg for executing xaml dialog</comment>
+  </data>
+  <data name="DatasetBecameNull" xml:space="preserve">
+    <value>has been set to NULL. The reason may be, running some analysis or command on the dataset.</value>
+    <comment>CommandExecutionHelper.cs : Dataset become null msg</comment>
+  </data>
+  <data name="DatasetNull" xml:space="preserve">
+    <value>NULL Dataset.</value>
+    <comment>CommandExecutionHelper.cs : Dataset become null msg title</comment>
+  </data>
+  <data name="MakeSure32x64Compatibility" xml:space="preserve">
+    <value>2. Binary compatibility between BlueSky Statistics and R. 64bit BlueSky Statistics requires 64bit R and 32bit BlueSky Statistics requires 32bit R. (To find about BlueSky version : Go to 'Help &gt; About' in BlueSky Statistics. To find about R version: Launch R GUI (Start &gt; run &gt; RGUI.exe) and execute R.version command on the console).</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="MakeSureAnotherBSkySession" xml:space="preserve">
+    <value>3. Another session of the BlueSky application is not already running.</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="MakeSureRHOME2LatestR" xml:space="preserve">
+    <value>4. R_HOME environment variable is pointing to the latest version of R.</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="PleaseMakeSure" xml:space="preserve">
+    <value>Please make sure:</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="ErrLoadingNewDS" xml:space="preserve">
+    <value>Error Loading new dataset. Make sure you have BlueSky R package installed</value>
+    <comment>App.xaml.cs : Loading new blank dataset failed message</comment>
+  </data>
+  <data name="ConnectCurrFloatingServer" xml:space="preserve">
+    <value>Unable to reach License Server.(Go to [ Help -&gt; Licensing ] and connect to the current floating license server).</value>
+    <comment>App.xaml.cs : Error Message for Floating server unreachable</comment>
+  </data>
+  <data name="ContactAdmin" xml:space="preserve">
+    <value>Please contact your administrator.</value>
+    <comment>App.xaml.cs : Floating error message</comment>
+  </data>
+  <data name="FloatingServerUnreachable2" xml:space="preserve">
+    <value>Floating License Server Unreachable.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message about floating server unreachable.</comment>
+  </data>
+  <data name="FloatingServerUnreachable" xml:space="preserve">
+    <value>Warning: Floating License Server Unreachable.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message about floating server unreachable.</comment>
+  </data>
+  <data name="BSkyDownloadingReqPkgs" xml:space="preserve">
+    <value>BlueSky is downloading and installing required R packages.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky downloading and installing required R packages.</comment>
+  </data>
+  <data name="BSkyFormatSupportedTypes" xml:space="preserve">
+    <value>array, matrix dataframe and BSky return structure.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : BSkyFormat()  supported types list.</comment>
+  </data>
+  <data name="bskygrphctrlimgConfigKeyNotFound" xml:space="preserve">
+    <value>Key 'bskygrphcntrlimage' not found in config file. Aborting...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : 'bskygrphcntrlimage' key is not found in configuration file</comment>
+  </data>
+  <data name="BSkyNeedsRPkgs" xml:space="preserve">
+    <value>BlueSky application needs following R package(s):</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky application needs following listed R packages.</comment>
+  </data>
+  <data name="CantBSkyFormatErrorMsg" xml:space="preserve">
+    <value>This Object cannot be formatted using BSKyFormat. BSkyFormat can be used on Array, Matrix, Data Frame and BSky List objects only</value>
+    <comment>SyntaxEditorWindow.xaml.cs : BSkyFormat()error message for supported types.</comment>
+  </data>
+  <data name="cantopen" xml:space="preserve">
+    <value>Unable to open</value>
+    <comment>FileNewCommand.cs : cant open dataset</comment>
+  </data>
+  <data name="CantSaveAsExcel" xml:space="preserve">
+    <value>File cannot be saved to '.XLS' format. Click OK to choose a different format like XLSX, RData etc.</value>
+    <comment>FileSaveCommand.cs : File can't be save in excel format.</comment>
+  </data>
+  <data name="CloseConfirmation" xml:space="preserve">
+    <value>Do you want to close</value>
+    <comment>FileCloseCommand.cs : Close dataset confirmation</comment>
+  </data>
+  <data name="CloseDatasetConfirmation" xml:space="preserve">
+    <value>Do you want to close Dataset?</value>
+    <comment>FileCloseCommand.cs : Close dataset confirmation complete message</comment>
+  </data>
+  <data name="CriticalError" xml:space="preserve">
+    <value>Critical Error Occurred!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message for critical error return from R for error code -2</comment>
+  </data>
+  <data name="dataset" xml:space="preserve">
+    <value>Dataset?</value>
+    <comment>FileCloseCommand.cs : dataset name followed by this message</comment>
+  </data>
+  <data name="DatasetObjNotExists" xml:space="preserve">
+    <value>Error: Dataset object does not exist.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Dataset object does not exist.</comment>
+  </data>
+  <data name="DFNotExists" xml:space="preserve">
+    <value>-Dataframe does not exist (or is NULL or has no rows/columns)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : data frame does not exist</comment>
+  </data>
+  <data name="DlgNeedTheseRPkgs" xml:space="preserve">
+    <value>needs the following R package(s):</value>
+    <comment>AUAnalysisCommandBase.cs : To run the dialog following packages are needed.</comment>
+  </data>
+  <data name="DoesNotExist" xml:space="preserve">
+    <value>does not exist.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg says obj does not exists</comment>
+  </data>
+  <data name="ErrCantLodRefDataset" xml:space="preserve">
+    <value>Error: Cannot Load/Refresh Dataset</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't load refresh dataset</comment>
+  </data>
+  <data name="ErrCurlyMismatch" xml:space="preserve">
+    <value>Error in block declaration. Mismatch { or }</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Curly brackets creat a block of statements. If there are mismatch between opening and closing curly brackets then this the error msg shown.</comment>
+  </data>
+  <data name="ErrExecutingCommand" xml:space="preserve">
+    <value>Error executing the command.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error executing command</comment>
+  </data>
+  <data name="ErrInRCommand" xml:space="preserve">
+    <value>R Command Error</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error in R command</comment>
+  </data>
+  <data name="ErrNoValidNodeLic" xml:space="preserve">
+    <value>You do not have a valid license to run this application. For help, go to Help -&gt; Licensing.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : No valid node license message</comment>
+  </data>
+  <data name="ErrOpeningDataset" xml:space="preserve">
+    <value>Error Opening Dataset</value>
+    <comment>FileNewCommand.cs : Error opening dataset</comment>
+  </data>
+  <data name="ErrOpeningDataset2" xml:space="preserve">
+    <value>Error Opening Dataset.(probably not a data frame)</value>
+    <comment>FileOpenCommand.cs : error message</comment>
+  </data>
+  <data name="ErrOpeningFile" xml:space="preserve">
+    <value>Unable to open the file</value>
+    <comment>FileOpenCommand.cs : Error in opening file</comment>
+  </data>
+  <data name="ErrOpeningRegGrpLst" xml:space="preserve">
+    <value>Error opening registered graphic command list.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error opening the registered graphic command list.</comment>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Error Occurred!</value>
+    <comment>ToolsMenuEditorCommand.cs, SyntaxEditorWindow.xaml.cs : Message for critical error return from R for error code -1</comment>
+  </data>
+  <data name="ErrParenthesisMismatch" xml:space="preserve">
+    <value>Error in block declaration. Mismatch ( or )</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg for round brackets mismatch in opening and closing brackets.</comment>
+  </data>
+  <data name="ErrReqModelNotSelected" xml:space="preserve">
+    <value>Error: Required Model type not selected</value>
+    <comment>AUAnalysisCommandBase.cs : Required model not selected. </comment>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found</value>
+    <comment>FileOpenCommand.cs : file not found</comment>
+  </data>
+  <data name="FloatingAllinUseMsg" xml:space="preserve">
+    <value>All floating licenses in use. (Please contact your administrator)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Status bar message for floating licenses all in use</comment>
+  </data>
+  <data name="FloatingFixIPPortMsg" xml:space="preserve">
+    <value>Go to [ Help -&gt; Licensing ] to check the license status or to change the Floating License Server's IP address and port.</value>
+    <comment>App.xaml.cs, SyntaxEditorWindow.xaml.cs : Message about fixing floating server port and ip adress.</comment>
+  </data>
+  <data name="FloatingLicValid" xml:space="preserve">
+    <value>Floating License Valid</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Floating license valid message</comment>
+  </data>
+  <data name="FloatingPortIncorrectlySet" xml:space="preserve">
+    <value>Go to [ Help -&gt; Licensing ]  if server IP address and port are not set (or incorrectly set)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Floating license server port ip incorrectly set message</comment>
+  </data>
+  <data name="FormatNotSupported" xml:space="preserve">
+    <value>-Format not supported.</value>
+    <comment>FileNewCommand.cs : cant open dataset, format not supported</comment>
+  </data>
+  <data name="FormatNotSupported2" xml:space="preserve">
+    <value>2. File format not supported (or corrupt file or duplicate column names).</value>
+    <comment>FileOpenCommand.cs : Error msg - file format not supported or dataset have duplicate column names</comment>
+  </data>
+  <data name="IncorrectModelOrModelType" xml:space="preserve">
+    <value>The model type and model is not specified OR you have selected invalid model type and model</value>
+    <comment>AUAnalysisCommandBase.cs : Model type or Model selection is incorrect.</comment>
+  </data>
+  <data name="InstallAbvMentionedRPkgs" xml:space="preserve">
+    <value>Please install the above mentioned R package(s).</value>
+    <comment>AUAnalysisCommandBase.cs : Install R packages mentioned above. These  are required by the current dialog that is under execution.</comment>
+  </data>
+  <data name="InstallRPkgRunDialogAgain" xml:space="preserve">
+    <value>Install missing R package(s) and execute the dialog again.</value>
+    <comment>AUAnalysisCommandBase.cs : Install dialog required R package and re-run the dialog.</comment>
+  </data>
+  <data name="InstallUpdatePkgMenuPath" xml:space="preserve">
+    <value>Go to: Tools -&gt; Package -&gt; Install/Update package(s) from CRAN.</value>
+    <comment>AUAnalysisCommandBase.cs : Install or update required R package by going to this particular menu option.</comment>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>Internal Error: Operation Failed</value>
+    <comment>FileSaveAsCommand.cs, FileSaveAsExcelCommand.cs, FileSaveCommand.cs : Save-As failed, internal error</comment>
+  </data>
+  <data name="invalidDir" xml:space="preserve">
+    <value>Invalid Directory path!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : invalid dir path</comment>
+  </data>
+  <data name="invalidFilename" xml:space="preserve">
+    <value>Invalid Filename!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : invalid file name</comment>
+  </data>
+  <data name="isNull" xml:space="preserve">
+    <value>is null.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg says obj is null</comment>
+  </data>
+  <data name="MayTake1530Min" xml:space="preserve">
+    <value>It may take 15 to 30 minutes to finish depending on your internet connection.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky downloading and installing required R packages may take 15 to 30 mins.</comment>
+  </data>
+  <data name="MisingRPkgs" xml:space="preserve">
+    <value>Error: Missing R Package(s)</value>
+    <comment>AUAnalysisCommandBase.cs : Missing Rpackages those are required by the current dialog.</comment>
+  </data>
+  <data name="missing" xml:space="preserve">
+    <value>missing</value>
+    <comment>SyntaxEditorWindow.xaml.cs : if missing brackets in syntax</comment>
+  </data>
+  <data name="ModelsSupportedAre" xml:space="preserve">
+    <value>The following model types are supported:</value>
+    <comment>AUAnalysisCommandBase.cs : Models supported are listed below</comment>
+  </data>
+  <data name="NoCommToExecute" xml:space="preserve">
+    <value>No command to execute</value>
+    <comment>AUAnalysisCommandBase.cs :No command in dialog syntax to execute.</comment>
+  </data>
+  <data name="NoRowsColsPresent" xml:space="preserve">
+    <value>3. Dataframe does not have row(s) or column(s).</value>
+    <comment>FileOpenCommand.cs : Error msg - dataset does not have row/cols</comment>
+  </data>
+  <data name="NoTablesReturned" xml:space="preserve">
+    <value>No tables to show in output!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message for nooftables is zero. </comment>
+  </data>
+  <data name="NotDataframe" xml:space="preserve">
+    <value>-OR not 'data.frame' type</value>
+    <comment>SyntaxEditorWindow.xaml.cs : not a data.frame type</comment>
+  </data>
+  <data name="NotDataframe2" xml:space="preserve">
+    <value>1. Not a data frame object.</value>
+    <comment>FileOpenCommand.cs : Error msg - not a data.frame</comment>
+  </data>
+  <data name="NotdataframeType" xml:space="preserve">
+    <value>Error: Dataset is not a data.frame type.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Dataset is not a data.frame type.</comment>
+  </data>
+  <data name="NoValidLic" xml:space="preserve">
+    <value>No Valid License</value>
+    <comment>SyntaxEditorWindow.xaml.cs : No valid license message</comment>
+  </data>
+  <data name="ObjCantBSkyFormat" xml:space="preserve">
+    <value>Object cannot be formatted using BSKyFormat. Object:</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't format object using BSkyFormat(). Object probably does not exist.</comment>
+  </data>
+  <data name="ObjCantBSkyFormat2" xml:space="preserve">
+    <value>Object cannot be formatted using BSkyFormat. Type not supported. Supported types are :</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't format object using BSkyFormat(). Object type is not supported.</comment>
+  </data>
+  <data name="OldSessionRunning" xml:space="preserve">
+    <value>-R.Net server from old session still running. Use task manager to close it.</value>
+    <comment>FileNewCommand.cs : cant open dataset, BSky old session is running</comment>
+  </data>
+  <data name="OldSessionRunning2" xml:space="preserve">
+    <value>4. R.Net server from the old session still running (use task manager to kill it).</value>
+    <comment>FileOpenCommand.cs : Error msg - Old session running</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine1" xml:space="preserve">
+    <value>Loading RDATA file may overwrite your current variables/objects in memory if variables/objects with the same name are already present in the RDATA file.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 1</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine2" xml:space="preserve">
+    <value>You can cancel out of here and save your all your current variables/objects which you can load later if required.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 2</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine3" xml:space="preserve">
+    <value>To save/load your current variables/object run following commands from BlueSky R command editor.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 3</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine4" xml:space="preserve">
+    <value>To save:  save.image(file='filename.rdata') # filename.rdata is the file name where objects will be saved.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 4</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine5" xml:space="preserve">
+    <value>To load:  load(file='filename.rdata') # filename.rdata is the file name from which objects will be loaded.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 5</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine6" xml:space="preserve">
+    <value>'filename.rdata' is filename with forward slashed path e.g. 'C:/myfolder/myobjects.rdata'</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 6</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine7" xml:space="preserve">
+    <value>Do you want to proceed? [Variables with matching names will be overwritten].</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 7</comment>
+  </data>
+  <data name="OpenRScriptInSynWin" xml:space="preserve">
+    <value>To open a R script, you need to switch to the 'Output and Syntax' window.</value>
+    <comment>FileOpenCommand.cs : If anyone opens Rscript from main window then we guide them to open script in R command editor.</comment>
+  </data>
+  <data name="OpenRScriptMenuPath" xml:space="preserve">
+    <value>Go to the right hand pane of the 'Output and Syntax' window and click File -&gt; Open in the 'R Command Editor'.</value>
+    <comment>FileOpenCommand.cs : If anyone opens Rscript from main window then we guide them to menu option in Rcommand Editor</comment>
+  </data>
+  <data name="PlzConfirm" xml:space="preserve">
+    <value>Please Confirm...</value>
+    <comment>FileOpenCommand.cs : Please confirm message</comment>
+  </data>
+  <data name="PlzSavB4AppUnusable" xml:space="preserve">
+    <value>PLEASE SAVE YOUR WORK BEFORE APP BECOMES UNUSABLE.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message  about saving your work when floating server unreachable.</comment>
+  </data>
+  <data name="PlzWait" xml:space="preserve">
+    <value>Please wait...</value>
+    <comment>AUAnalysisCommandBase.cs : Please wait message</comment>
+  </data>
+  <data name="PlzWaitDatasetLoading" xml:space="preserve">
+    <value>Please wait while Dataset is Loading...</value>
+    <comment>RefreshDatagridCommand.cs : Please wait while dataset loading message</comment>
+  </data>
+  <data name="reasonsAre" xml:space="preserve">
+    <value>Reasons could be one or more of the following:</value>
+    <comment>FileNewCommand.cs : cant open dataset, reasons are</comment>
+  </data>
+  <data name="RegPkgsMenuPath" xml:space="preserve">
+    <value>Installation &gt; Install All required package(s) from CRAN.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky required packages menu path</comment>
+  </data>
+  <data name="RemoveSplit" xml:space="preserve">
+    <value>Remove Split First</value>
+    <comment>AUAnalysisCommandBase.cs : Remove split before running data manupulation command on a dataset</comment>
+  </data>
+  <data name="RemoveSplitForDataManipulation" xml:space="preserve">
+    <value>This function manipulates the dataset. Please remove the split and rerun the command.</value>
+    <comment>AUAnalysisCommandBase.cs : Dataset manipulation command is executing on a split dataset.</comment>
+  </data>
+  <data name="ReqRPkgMissing" xml:space="preserve">
+    <value>-OR required R package(s) are missing</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Required Rpackage is missing due to which load-refresh failed</comment>
+  </data>
+  <data name="ReqRPkgNotInstalled" xml:space="preserve">
+    <value>-Required R package is not installed.</value>
+    <comment>FileNewCommand.cs : cant open dataset, req R pkg not installed</comment>
+  </data>
+  <data name="RSideIssue" xml:space="preserve">
+    <value>-Some issue on R side (like: required R package not loaded).</value>
+    <comment>FileNewCommand.cs : cant open dataset, some issue on R side.</comment>
+  </data>
+  <data name="RSideIssue2" xml:space="preserve">
+    <value>5. Some issue on R side (like: required library not loaded, incorrect syntax).</value>
+    <comment>FileOpenCommand.cs : Error msg - R side issue</comment>
+  </data>
+  <data name="SaveAsFailed" xml:space="preserve">
+    <value>Save-As failed.</value>
+    <comment>FileSaveAsCommand.cs, FileSaveAsExcelCommand.cs, FileSaveCommand.cs : Save-As failed message</comment>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Save Changes?</value>
+    <comment>FileCloseCommand.cs : Save confirmation</comment>
+  </data>
+  <data name="SaveConfirmation" xml:space="preserve">
+    <value>Do you want to save changes?</value>
+    <comment>FileCloseCommand.cs : Save dataset confirmation</comment>
+  </data>
+  <data name="SaveExitCommandEditor" xml:space="preserve">
+    <value>Save &amp; Exit Command Editor?</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Save and Exit prompt for Rcommand editor</comment>
+  </data>
+  <data name="SaveScriptPromptBeforeOpen" xml:space="preserve">
+    <value>Do you want to save commands before loading new script?</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Save and open another script prompt for Rcommand editor</comment>
+  </data>
+  <data name="SaveToOtherFormat" xml:space="preserve">
+    <value>Save to other formats</value>
+    <comment>FileSaveCommand.cs : File can't be save in excel format, better save to other formats.</comment>
+  </data>
+  <data name="SelectModelTypeAndModel" xml:space="preserve">
+    <value>Select 'Model Type' and 'Model' from the dropdowns on the right of the toolbar of the BlueSky Statistics main window</value>
+    <comment>AUAnalysisCommandBase.cs : Select appropriate Model and Model type</comment>
+  </data>
+  <data name="sinkimageConfigKeyNotFound" xml:space="preserve">
+    <value>Key 'sinkimage' not found in config file. Aborting...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : sinkimage key is not found in configuration file</comment>
+  </data>
+  <data name="sinkregstrdgrphConfigKeyNotFound" xml:space="preserve">
+    <value>Key 'sinkregstrdgrph' not found in config file. You cannot run Graphics from Command Editor.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : singregstrdgrph key is not found in configuration file</comment>
+  </data>
+  <data name="tempsinkConfigKeyNotFound" xml:space="preserve">
+    <value>Key 'tempsink' not found in config file. Aborting...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : tempsink key is not found in configuration file</comment>
+  </data>
+  <data name="unexpected" xml:space="preserve">
+    <value>unexpected</value>
+    <comment>SyntaxEditorWindow.xaml.cs : if extra brackets in syntax</comment>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Warning</value>
+    <comment>FileOpenCommand.cs : warning</comment>
+  </data>
+  <data name="BSkyNotWorkReqPkgMissing" xml:space="preserve">
+    <value>BlueSky application may not work properly if the required R packages are missing.</value>
+    <comment>InstallRequiredPackagesCommand.cs : Required packages missing so BlueSky  may not work properly</comment>
+  </data>
+  <data name="CantInstallDialog" xml:space="preserve">
+    <value>Couldn't install Dialog</value>
+    <comment>ToolsInstallDialogs.cs : Dialog can't be installed.</comment>
+  </data>
+  <data name="CantInstallDialogNoOutFile" xml:space="preserve">
+    <value>Dialog cannot be installed as output file is not mentioned</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because output xml file is not mentioned.</comment>
+  </data>
+  <data name="CantInstallDialogNoTitle" xml:space="preserve">
+    <value>Title cannot be empty, Exiting Dialog install</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because title is not mentioned.</comment>
+  </data>
+  <data name="CantOpenFile" xml:space="preserve">
+    <value>Cannot open the file</value>
+    <comment>InspectorCommand.cs : Cant open file</comment>
+  </data>
+  <data name="CantOpenREditor" xml:space="preserve">
+    <value>Can't Open Command Editor. UAMenuCommand properties not set.</value>
+    <comment>ToolsSyntaxEditorCommand.cs : Unable to open R command editor</comment>
+  </data>
+  <data name="ConfirmDialogInstall" xml:space="preserve">
+    <value>Do you want to continue to install dialog?</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for installing the dialog.</comment>
+  </data>
+  <data name="ConfirmDialogOverwrite" xml:space="preserve">
+    <value>Do you want to overwrite the command</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for overwriting the dialog.</comment>
+  </data>
+  <data name="DialogInstalled" xml:space="preserve">
+    <value>Dialog installed.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog is installed.</comment>
+  </data>
+  <data name="DialogTitleEmpty" xml:space="preserve">
+    <value>Dialog Title Empty.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because title is not mentioned.</comment>
+  </data>
+  <data name="EnterPkgNameToLoad" xml:space="preserve">
+    <value>Enter package name that you want to load.</value>
+    <comment>LoadPackageCommand.cs : Enter the R package name that you want to load</comment>
+  </data>
+  <data name="ErrGettingInstalledPkgs" xml:space="preserve">
+    <value>Error Getting Installed Packages</value>
+    <comment>ShowInstalledPackagesCommand.cs : Error getting installed R packages</comment>
+  </data>
+  <data name="ErrGettingInstalledPkgs2" xml:space="preserve">
+    <value>Error while getting installed packages.</value>
+    <comment>ShowInstalledPackagesCommand.cs : Error getting installed R packages</comment>
+  </data>
+  <data name="ErrGettingLoadedPkgs" xml:space="preserve">
+    <value>Error Getting Loaded Packages</value>
+    <comment>ShowLoadedPackagesCommand.cs : Error getting loaded packages</comment>
+  </data>
+  <data name="ErrGettingLoadedPkgs2" xml:space="preserve">
+    <value>Error while getting loaded packages.</value>
+    <comment>ShowLoadedPackagesCommand.cs : Error getting loaded packages</comment>
+  </data>
+  <data name="ErrInstallingFromCRAN" xml:space="preserve">
+    <value>Error Installing CRAN Package</value>
+    <comment>InstallCRANPackageCommand.cs : Error Installing packages from CRAN</comment>
+  </data>
+  <data name="ErrInstallingRPkg" xml:space="preserve">
+    <value>Error Installing Package</value>
+    <comment>InstallPackageCommand.cs : Error Installing R package from zip</comment>
+  </data>
+  <data name="ErrInstallingRPkg2" xml:space="preserve">
+    <value>Error while installing package.</value>
+    <comment>InstallPackageCommand.cs : Error Installing R package from zip</comment>
+  </data>
+  <data name="ErrInstallReqPkgFrmCRAN" xml:space="preserve">
+    <value>Error while installing required packages from CRAN.</value>
+    <comment>InstallRequiredPackagesCRANCommand.cs : Error installing required R packages from CRAN</comment>
+  </data>
+  <data name="ErrLoadingRPkg2" xml:space="preserve">
+    <value>Error while loading package.</value>
+    <comment>InstallCRANPackageCommand.cs : R package loading error</comment>
+  </data>
+  <data name="ErrLoadingRPkgs" xml:space="preserve">
+    <value>Error Loading Package(s)</value>
+    <comment>LoadPackageFromListCommand.cs :  Error while Loading one or more pkgs</comment>
+  </data>
+  <data name="ErrLoadingUsrSessionPkg" xml:space="preserve">
+    <value>Error Loading User Session Package.</value>
+    <comment>LoadPackageCommand.cs : Error while loading user session R pkgs</comment>
+  </data>
+  <data name="ErrLoadingUsrSessionPkgs" xml:space="preserve">
+    <value>Error while loading user session package(s).</value>
+    <comment>LoadUserSessionPackagesCommand.cs : Error loading user session R packages</comment>
+  </data>
+  <data name="ErrModifyingMenu" xml:space="preserve">
+    <value>Error while modifying menu.</value>
+    <comment>ToolsMenuEditorCommand.cs : Error in editing menu (menu.xml)</comment>
+  </data>
+  <data name="ErrUninstallingPkg" xml:space="preserve">
+    <value>Error Uninstalling Package</value>
+    <comment>UninstallPackageCommand.cs : Error uninstalling R package</comment>
+  </data>
+  <data name="ErrUninstallingPkg2" xml:space="preserve">
+    <value>Error while uninstalling package.</value>
+    <comment>UninstallPackageCommand.cs : Error uninstalling R package</comment>
+  </data>
+  <data name="ErrUnloadingPkg" xml:space="preserve">
+    <value>Error Unloading Package</value>
+    <comment>UnloadPackageCommand.cs : Error in unloading R package</comment>
+  </data>
+  <data name="ErrUnloadingPkg2" xml:space="preserve">
+    <value>Error while unloading package.</value>
+    <comment>UnloadPackageCommand.cs : Error in unloading R package</comment>
+  </data>
+  <data name="InstallFailed" xml:space="preserve">
+    <value>Installation failed</value>
+    <comment>ToolsInstallDialogs.cs : Dialog installation failed.</comment>
+  </data>
+  <data name="InstallingFromCRAN" xml:space="preserve">
+    <value>Installing package(s) from CRAN</value>
+    <comment>InstallCRANPackageCommand.cs : Installing packages from CRAN</comment>
+  </data>
+  <data name="InstallingRPkgFromLocal" xml:space="preserve">
+    <value>Installing required R packages from local drive</value>
+    <comment>InstallRequiredPackagesCommand.cs : Installing required Rpkgs from local drive</comment>
+  </data>
+  <data name="InstallNewDialog" xml:space="preserve">
+    <value>Install New Dialog?</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for installing the dialog.</comment>
+  </data>
+  <data name="InstallPkg" xml:space="preserve">
+    <value>Install Package</value>
+    <comment>InstallPackageCommand.cs : Install R package from zip</comment>
+  </data>
+  <data name="InstallPkgsFromCRAN" xml:space="preserve">
+    <value>Install Package From CRAN</value>
+    <comment>PackageHelperMethods.cs : Install packages from CRAN</comment>
+  </data>
+  <data name="InstallReqRPkgFrmCRAN2" xml:space="preserve">
+    <value>Installing required R packages from CRAN</value>
+    <comment>InstallRequiredPackagesCRANCommand.cs :  installing required R packages from CRAN</comment>
+  </data>
+  <data name="InvalidPath" xml:space="preserve">
+    <value>Invalid Path.</value>
+    <comment>InstallRequiredPackagesCommand.cs : Invalid Path for zip pkgs</comment>
+  </data>
+  <data name="InvalidPath2" xml:space="preserve">
+    <value>Path not valid</value>
+    <comment>InstallRequiredPackagesCommand.cs : Invalid Path for zip pkgs</comment>
+  </data>
+  <data name="LoadLibrary" xml:space="preserve">
+    <value>Load Package</value>
+    <comment>LoadPackageCommand.cs : Load a R package</comment>
+  </data>
+  <data name="LoadPackages" xml:space="preserve">
+    <value>Load Package(s)</value>
+    <comment>LoadPackageFromListCommand.cs : Load one or more pkgs</comment>
+  </data>
+  <data name="NoRPkgFound" xml:space="preserve">
+    <value>No R package files found</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package zip files are not found in the given location</comment>
+  </data>
+  <data name="PkgMustAlreadyInstalled" xml:space="preserve">
+    <value>Note: package must be already installed using 'install package' option.</value>
+    <comment>LoadPackageCommand.cs : The R package must already be installed on the system before loading it in memory</comment>
+  </data>
+  <data name="RestartBSkyApp" xml:space="preserve">
+    <value>Restart BlueSky Application</value>
+    <comment>UpdateBlueSkyPacakgesCommand.cs : Restart BlueSky application after updating BlueSky R package</comment>
+  </data>
+  <data name="RestartToApplyChanges" xml:space="preserve">
+    <value>You have to restart the Application for the changes to take effect.</value>
+    <comment>ToolsInstallDialogs.cs : Restart BlueSky applicaion to apply changes.</comment>
+  </data>
+  <data name="RestartToApplyChanges2" xml:space="preserve">
+    <value>Changes will take effect after restarting the application!</value>
+    <comment>ToolsInstallDialogs.cs : Restart BlueSky applicaion to apply changes.</comment>
+  </data>
+  <data name="RPkgInstallStatus" xml:space="preserve">
+    <value>Package(s) Installation Status:</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package install status</comment>
+  </data>
+  <data name="RPkgNameCaseSensitive" xml:space="preserve">
+    <value>Package names are case sensitive. Please check your R package name.</value>
+    <comment>InstallCRANPackageCommand.cs : R package names are case sensitive.</comment>
+  </data>
+  <data name="RZipPkgNotInPath" xml:space="preserve">
+    <value>The path you have selected does not contain any R zip package files. Try again.</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package zip files are not found in the given location</comment>
+  </data>
+  <data name="ShowInstalledRPkgs" xml:space="preserve">
+    <value>Show Installed Packages</value>
+    <comment>ShowInstalledPackagesCommand.cs : Show installed R packages</comment>
+  </data>
+  <data name="ShowLoadedPkgs" xml:space="preserve">
+    <value>Show Loaded Packages</value>
+    <comment>ShowLoadedPackagesCommand.cs : Show loaded packages</comment>
+  </data>
+  <data name="UninstallPkg" xml:space="preserve">
+    <value>Uninstall Package</value>
+    <comment>UninstallPackageCommand.cs : Unistall R package</comment>
+  </data>
+  <data name="UnloadPkg" xml:space="preserve">
+    <value>Unload Package</value>
+    <comment>UnloadPackageCommand.cs : Unload a R package</comment>
+  </data>
+  <data name="UserPkgs" xml:space="preserve">
+    <value>User Package(s)</value>
+    <comment>LoadUserSessionPackagesCommand.cs :User packages from the list. Maintained from configuration window</comment>
+  </data>
+  <data name="UserSessListEmpty" xml:space="preserve">
+    <value>- User's Session List is Empty</value>
+    <comment>LoadUserSessionPackagesCommand.cs : User session package list is empty</comment>
+  </data>
+  <data name="UsrSessPkgsLoadFailed" xml:space="preserve">
+    <value>One or more User Session Package(s) failed to load.</value>
+    <comment>LoadUserSessionPackagesCommand.cs : One of more user packages failed to load</comment>
+  </data>
+  <data name="WarnOverwrite" xml:space="preserve">
+    <value>Warning! Overwrite?</value>
+    <comment>ToolsInstallDialogs.cs : warningfor overwriting the dialog.</comment>
+  </data>
+</root>

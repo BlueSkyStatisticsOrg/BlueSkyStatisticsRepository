@@ -1,0 +1,48 @@
+﻿<Window x:Class="BlueSky.Dialogs.RDataWarningMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlueSky.Dialogs"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        mc:Ignorable="d"
+        Title="{x:Static uires:UICtrlResources.RDataWarningTitle}" MinWidth="500" WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize" Closing="Window_Closing">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="purple" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FF6CaaD6" Offset="0"/>
+            <GradientStop Color="#FFEDEFF3" Offset="1"/>
+            <GradientStop Color="#FFDDDDDD" Offset="1"/>
+            <GradientStop Color="#FFEDEFF3" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid Background="#FFEEEFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="3,3,3,10" TextWrapping="Wrap" MaxWidth="550" Name="MsgText"></TextBlock>
+        <Expander Grid.Row="1" Header="Advanced" Margin="0,5">
+            <TextBlock Grid.Row="0" Margin="3,3,3,10" TextWrapping="Wrap" MaxWidth="550" Name="MsgTextAdv"></TextBlock>
+        </Expander>
+        <Grid Grid.Row="2"  >
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <CheckBox Grid.Row="0" Grid.Column="0" Margin="5" Content="{x:Static uires:UICtrlResources.DontShowAgain}" Name="notshowcheckbox" ></CheckBox>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="okbutton" Margin="50,3,3,3" MinWidth="50" Height="24" Content="{x:Static uires:UICtrlResources.buttonOk}" Click="okbutton_Click"  />
+
+
+                <Button Name="cancelbutton" Margin="3" MinWidth="50" Height="24" Content="{x:Static uires:UICtrlResources.buttonCancel}" Click="cancelbutton_Click"  />
+
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

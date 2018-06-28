@@ -1,0 +1,1564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AAA" xml:space="preserve">
+    <value>AAA</value>
+    <comment>AAA: .CS or. XAML name : Details : Comment</comment>
+  </data>
+  <data name="ErrLoadingRPkg" xml:space="preserve">
+    <value>다음 R 패키지를로드하는 중 오류 발생 :</value>
+    <comment>App.xaml.cs : Error msg for missing pkgs</comment>
+  </data>
+  <data name="CantLaunchBSkyApp" xml:space="preserve">
+    <value>오류 : BlueSky 응용 프로그램을 시작할 수 없습니다!</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="ErrReqRPkgMissing" xml:space="preserve">
+    <value>오류 : 필수 R 패키지가 없습니다.</value>
+    <comment>App.xaml.cs : Msg box title for missing pkg box</comment>
+  </data>
+  <data name="BSkyPkgMissing" xml:space="preserve">
+    <value>BlueSky 패키지 누락</value>
+    <comment>App.xaml.cs : MBox title for loading failed  for new dataset.</comment>
+  </data>
+  <data name="FloatingLicError" xml:space="preserve">
+    <value>유동 라이센스 오류</value>
+    <comment>App.xaml.cs : Msg box title for floating server error</comment>
+  </data>
+  <data name="AllFloatingLicInUse" xml:space="preserve">
+    <value>사용중인 모든 유동 라이센스.</value>
+    <comment>App.xaml.cs : Floating error message box title</comment>
+  </data>
+  <data name="InstallReqRPkgFrmCRAN" xml:space="preserve">
+    <value>다음을 클릭하여 CRAN에서 필수 R 패키지를 설치하십시오.</value>
+    <comment>App.xaml.cs : Msg to install from CRAN</comment>
+  </data>
+  <data name="StatMsgPkgLoad" xml:space="preserve">
+    <value>기다려주십시오 ... 필수 R 패키지를로드 중입니다.</value>
+    <comment>App.xaml.cs :Launch time statusbar message for R package loading</comment>
+  </data>
+  <data name="MakeSureRInstalled" xml:space="preserve">
+    <value>1. R이 설치되어 있습니다. BlueSky 통계는 R이 필요합니다. R을 다운로드하려면 다음을 방문하십시오 : (http://cran.r-project.org)</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="CantCreateTemplate" xml:space="preserve">
+    <value>에서 템플릿을 만들 수 없습니다.</value>
+    <comment>CommandExecutionHelper.cs : error msg for loading xaml dialog</comment>
+  </data>
+  <data name="CantExecuteCommand" xml:space="preserve">
+    <value>명령을 실행할 수 없습니다.</value>
+    <comment>CommandExecutionHelper.cs : error msg for executing xaml dialog</comment>
+  </data>
+  <data name="DatasetBecameNull" xml:space="preserve">
+    <value>NULL로 설정되었습니다. 그 이유는 데이터 세트에서 일부 분석이나 명령을 실행하기 때문일 수 있습니다.</value>
+    <comment>CommandExecutionHelper.cs : Dataset become null msg</comment>
+  </data>
+  <data name="DatasetNull" xml:space="preserve">
+    <value>NULL 데이터 집합.</value>
+    <comment>CommandExecutionHelper.cs : Dataset become null msg title</comment>
+  </data>
+  <data name="MakeSure32x64Compatibility" xml:space="preserve">
+    <value>2. BlueSky Statistics와 R. 64bit BlueSky Statistics 사이의 이진 호환성을 위해서는 64bit R과 32bit가 필요합니다. BlueSky Statistics에는 32bit R이 필요합니다. (BlueSky 버전을 찾으려면 : BlueSky Statistics에서 도움 -&gt; 약' 로 가십시오. GUI (시작&gt; 실행&gt; RGUI.exe)를 실행하고 콘솔에서 R.version 명령을 실행하십시오.</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="MakeSureAnotherBSkySession" xml:space="preserve">
+    <value>3. BlueSky 응용 프로그램의 다른 세션이 아직 실행되고 있지 않습니다.</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="MakeSureRHOME2LatestR" xml:space="preserve">
+    <value>4. R_HOME 환경 변수가 R의 최신 버전을 가리키고 있습니다.</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="PleaseMakeSure" xml:space="preserve">
+    <value>다음 사항을 확인하십시오.</value>
+    <comment>App.xaml.cs :Launch time exception message</comment>
+  </data>
+  <data name="ErrLoadingNewDS" xml:space="preserve">
+    <value>새 데이터 세트를로드하는 중 오류가 발생했습니다. BlueSky R 패키지가 설치되어 있는지 확인하십시오.</value>
+    <comment>App.xaml.cs : Loading new blank dataset failed message</comment>
+  </data>
+  <data name="ConnectCurrFloatingServer" xml:space="preserve">
+    <value>라이센스 서버에 연결할 수 없습니다 ([도움말 -&gt; 라이센스]로 이동하여 현재 유동 라이센스 서버에 연결하십시오).</value>
+    <comment>App.xaml.cs : Error Message for Floating server unreachable</comment>
+  </data>
+  <data name="ContactAdmin" xml:space="preserve">
+    <value>관리자에게 문의하십시오.</value>
+    <comment>App.xaml.cs : Floating error message</comment>
+  </data>
+  <data name="FloatingServerUnreachable2" xml:space="preserve">
+    <value>유동 라이센스 서버에 연결할 수 없습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message about floating server unreachable.</comment>
+  </data>
+  <data name="FloatingServerUnreachable" xml:space="preserve">
+    <value>경고 : 유동 라이센스 서버에 연결할 수 없습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message about floating server unreachable.</comment>
+  </data>
+  <data name="BSkyDownloadingReqPkgs" xml:space="preserve">
+    <value>BlueSky는 필요한 R 패키지를 다운로드하고 설치합니다.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky downloading and installing required R packages.</comment>
+  </data>
+  <data name="BSkyFormatSupportedTypes" xml:space="preserve">
+    <value>배열, 매트릭스 데이터 프레임 및 BSky 반환 구조.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : BSkyFormat()  supported types list.</comment>
+  </data>
+  <data name="bskygrphctrlimgConfigKeyNotFound" xml:space="preserve">
+    <value>'bskygrphcntrlimage'키가 구성 파일에 없습니다. 중단 중 ...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : 'bskygrphcntrlimage' key is not found in configuration file</comment>
+  </data>
+  <data name="BSkyNeedsRPkgs" xml:space="preserve">
+    <value>BlueSky 응용 프로그램에는 다음과 같은 R 패키지가 필요합니다.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky application needs following listed R packages.</comment>
+  </data>
+  <data name="CantBSkyFormatErrorMsg" xml:space="preserve">
+    <value>이 객체는 BSKyFormat을 사용하여 포맷 할 수 없습니다. BSkyFormat은 Array, Matrix, Data Frame 및 BSky List 객체에서만 사용할 수 있습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : BSkyFormat()error message for supported types.</comment>
+  </data>
+  <data name="cantopen" xml:space="preserve">
+    <value>열 수 없습니다.</value>
+    <comment>FileNewCommand.cs : cant open dataset</comment>
+  </data>
+  <data name="CantSaveAsExcel" xml:space="preserve">
+    <value>파일을 '.XLS'형식으로 저장할 수 없습니다. XLSX, RData 등의 다른 형식을 선택하려면 확인을 클릭하십시오.</value>
+    <comment>FileSaveCommand.cs : File can't be save in excel format.</comment>
+  </data>
+  <data name="CloseConfirmation" xml:space="preserve">
+    <value>닫으시겠습니까?</value>
+    <comment>FileCloseCommand.cs : Close dataset confirmation</comment>
+  </data>
+  <data name="CloseDatasetConfirmation" xml:space="preserve">
+    <value>데이터 세트를 닫으시겠습니까?</value>
+    <comment>FileCloseCommand.cs : Close dataset confirmation complete message</comment>
+  </data>
+  <data name="CriticalError" xml:space="preserve">
+    <value>치명적인 오류가 발생했습니다!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message for critical error return from R for error code -2</comment>
+  </data>
+  <data name="dataset" xml:space="preserve">
+    <value>데이터 세트?</value>
+    <comment>FileCloseCommand.cs : dataset name followed by this message</comment>
+  </data>
+  <data name="DatasetObjNotExists" xml:space="preserve">
+    <value>오류 : 데이터 집합 개체가 없습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Dataset object does not exist.</comment>
+  </data>
+  <data name="DFNotExists" xml:space="preserve">
+    <value>-Dataframe이 없거나 (NULL이거나 행 / 열이 없음)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : data frame does not exist</comment>
+  </data>
+  <data name="DlgNeedTheseRPkgs" xml:space="preserve">
+    <value>다음 R 패키지가 필요합니다.</value>
+    <comment>AUAnalysisCommandBase.cs : To run the dialog following packages are needed.</comment>
+  </data>
+  <data name="DoesNotExist" xml:space="preserve">
+    <value>존재하지 않는다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg says obj does not exists</comment>
+  </data>
+  <data name="ErrCantLodRefDataset" xml:space="preserve">
+    <value>오류 : 데이터 집합을로드 / 새로 고침 할 수 없습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't load refresh dataset</comment>
+  </data>
+  <data name="ErrCurlyMismatch" xml:space="preserve">
+    <value>블록 선언에 오류가 있습니다. 불일치 {or}</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Curly brackets creat a block of statements. If there are mismatch between opening and closing curly brackets then this the error msg shown.</comment>
+  </data>
+  <data name="ErrExecutingCommand" xml:space="preserve">
+    <value>명령을 실행하는 동안 오류가 발생했습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error executing command</comment>
+  </data>
+  <data name="ErrInRCommand" xml:space="preserve">
+    <value>R 명령 오류</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error in R command</comment>
+  </data>
+  <data name="ErrNoValidNodeLic" xml:space="preserve">
+    <value>이 응용 프로그램을 실행할 수있는 유효한 라이센스가 없습니다. 도움을 받으려면 도움말 -&gt; 라이센스로 이동하십시오.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : No valid node license message</comment>
+  </data>
+  <data name="ErrOpeningDataset" xml:space="preserve">
+    <value>오류 데이터 세트 열기</value>
+    <comment>FileNewCommand.cs : Error opening dataset</comment>
+  </data>
+  <data name="ErrOpeningDataset2" xml:space="preserve">
+    <value>데이터 집합을 여는 중 오류가 발생했습니다. (아마도 데이터 프레임이 아님)</value>
+    <comment>FileOpenCommand.cs : error message</comment>
+  </data>
+  <data name="ErrOpeningFile" xml:space="preserve">
+    <value>파일을 열 수 없습니다.</value>
+    <comment>FileOpenCommand.cs : Error in opening file</comment>
+  </data>
+  <data name="ErrOpeningRegGrpLst" xml:space="preserve">
+    <value>등록 된 그래픽 명령 목록을 여는 중 오류가 발생했습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Error opening the registered graphic command list.</comment>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>오류가 발생했습니다!</value>
+    <comment>ToolsMenuEditorCommand.cs, SyntaxEditorWindow.xaml.cs : Message for critical error return from R for error code -1</comment>
+  </data>
+  <data name="ErrParenthesisMismatch" xml:space="preserve">
+    <value>블록 선언에 오류가 있습니다. 불일치 (또는)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg for round brackets mismatch in opening and closing brackets.</comment>
+  </data>
+  <data name="ErrReqModelNotSelected" xml:space="preserve">
+    <value>오류 : 필수 모델 유형이 선택되지 않았습니다.</value>
+    <comment>AUAnalysisCommandBase.cs : Required model not selected. </comment>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>파일을 찾을 수 없음</value>
+    <comment>FileOpenCommand.cs : file not found</comment>
+  </data>
+  <data name="FloatingAllinUseMsg" xml:space="preserve">
+    <value>사용중인 모든 유동 라이센스. (관리자에게 문의하십시오)</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Status bar message for floating licenses all in use</comment>
+  </data>
+  <data name="FloatingFixIPPortMsg" xml:space="preserve">
+    <value>[도움말 -&gt; 라이센스]로 이동하여 라이센스 상태를 확인하거나 유동 라이센스 서버의 IP 주소 및 포트를 변경하십시오.</value>
+    <comment>App.xaml.cs, SyntaxEditorWindow.xaml.cs : Message about fixing floating server port and ip adress.</comment>
+  </data>
+  <data name="FloatingLicValid" xml:space="preserve">
+    <value>유동 라이센스 유효</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Floating license valid message</comment>
+  </data>
+  <data name="FloatingPortIncorrectlySet" xml:space="preserve">
+    <value>서버 IP 주소 및 포트가 설정되지 않았거나 잘못 설정된 경우 [도움말 -&gt; 라이센스]로 이동하십시오.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Floating license server port ip incorrectly set message</comment>
+  </data>
+  <data name="FormatNotSupported" xml:space="preserve">
+    <value>- 형식이 지원되지 않습니다.</value>
+    <comment>FileNewCommand.cs : cant open dataset, format not supported</comment>
+  </data>
+  <data name="FormatNotSupported2" xml:space="preserve">
+    <value>2. 파일 형식이 지원되지 않습니다 (또는 파일이 손상되었거나 열 이름이 중복됨).</value>
+    <comment>FileOpenCommand.cs : Error msg - file format not supported or dataset have duplicate column names</comment>
+  </data>
+  <data name="IncorrectModelOrModelType" xml:space="preserve">
+    <value>모델 유형 및 모델이 지정되지 않았거나 잘못된 모델 유형 및 모델을 선택했습니다.</value>
+    <comment>AUAnalysisCommandBase.cs : Model type or Model selection is incorrect.</comment>
+  </data>
+  <data name="InstallAbvMentionedRPkgs" xml:space="preserve">
+    <value>위에서 언급 한 R 패키지를 설치하십시오.</value>
+    <comment>AUAnalysisCommandBase.cs : Install R packages mentioned above. These  are required by the current dialog that is under execution.</comment>
+  </data>
+  <data name="InstallRPkgRunDialogAgain" xml:space="preserve">
+    <value>누락 된 R 패키지를 설치하고 대화 상자를 다시 실행하십시오.</value>
+    <comment>AUAnalysisCommandBase.cs : Install dialog required R package and re-run the dialog.</comment>
+  </data>
+  <data name="InstallUpdatePkgMenuPath" xml:space="preserve">
+    <value>이동 : 도구들 -&gt; 꾸러미 -&gt; CRAN에서 패키지 설치 / 업데이트로 이동하십시오.</value>
+    <comment>AUAnalysisCommandBase.cs : Install or update required R package by going to this particular menu option.</comment>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>내부 오류 : 작업 실패</value>
+    <comment>FileSaveAsCommand.cs, FileSaveAsExcelCommand.cs, FileSaveCommand.cs : Save-As failed, internal error</comment>
+  </data>
+  <data name="invalidDir" xml:space="preserve">
+    <value>디렉토리 경로가 잘못되었습니다!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : invalid dir path</comment>
+  </data>
+  <data name="invalidFilename" xml:space="preserve">
+    <value>잘못된 파일 이름!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : invalid file name</comment>
+  </data>
+  <data name="isNull" xml:space="preserve">
+    <value>null</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Msg says obj is null</comment>
+  </data>
+  <data name="MayTake1530Min" xml:space="preserve">
+    <value>인터넷 연결 상태에 따라 완료하는 데 15 ~ 30 분이 걸릴 수 있습니다.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky downloading and installing required R packages may take 15 to 30 mins.</comment>
+  </data>
+  <data name="MisingRPkgs" xml:space="preserve">
+    <value>오류 : 누락 된 R 패키지</value>
+    <comment>AUAnalysisCommandBase.cs : Missing Rpackages those are required by the current dialog.</comment>
+  </data>
+  <data name="missing" xml:space="preserve">
+    <value>있어야 할 곳에 없는</value>
+    <comment>SyntaxEditorWindow.xaml.cs : if missing brackets in syntax</comment>
+  </data>
+  <data name="ModelsSupportedAre" xml:space="preserve">
+    <value>지원되는 모델 유형은 다음과 같습니다.</value>
+    <comment>AUAnalysisCommandBase.cs : Models supported are listed below</comment>
+  </data>
+  <data name="NoCommToExecute" xml:space="preserve">
+    <value>실행할 명령 없음</value>
+    <comment>AUAnalysisCommandBase.cs :No command in dialog syntax to execute.</comment>
+  </data>
+  <data name="NoRowsColsPresent" xml:space="preserve">
+    <value>3. 데이터 프레임에 행이나 열이 없습니다.</value>
+    <comment>FileOpenCommand.cs : Error msg - dataset does not have row/cols</comment>
+  </data>
+  <data name="NoTablesReturned" xml:space="preserve">
+    <value>출력에 표시 할 테이블이 없습니다!</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message for nooftables is zero. </comment>
+  </data>
+  <data name="NotDataframe" xml:space="preserve">
+    <value>또는 'data.frame'유형이 아님</value>
+    <comment>SyntaxEditorWindow.xaml.cs : not a data.frame type</comment>
+  </data>
+  <data name="NotDataframe2" xml:space="preserve">
+    <value>1. 데이터 프레임 객체가 아닙니다.</value>
+    <comment>FileOpenCommand.cs : Error msg - not a data.frame</comment>
+  </data>
+  <data name="NotdataframeType" xml:space="preserve">
+    <value>오류 : 데이터 집합은 data.frame 형식이 아닙니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Dataset is not a data.frame type.</comment>
+  </data>
+  <data name="NoValidLic" xml:space="preserve">
+    <value>유효한 라이센스 없음</value>
+    <comment>SyntaxEditorWindow.xaml.cs : No valid license message</comment>
+  </data>
+  <data name="ObjCantBSkyFormat" xml:space="preserve">
+    <value>BSKyFormat을 사용하여 개체를 포맷 할 수 없습니다. 목적:</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't format object using BSkyFormat(). Object probably does not exist.</comment>
+  </data>
+  <data name="ObjCantBSkyFormat2" xml:space="preserve">
+    <value>BSkyFormat을 사용하여 개체를 포맷 할 수 없습니다. 지원되지 않는 유형입니다. 지원되는 유형은 다음과 같습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Can't format object using BSkyFormat(). Object type is not supported.</comment>
+  </data>
+  <data name="OldSessionRunning" xml:space="preserve">
+    <value>여전히 실행중인 이전 세션의 -R.Net 서버. 작업 관리자를 사용하여 닫습니다.</value>
+    <comment>FileNewCommand.cs : cant open dataset, BSky old session is running</comment>
+  </data>
+  <data name="OldSessionRunning2" xml:space="preserve">
+    <value>4. 이전 세션의 R.Net 서버가 여전히 실행 중입니다 (작업 관리자를 사용하여 종료).</value>
+    <comment>FileOpenCommand.cs : Error msg - Old session running</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine1" xml:space="preserve">
+    <value>동일한 이름의 변수 / 객체가 RDATA 파일에 이미있는 경우 RDATA 파일을로드하면 현재 변수 / 객체를 메모리에 덮어 쓸 수 있습니다.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 1</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine2" xml:space="preserve">
+    <value>필요한 경우 나중에로드 할 수있는 모든 현재 R 오브젝트를 취소하고 저장할 수 있습니다.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 2</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine3" xml:space="preserve">
+    <value>R 객체를 저장하고로드하려면 BlueSky R 명령 편집기에서 아래 명령을 실행하십시오.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 3</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine4" xml:space="preserve">
+    <value>save.image (file = 'filename.rdata') # filename.rdata는 객체가 저장 될 파일 이름입니다.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 4</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine5" xml:space="preserve">
+    <value>로드하려면 : load (file = 'filename.rdata') # filename.rdata는 객체를로드 할 파일 이름입니다.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 5</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine6" xml:space="preserve">
+    <value>'filename.rdata'는 슬래시 경로가있는 파일 이름입니다 (예 : 'C : /myfolder/myobjects.rdata'</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 6</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine7" xml:space="preserve">
+    <value>진행하고 RData 파일을 열려면 확인을 클릭하십시오.</value>
+    <comment>FileOpenCommand.cs : Opening .rdata file shows a warning message. The message is divided in 7 lines. This is line 7</comment>
+  </data>
+  <data name="OpenRScriptInSynWin" xml:space="preserve">
+    <value>R 스크립트를 열려면 '출력 및 구문'창으로 전환해야합니다.</value>
+    <comment>FileOpenCommand.cs : If anyone opens Rscript from main window then we guide them to open script in R command editor.</comment>
+  </data>
+  <data name="OpenRScriptMenuPath" xml:space="preserve">
+    <value>'출력 및 구문'창의 오른쪽 패널로 가서 'R 명령 편집기'에서 파일 -&gt; 열기를 클릭하십시오.</value>
+    <comment>FileOpenCommand.cs : If anyone opens Rscript from main window then we guide them to menu option in Rcommand Editor</comment>
+  </data>
+  <data name="PlzConfirm" xml:space="preserve">
+    <value>확인해주세요 ...</value>
+    <comment>FileOpenCommand.cs : Please confirm message</comment>
+  </data>
+  <data name="PlzSavB4AppUnusable" xml:space="preserve">
+    <value>APP를 사용할 수 없게되기 전에 작업을 저장하십시오.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Message  about saving your work when floating server unreachable.</comment>
+  </data>
+  <data name="PlzWait" xml:space="preserve">
+    <value>잠시만 기다려주십시오 ...</value>
+    <comment>AUAnalysisCommandBase.cs : Please wait message</comment>
+  </data>
+  <data name="PlzWaitDatasetLoading" xml:space="preserve">
+    <value>데이터 세트를로드하는 동안 잠시 기다려주십시오 ...</value>
+    <comment>RefreshDatagridCommand.cs : Please wait while dataset loading message</comment>
+  </data>
+  <data name="reasonsAre" xml:space="preserve">
+    <value>이유는 다음 중 하나 이상일 수 있습니다.</value>
+    <comment>FileNewCommand.cs : cant open dataset, reasons are</comment>
+  </data>
+  <data name="RegPkgsMenuPath" xml:space="preserve">
+    <value>설치&gt; CRAN에서 필요한 모든 패키지를 설치하십시오.</value>
+    <comment>AUAnalysisCommandBase.cs : BlueSky required packages menu path</comment>
+  </data>
+  <data name="RemoveSplit" xml:space="preserve">
+    <value>처음으로 분할 제거</value>
+    <comment>AUAnalysisCommandBase.cs : Remove split before running data manupulation command on a dataset</comment>
+  </data>
+  <data name="RemoveSplitForDataManipulation" xml:space="preserve">
+    <value>이 함수는 데이터 집합을 조작합니다. 분할을 제거하고 명령을 다시 실행하십시오.</value>
+    <comment>AUAnalysisCommandBase.cs : Dataset manipulation command is executing on a split dataset.</comment>
+  </data>
+  <data name="ReqRPkgMissing" xml:space="preserve">
+    <value>- 또는 필수 R 패키지가 누락되었습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Required Rpackage is missing due to which load-refresh failed</comment>
+  </data>
+  <data name="ReqRPkgNotInstalled" xml:space="preserve">
+    <value>- 필수 R 패키지가 설치되어 있지 않습니다.</value>
+    <comment>FileNewCommand.cs : cant open dataset, req R pkg not installed</comment>
+  </data>
+  <data name="RSideIssue" xml:space="preserve">
+    <value>R면의 일부 문제 (예 : 필수 R 패키지가로드되지 않음)</value>
+    <comment>FileNewCommand.cs : cant open dataset, some issue on R side.</comment>
+  </data>
+  <data name="RSideIssue2" xml:space="preserve">
+    <value>5. R면에 문제가 있습니다 (예 : 필수 라이브러리가로드되지 않았거나 구문이 잘못됨).</value>
+    <comment>FileOpenCommand.cs : Error msg - R side issue</comment>
+  </data>
+  <data name="SaveAsFailed" xml:space="preserve">
+    <value>저장 - 실패했습니다.</value>
+    <comment>FileSaveAsCommand.cs, FileSaveAsExcelCommand.cs, FileSaveCommand.cs : Save-As failed message</comment>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>변경 사항을 저장하다?</value>
+    <comment>FileCloseCommand.cs : Save confirmation</comment>
+  </data>
+  <data name="SaveConfirmation" xml:space="preserve">
+    <value>변경 사항을 저장 하시겠습니까?</value>
+    <comment>FileCloseCommand.cs : Save dataset confirmation</comment>
+  </data>
+  <data name="SaveExitCommandEditor" xml:space="preserve">
+    <value>저장 및 종료 명령 편집기?</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Save and Exit prompt for Rcommand editor</comment>
+  </data>
+  <data name="SaveScriptPromptBeforeOpen" xml:space="preserve">
+    <value>새 스크립트를로드하기 전에 명령을 저장 하시겠습니까?</value>
+    <comment>SyntaxEditorWindow.xaml.cs : Save and open another script prompt for Rcommand editor</comment>
+  </data>
+  <data name="SaveToOtherFormat" xml:space="preserve">
+    <value>다른 형식으로 저장</value>
+    <comment>FileSaveCommand.cs : File can't be save in excel format, better save to other formats.</comment>
+  </data>
+  <data name="SelectModelTypeAndModel" xml:space="preserve">
+    <value>BlueSky Statistics 메인 윈도우의 도구 모음 오른쪽에있는 드롭 다운에서 '모델 유형'과 '모델'을 선택하십시오.</value>
+    <comment>AUAnalysisCommandBase.cs : Select appropriate Model and Model type</comment>
+  </data>
+  <data name="sinkimageConfigKeyNotFound" xml:space="preserve">
+    <value>키 'sinkimage'가 설정 파일에 없습니다. 중단 중 ...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : sinkimage key is not found in configuration file</comment>
+  </data>
+  <data name="sinkregstrdgrphConfigKeyNotFound" xml:space="preserve">
+    <value>구성 파일에 'sinkregstrdgrph'키가 없습니다. 명령 편집기에서 그래픽을 실행할 수 없습니다.</value>
+    <comment>SyntaxEditorWindow.xaml.cs : singregstrdgrph key is not found in configuration file</comment>
+  </data>
+  <data name="tempsinkConfigKeyNotFound" xml:space="preserve">
+    <value>구성 파일에 'tempsink'키가 없습니다. 중단 중 ...</value>
+    <comment>SyntaxEditorWindow.xaml.cs : tempsink key is not found in configuration file</comment>
+  </data>
+  <data name="unexpected" xml:space="preserve">
+    <value>예기치 않은</value>
+    <comment>SyntaxEditorWindow.xaml.cs : if extra brackets in syntax</comment>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>경고</value>
+    <comment>FileOpenCommand.cs : warning</comment>
+  </data>
+  <data name="BSkyNotWorkReqPkgMissing" xml:space="preserve">
+    <value>필요한 R 패키지가없는 경우 BlueSky 응용 프로그램이 제대로 작동하지 않을 수 있습니다.</value>
+    <comment>InstallRequiredPackagesCommand.cs : Required packages missing so BlueSky  may not work properly</comment>
+  </data>
+  <data name="CantInstallDialog" xml:space="preserve">
+    <value>대화 상자를 설치할 수 없습니다.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog can't be installed.</comment>
+  </data>
+  <data name="CantInstallDialogNoOutFile" xml:space="preserve">
+    <value>출력 파일이 언급되지 않았으므로 대화 상자를 설치할 수 없습니다.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because output xml file is not mentioned.</comment>
+  </data>
+  <data name="CantInstallDialogNoTitle" xml:space="preserve">
+    <value>제목은 비워 둘 수 없습니다. 대화 상자가 종료됩니다.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because title is not mentioned.</comment>
+  </data>
+  <data name="CantOpenFile" xml:space="preserve">
+    <value>파일을 열 수 없습니다.</value>
+    <comment>InspectorCommand.cs : Cant open file</comment>
+  </data>
+  <data name="CantOpenREditor" xml:space="preserve">
+    <value>명령 편집기를 열 수 없습니다. UAMenuCommand 속성이 설정되지 않았습니다.</value>
+    <comment>ToolsSyntaxEditorCommand.cs : Unable to open R command editor</comment>
+  </data>
+  <data name="ConfirmDialogInstall" xml:space="preserve">
+    <value>대화 상자를 계속 설치 하시겠습니까?</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for installing the dialog.</comment>
+  </data>
+  <data name="ConfirmDialogOverwrite" xml:space="preserve">
+    <value>명령을 덮어 쓰시겠습니까</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for overwriting the dialog.</comment>
+  </data>
+  <data name="DialogInstalled" xml:space="preserve">
+    <value>대화 상자가 설치되었습니다.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog is installed.</comment>
+  </data>
+  <data name="DialogTitleEmpty" xml:space="preserve">
+    <value>대화 제목이 비어 있습니다.</value>
+    <comment>ToolsInstallDialogs.cs : Dialog cannot be installed because title is not mentioned.</comment>
+  </data>
+  <data name="EnterPkgNameToLoad" xml:space="preserve">
+    <value>로드하려는 패키지 이름을 입력하십시오.</value>
+    <comment>LoadPackageCommand.cs : Enter the R package name that you want to load</comment>
+  </data>
+  <data name="ErrGettingInstalledPkgs" xml:space="preserve">
+    <value>설치된 패키지 가져 오기 오류</value>
+    <comment>ShowInstalledPackagesCommand.cs : Error getting installed R packages</comment>
+  </data>
+  <data name="ErrGettingInstalledPkgs2" xml:space="preserve">
+    <value>설치된 패키지를 가져 오는 중에 오류가 발생했습니다.</value>
+    <comment>ShowInstalledPackagesCommand.cs : Error getting installed R packages</comment>
+  </data>
+  <data name="ErrGettingLoadedPkgs" xml:space="preserve">
+    <value>로드 된 패키지 가져 오기 오류</value>
+    <comment>ShowLoadedPackagesCommand.cs : Error getting loaded packages</comment>
+  </data>
+  <data name="ErrGettingLoadedPkgs2" xml:space="preserve">
+    <value>로드 된 패키지를 가져 오는 중에 오류가 발생했습니다.</value>
+    <comment>ShowLoadedPackagesCommand.cs : Error getting loaded packages</comment>
+  </data>
+  <data name="ErrInstallingFromCRAN" xml:space="preserve">
+    <value>CRAN 패키지 설치 오류</value>
+    <comment>InstallCRANPackageCommand.cs : Error Installing packages from CRAN</comment>
+  </data>
+  <data name="ErrInstallingRPkg" xml:space="preserve">
+    <value>패키지 설치 오류</value>
+    <comment>InstallPackageCommand.cs : Error Installing R package from zip</comment>
+  </data>
+  <data name="ErrInstallingRPkg2" xml:space="preserve">
+    <value>패키지를 설치하는 동안 오류가 발생했습니다.</value>
+    <comment>InstallPackageCommand.cs : Error Installing R package from zip</comment>
+  </data>
+  <data name="ErrInstallReqPkgFrmCRAN" xml:space="preserve">
+    <value>CRAN에서 필수 패키지를 설치하는 중 오류가 발생했습니다.</value>
+    <comment>InstallRequiredPackagesCRANCommand.cs : Error installing required R packages from CRAN</comment>
+  </data>
+  <data name="ErrLoadingRPkg2" xml:space="preserve">
+    <value>패키지를로드하는 중 오류가 발생했습니다.</value>
+    <comment>InstallCRANPackageCommand.cs : R package loading error</comment>
+  </data>
+  <data name="ErrLoadingRPkgs" xml:space="preserve">
+    <value>패키지로드 중 오류가 발생했습니다.</value>
+    <comment>LoadPackageFromListCommand.cs :  Error while Loading one or more pkgs</comment>
+  </data>
+  <data name="ErrLoadingUsrSessionPkg" xml:space="preserve">
+    <value>사용자 세션 패키지로드 중 오류가 발생했습니다.</value>
+    <comment>LoadPackageCommand.cs : Error while loading user session R pkgs</comment>
+  </data>
+  <data name="ErrLoadingUsrSessionPkgs" xml:space="preserve">
+    <value>사용자 세션 패키지를로드하는 중 오류가 발생했습니다.</value>
+    <comment>LoadUserSessionPackagesCommand.cs : Error loading user session R packages</comment>
+  </data>
+  <data name="ErrModifyingMenu" xml:space="preserve">
+    <value>메뉴 수정 중 오류가 발생했습니다.</value>
+    <comment>ToolsMenuEditorCommand.cs : Error in editing menu (menu.xml)</comment>
+  </data>
+  <data name="ErrUninstallingPkg" xml:space="preserve">
+    <value>패키지 제거 오류</value>
+    <comment>UninstallPackageCommand.cs : Error uninstalling R package</comment>
+  </data>
+  <data name="ErrUninstallingPkg2" xml:space="preserve">
+    <value>패키지를 제거하는 중 오류가 발생했습니다.</value>
+    <comment>UninstallPackageCommand.cs : Error uninstalling R package</comment>
+  </data>
+  <data name="ErrUnloadingPkg" xml:space="preserve">
+    <value>패키지 언로드 오류</value>
+    <comment>UnloadPackageCommand.cs : Error in unloading R package</comment>
+  </data>
+  <data name="ErrUnloadingPkg2" xml:space="preserve">
+    <value>패키지를 언로드하는 중 오류가 발생했습니다.</value>
+    <comment>UnloadPackageCommand.cs : Error in unloading R package</comment>
+  </data>
+  <data name="InstallFailed" xml:space="preserve">
+    <value>설치 실패</value>
+    <comment>ToolsInstallDialogs.cs : Dialog installation failed.</comment>
+  </data>
+  <data name="InstallingFromCRAN" xml:space="preserve">
+    <value>CRAN에서 패키지 설치</value>
+    <comment>InstallCRANPackageCommand.cs : Installing packages from CRAN</comment>
+  </data>
+  <data name="InstallingRPkgFromLocal" xml:space="preserve">
+    <value>로컬 드라이브에서 필수 R 패키지 설치</value>
+    <comment>InstallRequiredPackagesCommand.cs : Installing required Rpkgs from local drive</comment>
+  </data>
+  <data name="InstallNewDialog" xml:space="preserve">
+    <value>새 대화 상자를 설치 하시겠습니까?</value>
+    <comment>ToolsInstallDialogs.cs : Confirmation for installing the dialog.</comment>
+  </data>
+  <data name="InstallPkg" xml:space="preserve">
+    <value>패키지 설치</value>
+    <comment>InstallPackageCommand.cs : Install R package from zip</comment>
+  </data>
+  <data name="InstallPkgsFromCRAN" xml:space="preserve">
+    <value>CRAN에서 패키지 설치</value>
+    <comment>PackageHelperMethods.cs : Install packages from CRAN</comment>
+  </data>
+  <data name="InstallReqRPkgFrmCRAN2" xml:space="preserve">
+    <value>CRAN에서 필수 R 패키지 설치</value>
+    <comment>InstallRequiredPackagesCRANCommand.cs :  installing required R packages from CRAN</comment>
+  </data>
+  <data name="InvalidPath" xml:space="preserve">
+    <value>경로가 잘못되었습니다.</value>
+    <comment>InstallRequiredPackagesCommand.cs : Invalid Path for zip pkgs</comment>
+  </data>
+  <data name="InvalidPath2" xml:space="preserve">
+    <value>경로가 유효하지 않습니다.</value>
+    <comment>InstallRequiredPackagesCommand.cs : Invalid Path for zip pkgs</comment>
+  </data>
+  <data name="LoadLibrary" xml:space="preserve">
+    <value>패키지로드</value>
+    <comment>LoadPackageCommand.cs : Load a R package</comment>
+  </data>
+  <data name="LoadPackages" xml:space="preserve">
+    <value>패키지로드</value>
+    <comment>LoadPackageFromListCommand.cs : Load one or more pkgs</comment>
+  </data>
+  <data name="NoRPkgFound" xml:space="preserve">
+    <value>R 패키지 파일이 없습니다.</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package zip files are not found in the given location</comment>
+  </data>
+  <data name="PkgMustAlreadyInstalled" xml:space="preserve">
+    <value>참고 : 패키지는 '패키지 설치'옵션을 사용하여 이미 설치되어 있어야합니다.</value>
+    <comment>LoadPackageCommand.cs : The R package must already be installed on the system before loading it in memory</comment>
+  </data>
+  <data name="RestartBSkyApp" xml:space="preserve">
+    <value>BlueSky 응용 프로그램 다시 시작</value>
+    <comment>UpdateBlueSkyPacakgesCommand.cs : Restart BlueSky application after updating BlueSky R package</comment>
+  </data>
+  <data name="RestartToApplyChanges" xml:space="preserve">
+    <value>변경 사항을 적용하려면 응용 프로그램을 다시 시작해야합니다.</value>
+    <comment>ToolsInstallDialogs.cs : Restart BlueSky applicaion to apply changes.</comment>
+  </data>
+  <data name="RestartToApplyChanges2" xml:space="preserve">
+    <value>변경 사항은 응용 프로그램을 다시 시작한 후에 적용됩니다!</value>
+    <comment>ToolsInstallDialogs.cs : Restart BlueSky applicaion to apply changes.</comment>
+  </data>
+  <data name="RPkgInstallStatus" xml:space="preserve">
+    <value>패키지 설치 상태 :</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package install status</comment>
+  </data>
+  <data name="RPkgNameCaseSensitive" xml:space="preserve">
+    <value>패키지 이름은 대소 문자를 구분합니다. R 패키지 이름을 확인하십시오.</value>
+    <comment>InstallCRANPackageCommand.cs : R package names are case sensitive.</comment>
+  </data>
+  <data name="RZipPkgNotInPath" xml:space="preserve">
+    <value>선택한 경로에 R zip 패키지 파일이 없습니다. 다시 시도하십시오.</value>
+    <comment>InstallRequiredPackagesCommand.cs : R package zip files are not found in the given location</comment>
+  </data>
+  <data name="ShowInstalledRPkgs" xml:space="preserve">
+    <value>설치된 패키지 표시</value>
+    <comment>ShowInstalledPackagesCommand.cs : Show installed R packages</comment>
+  </data>
+  <data name="ShowLoadedPkgs" xml:space="preserve">
+    <value>로드 된 패키지 표시</value>
+    <comment>ShowLoadedPackagesCommand.cs : Show loaded packages</comment>
+  </data>
+  <data name="UninstallPkg" xml:space="preserve">
+    <value>패키지 제거</value>
+    <comment>UninstallPackageCommand.cs : Unistall R package</comment>
+  </data>
+  <data name="UnloadPkg" xml:space="preserve">
+    <value>패키지 언로드</value>
+    <comment>UnloadPackageCommand.cs : Unload a R package</comment>
+  </data>
+  <data name="UserPkgs" xml:space="preserve">
+    <value>사용자 패키지</value>
+    <comment>LoadUserSessionPackagesCommand.cs :User packages from the list. Maintained from configuration window</comment>
+  </data>
+  <data name="UserSessListEmpty" xml:space="preserve">
+    <value>- 사용자 세션 목록이 비어 있습니다.</value>
+    <comment>LoadUserSessionPackagesCommand.cs : User session package list is empty</comment>
+  </data>
+  <data name="UsrSessPkgsLoadFailed" xml:space="preserve">
+    <value>하나 이상의 사용자 세션 패키지를로드하지 못했습니다.</value>
+    <comment>LoadUserSessionPackagesCommand.cs : One of more user packages failed to load</comment>
+  </data>
+  <data name="WarnOverwrite" xml:space="preserve">
+    <value>경고! 덮어 쓰시겠습니까?</value>
+    <comment>ToolsInstallDialogs.cs : warningfor overwriting the dialog.</comment>
+  </data>
+  <data name="CloseDataset" xml:space="preserve">
+    <value>데이터 세트 닫기</value>
+    <comment>DyVIBlendAnalyser.cs : Close Dataset header text</comment>
+  </data>
+  <data name="OpenDataset" xml:space="preserve">
+    <value>공개 데이터 집합</value>
+    <comment>DyVIBlendAnalyser.cs : Open Dataset header text</comment>
+  </data>
+  <data name="SaveDataset" xml:space="preserve">
+    <value>데이터 집합 저장</value>
+    <comment>DyVIBlendAnalyser.cs : Save Dataset header text</comment>
+  </data>
+  <data name="BSkyOutFileBadFormat" xml:space="preserve">
+    <value>파일이 손상되었거나 BlueSky 출력 형식이 아닙니다.</value>
+    <comment>BSkyOutputGenerator.cs : message when output file is corrupt or different format</comment>
+  </data>
+  <data name="BSkyOutFileNotFound" xml:space="preserve">
+    <value>BSky 출력 파일을 찾을 수 없습니다!</value>
+    <comment>BSkyOutputGenerator.cs : message when output file is not found</comment>
+  </data>
+  <data name="ErrorExecuting" xml:space="preserve">
+    <value>실행 오류 :</value>
+    <comment>RService.cs : text - error executing</comment>
+  </data>
+  <data name="ErrorExecutingTitle" xml:space="preserve">
+    <value>R 구문 실행 오류!</value>
+    <comment>RService.cs : text - error executing title for message box</comment>
+  </data>
+  <data name="FloatingLicServerUnreachable" xml:space="preserve">
+    <value>라이센스 서버에 연결할 수 없습니다.</value>
+    <comment>BSkyFloatingLicenseService.cs : Title for messagebox about server connection error</comment>
+  </data>
+  <data name="FloatingLicWarningSaveWork" xml:space="preserve">
+    <value>APP를 사용할 수 없게되기 전에 작업을 저장하십시오.</value>
+    <comment>BSkyFloatingLicenseService.cs : Warning message to save before app becomes unusable as the connection to server is lost</comment>
+  </data>
+  <data name="MsgChosingRFromRegistry" xml:space="preserve">
+    <value>기본 R 설치를 재정의하기위한 구성 설정이 올바르지 않습니다. 우리는 레지스트리를 검사하여 R 버전을 선택합니다.</value>
+    <comment>RService.cs : R Home will be picked from registry</comment>
+  </data>
+  <data name="MsgSetRHome" xml:space="preserve">
+    <value>응용 프로그램이 시작되면 구성 설정에서 올바른 경로를 설정할 수 있습니다</value>
+    <comment>RService.cs : set RHome path after BSky launch</comment>
+  </data>
+  <data name="MultiRPkgInstallMsg" xml:space="preserve">
+    <value>다중 패키지는 쉼표로 구분해야하며 따옴표는 사용하지 않아야합니다.</value>
+    <comment>RPackageManager.cs : message about format to be used when installing multiple Rpackages</comment>
+  </data>
+  <data name="BSkyListBox_TypeDescription" xml:space="preserve">
+    <value>ListBox 컨트롤을 사용하면 미리 구성된 항목이있는 목록 상자를 표시 할 수 있습니다. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면이 목록 상자 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyListBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="ControlNameEntered" xml:space="preserve">
+    <value>입력 한 컨트롤 이름</value>
+    <comment>Behaviour.cs : a Message </comment>
+  </data>
+  <data name="ControlPropertyNotValid" xml:space="preserve">
+    <value>컨트롤의 유효한 속성이 아닙니다.</value>
+    <comment>Behaviour.cs : a Message</comment>
+  </data>
+  <data name="EnteredEmptyControlName" xml:space="preserve">
+    <value>컨트롤 이름에 빈 값을 입력했습니다. 컨트롤의 컨트롤 이름을 눈금에서 검토하고 유효한 값을 입력하십시오.</value>
+    <comment>Behaviour.cs : a Message about entering empty control name</comment>
+  </data>
+  <data name="EnteredEmptyPropertyName" xml:space="preserve">
+    <value>빈 속성 이름을 입력했습니다. 그리드의 속성 이름을 검토하고 유효한 값을 입력하십시오.</value>
+    <comment>Behaviour.cs : a Message</comment>
+  </data>
+  <data name="EnteredInvalidControlName" xml:space="preserve">
+    <value>잘못된 컨트롤 이름을 입력했거나 해당 컨트롤이 비헤이비어를 정의하는 데 유효하지 않습니다 (레이블 및 버튼 컨트롤 유형에 비헤이비어를 설정할 수 없음). 그리드에서 컨트롤의 컨트롤 이름을 검토하고 유효한 값을 입력하십시오.</value>
+    <comment>Behaviour.cs : a Message about entering invalid control name</comment>
+  </data>
+  <data name="EnteredInvalidProperty" xml:space="preserve">
+    <value>잘못된 속성 이름을 입력했습니다. 격자의 속성 이름을 검토하고 유효한 값을 입력하십시오.</value>
+    <comment>Behaviour.cs : a Message about entring invalid property</comment>
+  </data>
+  <data name="PropertyNameEntered" xml:space="preserve">
+    <value>입력 한 속성 이름</value>
+    <comment>Behaviour.cs : a Message</comment>
+  </data>
+  <data name="UnmatchingPropertyName" xml:space="preserve">
+    <value>속성 이름과 일치하지 않습니다.</value>
+    <comment>Behaviour.cs : a Message</comment>
+  </data>
+  <data name="BSkyBrowse_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화되고 대화 상자 또는 포함 된 하위 대화 상자의 컨트롤 하나에 CanExecute = false이면 확인 단추가 비활성화됩니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyBrowse_EnabledDescription" xml:space="preserve">
+    <value>기본값은 참 (사용 가능)입니다. 이 속성은이 찾아보기 컨트롤의 기본 상태를 사용할지 여부를 제어합니다. 사용 가능한 경우 True를 선택하고 사용하지 않으려면 False를 선택합니다. 이 컨트롤을 사용하면이 컨트롤을 클릭하여 파일을 선택할 수 있습니다. 비활성화 된 경우 컨트롤을 클릭 할 수 없습니다. 예를 들어, 컨트롤의 초기 상태를 비활성화하려는 경우가 있습니다. 그러나 선택한 내용을 기반으로 활성화 할 수 있습니다 다른 통제에서</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyBrowse_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyBrowse_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyBrowse_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyBrowse_TextDescription" xml:space="preserve">
+    <value>선택적 속성. 이 찾아보기 컨트롤의 캡션을 입력하십시오.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyBrowse_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyBrowse_TypeDescription" xml:space="preserve">
+    <value>찾아보기 컨트롤을 사용하면 바탕 화면에서 파일을 선택할 수 있습니다. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면이 찾아보기 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyBrowse_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyBrowse.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyButton_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화되고 대화 상자 또는 포함 된 하위 대화 상자의 컨트롤 하나에 CanExecute = false이면 확인 단추가 비활성화됩니다.</value>
+    <comment>BSkyButton.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyButton_DesignerDescription" xml:space="preserve">
+    <value>이 속성을 사용하면 하위 대화 상자를 만들 수 있습니다. 속성을 클릭 한 다음 줄임표 단추를 클릭하여 하위 대화 상자를 만듭니다.</value>
+    <comment>BSkyButton.cs : Description attribute text for Designer property</comment>
+  </data>
+  <data name="BSkyButton_EnabledDescription" xml:space="preserve">
+    <value>기본값은 참 (사용 가능)입니다. 이 속성은이 단추 컨트롤의 기본 상태를 사용할지 여부를 제어합니다. 사용 가능한 경우 True를 선택하고 사용하지 않으려면 False를 선택합니다. 사용 설정되면 버튼을 클릭 할 수 있습니다. 사용하지 않으면 버튼을 클릭 할 수 없습니다. 예를 들어, 버튼의 초기 상태를 사용하지 않으려는 경우가 있습니다. 텍스트 상자 컨트롤.</value>
+    <comment>BSkyButton.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyButton_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyButton.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyButton_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyButton.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyButton_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyButton.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyButton_TextDescription" xml:space="preserve">
+    <value>선택적 속성. 버튼 캡션을 입력하십시오.</value>
+    <comment>BSkyButton.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyButton_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyButton.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyButton_TypeDescription" xml:space="preserve">
+    <value>Button 컨트롤을 사용하면 버튼을 만들면 클릭하면 하위 대화 상자가 나타납니다. 하위 대화 상자 속성을 사용하면 하위 대화 상자를 정의 할 수 있습니다. 그리드의 각 속성을 클릭하면 버튼 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyButton.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyButton_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyButton.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyCanvas_splitProcessingDescription" xml:space="preserve">
+    <value>분할 처리의 사용 가능 여부를 결정합니다. 예를 들어 데이터 조작 명령의 경우 분할 처리를 해제해야합니다.</value>
+    <comment>BSkyCanvas.cs : Description attribute text for splitProcessing property</comment>
+  </data>
+  <data name="BSkyCheckBox_CheckedChangeBehaviourDescription" xml:space="preserve">
+    <value>기본값은 비어 있습니다 (규칙 없음). 이 선택적 속성을 사용하여이 확인란 컨트롤의 상태 변화를 기반으로 다른 컨트롤의 속성 변경을 트리거하는 규칙을 정의합니다. 예를 들어 사용자가 확인란을 선택하면 텍스트 상자 컨트롤을 사용하여 추가 매개 변수를 캡처 할 수 있습니다. 규칙을 정의하려면 속성을 클릭하고 elipses 버튼을 클릭하십시오.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for CheckedChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyCheckBox_EnabledDescription" xml:space="preserve">
+    <value>기본값은 참 (사용 가능)입니다. 이 속성은 컨트롤의 기본 상태를 사용할지 여부를 제어합니다. 사용 가능한 경우 True를 선택하고 사용하지 않으려면 False를 선택합니다. 예를 들어 체크 박스의 초기 상태를 사용하지 않도록 설정할 수 있지만 다른 컨트롤에서 선택한 항목을 기반으로 체크 상자를 활성화 할 수 있습니다</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyCheckBox_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyCheckBox_IsSelectedDescription" xml:space="preserve">
+    <value>기본값은 False입니다 (선택하지 않음). 이 속성은 체크 상자의 기본 상태를 설정합니다. 선택되어 있으면 True를 선택하고 선택하지 않으려면 False를 선택합니다.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for IsSelected property</comment>
+  </data>
+  <data name="BSkyCheckBox_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyCheckBox_NameDescription" xml:space="preserve">
+    <value>필수 속성. 캔바스에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자의 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyCheckBox_TextDescription" xml:space="preserve">
+    <value>선택적 속성. 이 확인란과 함께 표시 할 설명 텍스트를 입력하십시오.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyCheckBox_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyCheckBox_TypeDescription" xml:space="preserve">
+    <value>확인란 컨트롤. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하여 확인란 컨트롤의 구성 옵션을 확인합니다.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyCheckBox_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyComboBox_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화됩니다. 대화 상자 또는 하위 대화 상자의 컨트롤 하나에 대해 CanExecute = false이면 확인 단추가 비활성화됩니다. 예를 들어이 콤보 상자 컨트롤에서 하나 이상의 항목을 선택하지 않으면 대화 상자를 실행할 수 없도록하려면이 컨트롤에 대한 canexecute의 기본값을 false로 설정 한 다음 NoItemsSelected 속성이 0보다 클 때 트리거하는 규칙을 정의합니다 이것은 하나 이상의 변수가이 콤보 박스 컨트롤에서 선택되었을 때 발생합니다) 대화 상자에서 OK 버튼을 활성화하는 canexecute 속성을 'true'로 설정합니다. 모든 항목이이 컨트롤에서 선택 취소되고 NoItemsSelected 속성 값이 0 인 경우 canexecute를 false로 설정하는 또 다른 규칙을 설정해야합니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyComboBox_ComboBoxEntriesDescription" xml:space="preserve">
+    <value>속성 이름을 클릭 한 다음 조회 버튼을 클릭하여 콤보 상자 컨트롤을 클릭 할 때 표시 될 항목을 입력하십시오.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for ComboBoxEntries property</comment>
+  </data>
+  <data name="BSkyComboBox_DefaultSelectionDescription" xml:space="preserve">
+    <value>선택적 속성. 이 항목은 기본적으로 콤보 상자에 표시됩니다.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for DefaultSelection property</comment>
+  </data>
+  <data name="BSkyComboBox_EnabledDescription" xml:space="preserve">
+    <value>기본값은 참 (사용 가능)입니다. 이 속성은이 콤보 상자 컨트롤의 기본 상태를 사용할지 여부를 제어합니다. 사용 가능한 경우 True를 선택하고 사용하지 않으려면 False를 선택합니다. 사용하도록 설정하면이 컨트롤에서 항목을 선택할 수 있으며 사용하지 않으면 컨트롤과 상호 작용할 수 없습니다. 예를 들어, 콤보 상자 컨트롤의 초기 상태를 비활성화하려는 경우가 있지만 다른 컨트롤에서 선택한 항목을 기반으로 활성화 할 수 있습니다</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Enabled  property</comment>
+  </data>
+  <data name="BSkyComboBox_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyComboBox_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyComboBox_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyComboBox_NoItemsSelectedDescription" xml:space="preserve">
+    <value>이것은 읽기 전용 속성입니다. 이 값은 자동으로 콤보 박스에서 선택한 항목 수로 설정됩니다. 이 속성은 규칙을 정의하는 데 사용할 수 있습니다. 예를 들어 콤보 상자에서 하나 이상의 항목을 선택하지 않으면 확인 버튼을 비활성화 할 수 있습니다. 콤보 상자에서 아무 것도 선택하지 않으면 NoItemsSelected 속성을 확인하는 규칙을 정의하고, 0이면 canexecute를 false로 설정합니다.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for NoItemsSelected property</comment>
+  </data>
+  <data name="BSkyComboBox_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>기본값은 비어 있습니다 (규칙 없음). 이 선택적 속성을 사용하여이 콤보 상자 컨트롤에서 선택한 항목의 변경 내용을 기반으로이 컨트롤 또는 다른 컨트롤의 속성 변경을 트리거하는 규칙을 정의합니다. 예를 들어이 콤보 상자 컨트롤에서 하나 이상의 항목을 선택하지 않으면 대화 상자를 실행할 수 없도록하려면이 컨트롤에 대한 canexecute 속성의 기본값을 false로 설정 한 다음 NoItemsSelected 속성이 다음보다 큰 경우에 트리거하는 규칙을 정의합니다. 0 (이 콤보 상자 컨트롤에서 하나 이상의 항목을 선택한 경우 발생) canexecute 속성을 'true'로 설정하면 대화 상자의 [확인] 단추가 활성화됩니다. 이 combobox 컨트롤에서 모든 항목을 선택 취소하고 itemscount 속성 값이 0 인 경우 canexecute를 false로 설정하는 또 다른 규칙을 설정해야합니다. 이렇게하면이 컨트롤에서 하나 이상의 항목을 선택하지 않으면 대화 상자를 실행할 수 없습니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for SelectionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyComboBox_SyntaxDescription" xml:space="preserve">
+    <value>%% VALUE %%의 기본값은 콤보 상자 컨트롤의 선택된 모든 항목이 구문의 컨트롤 이름으로 대체됨을 나타냅니다. 이 값은 대화 상자가 실행될 때 작성된 구문 문자열을 매개 변수화하는 데 사용됩니다. 컨트롤 이름을 바꾸기 위해 'test'와 같은 다른 값을 원하면 %% VALUE %%를 'test'로 바꿉니다 (작은 따옴표를 입력 할 필요가 없습니다)</value>
+    <comment>BSkyCheckBox.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkyComboBox_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyComboBox_TypeDescription" xml:space="preserve">
+    <value>콤보 상자 컨트롤은 드롭 다운 목록 또는 목록 상자와 한 줄짜리 편집 가능한 텍스트 상자의 조합입니다. 콤보 상자 컨트롤을 사용하면 컨트롤에 직접 값을 입력하거나 목록 상자에서 값을 선택할 수 있습니다.이 속성은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면 콤보 상자 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyComboBox_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyComboBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화됩니다. 대화 상자 또는 하위 대화 상자의 컨트롤 하나에 대해 CanExecute = false이면 확인 단추가 비활성화됩니다. 예를 들어이 콤보 상자 컨트롤에서 선택하지 않으면 대화 상자를 실행할 수 없도록하려면이 컨트롤에 대한 canexecute의 기본값을 false로 설정 한 다음 선택이 수행 될 때 트리거되는 규칙을 정의하고 canexecute 속성을 'true'는 대화 상자에서 OK 버튼을 활성화합니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_ComboBoxEntriesDescription" xml:space="preserve">
+    <value>속성 이름을 클릭 한 다음 조회 버튼을 클릭하여 콤보 상자 컨트롤을 클릭 할 때 표시 될 항목을 입력하십시오.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for ComboBoxEntries property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_DefaultSelectionDescription" xml:space="preserve">
+    <value>선택적 속성. 이 항목은 기본적으로 콤보 상자에 표시됩니다.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for DefaultSelection property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_EnabledDescription" xml:space="preserve">
+    <value>기본값은 참 (사용 가능)입니다. 이 속성은이 콤보 상자 컨트롤의 기본 상태를 사용할지 여부를 제어합니다. 사용 가능한 경우 True를 선택하고 사용하지 않으려면 False를 선택합니다. 사용하도록 설정하면이 컨트롤에서 항목을 선택할 수 있으며 사용하지 않으면 컨트롤과 상호 작용할 수 없습니다. 예를 들어, 콤보 상자 컨트롤의 초기 상태를 비활성화하려는 경우가 있지만 다른 컨트롤에서 선택한 항목을 기반으로 활성화 할 수 있습니다</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_NothingSelectedDescription" xml:space="preserve">
+    <value>기본값은 빈 문자열입니다. 콤보 상자에서 항목을 선택하지 않은 경우 구문에서 컨트롤 이름을 대체하는 값입니다.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for NothingSelected property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_prefixSelectedValueDescription" xml:space="preserve">
+    <value>기본값은 빈 문자열입니다. 콤보 상자에서 항목이 선택되면 항목 앞에이 문자열이 접두사로 붙습니다.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for prefixSelectedValue property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>기본값은 비어 있습니다 (규칙 없음). 이 콤보 상자 컨트롤에서 선택한 항목의 변경 내용에 따라이 컨트롤 또는 다른 컨트롤에서 속성 변경을 트리거하는 규칙을 정의하려면이 선택적 속성을 사용합니다. 예를 들어이 콤보 상자 컨트롤에서 하나의 항목을 선택하지 않으면 대화 상자가 실행되지 않도록하려면이 컨트롤의 canexecute 속성의 기본값을 false로 설정 한 다음 canexecute를 설정하는 항목이 선택 될 때 트리거되는 규칙을 정의합니다 속성을 'true'로 설정하면 대화 상자에서 확인 버튼을 사용할 수 있습니다. 이렇게하면이 컨트롤에서 하나의 항목을 선택하지 않으면 대화 상자를 실행할 수 없습니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for SelectionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_SyntaxDescription" xml:space="preserve">
+    <value>%% VALUE %%의 기본값은 콤보 상자 컨트롤에서 선택한 항목이 구문의 컨트롤 이름으로 대체됨을 나타냅니다. 이 값은 대화 상자가 실행될 때 작성된 구문 문자열을 매개 변수화하는 데 사용됩니다. 컨트롤 이름을 바꾸기 위해 'test'와 같은 다른 값을 원하면 %% VALUE %%를 'test'로 바꿉니다 (작은 따옴표를 입력 할 필요가 없습니다)</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_TypeDescription" xml:space="preserve">
+    <value>편집 가능한 ComboBox 컨트롤은 드롭 다운 목록 또는 목록 상자와 한 줄 편집 가능한 텍스트 상자의 조합입니다. 콤보 상자 컨트롤을 사용하면 컨트롤에 직접 값을 입력하거나 목록 상자에서 값을 선택할 수 있습니다.이 속성은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면 콤보 상자 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyEditableComboBox_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyEditableComboBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyGroupBox_HeaderTextDescription" xml:space="preserve">
+    <value>선택적 속성. 이 그룹 상자에 캡션 입력</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for HeaderText property</comment>
+  </data>
+  <data name="BSkyGroupBox_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyGroupBox_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyGroupBox_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyGroupBox_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyGroupBox_TypeDescription" xml:space="preserve">
+    <value>GroupBox Control을 사용하면 관련 컨트롤을 그룹화 할 수 있습니다. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면 groupbox 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyGroupBox_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyGroupBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyLabel_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyLabel_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyLabel_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyLabel_TextDescription" xml:space="preserve">
+    <value>선택적 속성. 표시 할 캡션 (설명 텍스트)을 입력하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyLabel_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyLabel_TypeDescription" xml:space="preserve">
+    <value>다른 컨트롤과 관련된 설명 텍스트를 추가 할 수 있습니다. 예를 들어 라벨 컨트롤을 사용하여 '소스 변수 목록'이라는 소스 변수 목록 위에 캡션을 표시 할 수 있습니다.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyLabel_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyListBox_MappingMasterSlaveEntriesDescription" xml:space="preserve">
+    <value>이 속성을 클릭 한 다음 조회 버튼을 클릭하여 마스터 목록 상자의 항목과 슬레이브 목록 상자에 표시 할 항목 간의 매핑을 만듭니다.</value>
+    <comment>BSkyMasterListBox.cs : Description attribute text for MappingMasterSlave property</comment>
+  </data>
+  <data name="BSkyListBox_SlaveListBoxNameDescription" xml:space="preserve">
+    <value>마스터리스트 박스에서 선택된 항목을 기반으로 미리 정의 된 항목으로 채워지는 슬레이브 목록 상자의 이름입니다. 모든 목록 상자 컨트롤은 종속 목록 상자가 될 수 있습니다.listbox.</value>
+    <comment>BSkyMasterListBox.cs : Description attribute text for SlaveListBoxNameproperty</comment>
+  </data>
+  <data name="BSkyListBox_TypeCategory" xml:space="preserve">
+    <value>제어 설정</value>
+    <comment>BSkyListBox.cs : Category attribute text for Type property</comment>
+  </data>
+  <data name="BSkyMasterListBox_TypeDescription" xml:space="preserve">
+    <value>마스터 목록 상자를 사용하면 미리 정의 된 값으로 다른 목록 상자를 채우는 항목으로 목록 상자를 설정할 수 있습니다. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면이 목록 상자 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyMasterListBox.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화됩니다. 대화 상자 또는 하위 대화 상자의 컨트롤 하나에 대해 CanExecute = false이면 확인 단추가 비활성화됩니다. 예를 들어이 콤보 상자 컨트롤에서 선택하지 않으면 대화 상자를 실행할 수 없도록하려면이 컨트롤에 대한 canexecute의 기본값을 false로 설정 한 다음 선택이 수행 될 때 트리거되는 규칙을 정의하고 canexecute 속성을 'true'는 대화 상자에서 OK 버튼을 활성화합니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_ComboBoxEntriesDescription" xml:space="preserve">
+    <value>Click the property name and then click the lookup button to enter entries that will display when you click the combobox control</value>
+    <comment>BSkyLabel.cs : Description attribute text for ComboBoxEntries property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_EnabledDescription" xml:space="preserve">
+    <value>속성 이름을 클릭 한 다음 조회 버튼을 클릭하여 콤보 상자 컨트롤을 클릭 할 때 표시 될 항목을 입력하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_NothingSelectedDescription" xml:space="preserve">
+    <value>기본값은 빈 문자열입니다. 콤보 상자에서 항목을 선택하지 않은 경우 구문에서 컨트롤 이름을 대체하는 값입니다.</value>
+    <comment>BSkyLabel.cs : Description attribute text for NothingSelected property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>기본값은 비어 있습니다 (규칙 없음). 이 콤보 상자 컨트롤에서 선택한 항목의 변경 내용에 따라이 컨트롤 또는 다른 컨트롤에서 속성 변경을 트리거하는 규칙을 정의하려면이 선택적 속성을 사용합니다. 예를 들어이 콤보 상자 컨트롤에서 하나의 항목을 선택하지 않으면 대화 상자가 실행되지 않도록하려면이 컨트롤의 canexecute 속성의 기본값을 false로 설정 한 다음 canexecute를 설정하는 항목이 선택 될 때 트리거되는 규칙을 정의합니다 속성을 'true'로 설정하면 대화 상자에서 확인 버튼을 사용할 수 있습니다. 이렇게하면이 컨트롤에서 하나의 항목을 선택하지 않으면 대화 상자를 실행할 수 없습니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for SelectionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_SyntaxDescription" xml:space="preserve">
+    <value>%% VALUE %%의 기본값은 콤보 상자 컨트롤에서 선택한 항목이 구문의 컨트롤 이름으로 대체됨을 나타냅니다. 이 값은 대화 상자가 실행될 때 작성된 구문 문자열을 매개 변수화하는 데 사용됩니다. 컨트롤 이름을 바꾸기 위해 'test'와 같은 다른 값을 원하면 %% VALUE %%를 'test'로 바꿉니다 (작은 따옴표를 입력 할 필요가 없습니다)</value>
+    <comment>BSkyLabel.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_TypeDescription" xml:space="preserve">
+    <value>편집 할 수없는 콤보 상자 컨트롤을 사용하면 미리 정의 된 항목에서 단일 항목을 선택할 수 있습니다. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면 콤보 상자 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyNonEditableComboBox_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyLabel.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyRadioButton_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화됩니다. 대화 상자 또는 하위 대화 상자의 컨트롤 하나에 대해 CanExecute = false이면 확인 단추가 비활성화됩니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyRadioButton_CheckedChangeBehaviourDescription" xml:space="preserve">
+    <value>기본값은 비어 있습니다 (규칙 없음). 이 라디오 버튼 컨트롤의 상태 변화를 기반으로이 컨트롤 또는 다른 컨트롤의 속성 변경을 트리거하는 규칙을 정의하려면이 선택적 속성을 사용합니다. 예를 들어이 라디오 버튼을 선택하면 특정 텍스트 상자 컨트롤을 활성화해야한다고 가정하고이 라디오 버튼의 기본 상태를 선택되지 않은 상태로 설정 한 다음 라디오 버튼을 선택하면 트리거되는 규칙을 정의합니다 (radiobuttons isselected 속성 True로 설정 됨) 텍스트 상자 컨트롤의 Enabled 속성을 true로 설정합니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for CheckedChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyRadioButton_EnabledDescription" xml:space="preserve">
+    <value>기본값은 참 (사용 가능)입니다. 이 속성은이 라디오 버튼 컨트롤의 기본 상태를 사용할지 여부를 제어합니다. 사용 가능한 경우 True를 선택하고 사용하지 않으려면 False를 선택합니다. 활성화 된 경우이 라디오 버튼을 선택하고, 비활성화하면 라디오 버튼을 선택할 수 없습니다.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="BSkyRadioButton_GroupNameDescription" xml:space="preserve">
+    <value>이것은 필수 속성입니다. 라디오 버튼이 포함 된 라디오 그룹 컨트롤의 이름입니다. 같은 라디오 그룹 컨트롤의 모든 라디오 버튼은 같은 이름을 가져야합니다. 예를 들어 라디오 버튼 A, B 및 C는 B가 선택된 경우 동일한 라디오 그룹 컨트롤에 속한 다음 A를 클릭하면 A가 선택되고 B는 선택 해제됩니다.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for GroupName property</comment>
+  </data>
+  <data name="BSkyRadioButton_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyRadioButton_IsSelectedDescription" xml:space="preserve">
+    <value>기본값은 False입니다 (선택하지 않음). 이 속성은 라디오 버튼의 선택 여부를 결정합니다. 선택되어 있으면 True를 선택하고 선택하지 않으려면 False를 선택합니다.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for IsSelected property</comment>
+  </data>
+  <data name="BSkyRadioButton_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyRadioButton_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyRadioButton_SyntaxDescription" xml:space="preserve">
+    <value>%% VALUE %%의 기본값은이 라디오 버튼이 선택 될 때이 라디오 버튼이 속한 방사선 그룹 컨트롤의 이름이 구문에서 TRUE로 대체됨을 나타냅니다. radiogroup 컨트롤의 이름을 다른 값으로 바꾸려면 TRUE 대신 1을 대치하고 %% VALUE %%를 1로 바꿉니다. 또한 라디오 버튼이 눌려 졌을 때 % DATASET %을 입력하여 현재 데이터 세트의 이름을 바꿀 수 있습니다 가 선택됩니다. 구문 속성을 사용하면 대화 상자가 실행될 때 작성된 구문 문자열을 매개 변수화 할 수 있습니다.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkyRadioButton_TextDescription" xml:space="preserve">
+    <value>선택적 속성. 이 라디오 버튼의 캡션을 입력하십시오.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Text property</comment>
+  </data>
+  <data name="BSkyRadioButton_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyRadioButton_TypeDescription" xml:space="preserve">
+    <value>RadioButton 컨트롤. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면 라디오 버튼 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyRadioButton_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyRadioButton.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkyRadioGroup_HeaderTextDescription" xml:space="preserve">
+    <value>선택적 속성. 이 RadioGroup 컨트롤에 캡션을 입력하십시오.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for HeaderText property</comment>
+  </data>
+  <data name="BSkyRadioGroup_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="BSkyRadioGroup_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="BSkyRadioGroup_NameDescription" xml:space="preserve">
+    <value>Required property. You must specify a unique name for every control added to the dialog. You will not be able to save a dialog definition unless every control on the dialog and containing sub-dialogs has a unique name.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="BSkyRadioGroup_RadioButtonsDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for RadioButtons property</comment>
+  </data>
+  <data name="BSkyRadioGroup_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="BSkyRadioGroup_TypeDescription" xml:space="preserve">
+    <value>RadioGroup 컨트롤을 사용하면 라디오 버튼 그룹을 설정할 수 있습니다. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면 방사선 그룹 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyRadioGroup_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>BSkyRadioGroup.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="BSkySourceList_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화됩니다. 대화 상자 또는 하위 대화 상자의 컨트롤 하나에 대해 CanExecute = false이면 확인 단추가 비활성화됩니다.</value>
+    <comment>BSkySourceList.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkySourceList_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>기본값은 비어 있습니다 (규칙 없음). 변수 목록 컨트롤의 상태 변화를 기반으로이 컨트롤 또는 다른 컨트롤에서 속성 변경을 트리거하는 규칙을 정의하려면이 선택적 속성을 사용합니다.</value>
+    <comment>BSkySourceList.cs : Description attribute text for SelectionChangeBehaviour  property</comment>
+  </data>
+  <data name="BSkySourceList_SyntaxDescription" xml:space="preserve">
+    <value>%% VALUE %%의 기본값은 변수 목록의 모든 변수가 구문의 제어 이름으로 대체됨을 나타냅니다. 이 값은 대화 상자가 실행될 때 작성된 구문 문자열을 매개 변수화하는 데 사용됩니다. 컨트롤 이름을 바꾸기 위해 'test'와 같이 다른 값을 원한다면 %% VALUE %%를 'test'로 바꿉니다 (작은 따옴표를 입력 할 필요가 없습니다). 일반적으로 구문에 소스 변수 목록을 사용하지 않습니다.</value>
+    <comment>BSkySourceList.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="BSkySourceList_TypeDescription" xml:space="preserve">
+    <value>소스 변수 목록 컨트롤은 활성 데이터 세트의 모든 변수를 표시합니다. 이 컨트롤에서 변수를 필터링하려면 필터를 적용하십시오. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하면 소스 변수 목록 컨트롤의 구성 옵션을 볼 수 있습니다.</value>
+    <comment>BSkySourceList.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyTargetList_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화되고 대화 상자 또는 포함 된 하위 대화 상자의 컨트롤 하나에 CanExecute = false이면 확인 단추가 비활성화됩니다. 예를 들어 하나 이상의 항목을이 변수 목록 컨트롤로 드래그 앤 드롭하지 않으면 대화 상자를 실행할 수 없도록하려면이 컨트롤에 대한 canexecute의 기본값을 false로 설정 한 다음 itemscount 속성이 더 클 때 트리거하는 규칙을 정의합니다 0 (하나 이상의 변수를이 변수 컨트롤로 드래그 앤 드롭하면 발생 함) 대화 상자에서 확인 버튼을 활성화하는 canexecute 속성을 'true'로 설정합니다. 모든 항목이이 변수 목록에서 제거되고 itemscount 속성 값이 0 일 때 canexecute를 false로 설정하는 또 다른 규칙을 설정해야합니다. 규칙을 정의하려면 속성을 클릭 한 다음 elipses 단추를 클릭하십시오.</value>
+    <comment>BSkyTargetList.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="BSkyTargetList_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>기본값은 비어 있습니다 (규칙 없음). 변수 목록 컨트롤의 상태 변화를 기반으로이 컨트롤 또는 다른 컨트롤에서 속성 변경을 트리거하는 규칙을 정의하려면이 선택적 속성을 사용합니다. 예를 들어 하나 이상의 항목을이 변수 목록 컨트롤로 드래그 앤 드롭하지 않으면 대화 상자를 실행할 수 없도록하려면이 컨트롤에 대한 canexecute 속성의 기본값을 false로 설정 한 다음 itemscount 속성 0보다 큽니다 (이것은 하나 이상의 변수가이 변수 컨트롤에 드래그 앤 드롭 될 때 발생합니다). 그리고 대화 상자에서 OK 버튼을 활성화하는 canexecute 속성을 'true'로 설정합니다 (다른 규칙을 설정할 때 canexecute를 false로 설정하는 것을 잊지 마십시오. 모든 항목은이 변수 목록에서 제거되고 itemscount 속성 값은 0입니다. 이렇게하면이 변수 목록 컨트롤에 하나 이상의 항목이 없으면 대화 상자를 실행할 수 없습니다. 규칙을 정의하려면 속성을 클릭 한 다음 elipses 단추를 클릭하십시오.</value>
+    <comment>BSkyTargetList.cs : Description attribute text for SelctionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyTargetList_SyntaxDescription" xml:space="preserve">
+    <value>%% VALUE %%의 기본값은 변수 목록 컨트롤의 모든 변수가 구문의 컨트롤 이름으로 대체됨을 나타냅니다. 이 값은 대화 상자가 실행될 때 작성된 구문 문자열을 매개 변수화하는 데 사용됩니다. 컨트롤 이름을 바꾸기 위해 'test'와 같은 다른 값을 원하면 %% VALUE %%를 'test'로 바꿉니다 (작은 따옴표를 입력 할 필요가 없습니다)</value>
+    <comment>BSkyTargetList.cs : Description attribute text for SelctionChangeBehaviour property</comment>
+  </data>
+  <data name="BSkyTargetList_TypeDescription" xml:space="preserve">
+    <value>대상 변수 목록에는 분석하려는 변수가 들어 있습니다. 변수는 소스 변수 목록에서 대상 변수 목록으로 복사 / 이동됩니다. 이것은 읽기 전용 속성입니다. 그리드의 각 속성을 클릭하여 대상 변수 목록 컨트롤의 구성 옵션을 확인합니다.</value>
+    <comment>BSkyTargetList.cs : Description attribute text for Type property</comment>
+  </data>
+  <data name="BSkyVariableList_SyntaxDescription" xml:space="preserve">
+    <value>%% VALUE %%의 기본값은 목록 상자의 모든 변수가 구문의 컨트롤 이름으로 대체됨을 나타냅니다. 이 값은 대화 상자가 실행될 때 작성된 구문 문자열을 매개 변수화하는 데 사용됩니다. 컨트롤 이름을 바꾸기 위해 'test'와 같은 다른 값을 원하면 %% VALUE %%를 'test'로 바꿉니다 (작은 따옴표를 입력 할 필요가 없습니다)</value>
+    <comment>BSkyVariableList.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="CantAssignToProp" xml:space="preserve">
+    <value>속성에 할당 할 수 없습니다.</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="CantFind" xml:space="preserve">
+    <value>찾을 수 없다.</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="CantSetValue" xml:space="preserve">
+    <value>값으로 설정할 수 없습니다.</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="CanvasPropNotSet1" xml:space="preserve">
+    <value>컨트롤의 비헤이비어에 대한 속성</value>
+    <comment>BSkyCanvas.cs : msg for property not set -part1</comment>
+  </data>
+  <data name="CanvasPropNotSet2" xml:space="preserve">
+    <value>설정되지 않았습니다. 대화 상자 편집기에서 대화 상자를 열고 컨트롤에 대한 규칙 정의를 클릭하십시오.</value>
+    <comment>BSkyCanvas.cs : msg for property not set -part2</comment>
+  </data>
+  <data name="CanvasPropNotSet3" xml:space="preserve">
+    <value>propertyname 값을 확인하십시오.</value>
+    <comment>BSkyCanvas.cs : msg for property not set -part3</comment>
+  </data>
+  <data name="CheckBehaviour" xml:space="preserve">
+    <value>컨트롤의 동작을 확인하십시오.</value>
+    <comment>BSkyCanvas.cs : msg for  check behaviour of the control</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect1" xml:space="preserve">
+    <value>컨트롤의 동작</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part1</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect2" xml:space="preserve">
+    <value>잘못 구성되었습니다.</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part2</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect3" xml:space="preserve">
+    <value>속성 이름 사이에 형식이 일치하지 않습니다.</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part3</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect4" xml:space="preserve">
+    <value>값</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part4</comment>
+  </data>
+  <data name="CtrlBehaviourIncorrect5" xml:space="preserve">
+    <value>대화 상자 편집기 프로그램에서 대화 상자를 열고 수정하십시오.</value>
+    <comment>BSkyCanvas.cs : msg for  incorrect control property -part5</comment>
+  </data>
+  <data name="CtrlListBox_CanExecuteDescription" xml:space="preserve">
+    <value>기본값은 True입니다. 이 속성은 대화 상자의 확인 버튼의 사용 가능 여부를 제어합니다. 대화 상자의 모든 컨트롤에 대해 CanExecute = true이고 하위 대화 상자가 포함 된 경우 OK 단추가 활성화됩니다. 대화 상자 또는 하위 대화 상자의 컨트롤 하나에 대해 CanExecute = false이면 확인 단추가 비활성화됩니다.</value>
+    <comment>CtrlListBox.cs : Description attribute text for CanExecute property</comment>
+  </data>
+  <data name="CtrlListBox_EnabledDescription" xml:space="preserve">
+    <value>기본값은 참 (사용 가능)입니다. 이 속성은이 변수 목록 컨트롤의 기본 상태를 사용할지 여부를 제어합니다. 사용 가능한 경우 True를 선택하고 사용하지 않으려면 False를 선택합니다. 사용하도록 설정하면이 컨트롤에서 항목을 선택할 수 있으며 사용하지 않으면 컨트롤과 상호 작용할 수 없습니다. 예를 들어 변수 목록 컨트롤의 초기 상태를 비활성화하려는 경우가 있지만 다른 컨트롤에서 선택한 항목을 기반으로 활성화 할 수 있습니다</value>
+    <comment>CtrlListBox.cs : Description attribute text for Enabled property</comment>
+  </data>
+  <data name="CtrlListBox_HeightDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 높이입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 높이를 입력하십시오.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Height property</comment>
+  </data>
+  <data name="CtrlListBox_LeftDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 X 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 X 좌표를 입력합니다.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Left property</comment>
+  </data>
+  <data name="CtrlListBox_ListBoxEntriesDescription" xml:space="preserve">
+    <value>이 속성을 사용하면이 목록 상자에 표시 할 항목을 입력 할 수 있습니다. 속성을 클릭 한 다음 단추를 클릭하여 값을 입력하십시오.</value>
+    <comment>CtrlListBox.cs : Description attribute text for ListBoxEntries property</comment>
+  </data>
+  <data name="CtrlListBox_MultiSelectDescription" xml:space="preserve">
+    <value>기본값은 false입니다 (단 하나의 항목 만 선택할 수 있음). 이 속성은이 컨트롤에서 단일 항목 또는 여러 항목을 선택할 수 있는지 여부를 제어합니다. MultiSelect = false 인 경우 단일 항목을 선택할 수 있고 MultiSelect = true 인 경우 여러 항목을 선택할 수 있습니다.</value>
+    <comment>CtrlListBox.cs : Description attribute text for MultiSelect property</comment>
+  </data>
+  <data name="CtrlListBox_NameDescription" xml:space="preserve">
+    <value>필수 속성. 대화 상자에 추가 된 모든 컨트롤에 대해 고유 한 이름을 지정해야합니다. 대화 상자 및 하위 대화 상자를 포함하는 모든 컨트롤에 고유 한 이름이 없으면 대화 상자 정의를 저장할 수 없습니다.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Name property</comment>
+  </data>
+  <data name="CtrlListBox_SelectedItemsCountDescription" xml:space="preserve">
+    <value>이 속성은 선택된 항목 수를 추적합니다. 이 속성을 사용하여 규칙을 정의 할 수 있습니다. 이것은 읽기 전용 속성입니다.</value>
+    <comment>CtrlListBox.cs : Description attribute text for SelectedItemsCount property</comment>
+  </data>
+  <data name="CtrlListBox_SelectionChangeBehaviourDescription" xml:space="preserve">
+    <value>기본값은 비어 있습니다 (규칙 없음). 이 선택적 속성을 사용하여이 목록 상자 컨트롤의 상태 변경을 기반으로이 컨트롤 또는 다른 컨트롤의 속성 변경을 트리거하는 규칙을 정의합니다. 규칙을 정의하려면 속성을 클릭 한 다음 줄임표 단추를 클릭하십시오.</value>
+    <comment>CtrlListBox.cs : Description attribute text for SelectionChangeBehaviour property</comment>
+  </data>
+  <data name="CtrlListBox_SubstituteSettingsDescription" xml:space="preserve">
+    <value>기본값은 UseComma입니다. 이 설정을 사용하면이 변수 목록 컨트롤에 포함 된 변수가 구문 문자열의 컨트롤 이름을 대체하는 방법을 설정할 수 있습니다. 추가 세부 정보를 보려면 속성에서을 클릭하고 줄임표 단추를 클릭하십시오.</value>
+    <comment>CtrlListBox.cs : Description attribute text for SubstituteSettings  property</comment>
+  </data>
+  <data name="CtrlListBox_SyntaxDescription" xml:space="preserve">
+    <value>%% VALUE %%의 기본값은 목록 상자의 모든 항목이 구문의 컨트롤 이름으로 대체됨을 나타냅니다. 이 값은 대화 상자가 실행될 때 작성된 구문 문자열을 매개 변수화하는 데 사용됩니다. 컨트롤 이름을 바꾸기 위해 'test'와 같은 다른 값을 원하면 %% VALUE %%를 'test'로 바꿉니다 (작은 따옴표를 입력 할 필요가 없습니다)</value>
+    <comment>CtrlListBox.cs : Description attribute text for Syntax property</comment>
+  </data>
+  <data name="CtrlListBox_TopDescription" xml:space="preserve">
+    <value>디폴트 치는,이 컨트롤의 좌상 구석의 Y 좌표입니다. 변경하려면 컨트롤을 다른 위치로 드래그하거나 Y 좌표를 입력하십시오.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Top property</comment>
+  </data>
+  <data name="CtrlListBox_WidthDescription" xml:space="preserve">
+    <value>기본값은이 컨트롤의 너비입니다. 변경하려면 장식자 (컨트롤 모서리)를 끌거나 너비를 입력하십시오.</value>
+    <comment>CtrlListBox.cs : Description attribute text for Width property</comment>
+  </data>
+  <data name="CtrlNameUsedInSyntax" xml:space="preserve">
+    <value>Dialog XAML의 CommandString에서 이름이 사용됩니다.</value>
+    <comment>OutputHelper.cs : a message part2</comment>
+  </data>
+  <data name="CtrlNotInXaml" xml:space="preserve">
+    <value>대화 상자 XAML은 다음과 같은 컨트롤을 정의하지 않습니다.</value>
+    <comment>OutputHelper.cs : a message part1</comment>
+  </data>
+  <data name="HelpMustBeValidFileURL" xml:space="preserve">
+    <value>도움말 파일은 유효한 파일 이름 또는 URL이어야합니다.</value>
+    <comment>BSkyCanvas.cs : msg about help file name or URL</comment>
+  </data>
+  <data name="InCtrl" xml:space="preserve">
+    <value>통제하에</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="InDialogEditor" xml:space="preserve">
+    <value>대화 상자 편집기 프로그램에서</value>
+    <comment>BSkyCanvas.cs : msg for - in dialog designer program</comment>
+  </data>
+  <data name="NotValidCtrlProp" xml:space="preserve">
+    <value>컨트롤의 유효한 속성이 아닙니다.</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="PropCantAcceptVal" xml:space="preserve">
+    <value>속성 유형은 해당 값을 받아 들일 수 없으므로</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="SubDialogNotCreated" xml:space="preserve">
+    <value>하위 대화 상자가 생성되지 않았습니다.</value>
+    <comment>BSkyButton.cs : Message text about sub dialog not created</comment>
+  </data>
+  <data name="TheCtrlName" xml:space="preserve">
+    <value>컨트롤 이름</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="TheExceptionGenerated" xml:space="preserve">
+    <value>다음 예외가 생성되었습니다.</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="ThePropName" xml:space="preserve">
+    <value>속성 이름</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="TheValue" xml:space="preserve">
+    <value>가치</value>
+    <comment>BSkyCanvas.cs : msg part</comment>
+  </data>
+  <data name="UndefCtrl" xml:space="preserve">
+    <value>정의되지 않은 컨트롤!</value>
+    <comment>OutputHelper.cs : title of msg box</comment>
+  </data>
+  <data name="EnterValidMasterNameProp" xml:space="preserve">
+    <value>속성 표에 Master Name 속성에 유효한 값을 입력해야합니다.</value>
+    <comment>MasterSlaveEditor.cs : msg</comment>
+  </data>
+  <data name="EnterValidNameSlave" xml:space="preserve">
+    <value>속성 표에 슬레이브 목록 상자의 유효한 이름을 입력해야합니다.</value>
+    <comment>MasterSlaveEditor.cs : msg</comment>
+  </data>
+  <data name="EnterValidSlaveNameProp" xml:space="preserve">
+    <value>속성 표에 슬레이브 이름 속성에 유효한 값을 입력해야합니다.</value>
+    <comment>MasterSlaveEditor.cs : msg</comment>
+  </data>
+  <data name="EnterValidValue" xml:space="preserve">
+    <value>속성 표의 Name 속성에 유효한 값을 입력해야합니다.</value>
+    <comment>ComboBoxEditor.cs , ListBoxEditor.cs : message about entering the valid value.</comment>
+  </data>
+  <data name="NameCantBeEmpty" xml:space="preserve">
+    <value>이름은 비워 둘 수 없습니다.</value>
+    <comment>RadioGroupEditor.cs : msg</comment>
+  </data>
+  <data name="PlzEnterUniqueName" xml:space="preserve">
+    <value>\ "{0} \"이름의 컨트롤을 이미 만들었습니다. 고유 한 이름을 입력하십시오.</value>
+    <comment>RadioGroupEditor.cs : msg</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine1a" xml:space="preserve">
+    <value>BlueSky 통계는 격자에서 data.frame 클래스의 객체를 포함하는 R 데이터 파일을 열어 계속 진행합니다.</value>
+    <comment>FileOpenCommand.cs : First line of warning message that is related to opening a .RData file</comment>
+  </data>
+  <data name="OpenRDataWarnMsgLine1b" xml:space="preserve">
+    <value>EXPERIENCED R 프로그램의 경우 R 구문 편집기를 사용하여 R 오브젝트를 작성한 경우 동일한 이름의 오브젝트를 포함하는 R 데이터 파일을 열면 작성한 기존 오브젝트를 겹쳐 쓸 수 있습니다.</value>
+    <comment>FileOpenCommand.cs : Second line of warning message that is related to opening a .RData file</comment>
+  </data>
+  <data name="NewOutputWin" xml:space="preserve">
+    <value>새 출력 창</value>
+    <comment>OutputMenuHandler.cs : Output menu sub item, New Output Window</comment>
+  </data>
+  <data name="OpenOutput" xml:space="preserve">
+    <value>열린 출력</value>
+    <comment>OutputMenuHandler.cs : Output menu sub item, Open output from file</comment>
+  </data>
+  <data name="OutputMenu" xml:space="preserve">
+    <value>산출</value>
+    <comment>OutputMenuHandler.cs : Output menu name</comment>
+  </data>
+  <data name="SaveOutput" xml:space="preserve">
+    <value>출력 저장</value>
+    <comment>OutputMenuHandler.cs : Output menu sub item, save output to file</comment>
+  </data>
+  <data name="SaveAsSucces" xml:space="preserve">
+    <value>성공적으로 저장되었다:</value>
+    <comment>FileSaveAsCommand.cs : Save-As on the current dataset is successfull</comment>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>저장된 파일</value>
+    <comment>FileSaveAsCommand.cs : Title for messagebox 'Save-As on the current dataset is successfull'</comment>
+  </data>
+  <data name="MsgboxTitleForReloadFromDisk" xml:space="preserve">
+    <value>잘못된 조작</value>
+    <comment>AUAnalysisCommandBase.cs : Title for the message box that is shown when reload from disk file is run on memory data.frame</comment>
+  </data>
+  <data name="MsgForReloadFromDiskForMemoryDF" xml:space="preserve">
+    <value>이것은 당신이 그것을 다시로드 할 수없는 메모리 데이터 셋입니다.</value>
+    <comment>AUAnalysisCommandBase.cs : Message shown when user tries to run Reload dataset from disk file. For memory data.frame we do not support reloading. Its not needed actually.</comment>
+  </data>
+  <data name="MsgForReloadFromDiskForMemoryDF2" xml:space="preserve">
+    <value>데이터 -&gt; 파일에서 데이터 집합 다시로드</value>
+    <comment>AUAnalysisCommandBase.cs : Message shown when user tries to run Reload dataset from disk file. For memory data.frame we do not support reloading. Its not needed actually.</comment>
+  </data>
+</root>

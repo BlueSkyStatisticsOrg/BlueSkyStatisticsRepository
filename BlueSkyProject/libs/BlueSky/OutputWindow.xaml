@@ -1,0 +1,446 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  x:Class="BlueSky.OutputWindow"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:scintilla="clr-namespace:ScintillaNET;assembly=ScintillaNET"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        Title="BlueSky Output and Syntax Window" Name="outwin" 
+        SizeChanged="outwin_SizeChanged"
+        Closing="outwin_Closing"
+        Closed="outwin_Closed" Icon="/BlueSky;component/Images/BOutput-icon_1.png"
+        Loaded="outwin_Loaded"
+        PreviewMouseDown="outwin_PreviewMouseDown">
+    <Window.Resources>
+        <Style TargetType="{x:Type Menu}">
+            <Setter Property="Background">
+                <Setter.Value>#FFE1EBF7</Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type MenuItem}">
+            <Setter Property="Background">
+                <Setter.Value>#FFE1EBF7</Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>#FFE1EBF7</Setter.Value>
+            </Setter>
+            <Setter Property="FontSize">
+                <Setter.Value>12</Setter.Value>
+            </Setter>
+            <Setter Property="Margin">
+                <Setter.Value>0</Setter.Value>
+            </Setter>
+        </Style>
+        <!--<Style TargetType="{x:Type Separator}" >
+            <Setter Property="Background">
+                <Setter.Value>#FFE1EBF7</Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>#FFE1EBF7</Setter.Value>
+            </Setter>
+            <Setter Property="Foreground">
+                <Setter.Value>Yellow</Setter.Value>
+            </Setter>
+        </Style>-->
+        <Style TargetType="{x:Type Image}">
+            <Setter Property="Height">
+                <Setter.Value>Auto</Setter.Value>
+            </Setter>
+            <Setter Property="Width">
+                <Setter.Value>Auto</Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid  Name="parentgrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Name="top" Height="*"></RowDefinition>
+            <RowDefinition Name="bottom" Height="*" MinHeight="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Name="leftmost" Width="*"></ColumnDefinition>
+            <ColumnDefinition Name="rightmost" Width=".55*" MinWidth="25"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Output Window Section-->
+        <Grid Grid.Row="0" Grid.Column="0" Name="outputgrid" Grid.RowSpan="2" Margin="0,0,5,4" Background="#FF3D6C6C">
+            <Border Name="outputborder"  CornerRadius="5" BorderBrush="DarkGray" BorderThickness="1">
+                <Grid Name="outputsubgrid"  >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--<StackPanel Grid.Row="0" Margin="1,1,1,1" Background="DarkGray" Orientation="Horizontal">
+            <Button Name="selectall" Content="Select All" FontSize="10" Width="60" Height="19" HorizontalAlignment="Left" Margin="1,1,1,1" Click="selectall_Click"></Button>
+            <Button Name="open" Content="Open" FontSize="10" Width="45" Height="19" HorizontalAlignment="Left" Margin="1,1,1,1" Click="open_Click"></Button>
+            <Button Name="dump" Content="Save As" FontSize="10" Width="45" Height="19" HorizontalAlignment="Left" Margin="1,1,1,1" Click="dump_Click"></Button>
+        </StackPanel>-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Name="OutputTitle" Foreground="Black" Text="Results of Analysis" Padding="5,1">
+                            <TextBlock.Background>
+                                <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                                    <GradientStop Color="#FFBFDBFF" Offset="0"/>
+                                    <GradientStop Color="#FFE1EBF7" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Background>
+                        </TextBlock>
+                        <Button Grid.Column="1" Margin="0" HorizontalAlignment="Right" 
+                                ToolTip="{x:Static uires:UICtrlResources.ShowHideSyntaxPanel}" 
+                                Name="syntaxWinShowHideBtn" 
+                                Click="SyntaxWinShowHideBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Name="expandImg" Source="Images/expandSyn.png"></Image>
+                                    <Image Name="collapseImg" Source="Images/collapseSyn.png" Visibility="Collapsed"></Image>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                    <!-- Code below uses Resources (localization), while code above does not -->
+                    <!--<TextBlock Grid.Row="0" Name="OutputTitle" Foreground="Black" Text="{x:Static uires:UICtrlResources.OutputPanelTitle}" Padding="5,1">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                                <GradientStop Color="#FFBFDBFF" Offset="0"/>
+                                <GradientStop Color="#FFE1EBF7" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>-->
+
+                    <DockPanel  Grid.Row="1">
+                        <Menu Name="menu1" DockPanel.Dock="Top" Margin="0,1,0,0" Foreground="#FF1579DA">
+
+                            <!--<MenuItem Header="File" >
+                                <MenuItem Header="Open BlueSky Saved Output" Click="open_Click" ></MenuItem>
+                                <MenuItem Header="Save As" Click="dump_Click" ></MenuItem>
+                                <MenuItem Header="Save As PDF" Click="SaveAsPDF_Click" ></MenuItem>
+                            <MenuItem Header="Close Window" Click="MenuItemClose_Click" ></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="_Edit" >
+                            <MenuItem Header="_Undo" Command="Undo" />
+                            <MenuItem Header="_Redo" Command="Redo" />
+                            <MenuItem Header="Cu_t" Command="ApplicationCommands.Cut" />
+                            <MenuItem Header="_Copy" Command="ApplicationCommands.Copy"/>
+                            <MenuItem Header="_Paste" Command="ApplicationCommands.Paste" />
+                        </MenuItem>
+                        <MenuItem Header="Layout">
+                            <MenuItem Name="vertical" Header="Vertical" Click="flip_Click" IsEnabled="False" />
+                            <MenuItem Name="horizontal" Header="Horizontal" Click="flip_Click"  />
+                            <MenuItem Name="navtreemi" Header="Show Navigation Tree" Click="navtreemi_Click" />
+                        </MenuItem>
+                        <MenuItem Header="Image Size">
+                            <MenuItem Name="changeimagesize" Header="Change Graphic Size" Click="changeimagesize_Click"  IsEnabled="True" />
+                            <MenuItem Name="defaulimagesize" Header="Set Default Graphic Size" Click="defaulimagesize_Click"  IsEnabled="True" />
+                        </MenuItem>-->
+                            <!-- Code below uses Resources (localization), while code above does not -->
+                            <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFile}" >
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileOpenOutput}" Click="open_Click" ></MenuItem>
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileSaveAs}" Click="dump_Click" ></MenuItem>
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileSaveAsPDF}" Click="SaveAsPDF_Click" ></MenuItem>
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileClose}" Click="MenuItemClose_Click" ></MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputEdit}" >
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputEditUndo}" Command="Undo" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputEditRedo}" Command="Redo" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputEditCut}" Command="ApplicationCommands.Cut" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputEditCopy}" Command="ApplicationCommands.Copy"/>
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputEditPaste}" Command="ApplicationCommands.Paste" />
+                            </MenuItem>
+                            <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputLayout}">
+                                <MenuItem Name="vertical" Header="{x:Static uires:UICtrlResources.MenuOutputLayoutVertical}" Click="flip_Click" IsEnabled="False" />
+                                <MenuItem Name="horizontal" Header="{x:Static uires:UICtrlResources.MenuOutputLayoutHorizontal}" Click="flip_Click"  />
+                                <MenuItem Name="navtreemi" Header="{x:Static uires:UICtrlResources.MenuOutputLayoutShowNavTree}" Click="navtreemi_Click" />
+                            </MenuItem>
+                            <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputImageSize}">
+                                <MenuItem Name="changeimagesize" Header="{x:Static uires:UICtrlResources.MenuOutputImageSizeChange}" Click="changeimagesize_Click"  IsEnabled="True" />
+                                <MenuItem Name="defaulimagesize" Header="{x:Static uires:UICtrlResources.MenuOutputImageSizeDefault}" Click="defaulimagesize_Click"  IsEnabled="True" />
+                            </MenuItem>
+
+                        </Menu>
+                    </DockPanel>
+                    <ToolBar Grid.Row="2" Name="dialogtoolbar"  Background="#FFE1EBF7"></ToolBar>
+                    <Grid Name="outwingrid" Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Name="navtreecol" Width="0"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="1">
+                                <Label>Selection Mode:</Label>
+                                <StackPanel Orientation="Horizontal" Margin="1">
+                                    <CheckBox Name="SelModeCheckbox" IsThreeState="True" IsChecked="{x:Null}" Checked="SelModeCheckbox_Checked" Unchecked="SelModeCheckbox_Unchecked" Indeterminate="SelModeCheckbox_Indeterminate" Margin="1,1,3,1"></CheckBox>
+                                    <TextBlock Name="SelModeTxt" Text="Default"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <TreeView Grid.Row="1" Name="NavTree" Margin="0,0,4,0" >
+                            </TreeView>
+                        </Grid>
+                        <ScrollViewer  HorizontalScrollBarVisibility="Auto" Name="scrollviewer" Grid.Column="1">
+                            <Grid Name="panelcontainer">
+                                <StackPanel Name="mypanel" Background="White">
+                                </StackPanel>
+                            </Grid>
+                        </ScrollViewer>
+                        <GridSplitter HorizontalAlignment="Right"  Name="gridSplitter1" VerticalAlignment="Stretch" Width="1" Grid.Column="0" Grid.Row="0" Margin="1,0">
+                            <GridSplitter.Background>
+                                <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+                                    <GradientStop Color="#FF808385" Offset="0"/>
+                                    <GradientStop Color="#FFECF1F7" Offset="1"/>
+                                </LinearGradientBrush>
+                            </GridSplitter.Background>
+                        </GridSplitter>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <!--Grid splitter between Output and Syntax-->
+        <GridSplitter  Name="horizontalsplit" Height="3" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Visibility="Hidden">
+            <GridSplitter.Background>
+                <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                    <GradientStop Color="#FFECF1F7" Offset="0"/>
+                    <!--<GradientStop Color="WhiteSmoke" Offset="0.5"/>-->
+                    <GradientStop Color="#FFECF1F7" Offset="1"/>
+                </LinearGradientBrush>
+            </GridSplitter.Background>
+        </GridSplitter>
+        <GridSplitter Name="verticalsplit" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="5,0,0,0" Width="3" HorizontalAlignment="Right" VerticalAlignment="Stretch" >
+            <GridSplitter.Background>
+                <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+                    <GradientStop Color="#FF808385" Offset="0"/>
+                    <GradientStop Color="#FFECF1F7" Offset="1"/>
+                </LinearGradientBrush>
+            </GridSplitter.Background>
+        </GridSplitter>
+        <!--Syntax Editor section-->
+        <Grid  Grid.Row="0" Grid.Column="1" Name="syntaxgrid" Grid.RowSpan="2" Background="#FF3D6C6C">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="125*"/>
+            </Grid.RowDefinitions>
+            <Border Name="syntaxborder"  CornerRadius="5" BorderBrush="DarkGray" BorderThickness="1" Grid.RowSpan="2">
+                <Grid Name="syntaxsubgrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <!--<RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="28"></RowDefinition>-->
+                        <RowDefinition Name="rowdefsyntax" Height="*"></RowDefinition>
+                        <!--<RowDefinition Height="1"></RowDefinition>-->
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Name="titlegrid" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                                <GradientStop Color="#FFBFDBFF" Offset="0"/>
+                                <GradientStop Color="#FFE1EBF7" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <!--<Image Name="splitimg" Source="/BlueSky;component/Images/splitV.png" Height="19" Width="19" MouseDown="Image_MouseDown" ></Image>-->
+
+                        <!--<TextBlock Grid.Column="1" Name="SyntaxTitle" Foreground="Black"  Padding="5,3" Text="R Command Editor">
+                        </TextBlock>-->
+                        <!-- Code below uses Resources (localization), while code above does not -->
+                        <TextBlock Grid.Column="1" Name="SyntaxTitle" Foreground="Black"  Padding="5,3" Text="{x:Static uires:UICtrlResources.CommandEditorPanelTitle}">
+                        </TextBlock>
+
+                    </Grid>
+                    <Grid Grid.Row="1" Name="belowsynaxtitlegrid" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="63*"/>
+                            <ColumnDefinition Width="46*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="17"></RowDefinition>-->
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <!--<RowDefinition Height="1"></RowDefinition>-->
+                        </Grid.RowDefinitions>
+                        <Menu Name="SMenu" Grid.Row="0" Margin="0,1,0,0"  Foreground="#FF1579DA" Grid.ColumnSpan="3">
+
+                            <MenuItem Name="Synfile" Header="_File">
+                                <MenuItem Name="Synnew" Header="_New" Click ="MenuItemNew_Click" />
+                                <MenuItem Name="Synopen" Header="_Open" Click="MenuItemOpen_Click" />
+                                <MenuItem Name="Synsave" Header="_Save" Click="MenuItemSave_Click" />
+                                <MenuItem Name="Synsavas" Header="Save _As" Click="MenuItemSaveAs_Click" />
+                                <MenuItem Name="Synrecent" Header="Recent"  ></MenuItem>
+                            </MenuItem>
+                            <MenuItem Name="Synedit" Header="_Edit" >
+                                <MenuItem Name="Synundo" Header="_Undo" Click="undo_button_Click" />
+                                <MenuItem Name="Synredo" Header="_Redo" Click="redo_button_Click" />
+                                <MenuItem Name="Syncut" Header="Cu_t" Click="cut_button_Click" />
+                                <MenuItem Name="Syncopy" Header="_Copy" Click="copy_button_Click" />
+                                <MenuItem Name="Synpaste" Header="_Paste" Click="paste_button_Click" />
+                                <MenuItem Name="findreplace" Header="Find/Replace" Click="findreplace_Click" />
+                            </MenuItem>
+                            <!-- Code below uses Resources (localization), while code above does not -->
+                            <!--<MenuItem Header="{x:Static uires:UICtrlResources.MenuSynFile}">
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynFileNew}" Click ="MenuItemNew_Click" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynFileOpen}" Click="MenuItemOpen_Click" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynFileSave}" Click="MenuItemSave_Click" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynFileSaveAs}" Click="MenuItemSaveAs_Click" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynFileRecent}"  ></MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynEdit}" >
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynEditUndo}" Click="undo_button_Click" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynEditRedo}" Click="redo_button_Click" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynEditCut}" Click="cut_button_Click" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynEditCopy}" Click="copy_button_Click" />
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuSynEditPaste}" Click="paste_button_Click" />
+                                <MenuItem Name="findreplace" Header="{x:Static uires:UICtrlResources.MenuSynEditFindReplace}" Click="findreplace_Click" />
+                            </MenuItem>-->
+
+                        </Menu>
+                        <ToolBar Grid.Row="1" Background="#FFE1EBF7" Grid.ColumnSpan="3">
+                            <Button Click="MenuItemNew_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/New.png"  ToolTip="New Script"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Click="MenuItemOpen_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/Open.png"  ToolTip="Open Script"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Click="MenuItemSave_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/Save.png"  ToolTip="Save Script"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+
+
+                            <Separator Margin="5,0" Width="2"></Separator>
+                            <Button Click="runButton_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/ExecuteScript.png" ToolTip="Execute Selected Script"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Click="Refresh_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/refresh.png"  ToolTip="Refresh Datagrid"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Separator Margin="5,0" Width="2"></Separator>
+                            <Button Name="cut_button" Click="cut_button_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/Cut.png"  ToolTip="Cut"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Name="copy_button" Click="copy_button_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/Copy.png"  ToolTip="Copy"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Name="paste_button" Click="paste_button_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/Paste.png"  ToolTip="Paste"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Name="undo_button" Click="undo_button_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/arrow_undo.png"  ToolTip="Undo"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Name="redo_button" Click="redo_button_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/BlueSky;component/Images/arrow_redo.png"  ToolTip="Redo"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Name="gotoMainWindow_button" Click="gotoMainWindow_button_Click" ToolTip="Go to Datagrid" VerticalContentAlignment="Top" Height="65">
+                                <Button.Content>
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="/BlueSky;component/Images/datagrid.png"   Width="34"></Image>
+                                        <TextBlock Foreground="#FF314A9E" FontSize="11">Datagrid</TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+
+                            <!--<Button Name="flip" Click="flip_Click"> Flip Orientation</Button>-->
+                        </ToolBar>
+
+                        <WindowsFormsHost Grid.Row="2" Margin="3"  HorizontalAlignment="Stretch" Name="windowsFormsHost1" VerticalAlignment="Stretch" Grid.ColumnSpan="3"  >
+                            <WindowsFormsHost.Child>
+                                <scintilla:Scintilla Name="SciText" TextChanged="Scintilla_TextChanged" Click="Scintilla_Click" BorderStyle="None" WrapMode="Word"></scintilla:Scintilla>
+                            </WindowsFormsHost.Child>
+                        </WindowsFormsHost>
+                        <!--<TextBox Grid.Row="2"  Name="inputTextbox" AcceptsReturn="True" Padding="3" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" TextChanged="inputTextbox_TextChanged" MinLines="1" TextWrapping="Wrap" />-->
+
+                        <!--<Grid Grid.Row="3" Margin="3" Width="Auto" Visibility="Hidden">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="352"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="77"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="1" FontSize="11">Output File Details:</Label>
+                        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="5,1,0,0" >
+                            <CheckBox Name="saveoutput" Margin="0,3,0,0"   Height="15" Width="15"></CheckBox>
+                            <Label FontSize="11" >Save Ouput to a File. Output will also be shown in Output Window.</Label>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
+                            <Label Margin="1" FontSize="11">Output File Name :</Label>
+                            <TextBox  Width="150" Margin="2" Name="fullpathfilename" IsEnabled="{Binding Path=IsChecked, ElementName=saveoutput}" ToolTip="{Binding Path=Text, ElementName=fullpathfilename}"></TextBox>
+                            <Button Height="21" Margin="2,1,1,1" Name="browse" IsEnabled="{Binding Path=IsChecked, ElementName=saveoutput}" Click="browse_Click">Browse</Button>
+                        </StackPanel>
+                        <Button Grid.Row="0" Grid.Column="3" Content="Run"  Width="38" Height="21" Margin="2,0,4,2" Name="runButton" Click="runButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                        <Button Content="Refresh Grid" Grid.Column="3" Grid.Row="2" Height="23" HorizontalAlignment="Right"  Margin="2,0,0,0" Name="Refresh" VerticalAlignment="Top" Width="75" Click="Refresh_Click" />
+                        
+
+                    </Grid>-->
+
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+
+    <!-- following is Show Hide Busy-->
+    <!--<Grid>
+        <Rectangle Fill="White" Opacity="0.7" Name="busyrect" Visibility="Collapsed" />
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="busymsg" Visibility="Collapsed" Background="White">PDF export in progress. Please Wait...</TextBlock>
+    </Grid>-->
+</Window>
+

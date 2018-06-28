@@ -1,0 +1,26 @@
+﻿<Window x:Class="BSky.Controls.DesignerSupport.ListBoxEditorWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="300" Height ="320" Width="340" Title="Enter Values to display in the ListBox">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="To enter multiple values, use the tab key" Margin="5">
+            <DataGrid AutoGenerateColumns="False" Name="gridforListBox" CanUserAddRows="True" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding entryName}" Width="*"  Header="Values" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <Button Content="Ok" Height="23"  Name="button1" Margin="5" Width="75" Click="button1_Click" />
+            <Button Content="Cancel" Height="23" Name="button2" Margin="5" Width="75" Click="button2_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+

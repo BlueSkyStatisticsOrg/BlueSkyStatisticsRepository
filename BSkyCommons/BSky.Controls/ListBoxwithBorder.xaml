@@ -1,0 +1,15 @@
+﻿<ListBox x:Class="BSky.Controls.ListBoxwithBorder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <ListBox.Resources>
+        <Style  TargetType="Border">
+            <Setter Property="CornerRadius" Value="5"/>
+
+
+        </Style>
+    </ListBox.Resources>
+</ListBox>

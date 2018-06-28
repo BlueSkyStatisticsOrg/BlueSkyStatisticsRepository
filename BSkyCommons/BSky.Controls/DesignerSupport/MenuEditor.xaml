@@ -1,0 +1,242 @@
+﻿<Window x:Class="BSky.Controls.MenuEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dialog Installer" 
+        Height="700" MinHeight="700"
+        Width="650" MinWidth="650" Icon="/BSky.Controls;component/Resources/ListBox.png">
+    <Window.Resources>
+
+        <!-- This HierarchicalDataTemplate will visualize all XML-nodes -->
+        <HierarchicalDataTemplate x:Key="NodeTemplate" >
+            <Grid Name="nodegrid">
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name ="addCategory" Header=""  Click="addCategory_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/BSky.Controls;component/Resources/folder.png" Width="18" Height="12"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name ="addSeparator" Header=""  Click="addSeparator_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/BSky.Controls;component/Resources/separator.png" Width="18" Height="12" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name ="addCommand" Header=""  Click="addCommand_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/BSky.Controls;component/Resources/file.png" Width="18" Height="12" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name ="removenode" Header="Remove"  Click="removenode_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/BSky.Controls;component/Resources/remove.png" Width="18" Height="12" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name ="renamenode" Header="Rename"  Click="renamenode_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/BSky.Controls;component/Resources/rename.png" Width="18" Height="12" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name ="nodeproperties" Header="Properties"  Click="nodeproperties_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/BSky.Controls;component/Resources/properties.png" Width="18" Height="12" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Grid.ContextMenu>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"  />
+                    <ColumnDefinition Width="*"  />
+                </Grid.ColumnDefinitions>
+                <Image Name="folderfile" Grid.Column="0" Margin="3" Width="18" Height="12"></Image>
+
+                <TextBlock x:Name="tb" Text="" MouseDown="tb_MouseDown" Grid.Column="1" MouseUp="tb_MouseUp">
+                </TextBlock>
+                <TextBox x:Name="txtbox" Grid.Column="1" LostFocus="txtbox_LostFocus"  Visibility="Collapsed" IsReadOnly="True" Focusable="False" UndoLimit="2" ToolTip="Enter new command name" KeyDown="txtbox_KeyDown"  />
+            </Grid>
+            <HierarchicalDataTemplate.ItemsSource>
+                <Binding XPath="child::*" />
+            </HierarchicalDataTemplate.ItemsSource>
+
+            <HierarchicalDataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=Name}" Value="menus">
+                    <Setter TargetName="tb" Property="Text" Value="Root"></Setter>
+                    <Setter TargetName="tb" Property="FontWeight" Value="DemiBold"></Setter>
+                    <Setter TargetName="tb" Property="FontSize" Value="12"></Setter>
+                    <Setter TargetName="tb" Property="ToolTip" Value="You can create new parent node under this node using 'Add' button."></Setter>
+                    <Setter TargetName="txtbox" Property="IsReadOnly" Value="True"></Setter>
+                    <!-- Context Menu -->
+                    <Setter TargetName="addCategory" Property="Visibility" Value="Visible" ></Setter>
+                    <Setter TargetName="addCategory" Property="Header" Value="Add Category"></Setter>
+                    <Setter TargetName="addSeparator" Property="Visibility" Value="Collapsed"></Setter>
+                    <Setter TargetName="addSeparator" Property="Header" Value="Add Separator"></Setter>
+                    <Setter TargetName="addCommand" Property="Header" Value="Install New Command"></Setter>                    
+                    <Setter TargetName="addCommand" Property="IsEnabled" Value="True"></Setter>
+                    <Setter TargetName="removenode" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="renamenode" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="nodeproperties" Property="IsEnabled" Value="False"></Setter>
+                    <!--<Setter TargetName="tb" Property="Foreground" Value="LightGray"></Setter>-->
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Name}" Value="newnode">
+                    <Setter TargetName="tb" Property="Text" Value="{Binding Path=Attributes[text].Value, Mode=TwoWay}"></Setter>
+                    <Setter TargetName="tb" Property="FontWeight" Value="Regular"></Setter>
+                    <Setter TargetName="tb" Property="FontSize" Value="12"></Setter>
+                    <!--<Setter TargetName="tb" Property="Background" Value="LightGray"></Setter>-->
+                    <!--<Setter TargetName="tb" Property="Foreground" Value="Gray"></Setter> selection colfix-->
+                    <Setter TargetName="txtbox" Property="IsReadOnly" Value="False"></Setter>
+                    <Setter TargetName="txtbox" Property="Focusable" Value="True"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Name}" Value="menu">
+                    <Setter TargetName="tb" Property="Text" Value="{Binding Path=Attributes[text].Value, Mode=TwoWay}"></Setter>
+                    <Setter TargetName="tb" Property="FontWeight" Value="Regular"></Setter>
+                    <Setter TargetName="tb" Property="FontSize" Value="12"></Setter>
+                    <!--<Setter TargetName="tb" Property="Foreground" Value="Black"></Setter> selection colfix-->
+                    <Setter TargetName="tb" Property="ToolTip" Value="Right click to see options. OR Left click hold to move."></Setter>
+                    <!-- provide edit also -->
+                    <Setter TargetName="txtbox" Property="IsReadOnly" Value="False"></Setter>
+                    <Setter TargetName="txtbox" Property="Focusable" Value="True"></Setter>
+                    <!-- Context Menu -->
+                    <Setter TargetName="addCategory" Property="Visibility" Value="Visible"></Setter>
+                    <Setter TargetName="addCategory" Property="Header" Value="Add Category"></Setter>
+                    <Setter TargetName="addSeparator" Property="Visibility" Value="Visible"></Setter>
+                    <Setter TargetName="addSeparator" Property="Header" Value="Add Separator"></Setter>                    
+                    <Setter TargetName="addCommand" Property="Header" Value="Install New Command"></Setter>
+                    
+                    <Setter TargetName="folderfile" Property="Source" Value="/BSky.Controls;component/Resources/folder.png"></Setter>
+                    
+                    
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding XPath=@nodetype}" Value="Leaf">
+                    <Setter TargetName="tb" Property="Text" Value="{Binding Path=Attributes[text].Value, Mode=TwoWay}"></Setter>
+                    <Setter TargetName="tb" Property="FontWeight" Value="Regular"></Setter>
+                    <Setter TargetName="tb" Property="FontSize" Value="12"></Setter>
+                    <!--<Setter TargetName="tb" Property="Foreground" Value="Black"></Setter> selection colfix-->
+                    <Setter TargetName="tb" Property="ToolTip" Value="Right click to overwrite this command. OR Left click hold to move."></Setter>
+                    <Setter TargetName="txtbox" Property="IsReadOnly" Value="False"></Setter>
+                    <Setter TargetName="txtbox" Property="Focusable" Value="True"></Setter>
+                    <!-- Context Menu -->
+                    <Setter TargetName="addCategory" Property="Visibility" Value="Collapsed"></Setter>
+                    <Setter TargetName="addSeparator" Property="Visibility" Value="Visible"></Setter>
+                    <Setter TargetName="addSeparator" Property="Header" Value="Add Separator"></Setter>
+                    <Setter TargetName="addCommand" Property="Header" Value="Overwrite Command"></Setter>
+                    
+                    <Setter TargetName="folderfile" Property="Source" Value="/BSky.Controls;component/Resources/file.png"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding XPath=@id}" Value="sep">
+                    <Setter TargetName="tb" Property="Text" Value="{Binding Path=Attributes[text].Value, Mode=TwoWay}"></Setter>
+                    <Setter TargetName="tb" Property="FontWeight" Value="Regular"></Setter>
+                    <Setter TargetName="tb" Property="FontSize" Value="12"></Setter>
+                    <!--<Setter TargetName="tb" Property="Foreground" Value="Black"></Setter> selection colfix-->
+                    <Setter TargetName="txtbox" Property="IsReadOnly" Value="True"></Setter>
+                    <Setter TargetName="txtbox" Property="Focusable" Value="False"></Setter>
+                    <!-- Context Menu -->
+                    <Setter TargetName="addCategory" Property="Visibility" Value="Collapsed"></Setter>
+                    <Setter TargetName="addSeparator" Property="Visibility" Value="Collapsed"></Setter>
+                    <Setter TargetName="addCommand" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="removenode" Property="IsEnabled" Value="True"></Setter>
+                    <Setter TargetName="renamenode" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="nodeproperties" Property="IsEnabled" Value="False"></Setter>           
+                    
+                    <Setter TargetName="folderfile" Property="Source" Value="/BSky.Controls;component/Resources/separator.png"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding XPath=@owner}" Value="BSky">
+                    <Setter TargetName="tb" Property="Text" Value="{Binding Path=Attributes[text].Value}"></Setter>
+                    <Setter TargetName="tb" Property="FontWeight" Value="Regular"></Setter>
+                    <Setter TargetName="tb" Property="FontSize" Value="12"></Setter>
+                    <!--<Setter TargetName="tb" Property="Foreground" Value="DarkGray"></Setter> selection colfix-->
+                    <Setter TargetName="tb" Property="ToolTip" Value="Standard item. No Modifiation allowed."></Setter>
+                    <Setter TargetName="txtbox" Property="IsReadOnly" Value="True"></Setter>
+                    <!-- Context Menu -->
+                    <Setter TargetName="addCategory" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="addSeparator" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="addCommand" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="removenode" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="renamenode" Property="IsEnabled" Value="False"></Setter>
+                    <Setter TargetName="nodeproperties" Property="IsEnabled" Value="False"></Setter>
+                   <!-- <Setter TargetName="folderfile" Property="Source" Value="/BSky.Controls;component/Resources/NotAllowed.png"></Setter> -->
+                    
+                </DataTrigger>
+                <DataTrigger Binding="{Binding XPath=@owner}" Value="BSky">
+                    <Setter TargetName="folderfile" Property="Opacity" Value=".3"/>
+                </DataTrigger>
+            </HierarchicalDataTemplate.Triggers>
+        </HierarchicalDataTemplate>
+
+        <!-- This will contain the initial XML-data as well as any other file the user may pick at runtime. -->
+        <XmlDataProvider x:Key="xmlDP" >
+        </XmlDataProvider>
+
+        <!-- The following two styles allow for easy expanding/collapsing of all nodes. -->
+        <Style x:Key="TV_AllExpanded"  TargetType="{x:Type TreeView}">
+            <Style.Resources>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="True" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="TV_AllCollapsed" TargetType="{x:Type TreeView}">
+            <Style.Resources>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="False" />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="scorllbarkey" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Focusable" Value="False" />
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock  Grid.Row="0"   Name="headertext" Text="NOTE: Right Click on items below to open context menu and choose required option." Margin="5">
+            </TextBlock>
+            <TextBlock  Grid.Row="1"   Name="headertext2" Text=" You cannot modify standard items (disabled ones)." Margin="5">    
+            </TextBlock>
+        </Grid>
+
+
+        <TreeView Name="tv"
+                AllowDrop="True" 
+                Background="White"
+                ItemTemplate= "{StaticResource NodeTemplate}"
+                ItemsSource="{Binding Source={StaticResource xmlDP}}"
+                TreeViewItem.Selected="tv_Selected"
+                MouseMove="tv_MouseMove"
+                MouseDown="tv_MouseDown"   
+                DragOver="tv_DragOver" 
+                Drop="tv_Drop" 
+                Margin="5" 
+                Grid.Row="1" HorizontalAlignment="Stretch">
+        </TreeView>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="287" MinWidth="82" />
+                <ColumnDefinition Width="200" MinWidth="200" />
+                <ColumnDefinition Width="135" MinWidth="100" />
+                <ColumnDefinition Width="89*" />
+            </Grid.ColumnDefinitions>
+            <UniformGrid Columns="2" Grid.Column="2" Margin="4,0,0,0">
+                <Button Name="Ok" Grid.Column="0" Click="Ok_Click" Margin="3" Padding="2" Width="57" Height="22">OK</Button>
+                <Button Name="Cancel" Grid.Column="1"  Margin="3" Padding="2" Width="57" Height="22" Click="Cancel_Click">Cancel</Button>
+            </UniformGrid>
+            
+        </Grid>
+    </Grid>
+</Window>

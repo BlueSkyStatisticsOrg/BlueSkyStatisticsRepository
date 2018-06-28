@@ -1,0 +1,41 @@
+﻿<Window x:Class="BlueSky.Windows.FindDatagridWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        Title="Find Datagrid Window" Height="250" MinWidth="400" MaxWidth="600" SizeToContent="Width" ResizeMode="NoResize" Closed="Window_Closed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <!--<ColumnDefinition></ColumnDefinition>-->
+        </Grid.ColumnDefinitions>
+        <!--<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+        <Label Content="Find What:"></Label>
+        <TextBox MinWidth="320" Margin="3" Name="searchtext" TextChanged="searchtext_TextChanged"></TextBox>
+        </StackPanel>-->
+
+        <Label Grid.Row="0" Grid.Column="0" Content="{x:Static uires:UICtrlResources.findwhat}"></Label>
+            <TextBox Grid.Row="0" Grid.Column="1" MinWidth="320" Margin="3" Name="searchtext" TextChanged="searchtext_TextChanged"></TextBox>
+
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="1" Content="{x:Static uires:UICtrlResources.FindDatagridNarrowSearch}"></Label>
+        <ListBox Grid.Row="2" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="3" Name="selectedColslistbox" SelectionMode="Multiple" SelectionChanged="selectedColslistbox_SelectionChanged"/>
+
+        <CheckBox Grid.Row="2" Grid.Column="2"  Name="matchcasecheckbox" Checked="matchcasecheckbox_Changed" Unchecked="matchcasecheckbox_Changed" Content="{x:Static uires:UICtrlResources.lblMatchCaseChkBox}"></CheckBox>
+        <CheckBox Grid.Row="3" Grid.Column="2"  Name="wholewordcheckbox" Content="{x:Static uires:UICtrlResources.lblWholeWordChkBox}"></CheckBox>
+        
+        <StackPanel Grid.Row="5" Grid.Column="2" Orientation="Horizontal">
+            <Button Margin="2" MinWidth="60"  Name="gridfindbutton" Click="gridfindbutton_Click" Content="{x:Static uires:UICtrlResources.buttonFindNext}"></Button>
+            <Button Margin="3" Width="70"  Name="gridfindnextbutton" Click="gridfindnextbutton_Click" Visibility="Collapsed">Find Next</Button>
+            <Button Margin="2" MinWidth="50" Name="gridfindclosebutton" Click="gridfindclosebutton_Click" Content="{x:Static uires:UICtrlResources.buttonClose}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

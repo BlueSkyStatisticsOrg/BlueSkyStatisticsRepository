@@ -1,0 +1,350 @@
+﻿<Grid x:Class="BSky.Controls.BSkygridForCompute"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+          xmlns:p="clr-namespace:BSky.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="330"
+           d:DesignWidth="340"
+           >
+    <Border BorderThickness="1" CornerRadius="4">
+
+        <Border.BorderBrush>
+            <SolidColorBrush Color="{StaticResource BorderMediumColor}" />
+            
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1.25*"/>
+            </Grid.RowDefinitions>
+
+            <c1:C1TabControl x:Name="tab1" Grid.Row="0" >
+                <c1:C1TabItem Header="Arithmethic">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0" Margin ="0,0,0,0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Click on the button to see the help. 
+                   Double click the button to add the function to the compute command.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="200"  >
+                            <p:FormulaComputeButton Content="+" Height="25" Margin ="5,5,5,5"   x:Name="Button1"  Width="25" />
+                            <p:FormulaComputeButton Content="-" Height="25" Margin ="5,5,5,5"  x:Name="Button6" Width="25" />
+                            <p:FormulaComputeButton Content="*" Height="25" Margin ="5,5,5,5"  x:Name="Button2"  Width="25" />
+                            <p:FormulaComputeButton Content="/" Height="25" Margin ="5,5,5,5"  x:Name="Button4"  Width="25"  />
+                            <p:FormulaComputeButton Content="^" Height="25" Margin ="5,5,5,5"  x:Name="Button7"  Width="25"/>
+                            <p:FormulaComputeButton Content="%in%" Margin ="5,5,5,5" Height="25"  x:Name="Button5" Width="40"  />
+                            <p:FormulaComputeButton Content="sqrt" Height="25" Margin ="5,5,5,5" x:Name="Button8"  Width="25"  />
+                            <p:FormulaComputeButton Content="log" Height="25" Margin ="5,5,5,5"  x:Name="Button9"  Width="25"  />
+                            <p:FormulaComputeButton Content="log10" Height="25" Margin ="5,5,5,5"  x:Name="Button10"  Width="38" />
+                            <p:FormulaComputeButton Content="log2" Height="25" Margin ="5,5,5,5"  x:Name="Button11"  Width="35"  />
+                            <p:FormulaComputeButton Content="Mod" Height="25" Margin ="5,5,5,5"  x:Name="Button22" Width="35"  />
+                            <p:FormulaComputeButton Content="abs" Height="25" Margin ="5,5,5,5" x:Name="Button32" Width="35"  />
+                        </WrapPanel>
+                        <!--<Label Name ="helplab1"  Grid.Row="3"></Label>-->
+
+                    </Grid>
+
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="Logical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Click on the button to see the help. 
+                   Double click the button to add the function to the compute command.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="200" >
+                            <p:FormulaComputeButton Content=">"  Margin ="5,5,5,5" Height="25"  x:Name="Button12"  Width="25" />
+                            <p:FormulaComputeButton Content=">="  Margin ="5,5,5,5" Height="25"  x:Name="Button13"  Width="25" />
+                            <p:FormulaComputeButton Content="&lt;"  Margin ="5,5,5,5" Height="25"  x:Name="Button14"  Width="25" />
+                            <p:FormulaComputeButton Content="&lt;="  Margin ="5,5,5,5" Height="25"  x:Name="Button15"  Width="25"  />
+                            <p:FormulaComputeButton Content="=="  Margin ="5,5,5,5" Height="25"  x:Name="Button16" Width="40"  />
+                            <p:FormulaComputeButton Content="!="  Margin ="5,5,5,5" Height="25"  x:Name="Button17"  Width="25"/>
+                            <p:FormulaComputeButton Content="isTRUE"  Margin ="5,5,5,5" Height="25"  x:Name="Button18"  Width="40"  />
+                            <p:FormulaComputeButton Content="|"  Margin ="5,5,5,5" Height="25"  x:Name="Button19"  Width="25"  />
+                            <p:FormulaComputeButton Content="&amp;"  Margin ="5,5,5,5" Height="25"  x:Name="Button20"  Width="35" />
+                            <p:FormulaComputeButton Content="%/%"  Margin ="5,5,5,5" Height="25"  x:Name="Button21"  Width="35" />
+                        </WrapPanel>
+                        <!--<Label Name ="helplab2" Margin ="0,0,0,0" Grid.Row="3"></Label>-->
+                        <!--<TextBlock Name="HelpText2" Grid.Row="4" TextWrapping ="Wrap" ></TextBlock>-->
+                    </Grid>
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="Math">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Click on the button to see the help. 
+                   Double click the button to add the function to the compute command.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="200" >
+                            <p:FormulaComputeButton Content="round"  Margin ="5,5,5,5" Height="25"  x:Name="Button40"  Width="40" />
+                            <p:FormulaComputeButton Content="ceiling"  Margin ="5,5,5,5" Height="25"  x:Name="Button41"   Width="40" />
+                            <p:FormulaComputeButton Content="floor"  Margin ="5,5,5,5" Height="25"  x:Name="Button42"   Width="40" />
+                            <p:FormulaComputeButton Content="signif"  Margin ="5,5,5,5" Height="25"  x:Name="Button43"   Width="40"  />
+                            <p:FormulaComputeButton Content="gamma"  Margin ="5,5,5,5" Height="25"  x:Name="Button44"  Width="45"  />
+                            <p:FormulaComputeButton Content="lgamma"  Margin ="5,5,5,5" Height="25"  x:Name="Button45"   Width="48"/>
+                            <p:FormulaComputeButton Content="beta"  Margin ="5,5,5,5" Height="25"  x:Name="Button46"   Width="48"/>
+                            <p:FormulaComputeButton Content="lbeta"  Margin ="5,5,5,5" Height="25"  x:Name="Button47"   Width="48"/>
+                            <p:FormulaComputeButton Content="factorial"  Margin ="5,5,5,5" Height="25"  x:Name="Button48"   Width="48"/>
+                            <p:FormulaComputeButton Content="psigamma"  Margin ="5,5,5,5" Height="25"  x:Name="Button49"   Width="62"/>
+
+                            
+
+
+                        </WrapPanel>
+                        <!--<Label Name ="helplab2" Margin ="0,0,0,0" Grid.Row="3"></Label>-->
+                        <!--<TextBlock Name="HelpText2" Grid.Row="4" TextWrapping ="Wrap" ></TextBlock>-->
+                    </Grid>
+                    
+
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="String(1)">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Click on the button to see the help. 
+                   Double click the button to add the function to the compute command.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="220" >
+                            <p:FormulaComputeButton Content="toupper"  Margin ="5,5,5,5" Height="25"  x:Name="Button163"   Width="60"  />
+                            <p:FormulaComputeButton Content="tolower"  Margin ="5,5,5,5" Height="25"  x:Name="Button164"   Width="60"  />
+                            <p:FormulaComputeButton Content="Pad"  Margin ="5,5,5,5" Height="25"  x:Name="Button165"   Width="60"  />
+                            <p:FormulaComputeButton Content="Trim"  Margin ="5,5,5,5" Height="25"  x:Name="Button166"   Width="60"  />
+                            <p:FormulaComputeButton Content="Length"  Margin ="5,5,5,5" Height="25"  x:Name="Button167"   Width="60"  />
+                            <p:FormulaComputeButton Content="Count(matches)"  Margin ="5,5,5,5" Height="25"  x:Name="Button168"   Width="90"  />
+                        </WrapPanel>
+                        <!--<Label Name ="helplab2" Margin ="0,0,0,0" Grid.Row="3"></Label>-->
+                        <!--<TextBlock Name="HelpText2" Grid.Row="4" TextWrapping ="Wrap" ></TextBlock>-->
+                    </Grid>
+
+
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="String(2)">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Click on the button to see the help. 
+                   Double click the button to add the function to the compute command.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="270" >
+                            <p:FormulaComputeButton Content="Extract Substring"  Margin ="5,5,5,5" Height="25"  x:Name="Button60"  Width="Auto" />
+                            <!--<p:FormulaComputeButton Content="Replace Substring"  Margin ="5,5,5,5" Height="25"  x:Name="Button61" IsEnabled="false"  Width="95" />-->
+                            <p:FormulaComputeButton Content="Concatenate"  Margin ="5,5,5,5" Height="25"  x:Name="Button62"   Width="75" />
+                            <p:FormulaComputeButton Content="Replace Pattern"  Margin ="5,5,5,5" Height="25"  x:Name="Button63"   Width="90"  />
+                            <p:FormulaComputeButton Content="Replace Pattern(ALL)"  Margin ="5,5,5,5" Height="25"  x:Name="Button64"   Width="Auto"  />
+                            <p:FormulaComputeButton Content="Extract a Number"  Margin ="5,5,5,5" Height="25"  x:Name="Button68"   Width="100"  />
+                        </WrapPanel>
+                        <!--<Label Name ="helplab2" Margin ="0,0,0,0" Grid.Row="3"></Label>-->
+                        <!--<TextBlock Name="HelpText2" Grid.Row="4" TextWrapping ="Wrap" ></TextBlock>-->
+                    </Grid>
+
+
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="Conversion">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Click on the button to see the help. 
+                   Double click the button to add the function to the compute command.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="200" >
+                            <p:FormulaComputeButton Content="ToNumeric"  Margin ="5,5,5,5" Height="25"  x:Name="Button80"  Width="75" />
+                            <p:FormulaComputeButton Content="ToString"  Margin ="5,5,5,5" Height="25"  x:Name="Button81"   Width="75" />
+                            <p:FormulaComputeButton Content="ToFactor"  Margin ="5,5,5,5" Height="25"  x:Name="Button82"   Width="75" />
+                            
+                         </WrapPanel>
+                        <!--<Label Name ="helplab2" Margin ="0,0,0,0" Grid.Row="3"></Label>-->
+                        <!--<TextBlock Name="HelpText2" Grid.Row="4" TextWrapping ="Wrap" ></TextBlock>-->
+                    </Grid>
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="Statistical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Click on the button to see the help. 
+                   Double click the button to add the function to the compute command.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="220" >
+                            <p:FormulaComputeButton Content="max"  Margin ="5,5,5,5" Height="25"  x:Name="Button100"  Width="75" />
+                            <p:FormulaComputeButton Content="min"  Margin ="5,5,5,5" Height="25"  x:Name="Button101"   Width="120" />
+                            <p:FormulaComputeButton Content="mean"  Margin ="5,5,5,5" Height="25"  x:Name="Button102"   Width="75" />
+                            <p:FormulaComputeButton Content="median"  Margin ="5,5,5,5" Height="25"  x:Name="Button103"   Width="60"  />
+                            <p:FormulaComputeButton Content="sd"  Margin ="5,5,5,5" Height="25"  x:Name="Button104"   Width="60"  />
+                            <p:FormulaComputeButton Content="sum"  Margin ="5,5,5,5" Height="25"  x:Name="Button105"   Width="60"  />
+                            <p:FormulaComputeButton Content="variance"  Margin ="5,5,5,5" Height="25"  x:Name="Button106"   Width="60"  />
+                        </WrapPanel>
+                        <!--<Label Name ="helplab2" Margin ="0,0,0,0" Grid.Row="3"></Label>-->
+                        <!--<TextBlock Name="HelpText2" Grid.Row="4" TextWrapping ="Wrap" ></TextBlock>-->
+                    </Grid>
+
+
+
+
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="Random Numbers">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                        <!--<RowDefinition Height="Auto"/>-->
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                    </Grid.RowDefinitions>
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Click on the button to see the help. 
+                   Double click to add the function to the compute command.</TextBlock>
+                        <Label Grid.Row="1">Uniform distribution with and w/o fractions</Label>
+                        <WrapPanel  Grid.Row="2" Width="200" >
+                            <p:FormulaComputeButton Content="runif"  Margin ="2" Height="22"  x:Name="Button90"  Width="75" />
+                            <p:FormulaComputeButton Content="sample"  Margin ="2" Height="22"  x:Name="Button91"   Width="75" />
+                        </WrapPanel>
+                        <Label Grid.Row="3">Normal distribution</Label>
+                        <WrapPanel  Grid.Row="4" Width="200" >
+                            <p:FormulaComputeButton Content="rnorm"  Margin ="2" Height="22"  x:Name="Button92"  Width="75" />
+
+                        </WrapPanel>
+                        
+                        
+
+                    </Grid>
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="Date(1)">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Extract the following from a date variable (variable must be of class POSIXct, POSIXlt, Date.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="200" >
+                            <p:FormulaComputeButton Content="Day of Week"  Margin ="5,5,5,5" Height="25"  x:Name="Button1001"   />
+                            <p:FormulaComputeButton Content="Day of Month"  Margin ="5,5,5,5" Height="25"  x:Name="Button1002"  />
+                            <p:FormulaComputeButton Content="Day of Year"  Margin ="5,5,5,5" Height="25"  x:Name="Button1004"  />
+                            <p:FormulaComputeButton Content="Week of Year"  Margin ="5,5,5,5" Height="25"  x:Name="Button1005"    />
+                            <p:FormulaComputeButton Content="Month"  Margin ="5,5,5,5" Height="25"  x:Name="Button1006"   />
+                            <p:FormulaComputeButton Content="Month(decimal)"  Margin ="5,5,5,5" Height="25"  x:Name="Button1007"  />
+                            
+                        </WrapPanel>
+                        <!--<Label Name ="helplab2" Margin ="0,0,0,0" Grid.Row="3"></Label>-->
+                        <!--<TextBlock Name="HelpText2" Grid.Row="4" TextWrapping ="Wrap" ></TextBlock>-->
+                    </Grid>
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="Date(2)">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Extract the following from a date variable (variable must be of class POSIXct, POSIXlt, Date.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="200" >
+                            <p:FormulaComputeButton Content="Quarters"  Margin ="5,5,5,5" Height="25"  x:Name="Button1008"   />
+                            <p:FormulaComputeButton Content="Year(XXXX)"  Margin ="5,5,5,5" Height="25"  x:Name="Button1010"   />
+                            <p:FormulaComputeButton Content="Year(XX)"  Margin ="5,5,5,5" Height="25"  x:Name="Button1009"   />
+                   
+                            <p:FormulaComputeButton Content="Hour(00-12)"  Margin ="5,5,5,5" Height="25"  x:Name="Button1011"    />
+                            <p:FormulaComputeButton Content="Hour(00-23)"  Margin ="5,5,5,5" Height="25"  x:Name="Button1014"    />
+                            <p:FormulaComputeButton Content="Minute"  Margin ="5,5,5,5" Height="25"  x:Name="Button1012"   />
+                            <p:FormulaComputeButton Content="Secs"  Margin ="5,5,5,5" Height="25"  x:Name="Button1013"  Width="40"/>
+
+                        </WrapPanel>
+                        <!--<Label Name ="helplab2" Margin ="0,0,0,0" Grid.Row="3"></Label>-->
+                        <!--<TextBlock Name="HelpText2" Grid.Row="4" TextWrapping ="Wrap" ></TextBlock>-->
+                    </Grid>
+                </c1:C1TabItem>
+                <c1:C1TabItem Header="Date(3)">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="Auto"/>-->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <!--<RowDefinition Height="38"/>-->
+                        </Grid.RowDefinitions>
+                        <!--<Label Grid.Row="0">Instructions:</Label>-->                        
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Create a date class(POSIXct) from a string and subtracting dates.</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="275" Margin="15,0,26,0">
+                            <p:FormulaComputeButton Content="Create a date (from string)"  Margin ="5,5,5,5" Height="25"  x:Name="Button1025"  Width="150" />
+                            <p:FormulaComputeButton Content="Date Difference"  Margin ="5,5,5,5" Height="25"  x:Name="Button1026"  Width="100" />
+                        </WrapPanel>
+                    </Grid>
+                </c1:C1TabItem>
+
+                <c1:C1TabItem Header="Date(4)">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Create a date from a numeric or a string, using as.Date().</TextBlock>
+                        <WrapPanel  Grid.Row="1" Width="275" Margin="15,0,26,0">
+                            <p:FormulaComputeButton Content="Numeric to date"  Margin ="5,5,5,5" Height="25"  x:Name="Button1027"  Width="100" />
+                            <p:FormulaComputeButton Content="String to date"  Margin ="5,5,5,5" Height="25"  x:Name="Button1028"  Width="100" />
+                        </WrapPanel>
+                    </Grid>
+                </c1:C1TabItem>
+
+
+
+
+
+
+
+            </c1:C1TabControl>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <Label Grid.Row ="1"  Content="Help: "  Name="label1"></Label>
+            <ScrollViewer Margin ="4,4,4,4" Grid.Row ="2" >
+            <TextBlock Background="White"   TextWrapping ="Wrap"  Name="HelpText1"></TextBlock>
+                </ScrollViewer>
+        </Grid>
+        </Border>
+</Grid>
+

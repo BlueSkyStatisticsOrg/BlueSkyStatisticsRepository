@@ -1,0 +1,16 @@
+﻿<Window x:Class="BSky.Controls.Commands.DialogProperties"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DialogProperties" Height="233" Width="265">
+    <Grid>
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,14,0,0" Name="textBlock1" Text="Width" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="50,12,0,0" Name="txtWidth" VerticalAlignment="Top" Width="120" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,43,0,0" Name="lblHeight" Text="Height" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="50,43,0,0" Name="txtHeight" VerticalAlignment="Top" Width="120" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,76,0,0" Text="Title" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="50,76,0,0" Name="txtTitle" VerticalAlignment="Top" Width="120" />
+
+        <Button Content="Ok" Height="23" HorizontalAlignment="Left" Margin="50,160,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="139,159,0,0" Name="button2" VerticalAlignment="Top" Width="75" />
+    </Grid>
+</Window>

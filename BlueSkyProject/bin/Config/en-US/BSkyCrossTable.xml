@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<output>
+  <output.header>
+    <text stringformat="">
+    </text>
+  </output.header>
+  <repeatlist>
+	<repeatalltable>
+		<repeat condition=""  repeaton="row" variablename="%Row%" tabletorepeat="Crosstab">
+		  <foreach condition="" repeaton="col" variablename="%Column%"></foreach>
+		</repeat>
+	</repeatalltable>
+	<repeatselectivetable>
+		<repeat condition=""  repeaton="row" variablename="%Row%" tabletorepeat="Crosstab">
+		  <foreach condition="" repeaton="col" variablename="%Column%"></foreach>
+		</repeat>	
+		<repeat condition=""  repeaton="row" variablename="%Row%" tabletorepeat="Chisq">
+		  <foreach condition="" repeaton="col" variablename="%Column%"></foreach>
+		</repeat>		
+	</repeatselectivetable>
+  </repeatlist>
+  <tablelist>
+    <table ID="Crosstab">
+      <table.header>
+        <text stringformat="{0}*{1}*{2} Cross Tabulation">
+          <macro>%Row%</macro>
+          <macro>%Column%</macro>
+          <param datamember="layer" delimiter="*"></param>
+        </text>
+      </table.header>
+      <columns>
+        <column >
+          <labels grouping="list" showheader="yes" showgrouptotal="yes" factors="yes">
+            <list listname="col"  variablename="%Column%" />
+          </labels>
+        </column>
+      </columns>
+      <rows>
+        <row nestedrows="yes" >
+          <labels grouping="list" factors="yes" showheader="yes" >
+            <list listname="layer"/>
+          </labels>
+          <subrows>
+            <!-- Subrows implicitly points to nested rows-->
+            <row>
+              <labels grouping="list" showheader="yes" showgrouptotal="yes" factors="yes">
+                <list listname="row"  variablename="%Row%" />
+              </labels>
+              <subrows>
+                <row>
+                  <labels grouping="options" showgrouptotal="no">
+                    <option-value-pairs>
+                      <option-value condition="" text="Count"></option-value>
+					  <option-value condition="Expected" text="Expected Count"></option-value>
+                      <option-value condition="rowpercent">
+                          <text stringformat="% within {0}">
+                            <macro>%Row%</macro>
+                          </text>
+                      </option-value>
+                      <option-value condition="colpercent">
+                        <text stringformat="% within {0}">
+                          <macro>%Column%</macro>
+                        </text>
+                      </option-value>
+				        <option-value condition="unstandardized" >
+                        <text stringformat="{0}">
+                          <statictext>Residual</statictext>
+                        </text>
+                      </option-value>					  
+                      <option-value condition="standardized" >
+                        <text stringformat="{0}">
+                          <statictext>Std. Residual</statictext>
+                        </text>
+                      </option-value>	
+                      <option-value condition="adjusted" >
+                        <text stringformat="{0}">
+                          <statictext>Adjusted Residual</statictext>
+                        </text>
+                      </option-value>					  
+                    </option-value-pairs>
+                  </labels>
+                </row>
+              </subrows>
+            </row>
+          </subrows>
+        </row>
+      </rows>
+    </table>
+    <table ID="Chisq" >
+	  <option-value-pairs>
+		  <option-value condition="chisq" text="Chi"></option-value>	
+		<!-- <option-value condition="percRows" text="Count"></option-value>
+		  <option-value condition="percCols" text="Count"></option-value>  -->
+	  </option-value-pairs>
+      <table.header>
+        <text stringformat="Chisq">
+        </text>
+      </table.header>
+      <columns>
+        <column>
+          <labels grouping="options" >
+            <option-value-pairs>
+              <option-value condition="" text="Value"></option-value>
+              <option-value condition="" text="df"></option-value>
+              <option-value condition="" text="Asyp. Sig"></option-value>
+            </option-value-pairs>
+          </labels>
+        </column>
+      </columns>
+      <rows>
+        <row nestedrows="yes" >
+          <labels grouping="list" factors="yes" showheader="yes" >
+            <list listname="layer"/>
+          </labels>
+          <subrows>
+            <!-- Subrows implicitly points to nested rows -->
+            <row>
+              <labels grouping="options">
+                <option-value-pairs>
+                  <option-value condition="" text="Pearson Chi Square"></option-value>
+                  <!-- option-value condition="" text="Likelihood Ratio"></option-value -->
+                  <!-- option-value condition="" text="Linear by linear"></option-value -->
+                </option-value-pairs>
+              </labels>              
+            </row>
+          </subrows>
+        </row>        
+      </rows>
+    </table>
+  </tablelist>
+</output>
+
+
+
+
+
+
+

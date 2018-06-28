@@ -1,0 +1,47 @@
+﻿using BSky.Lifetime;
+using BlueSky.CommandBase;
+
+namespace BlueSky.Commands.File
+{
+    class FileExitCommand : BSkyCommandBase
+    {
+        protected override void OnPreExecute(object param)
+        {
+        }
+
+        protected override void OnExecute(object param)
+        {
+            ////IUnityContainer container = LifetimeService.Instance.Container;
+            ////IDataService service = container.Resolve<IDataService>();
+            ////IUIController controller = container.Resolve<IUIController>();
+
+            ////DialogResult result = System.Windows.Forms.MessageBox.Show("Do you want to close this Application?",
+            ////                                        "Close this Application?.",
+            ////                                         MessageBoxButtons.YesNo,
+            ////                                         MessageBoxIcon.Question);
+            ////if (result == DialogResult.No)//save
+            ////{
+            ////    return;
+            ////}
+
+            Window1 appwindow = LifetimeService.Instance.Container.Resolve<Window1>();//21feb2013
+            appwindow.Close();
+        }
+
+        protected override void OnPostExecute(object param)
+        {
+        }
+
+        ////Send executed command to output window. So, user will know what he executed
+        //protected override void SendToOutputWindow(string command, string title)//13Dec2013
+        //{
+        //    #region Get Active output Window
+        //    //////// Active output window ///////
+        //    OutputWindowContainer owc = (LifetimeService.Instance.Container.Resolve<IOutputWindowContainer>()) as OutputWindowContainer;
+        //    OutputWindow ow = owc.ActiveOutputWindow as OutputWindow; //get currently active window
+        //    #endregion
+        //    ow.AddMessage(command, title);
+        //}
+
+    }
+}

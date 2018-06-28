@@ -1,0 +1,45 @@
+﻿<Window xmlns:my="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"  
+    x:Class="BSky.Controls.DesignerSupport.OverwriteSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="550" Height="350" Title="Overwrite Settings">
+    <Grid Height="315">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="102*" />
+            <ColumnDefinition Width="176*" />
+        </Grid.ColumnDefinitions>
+
+
+        <!--  <GroupBox Header="Separator Settings" Height="221" HorizontalAlignment="Left" Margin="24,252,0,0" Name="groupBox2" VerticalAlignment="Top" Width="342" Grid.ColumnSpan="2"> -->
+
+        <GroupBox Grid.ColumnSpan="2" Header="Seperator Settings" Height="225" HorizontalAlignment="Left" Margin="12,49,0,0" Name="groupBox2" VerticalAlignment="Top" Width="504"></GroupBox>
+        <Button Content="Ok" Height="23" HorizontalAlignment="Left" Margin="12,280,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="109,280,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="Cancel_Click" />
+        <TextBlock Height="39" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBlock4" TextWrapping="Wrap" Text="If values entered in this control create new variables or datasets and these variables or dataset already exist, select whether the user should be prompted before overwriting" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="474" />
+        <Grid Grid.ColumnSpan="2" Margin="21,69,21,41">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32*" />
+                <RowDefinition Height="140*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="44*" />
+                <ColumnDefinition Width="97*" />
+                <ColumnDefinition Width="17*" />
+                <ColumnDefinition Width="298" />
+            </Grid.ColumnDefinitions>
+            <!--    <RadioButton Content="Use a plus '+' " Height="18" Name="radioButton4" Width="305" Margin="46,388,27,255" Grid.ColumnSpan="2" /> -->
+            <!--     <TextBlock Height="43" HorizontalAlignment="Left" Margin="48,273,0,0" Name="textBlock5" TextWrapping="Wrap" Text="When substituting multiple variables from a variable control, select an appropriate separator" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="304" /> -->
+            <!--      <TextBlock Height="53" HorizontalAlignment="Left" Margin="45,403,0,0" Name="textBlock6" Text="If your variables are 'var1', var2', the string that will be substituted is 'var1 + var2', this is ideal for the formula class in R, i.e. xtabs(~var1+var2) " TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="296" />
+                <RadioButton Content="Use a comma ','" Height="17" Name="radioButton3" Width="296" Grid.ColumnSpan="2" Margin="46,110,36,134" /> -->
+            <TextBlock Height="56" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="2,301,0,0" Name="textBlock7" Text="If your items are 'item1', item2', the string that will be substituted is 'item1, item2', this is ideal for the formula class in R, i.e. xtabs(~item1+item2)" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="293" Grid.Column="1" Grid.Row="1" />
+            <RadioButton Content="Prompt when overwriting existing variable(s)." Height="18" HorizontalAlignment="Left" Margin="16,22,0,0" Name="PromptOverwriteVars" VerticalAlignment="Top" Grid.ColumnSpan="4" Width="335" Grid.Row="1" />
+            <TextBlock Height="16" HorizontalAlignment="Left" Margin="16,6,0,0" Name="textBlock8" TextWrapping="Wrap" Text="Optionally, select one of the following" VerticalAlignment="Top" Grid.ColumnSpan="4" Width="306" />
+            <TextBlock Height="37" HorizontalAlignment="Left" Margin="16,46,0,0" Name="textBlock6" TextWrapping="Wrap" Text="If value(s) entered in this control are supposed to create new variable(s) but those variable(s) already exists in the dataset, prompt the user before overwriting." VerticalAlignment="Top" Grid.ColumnSpan="4" Grid.Row="1" />
+            <RadioButton Content="Prompt when overwriting existing dataset(s)." Grid.ColumnSpan="4" Grid.Row="1" Height="24" HorizontalAlignment="Left" Margin="16,89,0,0" Name="PromptOverwriteDatasets" VerticalAlignment="Top" Width="460" />
+            <TextBlock Grid.Row="1" Height="55" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="16,107,0,0" Name="textBlock1" Text="If value(s) entered in this control are supposed to create new dataset(s) but those dataset(s) already exist, prompt the user before overwriting." VerticalAlignment="Top" Grid.ColumnSpan="4" Width="427" />
+            <RadioButton Content="None." Grid.ColumnSpan="2" Height="16" HorizontalAlignment="Left" Margin="16,22,0,0" Name="dontprompt" VerticalAlignment="Top" />
+            <TextBlock Grid.ColumnSpan="4" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="16,0,0,0" Name="textBlock2" Text="Choose this option when entries in this control don't create new variables or datasets or when you want existing variables or datasets overwritten without prompting." VerticalAlignment="Top" Width="433" />
+        </Grid>
+    </Grid>
+
+</Window>
+

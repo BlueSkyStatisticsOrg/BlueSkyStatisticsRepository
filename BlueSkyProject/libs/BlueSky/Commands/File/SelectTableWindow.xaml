@@ -1,0 +1,13 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="BlueSky.Commands.File.SelectTableWindow"
+        Title="{x:Static uires:UICtrlResources.SelWorksheetWin}" Height="180" MinHeight="230"  Width="100" MinWidth="260" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" >
+    <Grid MinHeight="200" MinWidth="219" >
+        <ListBox Height="115" HorizontalAlignment="Left" Margin="21,38,0,0" x:Name="tablelist" VerticalAlignment="Top" Width="205" />
+        <Label Content="{x:Static uires:UICtrlResources.SelTableOrSheet}" Height="28" Margin="21,9,23,0" x:Name="label1" VerticalAlignment="Top" />
+        <Button Content="{x:Static uires:UICtrlResources.buttonOk}" Height="23" HorizontalAlignment="Left" Margin="21,159,0,0" x:Name="okbutton" VerticalAlignment="Top" MinWidth="49" Click="button1_Click" />
+        <Button Content="{x:Static uires:UICtrlResources.buttonCancel}" Height="23" HorizontalAlignment="Left" Margin="147,159,0,0" x:Name="CancelButton" VerticalAlignment="Top" MinWidth="49" Click="CancelButton_Click" />
+    </Grid>
+</Window>

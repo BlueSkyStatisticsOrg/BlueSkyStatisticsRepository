@@ -1,0 +1,60 @@
+﻿<Window x:Class="BlueSky.Dialogs.SaveLoadRObjectsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Save or Load R Objects Window. Right now not in use. In future can be used."  ResizeMode="NoResize" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignWidth="590" SizeToContent="WidthAndHeight" xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml">
+    <Grid>
+        <TabControl>
+            <TabItem Name="savetab" Header="Save">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="24"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0">Choose an object from the list below:</Label>
+                    <ListBox Grid.Row="1" Grid.RowSpan="5" Name="robjlist" SelectionMode="Single"></ListBox>
+                    <Label Grid.Row="0" Grid.Column="2">Enter filename (Use Browse button) :</Label>
+                    <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Name="savefilepathtxt"></TextBox>
+                    <Button Grid.Row="1" Grid.Column="5" Margin="2" Name="browsebutton1" Click="browsebutton1_Click">Browse</Button>
+                    <CheckBox Grid.Row="3" Grid.Column="2" Margin="1" >Remove object from meory after saving.</CheckBox>
+                    <!--<Label Grid.Row="2" Grid.Column="2"  Grid.ColumnSpan="3">Remove object from meory after saving.</Label>-->
+                    <Button Grid.Row="5" Grid.Column="4" Margin="2" Width="50" Name="savebutton" Click="savebutton_Click">Save</Button>
+                    <Button Grid.Row="5" Grid.Column="5" Margin="2" Width="50" Name="cancelbutton1" Click="cancelbutton1_Click">Cancel</Button>
+                </Grid>
+                
+            </TabItem>
+            <TabItem Name="loadtab" Header="Load">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="24"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="340"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0">R Object Filename:</Label>
+                    <TextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Name="loadfilepathtxt"></TextBox>
+                    <Button Grid.Row="0" Grid.Column="4" Margin="2" Name="browsebutton2" Click="browsebutton2_Click">Browse</Button>
+                    <Button Grid.Row="2" Grid.Column="3" Margin="2" Name="loadbutton" Click="loadbutton_Click">Load</Button>
+                    <Button Grid.Row="2" Grid.Column="4" Margin="2" Name="cancelbutton2" Click="cancelbutton2_Click">Cancel</Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

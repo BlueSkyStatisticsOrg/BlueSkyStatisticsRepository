@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="BSky.Controls.Controls.BSkyNotes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Focusable="True"   MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave" >
+    <Border Name="outerborder" BorderBrush="Transparent" BorderThickness="1" >
+        <Grid Name="maingrid" MouseDown="splitgrid_MouseDown" Margin="0"  >
+            <!--<Grid.ContextMenu>
+                <ContextMenu Name="bsnotesuccontextmenu">
+                    <MenuItem  Header="Export To Excel" Command="Copy" Name="saveall" >
+                        <MenuItem.CommandBindings>
+                            <CommandBinding Command="ApplicationCommands.Copy" 
+                                    CanExecute="CommandBinding_CanExecute" 
+                                    Executed="CommandBinding_Executed" />
+                        </MenuItem.CommandBindings>
+                    </MenuItem>
+                </ContextMenu>
+            </Grid.ContextMenu>-->            
+            <TextBlock Name="notes"  Margin="0" Text="TextBlock" VerticalAlignment="Top"  MouseDown="notes_MouseDown"  TextWrapping="Wrap" FontFamily="Consolas" FontSize="12" />
+            <Border Name="myborder" BorderBrush="Transparent" BorderThickness="1"  Margin="0" Background="WhiteSmoke" >
+                <Grid Background="WhiteSmoke"  >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Name="heading" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                    <Border Grid.Row="1" Name="myborderin" BorderBrush="Black" BorderThickness="1"  Margin="2,10,2,2" Background="Lavender" >
+                        <Grid  Name="splitgrid"  Margin="1,1,1,1"    />
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

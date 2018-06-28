@@ -1,0 +1,746 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76320C55-8E5E-4991-A906-D6864AA53E8D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlueSky</RootNamespace>
+    <AssemblyName>BlueSky</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\Anil\Desktop\BSky\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>2</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CC342F143AF58DCE527080D191248C585AA0E906</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>BlueSkySigningKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>BAnalytics-icon_1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="BSky.Commands">
+      <HintPath>..\..\..\..\NoGitHub\Propritary\BSky.Commands\bin\Debug\BSky.Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="BSky.ConfigService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BSkyDll\BSky.ConfigService.dll</HintPath>
+    </Reference>
+    <Reference Include="BSky.ConfService.Intf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BSkyDll\BSky.ConfService.Intf.dll</HintPath>
+    </Reference>
+    <Reference Include="BSky.DynamicClassCreator, Version=5.35.6751.30083, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BSkyDll\BSky.DynamicClassCreator.dll</HintPath>
+    </Reference>
+    <Reference Include="BSky.ServerBridge">
+      <HintPath>..\..\..\BSkyDll\BSky.ServerBridge.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.DataGrid.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.DataGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.DataGrid.Filters.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.DataGrid.Filters.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.DataGrid.Summaries.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.DataGrid.Summaries.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.DateTimeEditors.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.DateTimeEditors.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.Docking.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.Docking.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.FlexGrid.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.FlexGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.FlexGridFilter.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ComponentOne\Studio for WPF\bin\v4\C1.WPF.FlexGridFilter.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.RichTextBox.4">
+      <HintPath>..\ThirdParty\C1\C1.WPF.RichTextBox.4.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DynamicInterop, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\RDotNet\DynamicInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\ICSharpZip\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\ThirdParty\Log4Net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\Unity\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="RDotNet, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\RDotNet\RDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="RDotNet.NativeLibrary, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\RDotNet\RDotNet.NativeLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET">
+      <HintPath>..\..\..\ThirdParty\Scintilla\ScintillaNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClientsideProviders" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BSkyAppData.cs" />
+    <Compile Include="ColorSelectorWindow.xaml.cs">
+      <DependentUpon>ColorSelectorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommandBase\BSkyCommandBase.cs" />
+    <Compile Include="CommandExecutionHelper.cs" />
+    <Compile Include="Commands\AUAnalysisCommandBase.cs" />
+    <Compile Include="Commands\BSkyDialogProperties.cs" />
+    <Compile Include="Commands\Data\RefreshDatagridCommand.cs" />
+    <Compile Include="Commands\File\FileExitCommand.cs" />
+    <Compile Include="Commands\File\FileInstallDlg.cs" />
+    <Compile Include="Commands\File\FileNewCommand.cs" />
+    <Compile Include="Commands\File\FileSaveAsExcelCommand.cs" />
+    <Compile Include="Commands\File\FileSaveCommand.cs" />
+    <Compile Include="Commands\File\FileSaveAsCommand.cs" />
+    <Compile Include="Commands\File\ImportFromSQLCommand.cs" />
+    <Compile Include="Commands\File\SelectRdataDataframesWindow.xaml.cs">
+      <DependentUpon>SelectRdataDataframesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\File\SelectTableWindow.xaml.cs">
+      <DependentUpon>SelectTableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\Help\BlueSkyWebsiteCommand.cs" />
+    <Compile Include="Commands\Help\CustomSettingsCommand.cs" />
+    <Compile Include="Commands\History\CommandHistoryMenuHandler.cs" />
+    <Compile Include="Commands\Output\NewOutputWindow.cs" />
+    <Compile Include="Commands\Output\OutputMenuHandler.cs" />
+    <Compile Include="Commands\Output\OutputOpenCommand.cs" />
+    <Compile Include="Commands\Output\OutputSaveAsCommand.cs" />
+    <Compile Include="Commands\Output\SelectOutputWindowCommand.cs" />
+    <Compile Include="Commands\Tools\InspectorCommand.cs" />
+    <Compile Include="Commands\Tools\Package\Dialogs\AskPackageNameWindow.xaml.cs">
+      <DependentUpon>AskPackageNameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\Tools\Package\InstallRequiredPackagesCRANCommand.cs" />
+    <Compile Include="Commands\Tools\Package\Dialogs\InstallRequiredPackagesFromZip.xaml.cs">
+      <DependentUpon>InstallRequiredPackagesFromZip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\Tools\Package\InstallRequiredPackagesCommand.cs" />
+    <Compile Include="Commands\Tools\Package\UpdateBlueSkyPacakgesCommand.cs" />
+    <Compile Include="Commands\Tools\Package\LoadUserSessionPackagesCommand.cs" />
+    <Compile Include="Commands\Tools\Package\Dialogs\SelectPackagesWindow.xaml.cs">
+      <DependentUpon>SelectPackagesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\Tools\Package\InstallCRANPackageCommand.cs" />
+    <Compile Include="Commands\Tools\Package\InstallPackageCommand.cs" />
+    <Compile Include="Commands\Tools\Package\LoadPackageCommand.cs" />
+    <Compile Include="Commands\Tools\Package\LoadPackageFromListCommand.cs" />
+    <Compile Include="Commands\Tools\Package\PackageHelperMethods.cs" />
+    <Compile Include="Commands\Tools\Package\ShowInstalledPackagesCommand.cs" />
+    <Compile Include="Commands\Tools\Package\ShowLoadedPackagesCommand.cs" />
+    <Compile Include="Commands\Tools\ToolsInstallDialog.cs" />
+    <Compile Include="Commands\Tools\ToolsMenuEditorCommand.cs" />
+    <Compile Include="Commands\Tools\ToolsSyntaxEditorCommand.cs" />
+    <Compile Include="Commands\Tools\Package\UninstallPackageCommand.cs" />
+    <Compile Include="Commands\Tools\Package\UnloadPackageCommand.cs" />
+    <Compile Include="ComputeVar.xaml.cs">
+      <DependentUpon>ComputeVar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridValueLablesCol.cs" />
+    <Compile Include="Dialogs\BSkyWarningMsgBox.xaml.cs">
+      <DependentUpon>BSkyWarningMsgBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ChangeImageSizeDialog.xaml.cs">
+      <DependentUpon>ChangeImageSizeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\OpenCSVTXTOptionsWindow.xaml.cs">
+      <DependentUpon>OpenCSVTXTOptionsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\RDataWarningMessageBox.xaml.cs">
+      <DependentUpon>RDataWarningMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SaveLoadRObjectsWindow.xaml.cs">
+      <DependentUpon>SaveLoadRObjectsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InspectDialog.xaml.cs">
+      <DependentUpon>InspectDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MouseBusyHandler.cs" />
+    <Compile Include="OutputWindowContainer.cs" />
+    <Compile Include="OutputWindow.xaml.cs">
+      <DependentUpon>OutputWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CiphDeciph.cs" />
+    <Compile Include="Properties\NoUICtrlResources.Designer.cs">
+      <DependentUpon>NoUICtrlResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.en-US.Designer.cs">
+      <DependentUpon>Resources.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.ko.Designer.cs">
+      <DependentUpon>Resources.ko.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.de-DE.Designer.cs">
+      <DependentUpon>Resources.de-DE.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\CommandAnalyserFactory.cs" />
+    <Compile Include="Services\UIControllerService.cs" />
+    <Compile Include="SessionDialogContainer.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="SyntaxEditorWindow.xaml.cs">
+      <DependentUpon>SyntaxEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddFactorLevelsDialog.xaml.cs">
+      <DependentUpon>AddFactorLevelsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddModelClassWindow.xaml.cs">
+      <DependentUpon>AddModelClassWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CustomSettingsWindow.xaml.cs">
+      <DependentUpon>CustomSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DatasetLoadingBusyWindow.xaml.cs">
+      <DependentUpon>DatasetLoadingBusyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FindDatagridWindow.xaml.cs">
+      <DependentUpon>FindDatagridWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FindReplaceWindow.xaml.cs">
+      <DependentUpon>FindReplaceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FindVargridWindow.xaml.cs">
+      <DependentUpon>FindVargridWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MenuAboveBelowDialog.xaml.cs">
+      <DependentUpon>MenuAboveBelowDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MissingValuesDialog.xaml.cs">
+      <DependentUpon>MissingValuesDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\OptionSelection.xaml.cs">
+      <DependentUpon>OptionSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VariableList.xaml.cs">
+      <DependentUpon>VariableList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DataPanel.xaml.cs">
+      <DependentUpon>DataPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RHomeConfigWindow.xaml.cs">
+      <DependentUpon>RHomeConfigWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SplashWindow.xaml.cs">
+      <DependentUpon>SplashWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ValueLabelsSubDialog.xaml.cs">
+      <DependentUpon>ValueLabelsSubDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ValueLabelsDialog.xaml.cs">
+      <DependentUpon>ValueLabelsDialog.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ColorSelectorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Include="Commands\File\SelectRdataDataframesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commands\File\SelectTableWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commands\Tools\Package\Dialogs\AskPackageNameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commands\Tools\Package\Dialogs\InstallRequiredPackagesFromZip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commands\Tools\Package\Dialogs\SelectPackagesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComputeVar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\BSkyWarningMsgBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ChangeImageSizeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\OpenCSVTXTOptionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\RDataWarningMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SaveLoadRObjectsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InspectDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OutputWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SyntaxEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DataDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\AddFactorLevelsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddModelClassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CustomSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DatasetLoadingBusyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\FindDatagridWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\FindReplaceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\FindVargridWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MenuAboveBelowDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MissingValuesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\OptionSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\VariableList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Windows\DataPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\RHomeConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SplashWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ValueLabelsSubDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ValueLabelsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\File\FileCloseCommand.cs" />
+    <Compile Include="Commands\File\FileOpenCommand.cs" />
+    <Compile Include="Commands\Help\HelpAboutCommand.cs" />
+    <Compile Include="Commands\Tools\ToolFormsEditorCommand.cs" />
+    <Compile Include="Commands\Tools\ToolScriptEditorCommand.cs" />
+    <Compile Include="Model\VirtualList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\NoResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NoResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\XmlDashBoardService.cs" />
+    <Compile Include="UserControls\DataDocument.xaml.cs">
+      <DependentUpon>DataDocument.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\NoUICtrlResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NoUICtrlResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en-US.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ko.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ko.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.de-DE.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.de-DE.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\NoResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NoResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\center.png" />
+    <Resource Include="Images\Left.png" />
+    <Resource Include="Images\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\finddatagrid.png" />
+    <Resource Include="Images\pagination_first.png" />
+    <Resource Include="Images\pagination_last.png" />
+    <Resource Include="Images\pagination_next.png" />
+    <Resource Include="Images\pagination_previous.png" />
+    <Resource Include="Images\datagrid.png" />
+    <Resource Include="Images\Date.png" />
+    <Resource Include="Images\Logical.png" />
+    <Resource Include="Images\String.png" />
+    <Resource Include="Images\collapseSyn.png" />
+    <Resource Include="Images\expandSyn.png" />
+    <Resource Include="Images\splitH.png" />
+    <Resource Include="Images\splitV.png" />
+    <Resource Include="Images\sorted_check.png" />
+    <Resource Include="Images\closetab.png" />
+    <Resource Include="Images\ExecuteScript.png" />
+    <Resource Include="Images\angle-arrow-down.png" />
+    <Resource Include="Images\angle-arrow-up.png" />
+    <Resource Include="Images\BlueSkySplash.png" />
+    <Resource Include="Images\BAnalytics-icon_1.png" />
+    <Resource Include="Images\BCommand-icon_1.png" />
+    <Resource Include="Images\BOutput-icon_1.png" />
+    <Resource Include="BAnalytics-icon_1.ico" />
+    <Resource Include="Images\arrow_redo.png" />
+    <Resource Include="Images\arrow_undo.png" />
+    <Resource Include="Images\Copy.png" />
+    <Resource Include="Images\Cut.png" />
+    <Resource Include="Images\New.png" />
+    <Resource Include="Images\nominal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\input.png" />
+    <Content Include="Images\none.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\Open.png" />
+    <Resource Include="Images\ordinal.png" />
+    <Resource Include="Images\partition.png" />
+    <Resource Include="Images\OrgangeGoldLicMangr.png" />
+    <Resource Include="Images\Paste.png" />
+    <Resource Include="Images\refresh.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\scale.png" />
+    <Resource Include="Images\split.png" />
+    <Resource Include="Images\target.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\imagenotfound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\Graphics\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ImgErr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.Common\BSky.Statistics.Common.csproj">
+      <Project>{cb6b2aa1-3309-4f34-aa64-4acd6d34d368}</Project>
+      <Name>BSky.Statistics.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.Controls\BSky.Controls.csproj">
+      <Project>{40005075-d309-4de0-b6f5-72d8ba08fcc9}</Project>
+      <Name>BSky.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.Database.Interface\BSky.Database.Interface.csproj">
+      <Project>{19d2c169-2e2b-43d4-b352-d3764acdead0}</Project>
+      <Name>BSky.Database.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.ExportToPDF\BSky.ExportToPDF.csproj">
+      <Project>{17d4dbd7-a78b-4634-a335-522bc95cbbdb}</Project>
+      <Name>BSky.ExportToPDF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.GlobalResources\BSky.GlobalResources.csproj">
+      <Project>{2fe725d0-d9b7-4cf6-9075-97ad7c3b5e09}</Project>
+      <Name>BSky.GlobalResources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.Interfaces\BSky.Interfaces.csproj">
+      <Project>{e3c45c24-ad20-4f94-a816-7a3532f0271c}</Project>
+      <Name>BSky.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.Lifetime\BSky.Lifetime.csproj">
+      <Project>{edbc3aeb-6a30-45fd-ba1d-716df4032d00}</Project>
+      <Name>BSky.Lifetime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.MenuGenerator\BSky.MenuGenerator.csproj">
+      <Project>{c71cd002-603e-4f5a-abc9-ac7f5a272fd0}</Project>
+      <Name>BSky.MenuGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.OutputGenerator\BSky.OutputGenerator.csproj">
+      <Project>{a5f3d543-98ec-4f6a-a970-a74809822aa0}</Project>
+      <Name>BSky.OutputGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.RecentFileHandler\BSky.RecentFileHandler.csproj">
+      <Project>{7c8b6f47-4c12-4ee7-ad45-13e526d00033}</Project>
+      <Name>BSky.RecentFileHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.Service.StatisticsEngine\BSky.Service.StatisticsEngine.csproj">
+      <Project>{65c691e3-e3e9-4a3e-8b70-9f9d25631575}</Project>
+      <Name>BSky.Service.StatisticsEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSkyStyler\BSkyStyler.csproj">
+      <Project>{8ecdef3f-0e10-4035-b493-99400d2fcc66}</Project>
+      <Name>BSkyStyler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\MSExcelInterop\MSExcelInterop.csproj">
+      <Project>{fcc4b39a-d3d5-4448-b9ef-6e1ffd45a076}</Project>
+      <Name>MSExcelInterop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

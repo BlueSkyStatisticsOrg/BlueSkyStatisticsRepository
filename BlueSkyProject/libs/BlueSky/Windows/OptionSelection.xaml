@@ -1,0 +1,38 @@
+﻿<Window x:Class="BlueSky.UserControls.OptionSelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local="clr-namespace:BlueSky.UserControls"
+        Title="OptionSelection" Height="419" Width="535" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="75*" />
+        </Grid.RowDefinitions>
+        <TabControl Height="305" HorizontalAlignment="Left" Name="dXTabControl1" VerticalAlignment="Top"  Width="513">
+       
+            <TabItem Header="Variables" IsTabStop="False" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Canvas>
+                        <TextBlock Height="20" HorizontalAlignment="Left" Margin="12,7,0,0" Name="textBlock1" Text="Variable List" VerticalAlignment="Top" />
+                        <local:VariableList x:Name="lbOne"  ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="12,26,0,112" Width="215" DisplayMemberPath="Name" Height="242"></local:VariableList>
+                    </Canvas>
+
+                    <StackPanel Height="242" Grid.Column="1" HorizontalAlignment="Left" Margin="241,26,0,0" Name="OptionPanel" VerticalAlignment="Top" Width="220" >
+                       
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Canvas Grid.Row="1" Margin="5">
+            <Button Name="Help" Width="70" Margin="11,6,452,47" Grid.Row="2">Help</Button>
+            <Button Name="OK" Width="70" Margin="342,6,101,47" Grid.Row="2" Click="OK_Click">OK</Button>
+            <Button Name="Cancel" Width="70" Margin="429,6,34,47" Grid.Row="2" Click="Cancel_Click" >Cancel</Button>
+            <Button Name="Reset" Width="70" Margin="84,6,379,47" Grid.Row="2">Reset</Button>
+        </Canvas>
+    </Grid>
+</Window>

@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{40005075-D309-4DE0-B6F5-72D8BA08FCC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BSky.Controls</RootNamespace>
+    <AssemblyName>BSky.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BSky.ConfigService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BSkyDll\BSky.ConfigService.dll</HintPath>
+    </Reference>
+    <Reference Include="BSky.ConfService.Intf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BSkyDll\BSky.ConfService.Intf.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\C1\C1.WPF.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.DataGrid.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.DataGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.DateTimeEditors.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.DateTimeEditors.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.Docking.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.Docking.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.FlexGrid.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\C1\C1.WPF.FlexGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.FlexGridFilter.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\C1\C1.WPF.FlexGridFilter.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.RichTextBox.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.RichTextBox.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.RichTextBox.Toolbar.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.RichTextBox.Toolbar.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.SpellChecker.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.SpellChecker.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.Toolbar.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\C1\C1.WPF.Toolbar.4.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\ThirdParty\ICSharpZip\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\ThirdParty\Unity\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BSkyAggregateCtrl.xaml.cs">
+      <DependentUpon>BSkyAggregateCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BSkyAppDir.cs" />
+    <Compile Include="BSkygridForCompute.xaml.cs">
+      <DependentUpon>BSkygridForCompute.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BSkygridForSymbols.xaml.cs">
+      <DependentUpon>BSkygridForSymbols.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BSkyListBox.cs" />
+    <Compile Include="BSkyLocalizedDescriptionAttribute.cs" />
+    <Compile Include="BSkyMasterListBox.cs" />
+    <Compile Include="BSkySortCtrl.xaml.cs">
+      <DependentUpon>BSkySortCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CustomMenuCommands.cs" />
+    <Compile Include="CommonFunctions.cs" />
+    <Compile Include="Controls\BSkyEditableComboBox.cs" />
+    <Compile Include="Controls\BSkyGroupingVariable.xaml.cs">
+      <DependentUpon>BSkyGroupingVariable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AUGrid.cs" />
+    <Compile Include="Controls\AUParagraph.xaml.cs">
+      <DependentUpon>AUParagraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AUXGrid.xaml.cs">
+      <DependentUpon>AUXGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Behaviour.cs" />
+    <Compile Include="BSkyControlFactory.cs" />
+    <Compile Include="BskyEventArgs.cs" />
+    <Compile Include="Commands\BSkyCommands.cs" />
+    <Compile Include="Controls\BSkyBrowse.cs" />
+    <Compile Include="Controls\BSkyGraphicControl.xaml.cs">
+      <DependentUpon>BSkyGraphicControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BSkyListBoxwBorderForDatasets.xaml.cs">
+      <DependentUpon>BSkyListBoxwBorderForDatasets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BSkyMultiLineLabel.xaml.cs">
+      <DependentUpon>BSkyMultiLineLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BSkyNonEditableComboBox.cs" />
+    <Compile Include="Controls\BSkyNotes.xaml.cs">
+      <DependentUpon>BSkyNotes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BSkyRadioGroup.cs" />
+    <Compile Include="Controls\BSkySimpleColorPicker.xaml.cs">
+      <DependentUpon>BSkySimpleColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BSkySourceList.cs" />
+    <Compile Include="Controls\BSkyTargetList.cs" />
+    <Compile Include="Controls\BSkyTextBox.xaml.cs">
+      <DependentUpon>BSkyTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BSkyVariableList.cs" />
+    <Compile Include="Controls\BSkyVariableMoveButton.xaml.cs">
+      <DependentUpon>BSkyVariableMoveButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FilteredPropertyGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FilteredPropertyGrid.designer.cs">
+      <DependentUpon>FilteredPropertyGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IList.cs" />
+    <Compile Include="Controls\ObjectWrapper.cs" />
+    <Compile Include="Controls\PropertySorter.cs" />
+    <Compile Include="CtrlListBox.cs" />
+    <Compile Include="DesignerSupport\BSkyBrowseable.cs" />
+    <Compile Include="Controls\BSkyCanvas.cs" />
+    <Compile Include="CellCustomization.xaml.cs">
+      <DependentUpon>CellCustomization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AUColorSelection.xaml.cs">
+      <DependentUpon>AUColorSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BSkyLabel.cs" />
+    <Compile Include="Controls\BSkyCheckBox.cs" />
+    <Compile Include="Controls\BSkyRadioButton.cs" />
+    <Compile Include="Controls\BSkyGroupBox.cs" />
+    <Compile Include="Controls\BSkyComboBox.cs" />
+    <Compile Include="Controls\BSkyButton.cs" />
+    <Compile Include="Commands\DesignerCommands.cs" />
+    <Compile Include="Commands\DialogDesignerCommand.cs" />
+    <Compile Include="Commands\DialogProperties.xaml.cs">
+      <DependentUpon>DialogProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DialogSizeCommand.cs" />
+    <Compile Include="DesignerSupport\BaseOptionWindow.xaml.cs">
+      <DependentUpon>BaseOptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\ComboBoxEditor.cs" />
+    <Compile Include="DesignerSupport\ComboBoxEditorWindow.xaml.cs">
+      <DependentUpon>ComboBoxEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\Convertors.cs" />
+    <Compile Include="DesignerSupport\Command.xaml.cs">
+      <DependentUpon>Command.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\CommandSelector.cs" />
+    <Compile Include="DesignerSupport\DialogHelpTextWindow.xaml.cs">
+      <DependentUpon>DialogHelpTextWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\HelpEditor.cs" />
+    <Compile Include="DesignerSupport\ListBoxEditor.cs" />
+    <Compile Include="DesignerSupport\ListBoxEditorWindow.xaml.cs">
+      <DependentUpon>ListBoxEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\listboxsubstitution.xaml.cs">
+      <DependentUpon>listboxsubstitution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\MainDialogForPreviewWindow.xaml.cs">
+      <DependentUpon>MainDialogForPreviewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\ManageListBoxSubstitution.cs" />
+    <Compile Include="DesignerSupport\ManageOverwriteSettings.cs" />
+    <Compile Include="DesignerSupport\ManageSubstitution.cs" />
+    <Compile Include="DesignerSupport\ManageTextBoxSubstitution.cs" />
+    <Compile Include="DesignerSupport\MasterSlaveEditor.cs" />
+    <Compile Include="DesignerSupport\MasterSlaveWindow.xaml.cs">
+      <DependentUpon>MasterSlaveWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\MenuSelector.cs" />
+    <Compile Include="DesignerSupport\OutputFileLocationDlg.xaml.cs">
+      <DependentUpon>OutputFileLocationDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\MenuWindow.xaml.cs">
+      <DependentUpon>MenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\OutputSelector.cs" />
+    <Compile Include="DesignerSupport\OverwriteSettings.xaml.cs">
+      <DependentUpon>OverwriteSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\RadioGroupEditor.cs" />
+    <Compile Include="DesignerSupport\RadioGroupEditorWindow.xaml.cs">
+      <DependentUpon>RadioGroupEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\SubDialogWindow.xaml.cs">
+      <DependentUpon>SubDialogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\SubsSettingsForDatasets.xaml.cs">
+      <DependentUpon>SubsSettingsForDatasets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\SubstitutionSettings.xaml.cs">
+      <DependentUpon>SubstitutionSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\textboxsubstitution.xaml.cs">
+      <DependentUpon>textboxsubstitution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\VariableFilter.cs" />
+    <Compile Include="DesignerSupport\DialogDesigner.cs" />
+    <Compile Include="DesignerSupport\PropertyEditorBase.cs" />
+    <Compile Include="DesignerSupport\ResizingAdorner.cs" />
+    <Compile Include="DesignerSupport\VariableFilterSelection.xaml.cs">
+      <DependentUpon>VariableFilterSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerSupport\MenuEditor.xaml.cs">
+      <DependentUpon>MenuEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialogHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogHelp.Designer.cs">
+      <DependentUpon>dialogHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AddCategoryDialog.xaml.cs">
+      <DependentUpon>AddCategoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\LargeResultWarningWindow.xaml.cs">
+      <DependentUpon>LargeResultWarningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\MenuAboveBelowDialog.xaml.cs">
+      <DependentUpon>MenuAboveBelowDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DragDropListForSummarize.xaml.cs">
+      <DependentUpon>DragDropListForSummarize.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulaButton.cs" />
+    <Compile Include="FormulaComputeButton.cs" />
+    <Compile Include="GetModelsControl.xaml.cs">
+      <DependentUpon>GetModelsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IEffectsExecute.cs" />
+    <Compile Include="ListBoxwithBorder.xaml.cs">
+      <DependentUpon>ListBoxwithBorder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\UICtrlResources.Designer.cs">
+      <DependentUpon>UICtrlResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SingleItemList.cs" />
+    <Compile Include="TableCustomization.xaml.cs">
+      <DependentUpon>TableCustomization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DragDropList.xaml.cs">
+      <DependentUpon>DragDropList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TargetAggregate.cs" />
+    <Compile Include="TextBoxforFormula.xaml.cs">
+      <DependentUpon>TextBoxforFormula.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIHelper.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XmlDecoder\Constants\Enums.cs" />
+    <Compile Include="XmlDecoder\Constants\NodeNames.cs" />
+    <Compile Include="XmlDecoder\Events\Args.cs" />
+    <Compile Include="XmlDecoder\Model\Column.cs" />
+    <Compile Include="XmlDecoder\Model\Commons.cs" />
+    <Compile Include="XmlDecoder\Model\ComplexText.cs" />
+    <Compile Include="XmlDecoder\Model\FlexGridCellFormatFactory.cs" />
+    <Compile Include="XmlDecoder\Model\Labels.cs" />
+    <Compile Include="XmlDecoder\Model\MetadataTable.cs" />
+    <Compile Include="XmlDecoder\Model\MetadataTableRow.cs" />
+    <Compile Include="XmlDecoder\Model\Output.cs" />
+    <Compile Include="XmlDecoder\Model\OutputHelper.cs" />
+    <Compile Include="XmlDecoder\Model\Outputs.cs" />
+    <Compile Include="XmlDecoder\Model\Repeats.cs" />
+    <Compile Include="XmlDecoder\Model\Row.cs" />
+    <Compile Include="XmlDecoder\Model\Table.cs" />
+    <Compile Include="XmlDecoder\Model\TableRepeat.cs" />
+    <Compile Include="XmlDecoder\OutputReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="BSkyAggregateCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BSkygridForCompute.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BSkygridForSymbols.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BSkySortCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkyGroupingVariable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AUParagraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AUXGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CellCustomization.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AUColorSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Commands\DialogProperties.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\BSkyGraphicControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkyListBoxwBorderForDatasets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkyMultiLineLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkyNotes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkySimpleColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkyTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkyVariableMoveButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\BaseOptionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\ComboBoxEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\Command.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\DialogHelpTextWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\ListBoxEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\listboxsubstitution.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\MainDialogForPreviewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\MasterSlaveWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\OutputFileLocationDlg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\MenuWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\OverwriteSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\RadioGroupEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\SubDialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\SubsSettingsForDatasets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\SubstitutionSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\textboxsubstitution.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesignerSupport\VariableFilterSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerSupport\MenuEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AddCategoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\LargeResultWarningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\MenuAboveBelowDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DragDropListForSummarize.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GetModelsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListBoxwithBorder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableCustomization.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\DragDropList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TextBoxforFormula.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\button.png" />
+    <Resource Include="Resources\checkbox.png" />
+    <Resource Include="Resources\combo.png" />
+    <Resource Include="Resources\Group.png" />
+    <Resource Include="Resources\Lable.png" />
+    <Resource Include="Resources\ListBox.png" />
+    <Resource Include="Resources\Radio.png" />
+    <Resource Include="Resources\RadioGrp.png" />
+    <Resource Include="Resources\TextBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\String.png" />
+    <Resource Include="Resources\Copy.png" />
+    <Resource Include="Resources\Save.png" />
+    <Resource Include="Resources\separator.png" />
+    <Resource Include="Resources\properties.png" />
+    <Resource Include="Resources\remove.png" />
+    <Resource Include="Resources\rename.png" />
+    <Resource Include="Resources\nominal.png" />
+    <Resource Include="Resources\file.png" />
+    <Resource Include="Resources\folder.png" />
+    <Resource Include="Resources\BDialog-icon_1.png" />
+    <Resource Include="Resources\ContextCopy.png" />
+    <Resource Include="Resources\ContextSave.png" />
+    <Resource Include="Resources\Date.png" />
+    <Resource Include="Resources\Logical.png" />
+    <Content Include="Resources\none.png" />
+    <Resource Include="Resources\ordinal.png" />
+    <Resource Include="Resources\scale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="dialogHelp.resx">
+      <DependentUpon>dialogHelp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\UICtrlResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UICtrlResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C1Spell_en-US.dct">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BSky.Common\BSky.Statistics.Common.csproj">
+      <Project>{cb6b2aa1-3309-4f34-aa64-4acd6d34d368}</Project>
+      <Name>BSky.Statistics.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BSky.GlobalResources\BSky.GlobalResources.csproj">
+      <Project>{2fe725d0-d9b7-4cf6-9075-97ad7c3b5e09}</Project>
+      <Name>BSky.GlobalResources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BSky.Interfaces\BSky.Interfaces.csproj">
+      <Project>{e3c45c24-ad20-4f94-a816-7a3532f0271c}</Project>
+      <Name>BSky.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BSky.Lifetime\BSky.Lifetime.csproj">
+      <Project>{edbc3aeb-6a30-45fd-ba1d-716df4032d00}</Project>
+      <Name>BSky.Lifetime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BSky.RecentFileHandler\BSky.RecentFileHandler.csproj">
+      <Project>{7c8b6f47-4c12-4ee7-ad45-13e526d00033}</Project>
+      <Name>BSky.RecentFileHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BSkyStyler\BSkyStyler.csproj">
+      <Project>{8ecdef3f-0e10-4035-b493-99400d2fcc66}</Project>
+      <Name>BSkyStyler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSExcelInterop\MSExcelInterop.csproj">
+      <Project>{fcc4b39a-d3d5-4448-b9ef-6e1ffd45a076}</Project>
+      <Name>MSExcelInterop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSWordInteroplib\MSWordInteropLib.csproj">
+      <Project>{0f68640d-715e-4463-9f85-79b3110ca424}</Project>
+      <Name>MSWordInteropLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

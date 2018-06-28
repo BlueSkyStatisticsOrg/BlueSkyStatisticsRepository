@@ -1,0 +1,31 @@
+﻿<TextBox x:Class="BSky.Controls.BSkyTextBox"
+         
+         
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+            VerticalContentAlignment="Center" TextWrapping="Wrap" AcceptsTab="True" VerticalScrollBarVisibility="Auto" AllowDrop="True"
+             PreviewDragOver="TextBox_DragOver"
+             PreviewDrop="TextBox_Drop"
+            d:DesignHeight="30"  d:DesignWidth="150"
+         Style="{StaticResource TextBoxStyle}">
+  <!--  Template ="{StaticResource TextBoxBaseControlTemplate}" Style="{StaticResource TextBoxStyle}" -->
+    <!--<TextBox.Resources>
+        <Style  TargetType="Border">
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+        <ControlTemplate x:Key="TextBoxTemplate" TargetType="{x:Type TextBox}">
+            <Border 
+        x:Name="Border"  
+        CornerRadius="10" 
+        BorderThickness="1" >
+    
+    
+            </Border>
+        </ControlTemplate>
+    </TextBox.Resources>-->
+   
+
+</TextBox>

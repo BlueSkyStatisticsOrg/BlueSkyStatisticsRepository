@@ -1,0 +1,45 @@
+﻿<Window x:Class="BlueSky.ComputeVar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ComputeVar" Height="490" Width="533" xmlns:my="clr-namespace:BSky.Controls;assembly=BSky.Controls">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33*" />
+            <RowDefinition Height="45*" />
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="48*" />
+            <RowDefinition Height="71*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="207*" />
+            <ColumnDefinition Width="58*" />
+            <ColumnDefinition Width="246*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel   Name="stackPanel1"  Grid.RowSpan="3" Orientation="Vertical" >
+            <Label Content="Variables:"  Name="label1" />
+            <my:DragDropList Height="167" Name="source" Width="198" />
+        </StackPanel>
+        <StackPanel Grid.Column="2"  Name="stackPanel2"  Orientation="Vertical">
+            <Label Content="Function Catagory:" Name="label2" />
+            <ListBox Name="funcat" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1" Name="stackPanel3" Orientation="Vertical">
+            <Label Content="Function:"  Name="label3" />
+            <ListBox Name="func" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="2" Name="stackPanel4" Orientation="Vertical">
+            <Label Content="Function Details:" Name="label4" />
+            <TextBlock  Name="funcdetails" Text="" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="4" Name="stackPanel5" Orientation="Vertical">
+            <Label Content="Expression:"  Name="label5" />
+            <TextBox  Name="expression"  />
+        </StackPanel>
+        <StackPanel Grid.Row="4" Name="stackPanel6" Orientation="Vertical">
+            <Label Content="Target Variable:" Name="label6" />
+            <TextBox  Name="target"  />
+        </StackPanel>
+        <TextBlock Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Center"  Name="textBlock1" Text="=" VerticalAlignment="Center" />
+    </Grid>
+</Window>
