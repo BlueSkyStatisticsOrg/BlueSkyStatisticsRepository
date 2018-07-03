@@ -648,6 +648,7 @@ namespace BSky.XmlDecoder
         //tblno: its added so that we can find out a list of $columnNames for particular table
         private DependencyObject CreateTable(Table table, int tblno)
         {
+            RefreshAPAConfig();
             if (OutputHelper.GetGlobalMacro(string.Format("GLOBAL.{0}.SPLIT", OutputHelper.AnalyticsData.DataSource.Name), "Comparegroups") == "TRUE")
             {
                 List<Row> rows = table.Rows;
@@ -687,9 +688,23 @@ namespace BSky.XmlDecoder
             AUGrid fg = xgrid.Grid;
 
             #region Choose theme APA or Normal
-            if (false)//(APA) //not applying APA to templated dialog's flexgrid
+            if (APA) 
             {
+                fg.GridLinesVisibility = GridLinesVisibility.None;
+                fg.HeaderGridLinesBrush = Brushes.White;
+                fg.ColumnHeaderBackground = Brushes.White;
+                fg.RowHeaderBackground = Brushes.White;
+                fg.TopLeftCellBackground = Brushes.White;
+                fg.BorderBrush = Brushes.WhiteSmoke;
+                fg.Background = Brushes.White;
+                fg.RowBackground = Brushes.White;
+                fg.BorderThickness = new Thickness(0, 3, 0, 0);
+                //find border of flexgrid and set it to APA style
+                xgrid.fgborder.BorderThickness = new Thickness(0, 1, 0, 1);
 
+                xgrid.tbltitle.Text = string.Empty;// "Table Title";
+                xgrid.starText.Text = string.Empty;// 
+                xgrid.tableno.Text = string.Empty;// "Table No. 1.1";
             }
             else
             {

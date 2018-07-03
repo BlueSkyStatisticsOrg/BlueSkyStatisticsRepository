@@ -323,7 +323,7 @@ namespace BlueSky
             _MSExcelObj = new MSExportToExcel(); //initialize
 
             #region Dialog toolbar
-            OutputWindowMenuFactory mf = new OutputWindowMenuFactory(menu1, dialogtoolbar, "hGYt%%$YV`u&%&53%Vy");//, dashBoardService);
+            OutputWindowMenuFactory mf = new OutputWindowMenuFactory(menu1, dialogtoolbar, "test");//, dashBoardService);
             #endregion
             menu1.Items.Insert(menu1.Items.Count - 1, chmh.CommandHistMenu);//17Jul2015 //place output menu just before last item
 
