@@ -578,11 +578,15 @@ namespace BlueSky.Commands.File
             BSkyMouseBusyHandler.ShowMouseBusy();// ShowProgressbar_old();//ShowStatusProgressbar();//29Oct2014
 
             bool isSuccess = false;
-
-            string filename = controller.GetActiveDocument().FileName;
-            //For Excel
-            string sheetname = controller.GetActiveDocument().SheetName;
-
+            string filename = null, sheetname=null;
+            DataSource tempds = controller.GetActiveDocument();
+            if (tempds != null)
+            {
+                filename = tempds.FileName;
+                //For Excel
+                sheetname = tempds.SheetName;
+            }
+            if (filename == null) filename = string.Empty;
             if (sheetname == null) sheetname = string.Empty;
             // if dataset was already loaded last time then this time we want to refresh it
             bool isDatasetNew = service.isDatasetNew(dframename /*+ sheetname*/);

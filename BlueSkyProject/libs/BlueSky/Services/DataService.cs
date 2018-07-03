@@ -14,7 +14,7 @@ namespace BlueSky.Services
 {
     public class DataService : IDataService
     {
-        private Dictionary<string, DataSource> _datasources = new Dictionary<string,DataSource>();
+        private Dictionary<string, DataSource> _datasources = new Dictionary<string, DataSource>();
         private Dictionary<string, string> _datasourcenames = new Dictionary<string, string>();//05Mar2014
         ILoggerService logService = LifetimeService.Instance.Container.Resolve<ILoggerService>();//17Dec2012
 
@@ -41,12 +41,12 @@ namespace BlueSky.Services
 
         public DataSource NewDataset()//03Jan2014
         {
-            string datasetname = "Dataset" + SessionDatasetCounter;//(_datasources.Keys.Count + 1);//can also be filename without path and extention
+            string datasetname = GetUniqueNewDatasetname();//(_datasources.Keys.Count + 1);//can also be filename without path and extention
             string sheetname = string.Empty;//no sheetname for empty dataset(new dataset)
             //15Jun2015 if Dataset is created and loaded from syntax UI SessionDatasetCounter can have issues as it may not be increamented when
             // datasetset is loaded from syntax
-            if (_datasources.Keys.Contains(datasetname+sheetname))
-                return _datasources[datasetname+sheetname];
+            if (_datasources.Keys.Contains(datasetname + sheetname))
+                return _datasources[datasetname + sheetname];
 
             UAReturn datasrc = _analyticService.EmptyDataSourceLoad(datasetname, datasetname);//second pram was full path filename on disk
             if (datasrc.Datasource == null)
@@ -91,7 +91,19 @@ namespace BlueSky.Services
             SendToOutput(datasrc);
             return ds;
         }
-
+        private string GetUniqueNewDatasetname()
+        {
+            string newdatasetname = string.Empty;
+            for(; ;)
+            {
+                newdatasetname = "Dataset" + SessionDatasetCounter;
+                if (_datasourcenames.Keys.Contains(newdatasetname))
+                    SessionDatasetCounter++;
+                else
+                    break;
+            }
+            return newdatasetname;
+        }
         public DataSource Open(string filename, string sheetname, IOpenDataFileOptions odfo=null)
         {
             if (sheetname==null || sheetname.Trim().Length == 0) //29Apr2015 just to make sure sheetname should have valid chars and not spaces.
