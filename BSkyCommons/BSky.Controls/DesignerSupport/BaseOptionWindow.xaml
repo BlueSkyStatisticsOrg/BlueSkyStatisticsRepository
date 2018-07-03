@@ -58,12 +58,10 @@
                 </Grid.RowDefinitions>
                 <!--<TextBlock Grid.Row="0" Name="helptext" TextWrapping="Wrap" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Dialog Help:</TextBlock>-->
                 <c1:C1RichTextBox Grid.Row="0"  Margin="3" Name="dialoghelptext" IsReadOnly="True" />
-                <Button Grid.Row="2" Name="rhelpbutton" Height="22" Width="70" HorizontalAlignment="Left" Margin="1,0" Click="rhelpbutton_Click" Background="{StaticResource purple}">
-                    <Button.Effect>
-                        <DropShadowEffect/>
-                    </Button.Effect> Get R Help
-                    
-                </Button>
+                <Button Grid.Row="2" Name="rhelpbutton" Height="22" Width="70" HorizontalAlignment="Left" Margin="1,0" Click="rhelpbutton_Click" Content="Get R Help"/>
+
+
+
             </Grid>
         </Expander>
     </Grid>
