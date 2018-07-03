@@ -36,7 +36,7 @@ namespace BlueSky
         public App()
         {
             //25Aug2017 To see how Date fomatting changes in the Datagrid
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");//US English
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");//US English en-US
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
 
             //Calling order found was:: Dispatcher -> Main Window -> XAML Application Dispatcher -> Unhandeled

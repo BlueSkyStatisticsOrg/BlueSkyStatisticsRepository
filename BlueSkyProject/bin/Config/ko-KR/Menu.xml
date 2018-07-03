@@ -16,7 +16,16 @@
     <menu id="FileMenuExit" text="출구" command="BlueSky.Commands.File.FileExitCommand" owner="BSky" nodetype="Leaf" />
   </menu>
   <menu id="dataMenu" text="데이터" nodetype="Parent">
-  
+  <menu id="splitMenu" text="스플릿" owner="" nodetype="Parent">
+    <menu id="AnaSplitSubMenu" text="그룹화 분석" owner="" nodetype="Parent">
+      <menu id="Split" text="스플릿" commandtemplate="Split.xaml" commandoutputformat="Split.xml" owner="" nodetype="Leaf" />
+      <menu id="Remove_Split" text="분할 제거" commandtemplate="Remove Split.xaml" commandoutputformat="Remove Split.xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="ModSplitSubMenu" text="파티셔닝" owner="" nodetype="Parent">
+      <menu id="Random_Split" text="랜덤 스플릿" commandtemplate="Random Split.xaml" commandoutputformat="Random Split.xml" owner="" nodetype="Leaf" />
+      <menu id="Stratified_Sample" text="계층화 된 샘플" commandtemplate="Stratified Sample.xaml" commandoutputformat="Stratified Sample.xml" owner="" nodetype="Leaf" />
+    </menu>  
+	</menu>
       <menu id="MissvalSubMenu" text="누락 된 값" owner="" nodetype="Parent">
     <menu id="Remove_NAs" text="NAs 제거" commandtemplate="Remove NAs.xaml" commandoutputformat="Remove NAs.xml" owner="" nodetype="Leaf" />
       <menu id="Missing_Values_(Basic)" text="누락 값 (기본)" commandtemplate="Missing Values (Basic).xaml" commandoutputformat="Missing Values (Basic).xml" owner="" nodetype="Leaf" />
@@ -38,15 +47,15 @@
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Standardize_Variables" text="변수 표준화" commandtemplate="Standardize Variables.xaml" commandoutputformat="Standardize Variables.xml" owner="" nodetype="Leaf" icon="images/Standardize.png" showtoolbaricon="true" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="Aggregate" text="골재" commandtemplate="Aggregate.xaml" commandoutputformat="Aggregate.xml" owner="" nodetype="Leaf" icon="images/Aggregate.png" showtoolbaricon="true" />
-    <menu id="Aggregate_(Outputs_results_to_a_table)" text="집계 (결과를 표로 출력)" commandtemplate="Aggregate (Outputs results to a table).xaml" commandoutputformat="Aggregate (Outputs results to a table).xml" owner="" nodetype="Leaf" />
+    <menu id="Aggregate_to_data_set" text="데이터 세트로 집계" commandtemplate="Aggregate to data set.xaml" commandoutputformat="Aggregate to data set.xml" owner="" nodetype="Leaf" icon="images/Aggregate.png" showtoolbaricon="true" />
+    <menu id="Aggregate_to_output" text="출력으로 집계" commandtemplate="Aggregate to output.xaml" commandoutputformat="Aggregate to output.xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Subset" text="부분 집합" commandtemplate="Subset.xaml" commandoutputformat="Subset.xml" owner="" nodetype="Leaf" />
-    <menu id="Subset_(outputs_results_to_a_table)" text="부분 집합 (결과를 표로 출력)" commandtemplate="Subset (outputs results to a table).xaml" commandoutputformat="Subset (outputs results to a table).xml" owner="" nodetype="Leaf" />
+    <menu id="Subset_to_output" text="출력 할 부분 집합" commandtemplate="Subset to output.xaml" commandoutputformat="Subset to output.xml" owner="" nodetype="Leaf" />
     <menu id="Merge_Datasets" text="병합 데이터 집합" commandtemplate="Merge Datasets.xaml" commandoutputformat="Merge Datasets.xml" owner="" nodetype="Leaf" icon="images/Merge.png" showtoolbaricon="true" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Sort" text="종류" commandtemplate="Sort.xaml" commandoutputformat="Sort.xml" owner="" nodetype="Leaf" icon="images/Sort.png" showtoolbaricon="true" />
-    <menu id="Sort_(Results_stored_in_output_table)" text="정렬 (결과 테이블에 저장된 결과)" commandtemplate="Sort (Results stored in output table).xaml" commandoutputformat="Sort (Results stored in output table).xml" owner="" nodetype="Leaf" />
+    <menu id="Sort_to_output" text="출력 정렬" commandtemplate="Sort to output.xaml" commandoutputformat="Sort to output.xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Reload_Dataset_from_File" text="파일에서 데이터 세트 다시로드" commandtemplate="Reload Dataset from File.xaml" commandoutputformat="Reload Dataset from File.xml" owner="" nodetype="Leaf" />
     <menu id="Refresh_Grid" text="그리드 새로 고침" command="BlueSky.Commands.Data.RefreshDatagridCommand" owner="BSky" nodetype="Leaf" />
@@ -68,7 +77,7 @@
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="Frequency_Table" text="빈도 표" commandtemplate="Frequency Table.xaml" commandoutputformat="Frequency Table.xml" owner="" nodetype="Leaf" />
       <menu id="Summary_Statistics_for_All_Variables" text="모든 변수에 대한 요약 통계" commandtemplate="Summary Statistics for All Variables.xaml" commandoutputformat="Summary Statistics for All Variables.xml" owner="" nodetype="Leaf" icon="images/Summarize.png" showtoolbaricon="true" />
-      <menu id="Summary_Statistics_by_Variable" text="변수 별 요약 통계" commandtemplate="Summary Statistics by Variable.xaml" commandoutputformat="Summary Statistics by Variable.xml" owner="" nodetype="Leaf" />
+      <menu id="Summary_Statistics_for_selected_Variables" text="선택한 변수에 대한 요약 통계" commandtemplate="Summary statistics for selected variables.xaml" commandoutputformat="Summary statistics for selected variables.xml" owner="" nodetype="Leaf" />
       <menu id="Summary_Statistics_by_Group_" text="그룹 별 요약 통계" commandtemplate="Summary Statistics by Group .xaml" commandoutputformat="Summary Statistics by Group .xml" owner="" nodetype="Leaf" />
       <menu id="Numerical_Statistical_Analysis" text="수치 적 통계 분석" commandtemplate="Numerical Statistical Analysis.xaml" commandoutputformat="Numerical Statistical Analysis.xml" owner="" nodetype="Leaf" />
       <menu id="Factor_Variable_Analysis" text="요인 변수 분석" commandtemplate="Factor Variable Analysis.xaml" commandoutputformat="Factor Variable Analysis.xml" owner="" nodetype="Leaf" />
@@ -181,16 +190,7 @@
     </menu>
     <menu id="Plot" text="음모" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
   </menu>
-  <menu id="splitMenu" text="스플릿" owner="" nodetype="Parent">
-    <menu id="AnaSplitSubMenu" text="분석 용" owner="" nodetype="Parent">
-      <menu id="Split" text="스플릿" commandtemplate="Split.xaml" commandoutputformat="Split.xml" owner="" nodetype="Leaf" />
-      <menu id="Remove_Split" text="분할 제거" commandtemplate="Remove Split.xaml" commandoutputformat="Remove Split.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="ModSplitSubMenu" text="모델링" owner="" nodetype="Parent">
-      <menu id="Simple_Split" text="단순 분할" commandtemplate="Simple Split.xaml" commandoutputformat="Simple Split.xml" owner="" nodetype="Leaf" />
-      <menu id="Stratified_Sample" text="계층화 된 샘플" commandtemplate="Stratified Sample.xaml" commandoutputformat="Stratified Sample.xml" owner="" nodetype="Leaf" />
-    </menu>
-  </menu>
+
   <menu id="ModelFittingMenu" text="모델 피팅" owner="" nodetype="Parent">
     <menu id="Linear_Regression" text="선형 회귀" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf" icon="images/Regression.png" showtoolbaricon="true" />
     <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
@@ -228,6 +228,7 @@
     <menu id="toolsMenuEditorMenu" text="대화 상자 설치 프로그램..." group="true" command="BlueSky.Commands.Tools.ToolsMenuEditorCommand" owner="BSky" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="BSky" nodetype="Leaf" />
     <menu id="packagesubmenu" text="꾸러미" owner="BSky" nodetype="Parent">
+	  <menu id="Install_or-update_required_R_packages" text="필수 R 패키지 설치 또는 업데이트" commandtemplate="Install or update required R packages.xaml" commandoutputformat="Install or update required R packages.xml" owner="" nodetype="Leaf" />	
       <menu id="R_version_details" text="R 버전 세부 정보" commandtemplate="R version details.xaml" commandoutputformat="R version details.xml" owner="" nodetype="Leaf" />
       <menu id="R_Package_Details" text="R 패키지 세부 정보" commandtemplate="R Package Details.xaml" commandoutputformat="R Package Details.xml" owner="" nodetype="Leaf" />
       <menu id="showinstalledpackage" text="설치된 패키지 표시" group="true" command="BlueSky.Commands.Tools.Package.ShowInstalledPackagesCommand" owner="BSky" nodetype="Leaf" />
@@ -244,12 +245,7 @@
       <menu id="unloadpackage" text="패키지 언로드" group="true" command="BlueSky.Commands.Tools.Package.UnloadPackageCommand" owner="BSky" nodetype="Leaf" />
       <menu id="uninstallpackage" text="패키지 제거" group="true" command="BlueSky.Commands.Tools.Package.UninstallPackageCommand" owner="BSky" nodetype="Leaf" />
     </menu>
-  </menu>
-  <menu id="InstallationMenu" text="설치" owner="BSky" nodetype="Parent">
-    <menu id="Install_ALL_required_R_packages_from_CRAN" text="CRAN에서 필요한 모든 R 패키지를 설치하십시오." commandtemplate="Install ALL required R packages from CRAN.xaml" commandoutputformat="Install ALL required R packages from CRAN.xml" owner="" nodetype="Leaf" />
-  </menu>
-  <menu id="OptionsMenu" text="옵션" owner="BSky" nodetype="Parent">
-    <menu id="customMenu" text="구성 설정" command="BlueSky.Commands.Help.CustomSettingsCommand" owner="BSky" nodetype="Leaf" />
+	<menu id="customMenu" text="구성 설정" command="BlueSky.Commands.Help.CustomSettingsCommand" owner="BSky" nodetype="Leaf" />  
   </menu>
   <menu id="HelpMenu" text="도움" owner="BSky" nodetype="Parent">
     <menu id="websiteMenu" text="BlueSky 웹 사이트 방문" group="true" command="BlueSky.Commands.Help.BlueSkyWebsiteCommand" owner="BSky" nodetype="Leaf" />
