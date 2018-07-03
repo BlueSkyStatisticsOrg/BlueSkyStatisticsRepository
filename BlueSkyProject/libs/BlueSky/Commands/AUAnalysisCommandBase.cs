@@ -419,6 +419,7 @@ namespace BlueSky.Commands.Analytics.TTest
                     if (window.Tag != null && window.Tag.ToString().Equals("Syntax"))//21Jan2013
                     {
                         PasteInOutputSyntax();//06May2015 PasteSyntax();
+                        SaveInHistory();
                     }
 #endregion
 
