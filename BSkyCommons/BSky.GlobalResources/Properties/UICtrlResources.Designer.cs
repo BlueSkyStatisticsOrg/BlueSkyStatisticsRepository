@@ -1465,7 +1465,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The R object that contains the results of the analytical function may contain numeric row headers. This option determine whether the row headers are displayed or hidden. When checked, numeric row headers are shown in output grid:.
+        ///   Looks up a localized string similar to The R object that contains the results of the analytical function may contain numeric row headers. This option determines whether the row headers are displayed or hidden. When checked, numeric row headers are shown in output grid:.
         /// </summary>
         public static string lblShowHideNumericHeaders {
             get {

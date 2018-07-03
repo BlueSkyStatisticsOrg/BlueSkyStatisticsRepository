@@ -754,7 +754,7 @@
     <comment>CustomSettingsWindow.xaml : label for R syntax color</comment>
   </data>
   <data name="lblShowHideNumericHeaders" xml:space="preserve">
-    <value>The R object that contains the results of the analytical function may contain numeric row headers. This option determine whether the row headers are displayed or hidden. When checked, numeric row headers are shown in output grid:</value>
+    <value>The R object that contains the results of the analytical function may contain numeric row headers. This option determines whether the row headers are displayed or hidden. When checked, numeric row headers are shown in output grid:</value>
     <comment>CustomSettingsWindow.xaml : label for display/hide numeric headers in output tables.</comment>
   </data>
   <data name="lblTempFolder" xml:space="preserve">
