@@ -16,6 +16,16 @@
     <menu id="FileMenuExit" text="Exit" command="BlueSky.Commands.File.FileExitCommand" owner="BSky" nodetype="Leaf" />
   </menu>
   <menu id="dataMenu" text="Data" nodetype="Parent">
+  <menu id="splitMenu" text="Split" owner="" nodetype="Parent">
+    <menu id="AnaSplitSubMenu" text="For Group by Analysis" owner="" nodetype="Parent">
+      <menu id="Split" text="Split" commandtemplate="Split.xaml" commandoutputformat="Split.xml" owner="" nodetype="Leaf" />
+      <menu id="Remove_Split" text="Remove Split" commandtemplate="Remove Split.xaml" commandoutputformat="Remove Split.xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="ModSplitSubMenu" text="For Partitioning" owner="" nodetype="Parent">
+      <menu id="Random_Split" text="Random Split" commandtemplate="Random Split.xaml" commandoutputformat="Random Split.xml" owner="" nodetype="Leaf" />
+      <menu id="Stratified_Sample" text="Stratified Sample" commandtemplate="Stratified Sample.xaml" commandoutputformat="Stratified Sample.xml" owner="" nodetype="Leaf" />
+    </menu>
+  </menu>  
     <menu id="MissvalSubMenu" text="Missing Values" owner="" nodetype="Parent">
       <menu id="Remove_NAs" text="Remove NAs" commandtemplate="Remove NAs.xaml" commandoutputformat="Remove NAs.xml" owner="" nodetype="Leaf" />
       <menu id="Missing_Values_(Basic)" text="Missing Values (Basic)" commandtemplate="Missing Values (Basic).xaml" commandoutputformat="Missing Values (Basic).xml" owner="" nodetype="Leaf" />
@@ -36,15 +46,15 @@
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Standardize_Variables" text="Standardize Variables" commandtemplate="Standardize Variables.xaml" commandoutputformat="Standardize Variables.xml" owner="" nodetype="Leaf" icon="images/Standardize.png" showtoolbaricon="true" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="Aggregate" text="Aggregate" commandtemplate="Aggregate.xaml" commandoutputformat="Aggregate.xml" owner="" nodetype="Leaf" icon="images/Aggregate.png" showtoolbaricon="true" />
-    <menu id="Aggregate_(Outputs_results_to_a_table)" text="Aggregate (Outputs results to a table)" commandtemplate="Aggregate (Outputs results to a table).xaml" commandoutputformat="Aggregate (Outputs results to a table).xml" owner="" nodetype="Leaf" />
+    <menu id="Aggregate_to_data_set" text="Aggregate to data set" commandtemplate="Aggregate to data set.xaml" commandoutputformat="Aggregate to data set.xml" owner="" nodetype="Leaf" icon="images/Aggregate.png" showtoolbaricon="true" />
+    <menu id="Aggregate_to_output" text="Aggregate to output" commandtemplate="Aggregate to output.xaml" commandoutputformat="Aggregate to output.xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Subset" text="Subset" commandtemplate="Subset.xaml" commandoutputformat="Subset.xml" owner="" nodetype="Leaf" />
-    <menu id="Subset_(outputs_results_to_a_table)" text="Subset (outputs results to a table)" commandtemplate="Subset (outputs results to a table).xaml" commandoutputformat="Subset (outputs results to a table).xml" owner="" nodetype="Leaf" />
+    <menu id="Subset_to_output" text="Subset to output" commandtemplate="Subset to output.xaml" commandoutputformat="Subset to output.xml" owner="" nodetype="Leaf" />
     <menu id="Merge_Datasets" text="Merge Datasets" commandtemplate="Merge Datasets.xaml" commandoutputformat="Merge Datasets.xml" owner="" nodetype="Leaf" icon="images/Merge.png" showtoolbaricon="true" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Sort" text="Sort" commandtemplate="Sort.xaml" commandoutputformat="Sort.xml" owner="" nodetype="Leaf" icon="images/Sort.png" showtoolbaricon="true" />
-    <menu id="Sort_(Results_stored_in_output_table)" text="Sort (Results stored in output table)" commandtemplate="Sort (Results stored in output table).xaml" commandoutputformat="Sort (Results stored in output table).xml" owner="" nodetype="Leaf" />
+    <menu id="Sort_to_output" text="Sort to output" commandtemplate="Sort to output.xaml" commandoutputformat="Sort to output.xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Reload_Dataset_from_File" text="Reload Dataset from File" commandtemplate="Reload Dataset from File.xaml" commandoutputformat="Reload Dataset from File.xml" owner="" nodetype="Leaf" />
     <menu id="Refresh_Grid" text="Refresh Grid" command="BlueSky.Commands.Data.RefreshDatagridCommand" owner="BSky" nodetype="Leaf" />
@@ -63,7 +73,7 @@
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="Frequency_Table" text="Frequency Table" commandtemplate="Frequency Table.xaml" commandoutputformat="Frequency Table.xml" owner="" nodetype="Leaf" />
       <menu id="Summary_Statistics_for_All_Variables" text="Summary Statistics for All Variables" commandtemplate="Summary Statistics for All Variables.xaml" commandoutputformat="Summary Statistics for All Variables.xml" owner="" nodetype="Leaf" icon="images/Summarize.png" showtoolbaricon="true" />
-      <menu id="Summary_Statistics_by_Variable" text="Summary Statistics by Variable" commandtemplate="Summary Statistics by Variable.xaml" commandoutputformat="Summary Statistics by Variable.xml" owner="" nodetype="Leaf" />
+      <menu id="Summary_statistics_for_selected_variables" text="Summary Statistics for Selected Variables" commandtemplate="Summary statistics for selected variables.xaml" commandoutputformat="Summary statistics for selected variables.xml" owner="" nodetype="Leaf" />
       <menu id="Summary_Statistics_by_Group_" text="Summary Statistics by Group " commandtemplate="Summary Statistics by Group .xaml" commandoutputformat="Summary Statistics by Group .xml" owner="" nodetype="Leaf" />
       <menu id="Numerical_Statistical_Analysis" text="Numerical Statistical Analysis" commandtemplate="Numerical Statistical Analysis.xaml" commandoutputformat="Numerical Statistical Analysis.xml" owner="" nodetype="Leaf" />
       <menu id="Factor_Variable_Analysis" text="Factor Variable Analysis" commandtemplate="Factor Variable Analysis.xaml" commandoutputformat="Factor Variable Analysis.xml" owner="" nodetype="Leaf" />
@@ -177,16 +187,7 @@
     </menu>
     <menu id="Plot" text="Plot" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
   </menu>
-  <menu id="splitMenu" text="Split" owner="" nodetype="Parent">
-    <menu id="AnaSplitSubMenu" text="For Analysis" owner="" nodetype="Parent">
-      <menu id="Split" text="Split" commandtemplate="Split.xaml" commandoutputformat="Split.xml" owner="" nodetype="Leaf" />
-      <menu id="Remove_Split" text="Remove Split" commandtemplate="Remove Split.xaml" commandoutputformat="Remove Split.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="ModSplitSubMenu" text="For Modeling" owner="" nodetype="Parent">
-      <menu id="Simple_Split" text="Simple Split" commandtemplate="Simple Split.xaml" commandoutputformat="Simple Split.xml" owner="" nodetype="Leaf" />
-      <menu id="Stratified_Sample" text="Stratified Sample" commandtemplate="Stratified Sample.xaml" commandoutputformat="Stratified Sample.xml" owner="" nodetype="Leaf" />
-    </menu>
-  </menu>
+
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
     <menu id="Linear_Regression" text="Linear Regression" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf" icon="images/Regression.png" showtoolbaricon="true" />
     <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
@@ -224,6 +225,7 @@
     <menu id="toolsMenuEditorMenu" text="Dialog Installer..." group="true" command="BlueSky.Commands.Tools.ToolsMenuEditorCommand" owner="BSky" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="BSky" nodetype="Leaf" />
     <menu id="packagesubmenu" text="Package" owner="BSky" nodetype="Parent">
+	  <menu id="Install_or-update_required_R_packages" text="Install or update required R packages" commandtemplate="Install or update required R packages.xaml" commandoutputformat="Install or update required R packages.xml" owner="" nodetype="Leaf" />
       <menu id="R_version_details" text="R version details" commandtemplate="R version details.xaml" commandoutputformat="R version details.xml" owner="" nodetype="Leaf" />
       <menu id="R_Package_Details" text="R Package Details" commandtemplate="R Package Details.xaml" commandoutputformat="R Package Details.xml" owner="" nodetype="Leaf" />
       <menu id="showinstalledpackage" text="Show installed packages" group="true" command="BlueSky.Commands.Tools.Package.ShowInstalledPackagesCommand" owner="BSky" nodetype="Leaf" />
@@ -240,12 +242,7 @@
       <menu id="unloadpackage" text="Unload package(s)" group="true" command="BlueSky.Commands.Tools.Package.UnloadPackageCommand" owner="BSky" nodetype="Leaf" />
       <menu id="uninstallpackage" text="Uninstall package(s)" group="true" command="BlueSky.Commands.Tools.Package.UninstallPackageCommand" owner="BSky" nodetype="Leaf" />
     </menu>
-  </menu>
-  <menu id="InstallationMenu" text="Installation" owner="BSky" nodetype="Parent">
-    <menu id="Install_ALL_required_R_packages_from_CRAN" text="Install ALL required R packages from CRAN" commandtemplate="Install ALL required R packages from CRAN.xaml" commandoutputformat="Install ALL required R packages from CRAN.xml" owner="" nodetype="Leaf" />
-  </menu>
-  <menu id="OptionsMenu" text="Options" owner="BSky" nodetype="Parent">
-    <menu id="customMenu" text="Configuration Settings" command="BlueSky.Commands.Help.CustomSettingsCommand" owner="BSky" nodetype="Leaf" />
+	<menu id="customMenu" text="Configuration Settings" command="BlueSky.Commands.Help.CustomSettingsCommand" owner="BSky" nodetype="Leaf" />
   </menu>
   <menu id="HelpMenu" text="Help" owner="BSky" nodetype="Parent">
     <menu id="websiteMenu" text="Visit BlueSky Website" group="true" command="BlueSky.Commands.Help.BlueSkyWebsiteCommand" owner="BSky" nodetype="Leaf" />
