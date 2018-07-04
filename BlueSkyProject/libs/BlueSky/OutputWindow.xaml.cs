@@ -1866,7 +1866,8 @@ namespace BlueSky
                 }
                 else
                 {
-                    commands = inputTextbox.Text;//All text
+                    int lno = inputTextbox.CurrentLine;
+                    commands = inputTextbox.Lines[lno].Text; //Current line
                 }
                 if (commands.Trim().Length > 0)
                 {
