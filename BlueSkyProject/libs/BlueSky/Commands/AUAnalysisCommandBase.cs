@@ -247,11 +247,13 @@ namespace BlueSky.Commands.Analytics.TTest
             #region Run Dialogs prerequisite syntax and see if it generates any error
             string PreReqCommand = cs.PrereqCommandString;
             string statusTextControlName = cs.StatusTextBoxName;
+			string EditableComboBoxName = cs.EditableComboBoxName; 
             bool enableDialog = true;
             if (PreReqCommand != null)
             {
                 #region Execute Prereq commands that should return TRUE or a message(error/warning)
                 string msg = "---";
+                string[] comboBoxVals = null;
                 CommandRequest cmdreq = new CommandRequest();
                 cmdreq.CommandSyntax = OutputHelper.GetCommand(PreReqCommand, element);
                 object ocnt = analytics.ExecuteR(cmdreq, true, false);
@@ -265,7 +267,46 @@ namespace BlueSky.Commands.Analytics.TTest
                         {
                             enableDialog = false;
                         }
+                        else
+                        {
+                            object el = cs.FindName(statusTextControlName);
+                            BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
+                            if (bslbl != null)
+                            {
+                                bslbl.Text = msg;
+                            }
+                        }
 
+                    }
+
+                    if (ocnt.GetType().Name.Equals("String[]"))
+                    {
+                        comboBoxVals = ocnt as string[];
+                        if (comboBoxVals.Contains("ERROR") || comboBoxVals.Contains("Error")) //09Mar2017 'Error' may occur in R own messages
+                        {
+                            enableDialog = false;
+                        }
+                        else
+                        {
+                            object e2 = cs.FindName(EditableComboBoxName);
+                            BSkyEditableComboBox bslbl2 = e2 as BSkyEditableComboBox;
+                            bslbl2.IsTextSearchEnabled = false;
+                            bslbl2.IsTextSearchCaseSensitive = true;
+                            
+                            if (bslbl2 != null)
+                            {
+                                foreach (string s in comboBoxVals)
+                                {
+                                    bslbl2.Items.Add(s);
+
+                                }
+                            }
+
+                            
+
+
+                           
+                        }
                     }
                     //string[] classes;
                     //if (ocnt.GetType().Name.Equals("String[]"))
@@ -283,12 +324,12 @@ namespace BlueSky.Commands.Analytics.TTest
 
                     //}
                 }
-                object el = cs.FindName(statusTextControlName);
-                BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
-                if (bslbl != null)
-                {
-                    bslbl.Text = msg;
-                }
+                //object el = cs.FindName(statusTextControlName);
+                //BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
+                //if (bslbl != null)
+                //{
+                //    bslbl.Text = msg;
+                //}
                 
 
                 #endregion

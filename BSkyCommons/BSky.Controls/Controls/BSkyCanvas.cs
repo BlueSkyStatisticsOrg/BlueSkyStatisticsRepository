@@ -306,6 +306,16 @@ namespace BSky.Controls
             set;
         }
 
+
+        [Category("Dialog Properties")]
+        [DisplayName("Editable Combobox name")]
+        public string EditableComboBoxName
+        {
+            get;
+            set;
+        }
+
+
         //[Category("Dialog Properties")]
         //[DisplayName("Title*")]
 

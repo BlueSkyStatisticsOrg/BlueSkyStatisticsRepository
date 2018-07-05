@@ -2925,6 +2925,7 @@ namespace BSky.Controls
             copy.Helpfile = myCanvas.Helpfile;
             copy.HelpText = myCanvas.HelpText;
             copy.RHelpText = myCanvas.RHelpText;
+            copy.EditableComboBoxName = myCanvas.EditableComboBoxName;				  
             copy.ModelClasses = myCanvas.ModelClasses;
             copy.PrereqCommandString = myCanvas.PrereqCommandString;//15Sep2016
             copy.StatusTextBoxName = myCanvas.StatusTextBoxName;//15Sep2016 // This will contain the textbox control name in which you want to show a message
