@@ -36,10 +36,13 @@
       <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
       <menu id="Conditional_Compute" text="Conditional Compute" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="Bin_Numeric_Variables" text="Bin Numeric Variables" commandtemplate="Bin Numeric Variables.xaml" commandoutputformat="Bin Numeric Variables.xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
+    <menu id="new_id" text="Transpose" owner="" nodetype="Parent">
+      <menu id="Transpose_(Entire_Dataset)" text="Transpose (Entire Dataset)" commandtemplate="Transpose (Entire Dataset).xaml" commandoutputformat="Transpose (Entire Dataset).xml" owner="" nodetype="Leaf" />
+      <menu id="Transpose_(Select_Variables)" text="Transpose (Select Variables)" commandtemplate="Transpose (Select Variables).xaml" commandoutputformat="Transpose (Select Variables).xml" owner="" nodetype="Leaf" />
+    </menu>    
+	<menu id="Bin_Numeric_Variables" text="Bin Numeric Variables" commandtemplate="Bin Numeric Variables.xaml" commandoutputformat="Bin Numeric Variables.xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
     <menu id="Recode" text="Recode" commandtemplate="Recode.xaml" commandoutputformat="Recode.xml" owner="" nodetype="Leaf" />
     <menu id="Make_Factor_Variable" text="Make Factor Variable" commandtemplate="Make Factor Variable.xaml" commandoutputformat="Make Factor Variable.xml" owner="" nodetype="Leaf" />
-    <menu id="Transpose" text="Transpose" commandtemplate="Transpose.xaml" commandoutputformat="Transpose.xml" owner="" nodetype="Leaf" />
     <menu id="Transform" text="Transform" commandtemplate="Transform.xaml" commandoutputformat="Transform.xml" owner="" nodetype="Leaf" />
     <menu id="Sample_Dataset" text="Sample Dataset" commandtemplate="Sample Dataset.xaml" commandoutputformat="Sample Dataset.xml" owner="" nodetype="Leaf" />
     <menu id="Delete_Variables" text="Delete Variables" commandtemplate="Delete Variables.xaml" commandoutputformat="Delete Variables.xml" owner="" nodetype="Leaf" />
@@ -82,7 +85,8 @@
       <menu id="Correlation_Test_(Multi-variable)" text="Correlation Test (Multi-variable)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
       <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Q-Q_plot" text="Q-Q plot" commandtemplate="Q-Q plot.xaml" commandoutputformat="Q-Q plot.xml" owner="" nodetype="Leaf" />
+      <menu id="Q-Q_plot" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
+      <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />	  
     </menu>
     <menu id="MeansSubMenu" text="Means" owner="" nodetype="Parent">
       <menu id="BSkyOneSmTTest" text="Multi Variable One Sample T-Test" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />

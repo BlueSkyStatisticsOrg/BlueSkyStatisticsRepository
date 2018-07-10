@@ -32,15 +32,17 @@
       <menu id="Missing_Values_(Formula)" text="누락 값 (수식)" commandtemplate="Missing Values (Formula).xaml" commandoutputformat="Missing Values (Formula).xml" owner="" nodetype="Leaf" />
 	  <menu id="Replace_All_Missing_Values_in_Factor_and_String_variables" text="팩터 및 문자열 변수에 누락 된 값 모두 바꾸기" commandtemplate="Replace All Missing Values in Factor and String variables.xaml" commandoutputformat="Replace All Missing Values in Factor and String variables.xml" owner="" nodetype="Leaf" />
     </menu>
-	
     <menu id="ComputeSubMenu" text="계산" owner="" nodetype="Parent">
       <menu id="Compute" text="계산" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
       <menu id="Conditional_Compute" text="조건부 계산" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
     </menu>
+    <menu id="new_id" text="Transpose" owner="" nodetype="Parent">
+      <menu id="Transpose_(Entire_Dataset)" text="조 변경 (전체 데이터 집합)" commandtemplate="Transpose (Entire Dataset).xaml" commandoutputformat="Transpose (Entire Dataset).xml" owner="" nodetype="Leaf" />
+      <menu id="Transpose_(Select_Variables)" text="조 변경 (변수 선택)" commandtemplate="Transpose (Select Variables).xaml" commandoutputformat="Transpose (Select Variables).xml" owner="" nodetype="Leaf" />
+    </menu>  	
 	<menu id="Bin_Numeric_Variables" text="Bin 숫자 변수" commandtemplate="Bin Numeric Variables.xaml" commandoutputformat="Bin Numeric Variables.xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
     <menu id="Recode" text="레코딩" commandtemplate="Recode.xaml" commandoutputformat="Recode.xml" owner="" nodetype="Leaf" />
     <menu id="Make_Factor_Variable" text="요인 변수 만들기" commandtemplate="Make Factor Variable.xaml" commandoutputformat="Make Factor Variable.xml" owner="" nodetype="Leaf" />
-<menu id="Transpose" text="바꾸어 놓다" commandtemplate="Transpose.xaml" commandoutputformat="Transpose.xml" owner="" nodetype="Leaf" />	
     <menu id="Transform" text="변환" commandtemplate="Transform.xaml" commandoutputformat="Transform.xml" owner="" nodetype="Leaf" />
     <menu id="Sample_Dataset" text="샘플 데이터 세트" commandtemplate="Sample Dataset.xaml" commandoutputformat="Sample Dataset.xml" owner="" nodetype="Leaf" />
     <menu id="Delete_Variables" text="변수 삭제" commandtemplate="Delete Variables.xaml" commandoutputformat="Delete Variables.xml" owner="" nodetype="Leaf" />
@@ -86,7 +88,8 @@
       <menu id="Correlation_Test_(Multi-variable)" text="상관 관계 테스트 (다중 변수)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Matrix" text="상관 행렬" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
       <menu id="Shapiro-Wilk_Normality_Test" text="샤피로 - 윌크 정상 시험" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Q-Q_plot" text="Q-Q 도표" commandtemplate="Q-Q plot.xaml" commandoutputformat="Q-Q plot.xml" owner="" nodetype="Leaf" />
+      <menu id="Q-Q_plot" text="Q-Q 플롯" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
+<menu id="P-P_Plots" text="P-P 플롯" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />	  	  
     </menu>
     <menu id="MeansSubMenu" text="방법" owner="" nodetype="Parent">
       <menu id="BSkyOneSmTTest" text="다중 변수 하나의 샘플 T- 검정" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
