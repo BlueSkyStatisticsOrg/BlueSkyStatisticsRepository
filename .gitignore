@@ -53,6 +53,7 @@ BlueSkyProject/[Bb]in/*.exe
 BlueSkyProject/[Bb]in/*.xml
 BlueSkyProject/[Bb]in/??/
 BlueSkyProject/[Bb]in/??-*/
+BlueSkyProject/[Bb]in/RPackages/
 BlueSkyProject/**/*csproj.bak
 !BlueSkyProject/[Bb]in/Config/**
 [Oo]bj/
