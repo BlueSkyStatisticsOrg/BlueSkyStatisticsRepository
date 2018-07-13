@@ -37,6 +37,7 @@ using ScintillaNET;
 using System.Linq;
 using System.Windows.Input;
 using BSky.ConfService.Intf.Interfaces;
+using System.Windows.Data;
 
 //using System.Windows.Forms;
 
@@ -498,6 +499,13 @@ namespace BlueSky
                 {
                     FrameworkElement element = obj as FrameworkElement;
                     element.Margin = new Thickness(10, 2 + extraspaceinbeginning, 0, 2);
+
+                    AUParagraph _aup = obj as AUParagraph;
+                    if (_aup != null)
+                    {
+                        SetTextDynamicWidth(element);
+                    }
+
                     mypanel.Children.Add(element);
                     extraspaceinbeginning = 0;
                     if(element!=null)
@@ -573,6 +581,13 @@ namespace BlueSky
                     {
                         FrameworkElement element = obj as FrameworkElement;
                         element.Margin = new Thickness(10, 2 + extraspaceinbeginning, 0, 2); ;
+
+                        AUParagraph _aup = obj as AUParagraph;
+                        if (_aup != null)
+                        {
+                            SetTextDynamicWidth(element);
+                        }
+
                         mypanel.Children.Add(element);
                         extraspaceinbeginning = 0;
                         if (element != null)
@@ -635,6 +650,14 @@ namespace BlueSky
                     {
                         FrameworkElement element = obj as FrameworkElement;
                         element.Margin = new Thickness(10, 2 + extraspaceinbeginning, 0, 2); ;
+
+
+                        AUParagraph _aup = obj as AUParagraph;
+                        if (_aup != null)
+                        {
+                            SetTextDynamicWidth(element);
+                        }
+
                         mypanel.Children.Add(element);
                         extraspaceinbeginning = 0;
                     }
@@ -656,6 +679,25 @@ namespace BlueSky
 
             BringLastVisibleLeafIntoView(SessionItem);
             BringOnTop();
+        }
+
+        //Dynamic sizing for text when output window is resized or syntax/nav-tree is resized.
+        private void SetTextDynamicWidth(FrameworkElement felement)
+        {
+            AUParagraph _aup = felement as AUParagraph;
+            if (_aup != null)
+            {
+                TextWidthMultiBind mulbinconvter = new TextWidthMultiBind();
+                MultiBinding mulbin = new MultiBinding();//
+                mulbin.Converter = mulbinconvter;
+
+                mulbin.Bindings.Add(new Binding("ActualWidth") { Source = this });
+                mulbin.Bindings.Add(new Binding("ActualWidth") { Source = windowsFormsHost1 });
+                mulbin.Bindings.Add(new Binding("ActualWidth") { Source = navgrid });
+
+                mulbin.NotifyOnSourceUpdated = true;
+                felement.SetBinding(FrameworkElement.WidthProperty, mulbin);
+            }
         }
 
         //21Oct2014 
@@ -767,7 +809,7 @@ namespace BlueSky
             Color c = Color.FromArgb(255, red, green, blue);
 
 
-            AUParagraph aup = new AUParagraph();
+            AUParagraph aup = new AUParagraph(); 
             aup.Text = title;
             aup.ControlType = "Header";
             aup.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE;//10Nov2014;
@@ -775,7 +817,7 @@ namespace BlueSky
             aup.textcolor = new SolidColorBrush(c);
             co.Add(aup);
 
-            AUParagraph aup2 = new AUParagraph();
+            AUParagraph aup2 = new AUParagraph(); 
             aup2.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;//10Nov2014
             aup2.Text = commandoroutput;
             aup2.ControlType = isCommand ? "Command" : "Output";
@@ -2729,4 +2771,23 @@ namespace BlueSky
         public int age { get; set; }
         public string city { get; set; }
     }
+
+    public class TextWidthMultiBind : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            double buffer = 50;
+            double wid = (double)values[0] - (double)values[1] - (double)values[2] - buffer;
+
+            return wid;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+
 }

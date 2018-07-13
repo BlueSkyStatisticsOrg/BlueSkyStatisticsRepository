@@ -164,7 +164,7 @@
                             <ColumnDefinition Name="navtreecol" Width="0"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0" Background="White">
+                        <Grid Grid.Column="0" Name="navgrid" Background="White">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>

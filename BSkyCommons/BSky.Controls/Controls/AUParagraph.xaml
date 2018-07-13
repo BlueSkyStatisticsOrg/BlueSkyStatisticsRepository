@@ -18,7 +18,7 @@
                     </MenuItem>
                 </ContextMenu>
             </Grid.ContextMenu>            
-        <TextBlock Name="MyBlock" MouseDown="MyBlock_MouseDown" ContextMenuOpening="MyBlock_ContextMenuOpening" Text="{Binding ElementName=aupara, Path=Text}" FontFamily="Courier New"  />
+        <TextBlock Name="MyBlock" MouseDown="MyBlock_MouseDown" ContextMenuOpening="MyBlock_ContextMenuOpening" TextWrapping="Wrap" Text="{Binding ElementName=aupara, Path=Text}" FontFamily="Courier New"  />
             <TextBox Visibility="Collapsed" Name="MyBox"  LostFocus="MyBox_LostFocus" TextWrapping="Wrap" FontFamily="Courier New"  HorizontalAlignment="Left">
             <TextBox.Text>
                 <Binding Path="Text" ElementName="aupara" UpdateSourceTrigger="PropertyChanged" />
