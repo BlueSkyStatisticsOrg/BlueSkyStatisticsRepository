@@ -122,13 +122,16 @@ namespace BlueSky
                 string s5 = "\n" + BSky.GlobalResources.Properties.Resources.PleaseMakeSure;
                 string mboxtitle0 = "\n" + BSky.GlobalResources.Properties.Resources.CantLaunchBSkyApp;
 
-                MessageBox.Show(s5 + s1 + s2 + s3 + s4, mboxtitle0, MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show(s5 + s3 + s4, mboxtitle0, MessageBoxButton.OK, MessageBoxImage.Stop);
+                if (!ex.Message.Contains("used by another process"))
+                {
+                    #region R Home Dir edit prompt
+                    HideMouseBusy();
+                    HideProgressbar();
+                    ChangeConfigForRHome();
+                    #endregion
+                }
 
-#region R Home Dir edit prompt
-                HideMouseBusy();
-                HideProgressbar();
-                ChangeConfigForRHome();
-#endregion
 
                 logService.WriteToLogLevel("Unable to launch the BlueSky Statistics Application." + s1 + s3, LogLevelEnum.Error);
                 logService.WriteToLogLevel("Exception:" + ex.Message, LogLevelEnum.Fatal);

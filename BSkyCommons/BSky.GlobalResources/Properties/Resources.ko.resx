@@ -154,7 +154,7 @@
     <comment>App.xaml.cs :Launch time statusbar message for R package loading</comment>
   </data>
   <data name="MakeSureRInstalled" xml:space="preserve">
-    <value>1. R이 설치되어 있습니다. BlueSky 통계는 R이 필요합니다. R을 다운로드하려면 다음을 방문하십시오 : (http://cran.r-project.org)</value>
+    <value>- R이 설치되어 있습니다. BlueSky 통계는 R이 필요합니다. R을 다운로드하려면 다음을 방문하십시오 : (http://cran.r-project.org)</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="CantCreateTemplate" xml:space="preserve">
@@ -174,15 +174,15 @@
     <comment>CommandExecutionHelper.cs : Dataset become null msg title</comment>
   </data>
   <data name="MakeSure32x64Compatibility" xml:space="preserve">
-    <value>2. BlueSky Statistics와 R. 64bit BlueSky Statistics 사이의 이진 호환성을 위해서는 64bit R과 32bit가 필요합니다. BlueSky Statistics에는 32bit R이 필요합니다. (BlueSky 버전을 찾으려면 : BlueSky Statistics에서 도움 -&gt; 약' 로 가십시오. GUI (시작&gt; 실행&gt; RGUI.exe)를 실행하고 콘솔에서 R.version 명령을 실행하십시오.</value>
+    <value>- BlueSky Statistics와 R. 64bit BlueSky Statistics 사이의 이진 호환성을 위해서는 64bit R과 32bit가 필요합니다. BlueSky Statistics에는 32bit R이 필요합니다. (BlueSky 버전을 찾으려면 : BlueSky Statistics에서 도움 -&gt; 약' 로 가십시오. GUI (시작&gt; 실행&gt; RGUI.exe)를 실행하고 콘솔에서 R.version 명령을 실행하십시오.</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="MakeSureAnotherBSkySession" xml:space="preserve">
-    <value>3. BlueSky 응용 프로그램의 다른 세션이 아직 실행되고 있지 않습니다.</value>
+    <value>- BlueSky Statistics 응용 프로그램의 다른 세션이 아직 실행되고 있지 않습니다. Windows 작업 표시 줄 (응용 프로그램이 최소화 된 경우)을 확인하거나 Windows 작업 관리자를 사용하여 BlueSky Statistics이 (가) 이미 실행 중인지 확인하십시오.</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="MakeSureRHOME2LatestR" xml:space="preserve">
-    <value>4. R_HOME 환경 변수가 R의 최신 버전을 가리키고 있습니다.</value>
+    <value>- R_HOME 환경 변수가 올바른 R 버전을 가리키고 있습니다.</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="PleaseMakeSure" xml:space="preserve">

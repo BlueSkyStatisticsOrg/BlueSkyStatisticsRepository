@@ -2428,7 +2428,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2. Binary compatibility between BlueSky Statistics and R. 64bit BlueSky Statistics requires 64bit R and 32bit BlueSky Statistics requires 32bit R. (To find about BlueSky version : Go to &apos;Help &gt; About&apos; in BlueSky Statistics. To find about R version: Launch R GUI (Start &gt; run &gt; RGUI.exe) and execute R.version command on the console)..
+        ///   Looks up a localized string similar to - Binary compatibility between BlueSky Statistics and R. 64bit BlueSky Statistics requires 64bit R and 32bit BlueSky Statistics requires 32bit R. (To find about BlueSky version : Go to &apos;Help &gt; About&apos; in BlueSky Statistics. To find about R version: Launch R GUI (Start &gt; run &gt; RGUI.exe) and execute R.version command on the console)..
         /// </summary>
         public static string MakeSure32x64Compatibility {
             get {
@@ -2437,7 +2437,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3. Another session of the BlueSky application is not already running..
+        ///   Looks up a localized string similar to - Another session of the BlueSky Statistics application is not already running. Check your Windows task bar(if app is minimized) or use Windows Task Manager to find if BlueSky Statistics is already running..
         /// </summary>
         public static string MakeSureAnotherBSkySession {
             get {
@@ -2446,7 +2446,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4. R_HOME environment variable is pointing to the latest version of R..
+        ///   Looks up a localized string similar to - R_HOME environment variable is pointing to the correct version of R..
         /// </summary>
         public static string MakeSureRHOME2LatestR {
             get {
@@ -2455,7 +2455,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1. R is installed. BlueSky Statistics requires R. To download R visit: (http://cran.r-project.org).
+        ///   Looks up a localized string similar to - R is installed. BlueSky Statistics requires R. To download R visit: (http://cran.r-project.org).
         /// </summary>
         public static string MakeSureRInstalled {
             get {

@@ -154,7 +154,7 @@
     <comment>App.xaml.cs :Launch time statusbar message for R package loading</comment>
   </data>
   <data name="MakeSureRInstalled" xml:space="preserve">
-    <value>1. R is installed. BlueSky Statistics requires R. To download R visit: (http://cran.r-project.org)</value>
+    <value>- R is installed. BlueSky Statistics requires R. To download R visit: (http://cran.r-project.org)</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="CantCreateTemplate" xml:space="preserve">
@@ -174,15 +174,15 @@
     <comment>CommandExecutionHelper.cs : Dataset become null msg title</comment>
   </data>
   <data name="MakeSure32x64Compatibility" xml:space="preserve">
-    <value>2. Binary compatibility between BlueSky Statistics and R. 64bit BlueSky Statistics requires 64bit R and 32bit BlueSky Statistics requires 32bit R. (To find about BlueSky version : Go to 'Help &gt; About' in BlueSky Statistics. To find about R version: Launch R GUI (Start &gt; run &gt; RGUI.exe) and execute R.version command on the console).</value>
+    <value>- Binary compatibility between BlueSky Statistics and R. 64bit BlueSky Statistics requires 64bit R and 32bit BlueSky Statistics requires 32bit R. (To find about BlueSky version : Go to 'Help &gt; About' in BlueSky Statistics. To find about R version: Launch R GUI (Start &gt; run &gt; RGUI.exe) and execute R.version command on the console).</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="MakeSureAnotherBSkySession" xml:space="preserve">
-    <value>3. Another session of the BlueSky application is not already running.</value>
+    <value>- Another session of the BlueSky Statistics application is not already running. Check your Windows task bar(if app is minimized) or use Windows Task Manager to find if BlueSky Statistics is already running.</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="MakeSureRHOME2LatestR" xml:space="preserve">
-    <value>4. R_HOME environment variable is pointing to the latest version of R.</value>
+    <value>- R_HOME environment variable is pointing to the correct version of R.</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="PleaseMakeSure" xml:space="preserve">
