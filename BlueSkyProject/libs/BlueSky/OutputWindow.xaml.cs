@@ -1441,16 +1441,27 @@ namespace BlueSky
             }
 
             //// Main logic to populate tree ////
-            TreeViewItem MainItem = new TreeViewItem();
-            MainItem.Header = analysisName;
-            MainItem.IsExpanded = true;
+            ///\TreeViewItem MainItem = new TreeViewItem();
+            ///\MainItem.Header = analysisName;
+            ///\MainItem.IsExpanded = true;
             List<string> Headers = new List<string>();
-            if (MainItem.Header.ToString().Contains("Execution Started"))
+			TreeViewItem MainItem = new TreeViewItem();
+            if (!synedtsession)		///\if (MainItem.Header.ToString().Contains("Execution Started"))
             {
-                MainItem.Background = Brushes.LawnGreen;
+                ///\MainItem.Background = Brushes.LawnGreen;
+                MainItem.Header = analysisName;
+                MainItem.IsExpanded = true;
+
+                if (MainItem.Header.ToString().Contains("Execution Started"))
+                {
+                    MainItem.Background = Brushes.LawnGreen;
+                }
+                if (MainItem.Header.ToString().Contains("Execution Ended"))
+                    MainItem.Background = Brushes.SkyBlue;
+                //bool setFocus = true;					
             }
-            if (MainItem.Header.ToString().Contains("Execution Ended"))
-                MainItem.Background = Brushes.SkyBlue;
+            ///\if (MainItem.Header.ToString().Contains("Execution Ended"))
+                ///\MainItem.Background = Brushes.SkyBlue;
             //bool setFocus = true;
 
             foreach (DependencyObject obj in output)
@@ -1511,13 +1522,26 @@ namespace BlueSky
 
                 tvi.Selected += new RoutedEventHandler(tvi_Selected);
                 tvi.Unselected += new RoutedEventHandler(tvi_Unselected);//29Jan2013
-                MainItem.Items.Add(tvi);
+				
+                ///\MainItem.Items.Add(tvi);
+                if (synedtsession)
+                    SessionItem.Items.Add(tvi);
+                else
+                {
+                    MainItem.Items.Add(tvi);
+                }
+				
             }
+			/*
             if (synedtsession)
                 SessionItem.Items.Add(MainItem);
             else
                 NavTree.Items.Add(MainItem);
-
+			*/
+            if (!synedtsession)
+            {
+                NavTree.Items.Add(MainItem);
+            }			
         }
 
 
