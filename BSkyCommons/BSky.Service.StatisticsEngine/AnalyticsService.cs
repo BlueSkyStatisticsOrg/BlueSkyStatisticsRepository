@@ -59,11 +59,11 @@ namespace BSky.Service.Engine
         //}
 
         //03Jan2014
-        public UAReturn EmptyDataSourceLoad(string datasetName, string fileName)
+        public UAReturn EmptyDataSourceLoad(string datasetName, string fileName, string sheetname)
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, fileName, datasetName);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, fileName, datasetName, sheetname);
             r = _userSession.DefaultDispatcher.EmptyDataSourceLoad(dataSource);
             //08Jun2013
             //if ( r.Success)
@@ -131,11 +131,11 @@ namespace BSky.Service.Engine
             return r;
         }
 
-        public UAReturn DataSourceRefresh(string datasetName, string fileName)//25Mar2013 refresh on new row added by compute
+        public UAReturn DataSourceRefresh(string datasetName, string fileName, string sheetname)//25Mar2013 refresh on new row added by compute
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, fileName, datasetName);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, fileName, datasetName, sheetname);
 
             if ((r = _userSession.DefaultDispatcher.DataSourceRefresh(dataSource)).Success)
             {
@@ -233,7 +233,7 @@ namespace BSky.Service.Engine
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
             r = _userSession.DefaultDispatcher.editDatasetVarGrid(dataSource, colName, colProp, newValue, colLevels);
             if (r.Success)//2
             {
@@ -247,7 +247,7 @@ namespace BSky.Service.Engine
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
             r = _userSession.DefaultDispatcher.makeColumnFactor(dataSource, colName);
             if (r.Success)//2
             {
@@ -261,7 +261,7 @@ namespace BSky.Service.Engine
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
             r = _userSession.DefaultDispatcher.makeColumnString(dataSource, colName);
             if (r.Success)//2
             {
@@ -276,7 +276,7 @@ namespace BSky.Service.Engine
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
             r = _userSession.DefaultDispatcher.makeColumnNumeric(dataSource, colName);
             if (r.Success)//2
             {
@@ -290,7 +290,7 @@ namespace BSky.Service.Engine
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
             if ((r = _userSession.DefaultDispatcher.addNewColDatagrid(colName, rdataType, dgridval, rowindex, dataSource)).Success)//2
             {
@@ -303,7 +303,7 @@ namespace BSky.Service.Engine
         public UAReturn removeVargridColumn(string colName, string datasetnameorindex)
         {
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
             if ((r = _userSession.DefaultDispatcher.removeVarGridCol(colName, dataSource)).Success)
             {
@@ -327,7 +327,7 @@ namespace BSky.Service.Engine
         public UAReturn ChangeColumnLevels(string colName, List<ValLvlListItem> finalLevelList, string datasetnameorindex)
         {
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
             if ((r = _userSession.DefaultDispatcher.changeColLevels(colName, finalLevelList, dataSource)).Success)
             {
@@ -339,7 +339,7 @@ namespace BSky.Service.Engine
         public UAReturn AddFactorLevels(string colName, List<string> finalLevelList, string datasetnameorindex)
         {
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
             if ((r = _userSession.DefaultDispatcher.addColLevels(colName, finalLevelList, dataSource)).Success)
             {
@@ -351,7 +351,7 @@ namespace BSky.Service.Engine
         public UAReturn ChangeMissingVals(string colName, string colProp, List<string> newMisVal, string mistype, string datasetnameorindex)
         {
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
             if ((r = _userSession.DefaultDispatcher.changeMissing(colName, colProp, newMisVal, mistype, dataSource)).Success)
             {
@@ -363,7 +363,7 @@ namespace BSky.Service.Engine
         public object GetColNumFactors(string colName, string datasetnameorindex)
         {
             object r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
             r = _userSession.DefaultDispatcher.getColNumFactors(colName, dataSource);
             return r;
         }
@@ -371,7 +371,7 @@ namespace BSky.Service.Engine
         public UAReturn ChangeScaleToNominalOrOrdinal(string colName, List<FactorMap> fmap, string changeTo, string datasetnameorindex)
         {
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
             if ((r = _userSession.DefaultDispatcher.setScaleToNominalOrOrdinal(colName, fmap, changeTo, dataSource)).Success)
             {
@@ -383,7 +383,7 @@ namespace BSky.Service.Engine
         public List<FactorMap> GetColumnFactormap(string colName, string datasetnameorindex)
         {
             List<FactorMap> r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
             r = _userSession.DefaultDispatcher.getColFactormap(colName, dataSource);
             return r;
         }
@@ -391,7 +391,7 @@ namespace BSky.Service.Engine
         public UAReturn ChangeNominalOrOrdinalToScale(string colName, List<FactorMap> fmap, string changeTo, string datasetnameorindex)
         {
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
             if ((r = _userSession.DefaultDispatcher.setNominalOrOrdinalToScale(colName, fmap, changeTo, dataSource)).Success)
             {
@@ -406,7 +406,7 @@ namespace BSky.Service.Engine
         public UAReturn EditDatagridCell(string colName, string celdata, int rowindex, string datasetnameorindex)
         {
             UAReturn r = null;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
             r = _userSession.DefaultDispatcher.editDatagridCell(colName, celdata, rowindex, dataSource);//move out of following 'if' condition part
             if (r.Success)
             {
@@ -421,7 +421,7 @@ namespace BSky.Service.Engine
                 rowdata = ""; // or c() or NA
 
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
             r = _userSession.DefaultDispatcher.addNewDataRow(colName, celdata, rowdata, rowindex, dataSource);//move out of following 'if' condition part
             if (r.Success)
             {
@@ -430,10 +430,10 @@ namespace BSky.Service.Engine
             return null;
         }
 
-        public UAReturn RemoveDatagridRow(int rowindex, string datasetnameorindex)
+        public UAReturn RemoveDatagridRow(int rowindex, string datasetnameorindex, string sheetname)
         {
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, sheetname);
 
             if ((r = _userSession.DefaultDispatcher.removeDatagridRow(rowindex, dataSource)).Success)
             {
@@ -446,7 +446,7 @@ namespace BSky.Service.Engine
         public UAReturn SortDatagridCol(string colName, string sortorder, string datasetnameorindex)
         {
             UAReturn r;
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex);
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
             if ((r = _userSession.DefaultDispatcher.sortDatagridColumn(colName, sortorder, dataSource)).Success)
             {

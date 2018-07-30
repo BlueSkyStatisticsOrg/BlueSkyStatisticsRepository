@@ -48,7 +48,7 @@ namespace BlueSky.Services
             if (_datasources.Keys.Contains(datasetname + sheetname))
                 return _datasources[datasetname + sheetname];
 
-            UAReturn datasrc = _analyticService.EmptyDataSourceLoad(datasetname, datasetname);//second pram was full path filename on disk
+            UAReturn datasrc = _analyticService.EmptyDataSourceLoad(datasetname, datasetname, null);//second pram was full path filename on disk
             if (datasrc.Datasource == null)
             {
                 logService.WriteToLogLevel("Could not open: " + datasetname + ".\nInvalid format OR issue related to R.Net server.", LogLevelEnum.Error);
@@ -469,7 +469,7 @@ if (ds == null)//20Oct2016 Making UI grid NULL
             //if (_datasources.Keys.Contains(filename.ToLower()))
             //    return _datasources[filename];
             //string datasetname = "Dataset" + SessionDatasetCounter;
-            UAReturn datasrc = _analyticService.DataSourceRefresh(dsourceName.Name, dsourceName.FileName);
+            UAReturn datasrc = _analyticService.DataSourceRefresh(dsourceName.Name, dsourceName.FileName, sheetname);
             if (datasrc == null)
             {
                 //25Oct2016 If key is found then you must update the dictionary(with empty vars and rowcount) when dataset becomes NULL

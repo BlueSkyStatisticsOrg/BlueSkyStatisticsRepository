@@ -20,10 +20,10 @@ namespace BSky.Statistics.Common
             onLoad();
         }
 
-        public ServerDataSource DataSourceLoad(string sourceName, string filePath)
+        public ServerDataSource DataSourceLoad(string sourceName, string filePath, string sheetname)
         {
             //Load datasource
-            ServerDataSource ds = new ServerDataSource(this, filePath, sourceName);
+            ServerDataSource ds = new ServerDataSource(this, filePath, sourceName, sheetname);
 
             ds.Load();
 

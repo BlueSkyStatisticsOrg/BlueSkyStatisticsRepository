@@ -1551,7 +1551,7 @@ namespace BlueSky.Windows
         {
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
 
-            analyticServ.RemoveDatagridRow(datagridrowindex, ds.Name);//removing R side
+            analyticServ.RemoveDatagridRow(datagridrowindex, ds.Name, ds.SheetName);//removing R side
 
             //renumbering
             renumberRowHeader(gridControl1);
@@ -1796,6 +1796,7 @@ namespace BlueSky.Windows
 
             string DSFname = ds.FileName;//12Apr2017
             string DSname = ds.Name;//12Apr2017
+            string DSSheet =  !string.IsNullOrEmpty(ds.SheetName) ? ds.SheetName : string.Empty;			
             ds = service.Refresh(ds); //ds becom,es null in this step if right-click delete all rows from UI datagrid.
             if (ds == null)//12Apr2017
             {
@@ -1803,7 +1804,7 @@ namespace BlueSky.Windows
                 ds.Variables = new List<DataSourceVariable>();
                 ds.FileName = DSFname;
                 ds.Name = DSname;
-                ds.SheetName = "";
+                ds.SheetName = DSSheet;
             }
             controller.RefreshGrids(ds);
 
@@ -2333,7 +2334,7 @@ namespace BlueSky.Windows
             preserveVerticalScroll();
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
-            analyticServ.RemoveDatagridRow(gridControl1.SelectedIndex, ds.Name);//removing R side
+            analyticServ.RemoveDatagridRow(gridControl1.SelectedIndex, ds.Name, ds.SheetName);//removing R side
 
             ds.RowCount--;
             //renumbering

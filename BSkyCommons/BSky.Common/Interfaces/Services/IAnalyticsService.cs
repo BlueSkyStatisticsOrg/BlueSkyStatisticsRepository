@@ -24,7 +24,7 @@ namespace BSky.Statistics.Service.Engine.Interfaces
         DataFrame GetDataFrame(DataSource ds);
 
         [OperationContract]
-        UAReturn EmptyDataSourceLoad(string datasetName, string fileName);//03Jan2014
+        UAReturn EmptyDataSourceLoad(string datasetName, string fileName, string sheetname);//03Jan2014
 
         [OperationContract]
         UAReturn DataSourceLoad(string datasetName, string fileName, string sheetname, bool replace = false, IOpenDataFileOptions odfo = null);
@@ -48,7 +48,7 @@ namespace BSky.Statistics.Service.Engine.Interfaces
         object GetAllModels(string classtype);//09Sep2016
 
         [OperationContract]
-        UAReturn DataSourceRefresh(string datasetName, string fileName);//25Mar2013
+        UAReturn DataSourceRefresh(string datasetName, string fileName, string sheetname);//25Mar2013
 
         [OperationContract]
         UAReturn DataSourceReadRows(string datasetName, int startRow, int endRow);
@@ -106,7 +106,7 @@ namespace BSky.Statistics.Service.Engine.Interfaces
         UAReturn AddNewDatagridRow(string colName, string celdata, string rowdata, int rowindex, string datasetnameorindex);
 
         [OperationContract]
-        UAReturn RemoveDatagridRow(int rowindex, string datasetnameorindex);
+        UAReturn RemoveDatagridRow(int rowindex, string datasetnameorindex, string sheetname);
 
         [OperationContract]
         UAReturn SortDatagridCol(string colName, string sortorder, string datasetnameorindex);
