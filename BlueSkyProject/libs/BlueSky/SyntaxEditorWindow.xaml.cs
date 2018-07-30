@@ -2847,6 +2847,12 @@ namespace BlueSky
 
         private void SplitBSkyFormatParams(string command, out string first, out string rest, out string usertitle)
         {
+            #region remove extra spaces between BSkyFormat and (
+            //command = command.Replace(" ", "");//remove white spaces
+            string pattern = @"BSkyFormat\s*\(";
+            command = Regex.Replace(command, pattern, "BSkyFormat(");
+            #endregion
+			
             string firstParam = string.Empty;//for object to be formatted
             string restParams = string.Empty;//for remaining params
             usertitle = string.Empty; //for title if passed in function call by the user.
