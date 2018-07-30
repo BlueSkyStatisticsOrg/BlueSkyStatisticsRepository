@@ -217,6 +217,7 @@ namespace BSky.Controls
             set { this.Visibility = value; }
         }
 
+        public bool DeleteControl { get; set; }		
         #endregion
 
         #region Footnotes and Error Section
@@ -830,5 +831,10 @@ namespace BSky.Controls
         {
 
         }
+
+        private void _delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteControl = true;
+        }		
     }
 }

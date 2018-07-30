@@ -1519,6 +1519,7 @@ namespace BlueSky
 
                 tvi.Header = treenodesp;// cbleaf;//.Substring(0,openbracketindex);/// Leaf Node Text
                 tvi.Tag = control;
+				(control as FrameworkElement).Tag = tvi;
 
                 tvi.Selected += new RoutedEventHandler(tvi_Selected);
                 tvi.Unselected += new RoutedEventHandler(tvi_Unselected);//29Jan2013
@@ -1669,7 +1670,12 @@ namespace BlueSky
 
         }
 
-
+        void DeleteOutputItem(FrameworkElement fe)
+        {
+            mypanel.Children.Remove(fe);
+            //NavTree.Items.Remove();
+        }
+		
         #endregion
 
         #region Output Window closing/closed events
@@ -2799,7 +2805,94 @@ namespace BlueSky
             }
             CollapseExpandSyntax();
         }
+		
+        private void mypanel_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+            //MessageBox.Show("Context Menu is closing");
+            bool deleteControl = false;
+            FrameworkElement fe = e.Source as FrameworkElement;
+
+            #region find control type
+            AUParagraph aup = fe as AUParagraph;
+            if (aup != null)
+            {
+                deleteControl = aup.DeleteControl;
+            }
+
+            BSkyNotes bsn = fe as BSkyNotes;
+            if (bsn != null)
+            {
+                deleteControl = bsn.DeleteControl;
+            }
+            BSkyGraphicControl bsgc = fe as BSkyGraphicControl;
+            if (bsgc != null)
+            {
+                deleteControl = bsgc.DeleteControl;
+            }
+
+            AUXGrid auxg = fe as AUXGrid;
+            if (auxg != null)
+            {
+                deleteControl = auxg.DeleteControl;
+            }
+
+            #endregion
+
+            if (deleteControl)
+            {
+                TreeViewItem tvi = fe.Tag as TreeViewItem;
+                TreeViewItem parent = tvi.Parent as TreeViewItem;
+
+                int pidx = NavTree.Items.IndexOf(parent);//this index will be same for the datalist
+                int leafidx = parent.Items.IndexOf(tvi);
+
+                parent.Items.Remove(tvi);
+                if (parent.Items.Count == 0)
+                {
+                    NavTree.Items.Remove(parent);
+                }
+
+                mypanel.Children.Remove(fe);
+
+                //remove from datalist too 
+                AnalyticsData ad = outputDataList[pidx];
+                if (aup != null || bsn != null || bsgc != null || auxg != null)
+                {
+                    if (ad.SessionOutput != null && ad.SessionOutput.Count > 0)
+                    {
+                        //ad.SessionOutput[0] as CommandOutput)[0]
+                        CommandOutput co = (ad.SessionOutput[leafidx] as CommandOutput);
+                        if (!co.Remove(fe))
+                        {
+                            MessageBox.Show("Can't remove from session");
+                        }
+
+                        //remove co if its empty
+                        if (co.Count == 0)
+                        {
+                            ad.SessionOutput.Remove(co);
+                        }
+                    }
+                    else
+                    {
+                        if (ad.Output != null)
+                        {
+                            if (!ad.Output.Remove(fe))
+                            {
+                                MessageBox.Show("Can't remove from output");
+                            }
+                            //remove co if its empty
+                            if (ad.Output.Count == 0)
+                            {
+                                //ad.Output.Remove(ad.Output);
+                            }
+                        }
+                    }
+                }
+            }
+        }		
     }
+	
     public class PropertyDataTemplateSelector : DataTemplateSelector
     {
         public DataTemplate DefaultnDataTemplate { get; set; }

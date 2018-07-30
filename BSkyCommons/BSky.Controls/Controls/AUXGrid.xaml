@@ -60,6 +60,7 @@
                                     Executed="ContextMenuCopyCellExecuted" />
                         </MenuItem.CommandBindings>
                     </MenuItem>-->
+                            <MenuItem Header="Delete" Name="_delete"  Click="_delete_Click"></MenuItem>					
                         </ContextMenu>
                     </Grid.ContextMenu>
 

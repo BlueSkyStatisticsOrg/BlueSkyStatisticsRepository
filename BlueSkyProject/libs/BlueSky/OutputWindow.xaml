@@ -181,7 +181,7 @@
                         </Grid>
                         <ScrollViewer  HorizontalScrollBarVisibility="Auto" Name="scrollviewer" Grid.Column="1">
                             <Grid Name="panelcontainer">
-                                <StackPanel Name="mypanel" Background="White">
+                                <StackPanel Name="mypanel" Background="White" ContextMenuClosing="mypanel_ContextMenuClosing" >
                                 </StackPanel>
                             </Grid>
                         </ScrollViewer>

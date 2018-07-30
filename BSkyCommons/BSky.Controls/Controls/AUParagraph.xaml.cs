@@ -112,6 +112,7 @@ namespace BSky.Controls
             set { this.Visibility = value; }
         }
 
+		public bool DeleteControl { get; set; }
         #endregion
 
         private void aupara_MouseEnter(object sender, MouseEventArgs e)
@@ -265,5 +266,13 @@ namespace BSky.Controls
                 e.Handled = true; //do not display context menu
             }
         }
+
+        private void _delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteControl = true;
+            //MessageBox.Show("Deleting this item");
+            //OutputWindowContainer owc = (LifetimeService.Instance.Container.Resolve<IOutputWindowContainer>()) as OutputWindowContainer;
+            //ow = owc.ActiveOutputWindow as OutputWindow; //get currently active window            
+        }		
     }
 }

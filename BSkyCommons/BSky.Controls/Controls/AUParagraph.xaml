@@ -16,6 +16,7 @@
                                     Executed="CommandBinding_Executed" />
                         </MenuItem.CommandBindings>
                     </MenuItem>
+					<MenuItem Header="Delete" Name="_delete"  Click="_delete_Click"></MenuItem>
                 </ContextMenu>
             </Grid.ContextMenu>            
         <TextBlock Name="MyBlock" MouseDown="MyBlock_MouseDown" ContextMenuOpening="MyBlock_ContextMenuOpening" TextWrapping="Wrap" Text="{Binding ElementName=aupara, Path=Text}" FontFamily="Courier New"  />

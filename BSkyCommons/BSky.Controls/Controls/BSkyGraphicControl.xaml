@@ -19,6 +19,7 @@
                     <Image Source="/BSky.Controls;component/Resources/ContextSave.png" Width="24" Height="24"/>
                 </MenuItem.Icon>
             </MenuItem>
+            <MenuItem Header="Delete" Name="_delete"  Click="_delete_Click"></MenuItem>			
         </ContextMenu>
         <Style TargetType="{x:Type Image}">
             <Setter Property="Height">

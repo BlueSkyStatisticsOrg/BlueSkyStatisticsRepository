@@ -95,6 +95,7 @@ namespace BSky.Controls.Controls
             set { this.Visibility = value; }
         }
 
+        public bool DeleteControl { get; set; }		
         #endregion
 
 
@@ -208,5 +209,10 @@ namespace BSky.Controls.Controls
         //    return graphic;
         //}
         #endregion
+		
+        private void _delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteControl = true;
+        }		
     }
 }

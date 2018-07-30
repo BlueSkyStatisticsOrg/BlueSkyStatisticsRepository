@@ -327,6 +327,7 @@ namespace BSky.Controls.Controls
             set { this.Visibility = value; }
         }
 
+		public bool DeleteControl { get; set; }		
         #endregion
 
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -493,5 +494,10 @@ namespace BSky.Controls.Controls
         //}
 
         #endregion
+
+        private void _delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteControl = true;
+        }		
     }
 }

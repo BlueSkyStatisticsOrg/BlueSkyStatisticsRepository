@@ -16,5 +16,6 @@ namespace BSky.Interfaces.Controls
         SolidColorBrush controlsmouseovercolor { get; set; } // mouseover color
         SolidColorBrush bordercolor { get; set; } // this will use above two color for different events.
         System.Windows.Visibility BSkyControlVisibility { get; set; } // set visibility in output window
+        bool DeleteControl { get; set; } //marking it for deleting		
     }
 }

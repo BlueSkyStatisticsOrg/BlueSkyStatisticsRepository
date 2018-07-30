@@ -6,17 +6,11 @@
              Focusable="True"   MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave" >
     <Border Name="outerborder" BorderBrush="Transparent" BorderThickness="1" >
         <Grid Name="maingrid" MouseDown="splitgrid_MouseDown" Margin="0"  >
-            <!--<Grid.ContextMenu>
-                <ContextMenu Name="bsnotesuccontextmenu">
-                    <MenuItem  Header="Export To Excel" Command="Copy" Name="saveall" >
-                        <MenuItem.CommandBindings>
-                            <CommandBinding Command="ApplicationCommands.Copy" 
-                                    CanExecute="CommandBinding_CanExecute" 
-                                    Executed="CommandBinding_Executed" />
-                        </MenuItem.CommandBindings>
-                    </MenuItem>
+            <Grid.ContextMenu>
+                <ContextMenu Name="bskynotescontextmenu">
+                    <MenuItem Header="Delete" Name="_delete"  Click="_delete_Click"></MenuItem>
                 </ContextMenu>
-            </Grid.ContextMenu>-->            
+            </Grid.ContextMenu>          
             <TextBlock Name="notes"  Margin="0" Text="TextBlock" VerticalAlignment="Top"  MouseDown="notes_MouseDown"  TextWrapping="Wrap" FontFamily="Consolas" FontSize="12" />
             <Border Name="myborder" BorderBrush="Transparent" BorderThickness="1"  Margin="0" Background="WhiteSmoke" >
                 <Grid Background="WhiteSmoke"  >
