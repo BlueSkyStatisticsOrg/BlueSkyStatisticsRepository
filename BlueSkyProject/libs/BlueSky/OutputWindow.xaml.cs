@@ -1899,7 +1899,8 @@ namespace BlueSky
             BSkyMouseBusyHandler.ShowMouseBusy();// ShowHideBusy_old(true);
             ////// Start Syntax Editor  //////
             sewindow = LifetimeService.Instance.Container.Resolve<SyntaxEditorWindow>();
-
+            int totallines = inputTextbox.Lines.Count;
+            int lno=0;
             string commands = inputTextbox.SelectedText;//selected text
             try
             {
@@ -1908,7 +1909,7 @@ namespace BlueSky
                 }
                 else
                 {
-                    int lno = inputTextbox.CurrentLine;
+                    lno = inputTextbox.CurrentLine;
                     commands = inputTextbox.Lines[lno].Text; //Current line
                 }
                 if (commands.Trim().Length > 0)
@@ -1925,6 +1926,29 @@ namespace BlueSky
             {
                 BSkyMouseBusyHandler.HideMouseBusy();// ShowHideBusy_old(false);
             }
+            //bring focus back and move cursor to the next line
+            inputTextbox.Focus();
+            int currentpos = 0;
+            int linelen = 0;
+            int linecol = 0;
+            int nextlinestartpos = 0;
+            for(; lno < totallines;)
+            {
+                currentpos = inputTextbox.CurrentPosition;
+                linelen = inputTextbox.Lines[lno].Text.Trim().Length;
+                linecol = inputTextbox.GetColumn(currentpos);
+                nextlinestartpos = (linelen - linecol)+ currentpos + 2;
+                inputTextbox.GotoPosition(nextlinestartpos);
+                if (lno == inputTextbox.CurrentLine)//if cursor is not advancing to the next line number(still on old line) then it's end of text
+                {
+                    break;
+                }
+                lno = inputTextbox.CurrentLine;
+                if (  (inputTextbox.Lines[lno].Text.Trim().Length > 0) && !(inputTextbox.Lines[lno].Text.Trim().StartsWith("#"))  )
+                {
+                    break;
+                }
+            }			
         }
 
         private void browse_Click(object sender, RoutedEventArgs e)
