@@ -694,7 +694,7 @@
     <comment>FindReplaceWindow.xaml : label for Find/Replace Options</comment>
   </data>
   <data name="lblMaxCharsNavTree" xml:space="preserve">
-    <value>Max. No. Of Chars in Left Tree:</value>
+    <value>Max. number of characters(text length) shown in the left navigation tree:</value>
     <comment>CustomSettingsWindow.xaml : label for max chars in nav tree</comment>
   </data>
   <data name="lblMaxFactor" xml:space="preserve">
@@ -849,8 +849,8 @@
     <value>Advanced</value>
     <comment>CustomSettingsWindow.xaml : Title for Advanced tab in settings</comment>
   </data>
-  <data name="TabTitleColors" xml:space="preserve">
-    <value>Colors</value>
+  <data name="TabTitleOutput" xml:space="preserve">
+    <value>Output</value>
     <comment>CustomSettingsWindow.xaml : Title  for Colors tab in settings</comment>
   </data>
   <data name="TabTitleDefaultPackages" xml:space="preserve">
@@ -1279,5 +1279,9 @@
   <data name="ShowHideSyntaxPanel" xml:space="preserve">
     <value>Show/Hide R Command Editor Panel</value>
     <comment>OutputWindow.xaml : Tooltip and/or text for show-hide button for showing and hiding syntax panel.</comment>
+  </data>
+  <data name="lblShowSyntaxInOutput" xml:space="preserve">
+    <value>Show syntax in the Output Window</value>
+    <comment>CustomSettingsWindow.xaml : lable for Show/Hide syntax in output window</comment>
   </data>
 </root>

@@ -126,7 +126,7 @@
     <comment>App.xaml.cs : Error msg for missing pkgs</comment>
   </data>
   <data name="CantLaunchBSkyApp" xml:space="preserve">
-    <value>오류 : BlueSky 응용 프로그램을 시작할 수 없습니다!</value>
+    <value>오류 : BlueSky 통계를 시작할 수 없습니다!</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="ErrReqRPkgMissing" xml:space="preserve">
@@ -182,7 +182,7 @@
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="MakeSureRHOME2LatestR" xml:space="preserve">
-    <value>- R_HOME 환경 변수가 올바른 R 버전을 가리키고 있습니다.</value>
+    <value>- R_HOME 구성 변수가 올바른 R 버전을 가리키고 있습니다.</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="PleaseMakeSure" xml:space="preserve">

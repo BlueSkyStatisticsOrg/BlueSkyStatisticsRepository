@@ -1285,7 +1285,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error: Can&apos;t Launch BlueSky Application!.
+        ///   Looks up a localized string similar to Error: Cannot Launch BlueSky Statistics!.
         /// </summary>
         public static string CantLaunchBSkyApp {
             get {
@@ -2437,7 +2437,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - Another session of the BlueSky Statistics application is not already running. Check your Windows task bar(if app is minimized) or use Windows Task Manager to find if BlueSky Statistics is already running..
+        ///   Looks up a localized string similar to - Another session of the BlueSky Statistics application is not already running. Check your Windows task bar(if application is minimized) or use Windows Task Manager to see if BlueSky Statistics is already running..
         /// </summary>
         public static string MakeSureAnotherBSkySession {
             get {
@@ -2446,7 +2446,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - R_HOME environment variable is pointing to the correct version of R..
+        ///   Looks up a localized string similar to - R_HOME configuration variable is pointing to the correct version of R..
         /// </summary>
         public static string MakeSureRHOME2LatestR {
             get {

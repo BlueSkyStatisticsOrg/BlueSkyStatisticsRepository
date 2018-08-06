@@ -694,7 +694,7 @@
     <comment>FindReplaceWindow.xaml : label for Find/Replace Options</comment>
   </data>
   <data name="lblMaxCharsNavTree" xml:space="preserve">
-    <value>맥스. 왼쪽 트리의 챠리스 중 :</value>
+    <value>맥스. 왼쪽 탐색 트리에 표시된 문자 수 (텍스트 길이) :</value>
     <comment>CustomSettingsWindow.xaml : label for max chars in nav tree</comment>
   </data>
   <data name="lblMaxFactor" xml:space="preserve">
@@ -849,8 +849,8 @@
     <value>많은</value>
     <comment>CustomSettingsWindow.xaml : Title for Advanced tab in settings</comment>
   </data>
-  <data name="TabTitleColors" xml:space="preserve">
-    <value>그림 물감</value>
+  <data name="TabTitleOutput" xml:space="preserve">
+    <value>산출</value>
     <comment>CustomSettingsWindow.xaml : Title  for Colors tab in settings</comment>
   </data>
   <data name="TabTitleDefaultPackages" xml:space="preserve">
@@ -1276,5 +1276,9 @@
   <data name="ShowHideSyntaxPanel" xml:space="preserve">
     <value>R 명령 편집기 패널 표시 / 숨기기</value>
     <comment>OutputWindow.xaml : Tooltip and/or text for show-hide button for showing and hiding syntax panel.</comment>
+  </data>
+  <data name="lblShowSyntaxInOutput" xml:space="preserve">
+    <value>출력 창에 구문 표시</value>
+    <comment>CustomSettingsWindow.xaml : lable for Show/Hide syntax in output window</comment>
   </data>
 </root>

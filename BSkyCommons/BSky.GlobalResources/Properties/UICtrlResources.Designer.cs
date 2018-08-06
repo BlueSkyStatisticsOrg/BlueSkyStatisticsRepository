@@ -1294,7 +1294,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Max. No. Of Chars in Left Tree:.
+        ///   Looks up a localized string similar to Max. number of characters(text length) shown in the left navigation tree:.
         /// </summary>
         public static string lblMaxCharsNavTree {
             get {
@@ -1479,6 +1479,15 @@ namespace BSky.GlobalResources.Properties {
         public static string lblShowsCols {
             get {
                 return ResourceManager.GetString("lblShowsCols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show syntax in the Output Window.
+        /// </summary>
+        public static string lblShowSyntaxInOutput {
+            get {
+                return ResourceManager.GetString("lblShowSyntaxInOutput", resourceCulture);
             }
         }
         
@@ -2563,15 +2572,6 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Colors.
-        /// </summary>
-        public static string TabTitleColors {
-            get {
-                return ResourceManager.GetString("TabTitleColors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Default Packages.
         /// </summary>
         public static string TabTitleDefaultPackages {
@@ -2604,6 +2604,15 @@ namespace BSky.GlobalResources.Properties {
         public static string TabTitleOthers {
             get {
                 return ResourceManager.GetString("TabTitleOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output.
+        /// </summary>
+        public static string TabTitleOutput {
+            get {
+                return ResourceManager.GetString("TabTitleOutput", resourceCulture);
             }
         }
         
