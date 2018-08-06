@@ -115,6 +115,10 @@ namespace BlueSky
             }
             catch (Exception ex)
             {
+                bool anothersessionrunning = false;
+                if (ex.Message.Contains("used by another process"))
+                    anothersessionrunning = true;
+				
                 string s1 = "\n" + BSky.GlobalResources.Properties.Resources.MakeSureRInstalled;
                 string s2 = "\n" + BSky.GlobalResources.Properties.Resources.MakeSure32x64Compatibility;
                 string s3 = "\n" + BSky.GlobalResources.Properties.Resources.MakeSureAnotherBSkySession;
@@ -122,17 +126,22 @@ namespace BlueSky
                 string s5 = "\n" + BSky.GlobalResources.Properties.Resources.PleaseMakeSure;
                 string mboxtitle0 = "\n" + BSky.GlobalResources.Properties.Resources.CantLaunchBSkyApp;
 
-                MessageBox.Show(s5 + s3 + s4, mboxtitle0, MessageBoxButton.OK, MessageBoxImage.Stop);
-                if (!ex.Message.Contains("used by another process"))
+                //MessageBox.Show(s5 + s3 + s4, mboxtitle0, MessageBoxButton.OK, MessageBoxImage.Stop);
+                if(anothersessionrunning) MessageBox.Show(s5 + s3, mboxtitle0, MessageBoxButton.OK, MessageBoxImage.Stop);
+                else MessageBox.Show(s5 + s4, mboxtitle0, MessageBoxButton.OK, MessageBoxImage.Stop);
+
+                #region R Home Dir edit prompt
+                if (!anothersessionrunning)
                 {
-                    #region R Home Dir edit prompt
+                    //Provide R Home Dir check/modify option to the user so that he can have a chance to fix this issue.
+                    //Otherwise app will not launch until reinstalled or manually modify the config file. 
+                    //So following is much better and easier way to fix the issue.
                     HideMouseBusy();
                     HideProgressbar();
                     ChangeConfigForRHome();
-                    #endregion
+							  
                 }
-
-
+                #endregion
                 logService.WriteToLogLevel("Unable to launch the BlueSky Statistics Application." + s1 + s3, LogLevelEnum.Error);
                 logService.WriteToLogLevel("Exception:" + ex.Message, LogLevelEnum.Fatal);
                 Environment.Exit(0);
