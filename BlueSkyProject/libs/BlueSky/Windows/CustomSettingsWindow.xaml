@@ -8,7 +8,7 @@
         xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
         Title="{x:Static uires:UICtrlResources.ConfigWindowTitle}" Height="370" MinWidth="750" MaxWidth="850" SizeToContent="Width" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         Closing="Window_Closing" >
-    
+
     <!--<Window.Resources>
         <loc:InverseBooleanConverter x:Key="inverseBoolConverter"></loc:InverseBooleanConverter>
             xmlns:loc="clr-namespace:BlueSky.Windows"
@@ -51,7 +51,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Name="ColorsTab" Header="{x:Static uires:UICtrlResources.TabTitleColors}">
+            <TabItem Name="OutputTab" Header="{x:Static uires:UICtrlResources.TabTitleOutput}">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -61,6 +61,9 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>                        
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -86,6 +89,12 @@
 
                     <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblNavTreeSelColor}"></TextBlock>
                     <Rectangle Grid.Row="4" Grid.Column="2" Width="20" Name="navtreeselectedcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[navtreeselectedcol], UpdateSourceTrigger=PropertyChanged}" />
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}" Name="label5"   />
+                    <TextBox Grid.Row="5" Grid.Column="2" Margin="3" Width="25" Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}"  Name="noofchars" />
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblShowSyntaxInOutput}"></TextBlock>
+                    <CheckBox  Grid.Row="6" Grid.Column="2"  Margin="3"  Name="showSynInOutput" IsChecked="{Binding Path=[ShowSyntaxInOutput], UpdateSourceTrigger=PropertyChanged}"  />
 
                 </Grid>
             </TabItem>
@@ -191,18 +200,20 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="107.37"></ColumnDefinition>
+                        <ColumnDefinition Width="10.677"/>
+                        <ColumnDefinition Width="530.323"/>
                         <ColumnDefinition Width="70"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" TextWrapping="Wrap" MaxWidth="650" Text="{x:Static uires:UICtrlResources.lblLicNotifyDays}"></TextBlock>
-                    <TextBox Grid.Row="0" Grid.Column="1"  Margin="3" VerticalAlignment="Center" Name="daysleft" Text="{Binding Path=[daysleftreminder], UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                    <TextBlock Grid.Row="1" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblMaxFactor}"></TextBlock>
-                    <TextBox Grid.Row="1" Grid.Column="1"  Margin="3"  Name="maxfactor" Text="{Binding Path=[maxfactorcount], UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                    <TextBlock Grid.Row="2" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblAdvancedLogging}"></TextBlock>
-                    <CheckBox  Grid.Row="2" Grid.Column="1"  Margin="3" Name="advancedlog" IsChecked="{Binding Path=[advancedlogging], UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBlock Grid.Row="3" Grid.Column="0"  Margin="3" Text="{x:Static uires:UICtrlResources.lblLogLevel}" Name="loglabel"  />
-                    <ComboBox Grid.Row="3"  Grid.Column="1" Margin="1,5" Name="loglevel">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" TextWrapping="Wrap" MaxWidth="650" Text="{x:Static uires:UICtrlResources.lblLicNotifyDays}" Grid.ColumnSpan="3"></TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="3"  Margin="3" VerticalAlignment="Center" Name="daysleft" Text="{Binding Path=[daysleftreminder], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBlock Grid.Row="1" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblMaxFactor}" Grid.ColumnSpan="3"/>
+                    <TextBox Grid.Row="1" Grid.Column="3"  Margin="3"  Name="maxfactor" Text="{Binding Path=[maxfactorcount], UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblAdvancedLogging}" Grid.ColumnSpan="3"/>
+                    <CheckBox Grid.Row="2" Grid.Column="3"  Margin="3" Name="advancedlog" IsChecked="{Binding Path=[advancedlogging], UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Grid.Row="3" Grid.Column="0"  Margin="3" Text="{x:Static uires:UICtrlResources.lblLogLevel}" Name="loglabel" Grid.ColumnSpan="3"  />
+                    <ComboBox Grid.Row="3"  Grid.Column="3" Margin="3" Name="loglevel">
                         <ComboBoxItem Content="Debug" />
                         <ComboBoxItem Content="Info" />
                         <ComboBoxItem Content="Warn" />
@@ -210,15 +221,11 @@
                         <ComboBoxItem Content="Fatal" />
                         <ComboBoxItem Content="All" IsSelected="True" />
                     </ComboBox>
-                    <TextBlock Grid.Row="4" Grid.Column="0"  Margin="3" MaxWidth="650"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblThresholdCount}">
+                    <TextBlock Grid.Row="4" Grid.Column="0"  Margin="3" MaxWidth="650"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblThresholdCount}" Grid.ColumnSpan="3"/>
+                    <TextBox Grid.Row="4" Grid.Column="3"  Margin="3" VerticalAlignment="Center" Name="maxflexgridcells" Text="{Binding Path=[maxflexgridcells], UpdateSourceTrigger=PropertyChanged}"/>
 
-                    </TextBlock>
-                    <TextBox Grid.Row="4" Grid.Column="1"  Margin="3" VerticalAlignment="Center" Name="maxflexgridcells" Text="{Binding Path=[maxflexgridcells], UpdateSourceTrigger=PropertyChanged}"></TextBox>
-
-                    <TextBlock Grid.Row="5" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblCharToFactor}">
-
-                    </TextBlock>
-                    <CheckBox  Grid.Row="5" Grid.Column="1"  Margin="3"  Name="CSVcharToFactor" IsChecked="{Binding Path=[CSVcharToFactor], UpdateSourceTrigger=PropertyChanged}"  />
+                    <TextBlock Grid.Row="5" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblCharToFactor}" Grid.ColumnSpan="3"/>
+                    <CheckBox Grid.Row="5" Grid.Column="3"  Margin="3"  Name="CSVcharToFactor" IsChecked="{Binding Path=[CSVcharToFactor], UpdateSourceTrigger=PropertyChanged}"  />
                 </Grid>
 
             </TabItem>
@@ -246,8 +253,8 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblNoDecimalDigits}"  Margin="3" Name="label4"   />
                     <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=[noofdecimals], UpdateSourceTrigger=PropertyChanged}"  Margin="3" Name="noofdecimals" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}"  Margin="3" Name="label5"   />
-                    <TextBox Grid.Row="2" Grid.Column="1"   Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}" Margin="3" Name="noofchars" />
+                    <!--<TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}"  Margin="3" Name="label5"   />
+                    <TextBox Grid.Row="2" Grid.Column="1"   Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}" Margin="3" Name="noofchars" />-->
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblLoadMissing}"   Margin="3" Name="label6"   />
                     <CheckBox Grid.Row="3" Grid.Column="1"  Height="16"  Margin="3" Name="loadMissingCheckbox" IsChecked="{Binding Path=[loadSavMissingValue], UpdateSourceTrigger=PropertyChanged}" />
@@ -398,18 +405,18 @@
         </TabControl>
         <!--<StackPanel  Grid.Row="1" Orientation="Horizontal"  >-->
         <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Button Name="DefaultBut" Content="{x:Static uires:UICtrlResources.buttonDefault}" Grid.Column="0" Margin="3" MinWidth="50" Click="DefaultBut_Click"  Padding="2"></Button>
-                <Button Name="ApplyBut" Content="{x:Static uires:UICtrlResources.buttonSave}" Grid.Column="2" Margin="3" MinWidth="50" Click="ApplyBut_Click"   Padding="2"></Button>
-                <Button Name="CancelBut" Content="{x:Static uires:UICtrlResources.buttonCancel}" Grid.Column="3" Margin="0,3,3,3" MinWidth="50" Click="CancelBut_Click"  Padding="2" HorizontalAlignment="Right" Width="50"></Button>
-                
-                
-            </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="DefaultBut" Content="{x:Static uires:UICtrlResources.buttonDefault}" Grid.Column="0" Margin="3" MinWidth="50" Click="DefaultBut_Click"  Padding="2"></Button>
+            <Button Name="ApplyBut" Content="{x:Static uires:UICtrlResources.buttonSave}" Grid.Column="2" Margin="3" MinWidth="50" Click="ApplyBut_Click"   Padding="2"></Button>
+            <Button Name="CancelBut" Content="{x:Static uires:UICtrlResources.buttonCancel}" Grid.Column="3" Margin="0,3,3,3" MinWidth="50" Click="CancelBut_Click"  Padding="2" HorizontalAlignment="Right" Width="50"></Button>
+
+
+        </Grid>
         <!--</StackPanel>-->
     </Grid>
 </Window>

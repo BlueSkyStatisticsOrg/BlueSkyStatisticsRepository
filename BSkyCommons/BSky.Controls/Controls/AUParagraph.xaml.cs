@@ -68,10 +68,47 @@ namespace BSky.Controls
 
         #region IAUControl Members
 
+        private string _ControlType;
         public string ControlType
         {
-            get;
-            set;
+            get {return _ControlType; }
+            set
+            {
+                _ControlType = value;
+                //if (_ControlType.Equals("Header") || _ControlType.Equals("DataSet"))
+                //    this.BSkyControlVisibility = Visibility.Visible;
+                //else
+                //    this.BSkyControlVisibility = Visibility.Collapsed;
+                switch (_ControlType)
+                {
+                    case "Header":
+                        this.BSkyControlVisibility = Visibility.Visible;
+                        break;
+                    case "DataSet":
+                        this.BSkyControlVisibility = Visibility.Visible;
+                        break;
+                    case "Command":
+                        string showSyntaxInOutput = confService.GetConfigValueForKey("ShowSyntaxInOutput");
+                        if (showSyntaxInOutput.Trim().ToLower().Equals("true"))
+                        {
+                            this.BSkyControlVisibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            this.BSkyControlVisibility = Visibility.Collapsed;
+                        }
+                        break;
+                    //case "Header":
+                    //    this.BSkyControlVisibility = Visibility.Visible;
+                    //    break;
+                    default:
+                        this.BSkyControlVisibility = Visibility.Visible;
+                        break;
+                }
+
+
+
+            }
         }
         public string NodeText
         {
@@ -266,7 +303,7 @@ namespace BSky.Controls
                 e.Handled = true; //do not display context menu
             }
         }
-
+		
         private void _delete_Click(object sender, RoutedEventArgs e)
         {
             DeleteControl = true;
