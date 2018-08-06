@@ -68,6 +68,9 @@
             <LineBreak /> $ forces each variable to be substituted in format datasetX$var1
             <LineBreak /> ! forces each variable to be substituted in format var1=datasetX$var1.
             <LineBreak /> # force the use of the , seperator (Valid for destination listbox only).
+            <LineBreak /> Ampersand force use of the character following the ampersand as a seperator (Destination listbox only).
+            <LineBreak /> @ force the use of a comma (,) as separator and enclose each variable by '', with no prefix (Destination listbox only).
+            <LineBreak /> ^ prefix each variable by the character following the ^ (Destination listbox only).
         </TextBlock>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">

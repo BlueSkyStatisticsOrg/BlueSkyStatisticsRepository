@@ -133,11 +133,45 @@ namespace BSky.XmlDecoder
             //If found, I ignore the setting of how the value in the control should be constructed and append a dataset name
             //and a $ sign to the variable name
             //This works only for BSKyVariable and BSkyGrouping Variable
+
+            bool boolTilda = false;
+            bool overrideSep = false;
+            string oriSepCharacter = "";
+            string newSepCharacter = "";
+            bool prefixEachVariable = false;
+            string newPrefixCharacter = "";
+
+            if (objname.Contains('@'))
+            {
+                //I need objname to get the control from the canvas. Hence I need to remove the $
+                objname = objname.Replace('@', ' ').Replace('#', ' ').Trim();
+                boolTilda = true;
+            }
+
+            if (objname.Contains('&'))
+            {
+                // oriSubstituteSettings = list.SubstituteSettings;
+                // oriSepCharacter = list.SepCharacter;
+                int indexofAmbersand = objname.IndexOf("&");
+                //  list.SubstituteSettings = list.SubstituteSettings.Replace("UseComma", "UseSeperator").Trim();
+                int indexofNewSep = indexofAmbersand + 1;
+                // list.SepCharacter = objname[indexofNewSep].ToString();
+                newSepCharacter = objname[indexofNewSep].ToString();
+                // string stringToReplace = "";
+                // stringToReplace = "&" + list.SepCharacter;
+                //I need objname to get the control from the canvas. Hence I need to remove the $
+                objname = objname.Replace('&', ' ').Replace('#', ' ').Trim();
+                objname = objname.Replace(newSepCharacter[0], ' ').Replace('#', ' ').Trim();
+                overrideSep = true;
+            }
+
             if (objname.Contains('$'))
             {
                 datasetnameprefix = true;
                 //I need objname to get the control from the canvas. Hence I need to remove the $
-                objname = objname.Replace('$', ' ').Replace('#', ' ').Trim();
+                //07/24/28 Commented the line below and inseted the one below the line below
+                // objname = objname.Replace('$', ' ').Replace('#', ' ').Trim();
+                objname = objname.Replace('$', ' ').Trim();
             }
 
             //Added by Aaron 02/11/2014
@@ -159,6 +193,26 @@ namespace BSky.XmlDecoder
                 forceUseCommas = true;
                 //I need objname to get the control from the canvas. Hence I need to remove the $
                 objname = objname.Replace('#', ' ').Trim();
+            }
+			
+            //Added by Aaron 07/27/2018
+            //Handling  -var1,-var2 for reshape, see line 707
+            //we only have to do this when variable names are not enclosed in "", and when variable names are not prefixed by a dataset 
+            if (objname.Contains('^'))
+            {
+                prefixEachVariable = true;
+                //I need objname to get the control from the canvas. Hence I need to remove the $
+                int indexofCarrot = objname.IndexOf("^");
+                //  list.SubstituteSettings = list.SubstituteSettings.Replace("UseComma", "UseSeperator").Trim();
+                int indexofPrefix = indexofCarrot + 1;
+                // list.SepCharacter = objname[indexofNewSep].ToString();
+                newPrefixCharacter = objname[indexofPrefix].ToString();
+                // string stringToReplace = "";
+                // stringToReplace = "&" + list.SepCharacter;
+                //I need objname to get the control from the canvas. Hence I need to remove the $
+                objname = objname.Replace('^', ' ').Replace('#', ' ').Trim();
+                objname = objname.Replace(newPrefixCharacter[0], ' ').Replace('#', ' ').Trim();
+                prefixEachVariable =true;
             }
 
             //13Sep2013 col name and col object//// ends
@@ -600,6 +654,25 @@ namespace BSky.XmlDecoder
             {
                 string vals = string.Empty;
                 DragDropList list = element as DragDropList;
+                string oriSubstituteSettings = "";
+                oriSubstituteSettings = list.SubstituteSettings;
+                
+
+                if (boolTilda)
+                {
+                    oriSubstituteSettings = list.SubstituteSettings;
+                    list.SubstituteSettings = "NoPrefix|UseComma|Enclosed";
+
+                }
+             
+                if (overrideSep)
+                {
+                    oriSubstituteSettings = list.SubstituteSettings;
+                    oriSepCharacter = list.SepCharacter;
+                    list.SubstituteSettings = list.SubstituteSettings.Replace("UseComma", "UseSeperator").Trim();
+                    list.SepCharacter = newSepCharacter;
+
+                }
 
                 if (list != null)
                 {
@@ -625,7 +698,14 @@ namespace BSky.XmlDecoder
                             if (list.SubstituteSettings.Contains("NoPrefix"))
                             {
                                 if (list.SubstituteSettings.Contains("Enclosed")) vals += "'" + o.ToString() + "'";
-                                else vals += o.ToString();
+                                else
+                                {
+//Added by Aaron 07/27/2018
+//This is the only place where I need to pass -var1,-var2
+                                    if (!prefixEachVariable)
+                                        vals += o.ToString();
+                                    else vals = vals+newPrefixCharacter + o.ToString();
+                                }
                             }
                             //Added by Aaron 02/12/2014
                             //handles the case of var1=dataset$var1
@@ -698,6 +778,21 @@ namespace BSky.XmlDecoder
                         }
                     }
                 }
+
+
+
+                if (overrideSep == true)
+                {
+                    list.SubstituteSettings = oriSubstituteSettings;
+                    list.SepCharacter = oriSepCharacter;
+                }
+
+                if (boolTilda == true)
+                {
+                    list.SubstituteSettings = oriSubstituteSettings;
+
+                }
+
 
                 if (vals == string.Empty | vals == null)
                 {

@@ -170,10 +170,29 @@ namespace BSky.Controls.DesignerSupport
                     //    //result = true;
                     //}
 
-                    //Added by Aaron 05/11/2015
+//Added by Aaron 05/11/2015
                     //I commented the 2 lines below the reason is as long as there name property is not set, its possible to not have to worry about duplicate names
-                 //   if (w.Canvas.Name =="")
-                //    w.Canvas.Name = BSkyControlFactory.Instance.GetName("Canvas");
+                    //   if (w.Canvas.Name =="")
+                    //    w.Canvas.Name = BSkyControlFactory.Instance.GetName("Canvas");
+                    //Added by Aaron 07/15/2018
+
+                  // BSkyCanvas test1 = null;
+                  // test1  = w.Canvas;
+                  // BSkyTargetList test2 = null;
+                  // test2 = test1.Children[0] as BSkyTargetList;
+                  //  //test2.ItemTemplate = "";
+                  //  //  test2.renderVars = false;
+                  //  UIElement ui = test2;
+                  //  test1.Children.Remove(test2);
+                  //  BSkyTargetList test3 = null;
+                  //  test3 = new BSkyTargetList();
+                  //  test3.Name = "pest";
+                  //  test1.Children.Add(test3);
+                  //  selectedElement.Resources.Add("dlg", w.Canvas);
+
+                  ////  BSkyButton b = null;
+                  // // b = selectedElement as BSkyButton;
+                  // // b.Resources.Remove(ListBox.ItemTemplateProperty);
                     selectedElement.Resources.Add("dlg", w.Canvas);
 
                     // Aaron 06/15/2013
