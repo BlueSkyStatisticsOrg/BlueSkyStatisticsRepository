@@ -1494,9 +1494,18 @@ namespace BlueSky
 
                 TextBlock nodetb = new TextBlock();
                 nodetb.Tag = control;
+
+                //maxlen is need to avoid indexoutofbounds when finding Substring()
                 int maxlen = control.ControlType.Length < treenodecharlen ? control.ControlType.Length : (treenodecharlen);
-                string dots = maxlen <= treenodecharlen ? "..." : "...";
-                nodetb.Text = control.ControlType.Substring(0, maxlen) + dots;
+                //if (maxlen > 100) maxlen = 100; //this could be used for putting restriction for max. length
+
+                string dots = maxlen < control.ControlType.Length ? " ..." : "";//add dots only if text are getting trimmed.
+
+                //Show node text with or without dots based on condition.
+                if (maxlen <= 0) //show full length
+                    nodetb.Text = control.ControlType;
+                else
+                    nodetb.Text = control.ControlType.Substring(0, maxlen) + dots;
                 nodetb.Margin = new Thickness(1);
                 nodetb.GotFocus += new RoutedEventHandler(nodetb_GotFocus);
                 nodetb.LostFocus += new RoutedEventHandler(nodetb_LostFocus);
@@ -1511,8 +1520,7 @@ namespace BlueSky
 
                 cbleaf.Visibility = System.Windows.Visibility.Visible;///unhide to see it on output window.
                 cbleaf.ToolTip = BSky.GlobalResources.Properties.UICtrlResources.NavTreeCheckboxTooltip;
-                if (!(control is BSkyNotes))
-                    cbleaf.IsChecked = true;
+				cbleaf.IsChecked = (control.BSkyControlVisibility== Visibility.Visible) ? true : false;
 
                 treenodesp.Children.Add(cbleaf);
                 treenodesp.Children.Add(nodetb);
@@ -2861,16 +2869,49 @@ namespace BlueSky
                     if (ad.SessionOutput != null && ad.SessionOutput.Count > 0)
                     {
                         //ad.SessionOutput[0] as CommandOutput)[0]
-                        CommandOutput co = (ad.SessionOutput[leafidx] as CommandOutput);
-                        if (!co.Remove(fe))
+                        CommandOutput co = null;//for traversing and holding the reference of the element to be deleted
+
+                        //Loop thru SessionOutput to find the right element to be deleted. leafidx is not accurate
+                        int session_leafidx = -1;
+                        bool found = false;
+                        for (int j = 0; j < ad.SessionOutput.Count; j++)//parent in sessionoutput
                         {
-                            MessageBox.Show("Can't remove from session");
+                            co = (ad.SessionOutput[j] as CommandOutput);
+                            for (int k = 0; k < co.Count; k++)//leaf in sessionoutput
+                            {
+                                session_leafidx++;
+                                if (leafidx == session_leafidx)//this is the element we need to delete
+                                {
+                                    found = true;
+                                    //del_co = co[k] as CommandOutput;
+                                    break; //co has the element that is to be deleted
+                                }
+                            }
+                            if (found) break;
                         }
 
-                        //remove co if its empty
-                        if (co.Count == 0)
+                        if (found)
                         {
-                            ad.SessionOutput.Remove(co);
+                            //CommandOutput co = (ad.SessionOutput[leafidx] as CommandOutput);
+                            if (!co.Remove(fe))
+                            {
+                                MessageBox.Show("Can't remove from session");
+                            }
+
+                            //remove co if its empty
+                            if (co.Count == 0)
+                            {
+                                ad.SessionOutput.Remove(co);
+
+                                if (ad.SessionOutput.Count == 0)
+                                {
+                                    ad.SessionOutput = null;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Could not locate the element for deletion");
                         }
                     }
                     else
