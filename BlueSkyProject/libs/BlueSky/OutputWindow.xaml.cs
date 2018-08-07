@@ -1574,7 +1574,7 @@ namespace BlueSky
             byte blue = byte.Parse(navtreeselcom.Substring(7, 2), NumberStyles.HexNumber);
             Color c = Color.FromArgb(255, red, green, blue);
             control.bordercolor = new SolidColorBrush(c);// (Colors.Gold);//05Jun2013
-
+			control.outerborderthickness = new Thickness(2);
             tag.BringIntoView(); 
 
         }
@@ -1978,13 +1978,12 @@ namespace BlueSky
             int currentpos = 0;
             int linelen = 0;
             int linecol = 0;
+			int endofcurline = 0;
             int nextlinestartpos = 0;
             for(; lno < totallines;)
             {
-                currentpos = inputTextbox.CurrentPosition;
-                linelen = inputTextbox.Lines[lno].Text.Trim().Length;
-                linecol = inputTextbox.GetColumn(currentpos);
-                nextlinestartpos = (linelen - linecol)+ currentpos + 2;
+                endofcurline = inputTextbox.Lines[lno].EndPosition; //this includes \n\r
+                nextlinestartpos = endofcurline;
                 inputTextbox.GotoPosition(nextlinestartpos);
                 if (lno == inputTextbox.CurrentLine)//if cursor is not advancing to the next line number(still on old line) then it's end of text
                 {
