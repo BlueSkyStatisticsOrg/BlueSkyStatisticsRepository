@@ -251,9 +251,11 @@ namespace BSky.Output.Viewer
             }
         }
 
+        public bool isRunFromSyntaxEditor { get; set; }
         //25Feb2015 exact copy of PopulateTree from OutputWindow.xaml. Not Sure if in future they will differ 
         private void PopulateTree(CommandOutput output, bool synedtsession = false)
         {
+            isRunFromSyntaxEditor = false;
             string treenocharscount = confService.GetConfigValueForKey("nooftreechars");//16Dec2013
             int openbracketindex, max;
             string analysisName = string.Empty;
@@ -316,8 +318,12 @@ namespace BSky.Output.Viewer
                 TextBlock nodetb = new TextBlock();
                 nodetb.Tag = control;
                 int maxlen = control.ControlType.Length < treenodecharlen ? control.ControlType.Length : (treenodecharlen);
-                string dots = maxlen <= treenodecharlen ? "..." : "...";
-                nodetb.Text = control.ControlType.Substring(0, maxlen) + dots;
+                string dots = maxlen < control.ControlType.Length ? " ..." : "";//add dots only if text are getting trimmed.
+                //Show node text with or without dots based on condition.
+                if (maxlen <= 0) //show full length
+                    nodetb.Text = control.ControlType;
+                else
+                    nodetb.Text = control.ControlType.Substring(0, maxlen) + dots;
                 nodetb.Margin = new Thickness(1);
                 nodetb.GotFocus += new RoutedEventHandler(nodetb_GotFocus);
                 nodetb.LostFocus += new RoutedEventHandler(nodetb_LostFocus);
@@ -332,23 +338,36 @@ namespace BSky.Output.Viewer
 
                 cbleaf.Visibility = System.Windows.Visibility.Visible;///unhide to see it on output window.
                 cbleaf.ToolTip = "Select/Unselect this node to show/hide in right pane";
-                if (!(control is BSkyNotes))
-                    cbleaf.IsChecked = true;
+
+                if (isRunFromSyntaxEditor)
+                {
+                    control.BSkyControlVisibility = Visibility.Visible;
+                }
+                cbleaf.IsChecked = (control.BSkyControlVisibility == Visibility.Visible) ? true : false;
 
                 treenodesp.Children.Add(cbleaf);
                 treenodesp.Children.Add(nodetb);
 
                 tvi.Header = treenodesp;// cbleaf;//.Substring(0,openbracketindex);/// Leaf Node Text
                 tvi.Tag = control;
+				(control as FrameworkElement).Tag = tvi;										
 
                 tvi.Selected += new RoutedEventHandler(tvi_Selected);
                 tvi.Unselected += new RoutedEventHandler(tvi_Unselected);//29Jan2013
-                MainItem.Items.Add(tvi);
+
+                if (synedtsession)
+                    SessionItem.Items.Add(tvi);
+                else
+                {
+                    MainItem.Items.Add(tvi);
+                }
             }
-            if (synedtsession)
-                SessionItem.Items.Add(MainItem);
-            else
+			
+            if (!synedtsession)
+            {
+				
                 NavTree.Items.Add(MainItem);
+            }
 
         }
 
@@ -361,7 +380,7 @@ namespace BSky.Output.Viewer
             IAUControl control = tag as IAUControl;
 
             control.bordercolor = new SolidColorBrush(Colors.Gold);//05Jun2013
-
+			control.outerborderthickness = new Thickness(2);
             tag.BringIntoView(); //treeview leaf node will appear selected as oppose to Focus()
         }
 
@@ -445,10 +464,6 @@ namespace BSky.Output.Viewer
 
                         }
 
-                        if (match)//if all leaves match then change the parent node state
-                        {
-                            (tvparentnode.Header as CheckBox).IsChecked = ischked;
-                        }
                     }
                 }
             }
@@ -530,6 +545,42 @@ namespace BSky.Output.Viewer
             this.Close();
         }
 
+		private void mypanel_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
 
+            bool deleteControl = false;
+            FrameworkElement fe = e.Source as FrameworkElement;
+
+            #region find control type
+            AUParagraph aup = fe as AUParagraph;
+            if (aup != null)
+            {
+                deleteControl = aup.DeleteControl;
+            }
+
+            BSkyNotes bsn = fe as BSkyNotes;
+            if (bsn != null)
+            {
+                deleteControl = bsn.DeleteControl;
+            }
+            BSkyGraphicControl bsgc = fe as BSkyGraphicControl;
+            if (bsgc != null)
+            {
+                deleteControl = bsgc.DeleteControl;
+            }
+
+            AUXGrid auxg = fe as AUXGrid;
+            if (auxg != null)
+            {
+                deleteControl = auxg.DeleteControl;
+            }
+
+            #endregion
+
+            if (deleteControl)
+            {
+				MessageBox.Show("Delete is not allowed in the Output Viewer");
+            }
+        }
     }
 }

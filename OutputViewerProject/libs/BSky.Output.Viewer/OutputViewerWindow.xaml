@@ -26,7 +26,7 @@
         </TreeView>
         <ScrollViewer Name="scrollviewer" Grid.Column="1">
             <Grid Name="panelcontainer">
-                    <StackPanel Name="mypanel"  Background="#FFEDEFE9">
+                    <StackPanel Name="mypanel"  Background="#FFEDEFE9"  ContextMenuClosing="mypanel_ContextMenuClosing">
                 </StackPanel>
             </Grid>
         </ScrollViewer>
