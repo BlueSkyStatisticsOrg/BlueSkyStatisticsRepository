@@ -424,17 +424,18 @@ namespace BlueSky
             bool dblQuotes = false;
             bool sglQuotes = false;
             string brackets = "()[]{}";
+			char prevchar='\0';
             //loop thru char by char to find each type
             foreach (char ch in commands)
             {
                 if (ch == '\"' && !dblQuotes && !sglQuotes)
                     dblQuotes = true;
-                else if (ch == '\"' && dblQuotes)
+                else if (ch == '\"' && dblQuotes && prevchar != '\\')
                     dblQuotes = false;
 
                 if (ch == '\'' && !sglQuotes && !dblQuotes)
                     sglQuotes = true;
-                else if (ch == '\'' && sglQuotes)
+                else if (ch == '\'' && sglQuotes && prevchar != '\\')
                     sglQuotes = false;
 
                 if (!dblQuotes && !sglQuotes && brackets.Contains(ch))
@@ -446,6 +447,7 @@ namespace BlueSky
                     else if (ch == '[') squarebrackets++;
                     else if (ch == ']') squarebrackets--;
                 }
+				prevchar = ch;
             }
 
             if (roundbrackets != 0 || curlybrackets != 0 || squarebrackets != 0)
