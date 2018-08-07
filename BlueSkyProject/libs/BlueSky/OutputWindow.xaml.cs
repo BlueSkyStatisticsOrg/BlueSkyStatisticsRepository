@@ -1520,6 +1520,11 @@ namespace BlueSky
 
                 cbleaf.Visibility = System.Windows.Visibility.Visible;///unhide to see it on output window.
                 cbleaf.ToolTip = BSky.GlobalResources.Properties.UICtrlResources.NavTreeCheckboxTooltip;
+				
+                if (isRunFromSyntaxEditor)
+                {
+                    control.BSkyControlVisibility = Visibility.Visible;
+                }				
 				cbleaf.IsChecked = (control.BSkyControlVisibility== Visibility.Visible) ? true : false;
 
                 treenodesp.Children.Add(cbleaf);
@@ -1932,8 +1937,11 @@ namespace BlueSky
             set { SEForceClose = value; }
         }
 
+		public bool isRunFromSyntaxEditor { get; set; }
+
         private void runButton_Click(object sender, RoutedEventArgs e)
         {
+			isRunFromSyntaxEditor = true;
             BSkyMouseBusyHandler.ShowMouseBusy();// ShowHideBusy_old(true);
             ////// Start Syntax Editor  //////
             sewindow = LifetimeService.Instance.Container.Resolve<SyntaxEditorWindow>();
@@ -1963,6 +1971,7 @@ namespace BlueSky
             finally
             {
                 BSkyMouseBusyHandler.HideMouseBusy();// ShowHideBusy_old(false);
+				isRunFromSyntaxEditor = false;
             }
             //bring focus back and move cursor to the next line
             inputTextbox.Focus();
