@@ -76,10 +76,7 @@
       <menu id="Reshape_(long_to_wide)" text="모양새 변경 (길게에서 길게)" commandtemplate="Reshape (long to wide).xaml" commandoutputformat="Reshape (long to wide).xml" owner="" nodetype="Leaf" />
     </menu>
   </menu>
- 
-
-
- <menu id="analysisMenu" text="분석" nodetype="Parent">
+  <menu id="analysisMenu" text="분석" nodetype="Parent">
     <menu id="SummarySubMenu" text="요약 분석" owner="" nodetype="Parent">
       <menu id="Analysis_of_Missing_Values" text="누락 값 분석" commandtemplate="Analysis of Missing Values.xaml" commandoutputformat="Analysis of Missing Values.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
@@ -101,9 +98,7 @@
       <menu id="Multi_Variable_One_Sample_T-Test" text="다중 변수 하나의 샘플 T- 검정" commandtemplate="Multi Variable One Sample T-Test.xaml" commandoutputformat="Multi Variable One Sample T-Test.xml" owner="" nodetype="Leaf" />
       <menu id="Multi_Variable_Independent_Sample_T-Test_(with_Factor)" text="다중 변수 독립 샘플 T- 테스트 (팩터 포함)" commandtemplate="Multi Variable Independent Sample T-Test (with Factor).xaml" commandoutputformat="Multi Variable Independent Sample T-Test (with Factor).xml" owner="" nodetype="Leaf" />
       <menu id="One_Sample_T-Test" text="다중 변수 하나의 샘플 T- 검정" commandtemplate="One Sample T-Test.xaml" commandoutputformat="One Sample T-Test.xml" owner="" nodetype="Leaf" />
-      <menu id="BSkyIndSmTTest" text="다중 변수 독립 샘플 T- 테스트" commandtemplate="BSkyIndSmTTest.xaml" commandoutputformat="BSkyIndSmTTest.xml" owner="" nodetype="Leaf" />
       <menu id="Independent_Samples_T-Test" text="독립 샘플 T- 테스트" commandtemplate="Independent Samples T-Test.xaml" commandoutputformat="Independent Samples T-Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Independent_Samples_T-Test_by_Factor" text="독립 샘플 T 팩터 별 테스트" commandtemplate="Independent Samples T-Test by Factor.xaml" commandoutputformat="Independent Samples T-Test by Factor.xml" owner="" nodetype="Leaf" />
       <menu id="Paired_T-Test" text="페어 티드 T- 테스트" commandtemplate="Paired T-Test.xaml" commandoutputformat="Paired T-Test.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="One_Way_Anova" text="편도 Anova" commandtemplate="One Way Anova.xaml" commandoutputformat="One Way Anova.xml" owner="" nodetype="Leaf" />
