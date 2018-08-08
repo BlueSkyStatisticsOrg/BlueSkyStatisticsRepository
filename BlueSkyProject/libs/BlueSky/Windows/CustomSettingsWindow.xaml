@@ -90,8 +90,8 @@
                     <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblNavTreeSelColor}"></TextBlock>
                     <Rectangle Grid.Row="4" Grid.Column="2" Width="20" Name="navtreeselectedcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[navtreeselectedcol], UpdateSourceTrigger=PropertyChanged}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}" Name="label5"   />
-                    <TextBox Grid.Row="5" Grid.Column="2" Margin="3" Width="25" Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}"  Name="noofchars" />
+                    <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}" Name="label5"   Visibility="Collapsed" />
+                    <TextBox Grid.Row="5" Grid.Column="2" Margin="3" Width="25" Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}"  Name="noofchars"  Visibility="Collapsed"/>
 
                     <TextBlock Grid.Row="6" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblShowSyntaxInOutput}"></TextBlock>
                     <CheckBox  Grid.Row="6" Grid.Column="2"  Margin="3"  Name="showSynInOutput" IsChecked="{Binding Path=[ShowSyntaxInOutput], UpdateSourceTrigger=PropertyChanged}"  />
