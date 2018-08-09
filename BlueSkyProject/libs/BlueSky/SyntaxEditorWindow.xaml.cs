@@ -3193,9 +3193,9 @@ namespace BlueSky
             }
             uamc.commandformat = objectname;// object that stores the result of analysis
             uamc.bskycommand = bskyfunctioncall.Replace('\"', '\'');// actual BSkyFunction call. " quotes replaced by '
-            uamc.commandoutputformat = bskyfunctionname.Length > 0 ? string.Format(@"{0}", BSkyAppData.BSkyAppDirConfigPath) + bskyfunctionname + ".xml" : "";//23Apr2015 
+            uamc.commandoutputformat = bskyfunctionname.Length > 0 ? string.Format(@"{0}", BSkyAppData.RoamingUserBSkyConfigL18nPath) + bskyfunctionname + ".xml" : "";//23Apr2015 
 
-            uamc.commandtemplate = bskyfunctionname.Length > 0 ? string.Format(@"{0}", BSkyAppData.BSkyAppDirConfigPath) + bskyfunctionname + ".xaml" : "";//23Apr2015 
+            uamc.commandtemplate = bskyfunctionname.Length > 0 ? string.Format(@"{0}", BSkyAppData.RoamingUserBSkyConfigL18nPath) + bskyfunctionname + ".xaml" : "";//23Apr2015 
 
             uamc.commandtype = originalCommand;
 
