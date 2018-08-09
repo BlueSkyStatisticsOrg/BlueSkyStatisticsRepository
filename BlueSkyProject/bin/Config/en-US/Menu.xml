@@ -95,8 +95,8 @@
       <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="MeansSubMenu" text="Means" owner="" nodetype="Parent">
-      <menu id="Multi_Variable_One_Sample_T-Test" text="Multi Variable One Sample T-Test" commandtemplate="Multi Variable One Sample T-Test.xaml" commandoutputformat="Multi Variable One Sample T-Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Multi_Variable_Independent_Sample_T-Test_(with_Factor)" text="Multi Variable Independent Sample T-Test (with Factor)" commandtemplate="Multi Variable Independent Sample T-Test (with Factor).xaml" commandoutputformat="Multi Variable Independent Sample T-Test (with Factor).xml" owner="" nodetype="Leaf" />
+      <menu id="Multi_Variable_One_Sample_T-Test" text="Multi Variable One Sample T-Test" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
+      <menu id="Multi_Variable_Independent_Sample_T-Test_(with_Factor)" text="Multi Variable Independent Sample T-Test (with Factor)" commandtemplate="BSkyIndSmTTest.xaml" commandoutputformat="BSkyIndSmTTest.xml" owner="" nodetype="Leaf" />
       <menu id="One_Sample_T-Test" text="One Sample T-Test" commandtemplate="One Sample T-Test.xaml" commandoutputformat="One Sample T-Test.xml" owner="" nodetype="Leaf" />
       <menu id="Independent_Samples_T-Test" text="Independent Samples T-Test" commandtemplate="Independent Samples T-Test.xaml" commandoutputformat="Independent Samples T-Test.xml" owner="" nodetype="Leaf" />
       <menu id="Paired_T-Test" text="Paired T-Test" commandtemplate="Paired T-Test.xaml" commandoutputformat="Paired T-Test.xml" owner="" nodetype="Leaf" />

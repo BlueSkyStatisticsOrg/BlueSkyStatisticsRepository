@@ -95,8 +95,8 @@
 <menu id="P-P_Plots" text="P-P 플롯" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />	  	  
     </menu>
     <menu id="MeansSubMenu" text="방법" owner="" nodetype="Parent">
-      <menu id="Multi_Variable_One_Sample_T-Test" text="다중 변수 하나의 샘플 T- 검정" commandtemplate="Multi Variable One Sample T-Test.xaml" commandoutputformat="Multi Variable One Sample T-Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Multi_Variable_Independent_Sample_T-Test_(with_Factor)" text="다중 변수 독립 샘플 T- 테스트 (팩터 포함)" commandtemplate="Multi Variable Independent Sample T-Test (with Factor).xaml" commandoutputformat="Multi Variable Independent Sample T-Test (with Factor).xml" owner="" nodetype="Leaf" />
+      <menu id="Multi_Variable_One_Sample_T-Test" text="다중 변수 하나의 샘플 T- 검정" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
+      <menu id="Multi_Variable_Independent_Sample_T-Test_(with_Factor)" text="다중 변수 독립 샘플 T- 테스트 (팩터 포함)" commandtemplate="BSkyIndSmTTest.xaml" commandoutputformat="BSkyIndSmTTest.xml" owner="" nodetype="Leaf" />
       <menu id="One_Sample_T-Test" text="다중 변수 하나의 샘플 T- 검정" commandtemplate="One Sample T-Test.xaml" commandoutputformat="One Sample T-Test.xml" owner="" nodetype="Leaf" />
       <menu id="Independent_Samples_T-Test" text="독립 샘플 T- 테스트" commandtemplate="Independent Samples T-Test.xaml" commandoutputformat="Independent Samples T-Test.xml" owner="" nodetype="Leaf" />
       <menu id="Paired_T-Test" text="페어 티드 T- 테스트" commandtemplate="Paired T-Test.xaml" commandoutputformat="Paired T-Test.xml" owner="" nodetype="Leaf" />
