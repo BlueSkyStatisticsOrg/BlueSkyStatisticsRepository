@@ -2588,6 +2588,7 @@ namespace BlueSky.Windows
         {
             totalCols = ds.Variables.Count;
             maxcolidx = totalCols - 1;
+			whichpagestatus.Text = string.Empty;
         }
 
         //First Page
@@ -2608,6 +2609,8 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging)
                     logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
+				
+				whichpagestatus.Text = "You have reached the first column";
                 return;
             }
             startcolidx = 0;
@@ -2633,6 +2636,8 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging)
                     logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
+				
+				whichpagestatus.Text = "You have reached the first column";
                 return;
             }
 

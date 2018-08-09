@@ -599,7 +599,7 @@ namespace BlueSky
         //Shows Progressbar
         private void ShowProgressbar()
         {
-            sw = new SplashWindow("Please wait. Loading BSky Environment...");
+            sw = new SplashWindow("Please wait. Loading BlueSky Statistics...");
             sw.Owner = (Application.Current.MainWindow);
             //bw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             //bw.Visibility = Visibility.Visible;
