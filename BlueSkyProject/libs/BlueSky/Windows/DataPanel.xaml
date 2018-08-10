@@ -236,18 +236,30 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Name="statusbar" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text=""></TextBlock>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-				<TextBlock Margin="0,0,5,0" Name="whichpagestatus"></TextBlock>
+                <TextBlock Margin="0,0,5,0" Name="endpagestatus" Foreground="Orange"></TextBlock>
                 <Button Name="leftmostpagebutton" Click="leftmostpagebutton_Click" Width="16" Height="16"  Background="Transparent" BorderThickness="0" ToolTip="First">
-                    <Image Source="pack://application:,,,/BlueSky;component/Images/pagination_first.png"/>
+                    <StackPanel>
+                        <Image Name="firstimg" Source="pack://application:,,,/BlueSky;component/Images/pagination_first.png"/>
+                        <Image Name="firstGrayimg" Source="pack://application:,,,/BlueSky;component/Images/paginationGray_first.png" Visibility="Collapsed"/>
+                    </StackPanel>
                 </Button>
                 <Button Name="leftpagebutton" Click="leftpagebutton_Click" Width="16" Height="16"  Background="Transparent" BorderThickness="0" ToolTip="Previous">
-                    <Image Source="pack://application:,,,/BlueSky;component/Images/pagination_previous.png"/>
+                    <StackPanel>
+                        <Image Name="previuosimg" Source="pack://application:,,,/BlueSky;component/Images/pagination_previous.png"/>
+                        <Image Name="previuosGrayimg" Source="pack://application:,,,/BlueSky;component/Images/paginationGray_previous.png" Visibility="Collapsed"/>
+                    </StackPanel>
                 </Button>
                 <Button Name="rightpagebutton" Click="rightpagebutton_Click" Width="16" Height="16"  Background="Transparent" BorderThickness="0" ToolTip="Next">
-                    <Image Source="pack://application:,,,/BlueSky;component/Images/pagination_next.png"/>
+                    <StackPanel>
+                        <Image Name="nextimg" Source="pack://application:,,,/BlueSky;component/Images/pagination_next.png"/>
+                        <Image Name="nextGrayimg" Source="pack://application:,,,/BlueSky;component/Images/paginationGray_next.png" Visibility="Collapsed"/>
+                    </StackPanel>
                 </Button>
                 <Button Name="rightmostpagebutton" Click="rightmostpagebutton_Click" Width="16" Height="16"  Background="Transparent" BorderThickness="0" ToolTip="Last">
-                    <Image Source="pack://application:,,,/BlueSky;component/Images/pagination_last.png"/>
+                    <StackPanel>
+                        <Image Name="lastimg" Source="pack://application:,,,/BlueSky;component/Images/pagination_last.png"/>
+                        <Image Name="lastGrayimg" Source="pack://application:,,,/BlueSky;component/Images/paginationGray_last.png" Visibility="Collapsed"/>
+                    </StackPanel>
                 </Button>
             </StackPanel>
         </Grid>

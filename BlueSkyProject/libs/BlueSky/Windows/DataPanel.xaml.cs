@@ -2588,14 +2588,14 @@ namespace BlueSky.Windows
         {
             totalCols = ds.Variables.Count;
             maxcolidx = totalCols - 1;
-			whichpagestatus.Text = string.Empty;
+            endpagestatus.Text = string.Empty;
         }
 
         //First Page
         private void leftmostpagebutton_Click(object sender, RoutedEventArgs e)
         {
             initForPageScroll();
-
+            EnableRightNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
             if (maxcolidx < colsToLoad)
             {
@@ -2609,8 +2609,9 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging)
                     logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
-				
-				whichpagestatus.Text = "You have reached the first column";
+
+                endpagestatus.Text = "You have reached the first page. Use the scrollbar if available under the datagrid, to view all the columns on the first page.";
+                DisableLeftNavigationButtons();
                 return;
             }
             startcolidx = 0;
@@ -2622,7 +2623,7 @@ namespace BlueSky.Windows
         private void leftpagebutton_Click(object sender, RoutedEventArgs e)
         {
             initForPageScroll();
-
+            EnableRightNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
             if (maxcolidx < colsToLoad)
             {
@@ -2636,8 +2637,9 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging)
                     logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
-				
-				whichpagestatus.Text = "You have reached the first column";
+
+                endpagestatus.Text = "You have reached the first page. Use the scrollbar if available under the datagrid, to view all the columns on the first page.";
+                DisableLeftNavigationButtons();
                 return;
             }
 
@@ -2648,7 +2650,7 @@ namespace BlueSky.Windows
         private void rightpagebutton_Click(object sender, RoutedEventArgs e)
         {
             initForPageScroll();
-
+            EnableLeftNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
             if (maxcolidx < colsToLoad)
             {
@@ -2662,6 +2664,9 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging)
                     logService.WriteToLogLevel("Already on the last page", LogLevelEnum.Info);
+
+                endpagestatus.Text = "You have reached the last page. Use the scrollbar if available under the datagrid, to view the last column.";
+                DisableRightNavigationButtons();
                 return;
             }
             LoadNextColSet();
@@ -2673,7 +2678,7 @@ namespace BlueSky.Windows
         private void rightmostpagebutton_Click(object sender, RoutedEventArgs e)
         {
             initForPageScroll();
-
+            EnableLeftNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
             if (maxcolidx < colsToLoad)
             {
@@ -2686,6 +2691,9 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging)
                     logService.WriteToLogLevel("Already on the last page", LogLevelEnum.Info);
+
+                endpagestatus.Text = "You have reached the last page. Use the scrollbar if available under the datagrid, to view the last column.";
+                DisableRightNavigationButtons();
                 return;
             }
 
@@ -2694,6 +2702,59 @@ namespace BlueSky.Windows
             endcolidx = ds.Variables.Count;
             LoadNextColSet();
         }
+
+
+        #region Datagrid Navigation Buttons disable/enable methods
+
+        void DisableRightNavigationButtons()
+        {
+            rightpagebutton.IsEnabled = false;
+            rightmostpagebutton.IsEnabled = false;
+
+            nextimg.Visibility = Visibility.Collapsed;
+            nextGrayimg.Visibility = Visibility.Visible;
+
+            lastimg.Visibility = Visibility.Collapsed;
+            lastGrayimg.Visibility = Visibility.Visible;
+        }
+
+        void EnableRightNavigationButtons()
+        {
+            rightpagebutton.IsEnabled = true;
+            rightmostpagebutton.IsEnabled = true;
+
+            nextimg.Visibility = Visibility.Visible;
+            nextGrayimg.Visibility = Visibility.Collapsed;
+
+            lastimg.Visibility = Visibility.Visible;
+            lastGrayimg.Visibility = Visibility.Collapsed;
+        }
+
+        void DisableLeftNavigationButtons()
+        {
+            leftmostpagebutton.IsEnabled = false;
+            leftpagebutton.IsEnabled = false;
+
+            firstimg.Visibility = Visibility.Collapsed;
+            firstGrayimg.Visibility = Visibility.Visible;
+
+            previuosimg.Visibility = Visibility.Collapsed;
+            previuosGrayimg.Visibility = Visibility.Visible;
+        }
+
+        void EnableLeftNavigationButtons()
+        {
+            leftmostpagebutton.IsEnabled = true;
+            leftpagebutton.IsEnabled = true;
+
+            firstimg.Visibility = Visibility.Visible;
+            firstGrayimg.Visibility = Visibility.Collapsed;
+
+            previuosimg.Visibility = Visibility.Visible;
+            previuosGrayimg.Visibility = Visibility.Collapsed;
+        }
+        #endregion
+
 
         void LoadPreviousColSet()
         {
