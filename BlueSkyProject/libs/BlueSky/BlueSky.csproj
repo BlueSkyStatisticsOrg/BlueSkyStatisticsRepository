@@ -656,6 +656,10 @@
     <Resource Include="Images\nominal.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\paginationGray_first.png" />
+    <Resource Include="Images\paginationGray_last.png" />
+    <Resource Include="Images\paginationGray_next.png" />
+    <Resource Include="Images\paginationGray_previous.png" />
     <Resource Include="Images\input.png" />
     <Content Include="Images\none.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
