@@ -91,8 +91,7 @@
       <menu id="Correlation_Test_(Multi-variable)" text="상관 관계 테스트 (다중 변수)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Matrix" text="상관 행렬" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
       <menu id="Shapiro-Wilk_Normality_Test" text="샤피로 - 윌크 정상 시험" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Q-Q_plot" text="Q-Q 플롯" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
-<menu id="P-P_Plots" text="P-P 플롯" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />	  	  
+  	  
     </menu>
     <menu id="MeansSubMenu" text="방법" owner="" nodetype="Parent">
       <menu id="Multi_Variable_One_Sample_T-Test" text="다중 변수 하나의 샘플 T- 검정" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
@@ -183,17 +182,17 @@
     <menu id="OtherPlotsSubMenu" text="기타" owner="" nodetype="Parent">
       <menu id="Boxplot_(lists_outliers)" text="박스 플롯 (아웃 라이어 나열)" commandtemplate="Boxplot (lists outliers).xaml" commandoutputformat="Boxplot (lists outliers).xml" owner="" nodetype="Leaf" />
       <menu id="Strip_Plot" text="스트립 플롯" commandtemplate="Strip Plot.xaml" commandoutputformat="Strip Plot.xml" owner="" nodetype="Leaf" />
+      <menu id="Histogram_(legacy)" text="히스토그램 (유산)" commandtemplate="Histogram (legacy).xaml" commandoutputformat="Histogram (legacy).xml" owner="" nodetype="Leaf" />
+      <menu id="Plot_of_Means_(legacy)" text="의미의 음모 (유산)" commandtemplate="Plot of Means (legacy).xaml" commandoutputformat="Plot of Means (legacy).xml" owner="" nodetype="Leaf" />
+      <menu id="Scatterplot_(legacy)" text="산점도 (유산)" commandtemplate="Scatterplot (legacy).xaml" commandoutputformat="Scatterplot (legacy).xml" owner="" nodetype="Leaf" />
+      <menu id="Strip_Plot_(legacy)" text="스트립 플롯 (유산)" commandtemplate="Strip Plot (legacy).xaml" commandoutputformat="Strip Plot (legacy).xml" owner="" nodetype="Leaf" />	  
     </menu>
     <menu id="Line_Chart" text="선형 차트" commandtemplate="Line Chart.xaml" commandoutputformat="Line Chart.xml" owner="" nodetype="Leaf" />
     <menu id="Frequency_Charts_(numeric)" text="빈도 차트 (숫자)" commandtemplate="Frequency Charts (numeric).xaml" commandoutputformat="Frequency Charts (numeric).xml" owner="" nodetype="Leaf" />
     <menu id="Frequency_Charts(factor)" text="빈도 차트 (요인)" commandtemplate="Frequency Charts(factor).xaml" commandoutputformat="Frequency Charts(factor).xml" owner="" nodetype="Leaf" />
-    <menu id="PlotLegacySubMenu" text="유산" owner="" nodetype="Parent">
-      <menu id="Histogram_(legacy)" text="히스토그램 (유산)" commandtemplate="Histogram (legacy).xaml" commandoutputformat="Histogram (legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Plot_of_Means_(legacy)" text="의미의 음모 (유산)" commandtemplate="Plot of Means (legacy).xaml" commandoutputformat="Plot of Means (legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Scatterplot_(legacy)" text="산점도 (유산)" commandtemplate="Scatterplot (legacy).xaml" commandoutputformat="Scatterplot (legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Strip_Plot_(legacy)" text="스트립 플롯 (유산)" commandtemplate="Strip Plot (legacy).xaml" commandoutputformat="Strip Plot (legacy).xml" owner="" nodetype="Leaf" />
-    </menu>
     <menu id="Plot" text="음모" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
+	<menu id="P-P_Plots" text="P-P 플롯" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />	
+	<menu id="Q-Q_plot" text="Q-Q 플롯" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
   </menu>
 
   <menu id="ModelFittingMenu" text="모델 피팅" owner="" nodetype="Parent">

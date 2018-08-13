@@ -33,7 +33,7 @@
       <menu id="Replace_All_Missing_Values_in_Factor_and_String_variables" text="Replace All Missing Values in Factor and String variables" commandtemplate="Replace All Missing Values in Factor and String variables.xaml" commandoutputformat="Replace All Missing Values in Factor and String variables.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="ComputeSubMenu" text="Compute" owner="" nodetype="Parent">
-      <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
+      <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" />
       <menu id="Conditional_Compute" text="Conditional Compute" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="new_id" text="Transpose" owner="" nodetype="Parent">
@@ -91,8 +91,6 @@
       <menu id="Correlation_Test_(Multi-variable)" text="Correlation Test (Multi-variable)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
       <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Q-Q_plot" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
-      <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="MeansSubMenu" text="Means" owner="" nodetype="Parent">
       <menu id="Multi_Variable_One_Sample_T-Test" text="Multi Variable One Sample T-Test" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
@@ -184,17 +182,17 @@
     <menu id="OtherPlotsSubMenu" text="Others" owner="" nodetype="Parent">
       <menu id="Boxplot_(lists_outliers)" text="Boxplot (lists outliers)" commandtemplate="Boxplot (lists outliers).xaml" commandoutputformat="Boxplot (lists outliers).xml" owner="" nodetype="Leaf" />
       <menu id="Strip_Plot" text="Strip Plot" commandtemplate="Strip Plot.xaml" commandoutputformat="Strip Plot.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="Line_Chart" text="Line Chart" commandtemplate="Line Chart.xaml" commandoutputformat="Line Chart.xml" owner="" nodetype="Leaf" />
-    <menu id="Frequency_Charts_(numeric)" text="Frequency Charts (numeric)" commandtemplate="Frequency Charts (numeric).xaml" commandoutputformat="Frequency Charts (numeric).xml" owner="" nodetype="Leaf" />
-    <menu id="Frequency_Charts(factor)" text="Frequency Charts(factor)" commandtemplate="Frequency Charts(factor).xaml" commandoutputformat="Frequency Charts(factor).xml" owner="" nodetype="Leaf" />
-    <menu id="PlotLegacySubMenu" text="Legacy" owner="" nodetype="Parent">
       <menu id="Histogram_(legacy)" text="Histogram (legacy)" commandtemplate="Histogram (legacy).xaml" commandoutputformat="Histogram (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Plot_of_Means_(legacy)" text="Plot of Means (legacy)" commandtemplate="Plot of Means (legacy).xaml" commandoutputformat="Plot of Means (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Scatterplot_(legacy)" text="Scatterplot (legacy)" commandtemplate="Scatterplot (legacy).xaml" commandoutputformat="Scatterplot (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Strip_Plot_(legacy)" text="Strip Plot (legacy)" commandtemplate="Strip Plot (legacy).xaml" commandoutputformat="Strip Plot (legacy).xml" owner="" nodetype="Leaf" />
     </menu>
+    <menu id="Line_Chart" text="Line Chart" commandtemplate="Line Chart.xaml" commandoutputformat="Line Chart.xml" owner="" nodetype="Leaf" />
+    <menu id="Frequency_Charts_(numeric)" text="Frequency Charts (numeric)" commandtemplate="Frequency Charts (numeric).xaml" commandoutputformat="Frequency Charts (numeric).xml" owner="" nodetype="Leaf" />
+    <menu id="Frequency_Charts(factor)" text="Frequency Charts(factor)" commandtemplate="Frequency Charts(factor).xaml" commandoutputformat="Frequency Charts(factor).xml" owner="" nodetype="Leaf" />
     <menu id="Plot" text="Plot" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
+    <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />
+    <menu id="Q-Q_plot" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
     <menu id="Linear_Regression" text="Linear Regression" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf" icon="images/Regression.png" showtoolbaricon="true" />
