@@ -679,6 +679,7 @@ namespace BlueSky
 
             seltext = seltext.Replace('\n', ';').Replace('\r', ' ').Trim();
             seltext = JoinCommaSeparatedStatment(seltext);
+			seltext = JoinPipeSeparatedStatment(seltext);
             string stmt = "";
             //////wrap in sink////////
 
@@ -1007,6 +1008,13 @@ namespace BlueSky
             return comm;
         }
 
+        /// Join the statments Ends in Pipe '%<%'
+        private string JoinPipeSeparatedStatment(string comm)//, int start, ref int end)
+        {
+            comm = Regex.Replace(comm, @"%>%\s*;", " %>% ");
+            return comm;
+        }
+		
         ////curly block parser////
         private string CurlyBracketParser(string comm, int start, ref int end)
         {
