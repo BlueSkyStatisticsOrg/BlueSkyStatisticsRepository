@@ -1952,6 +1952,17 @@ namespace BlueSky
             {
                 if (commands != null && commands.Length > 0)
                 {
+                    //one of these two is at the starting and other at the end of the selection
+					if (inputTextbox.CurrentPosition > inputTextbox.RectangularSelectionAnchor) 
+                    {
+                        inputTextbox.GotoPosition(inputTextbox.CurrentPosition);
+                    }
+                    else
+                    {
+                        inputTextbox.GotoPosition(inputTextbox.RectangularSelectionAnchor);
+                    }
+
+                    lno = inputTextbox.CurrentLine;					
                 }
                 else
                 {
