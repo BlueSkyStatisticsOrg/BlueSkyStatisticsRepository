@@ -2594,6 +2594,7 @@ namespace BlueSky.Windows
         //First Page
         private void leftmostpagebutton_Click(object sender, RoutedEventArgs e)
         {
+            BSkyMouseBusyHandler.ShowMouseBusy();
             initForPageScroll();
             EnableRightNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
@@ -2617,11 +2618,13 @@ namespace BlueSky.Windows
             startcolidx = 0;
             endcolidx = colsToLoad - 1;//zero based index
             LoadPreviousColSet();
+            BSkyMouseBusyHandler.HideMouseBusy();
         }
 
         //Previous Page
         private void leftpagebutton_Click(object sender, RoutedEventArgs e)
         {
+            BSkyMouseBusyHandler.ShowMouseBusy();
             initForPageScroll();
             EnableRightNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
@@ -2644,11 +2647,13 @@ namespace BlueSky.Windows
             }
 
             LoadPreviousColSet();
+            BSkyMouseBusyHandler.HideMouseBusy();
         }
 
         //Next Page
         private void rightpagebutton_Click(object sender, RoutedEventArgs e)
         {
+            BSkyMouseBusyHandler.ShowMouseBusy();
             initForPageScroll();
             EnableLeftNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
@@ -2670,6 +2675,7 @@ namespace BlueSky.Windows
                 return;
             }
             LoadNextColSet();
+            BSkyMouseBusyHandler.HideMouseBusy();
         }
 
         //Last Page
@@ -2677,6 +2683,7 @@ namespace BlueSky.Windows
 
         private void rightmostpagebutton_Click(object sender, RoutedEventArgs e)
         {
+            BSkyMouseBusyHandler.ShowMouseBusy();
             initForPageScroll();
             EnableLeftNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
@@ -2701,6 +2708,7 @@ namespace BlueSky.Windows
             startcolidx = ds.Variables.Count - 10; 
             endcolidx = ds.Variables.Count;
             LoadNextColSet();
+            BSkyMouseBusyHandler.HideMouseBusy();
         }
 
 
