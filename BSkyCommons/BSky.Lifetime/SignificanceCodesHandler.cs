@@ -142,6 +142,23 @@ namespace BSky.Lifetime
             _sigCodeList.Clear();
             CreateSignifColList();
         }
+
+        //Get all (current) signif col names
+        public static List<string> GetAllSignifColNames()
+        {
+            List<string> SignifColNames = new List<string>();
+            if (SigCodeList != null && SigCodeList.Count > 0)
+            {
+                foreach (ColSignifCodes sc in SigCodeList)
+                {
+                    if (!SignifColNames.Contains(sc.ColName))
+                    {
+                        SignifColNames.Add(sc.ColName);
+                    }
+                }
+            }
+            return SignifColNames;
+        }
     }
 
     public class ColSignifCodes
