@@ -194,7 +194,7 @@ namespace BlueSky.Services
                 //panel.IsSelected = true;
                 //docGroup.SelectedIndex = docGroup.Items.Count - 1;
             }
-            logService.Info("Grid Loading started.");
+            logService.Info("Grid Loading finished.");
         }
 
         public void Load_Dataframe(DataSource ds)
@@ -280,7 +280,7 @@ namespace BlueSky.Services
             //from some dialog window created in C#(not analysis dialog). And the dialog is still on top 
             //of the app while datagrid window will be in back. So following line will have no effect.
             panel.Focus();//15Oct2015 
-            logService.Info("Grid Loading started.");
+            logService.Info("Grid Loading finished.");
         }
 
         public List<string> GetDatasetNames()
