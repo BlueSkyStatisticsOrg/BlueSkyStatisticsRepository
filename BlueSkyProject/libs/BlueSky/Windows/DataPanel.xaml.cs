@@ -2594,88 +2594,100 @@ namespace BlueSky.Windows
         //First Page
         private void leftmostpagebutton_Click(object sender, RoutedEventArgs e)
         {
+            if (AdvancedLogging) logService.WriteToLogLevel("FIRST clicked. Mouse busy", LogLevelEnum.Info);
             BSkyMouseBusyHandler.ShowMouseBusy();
             initForPageScroll();
             EnableRightNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
             if (maxcolidx < colsToLoad)
             {
-                if (AdvancedLogging)
-                    logService.WriteToLogLevel("All cols fit in one page", LogLevelEnum.Info);
+                if (AdvancedLogging)  logService.WriteToLogLevel("All cols fit in one page", LogLevelEnum.Info);
+                BSkyMouseBusyHandler.HideMouseBusy();
+                if (AdvancedLogging) logService.WriteToLogLevel("FIRST clicked. Mouse free", LogLevelEnum.Info);
                 return;
             }
 
             //For performance improvement
             if (startcolidx == 0)
             {
-                if (AdvancedLogging)
-                    logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
+                if (AdvancedLogging) logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
 
                 endpagestatus.Text = "You have reached the first page. Use the scrollbar if available under the datagrid, to view all the columns on the first page.";
                 DisableLeftNavigationButtons();
+                BSkyMouseBusyHandler.HideMouseBusy();
+                if (AdvancedLogging) logService.WriteToLogLevel("FIRST clicked. Mouse free", LogLevelEnum.Info);
                 return;
             }
             startcolidx = 0;
             endcolidx = colsToLoad - 1;//zero based index
             LoadPreviousColSet();
             BSkyMouseBusyHandler.HideMouseBusy();
+            if (AdvancedLogging) logService.WriteToLogLevel("FIRST clicked. Mouse free", LogLevelEnum.Info);
         }
 
         //Previous Page
         private void leftpagebutton_Click(object sender, RoutedEventArgs e)
         {
+            if (AdvancedLogging) logService.WriteToLogLevel("LEFT clicked. Mouse busy", LogLevelEnum.Info);
             BSkyMouseBusyHandler.ShowMouseBusy();
             initForPageScroll();
             EnableRightNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
             if (maxcolidx < colsToLoad)
             {
-                if (AdvancedLogging)
-                    logService.WriteToLogLevel("All cols fit in one page", LogLevelEnum.Info);
+                if (AdvancedLogging) logService.WriteToLogLevel("All cols fit in one page", LogLevelEnum.Info);
+                BSkyMouseBusyHandler.HideMouseBusy();
+                if (AdvancedLogging) logService.WriteToLogLevel("LEFT clicked. Mouse free", LogLevelEnum.Info);
                 return;
             }
 
             //For performance improvement
             if (startcolidx == 0)
             {
-                if (AdvancedLogging)
-                    logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
+                if (AdvancedLogging) logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
 
                 endpagestatus.Text = "You have reached the first page. Use the scrollbar if available under the datagrid, to view all the columns on the first page.";
                 DisableLeftNavigationButtons();
+                BSkyMouseBusyHandler.HideMouseBusy();
+                if (AdvancedLogging) logService.WriteToLogLevel("LEFT clicked. Mouse free", LogLevelEnum.Info);
                 return;
             }
 
             LoadPreviousColSet();
             BSkyMouseBusyHandler.HideMouseBusy();
+            if (AdvancedLogging) logService.WriteToLogLevel("LEFT clicked. Mouse free", LogLevelEnum.Info);
         }
 
         //Next Page
         private void rightpagebutton_Click(object sender, RoutedEventArgs e)
         {
+            if (AdvancedLogging) logService.WriteToLogLevel("NEXT clicked. Mouse busy", LogLevelEnum.Info);
             BSkyMouseBusyHandler.ShowMouseBusy();
             initForPageScroll();
             EnableLeftNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
             if (maxcolidx < colsToLoad)
             {
-                if (AdvancedLogging)
-                    logService.WriteToLogLevel("All cols fit in one page", LogLevelEnum.Info);
+                if (AdvancedLogging) logService.WriteToLogLevel("All cols fit in one page", LogLevelEnum.Info);
+                BSkyMouseBusyHandler.HideMouseBusy();
+                if (AdvancedLogging) logService.WriteToLogLevel("NEXT clicked. Mouse free", LogLevelEnum.Info);
                 return;
             }
 
             //For performance improvement
             if (endcolidx == maxcolidx)
             {
-                if (AdvancedLogging)
-                    logService.WriteToLogLevel("Already on the last page", LogLevelEnum.Info);
+                if (AdvancedLogging) logService.WriteToLogLevel("Already on the last page", LogLevelEnum.Info);
 
                 endpagestatus.Text = "You have reached the last page. Use the scrollbar if available under the datagrid, to view the last column.";
                 DisableRightNavigationButtons();
+                BSkyMouseBusyHandler.HideMouseBusy();
+                if (AdvancedLogging) logService.WriteToLogLevel("NEXT clicked. Mouse free", LogLevelEnum.Info);
                 return;
             }
             LoadNextColSet();
             BSkyMouseBusyHandler.HideMouseBusy();
+            if (AdvancedLogging) logService.WriteToLogLevel("NEXT clicked. Mouse free", LogLevelEnum.Info);
         }
 
         //Last Page
@@ -2683,24 +2695,27 @@ namespace BlueSky.Windows
 
         private void rightmostpagebutton_Click(object sender, RoutedEventArgs e)
         {
+            if (AdvancedLogging) logService.WriteToLogLevel("LAST clicked. Mouse busy", LogLevelEnum.Info);
             BSkyMouseBusyHandler.ShowMouseBusy();
             initForPageScroll();
             EnableLeftNavigationButtons();
             //For dataset with lesser numbers of columns (less than colsToLoad), there is no need to do pagination at all
             if (maxcolidx < colsToLoad)
             {
-                if (AdvancedLogging)
-                    logService.WriteToLogLevel("All cols fit in one page", LogLevelEnum.Info);
+                if (AdvancedLogging)  logService.WriteToLogLevel("All cols fit in one page", LogLevelEnum.Info);
+                BSkyMouseBusyHandler.HideMouseBusy();
+                if (AdvancedLogging) logService.WriteToLogLevel("LAST clicked. Mouse free", LogLevelEnum.Info);
                 return;
             }
             //For performance improvement
             if (endcolidx == maxcolidx)
             {
-                if (AdvancedLogging)
-                    logService.WriteToLogLevel("Already on the last page", LogLevelEnum.Info);
+                if (AdvancedLogging)  logService.WriteToLogLevel("Already on the last page", LogLevelEnum.Info);
 
                 endpagestatus.Text = "You have reached the last page. Use the scrollbar if available under the datagrid, to view the last column.";
                 DisableRightNavigationButtons();
+                BSkyMouseBusyHandler.HideMouseBusy();
+                if (AdvancedLogging) logService.WriteToLogLevel("LAST clicked. Mouse free", LogLevelEnum.Info);
                 return;
             }
 
@@ -2709,6 +2724,7 @@ namespace BlueSky.Windows
             endcolidx = ds.Variables.Count;
             LoadNextColSet();
             BSkyMouseBusyHandler.HideMouseBusy();
+            if (AdvancedLogging) logService.WriteToLogLevel("LAST clicked. Mouse free", LogLevelEnum.Info);
         }
 
 
