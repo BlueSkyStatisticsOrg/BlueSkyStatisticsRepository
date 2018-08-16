@@ -33,7 +33,7 @@
       <menu id="Replace_All_Missing_Values_in_Factor_and_String_variables" text="Replace All Missing Values in Factor and String variables" commandtemplate="Replace All Missing Values in Factor and String variables.xaml" commandoutputformat="Replace All Missing Values in Factor and String variables.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="ComputeSubMenu" text="Compute" owner="" nodetype="Parent">
-      <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" />
+      <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner=""  nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
       <menu id="Conditional_Compute" text="Conditional Compute" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="new_id" text="Transpose" owner="" nodetype="Parent">
