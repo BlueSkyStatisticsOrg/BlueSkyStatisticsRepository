@@ -631,8 +631,8 @@ namespace BSky.XmlDecoder
                             //right now first index is picked. So, we are not looking for codes based on colName beacuse they all are same for all colNames.
                             csc = sigcodlist[0];
 
-                            //same signif codes for all colnames p.value, p-value, Sig
-                            //if you need diff codes for diff colNames than you may have to add more lines like below, 
+                            //same signif codes for all colnames p.value, p-value, Sig.
+                            //if you need diff codes for diff colNames than you may have to add more lines like below 
                             //for each colName that was found in the col-header.
                             //Plus you need to pick 'csc' above for matching colName not 0 index
                             xgrid.starText.Text = csc.getFooterStarMessage();
@@ -661,27 +661,21 @@ namespace BSky.XmlDecoder
                         }
                         for (int j = 0; j < matrix.GetLength(1); j++)
                         {
+							stars = string.Empty;
                             if (j < grid.Columns.Count)//05Mar2013. could cause IndexoutOfBounds: 
                             {
                                 if (matrix[i, j] != "NA")
                                 {
                                     if (starColindexes.Count > 0 && starColindexes.Contains(j) && csc!=null)//if there is a col to which stars should be added then run code inside 'if'
                                     {
-                                        if(true)// (starColindexes.Contains(j))//if there is a col-idx in starColindexes that is supposed to contain start
-                                        {
-
-                                            //get number of stars from data
-                                            if (Double.TryParse(matrix[i,j], out celldata))//convert if possible
-                                            {
-                                                stars = csc.getStarChars(celldata);
-                                            }
-                                            grid[i, j] = matrix[i, j] + " " + stars;
-                                        }
+										//get number of stars from data
+										if (Double.TryParse(matrix[i,j], out celldata))//convert if possible
+										{
+											stars = csc.getStarChars(celldata);
+										}
+										//grid[i, j] = matrix[i, j] + " " + stars;
                                     }
-                                    else
-                                    {
-                                        grid[i, j] = matrix[i, j];// +"**";//celdata;//Decimal Digit handled in R
-                                    }
+                                    grid[i, j] = matrix[i, j] + " " + stars;
                                 }
                                 else
                                 {
