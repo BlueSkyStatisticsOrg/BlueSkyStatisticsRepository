@@ -1814,7 +1814,12 @@ namespace BSky.Statistics.R
 
         public override void LoadDefPacakges()
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();			
             LoadDefaultPackages();
+            sw.Stop();
+            long elapsed = sw.ElapsedMilliseconds;
+            logService.WriteToLogLevel("Default R packages load time = " + elapsed.ToString(), LogLevelEnum.Info);
         }
 
         //06Dec2013 show installed packages
