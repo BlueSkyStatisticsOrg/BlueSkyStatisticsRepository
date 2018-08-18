@@ -1423,21 +1423,73 @@ namespace BSky.XmlDecoder
                     //Select column which will have start (if any). We need some logic here to figureout which col index should have stars
                     int latrowidx = colHeaders.GetLength(0) - 1;
                     int starcolidx = -1;
+                    List<int> starColindexes = new List<int>();//list of col indexes. Signif code logic should be applied to all the col indexs.
                     ColSignifCodes csc=null;
                     if(sigcodlist!=null)
-                        foreach (ColSignifCodes v in sigcodlist)//find if col is in the list of col those have signif codes
+                    {
+                       List<string> allsigColNames = SignificanceCodesHandler.GetAllSignifColNames();
+                        int Cidx = 0;
+                        foreach (string s in colHeaders) //getting all col indexes where signif code is to be applied.
                         {
-                            //starColNames.Add(v.ColName);
-                            starcolidx = Array.FindIndex(colHeaders, itm => itm == v.ColName);
-
-                            if (starcolidx >= 0)//found index of col in colHeaders to which signif codes should be applied.
+                            if (allsigColNames.Contains(s))
                             {
-                                csc = v;
-                                xgrid.starText.Text = csc.getFooterStarMessage();
-                                break;
+                                if (!starColindexes.Contains(Cidx))//add unique items. No duplicates
+                                {
+                                    starColindexes.Add(Cidx);
+                                }
                             }
+                            Cidx++;
                         }
 
+                        //Some dialogs like 'One Sample TTest and Independent Sample TTest' has text 'p-value' in the data cell area and not
+                        //in the column header area(basically that text is not header) so it is difficult to apply signif code to that column.
+                        //As a workaround we can go through the data and find the 'p-value' text(or other text) to which singnif code has to 
+                        //be applied. Also we may have to hard code the dialog names here because so far these two dialogs are the exceptions.
+                        //
+                        //CHECK DATA CELL for text like Sig., p-value etc. and store the col-index where it was found so that 
+                        //signif code can be applied later. Looks like right now only 'tableheader' is the one that can help.
+                        bool isOneSmOrIndSM = (tableheader.Trim().Equals("One Sample t-test") || tableheader.Trim().Equals("Welch Two Sample t-test")) ? true : false;
+                        if (isOneSmOrIndSM)
+                        {
+                            //dont want to check all the rows because there can be many rows in data area
+                            //so we can just see like 3-4 rows max for header text (p.value, Sig. etc). We can put custom setting for this too.
+                            int hardcodedvalue = 3;//or can be read from custom settings if created there.
+                            int datamatrixRowCount = datamatrix.GetLength(0);
+
+                            //pick whichever is less
+                            int MaxRowsToCheck = datamatrixRowCount > hardcodedvalue ? hardcodedvalue : datamatrixRowCount;
+
+                            for (int rw = 0; rw < MaxRowsToCheck; rw++)
+                            {
+                                for (int c = 0; c < datamatrix.GetLength(1); c++)
+                                {
+                                    if (datamatrix[rw, c] != null && allsigColNames.Contains(datamatrix[rw, c]))
+                                    {
+                                        if (!starColindexes.Contains(c))//add unique items. No duplicates
+                                        {
+                                            starColindexes.Add(c);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (starColindexes.Count > 0)//found index of col in colHeaders to which signif codes should be applied.
+                    {
+                        //right now first index is picked. So, we are not looking for codes based on colName beacuse they all are same for all colNames.
+                        csc = sigcodlist[0];
+
+                        //same signif codes for all colnames p.value, p-value, Sig.
+                        //if you need diff codes for diff colNames than you may have to add more lines like below 
+                        //for each colName that was found in the col-header.
+                        //Plus you need to pick 'csc' above for matching colName not 0 index
+                        xgrid.starText.Text = csc.getFooterStarMessage();
+
+                        //Since in multi-row ColHeaders the matching colName can be found in any cell of 
+                        //ColHeaderMatrix so we need to look the whole ColHeaderMatrix.
+                        //break; 
+                    }                    
                     string stars = string.Empty;//for APA Style table
                     double celldata = 0.0;
                     /// Filling Data
@@ -1448,7 +1500,7 @@ namespace BSky.XmlDecoder
                         for (int c = 0; c < datamatrix.GetLength(1); c++)
                         {
                             stars = string.Empty;
-                            if (starcolidx>=0 && c == starcolidx)//star col and calculating star count
+                            if (starColindexes.Count > 0 && starColindexes.Contains(c) && csc != null)//star col and calculating star count
                             {
                                 //get data first
                                 if (Double.TryParse(datamatrix[rw, c], out celldata))//convert if possible
