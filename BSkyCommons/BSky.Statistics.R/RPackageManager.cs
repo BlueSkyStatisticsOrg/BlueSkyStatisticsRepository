@@ -312,7 +312,7 @@ namespace BSky.Statistics.R
             else
             {
                 //Load Package
-                if (!_dispatcher.IsLoaded(packagename))
+                if (true) // (!_dispatcher.IsLoaded(packagename))
                 {
                     string errm = _dispatcher.EvaluateNoReturn("options('warn'=1)"); 
                     string errmsg = _dispatcher.EvaluateNoReturn(command);//  "Load Package";
@@ -440,7 +440,7 @@ namespace BSky.Statistics.R
 
             foreach (string pkgname in packagenames)
             {
-                tmp = LoadPackage(pkgname.Trim(), AddToUserPackageList);
+                tmp = LoadPackage(pkgname.Trim(), AddToUserPackageList, false);//false: no verification
 
                 if (tmp != null)
                 {
