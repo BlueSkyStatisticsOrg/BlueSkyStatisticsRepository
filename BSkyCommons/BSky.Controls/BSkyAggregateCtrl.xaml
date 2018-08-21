@@ -4,19 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:w="clr-namespace:BSky.Controls"
-             mc:Ignorable="d" Height="340" Width="230" 
+             mc:Ignorable="d" Height="348" Width="242" 
              d:DesignHeight="340
-      " d:DesignWidth="230"
+      " d:DesignWidth="242"
            >
 
     <Grid.RowDefinitions>
        
-        <RowDefinition Height="50"/>
+        <RowDefinition Height="53"/>
         <RowDefinition Height="35"/>
         <RowDefinition Height="35"/>
         <RowDefinition Height="110"/>
         <RowDefinition Height="25"/>
-        <RowDefinition Height="45"/>
+        <RowDefinition Height="49"/>
         <RowDefinition Height="35"/>
         
     </Grid.RowDefinitions>
@@ -37,10 +37,10 @@
     <CheckBox Grid.Row="4" Content="Display counts in aggregated dataset" Height="15" HorizontalAlignment="Stretch" Margin="10,0,10,0" Name="checkBox1" VerticalAlignment="Top" />
 
     
-        <TextBlock Grid.Row="0" Margin ="10,20,10,0" TextWrapping="Wrap">Select the function you want to apply to the variables being aggregated.</TextBlock>
+        <TextBlock Grid.Row="0" Margin ="10,20,10,1"  TextWrapping="Wrap">Select the function you want to apply to the variables being aggregated.</TextBlock>
      
    
-        <ComboBox Grid.Row="1" Height="28" HorizontalAlignment="Stretch" Margin="10,2,10,2" Name="comboBox1" VerticalAlignment="Top" >
+        <ComboBox Grid.Row="1" Height="24" HorizontalAlignment="Stretch" Margin="10,2,10,2" Name="comboBox1" VerticalAlignment="Top" >
             <ComboBoxItem  IsSelected="True">mean</ComboBoxItem>
             <ComboBoxItem >median</ComboBoxItem>
             <ComboBoxItem >sum</ComboBoxItem>
