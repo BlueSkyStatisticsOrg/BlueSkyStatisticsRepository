@@ -185,7 +185,6 @@
       <menu id="Histogram_(legacy)" text="히스토그램 (유산)" commandtemplate="Histogram (legacy).xaml" commandoutputformat="Histogram (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Plot_of_Means_(legacy)" text="의미의 음모 (유산)" commandtemplate="Plot of Means (legacy).xaml" commandoutputformat="Plot of Means (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Scatterplot_(legacy)" text="산점도 (유산)" commandtemplate="Scatterplot (legacy).xaml" commandoutputformat="Scatterplot (legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Strip_Plot_(legacy)" text="스트립 플롯 (유산)" commandtemplate="Strip Plot (legacy).xaml" commandoutputformat="Strip Plot (legacy).xml" owner="" nodetype="Leaf" />	  
     </menu>
     <menu id="Line_Chart" text="선형 차트" commandtemplate="Line Chart.xaml" commandoutputformat="Line Chart.xml" owner="" nodetype="Leaf" />
     <menu id="Frequency_Charts_(numeric)" text="빈도 차트 (숫자)" commandtemplate="Frequency Charts (numeric).xaml" commandoutputformat="Frequency Charts (numeric).xml" owner="" nodetype="Leaf" />

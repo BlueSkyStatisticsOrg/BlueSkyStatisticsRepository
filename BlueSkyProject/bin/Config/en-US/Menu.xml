@@ -185,7 +185,6 @@
       <menu id="Histogram_(legacy)" text="Histogram (legacy)" commandtemplate="Histogram (legacy).xaml" commandoutputformat="Histogram (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Plot_of_Means_(legacy)" text="Plot of Means (legacy)" commandtemplate="Plot of Means (legacy).xaml" commandoutputformat="Plot of Means (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Scatterplot_(legacy)" text="Scatterplot (legacy)" commandtemplate="Scatterplot (legacy).xaml" commandoutputformat="Scatterplot (legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Strip_Plot_(legacy)" text="Strip Plot (legacy)" commandtemplate="Strip Plot (legacy).xaml" commandoutputformat="Strip Plot (legacy).xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="Line_Chart" text="Line Chart" commandtemplate="Line Chart.xaml" commandoutputformat="Line Chart.xml" owner="" nodetype="Leaf" />
     <menu id="Frequency_Charts_(numeric)" text="Frequency Charts (numeric)" commandtemplate="Frequency Charts (numeric).xaml" commandoutputformat="Frequency Charts (numeric).xml" owner="" nodetype="Leaf" />
