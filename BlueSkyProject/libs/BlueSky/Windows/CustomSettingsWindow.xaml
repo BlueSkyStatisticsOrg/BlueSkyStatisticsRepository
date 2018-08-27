@@ -262,13 +262,13 @@
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblOpenOptions}" Margin="3" Name="label7"  />
                     <CheckBox Grid.Row="4" Grid.Column="1" Height="16"  Margin="3" Name="openDatasetOptionChkbx" IsChecked="{Binding Path=[openDatasetOption], UpdateSourceTrigger=PropertyChanged}"  />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.lblShowHideNumericHeaders}"    Margin="3" Name="label8" TextWrapping="Wrap" />
+                    <TextBlock Grid.Row="5" Grid.Column="0" MaxWidth="550" Margin="3" Text="{x:Static uires:UICtrlResources.lblShowHideNumericHeaders}"     Name="label8" TextWrapping="Wrap" />
                     <CheckBox Grid.Row="5" Grid.Column="1" Height="16"  Margin="3" Name="showNumRowHeadersChkbx" IsChecked="{Binding Path=[numericrowheaders], UpdateSourceTrigger=PropertyChanged}"   />
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.ShowOutputInAPA}"></TextBlock>
+                    <TextBlock Grid.Row="6" Grid.Column="0" MaxWidth="550" Margin="3" Text="{x:Static uires:UICtrlResources.ShowOutputInAPA}"></TextBlock>
                     <CheckBox Grid.Row="6" Grid.Column="1" Height="16"  Margin="3" Name="APAstyleChkbx" IsChecked="{Binding Path=[outTableInAPAStyle], UpdateSourceTrigger=PropertyChanged}"   />
 
-                    <TextBlock Grid.Row="7" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.ShowRDataWarningMessage}"></TextBlock>
+                    <TextBlock Grid.Row="7" Grid.Column="0" MaxWidth="550" Margin="3" Text="{x:Static uires:UICtrlResources.ShowRDataWarningMessage}"></TextBlock>
                     <CheckBox Grid.Row="7" Grid.Column="1" Height="16"  Margin="3" Name="RDataOpenWarningChkbx" IsChecked="{Binding Path=[RDataOpenWarning], UpdateSourceTrigger=PropertyChanged}"   />
                 </Grid>
 
