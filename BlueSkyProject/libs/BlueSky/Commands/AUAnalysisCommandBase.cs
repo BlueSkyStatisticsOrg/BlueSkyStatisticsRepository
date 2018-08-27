@@ -267,16 +267,12 @@ namespace BlueSky.Commands.Analytics.TTest
                         {
                             enableDialog = false;
                         }
-                        else
+                        object el = cs.FindName(statusTextControlName);
+                        BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
+                        if (bslbl != null)
                         {
-                            object el = cs.FindName(statusTextControlName);
-                            BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
-                            if (bslbl != null)
-                            {
-                                bslbl.Text = msg;
-                            }
+                            bslbl.Text = msg;
                         }
-
                     }
 
                     if (ocnt.GetType().Name.Equals("String[]"))
