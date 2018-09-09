@@ -439,7 +439,7 @@ namespace BlueSky.Windows
                 }
                 else
                 {
-                    logService.WriteToLogLevel("Find datagrid error : index out of bounds : Row : " + rowidx + " - Col : " + colidx + ".", LogLevelEnum.Error);
+                    logService.WriteToLogLevel("Find data grid error : index out of bounds : Row : " + rowidx + " - Col : " + colidx + ".", LogLevelEnum.Error);
                 }
             }
         }
@@ -2612,7 +2612,7 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging) logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
 
-                endpagestatus.Text = "You have reached the first page. Use the scrollbar if available under the datagrid, to view all the columns on the first page.";
+                endpagestatus.Text = "You have reached the first page. Use the scrollbar if available under the data grid, to view all the columns on the first page.";
                 DisableLeftNavigationButtons();
                 BSkyMouseBusyHandler.HideMouseBusy();
                 if (AdvancedLogging) logService.WriteToLogLevel("FIRST clicked. Mouse free", LogLevelEnum.Info);
@@ -2646,7 +2646,7 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging) logService.WriteToLogLevel("Already on the first page", LogLevelEnum.Info);
 
-                endpagestatus.Text = "You have reached the first page. Use the scrollbar if available under the datagrid, to view all the columns on the first page.";
+                endpagestatus.Text = "You have reached the first page. Use the scrollbar if available under the data grid, to view all the columns on the first page.";
                 DisableLeftNavigationButtons();
                 BSkyMouseBusyHandler.HideMouseBusy();
                 if (AdvancedLogging) logService.WriteToLogLevel("LEFT clicked. Mouse free", LogLevelEnum.Info);
@@ -2679,7 +2679,7 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging) logService.WriteToLogLevel("Already on the last page", LogLevelEnum.Info);
 
-                endpagestatus.Text = "You have reached the last page. Use the scrollbar if available under the datagrid, to view the last column.";
+                endpagestatus.Text = "You have reached the last page. Use the scrollbar if available under the data grid, to view the last column.";
                 DisableRightNavigationButtons();
                 BSkyMouseBusyHandler.HideMouseBusy();
                 if (AdvancedLogging) logService.WriteToLogLevel("NEXT clicked. Mouse free", LogLevelEnum.Info);
@@ -2712,7 +2712,7 @@ namespace BlueSky.Windows
             {
                 if (AdvancedLogging)  logService.WriteToLogLevel("Already on the last page", LogLevelEnum.Info);
 
-                endpagestatus.Text = "You have reached the last page. Use the scrollbar if available under the datagrid, to view the last column.";
+                endpagestatus.Text = "You have reached the last page. Use the scrollbar if available under the data grid, to view the last column.";
                 DisableRightNavigationButtons();
                 BSkyMouseBusyHandler.HideMouseBusy();
                 if (AdvancedLogging) logService.WriteToLogLevel("LAST clicked. Mouse free", LogLevelEnum.Info);

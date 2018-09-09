@@ -230,12 +230,16 @@
             </TabItem>
         </TabControl>
         <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Name="statusbar" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text=""></TextBlock>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <TextBlock Grid.Row="0" Grid.Column="1" Name="statusbar" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text=""></TextBlock>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
                 <TextBlock Margin="0,0,5,0" Name="endpagestatus" Foreground="Orange"></TextBlock>
                 <Button Name="leftmostpagebutton" Click="leftmostpagebutton_Click" Width="16" Height="16"  Background="Transparent" BorderThickness="0" ToolTip="First">
                     <StackPanel>
