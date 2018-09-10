@@ -254,13 +254,13 @@ namespace BSky.Statistics.R
                 {
                     if (i < finalLevelList.Count - 1)//put comma
                     {
-                        oldLevels = oldLevels + "\'" + vllst.OriginalLevel.Trim() + "\',";
-                        newLevels = newLevels + "\'" + vllst.NewLevel + "\',";
+                        oldLevels = oldLevels + "\"" + vllst.OriginalLevel.Trim() + "\",";
+                        newLevels = newLevels + "\"" + vllst.NewLevel + "\",";
                     }
                     else
                     {
-                        oldLevels = oldLevels + "\'" + vllst.OriginalLevel.Trim() + "\')";
-                        newLevels = newLevels + "\'" + vllst.NewLevel + "\')";
+                        oldLevels = oldLevels + "\"" + vllst.OriginalLevel.Trim() + "\")";
+                        newLevels = newLevels + "\"" + vllst.NewLevel + "\")";
                     }
                     i++;
                 }
