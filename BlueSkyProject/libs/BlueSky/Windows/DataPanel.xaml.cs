@@ -2591,6 +2591,24 @@ namespace BlueSky.Windows
             endpagestatus.Text = string.Empty;
         }
 
+        //disable all buttons if columns less than 16
+        public void DisableEnableAllNavButtons()
+        {
+            int totalColumns = 0;
+            if(DS!=null && DS.Variables!=null)
+                totalColumns = this.DS.Variables.Count;
+            if (totalColumns > 0 && totalColumns < 16)
+            {
+                DisableAllNavigationButtons();
+                endpagestatus.Text = "There is only one page. Use the scrollbar under the data grid to see all columns.";
+            }
+            else
+            {
+                EnableAllNavigationButtons();
+                endpagestatus.Text = string.Empty;
+            }
+        }
+
         //First Page
         private void leftmostpagebutton_Click(object sender, RoutedEventArgs e)
         {
@@ -2777,6 +2795,51 @@ namespace BlueSky.Windows
             previuosimg.Visibility = Visibility.Visible;
             previuosGrayimg.Visibility = Visibility.Collapsed;
         }
+
+        void DisableAllNavigationButtons()
+        {
+            rightpagebutton.IsEnabled = false;
+            rightmostpagebutton.IsEnabled = false;
+
+            nextimg.Visibility = Visibility.Collapsed;
+            nextGrayimg.Visibility = Visibility.Visible;
+
+            lastimg.Visibility = Visibility.Collapsed;
+            lastGrayimg.Visibility = Visibility.Visible;
+
+            leftmostpagebutton.IsEnabled = false;
+            leftpagebutton.IsEnabled = false;
+
+            firstimg.Visibility = Visibility.Collapsed;
+            firstGrayimg.Visibility = Visibility.Visible;
+
+            previuosimg.Visibility = Visibility.Collapsed;
+            previuosGrayimg.Visibility = Visibility.Visible;
+
+
+        }
+
+        void EnableAllNavigationButtons()
+        {
+            rightpagebutton.IsEnabled = true;
+            rightmostpagebutton.IsEnabled = true;
+
+            nextimg.Visibility = Visibility.Visible;
+            nextGrayimg.Visibility = Visibility.Collapsed;
+
+            lastimg.Visibility = Visibility.Visible;
+            lastGrayimg.Visibility = Visibility.Collapsed;
+            rightpagebutton.IsEnabled = true;
+            rightmostpagebutton.IsEnabled = true;
+
+            nextimg.Visibility = Visibility.Visible;
+            nextGrayimg.Visibility = Visibility.Collapsed;
+
+            lastimg.Visibility = Visibility.Visible;
+            lastGrayimg.Visibility = Visibility.Collapsed;
+
+        }
+
         #endregion
 
 

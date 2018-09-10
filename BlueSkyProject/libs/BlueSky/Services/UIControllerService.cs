@@ -174,7 +174,7 @@ namespace BlueSky.Services
                 datapanel.Variables = ds.Variables;
 
                 datapanel.statusbar.Text = "";// "No Split";//03Dec2013 Status bar
-
+                datapanel.DisableEnableAllNavButtons();
                 panel.Header = sp;///Path.GetFileName(ds.FileName);
 
                 panel.Content = datapanel;
@@ -265,7 +265,7 @@ namespace BlueSky.Services
             datapanel.Variables = ds.Variables;
 
             datapanel.statusbar.Text = "";// "No Split";//03Dec2013 Status bar
-
+            datapanel.DisableEnableAllNavButtons();
             panel.Header = sp;///Path.GetFileName(ds.FileName);
             panel.Content = datapanel;
             docGroup.Items.Add(panel);//panel
