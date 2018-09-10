@@ -937,6 +937,7 @@ namespace BlueSky.Windows
 
         private void valLabel_Click(object sender, RoutedEventArgs e)
         {
+            variableGrid.CancelEdit();//if someone clicked editable cells in var grid and immediately after clicked on value-lable, we must cancel the cell edit.
             object selectedrow = (sender as FrameworkElement).DataContext; // fixed on 07Feb2014 for New C1 DLLs
             int idx = variableGrid.Rows.IndexOf(selectedrow);
             variableGrid.CurrentRow = variableGrid.Rows[idx];
