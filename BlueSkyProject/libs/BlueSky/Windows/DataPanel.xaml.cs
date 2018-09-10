@@ -1980,10 +1980,19 @@ namespace BlueSky.Windows
             {
                 if (fm.labels != "<NA>" || fm.textbox != "<NA>")
                 {
-                    vlit = new ValLvlListItem();
-                    vlit.OriginalLevel = fm.labels;
-                    vlit.NewLevel = fm.textbox;
-                    finalList.Add(vlit);
+                    if (fm.labels != null && fm.labels.Contains("Enter new level(s) separated by comma") && fm.textbox.Trim().Length < 1)
+                    {
+                        //skip because its a blank field and no body entered anything there. 
+                        //User only renamed existing labels/levels
+                    }
+                    else
+                    {
+                        vlit = new ValLvlListItem();
+                        vlit.OriginalLevel = fm.labels;
+                        vlit.NewLevel = fm.textbox;
+
+                        finalList.Add(vlit);
+                    }
                 }
             }
             analyticServ.ChangeColumnLevels(colname, finalList, ds.Name);
