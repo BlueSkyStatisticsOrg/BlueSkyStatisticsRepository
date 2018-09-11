@@ -708,7 +708,11 @@ namespace BlueSky.Windows
             }
             ds.Changed = true;
             if (e.Column.Name.Equals("Name"))
+            {
+                //it would be good if we could verify SUCCESS in 'retval' above and then only this line should execute.
+                (Variables[rowindex] as DataSourceVariable).RName = cellValue;
                 refreshDataGrid();
+            }
         }
 
         private void variableGrid_SelectionChanged(object sender, DataGridSelectionChangedEventArgs e)
