@@ -1917,7 +1917,7 @@ namespace BlueSky.Windows
                 //Wrong row index
                 return;
             }
-            string colname = (this.Variables[rowindex] as DataSourceVariable).RName;
+            string colname = (DS.Variables[rowindex] as DataSourceVariable).RName;//11Sep2018 (this.Variables[rowindex] as DataSourceVariable).RName;
             DataColumnMeasureEnum measure = (this.Variables[rowindex] as DataSourceVariable).Measure;
 
             if (measure == DataColumnMeasureEnum.Scale)
@@ -1989,7 +1989,7 @@ namespace BlueSky.Windows
                     else
                     {
                         vlit = new ValLvlListItem();
-                        vlit.OriginalLevel = fm.labels;
+                        vlit.OriginalLevel = fm.labels.Contains("Enter new level(s) separated by comma")?string.Empty:fm.labels;
                         vlit.NewLevel = fm.textbox;
 
                         finalList.Add(vlit);
