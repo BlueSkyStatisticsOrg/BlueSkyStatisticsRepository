@@ -1317,6 +1317,8 @@ namespace BlueSky
                 while ((line = file.ReadLine()) != null)//(readSinkFile)
                 {
                     {
+                        if (line.Length < 1)//to show blank line in the output newline should be printed instead.
+                            line = "\n";
                         linetext = line;
                     }
 
@@ -1376,7 +1378,10 @@ namespace BlueSky
                             }
                             else
                             {
-                                sbauparas.Append("\n" + linetext.ToString());//all lines separated by new line
+                                if(linetext.ToString().StartsWith("\n"))//if linetext already has new line then no need to add \n
+                                    sbauparas.Append(linetext.ToString());
+                                else
+                                    sbauparas.Append("\n" + linetext.ToString());//all lines separated by new line
                             }
                         }
 
@@ -1604,7 +1609,7 @@ namespace BlueSky
 
         private void SendToOutput(string auparas, ref CommandOutput lst, OutputWindow ow, bool isBlockCommand = false)//, bool last=false)
         {
-            if (auparas != null && auparas.Trim().Length > 0)
+            if (auparas != null && auparas.Length > 0)
             {
                 this.createAUPara(auparas, lst);//Create & Add AUPara to lst and empty dommid
                 auparas = null;
@@ -3467,7 +3472,7 @@ namespace BlueSky
             {
                 lst.NameOfAnalysis = "R-Output";//Parent Node name. 02Aug2012
             }
-            if (auparas == null || auparas.Trim().Length < 1)
+            if (auparas == null || auparas.Length < 1)
                 return;
 
             string selectnode = "bskyoutput/bskyanalysis/aup";
@@ -3476,7 +3481,7 @@ namespace BlueSky
 
             ///// Creating DOM for generation output ///////
             string fulldom = "<bskyoutput> <bskyanalysis>" + AUPara + "</bskyanalysis> </bskyoutput>";
-            xd = new XmlDocument(); xd.LoadXml(fulldom);
+            xd = new XmlDocument(); xd.PreserveWhitespace = true; xd.LoadXml(fulldom);
 
             //// for creating AUPara //////////////
             BSkyOutputGenerator bsog = new BSkyOutputGenerator();

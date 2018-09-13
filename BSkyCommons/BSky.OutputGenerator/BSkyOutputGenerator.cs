@@ -575,9 +575,9 @@ namespace BSky.OutputGenerator
         {
             XmlNode xn = null;
             AUParagraph AUP = new AUParagraph();
-            xn = selectNode.Trim().Length > 0 ? xd.SelectSingleNode(selectNode) : xd;
+            xn = selectNode.Length > 0 ? xd.SelectSingleNode(selectNode) : xd;
             if (xn == null) return null; //09Jul2013
-            AUP.Text = (xn != null) ? xn.InnerText.Trim() : "";
+            AUP.Text = (xn != null) ? xn.InnerText.Trim(' ') : "";
             AUP.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;//10Nov2014//12;//04Nov2014
             //Controltype
             if ((controType == null || controType.Trim().Length < 1))//03Aug2012
