@@ -196,6 +196,7 @@
 
   <menu id="ModelFittingMenu" text="모델 피팅" owner="" nodetype="Parent">
     <menu id="Linear_Regression" text="선형 회귀" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf" icon="images/Regression.png" showtoolbaricon="true" />
+	<menu id="Logistic_Regression" text="로지스틱 회귀" commandtemplate="Logistic Regression.xaml" commandoutputformat="Logistic Regression.xml" owner="" nodetype="Leaf" />
     <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
     <menu id="Linear_Modeling" text="선형 모델링" commandtemplate="Linear Modeling.xaml" commandoutputformat="Linear Modeling.xml" owner="" nodetype="Leaf" />
     <menu id="Multinomial_Logit" text="다항 로그" commandtemplate="Multinominal Logit.xaml" commandoutputformat="Multinominal Logit.xml" owner="" nodetype="Leaf" />
