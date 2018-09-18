@@ -2614,7 +2614,7 @@ namespace BlueSky.Windows
             if (totalColumns > 0 && totalColumns < 16)
             {
                 DisableAllNavigationButtons();
-                endpagestatus.Text = "There is only one page. Use the scrollbar under the data grid to see all columns.";
+                endpagestatus.Text = "There is only one page. Use the scrollbar if available under the data grid to see all columns.";
             }
             else
             {
