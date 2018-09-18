@@ -2585,6 +2585,7 @@ namespace BlueSky.Windows
                 leftpagebutton.Visibility = System.Windows.Visibility.Visible;
                 rightpagebutton.Visibility = System.Windows.Visibility.Visible;
                 rightmostpagebutton.Visibility = System.Windows.Visibility.Visible;
+                endpagestatus.Visibility = Visibility.Visible;
             }
             else
             {
@@ -2592,6 +2593,7 @@ namespace BlueSky.Windows
                 leftpagebutton.Visibility = System.Windows.Visibility.Hidden;
                 rightpagebutton.Visibility = System.Windows.Visibility.Hidden;
                 rightmostpagebutton.Visibility = System.Windows.Visibility.Hidden;
+                endpagestatus.Visibility = Visibility.Hidden;
             }
         }
 
