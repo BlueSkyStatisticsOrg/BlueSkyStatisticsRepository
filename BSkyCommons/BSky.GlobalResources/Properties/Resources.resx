@@ -146,7 +146,7 @@
     <comment>App.xaml.cs : Floating error message box title</comment>
   </data>
   <data name="InstallReqRPkgFrmCRAN" xml:space="preserve">
-    <value>Install required R packages from CRAN by clicking:</value>
+    <value>Install required R packages from CRAN.</value>
     <comment>App.xaml.cs : Msg to install from CRAN</comment>
   </data>
   <data name="StatMsgPkgLoad" xml:space="preserve">
@@ -1560,5 +1560,9 @@
   <data name="MsgForReloadFromDiskForMemoryDF2" xml:space="preserve">
     <value>Data -&gt; Reload Dataset from File</value>
     <comment>AUAnalysisCommandBase.cs : Message shown when user tries to run Reload dataset from disk file. For memory data.frame we do not support reloading. Its not needed actually.</comment>
+  </data>
+  <data name="DisableAntivirus" xml:space="preserve">
+    <value>Possible reason: Your antivirus software is preventing the installation of the 'BlueSky' R package. Please exit the BlueSky Statistics application, disable the antivirus and relaunch the BlueSky Statistics application. This has to done only once.</value>
+    <comment>App.xaml.cs :Message when BlueSky R package install fails due to which library(BlueSky) fails. We do not do Install from CRAN message anymore.</comment>
   </data>
 </root>

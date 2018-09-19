@@ -320,7 +320,7 @@ namespace BlueSky.Commands.File
             if (!alldefaultloaded)
             {
                 string firstmsg = BSky.GlobalResources.Properties.Resources.BSkyNeedsRPkgs + "\n\n";
-                string msg = "\n\n" + BSky.GlobalResources.Properties.Resources.InstallReqRPkgFrmCRAN + "\n" + BSky.GlobalResources.Properties.Resources.RegPkgsMenuPath;
+                string msg = "\n\n" + BSky.GlobalResources.Properties.Resources.InstallReqRPkgFrmCRAN + "\n" + BSky.GlobalResources.Properties.Resources.InstallUpdatePkgMenuPath;
                 MessageBox.Show(firstmsg + missinglist + msg, BSky.GlobalResources.Properties.Resources.MisingRPkgs, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 

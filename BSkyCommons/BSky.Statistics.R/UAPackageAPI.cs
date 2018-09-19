@@ -1731,7 +1731,7 @@ namespace BSky.Statistics.R
 
         private void LoadDefaultPackages() //uadatapackage(or bskypackage) AND other minimum required packages like foreign, car etc.
         {
-            UAReturn res = CheckAndInstallBlueSkyRPackage(); //04May2015 Installs BlueSky R package(s) if not already installed
+            UAReturn res = CheckAndInstallBlueSkyRPackage(); //04May2015 Installs BlueSky R package(s) if latest not already installed
 
             if (res != null && !res.Success && res.SimpleTypeData != null && res.SimpleTypeData.ToString().Length > 0)
             {

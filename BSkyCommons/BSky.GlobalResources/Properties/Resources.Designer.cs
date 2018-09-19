@@ -1708,6 +1708,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Possible reason: Your antivirus software is preventing the installation of the &apos;BlueSky&apos; R package. Please exit the BlueSky Statistics application, disable the antivirus and relaunch the BlueSky Statistics application. This has to done only once..
+        /// </summary>
+        public static string DisableAntivirus {
+            get {
+                return ResourceManager.GetString("DisableAntivirus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to needs the following R package(s):.
         /// </summary>
         public static string DlgNeedTheseRPkgs {
@@ -2320,7 +2329,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Install required R packages from CRAN by clicking:.
+        ///   Looks up a localized string similar to Install required R packages from CRAN..
         /// </summary>
         public static string InstallReqRPkgFrmCRAN {
             get {

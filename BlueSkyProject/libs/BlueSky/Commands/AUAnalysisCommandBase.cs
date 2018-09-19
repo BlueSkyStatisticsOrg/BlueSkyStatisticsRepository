@@ -1412,7 +1412,7 @@ namespace BlueSky.Commands.Analytics.TTest
 
                     string misspkgs = Window1.DatasetReqPackages;
                     string firstmsg = BSky.GlobalResources.Properties.Resources.BSkyNeedsRPkgs+"\n\n";
-                    string msg = "\n\n"+BSky.GlobalResources.Properties.Resources.InstallReqRPkgFrmCRAN + "\n"+BSky.GlobalResources.Properties.Resources.RegPkgsMenuPath;
+                    string msg = "\n\n" + BSky.GlobalResources.Properties.Resources.InstallReqRPkgFrmCRAN + "\n"+BSky.GlobalResources.Properties.Resources.InstallUpdatePkgMenuPath;
                     MessageBox.Show(firstmsg + misspkgs + msg, BSky.GlobalResources.Properties.Resources.ErrReqRPkgMissing, MessageBoxButton.OK, MessageBoxImage.Error);
 
                     return;

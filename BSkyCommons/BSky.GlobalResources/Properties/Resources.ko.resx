@@ -146,7 +146,7 @@
     <comment>App.xaml.cs : Floating error message box title</comment>
   </data>
   <data name="InstallReqRPkgFrmCRAN" xml:space="preserve">
-    <value>다음을 클릭하여 CRAN에서 필수 R 패키지를 설치하십시오.</value>
+    <value>CRAN에서 필수 R 패키지를 설치하십시오.</value>
     <comment>App.xaml.cs : Msg to install from CRAN</comment>
   </data>
   <data name="StatMsgPkgLoad" xml:space="preserve">
@@ -1560,5 +1560,9 @@
   <data name="MsgForReloadFromDiskForMemoryDF2" xml:space="preserve">
     <value>데이터 -&gt; 파일에서 데이터 집합 다시로드</value>
     <comment>AUAnalysisCommandBase.cs : Message shown when user tries to run Reload dataset from disk file. For memory data.frame we do not support reloading. Its not needed actually.</comment>
+  </data>
+  <data name="DisableAntivirus" xml:space="preserve">
+    <value>가능한 이유 : 바이러스 백신 소프트웨어가 'BlueSky'R 패키지 설치를 방해하고 있습니다. BlueSky Statistics 응용 프로그램을 종료하고 바이러스 백신을 비활성화하고 BlueSky Statistics 응용 프로그램을 다시 실행하십시오. 이 작업은 한 번만 수행해야합니다.</value>
+    <comment>App.xaml.cs :Message when BlueSky R package install fails due to which library(BlueSky) fails. We do not do Install from CRAN message anymore.</comment>
   </data>
 </root>

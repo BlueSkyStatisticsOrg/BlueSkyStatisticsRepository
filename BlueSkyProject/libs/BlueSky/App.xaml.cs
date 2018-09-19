@@ -195,6 +195,7 @@ namespace BlueSky
             IAnalyticsService IAService = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
             BridgeSetup.LoadDefaultRPackages(IAService);
             string PkgLoadStatusMessage = BridgeSetup.PkgLoadStatusMessage;
+            bool BlueSkyPkgErr = PkgLoadStatusMessage.Contains("BlueSky") ? true : false;
 
             if (PkgLoadStatusMessage != null && PkgLoadStatusMessage.Trim().Length > 0)
             {
@@ -216,7 +217,8 @@ namespace BlueSky
                     string defpkgs = sb.ToString();
                     string firstmsg = BSky.GlobalResources.Properties.Resources.ErrLoadingRPkg + "\n\n";
                     
-                    string msg = "\n\n" + BSky.GlobalResources.Properties.Resources.InstallReqRPkgFrmCRAN + "\n" + BSky.GlobalResources.Properties.Resources.RegPkgsMenuPath;// +
+                    string msg = "\n\n" + BSky.GlobalResources.Properties.Resources.DisableAntivirus;// +
+                    if (BlueSkyPkgErr) msg = string.Empty;
 
                     HideMouseBusy();
                     string mboxtitle1 = BSky.GlobalResources.Properties.Resources.ErrReqRPkgMissing;
