@@ -312,11 +312,11 @@ namespace BlueSky
                 }
                 else if (numOflines == 3)
                 {
-                    string[] parts = lines[2].Split('.');
+                    string[] parts = lines[1].Split('.');
                     if (parts != null)
                         versionline = parts[0] + parts[1] + parts[2];//no dots;
 
-                    isOpen = (lines[1] != null && lines[1].Contains("Open")) ? true : false;
+                    isOpen = (lines[2] != null && lines[2].Contains("Open")) ? true : false;
                 }
                 else
                 {
@@ -354,7 +354,7 @@ namespace BlueSky
         {
             ILoggerService logService = container.Resolve<ILoggerService>();
             string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();//"5.35.12345";
-            string[] lines = { "Do not modify this file.","Open", ver };
+            string[] lines = { "Do not modify this file.", ver, "Open" };
             string verfile = string.Format(@"{0}ver.txt", BSkyAppData.RoamingUserBSkyConfigPath);
             System.IO.StreamWriter file = null;
             try
