@@ -277,7 +277,8 @@ namespace BlueSky
             {
                 return CopyfilesToUserProfile;
             }
-            
+
+            bool isOpen = false;
             string versionline= "0000";//putting low version number
             string verfile = string.Format(@"{0}ver.txt", BSkyAppData.RoamingUserBSkyConfigPath);
             bool verfileExists = File.Exists(verfile);
@@ -291,9 +292,8 @@ namespace BlueSky
             {
                 logService.WriteToLogLevel("Error reading user profile version-file", LogLevelEnum.Error);
                 logService.WriteToLogLevel("ERROR: " + ex.Message, LogLevelEnum.Error);
-
-
             }
+
             if (!verfileExists)
             {
                 createUserProfileVerFile();
@@ -302,26 +302,49 @@ namespace BlueSky
             else
             {
                 int numOflines = lines.Length;
-                if (numOflines >= 2)
+                if (numOflines == 2)
                 {
                     string[] parts = lines[1].Split('.');
                     if (parts != null)
                         versionline = parts[0] + parts[1] + parts[2];//no dots;
+
+                    isOpen = false;//forcing it to copy config because ver file is old, with two lines. A new will be copied.
                 }
-
-                //conver to numeric
-                long appver, verline;
-                bool appversuccess = long.TryParse(appversion, out appver);
-                bool verlinesuccess = long.TryParse(versionline, out verline);
-
-                if (appver > verline)
+                else if (numOflines == 3)
                 {
-                    CopyfilesToUserProfile = true;
-                    createUserProfileVerFile();
+                    string[] parts = lines[2].Split('.');
+                    if (parts != null)
+                        versionline = parts[0] + parts[1] + parts[2];//no dots;
+
+                    isOpen = (lines[1] != null && lines[1].Contains("Open")) ? true : false;
                 }
                 else
                 {
-                    CopyfilesToUserProfile = false;
+                    createUserProfileVerFile();
+                    CopyfilesToUserProfile = true;
+                }
+
+                if (numOflines >= 2)
+                {
+                    //conver to numeric
+                    long appver, verline;
+                    bool appversuccess = long.TryParse(appversion, out appver);
+                    bool verlinesuccess = long.TryParse(versionline, out verline);
+
+                    if (appver > verline)
+                    {
+                        CopyfilesToUserProfile = true;
+                        createUserProfileVerFile();
+                    }
+                    else if (!isOpen)//if ver file is not from Open
+                    {
+                        CopyfilesToUserProfile = true;
+                        createUserProfileVerFile();
+                    }
+                    else
+                    {
+                        CopyfilesToUserProfile = false;
+                    }
                 }
             }
             return CopyfilesToUserProfile;
@@ -331,7 +354,7 @@ namespace BlueSky
         {
             ILoggerService logService = container.Resolve<ILoggerService>();
             string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();//"5.35.12345";
-            string[] lines = { "Do not modify this file.", ver };
+            string[] lines = { "Do not modify this file.","Open", ver };
             string verfile = string.Format(@"{0}ver.txt", BSkyAppData.RoamingUserBSkyConfigPath);
             System.IO.StreamWriter file = null;
             try
