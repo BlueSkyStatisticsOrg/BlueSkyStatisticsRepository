@@ -1114,7 +1114,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Example: C:/Program Files/R/R-3.4.2.
+        ///   Looks up a localized string similar to Example: ./R-3.4.2  OR  C:/Program Files/R/R-3.4.2.
         /// </summary>
         public static string lblExampleRHomeDir2 {
             get {
