@@ -62,11 +62,6 @@
     <menu id="Reload_Dataset_from_File" text="파일에서 데이터 세트 다시로드" commandtemplate="Reload Dataset from File.xaml" commandoutputformat="Reload Dataset from File.xml" owner="" nodetype="Leaf" />
     <menu id="Refresh_Grid" text="그리드 새로 고침" command="BlueSky.Commands.Data.RefreshDatagridCommand" owner="BSky" nodetype="Leaf" />
       <menu id="Concatenate_Multiple_Variables_(handling_missing_values)" text="여러 변수 연결 (누락 된 값 처리)" commandtemplate="Concatenate Multiple Variables (handling missing values).xaml" commandoutputformat="Concatenate Multiple Variables (handling missing values).xml" owner="" nodetype="Leaf" />
-  <menu id="Data_Legacy" text="유산" owner="" nodetype="Parent">
-      <menu id="Aggregate_(legacy)" text="총계 (유산)" commandtemplate="Aggregate (legacy).xaml" commandoutputformat="Aggregate (legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Sort(legacy)" text="총계 (유산)" commandtemplate="Sort(legacy).xaml" commandoutputformat="Sort(legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Subset_(legacy)" text="부분 집합 (유산)" commandtemplate="Subset (legacy).xaml" commandoutputformat="Subset (legacy).xml" owner="" nodetype="Leaf" />
-    </menu>
     <menu id="new_id" text="Dates" owner="" nodetype="Parent">
       <menu id="Convert_String_to_Date" text="문자열을 날짜로 변환" commandtemplate="Convert String to Date.xaml" commandoutputformat="Convert String to Date.xml" owner="" nodetype="Leaf" />
       <menu id="Convert_Date_to_String" text="날짜를 문자열로 변환" commandtemplate="Convert Date to String.xaml" commandoutputformat="Convert Date to String.xml" owner="" nodetype="Leaf" />
@@ -74,6 +69,14 @@
     <menu id="new_id" text="Reshape" owner="" nodetype="Parent">
       <menu id="Reshape_(wide_to_long)" text="모양새 변경 (길게에서 길게)" commandtemplate="Reshape (wide to long).xaml" commandoutputformat="Reshape (wide to long).xml" owner="" nodetype="Leaf" />
       <menu id="Reshape_(long_to_wide)" text="모양새 변경 (길게에서 길게)" commandtemplate="Reshape (long to wide).xaml" commandoutputformat="Reshape (long to wide).xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    <menu id="Set_Weights" text="가중치 설정" commandtemplate="Set Weights.xaml" commandoutputformat="Set Weights.xml" owner="" nodetype="Leaf" />
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    <menu id="Data_Legacy" text="유산" owner="" nodetype="Parent">
+      <menu id="Aggregate_(legacy)" text="총계 (유산)" commandtemplate="Aggregate (legacy).xaml" commandoutputformat="Aggregate (legacy).xml" owner="" nodetype="Leaf" />
+      <menu id="Sort(legacy)" text="총계 (유산)" commandtemplate="Sort(legacy).xaml" commandoutputformat="Sort(legacy).xml" owner="" nodetype="Leaf" />
+      <menu id="Subset_(legacy)" text="부분 집합 (유산)" commandtemplate="Subset (legacy).xaml" commandoutputformat="Subset (legacy).xml" owner="" nodetype="Leaf" />
     </menu>
   </menu>
   <menu id="analysisMenu" text="분석" nodetype="Parent">
@@ -232,7 +235,6 @@
     <menu id="toolsMenuEditorMenu" text="대화 상자 설치 프로그램..." group="true" command="BlueSky.Commands.Tools.ToolsMenuEditorCommand" owner="BSky" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="BSky" nodetype="Leaf" />
     <menu id="packagesubmenu" text="꾸러미" owner="BSky" nodetype="Parent">
-	  <menu id="Install_or-update_required_R_packages" text="필수 R 패키지 설치 또는 업데이트" commandtemplate="Install or update required R packages.xaml" commandoutputformat="Install or update required R packages.xml" owner="" nodetype="Leaf" />	
       <menu id="R_version_details" text="R 버전 세부 정보" commandtemplate="R version details.xaml" commandoutputformat="R version details.xml" owner="" nodetype="Leaf" />
       <menu id="R_Package_Details" text="R 패키지 세부 정보" commandtemplate="R Package Details.xaml" commandoutputformat="R Package Details.xml" owner="" nodetype="Leaf" />
       <menu id="showinstalledpackage" text="설치된 패키지 표시" group="true" command="BlueSky.Commands.Tools.Package.ShowInstalledPackagesCommand" owner="BSky" nodetype="Leaf" />

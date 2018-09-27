@@ -62,11 +62,6 @@
     <menu id="Reload_Dataset_from_File" text="Reload Dataset from File" commandtemplate="Reload Dataset from File.xaml" commandoutputformat="Reload Dataset from File.xml" owner="" nodetype="Leaf" />
     <menu id="Refresh_Grid" text="Refresh Grid" command="BlueSky.Commands.Data.RefreshDatagridCommand" owner="BSky" nodetype="Leaf" />
     <menu id="Concatenate_Multiple_Variables_(handling_missing_values)" text="Concatenate Multiple Variables (handling missing values)" commandtemplate="Concatenate Multiple Variables (handling missing values).xaml" commandoutputformat="Concatenate Multiple Variables (handling missing values).xml" owner="" nodetype="Leaf" />
-    <menu id="Data_Legacy" text="Legacy" owner="" nodetype="Parent">
-      <menu id="Aggregate_(legacy)" text="Aggregate (legacy)" commandtemplate="Aggregate (legacy).xaml" commandoutputformat="Aggregate (legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Sort(legacy)" text="Sort(legacy)" commandtemplate="Sort(legacy).xaml" commandoutputformat="Sort(legacy).xml" owner="" nodetype="Leaf" />
-      <menu id="Subset_(legacy)" text="Subset (legacy)" commandtemplate="Subset (legacy).xaml" commandoutputformat="Subset (legacy).xml" owner="" nodetype="Leaf" />
-    </menu>
     <menu id="new_id" text="Dates" owner="" nodetype="Parent">
       <menu id="Convert_String_to_Date" text="Convert String to Date" commandtemplate="Convert String to Date.xaml" commandoutputformat="Convert String to Date.xml" owner="" nodetype="Leaf" />
       <menu id="Convert_Date_to_String" text="Convert Date to String" commandtemplate="Convert Date to String.xaml" commandoutputformat="Convert Date to String.xml" owner="" nodetype="Leaf" />
@@ -74,6 +69,14 @@
     <menu id="new_id" text="Reshape" owner="" nodetype="Parent">
       <menu id="Reshape_(wide_to_long)" text="Reshape (wide to long)" commandtemplate="Reshape (wide to long).xaml" commandoutputformat="Reshape (wide to long).xml" owner="" nodetype="Leaf" />
       <menu id="Reshape_(long_to_wide)" text="Reshape (long to wide)" commandtemplate="Reshape (long to wide).xaml" commandoutputformat="Reshape (long to wide).xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    <menu id="Set_Weights" text="Set Weights" commandtemplate="Set Weights.xaml" commandoutputformat="Set Weights.xml" owner="" nodetype="Leaf" />
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    <menu id="Data_Legacy" text="Legacy" owner="" nodetype="Parent">
+      <menu id="Aggregate_(legacy)" text="Aggregate (legacy)" commandtemplate="Aggregate (legacy).xaml" commandoutputformat="Aggregate (legacy).xml" owner="" nodetype="Leaf" />
+      <menu id="Sort(legacy)" text="Sort(legacy)" commandtemplate="Sort(legacy).xaml" commandoutputformat="Sort(legacy).xml" owner="" nodetype="Leaf" />
+      <menu id="Subset_(legacy)" text="Subset (legacy)" commandtemplate="Subset (legacy).xaml" commandoutputformat="Subset (legacy).xml" owner="" nodetype="Leaf" />
     </menu>
   </menu>
   <menu id="analysisMenu" text="Analysis" nodetype="Parent">
@@ -231,7 +234,6 @@
     <menu id="toolsMenuEditorMenu" text="Dialog Installer..." group="true" command="BlueSky.Commands.Tools.ToolsMenuEditorCommand" owner="BSky" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="BSky" nodetype="Leaf" />
     <menu id="packagesubmenu" text="Package" owner="BSky" nodetype="Parent">
-      <menu id="Install_or-update_required_R_packages" text="Install or update required R packages" commandtemplate="Install or update required R packages.xaml" commandoutputformat="Install or update required R packages.xml" owner="" nodetype="Leaf" />
       <menu id="R_version_details" text="R version details" commandtemplate="R version details.xaml" commandoutputformat="R version details.xml" owner="" nodetype="Leaf" />
       <menu id="R_Package_Details" text="R Package Details" commandtemplate="R Package Details.xaml" commandoutputformat="R Package Details.xml" owner="" nodetype="Leaf" />
       <menu id="showinstalledpackage" text="Show installed packages" group="true" command="BlueSky.Commands.Tools.Package.ShowInstalledPackagesCommand" owner="BSky" nodetype="Leaf" />
