@@ -251,84 +251,82 @@ namespace BlueSky.Commands.Analytics.TTest
             bool enableDialog = true;
             if (PreReqCommand != null)
             {
-                #region Execute Prereq commands that should return TRUE or a message(error/warning)
-                string msg = "---";
-                string[] comboBoxVals = null;
-                CommandRequest cmdreq = new CommandRequest();
-                cmdreq.CommandSyntax = OutputHelper.GetCommand(PreReqCommand, element);
-                object ocnt = analytics.ExecuteR(cmdreq, true, false);
-                if (ocnt != null)
+                if (PreReqCommand != "")
                 {
-
-                    if (ocnt.GetType().Name.Equals("String"))
+                    #region Execute Prereq commands that should return TRUE or a message(error/warning)
+                    string msg = "---";
+                    string[] comboBoxVals = null;
+                    CommandRequest cmdreq = new CommandRequest();
+                    cmdreq.CommandSyntax = OutputHelper.GetCommand(PreReqCommand, element);
+                    object ocnt = analytics.ExecuteR(cmdreq, true, false);
+                    if (ocnt != null)
                     {
-                        msg = ocnt as string;
-                        if (msg.Contains("ERROR") || msg.Contains("Error")) //09Mar2017 'Error' may occur in R own messages
-                        {
-                            enableDialog = false;
-                        }
-                        object el = cs.FindName(statusTextControlName);
-                        BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
-                        if (bslbl != null)
-                        {
-                            bslbl.Text = msg;
-                        }
-                    }
 
-                    if (ocnt.GetType().Name.Equals("String[]"))
-                    {
-                        comboBoxVals = ocnt as string[];
-                        if (comboBoxVals.Contains("ERROR") || comboBoxVals.Contains("Error")) //09Mar2017 'Error' may occur in R own messages
+                        if (ocnt.GetType().Name.Equals("String"))
                         {
-                            enableDialog = false;
-                        }
-                        else
-                        {
-                            object e2 = cs.FindName(EditableComboBoxName);
-                            BSkyEditableComboBox bslbl2 = e2 as BSkyEditableComboBox;
-                            bslbl2.IsTextSearchEnabled = false;
-                            bslbl2.IsTextSearchCaseSensitive = true;
-                            
-                            if (bslbl2 != null)
+                            msg = ocnt as string;
+                            if (msg.Contains("ERROR") || msg.Contains("Error")) //09Mar2017 'Error' may occur in R own messages
                             {
-                                foreach (string s in comboBoxVals)
-                                {
-                                    bslbl2.Items.Add(s);
+                                enableDialog = false;
+                            }
+                            object el = cs.FindName(statusTextControlName);
+                            BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
+                            if (bslbl != null)
+                            {
+                                bslbl.Text = msg;
+                            }
+                        }
 
+                        if (ocnt.GetType().Name.Equals("String[]"))
+                        {
+                            comboBoxVals = ocnt as string[];
+                            if (comboBoxVals.Contains("ERROR") || comboBoxVals.Contains("Error")) //09Mar2017 'Error' may occur in R own messages
+                            {
+                                enableDialog = false;
+                            }
+                            else
+                            {
+                                object e2 = cs.FindName(EditableComboBoxName);
+                                BSkyEditableComboBox bslbl2 = e2 as BSkyEditableComboBox;
+                                bslbl2.IsTextSearchEnabled = false;
+                                bslbl2.IsTextSearchCaseSensitive = true;
+
+                                if (bslbl2 != null)
+                                {
+                                    foreach (string s in comboBoxVals)
+                                    {
+                                        bslbl2.Items.Add(s);
+
+                                    }
                                 }
                             }
-
-                            
-
-
-                           
                         }
+                        //string[] classes;
+                        //if (ocnt.GetType().Name.Equals("String[]"))
+                        //{
+                        //    classes = ocnt as string[];
+                        //}
+                        //else if (ocnt.GetType().Name.Equals("String"))
+                        //{
+                        //    classes = new string[1];
+                        //    classes[0] = ocnt as string;
+
+                        //}
+                        //else
+                        //{
+
+                        //}
                     }
-                    //string[] classes;
-                    //if (ocnt.GetType().Name.Equals("String[]"))
+                    //object el = cs.FindName(statusTextControlName);
+                    //BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
+                    //if (bslbl != null)
                     //{
-                    //    classes = ocnt as string[];
+                    //    bslbl.Text = msg;
                     //}
-                    //else if (ocnt.GetType().Name.Equals("String"))
-                    //{
-                    //    classes = new string[1];
-                    //    classes[0] = ocnt as string;
 
-                    //}
-                    //else
-                    //{
 
-                    //}
+                    #endregion
                 }
-                //object el = cs.FindName(statusTextControlName);
-                //BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
-                //if (bslbl != null)
-                //{
-                //    bslbl.Text = msg;
-                //}
-                
-
-                #endregion
             }
             #endregion
 
