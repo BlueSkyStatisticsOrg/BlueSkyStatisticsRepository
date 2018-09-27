@@ -479,7 +479,7 @@ namespace BlueSky
                     //copy bin config to user profile.
                     File.Copy(source, destination, true);
 
-                    SaveConfigToFile(usrconfigs, destination);
+                    SaveConfigToFile(binconfigs, destination);
                 }
             }
             else
