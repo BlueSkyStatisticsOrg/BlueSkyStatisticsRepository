@@ -32,11 +32,11 @@ namespace BlueSky.Commands.Tools.Package
                 UAReturn r = phm.PackageFileLoad(packagename);// PackageFileLoad(packagename);
                 if (r != null && r.Success)
                 {
-                    SendToOutputWindow( BSky.GlobalResources.Properties.Resources.LoadLibrary, r.CommandString);
+                    SendToOutputWindow( BSky.GlobalResources.Properties.Resources.LoadLibrary, r.CommandString, false);
                 }
                 else
                 {
-                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrLoadingUsrSessionPkg, "");
+                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrLoadingUsrSessionPkg, "", false);
                 }
             }
             catch (Exception ex)

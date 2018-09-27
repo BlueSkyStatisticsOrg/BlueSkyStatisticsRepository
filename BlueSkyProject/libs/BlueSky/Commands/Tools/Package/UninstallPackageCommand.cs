@@ -54,11 +54,11 @@ namespace BlueSky.Commands.Tools.Package
                 UAReturn r = phm.PackageFileUninstall(selectedpackages);// PackageFileUninstall(packagename);
                 if (r != null && r.Success)
                 {
-                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.UninstallPkg, r.CommandString);
+                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.UninstallPkg, r.CommandString, false);
                 }
                 else
                 {
-                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrUninstallingPkg, "");
+                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrUninstallingPkg, "", false);
                 }
             }
             catch (Exception ex)

@@ -38,7 +38,7 @@ namespace BlueSky.Commands.Tools.Package
                 }
             }
 
-            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ShowInstalledRPkgs, allpackages.ToString());
+            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ShowInstalledRPkgs, allpackages.ToString(),false);
         }
 
         protected override void OnPostExecute(object param)
@@ -74,7 +74,7 @@ namespace BlueSky.Commands.Tools.Package
                 }
                 else
                 {
-                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrGettingInstalledPkgs, "");
+                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrGettingInstalledPkgs, "", false);
                 }
             }
             catch (Exception ex)

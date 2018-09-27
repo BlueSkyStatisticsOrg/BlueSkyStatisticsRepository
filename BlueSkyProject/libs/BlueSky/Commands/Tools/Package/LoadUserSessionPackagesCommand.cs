@@ -43,21 +43,21 @@ namespace BlueSky.Commands.Tools.Package
                     {
                         if (r.Success)//all package got loaded
                         {
-                            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.UserPkgs, r.CommandString);
+                            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.UserPkgs, r.CommandString, false);
                         }
                         else if (r.CommandString.Trim().Length > 0) // some got loaded some failed.
                         {
-                            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.UsrSessPkgsLoadFailed, r.CommandString);
+                            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.UsrSessPkgsLoadFailed, r.CommandString, false);
                         }
                     }
                     else
                     {
-                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrLoadingRPkgs, "");
+                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrLoadingRPkgs, "", false);
                     }
                 }
                 else
                 {
-                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.UserPkgs, BSky.GlobalResources.Properties.Resources.UserSessListEmpty);
+                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.UserPkgs, BSky.GlobalResources.Properties.Resources.UserSessListEmpty, false);
                 }
             }
             catch (Exception ex)

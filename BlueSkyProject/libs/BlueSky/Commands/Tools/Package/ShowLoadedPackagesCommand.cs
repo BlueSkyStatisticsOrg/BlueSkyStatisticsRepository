@@ -38,7 +38,7 @@ namespace BlueSky.Commands.Tools.Package
                 }
             }
 
-            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ShowLoadedPkgs, allpackages.ToString());
+            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ShowLoadedPkgs, allpackages.ToString(), false);
 
         }
 
@@ -75,7 +75,7 @@ namespace BlueSky.Commands.Tools.Package
                 }
                 else
                 {
-                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrGettingLoadedPkgs, "");
+                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrGettingLoadedPkgs, "",false);
                 }
             }
             catch (Exception ex)

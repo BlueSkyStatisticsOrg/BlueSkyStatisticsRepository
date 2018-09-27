@@ -49,14 +49,14 @@ namespace BlueSky.Commands.Tools.Package
                             UAReturn r = phm.PackageFileInstall(zipFiles);// PackageFileInstall(pkgfilenames);//openFileDialog.FileName);
                             if (r != null && r.Success)
                             {
-                                SendToOutputWindow(BSky.GlobalResources.Properties.Resources.RPkgInstallStatus, r.SimpleTypeData.ToString());//"Install Package"
+                                SendToOutputWindow(BSky.GlobalResources.Properties.Resources.RPkgInstallStatus, r.SimpleTypeData.ToString(), false);//"Install Package"
                             }
                             else
                             {
                                 if (r != null)
                                 {
                                     string msg = r.SimpleTypeData as string;
-                                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.RPkgInstallStatus, msg);//"Error Installing Packages:"
+                                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.RPkgInstallStatus, msg, false);//"Error Installing Packages:"
                                 }
                             }
                             ///Set initial Dir. 12Feb2013///

@@ -38,7 +38,7 @@ namespace BlueSky.Commands.Tools.Package
                     if (r != null)
                     {
                         // It is not error message. It could be success/failure msg. A status message basically.
-                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.RPkgInstallStatus, r.Error);
+                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.RPkgInstallStatus, r.Error, false);
                     }
 
                 }

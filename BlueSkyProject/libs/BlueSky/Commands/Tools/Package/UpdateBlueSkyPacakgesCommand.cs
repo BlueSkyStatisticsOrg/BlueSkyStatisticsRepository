@@ -37,7 +37,7 @@ namespace BlueSky.Commands.Tools.Package
                     UAReturn r = phm.PackageFileInstall(pkgfilenames, autoLoad, overwrite);// PackageFileInstall(pkgfilenames);//openFileDialog.FileName);
                     if (r != null && r.Success)
                     {
-                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.InstallPkg, r.SimpleTypeData.ToString());
+                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.InstallPkg, r.SimpleTypeData.ToString(), false);
                         MessageBox.Show(BSky.GlobalResources.Properties.Resources.RestartToApplyChanges2, BSky.GlobalResources.Properties.Resources.RestartBSkyApp, MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                     else
@@ -45,7 +45,7 @@ namespace BlueSky.Commands.Tools.Package
                         if (r != null)
                         {
                             string msg = r.SimpleTypeData as string;
-                            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrInstallingRPkg, msg);
+                            SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrInstallingRPkg, msg, false);
                         }
                     }
                     ///Set initial Dir.///

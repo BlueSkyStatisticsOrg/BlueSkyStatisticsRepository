@@ -30,11 +30,11 @@ namespace BlueSky.Commands.Tools.Package
                 {
                     if (r.Success)
                     {
-                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.InstallingFromCRAN, r.CommandString);
+                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.InstallingFromCRAN, r.CommandString, false);
                     }
                     else if (!r.Success)
                     {
-                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.InstallingFromCRAN, r.Error);
+                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.InstallingFromCRAN, r.Error, false);
                     }
                 }
                 else

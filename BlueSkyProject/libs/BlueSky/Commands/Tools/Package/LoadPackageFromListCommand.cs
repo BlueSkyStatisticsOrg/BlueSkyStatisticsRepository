@@ -51,14 +51,14 @@ namespace BlueSky.Commands.Tools.Package
                 UAReturn r = phm.LoadPackageFromList(selectedpackages);// LoadPackageFromList();
                 if (r != null && r.Success)
                 {
-                    SendToOutputWindow( BSky.GlobalResources.Properties.Resources.LoadPackages, r.CommandString);
+                    SendToOutputWindow( BSky.GlobalResources.Properties.Resources.LoadPackages, r.CommandString, false);
                 }
                 else
                 {
                     if (r.CommandString != null && r.CommandString.Trim().Length < 1)
                     { }
                     else if (r.CommandString != null && r.CommandString.Trim().Length > 0)
-                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrLoadingRPkgs, r.CommandString);
+                        SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrLoadingRPkgs, r.CommandString, false);
                 }
 
             }
