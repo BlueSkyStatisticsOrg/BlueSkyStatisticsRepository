@@ -1490,6 +1490,9 @@ namespace BlueSky.Windows
             }
             ds.Changed = true;
 
+            //gridControl1.CancelEdit();
+            //refreshDataGrid(false); 
+            //controller.RefreshGrids(ds);// infinite loop
         }
 
         //Anil.19Sep2014
