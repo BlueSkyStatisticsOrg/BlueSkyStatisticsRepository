@@ -298,8 +298,9 @@ namespace BSky.Statistics.R
         {
             if (celdata.Trim().Equals(""))//if someone types blank in datagrid cell, we make that NA in R
             {
-                celdata = "NA";
-                return string.Format("BSkyEditDatagrid(colname='{0}', colceldata={1}, rowindex={2}, dataSetNameOrIndex='{3}')", colName, celdata, rowindex, dataSource.Name);
+                //celdata = "NA";
+                //return string.Format("BSkyEditDatagrid(colname='{0}', colceldata={1}, rowindex={2}, dataSetNameOrIndex='{3}')", colName, celdata, rowindex, dataSource.Name);
+                return string.Format("BSkyEditDatagrid(colname='{0}', rowindex={1}, dataSetNameOrIndex='{2}')", colName,  rowindex, dataSource.Name);
             }
             else
                 return string.Format("BSkyEditDatagrid(colname='{0}', colceldata='{1}', rowindex={2}, dataSetNameOrIndex='{3}')", colName, celdata, rowindex, dataSource.Name);
