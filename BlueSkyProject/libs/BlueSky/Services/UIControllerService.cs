@@ -63,7 +63,7 @@ namespace BlueSky.Services
         #region IUIController Members
 
         //Added by Anil. Just for testing. May not be used in actual
-        public void GetAllOpenDatasetsInGrid()
+        public void ShowAllOpenDatasetsInGrid()
         {
             string allDatasetNames = "";
             DataPanel dp;
@@ -78,6 +78,31 @@ namespace BlueSky.Services
                 allDatasetNames = allDatasetNames + "\n " + ds.Name + " : " + datasetname;
             }
             MessageBox.Show("All Open Datasets:\n" + allDatasetNames);
+        }
+
+        //Added by Anil. Just for testing. May not be used in actual
+        public List<string> GetAllOpenDatasetsInGrid()
+        {
+            List<string> dslist = new List<string>();
+            string allDatasetNames = "";
+            DataPanel dp;
+            DataSource ds;
+            ItemCollection itc = DocGroup.Items;
+            foreach (TabItem ti in itc)
+            {
+                dp = ti.Content as DataPanel;
+                ds = dp.DS;
+                string datasetname = ds.FileName;
+                string dataset = ds.Name;
+                if (ds != null && ds.FileName != null) 
+                {
+                    if(!string.IsNullOrEmpty(ds.FileName))//preferably add disk filename
+                        dslist.Add(ds.FileName);
+                    else if(!string.IsNullOrEmpty(ds.Name))//if no disk filename then add in memory objec name(data.frame name)
+                        dslist.Add(ds.Name);
+                }
+            }
+            return dslist;
         }
 
         // following is not needed. GetTabItem will do the job.

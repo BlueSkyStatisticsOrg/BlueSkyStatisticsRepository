@@ -7,6 +7,7 @@ using BSky.Lifetime;
 using BlueSky.CommandBase;
 using BSky.Interfaces.Interfaces;
 using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace BlueSky.Commands.File
 {
@@ -47,6 +48,21 @@ namespace BlueSky.Commands.File
             bool? output = saveasFileDialog.ShowDialog(appwin);//Application.Current.MainWindow);
             if (output.HasValue && output.Value)
             {
+                //If the filename provided by user matches to any of the dataset's disk filename, currently open
+                // in the grid then we must not let user overwrite 
+                // and inform him/her to first close the dataset whose filename matches and then try Save-As again.
+                //
+                //Only thing that may confuse users is, in the first Microsoft-SaveAs dialog they already decided 
+                //to overwrite an existing file (which happens to be loaded in the grid also) but we prompt them 
+                //again telling that the file is open in the grid and skip the SaveAs operation with message.
+                //
+                List<string> dsfnames = controller.GetAllOpenDatasetsInGrid();
+                if (dsfnames.Contains(saveasFileDialog.FileName))
+                {
+                    BSkyMouseBusyHandler.HideMouseBusy();
+                    MessageBox.Show(saveasFileDialog.FileName+"\n"+ BSky.GlobalResources.Properties.Resources.OverwritingOpenDatasetNotallowed, BSky.GlobalResources.Properties.Resources.SaveAsFailed, MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    return;
+                }
 
                 service.SaveAs(saveasFileDialog.FileName, controller.GetActiveDocument());// #0
                 controller.GetActiveDocument().Changed = false;//21Mar2014 during close it should not prompt again for saving

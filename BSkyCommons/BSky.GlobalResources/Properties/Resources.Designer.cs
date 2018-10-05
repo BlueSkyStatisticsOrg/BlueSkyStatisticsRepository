@@ -2824,6 +2824,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dataset is open in the data grid. Close the dataset if you wish to overwrite it during Save As operation and try Save As again..
+        /// </summary>
+        public static string OverwritingOpenDatasetNotallowed {
+            get {
+                return ResourceManager.GetString("OverwritingOpenDatasetNotallowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Note: package must be already installed using &apos;install package&apos; option..
         /// </summary>
         public static string PkgMustAlreadyInstalled {

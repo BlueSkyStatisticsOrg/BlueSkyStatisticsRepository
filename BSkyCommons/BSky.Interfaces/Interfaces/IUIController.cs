@@ -13,7 +13,8 @@ namespace BSky.Interfaces.Interfaces
         List<string> sortasccolnames { get; set; } //18Oct2015 names of all ascending cols
         List<string> sortdesccolnames { get; set; } //18Oct2015 names of all descending cols
 
-        void GetAllOpenDatasetsInGrid();//Added by Anil for testing. May not be needed in actual. Actual function is GetDatasetNames(), below
+        void ShowAllOpenDatasetsInGrid();//Added by Anil for testing. May not be needed in actual. Actual function is GetDatasetNames(), below
+        List<string> GetAllOpenDatasetsInGrid();
         DataSource GetActiveDocument();
         TabItem GetTabItem(DataSource ds);
         DataSource GetDocumentByName(string datasetname);
