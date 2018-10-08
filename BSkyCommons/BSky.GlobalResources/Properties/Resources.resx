@@ -1566,7 +1566,15 @@
     <comment>App.xaml.cs :Message when BlueSky R package install fails due to which library(BlueSky) fails. We do not do Install from CRAN message anymore.</comment>
   </data>
   <data name="OverwritingOpenDatasetNotallowed" xml:space="preserve">
-    <value>Dataset is open in the data grid. Close the dataset if you wish to overwrite it during Save As operation and try Save As again.</value>
+    <value>is already open in the datagrid. Close the dataset first and then try Save-As again.</value>
     <comment>FileSaveAsCommand.cs: SaveAs must not overwrite the disk file which is currently loaded in the data grid.</comment>
+  </data>
+  <data name="Dtaset" xml:space="preserve">
+    <value>dataset</value>
+    <comment>word 'Dataset'</comment>
+  </data>
+  <data name="The" xml:space="preserve">
+    <value>The</value>
+    <comment>Just word 'The'</comment>
   </data>
 </root>

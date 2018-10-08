@@ -1735,6 +1735,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to dataset.
+        /// </summary>
+        public static string Dtaset {
+            get {
+                return ResourceManager.GetString("Dtaset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have entered an empty value for control name, please review the control names of your controls in the grid and enter a valid value.
         /// </summary>
         public static string EnteredEmptyControlName {
@@ -2824,7 +2833,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dataset is open in the data grid. Close the dataset if you wish to overwrite it during Save As operation and try Save As again..
+        ///   Looks up a localized string similar to is already open in the datagrid. Close the dataset first and then try Save-As again..
         /// </summary>
         public static string OverwritingOpenDatasetNotallowed {
             get {
@@ -3198,6 +3207,15 @@ namespace BSky.GlobalResources.Properties {
         public static string tempsinkConfigKeyNotFound {
             get {
                 return ResourceManager.GetString("tempsinkConfigKeyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The.
+        /// </summary>
+        public static string The {
+            get {
+                return ResourceManager.GetString("The", resourceCulture);
             }
         }
         

@@ -8,6 +8,7 @@ using BlueSky.CommandBase;
 using BSky.Interfaces.Interfaces;
 using System.Windows.Input;
 using System.Collections.Generic;
+using System.IO;
 
 namespace BlueSky.Commands.File
 {
@@ -60,7 +61,15 @@ namespace BlueSky.Commands.File
                 if (dsfnames.Contains(saveasFileDialog.FileName))
                 {
                     BSkyMouseBusyHandler.HideMouseBusy();
-                    MessageBox.Show(saveasFileDialog.FileName+"\n"+ BSky.GlobalResources.Properties.Resources.OverwritingOpenDatasetNotallowed, BSky.GlobalResources.Properties.Resources.SaveAsFailed, MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    string fullpathfilename = saveasFileDialog.FileName;
+                    string filenameonly = Path.GetFileName(saveasFileDialog.FileName);
+                    //The filenameonly dataset (fullpathfilename) is already open in the datagrid. Close the dataset first and then try Save-As again.
+                    MessageBox.Show(BSky.GlobalResources.Properties.Resources.The + " \'" + filenameonly + "\' " +
+                        BSky.GlobalResources.Properties.Resources.Dtaset+
+                        " ("+fullpathfilename +") "  + 
+                        BSky.GlobalResources.Properties.Resources.OverwritingOpenDatasetNotallowed, 
+                        BSky.GlobalResources.Properties.Resources.SaveAsFailed, 
+                        MessageBoxButton.OK, MessageBoxImage.Asterisk);
                     return;
                 }
 
