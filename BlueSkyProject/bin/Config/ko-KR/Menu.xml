@@ -215,6 +215,7 @@
     <menu id="Display_Contrasts" text="디스플레이 대비" commandtemplate="Display Contrasts.xaml" commandoutputformat="Display Contrasts.xml" owner="" nodetype="Leaf" />
 	<menu id="KNN" text="KNN" commandtemplate="KNN.xaml" commandoutputformat="KNN.xml" owner="" nodetype="Leaf" />
     <menu id="Summarizing_Models_for_each_group" text="각 그룹에 대한 요약 모델" commandtemplate="Summarizing Models for each group.xaml" commandoutputformat="Summarizing Models for each group.xml" owner="" nodetype="Leaf" />		
+	
   </menu>
   <menu id="ModelTuningMenu" text="모델 튜닝" owner="" nodetype="Parent">
     <menu id="Bootstrap_Resampling" text="부트 스트랩 리샘플링" commandtemplate="Bootstrap Resampling.xaml" commandoutputformat="Bootstrap Resampling.xml" owner="" nodetype="Leaf" />
@@ -229,6 +230,7 @@
     <menu id="Confidence_Interval" text="신뢰 구간" commandtemplate="Confidence Interval.xaml" commandoutputformat="Confidence Interval.xml" owner="" nodetype="Leaf" />
     <menu id="Variance_Inflation_Factors" text="분산 인플레이션 계수" commandtemplate="Variance Inflation Factors.xaml" commandoutputformat="Variance Inflation Factors.xml" owner="" nodetype="Leaf" />
     <menu id="Bonferroni_Outlier_Test" text="본 페로 니 이상 치 검사" commandtemplate="Bonferroni Outlier Test.xaml" commandoutputformat="Bonferroni Outlier Test.xml" owner="" nodetype="Leaf" />
+<menu id="Likelihood_Ratio_Test" text="우도 비율 테스트" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />	
   </menu>
   <menu id="toolsMenu" text="도구들" owner="BSky" nodetype="Parent">
     <menu id="vct" text="대화 상자 검사" group="true" command="BlueSky.Commands.Tools.InspectorCommand" owner="BSky" nodetype="Leaf" />

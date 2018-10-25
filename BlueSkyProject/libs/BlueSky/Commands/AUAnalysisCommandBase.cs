@@ -55,7 +55,7 @@ namespace BlueSky.Commands.Analytics.TTest
         bool selectedForDump;
 
         List<DataSourceVariable> dsvs;
-
+        enum PreReqDialogcontrol { STATUSTEXTBOX, COMBOBOX, NONE };
         /////////////  'Dialog type' related variables  ///////////////////
         //for getting the XML template info from dialog. If it exists then only show the formatted output.
         // xml template will not be provided for non analytic commands
@@ -245,15 +245,25 @@ namespace BlueSky.Commands.Analytics.TTest
             OutputHelper.UpdateMacro("%MODEL%", UIController.GetActiveModelName());
 
             #region Run Dialogs prerequisite syntax and see if it generates any error
+            PreReqDialogcontrol preReqDlgCtrl = PreReqDialogcontrol.NONE;
             string PreReqCommand = cs.PrereqCommandString;
             string statusTextControlName = cs.StatusTextBoxName;
-			string EditableComboBoxName = cs.EditableComboBoxName; 
+			string EditableComboBoxName = cs.EditableComboBoxName;
+            //Aaron: either its status-text or comboBox (or none) but not both.
+            if (statusTextControlName != null && statusTextControlName.Trim().Length > 0)
+            {
+                preReqDlgCtrl = PreReqDialogcontrol.STATUSTEXTBOX;
+            }
+            else if (EditableComboBoxName != null && EditableComboBoxName.Trim().Length > 0)
+            {
+                preReqDlgCtrl = PreReqDialogcontrol.COMBOBOX;
+            }
             bool enableDialog = true;
             if (PreReqCommand != null)
             {
                 if (PreReqCommand != "")
                 {
-                    #region Execute Prereq commands that should return TRUE or a message(error/warning)
+                    #region Execute Prereq commands that should return status[TRUE or a message(error/warning)] or combo entries
                     string msg = "---";
                     string[] comboBoxVals = null;
                     CommandRequest cmdreq = new CommandRequest();
@@ -261,69 +271,79 @@ namespace BlueSky.Commands.Analytics.TTest
                     object ocnt = analytics.ExecuteR(cmdreq, true, false);
                     if (ocnt != null)
                     {
-
-                        if (ocnt.GetType().Name.Equals("String"))
+                        //Error processing common for Status and Combo
+                        msg = ocnt as string;
+                        if (msg!=null && (msg.Contains("ERROR") || msg.Contains("Error") )) //09Mar2017 'Error' may occur in R own messages
                         {
-                            msg = ocnt as string;
-                            if (msg.Contains("ERROR") || msg.Contains("Error")) //09Mar2017 'Error' may occur in R own messages
-                            {
-                                enableDialog = false;
-                            }
-                            object el = cs.FindName(statusTextControlName);
-                            BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
-                            if (bslbl != null)
-                            {
-                                bslbl.Text = msg;
-                            }
+                            enableDialog = false;
                         }
 
-                        if (ocnt.GetType().Name.Equals("String[]"))
+                        if (preReqDlgCtrl == PreReqDialogcontrol.STATUSTEXTBOX)
                         {
-                            comboBoxVals = ocnt as string[];
-                            if (comboBoxVals.Contains("ERROR") || comboBoxVals.Contains("Error")) //09Mar2017 'Error' may occur in R own messages
+                            if (ocnt.GetType().Name.Equals("String"))
                             {
-                                enableDialog = false;
+                                //msg = ocnt as string;
+                                //if (msg.Contains("ERROR") || msg.Contains("Error")) //09Mar2017 'Error' may occur in R own messages
+                                //{
+                                //    enableDialog = false;
+                                //}
+                                object el = cs.FindName(statusTextControlName);
+                                BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
+                                if (bslbl != null)
+                                {
+                                    bslbl.Text = msg;
+                                }
+                            }
+                        }
+                        else if (preReqDlgCtrl == PreReqDialogcontrol.COMBOBOX && enableDialog)//if combo and no error
+                        {
+                            string[] editableComboBoxNames = null;
+                            char[] sep = new char[] { ';' };
+
+                            //single or multiple combos in dialog property
+                            if (EditableComboBoxName.Trim().Contains(";"))
+                            {
+                                editableComboBoxNames = EditableComboBoxName.Split(sep);
                             }
                             else
                             {
-                                object e2 = cs.FindName(EditableComboBoxName);
-                                BSkyEditableComboBox bslbl2 = e2 as BSkyEditableComboBox;
-                                bslbl2.IsTextSearchEnabled = false;
-                                bslbl2.IsTextSearchCaseSensitive = true;
+                                editableComboBoxNames = new string[1];
+                                editableComboBoxNames[0] = EditableComboBoxName;
+                            }
 
-                                if (bslbl2 != null)
+                            //returned single model or multiple model
+                            if (ocnt.GetType().Name.Equals("String"))
+                            {
+                                comboBoxVals = new string[1];
+                                comboBoxVals[0] = ocnt as string;
+                            }
+                            else if (ocnt.GetType().Name.Equals("String[]"))
+                            {
+                                comboBoxVals = ocnt as string[];
+                            }
+
+                            //Fill combos with same data
+                            foreach (string comboname in editableComboBoxNames)
+                            {
+                                if (string.IsNullOrEmpty(comboname))
+                                    continue;
+                                object e2 = cs.FindName(comboname.Trim());
+                                BSkyEditableComboBox edtCmbBx = e2 as BSkyEditableComboBox;
+                                edtCmbBx.IsTextSearchEnabled = false;
+                                edtCmbBx.IsTextSearchCaseSensitive = true;
+
+                                if (edtCmbBx != null)
                                 {
                                     foreach (string s in comboBoxVals)
                                     {
-                                        bslbl2.Items.Add(s);
-
+                                        if (!edtCmbBx.Items.Contains(s))
+                                            edtCmbBx.Items.Add(s);
                                     }
                                 }
                             }
                         }
-                        //string[] classes;
-                        //if (ocnt.GetType().Name.Equals("String[]"))
-                        //{
-                        //    classes = ocnt as string[];
-                        //}
-                        //else if (ocnt.GetType().Name.Equals("String"))
-                        //{
-                        //    classes = new string[1];
-                        //    classes[0] = ocnt as string;
 
-                        //}
-                        //else
-                        //{
-
-                        //}
                     }
-                    //object el = cs.FindName(statusTextControlName);
-                    //BSkyMultiLineLabel bslbl = el as BSkyMultiLineLabel;
-                    //if (bslbl != null)
-                    //{
-                    //    bslbl.Text = msg;
-                    //}
-
 
                     #endregion
                 }

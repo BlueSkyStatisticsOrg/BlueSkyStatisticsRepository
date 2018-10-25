@@ -214,6 +214,7 @@
     <menu id="Display_Contrasts" text="Display Contrasts" commandtemplate="Display Contrasts.xaml" commandoutputformat="Display Contrasts.xml" owner="" nodetype="Leaf" />
     <menu id="KNN" text="KNN" commandtemplate="KNN.xaml" commandoutputformat="KNN.xml" owner="" nodetype="Leaf" />
     <menu id="Summarizing_Models_for_each_group" text="Summarizing Models for each group" commandtemplate="Summarizing Models for each group.xaml" commandoutputformat="Summarizing Models for each group.xml" owner="" nodetype="Leaf" />
+
   </menu>
   <menu id="ModelTuningMenu" text="Model Tuning" owner="" nodetype="Parent">
     <menu id="Bootstrap_Resampling" text="Bootstrap Resampling" commandtemplate="Bootstrap Resampling.xaml" commandoutputformat="Bootstrap Resampling.xml" owner="" nodetype="Leaf" />
@@ -228,6 +229,7 @@
     <menu id="Confidence_Interval" text="Confidence Interval" commandtemplate="Confidence Interval.xaml" commandoutputformat="Confidence Interval.xml" owner="" nodetype="Leaf" />
     <menu id="Variance_Inflation_Factors" text="Variance Inflation Factors" commandtemplate="Variance Inflation Factors.xaml" commandoutputformat="Variance Inflation Factors.xml" owner="" nodetype="Leaf" />
     <menu id="Bonferroni_Outlier_Test" text="Bonferroni Outlier Test" commandtemplate="Bonferroni Outlier Test.xaml" commandoutputformat="Bonferroni Outlier Test.xml" owner="" nodetype="Leaf" />
+	<menu id="Likelihood_Ratio_Test" text="Likelihood Ratio Test" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="toolsMenu" text="Tools" owner="BSky" nodetype="Parent">
     <menu id="vct" text="Inspect Dialog" group="true" command="BlueSky.Commands.Tools.InspectorCommand" owner="BSky" nodetype="Leaf" />
