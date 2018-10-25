@@ -81,6 +81,9 @@ namespace BlueSky
             logService.SetLogLevelFromConfig();//loading log level from config file
             logService.WriteToLogLevel("R.Net,Logger and Config loaded:", LogLevelEnum.Info);/// 
 
+            // Get users system details
+            LogSysDetails();
+
             ////Recent default packages. This code must appear before loading any R package. (including BlueSky R package)
             XMLitemsProcessor defaultpackages = container.Resolve<XMLitemsProcessor>();//06Feb2014
             defaultpackages.MaxRecentItems = 100;
@@ -255,7 +258,27 @@ namespace BlueSky
             }
         }
 
-#region Check a flag if new files are copied to user profile
+        #region Log some System details
+        private void LogSysDetails()
+        {
+            ILoggerService logService = container.Resolve<ILoggerService>();
+            // Dot Net version found
+            Version ver = Environment.Version;
+            logService.WriteToLogLevel("You have .Net version : " + ver.ToString(), LogLevelEnum.Info);
+
+            // R_HOME in user's system
+            logService.WriteToLogLevel("------------------------------------", LogLevelEnum.Info);
+            logService.WriteToLogLevel("Your current R_HOME env. var. : " + Environment.GetEnvironmentVariable("R_HOME"), LogLevelEnum.Info);
+            logService.WriteToLogLevel("------------------------------------", LogLevelEnum.Info);
+
+            // PATH in user's system
+            //log.WriteLog("------------------------------------");
+            logService.WriteToLogLevel("Your current PATH env. var. : " + Environment.GetEnvironmentVariable("PATH"), LogLevelEnum.Info);
+            logService.WriteToLogLevel("------------------------------------", LogLevelEnum.Info);
+        }
+        #endregion
+
+        #region Check a flag if new files are copied to user profile
 
         private string[] GetAppVersionParts()
         {
