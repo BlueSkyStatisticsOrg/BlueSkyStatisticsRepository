@@ -229,7 +229,9 @@
     <menu id="Confidence_Interval" text="Confidence Interval" commandtemplate="Confidence Interval.xaml" commandoutputformat="Confidence Interval.xml" owner="" nodetype="Leaf" />
     <menu id="Variance_Inflation_Factors" text="Variance Inflation Factors" commandtemplate="Variance Inflation Factors.xaml" commandoutputformat="Variance Inflation Factors.xml" owner="" nodetype="Leaf" />
     <menu id="Bonferroni_Outlier_Test" text="Bonferroni Outlier Test" commandtemplate="Bonferroni Outlier Test.xaml" commandoutputformat="Bonferroni Outlier Test.xml" owner="" nodetype="Leaf" />
-		<menu id="Likelihood_Ratio_Test" text="Likelihood Ratio Test" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />
+    <menu id="Likelihood_Ratio_Test" text="Likelihood Ratio Test" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />
+    <menu id="Hosmer-Lemeshow_Test" text="Hosmer-Lemeshow Test" commandtemplate="Hosmer-Lemeshow Test.xaml" commandoutputformat="Hosmer-Lemeshow Test.xml" owner="" nodetype="Leaf" />
+    <menu id="Pseudo_R_squared" text="Pseudo R squared" commandtemplate="Pseudo R squared.xaml" commandoutputformat="Pseudo R squared.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="toolsMenu" text="Tools" owner="BSky" nodetype="Parent">
     <menu id="vct" text="Inspect Dialog" group="true" command="BlueSky.Commands.Tools.InspectorCommand" owner="BSky" nodetype="Leaf" />
