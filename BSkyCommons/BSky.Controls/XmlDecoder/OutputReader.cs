@@ -484,7 +484,10 @@ namespace BSky.XmlDecoder
                             fs.Add(ch2, mtrow.BSkyMsg + "." + mtrow.RMsg); // ch2++ was here earlier
                             ridx = mtrow.DataTableRow;
                             cidx = mtrow.StartCol;
-                            if (superscripttext != null)
+                            if (superscripttext != null &&
+                                ridx>0 && ridx <= superscripttext.GetLength(0) && 
+                                cidx>0 && cidx <= superscripttext.GetLength(1)
+                                )
                                 superscripttext[ridx - 1, cidx - 1] = Convert.ToString(ch2);
                             ch2++;
                         }
