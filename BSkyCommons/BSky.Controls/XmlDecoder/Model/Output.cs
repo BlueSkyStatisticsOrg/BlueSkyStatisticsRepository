@@ -109,12 +109,17 @@ namespace BSky.XmlDecoder
                 //Write some logic to separate out each operand(ckhbox1, chkbox2) to get final result of the condition based on operator used.
                 object obj = OutputHelper.AnalyticsData.InputElement.FindName(condition);
 
-                if(flag && (obj != null && typeof(CheckBox).IsAssignableFrom(obj.GetType())))
+                //if(flag && (obj != null && typeof(CheckBox).IsAssignableFrom(obj.GetType())))
+                if ((obj != null && typeof(CheckBox).IsAssignableFrom(obj.GetType())))//28Oct2018 For McNemar and Fisher
                 {
                     CheckBox chkbox = obj as CheckBox;
                     flag = chkbox.IsChecked.HasValue ? chkbox.IsChecked.Value : false;
-                }                
+                }
 
+                //28Oct2018 For McNemar and Fisher
+                //if at least one checkbox is checked (chisq, mcnemar or fisher) then show the second table(the chisq table).
+                if (flag)
+                    break;
             }
 
 
