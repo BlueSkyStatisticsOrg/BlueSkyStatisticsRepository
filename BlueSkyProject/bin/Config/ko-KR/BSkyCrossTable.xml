@@ -89,11 +89,11 @@
     <table ID="Chisq" >
 	  <option-value-pairs>
 		  <option-value condition="chisq" text="Chi"></option-value>	
-		<!-- <option-value condition="percRows" text="Count"></option-value>
-		  <option-value condition="percCols" text="Count"></option-value>  -->
+		  <option-value condition="mcnemar" text="Mcn"></option-value>
+		  <option-value condition="fisher" text="Fis"></option-value>
 	  </option-value-pairs>
       <table.header>
-        <text stringformat="Chisq">
+        <text stringformat="Statistical Test Results">
         </text>
       </table.header>
       <columns>
@@ -103,6 +103,9 @@
               <option-value condition="" text="Value"></option-value>
               <option-value condition="" text="df"></option-value>
               <option-value condition="" text="Asyp. Sig"></option-value>
+			  <option-value condition="" text="Odds ratio"></option-value>
+			  <option-value condition="" text="95%Confidence interval"></option-value>
+			  <option-value condition="" text="95%Confidence interval"></option-value>
             </option-value-pairs>
           </labels>
         </column>
@@ -117,9 +120,9 @@
             <row>
               <labels grouping="options">
                 <option-value-pairs>
-                  <option-value condition="" text="Pearson Chi Square"></option-value>
-                  <!-- option-value condition="" text="Likelihood Ratio"></option-value -->
-                  <!-- option-value condition="" text="Linear by linear"></option-value -->
+                  <option-value condition="chisq" text="Pearson Chi Square"></option-value>
+                  <option-value condition="mcnemar" text="Mcnemar's test"></option-value>
+                  <option-value condition="fisher" text="Fisher's test"></option-value>
                 </option-value-pairs>
               </labels>              
             </row>
