@@ -2091,12 +2091,16 @@ namespace BSky.XmlDecoder
 
                         string s = temp.ChildNodes.Item(i).ChildNodes.Item(j).InnerText;
 
-                        if (s != null && !s.Trim().Equals("."))
+                        if (s != null)// && !s.Trim().Equals("."))//now 'else' is not required.
                         {
+                            int intout; //for few numeric fields
+                            Int32.TryParse(s, out intout);
+
                             switch (i)
                             {
                                 case 0:
-                                    mtr.VarIndex = Convert.ToInt16(s);
+                                    mtr.VarIndex = intout;
+                                    
                                     break;
                                 case 1:
                                     switch (s)
@@ -2123,13 +2127,13 @@ namespace BSky.XmlDecoder
                                     mtr.VarName = s;
                                     break;
                                 case 3:
-                                    mtr.DataTableRow = Convert.ToInt16(s);
+                                    mtr.DataTableRow = intout;
                                     break;
                                 case 4:
-                                    mtr.StartCol = Convert.ToInt16(s);
+                                    mtr.StartCol = intout;
                                     break;
                                 case 5:
-                                    mtr.EndCol = Convert.ToInt16(s);
+                                    mtr.EndCol = intout;
                                     break;
                                 case 6:
                                     mtr.BSkyMsg = s;
@@ -2201,14 +2205,20 @@ namespace BSky.XmlDecoder
             XmlNode crosstab = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/crosstab1", datanumber));
             XmlNode crosstab2 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/crosstab2", datanumber));
 
+            //For Chi-Sq table. And to get metadata (errors warnings about McNemar and Fisher)
+            XmlNode normal1 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/normal1", datanumber));
+            XmlNode normal2 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/normal2", datanumber));
+
             if (normal != null)
-            {
                 return "normal";
-            }
-            if (crosstab != null)
+            else if (crosstab != null)
                 return "crosstab1";
-            if (crosstab2 != null)
+            else if (crosstab2 != null)
                 return "crosstab2";
+            else if (normal1 != null)
+                return "normal1";
+            else if (normal2 != null)
+                return "normal2";
             return null;
         }
 
