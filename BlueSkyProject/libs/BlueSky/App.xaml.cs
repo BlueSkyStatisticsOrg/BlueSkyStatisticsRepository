@@ -221,7 +221,7 @@ namespace BlueSky
                     string firstmsg = BSky.GlobalResources.Properties.Resources.ErrLoadingRPkg + "\n\n";
                     
                     string msg = "\n\n" + BSky.GlobalResources.Properties.Resources.DisableAntivirus;// +
-                    if (BlueSkyPkgErr) msg = string.Empty;
+                    //if (BlueSkyPkgErr) msg = string.Empty;
 
                     HideMouseBusy();
                     string mboxtitle1 = BSky.GlobalResources.Properties.Resources.ErrReqRPkgMissing;
