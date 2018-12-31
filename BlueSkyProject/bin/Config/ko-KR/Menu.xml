@@ -215,7 +215,13 @@
     <menu id="Display_Contrasts" text="디스플레이 대비" commandtemplate="Display Contrasts.xaml" commandoutputformat="Display Contrasts.xml" owner="" nodetype="Leaf" />
 	<menu id="KNN" text="KNN" commandtemplate="KNN.xaml" commandoutputformat="KNN.xml" owner="" nodetype="Leaf" />
     <menu id="Summarizing_Models_for_each_group" text="각 그룹에 대한 요약 모델" commandtemplate="Summarizing Models for each group.xaml" commandoutputformat="Summarizing Models for each group.xml" owner="" nodetype="Leaf" />		
-	
+    <menu id="new_id" text="IRT" owner="" nodetype="Parent">
+      <menu id="Simple_Rasch_Model" text="간단한 Rasch 모델" commandtemplate="Simple Rasch Model.xaml" commandoutputformat="Simple Rasch Model.xml" owner="" nodetype="Leaf" />
+      <menu id="Partial_Credit_Model" text="부분 신용 모델" commandtemplate="Partial Credit Model.xaml" commandoutputformat="Partial Credit Model.xml" owner="" nodetype="Leaf" />
+      <menu id="Partial_Credit_Model_(Multi_Faceted)" text="부분 신용 모델 (다중면 처리)" commandtemplate="Partial Credit Model (Multi Faceted).xaml" commandoutputformat="Partial Credit Model (Multi Faceted).xml" owner="" nodetype="Leaf" />
+      <menu id="Rating_Scale_Model" text="평가 척도 모델" commandtemplate="Rating Scale Model.xaml" commandoutputformat="Rating Scale Model.xml" owner="" nodetype="Leaf" />
+      <menu id="Rating_Scale_Model_(Multi_Faceted)" text="등급 축척 모델 (다중면 처리)" commandtemplate="Rating Scale Model (Multi Faceted).xaml" commandoutputformat="Rating Scale Model (Multi Faceted).xml" owner="" nodetype="Leaf" />
+    </menu>	
   </menu>
   <menu id="ModelTuningMenu" text="모델 튜닝" owner="" nodetype="Parent">
     <menu id="Bootstrap_Resampling" text="부트 스트랩 리샘플링" commandtemplate="Bootstrap Resampling.xaml" commandoutputformat="Bootstrap Resampling.xml" owner="" nodetype="Leaf" />
@@ -233,6 +239,12 @@
 <menu id="Likelihood_Ratio_Test" text="우도 비율 테스트" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />	
     <menu id="Hosmer-Lemeshow_Test" text="Hosmer-Lemeshow 테스트" commandtemplate="Hosmer-Lemeshow Test.xaml" commandoutputformat="Hosmer-Lemeshow Test.xml" owner="" nodetype="Leaf" />
     <menu id="Pseudo_R_squared" text="가짜 R 제곱" commandtemplate="Pseudo R squared.xaml" commandoutputformat="Pseudo R squared.xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="IRT" owner="" nodetype="Parent">
+      <menu id="ICC_Plots" text="ICC 플롯" commandtemplate="ICC Plots.xaml" commandoutputformat="ICC Plots.xml" owner="" nodetype="Leaf" />
+      <menu id="Item_Fit" text="항목 맞추기" commandtemplate="Item Fit.xaml" commandoutputformat="Item Fit.xml" owner="" nodetype="Leaf" />
+      <menu id="Plot_PI_Map" text="플롯 PI지도" commandtemplate="Plot PI Map.xaml" commandoutputformat="Plot PI Map.xml" owner="" nodetype="Leaf" />
+      <menu id="Item_and_Test_Information" text="항목 및 테스트 정보" commandtemplate="Item and Test Information.xaml" commandoutputformat="Item and Test Information.xml" owner="" nodetype="Leaf" />
+    </menu>	
   </menu>
   <menu id="toolsMenu" text="도구들" owner="BSky" nodetype="Parent">
     <menu id="vct" text="대화 상자 검사" group="true" command="BlueSky.Commands.Tools.InspectorCommand" owner="BSky" nodetype="Leaf" />
