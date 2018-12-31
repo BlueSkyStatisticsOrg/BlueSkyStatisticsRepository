@@ -81,6 +81,45 @@ namespace BSky.Statistics.R
             return _DF;
         }
 
+        private bool UserLogFilter(string stmt)
+        {
+            bool writetolog = true;
+
+            if (stmt.Contains("exists('") ||
+                stmt.Contains("is.null(") ||
+                //stmt.Contains("is.data.frame(") ||
+                stmt.Contains("write(\"Error: Cannot Load / Refresh Dataset.\",fp)") ||
+                stmt.Contains("write(\" - Dataframe does not exist(or is NULL or has no rows / columns).\",fp)") ||
+                stmt.Contains("write(\" - OR not 'data.frame' type.\",fp)") ||
+                stmt.Contains("write(\" - OR required R package(s) are missing.\",fp)") ||
+                stmt.Equals("TRUE") ||
+                stmt.Contains("BSkyQueue = BSkyGetHoldFormatObjList()") ||
+                stmt.Contains("BSkyQueue") ||
+                stmt.Equals("FALSE") ||
+                stmt.Contains("sink()") ||
+                stmt.Contains("flush(fp)") ||
+                stmt.Contains("close(fp)") ||
+                stmt.Contains("tmp <- installed.packages(noCache = TRUE)") ||
+                stmt.Contains("tmp <- search()") ||
+                stmt.Contains("fp<- file(\"") ||
+                stmt.Contains("sink(fp, append=FALSE, type=c(\"output\"))") ||
+                stmt.Contains("sink(fp, append=FALSE, type=c(\"message\"))") ||
+                stmt.Contains("sink(stderr(), type=c(\"message\"))") ||
+                stmt.Contains("rsink.txt") ||
+                stmt.Contains("if(dev.cur()[[1]] == 2) dev.off()") ||
+                stmt.Contains("png(\"") ||
+                stmt.Contains("image%03d.png") ||
+                stmt.Contains("bskytempvarname") ||
+                stmt.Contains("BSkyBatchCommand") ||
+                stmt.Contains("bskyfrmtobj") ||
+                stmt.Contains("BSkySetCurrentDatasetName") ||
+                stmt.Contains("New.version.BSkyComputeSplitdataset") 
+
+                )
+                writetolog = false;
+            return writetolog;
+        }
+
         #region Analytic Functions
 
         //uabinomial : function (vars, p = 0.5, alternative = "two.sided", conf.level = 0.95, descriptives = TRUE, quartiles = TRUE, datasetname, missing = 0)  
@@ -1528,6 +1567,8 @@ namespace BSky.Statistics.R
         public override UAReturn GetSQLTablelist(string sqlcom) //27Jan2014
         {
             _journal.WriteLine(sqlcom);
+
+            if(UserLogFilter(sqlcom))
             _userJournal.WriteUserCommands(sqlcom);//12Aug2016
 
             UAReturn result = new UAReturn();
@@ -1566,7 +1607,8 @@ namespace BSky.Statistics.R
             try
             {
                 _journal.WriteLine(commandString);//06Jul2015
-                _userJournal.WriteUserCommands(commandString);//12Aug2016
+                if (UserLogFilter(commandString))
+                    _userJournal.WriteUserCommands(commandString);//12Aug2016
 
                 result.Data = dispatcher.EvaluateToXml(commandString);
                 result.Success = true;
@@ -1581,7 +1623,8 @@ namespace BSky.Statistics.R
         public override UAReturn Execute(ServerCommand Command)
         {
             _journal.WriteLine(Command.CommandSyntax);
-            _userJournal.WriteUserCommands(Command.CommandSyntax);//12Aug2016
+            if (UserLogFilter(Command.CommandSyntax))
+                _userJournal.WriteUserCommands(Command.CommandSyntax);//12Aug2016
 
             UAReturn result = new UAReturn();
             result.Success = true;
@@ -1593,7 +1636,8 @@ namespace BSky.Statistics.R
         public override object ExecuteR(ServerCommand Command, bool hasReturn, bool hasUAReturn)
         {
             _journal.WriteLine(Command.CommandSyntax);
-            _userJournal.WriteUserCommands(Command.CommandSyntax);//12Aug2016
+            if (UserLogFilter(Command.CommandSyntax))
+                _userJournal.WriteUserCommands(Command.CommandSyntax);//12Aug2016
 
             UAReturn result = new UAReturn();
             result.Success = true;
@@ -1610,7 +1654,8 @@ namespace BSky.Statistics.R
             try
             {
                 _journal.WriteLine(commandString);//06Jul2015
-                _userJournal.WriteUserCommands(commandString);//12Aug2016
+                if (UserLogFilter(commandString))
+                    _userJournal.WriteUserCommands(commandString);//12Aug2016
             }
             catch (Exception ex)
             {
@@ -2155,6 +2200,7 @@ namespace BSky.Statistics.R
         private void EvaluateNoReturn(string commandString)
         {
             _journal.WriteLine(commandString);
+            if(UserLogFilter(commandString))
             _userJournal.WriteUserCommands(commandString);//12Aug2016
 
             string errmsg = dispatcher.EvaluateNoReturn(commandString);
@@ -2167,7 +2213,8 @@ namespace BSky.Statistics.R
         private UAReturn Evaluate(string commandString)
         {
             _journal.WriteLine(commandString);
-            _userJournal.WriteUserCommands(commandString);//12Aug2016
+            if (UserLogFilter(commandString))
+                _userJournal.WriteUserCommands(commandString);//12Aug2016
 
             //08jun2013
             UAReturn result = new UAReturn();
@@ -2182,7 +2229,8 @@ namespace BSky.Statistics.R
             try
             {
                 _journal.WriteLine(commandString);
-                _userJournal.WriteUserCommands(commandString);//12Aug2016
+                if (UserLogFilter(commandString))
+                    _userJournal.WriteUserCommands(commandString);//12Aug2016
 
                 return dispatcher.EvaluateToObject(commandString, hasReturn);
             }
@@ -2198,7 +2246,8 @@ namespace BSky.Statistics.R
             try
             {
                 _journal.WriteLine(commandString);
-                _userJournal.WriteUserCommands(commandString);//12Aug2016
+                if (UserLogFilter(commandString))
+                    _userJournal.WriteUserCommands(commandString);//12Aug2016
 
                 return dispatcher.EvaluateToXml(commandString);
             }
