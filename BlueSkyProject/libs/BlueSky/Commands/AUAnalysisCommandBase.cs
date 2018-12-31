@@ -1410,6 +1410,8 @@ namespace BlueSky.Commands.Analytics.TTest
             ///Store command for "History" menu // 04Mar2013
             TemplateFileName = command.commandtemplate;// @".\Config\OneSampleCommand.xaml";
 
+            
+            MessageBox.Show("Executing Dialog name: " + Path.GetFileNameWithoutExtension(TemplateFileName));
 
             ///04Sep2015 If DefaultPacakges R pacakge(s) are not loaded we should not execute any dialog. (not sure if this also stops
             /// execution from SyntaxEditor BSkyAppData.BSkyAppDirConfigPath
