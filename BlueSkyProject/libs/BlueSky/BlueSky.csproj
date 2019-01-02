@@ -730,6 +730,10 @@
       <Project>{65c691e3-e3e9-4a3e-8b70-9f9d25631575}</Project>
       <Name>BSky.Service.StatisticsEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.UsageLogger\BSky.UsageLogger.csproj">
+      <Project>{133c4c72-bf3d-4ad9-86d4-3818d8b24aff}</Project>
+      <Name>BSky.UsageLogger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\BSkyCommons\BSkyStyler\BSkyStyler.csproj">
       <Project>{8ecdef3f-0e10-4035-b493-99400d2fcc66}</Project>
       <Name>BSkyStyler</Name>
