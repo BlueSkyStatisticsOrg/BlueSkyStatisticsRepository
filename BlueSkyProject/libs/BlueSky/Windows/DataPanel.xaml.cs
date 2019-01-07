@@ -1240,6 +1240,21 @@ namespace BlueSky.Windows
             return isnumber;
         }
 
+        private bool IsNumericDoubleStr(string celltxt)// check if a string is a numeric of type double(i.e. have a decimal point)
+        {
+            bool isDouble = false;
+            bool isnumber = false;
+            double i = 0;
+
+
+            isnumber = double.TryParse(celltxt, out i);
+            if (isnumber && celltxt.Contains("."))
+            {
+                isDouble = true;
+            }
+            return isDouble;
+        }
+
         #region Datagrid
         /// Events related to Datagrid /////
         private bool isnewdatarow = false;
@@ -1473,6 +1488,36 @@ namespace BlueSky.Windows
                         //need to update following objects too.
                         ds.Variables[varidx].DataType = DataColumnTypeEnum.Character;
                         ds.Variables[varidx].DataClass = "character";
+                    }
+                    else
+                    {
+                        gridControl1.CancelEdit();
+                        s = "";
+                        return;
+                    }
+                    #endregion
+
+                }
+                else if (s.Trim().Length > 0 && IsNumericDoubleStr(s) &&
+                    ((ds.Variables[varidx].DataClass.Equals("integer") && ds.Variables[varidx].DataType == DataColumnTypeEnum.Integer))
+                    )
+                {
+
+                    #region if user types in double value in integer(integer in R) field ask to convert the col to double(numeric in R) type
+                    //
+                    string msg = "You have entered a non-integer value for a integer variable.\n\nDo you want to convert this column to numeric type?.";
+                    MessageBoxResult mbr = MessageBox.Show(msg, "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (mbr == MessageBoxResult.Yes)//convert to numeric type
+                    {
+                        string columnname = (ds.Variables[varidx] as DataSourceVariable).RName;
+                        analyticServ.MakeColNumeric(ds.Name, columnname);
+
+                        //refresh only single row or vargrid. 
+                        variables[varidx].DataType = DataColumnTypeEnum.Numeric;
+                        variables[varidx].DataClass = "numeric";
+                        //need to update following objects too.
+                        ds.Variables[varidx].DataType = DataColumnTypeEnum.Numeric;
+                        ds.Variables[varidx].DataClass = "numeric";
                     }
                     else
                     {
