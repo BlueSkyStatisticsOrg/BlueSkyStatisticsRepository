@@ -12,6 +12,7 @@ using BSky.RecentFileHandler;
 using BSky.ServerBridge;
 using BSky.Statistics.Common;
 using BSky.Statistics.Service.Engine.Interfaces;
+using BSky.UsageLogger;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Specialized;
@@ -81,6 +82,11 @@ namespace BlueSky
             logService.SetLogLevelFromConfig();//loading log level from config file
             logService.WriteToLogLevel("R.Net,Logger and Config loaded:", LogLevelEnum.Info);/// 
 
+            //User command usage log
+            container.RegisterInstance<UsageLogger>(new UsageLogger());
+            UsageLogger usglog = container.Resolve<UsageLogger>();
+            usglog.fullpathlogfilename = applogpath + "usglog.txt"; // @"D:\WinDirs\usglog.txt";
+            usglog.readUsageLogsIfAny();
             // Get users system details
             LogSysDetails();
 

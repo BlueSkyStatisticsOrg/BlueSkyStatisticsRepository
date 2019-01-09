@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSky.GlobalResources", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSWordInteropLib", "..\..\..\BSkyCommons\MSWordInteroplib\MSWordInteropLib.csproj", "{0F68640D-715E-4463-9F85-79B3110CA424}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSky.UsageLogger", "..\..\..\BSkyCommons\BSky.UsageLogger\BSky.UsageLogger.csproj", "{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -314,6 +316,24 @@ Global
 		{0F68640D-715E-4463-9F85-79B3110CA424}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0F68640D-715E-4463-9F85-79B3110CA424}.Release|x86.ActiveCfg = Release|Any CPU
 		{0F68640D-715E-4463-9F85-79B3110CA424}.Release|x86.Build.0 = Release|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Prototype Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Prototype Debug|Any CPU.Build.0 = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Prototype Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Prototype Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Prototype Debug|x86.ActiveCfg = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Prototype Debug|x86.Build.0 = Debug|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{133C4C72-BF3D-4AD9-86D4-3818D8B24AFF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

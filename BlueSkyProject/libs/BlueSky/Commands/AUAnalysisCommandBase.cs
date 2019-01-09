@@ -11,6 +11,7 @@ using BSky.Lifetime.Interfaces;
 using BSky.Lifetime.Services;
 using BSky.Statistics.Common;
 using BSky.Statistics.Service.Engine.Interfaces;
+using BSky.UsageLogger;
 using BSky.XmlDecoder;
 using Microsoft.Practices.Unity;
 using System;
@@ -36,6 +37,7 @@ namespace BlueSky.Commands.Analytics.TTest
         IAnalyticsService analytics = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
         IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();//23nov2012
         SessionDialogContainer sdc = LifetimeService.Instance.Container.Resolve<SessionDialogContainer>();//13Feb2013
+        UsageLogger usglog = LifetimeService.Instance.Container.Resolve<UsageLogger>();
 
         bool AdvancedLogging;
 
@@ -589,6 +591,10 @@ namespace BlueSky.Commands.Analytics.TTest
                         BSkyMouseBusyHandler.HideMouseBusy();//this is needed here otherwise History menu items are getting disabled.
                         //save current dialog in 'History' menu
                         SaveInHistory();
+
+                        //log the executed command/dialog in usage-log
+                        usglog.AddKey(Path.GetFileNameWithoutExtension(TemplateFileName));
+                        usglog.SaveToFile();
                     }
 #endregion
 
@@ -1410,6 +1416,8 @@ namespace BlueSky.Commands.Analytics.TTest
             ///Store command for "History" menu // 04Mar2013
             TemplateFileName = command.commandtemplate;// @".\Config\OneSampleCommand.xaml";
 
+            
+            //MessageBox.Show("Executing Dialog name: " + Path.GetFileNameWithoutExtension(TemplateFileName));
 
             ///04Sep2015 If DefaultPacakges R pacakge(s) are not loaded we should not execute any dialog. (not sure if this also stops
             /// execution from SyntaxEditor BSkyAppData.BSkyAppDirConfigPath
