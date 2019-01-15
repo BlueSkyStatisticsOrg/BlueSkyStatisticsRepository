@@ -14,6 +14,7 @@ using BSky.XmlDecoder;
 using System.Diagnostics;
 using BSky.Lifetime.Services;
 using BSky.ConfigService.Services;
+using BSky.ConfService.Intf.Interfaces;
 
 namespace BSky.Statistics.R
 {
@@ -25,6 +26,7 @@ namespace BSky.Statistics.R
         Journal _journal; //For All R commands
         Journal _userJournal; //12Aug2016 Only for user executed commands (no sink or other background commands)
         ILoggerService logService = LifetimeService.Instance.Container.Resolve<ILoggerService>();//17Dec2012
+        IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();//15Jan2019
         RecentItems userPackageList = LifetimeService.Instance.Container.Resolve<RecentItems>();//06Feb2014 
         XMLitemsProcessor defaultPackageList = LifetimeService.Instance.Container.Resolve<XMLitemsProcessor>("defaultpackages");//06Oct2014 extra packages those are mentioned in DefaultPackages.xml
         //logService.DefaultSettings[""]
@@ -1776,12 +1778,16 @@ namespace BSky.Statistics.R
 
         private void LoadDefaultPackages() //uadatapackage(or bskypackage) AND other minimum required packages like foreign, car etc.
         {
-            UAReturn res = CheckAndInstallBlueSkyRPackage(); //04May2015 Installs BlueSky R package(s) if latest not already installed
-
-            if (res != null && !res.Success && res.SimpleTypeData != null && res.SimpleTypeData.ToString().Length > 0)
+            string installBSkyRpkg = confService.AppSettings.Get("installBSkyRPkg");
+            if (installBSkyRpkg != null && installBSkyRpkg.ToLower().Equals("true"))
             {
-                logService.WriteToLogLevel("Error Loading BlueSky R package(s):", LogLevelEnum.Info);
-                logService.WriteToLogLevel(res.SimpleTypeData.ToString(), LogLevelEnum.Info);
+                UAReturn res = CheckAndInstallBlueSkyRPackage(); //04May2015 Installs BlueSky R package(s) if latest not already installed
+
+                if (res != null && !res.Success && res.SimpleTypeData != null && res.SimpleTypeData.ToString().Length > 0)
+                {
+                    logService.WriteToLogLevel("Error Loading BlueSky R package(s):", LogLevelEnum.Info);
+                    logService.WriteToLogLevel(res.SimpleTypeData.ToString(), LogLevelEnum.Info);
+                }
             }
             //06Oct2014 Also install DefaultPackages from DefaultPackages.xml
             logService.WriteToLogLevel("Loading Default R packages:", LogLevelEnum.Info);
