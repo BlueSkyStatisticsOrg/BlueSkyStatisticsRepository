@@ -244,13 +244,15 @@ namespace BlueSky
             IAdvancedLoggingService advlog = container.Resolve<IAdvancedLoggingService>(); ;//01May2015
             advlog.RefreshAdvancedLogging();
 
-            window.setInitialAllModels();//select All_Models in model class dropdown.
-            window.setLMsgInStatusBar("");
+            //window.setInitialAllModels();//select All_Models in model class dropdown.
+            //window.setLMsgInStatusBar("");
             HideMouseBusy();//02Apr2015 hide mouse busy
             if (BlueSkyFound)
             {
                 try
                 {
+                    window.setInitialAllModels();//select All_Models in model class dropdown.
+                    window.setLMsgInStatusBar("");
                     FileNewCommand newds = new FileNewCommand();
                     newds.NewFileOpen("");
                 }
