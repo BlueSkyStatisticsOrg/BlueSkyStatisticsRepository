@@ -5,6 +5,8 @@ namespace BSkyStyler
     {
         //Constants for AUParaghraph control, in output window.
         public const int HEADER_FONTSIZE = 20;
+        public const int HEADER_FONTSIZE2 = 18;
+        public const int HEADER_FONTSIZE3 = 16;
         public const int TEXT_FONTSIZE = 12;
         public const int FOOTNOTE_FONTSIZE = 14;
 
@@ -13,5 +15,6 @@ namespace BSkyStyler
 
         //Constants for AUParagraph (title etc.. not data) in Notes control
         public const int NOTES_HEADER_FONTSIZE = 14;//16;
+
     }
 }
