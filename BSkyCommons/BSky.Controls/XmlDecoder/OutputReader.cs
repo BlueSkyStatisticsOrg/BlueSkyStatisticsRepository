@@ -231,11 +231,16 @@ namespace BSky.XmlDecoder
             {
                 List<string> factors = OutputHelper.GetFactors(vars[varindex]);
                 string currentVar = string.Join(",", currentvars.ToArray());
+                if (currentVar != null && currentVar.Trim().Length > 0)//if there vurrentvars is non-empty then add a comma.
+                    currentVar = currentVar + ", ";
+                else
+                    currentVar = string.Empty;
                 foreach (string str in factors)
                 {
                     AUParagraph ap = new AUParagraph();
-                    ap.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;//10Nov2014
-                    ap.Text = currentVar + ", " + vars[varindex] + "=" + str;
+                    ap.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE3;//10Nov2014
+                    ap.FontWeight = FontWeights.DemiBold;
+                    ap.Text = "<<-- "+currentVar + vars[varindex] + " = " + str+" -->>";
                     ap.ControlType = ap.Text;
                     lst.Add(ap);
 
