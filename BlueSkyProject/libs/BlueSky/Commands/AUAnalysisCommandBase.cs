@@ -1137,7 +1137,8 @@ namespace BlueSky.Commands.Analytics.TTest
                                 sliceco.IsFromSyntaxEditor = false;
 
                                 AUParagraph aup = new AUParagraph();
-                                aup.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;//10Nov2014
+                                aup.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE3;//10Nov2014
+                                aup.FontWeight = FontWeights.DemiBold;
                                 aup.Text = "<<-- " + curslice + " -->>";
                                 aup.ControlType = treenodename.Length < treenodecharlen ? treenodename : treenodename.Substring(0, treenodecharlen);
                                 sliceco.Add(aup);
