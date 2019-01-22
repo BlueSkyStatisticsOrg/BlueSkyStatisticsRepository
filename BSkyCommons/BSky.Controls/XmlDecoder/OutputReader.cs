@@ -240,7 +240,7 @@ namespace BSky.XmlDecoder
                     AUParagraph ap = new AUParagraph();
                     ap.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE3;//10Nov2014
                     ap.FontWeight = FontWeights.DemiBold;
-                    ap.Text = "<<-- "+currentVar + vars[varindex] + " = " + str+" -->>";
+                    ap.Text = "<<-- Split = True, "+currentVar + vars[varindex] + " = " + str+" -->>";
                     ap.ControlType = ap.Text;
                     lst.Add(ap);
 

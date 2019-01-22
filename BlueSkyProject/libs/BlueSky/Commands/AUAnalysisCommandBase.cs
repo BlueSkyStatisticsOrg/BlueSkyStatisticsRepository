@@ -1139,7 +1139,8 @@ namespace BlueSky.Commands.Analytics.TTest
                                 AUParagraph aup = new AUParagraph();
                                 aup.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE3;//10Nov2014
                                 aup.FontWeight = FontWeights.DemiBold;
-                                aup.Text = "<<-- " + curslice + " -->>";
+                                string tmpcurslice = curslice.Replace("Split = Y", "Split = True");
+                                aup.Text = "<<-- " + tmpcurslice + " -->>";
                                 aup.ControlType = treenodename.Length < treenodecharlen ? treenodename : treenodename.Substring(0, treenodecharlen);
                                 sliceco.Add(aup);
                             }
