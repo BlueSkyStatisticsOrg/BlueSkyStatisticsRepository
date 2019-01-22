@@ -89,7 +89,7 @@ namespace BSky.Statistics.R
                     rPath = null;
                 }
 
-                
+
                 //11Sep2016 Try setting the currently selected path back to rhome
                 if (rHome != null && rHome.Length > 0)
                     confService.ModifyConfig("rhome", rHome.Replace('\\', '/'));
@@ -100,7 +100,7 @@ namespace BSky.Statistics.R
                 StartupParameter sp = new StartupParameter(); sp.RHome = rHome;
                 logService.WriteToLogLevel("Configuring and Initialization R Server...", LogLevelEnum.Info);
 
-                if (rHome != null && rPath != null) 
+                if (rHome != null && rPath != null)
                 {
                     logService.WriteToLogLevel("Setting R Environment Variables...", LogLevelEnum.Info);
                     REngine.SetEnvironmentVariables(rPath, rHome);
@@ -113,11 +113,14 @@ namespace BSky.Statistics.R
                 this._RServer.Initialize();
                 this._RServer.AutoPrint = false;
 
-                logService.WriteToLogLevel("Setting R Personal Lib...", LogLevelEnum.Info);
-                TrySettingUserPersonalLibrary();
+                //logService.WriteToLogLevel("Setting R Personal Lib...", LogLevelEnum.Info);
+                //TrySettingUserPersonalLibrary(); TrySettingShippedRLibraryInFirstLocation
+
+                logService.WriteToLogLevel("Setting R default Lib in the first location...", LogLevelEnum.Info);
+                TrySettingShippedRLibraryInFirstLocation();
 
                 logService.WriteToLogLevel("R DotNet initialized R server.", LogLevelEnum.Info);
-                _log.WriteConsole("R.Net Initialized R server!!!", 1024, RDotNet.Internals.ConsoleOutputType.None); 
+                _log.WriteConsole("R.Net Initialized R server!!!", 1024, RDotNet.Internals.ConsoleOutputType.None);
             }
             catch (Exception ex)
             {
@@ -151,7 +154,7 @@ namespace BSky.Statistics.R
                     validInstallPath = true;
                 }
                 else
-                { 
+                {
                     rinstallpath = null;
                     rbinpath = null;
                     validInstallPath = false;
@@ -189,7 +192,7 @@ namespace BSky.Statistics.R
             {
                 registryKey = registryKeyLocal;
             }
-            else 
+            else
             {
                 logService.WriteToLogLevel("RegKey not found for 'Local Machine' or 'Current User':", LogLevelEnum.Info);
             }
@@ -207,7 +210,7 @@ namespace BSky.Statistics.R
             string[] RVersions = registryKey.GetSubKeyNames();
             string LatestRVer = FindHighestBuildVersion(RVersions);
             logService.WriteToLogLevel("Highest R Version. '" + LatestRVer + "'", LogLevelEnum.Info);
-            registryKey = registryKey.OpenSubKey(LatestRVer); 
+            registryKey = registryKey.OpenSubKey(LatestRVer);
 
             logService.WriteToLogLevel("RegKey Chosen: '" + registryKey + "'", LogLevelEnum.Info);
 
@@ -266,7 +269,7 @@ namespace BSky.Statistics.R
         //Find the highest build versions among few.
         private string FindHighestBuildVersion(string[] verArr)
         {
-            List < string > OriginalFormat = verArr.ToList<string>();
+            List<string> OriginalFormat = verArr.ToList<string>();
 
             int TotalRVer = verArr.Length;
 
@@ -293,7 +296,7 @@ namespace BSky.Statistics.R
                     int spcidx = verArr[idx].IndexOf(' ');
                     if (spcidx >= 0)
                     {
-                        verArr[idx] = verArr[idx].Remove(spcidx,1).Insert(spcidx, ".");
+                        verArr[idx] = verArr[idx].Remove(spcidx, 1).Insert(spcidx, ".");
                     }
                 }
             }
@@ -338,7 +341,7 @@ namespace BSky.Statistics.R
                 }
 
                 //Finally add string part.
-                if (hasstringpart && stringpartindex > -1) 
+                if (hasstringpart && stringpartindex > -1)
                 {
                     newVerStr.Append(verParts[stringpartindex]); //add stringpart
                 }
@@ -347,7 +350,7 @@ namespace BSky.Statistics.R
                     newVerStr.Append(" "); //add empty stringpart
                 }
 
-                verArr[idx] = newVerStr.ToString(); 
+                verArr[idx] = newVerStr.ToString();
             }
 
 
@@ -371,7 +374,7 @@ namespace BSky.Statistics.R
             }
 
             //Now we need to get the registry version format
-            if(selHigVeridx < OriginalFormat.Count)
+            if (selHigVeridx < OriginalFormat.Count)
                 higherVer = OriginalFormat[selHigVeridx];
             return higherVer;
         }
@@ -392,12 +395,12 @@ namespace BSky.Statistics.R
             int number1 = 0;
             bool canConvert = false;
 
-            List<string> verOrder = new List<string>(); 
+            List<string> verOrder = new List<string>();
 
             verOrder.Add("Patched");
             verOrder.Add("");
             verOrder.Add("RC");
-            verOrder.Add("Pre-release"); 
+            verOrder.Add("Pre-release");
 
             int highestPriorityNumber = 100;
 
@@ -413,9 +416,9 @@ namespace BSky.Statistics.R
                         Aver = highestPriorityNumber - verOrder.IndexOf(verAarr[i].Trim()); //100-1=99, 100-2=98
                     else if (verAarr[i].Trim().Length == 0)
                         Aver = 0;
-                    
+
                 }
-                else 
+                else
                 {
                     Aver = Int32.Parse(verAarr[i]); //if valid array index then extrct the number.
                 }
@@ -423,13 +426,13 @@ namespace BSky.Statistics.R
                 //For B
                 canConvert = int.TryParse(verBarr[i], out number1);
                 if (!canConvert)
-                {    
+                {
                     if (verOrder.Contains(verBarr[i].Trim()))
-                        Bver = highestPriorityNumber - verOrder.IndexOf(verBarr[i].Trim()); 
+                        Bver = highestPriorityNumber - verOrder.IndexOf(verBarr[i].Trim());
                     else if (verBarr[i].Trim().Length == 0)
                         Bver = 0;
                 }
-                else 
+                else
                 {
                     Bver = Int32.Parse(verBarr[i]);
                 }
@@ -510,7 +513,7 @@ namespace BSky.Statistics.R
                     }
                     if (tms.Length == 1)//single elements !tms.GetType().IsArray)
                     {
-                        if (tms[0]) 
+                        if (tms[0])
                         {
                             UADataType dataType = getUADataTypeFromName("String");
                             thisNode = parent.OwnerDocument.CreateElement(getElementTypeName(dataType));
@@ -585,7 +588,7 @@ namespace BSky.Statistics.R
                             typeName = "Object[]";
                             data = new string[8];
                         }
-                        else if (classtype.Equals("list") && (data as GenericVector).Length == 13) 
+                        else if (classtype.Equals("list") && (data as GenericVector).Length == 13)
                         {
                             typeName = "String[]";
                             data = this._RServer.Evaluate(objectName).AsCharacter();
@@ -879,7 +882,7 @@ namespace BSky.Statistics.R
 
                                 int len = oList.Length;
 
-                                for (int index = 1; index <= len; index++) 
+                                for (int index = 1; index <= len; index++)
                                 {
                                     if (index == 3 || index == 7 || index == 8)
                                         ParseToXmlNode(thisNode, "as.character(" + objectName + "[[" + index.ToString() + "]])");
@@ -932,7 +935,7 @@ namespace BSky.Statistics.R
                                         }
 
                                     }
-                                    
+
 
                                     if (tabletype.Equals("table") || tabletype.Equals("ewtable")) // error warning table
                                     {
@@ -940,7 +943,7 @@ namespace BSky.Statistics.R
                                         ParseToXmlNode(thisNode, string.Format("{0}$tables[[{1}]]$datatable", objectName, i));
 
                                         dynamic res = this._RServer.Evaluate(string.Format("{0}$tables[[{1}]]$metadata", objectName, i)).AsCharacter()[0];///tmp[[8]][[1]]$metadata
-                                        string isMetadata = res; 
+                                        string isMetadata = res;
                                         if (isMetadata == "yes")
                                         {
                                             int noMetadata = int.Parse(this._RServer.Evaluate(string.Format("{0}$tables[[{1}]]$nometadatatables", objectName, i)).AsInteger()[0].ToString());
@@ -976,7 +979,7 @@ namespace BSky.Statistics.R
                                         }
                                     }//tabletype table or ewtable
 
-                                    else 
+                                    else
                                     {
                                         returnVal = this._RServer.Evaluate(string.Format("{0}$tables[[{1}]]", objectName, i));
 
@@ -1010,7 +1013,7 @@ namespace BSky.Statistics.R
                                                     tabletype = this._RServer.Evaluate(string.Format("{0}$tables[[{1}]]$type", objectName, i)).AsCharacter()[0];
                                                     if (tabletype.Equals("ewtable"))
                                                     {
-                                                        i--; 
+                                                        i--;
                                                         break;
                                                     }
                                                 }
@@ -1105,7 +1108,7 @@ namespace BSky.Statistics.R
             string objslicetitlecommand = string.Empty;
             string objslicetitle = string.Empty;
             //finding slice name
-            if (objectName.Contains("$datatable")) 
+            if (objectName.Contains("$datatable"))
             {
                 objslicetitlecommand = objectName.Replace("$datatable", "$cartlevel");
                 if (!this._RServer.Evaluate("is.null(" + objslicetitlecommand + ")").AsLogical()[0])
@@ -1195,7 +1198,7 @@ namespace BSky.Statistics.R
             }
 
             //this section for int16[,], in32[,], int64[,].
-            if (srdim > 1 && scdim == 1 && classtype.Equals("table")) 
+            if (srdim > 1 && scdim == 1 && classtype.Equals("table"))
             {
                 strcolheaders = strrowheaders;
                 strrowheaders = null;
@@ -1256,7 +1259,7 @@ namespace BSky.Statistics.R
             }
 
             //this section for int16[,], in32[,], int64[,]. 
-            if (srdim > 1 && scdim == 1 && classtype.Equals("table")) 
+            if (srdim > 1 && scdim == 1 && classtype.Equals("table"))
             {
                 strcolheaders = strrowheaders;
                 strrowheaders = null;
@@ -1391,7 +1394,7 @@ namespace BSky.Statistics.R
 
                 case "Int16[,]":
                 case "Int32[,]":
-                case "Int64[,]": 
+                case "Int64[,]":
                     DataType = UADataType.UADoubleMatrix; ;
                     break;
 
@@ -1402,7 +1405,7 @@ namespace BSky.Statistics.R
                     DataType = UADataType.UATableList;
                     break;
                 case "DataFrame":  ///03Jul2013
-                    
+
                     DataType = UADataType.UADoubleMatrix;
                     break;
             }
@@ -1454,7 +1457,7 @@ namespace BSky.Statistics.R
             }
             if (false)
             {
-                returnValue = null; 
+                returnValue = null;
 
             }
             else if (!Conversions.ToBoolean(this._RServer.Evaluate("is.null(tmp)").AsLogical()[0]))
@@ -1463,7 +1466,7 @@ namespace BSky.Statistics.R
             }
             else
             {
-                returnValue = null; 
+                returnValue = null;
             }
 
             return returnValue;
@@ -1519,7 +1522,7 @@ namespace BSky.Statistics.R
             else if (!Conversions.ToBoolean(this._RServer.Evaluate("is.null(tmp)").AsLogical()[0]))
             {
                 returnErrWarn = ParseToXmlDocument("tmp");
-                
+
             }
             else
             {
@@ -1528,7 +1531,7 @@ namespace BSky.Statistics.R
 
             returnRecults.Data = returnErrWarn;
             returnRecults.SimpleTypeData = returnVal;// "Put results here. 
-            returnVal = null; 
+            returnVal = null;
             return returnRecults;
         }
 
@@ -1539,7 +1542,7 @@ namespace BSky.Statistics.R
 
             try
             {
-                this._RServer.Evaluate("tmp <- " + commandString); 
+                this._RServer.Evaluate("tmp <- " + commandString);
             }
             catch (Exception e)
             {
@@ -1643,7 +1646,7 @@ namespace BSky.Statistics.R
 
             try
             {
-                this._RServer.Evaluate("tmp<-" + commandString); 
+                this._RServer.Evaluate("tmp<-" + commandString);
             }
             catch (Exception e)
             {
@@ -2308,7 +2311,7 @@ namespace BSky.Statistics.R
             string errorText;
             try
             {
-                errorText = this._log.LastError; 
+                errorText = this._log.LastError;
                 _log.ClearErrorConsole();
             }
             catch
@@ -2335,7 +2338,7 @@ namespace BSky.Statistics.R
 
         public void TrySettingUserPersonalLibrary()
         {
-            bool userlibexists = false; 
+            bool userlibexists = false;
             bool writablepathfound = false;
 
             //Get Personal lib path
@@ -2390,34 +2393,55 @@ namespace BSky.Statistics.R
             //{
             //try using user libpath
 
-                    if (createLibPathDirectory(usrpath))//if dirctory created successfully
-                    {
-                        logService.WriteToLogLevel("Setting user personal library : "+usrpath, LogLevelEnum.Info);
-                        //Creating User Personal Library same way as R does
-                        bool hasModifyAccess = isWritableDirectory(usrpath);
-                        logService.WriteToLogLevel("Is user personal library writable : "+hasModifyAccess.ToString(), LogLevelEnum.Info);
-                        if (hasModifyAccess)
-                        {
-                            string command = ".libPaths( c('" + usrpath + "', .libPaths()))";
-                            this._RServer.Evaluate(command);
-                            logService.WriteToLogLevel("User personal library set.", LogLevelEnum.Info);
-                        }
-                        else
-                        {
-                            logService.WriteToLogLevel("R lib path initialization failed : ", LogLevelEnum.Error);
-                            logService.WriteToLogLevel(usrpath + " not writable.", LogLevelEnum.Info);
-                        }
-                    }
-                    else
-                    {
-                        logService.WriteToLogLevel("R lib path initialization failed.", LogLevelEnum.Error);
-                        logService.WriteToLogLevel("User personal library is not writable.", LogLevelEnum.Info);
-                    }
+            if (createLibPathDirectory(usrpath))//if dirctory created successfully
+            {
+                logService.WriteToLogLevel("Setting user personal library : " + usrpath, LogLevelEnum.Info);
+                //Creating User Personal Library same way as R does
+                bool hasModifyAccess = isWritableDirectory(usrpath);
+                logService.WriteToLogLevel("Is user personal library writable : " + hasModifyAccess.ToString(), LogLevelEnum.Info);
+                if (hasModifyAccess)
+                {
+                    string command = ".libPaths( c('" + usrpath + "', .libPaths()))";
+                    this._RServer.Evaluate(command);
+                    logService.WriteToLogLevel("User personal library set.", LogLevelEnum.Info);
+                }
+                else
+                {
+                    logService.WriteToLogLevel("R lib path initialization failed : ", LogLevelEnum.Error);
+                    logService.WriteToLogLevel(usrpath + " not writable.", LogLevelEnum.Info);
+                }
+            }
+            else
+            {
+                logService.WriteToLogLevel("R lib path initialization failed.", LogLevelEnum.Error);
+                logService.WriteToLogLevel("User personal library is not writable.", LogLevelEnum.Info);
+            }
 
             //.libPaths after trying to set to user-libs
             logService.WriteToLogLevel("Final .libPaths(): ", LogLevelEnum.Info);
             LogCurrentLibPaths();
             //}
+        }
+
+        // in .libPaths() we want to set library path of shipped/embedded R as the first path so that
+        // all the required R packages gets loaded from this location(including BlueSky R pkg).
+        // Normally, 'User R lib' in Documents is the first path and user may have installed same R packages that
+        // we ship with embedded R. We dont want to load R packages from 'Documents', they may not be compatible with
+        // our versions of required R pkgs. We always want to load R packages from our shipped R location only.
+        public void TrySettingShippedRLibraryInFirstLocation()
+        {
+            //Current .libPaths before trying to set to user-libs
+            logService.WriteToLogLevel("Current .libPaths(): ", LogLevelEnum.Info);
+            LogCurrentLibPaths();
+
+            logService.WriteToLogLevel("Setting default R library as a first item: ", LogLevelEnum.Info);
+            string command = ".libPaths( c(.Library, .libPaths()))";
+            this._RServer.Evaluate(command);
+            logService.WriteToLogLevel("Default R library set as a first item.", LogLevelEnum.Info);
+
+            //.libPaths after trying to set to default R lib(from where R was launched)
+            logService.WriteToLogLevel("Final .libPaths(): ", LogLevelEnum.Info);
+            LogCurrentLibPaths();
         }
 
         private void LogCurrentLibPaths()
