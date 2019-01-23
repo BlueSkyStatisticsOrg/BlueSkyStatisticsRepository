@@ -306,6 +306,17 @@ namespace BSky.Controls
             set;
         }
 
+        [Category("Dialog Properties")]
+        [DisplayName("Key in C# that creates custom syntax")]
+        public string customsyntax
+        {
+            get;
+            set;
+        }
+
+
+      
+
 
         [Category("Dialog Properties")]
         [DisplayName("Editable Combobox name")]

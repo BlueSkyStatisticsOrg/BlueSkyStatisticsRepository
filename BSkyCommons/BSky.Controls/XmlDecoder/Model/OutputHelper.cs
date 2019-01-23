@@ -165,6 +165,7 @@ namespace BSky.XmlDecoder
                 overrideSep = true;
             }
 
+
             if (objname.Contains('$'))
             {
                 datasetnameprefix = true;
@@ -194,7 +195,7 @@ namespace BSky.XmlDecoder
                 //I need objname to get the control from the canvas. Hence I need to remove the $
                 objname = objname.Replace('#', ' ').Trim();
             }
-			
+
             //Added by Aaron 07/27/2018
             //Handling  -var1,-var2 for reshape, see line 707
             //we only have to do this when variable names are not enclosed in "", and when variable names are not prefixed by a dataset 
@@ -214,6 +215,10 @@ namespace BSky.XmlDecoder
                 objname = objname.Replace(newPrefixCharacter[0], ' ').Replace('#', ' ').Trim();
                 prefixEachVariable =true;
             }
+
+
+
+
 
             //13Sep2013 col name and col object//// ends
 
@@ -652,6 +657,7 @@ namespace BSky.XmlDecoder
             //changed typeof(BSkyVariableList).IsAssignableFrom(element.GetType()) to line below
             else if (typeof(BSkySourceList).IsAssignableFrom(element.GetType()) || typeof(BSkyTargetList).IsAssignableFrom(element.GetType())) // mostly colname should be in listbox rather than any other control
             {
+
                 string vals = string.Empty;
                 DragDropList list = element as DragDropList;
                 string oriSubstituteSettings = "";
@@ -792,6 +798,7 @@ namespace BSky.XmlDecoder
                     list.SubstituteSettings = oriSubstituteSettings;
 
                 }
+
 
 
                 if (vals == string.Empty | vals == null)
@@ -1399,25 +1406,187 @@ namespace BSky.XmlDecoder
 
         //The function below replaces the control name by the values in the commmand syntax
 
-        public static string GetCommand(string commandformat, DependencyObject obj)
+        
+             public static string GetCommand(string commandformat, DependencyObject obj)
         {
-            string output = re.Replace(commandformat,
-                            delegate (Match match)
-                            {
-                                //Aaron 12/11/2013
-                                //Not sure how the class match is constructed but every control name in the dialog that is 
-                                //referenced in the syntax command i.e. every thing enclosed in curly braces 
-                                //is contained in the match.Groups[1].Value structure
-                                //So line of code below is called for every string contained in the curly brace e.g. {source}
-                                //in the command syntax
-                                string matchedText = match.Groups[1].Value;
-                                //Aaron 12/11/2013
-                                //The function below gets the values we are going to replace the control name in the syntax command by
-                                //For example the control named source is reference in the command as {source}. In the command syntax
-                                //source gets replaced by var1,var2
-                                //The function below gets the string to replace the control name in the command syntax
-                                return GetParam(obj, matchedText);
-                            });
+            Dictionary<string, string> CommandKeyValDict = new Dictionary<string, string>();
+            BSkyCanvas obj1 = obj as BSkyCanvas;
+            string customsyntax = obj1.customsyntax;
+           // string KEYWORD = "NoReplaCE";
+            string output = string.Empty;
+            if (customsyntax=="" || customsyntax==null)
+            {
+                output = re.Replace(commandformat,
+                                delegate (Match match)
+                                {
+                                    //Aaron 12/11/2013
+                                    //Not sure how the class match is constructed but every control name in the dialog that is 
+                                    //referenced in the syntax command i.e. every thing enclosed in curly braces 
+                                    //is contained in the match.Groups[1].Value structure
+                                    //So line of code below is called for every string contained in the curly brace e.g. {source}
+                                    //in the command syntax
+                                    string matchedText = match.Groups[1].Value;
+                                    //Aaron 12/11/2013
+                                    //The function below gets the values we are going to replace the control name in the syntax command by
+                                    //For example the control named source is reference in the command as {source}. In the command syntax
+                                    //source gets replaced by var1,var2
+                                    //The function below gets the string to replace the control name in the command syntax
+                                    return GetParam(obj, matchedText);
+                                });
+            }
+            else if (customsyntax=="Rank")
+            {
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string rdgrp1 = "";
+                string txt1 = "";
+                string dest = "";
+                string rankby = "";
+                string rankfn = "";
+                string nooftiles = "";
+                string dataset = "";
+
+
+
+                //At this point CommandKeyValDict has key and values
+                //Aaron will arrange key-vals as wanted
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+                    if (key == "rdgrp1")
+                    {
+                        rdgrp1 = value;
+
+                    }
+                    if (key == "txt1")
+                    {
+                        txt1 = value;
+                    }
+
+                    if (key == "dest")
+                    {
+                        dest = value;
+                    }
+                    if (key == "rankby")
+                    {
+                        rankby = value;
+                    }
+                    if (key == "rankfn")
+                    {
+                        rankfn = value;
+                    }
+                    if (key == "nooftiles")
+                    {
+                        nooftiles = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                }
+                output = dataset +" <- " + dataset + " ";
+              
+
+                // output = output + "mutate(";
+
+                if (rankby != "")
+                {
+                    output = output + "%>%" + "\n\t group_by(" + rankby + ")";
+                }
+                output = output + " %>% \n\t mutate("; 
+                string[] values = dest.Split(',');
+
+                int value1;
+
+                if (rankfn =="ntile")
+
+                {
+                    if (!int.TryParse(nooftiles, out value1))
+                    {
+
+                        output = "cat('Error: When selecting the ntile ranking function, you must specify the number of tiles. Re-run the analysis after you have specified the number of tiles')";
+                        return (output);
+
+                    }
+                }
+
+              
+
+                if (rdgrp1 == "Prefix")
+                {
+
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        // values[i] = values[i].Trim();
+
+                        if (rankfn != "ntile")
+                        {
+                            output = output + txt1 + "_" + values[i] + "=" + rankfn + "(" + values[i] + ")" + ",";
+                        }
+                        else
+                        {
+                           // string x = "42";
+                           
+                          ////  if (int.TryParse(nooftiles, out value))
+                          //  {
+                               output = output + txt1 + "_" + values[i] + "=" + rankfn + "(" + values[i] + "," + nooftiles + ")" + ",";
+                          //  }
+                          //  else
+                          //  {
+                          //      // MessageBox("The number of tiles must be an integer value");
+                          //      // MessageBox()
+                          //      string message = "Simple MessageBox";
+                          //      MessageBox.Show(message);
+
+
+                          //  }
+                        }
+                    }
+                    output = output.TrimEnd(',');
+                    output = output + ")";
+
+                }
+                else
+                {
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        // values[i] = values[i].Trim();
+                        // output = output +  values[i] + "=" + txt1 + "_" + values[i] + ",";
+                        if (rankfn != "ntile")
+                        {
+                            output = output + values[i] + "_" + txt1 + "=" + rankfn + "(" + values[i] + ")" + ",";
+                        }
+                        else
+                        {
+                            //if (nooftiles )
+                            output = output + values[i] + "_" + txt1 + "=" + rankfn + "(" + values[i] + "," + nooftiles + ")" + ",";
+                        }
+                    }
+                    output = output.TrimEnd(',');
+                    output = output + ")";
+                }
+
+                output = output + "\n\nBSkyLoadRefreshDataframe(" + dataset+")";
+                
+            }
+            else
+            {
+                MessageBox.Show("The key used to invoke custom C# code is not supported. You are either using an old version of BlueSky Statistics or have created a dialog incorrectly. Contact support at support@blueskystatistics.com and attach the dialog you are using.");
+
+            }
+
             //Added by Aaron 09/01/2013
             //A variable list control does not have to return a value. For example the layers variable of a crosstab can be empty. 
             //in this case layers returns "". This gets replaced in the command syntax as layers = c("")
@@ -1429,6 +1598,7 @@ namespace BSky.XmlDecoder
             output = FixExtraCommasInCommandSyntax(output);//14Jul2014
             return output;
         }
+
 
         //Added by Aaron 09/01/2013
         //A variable list control does not have to return a value. For example the layers variable of a crosstab can be empty. 
@@ -1983,7 +2153,6 @@ namespace BSky.XmlDecoder
             }
         }
 
-        
 
         /// Get list of colnames. BSkyReturnStructure$Tables[[]]$columnNames
         public static List<string> GetKeepRemoveColNames(int datanumber)
@@ -2100,7 +2269,6 @@ namespace BSky.XmlDecoder
                             {
                                 case 0:
                                     mtr.VarIndex = intout;
-                                    
                                     break;
                                 case 1:
                                     switch (s)
@@ -2168,6 +2336,7 @@ namespace BSky.XmlDecoder
         {
             XmlDocument doc = AnalyticsData.Result.Data;
             string[,] matrix = null;
+
             XmlNode rownode = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/{1}/UADoubleMatrix/rows", datanumber, metadatatabletype));
 
             if (rownode == null)
@@ -2179,6 +2348,7 @@ namespace BSky.XmlDecoder
             XmlNode temp = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/{1}/UADoubleMatrix/rows/row/columns", datanumber, metadatatabletype));
             int cols = temp.ChildNodes.Count;
 
+
             matrix = new string[rows, cols];
             int j = 0;
             int rownodecounter = 0;
@@ -2186,6 +2356,7 @@ namespace BSky.XmlDecoder
             for (int i = 0; i < rows; ++i)
             {
                 XmlNode node = rownode.ChildNodes[rownodecounter];
+
                 j = 0;
                 foreach (XmlNode cnode in node.FirstChild.ChildNodes)
                 {
@@ -2204,7 +2375,7 @@ namespace BSky.XmlDecoder
             XmlNode normal = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/normal", datanumber));
             XmlNode crosstab = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/crosstab1", datanumber));
             XmlNode crosstab2 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/crosstab2", datanumber));
-
+            
             //For Chi-Sq table. And to get metadata (errors warnings about McNemar and Fisher)
             XmlNode normal1 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/normal1", datanumber));
             XmlNode normal2 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/normal2", datanumber));
@@ -2241,7 +2412,10 @@ namespace BSky.XmlDecoder
                 if (tno != null)
                     datanumber = Int16.Parse(tno);
 
+
                 metadata = doc.SelectSingleNode(string.Format("/Root/UATableList/BSkyErrorWarn[@tablenumber={0}]", datanumber));//tcount
+
+
             }
             else
             {
@@ -2393,6 +2567,7 @@ namespace BSky.XmlDecoder
             XmlDocument doc = AnalyticsData.Result.Data;
             XmlNode rowcolhead = null;//doc.SelectSingleNode(string.Format("/Root/UATableList/UADoubleMatrix"), datanumber);
 
+
             XmlNodeList xnl = doc.SelectSingleNode("/Root/UATableList").ChildNodes;//29Apr2014
 
             if (xnl != null && xnl.Count > 0)
@@ -2438,6 +2613,7 @@ namespace BSky.XmlDecoder
         //04Sep2013 this function is only meant to be called from GetBSkyStatResults
         public static string SetSliceComponentOrder(string slicename)
         {
+
             int indexoffirstcomma = slicename.IndexOf(',');
             int indexofseccomma = slicename.IndexOf(',', indexoffirstcomma + 1);
 
@@ -2491,7 +2667,6 @@ namespace BSky.XmlDecoder
                 }
                 return slist;
             }
-
             else if (nextlvl.Name == "UADataFrame" || nextlvl.Name == "UADoubleMatrix") // .... data.frame and matrix
             {
                 restype = (nextlvl.Name == "UADataFrame") ? "dataframe" : "matrix";
@@ -2736,6 +2911,7 @@ namespace BSky.XmlDecoder
 
         private static bool GetMultiConditionResult(string mcondition)
         {
+
             string tempstr = " " + mcondition.Replace("AND", " & ").Replace("OR", " | ") + " ";
             string[] operands; // queue of operands
             //string[] operators; // queue of operators
