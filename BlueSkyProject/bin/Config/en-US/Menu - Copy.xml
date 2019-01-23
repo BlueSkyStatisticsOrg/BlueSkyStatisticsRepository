@@ -40,6 +40,9 @@
       <menu id="Transpose_(Entire_Dataset)" text="Transpose (Entire Dataset)" commandtemplate="Transpose (Entire Dataset).xaml" commandoutputformat="Transpose (Entire Dataset).xml" owner="" nodetype="Leaf" />
       <menu id="Transpose_(Select_Variables)" text="Transpose (Select Variables)" commandtemplate="Transpose (Select Variables).xaml" commandoutputformat="Transpose (Select Variables).xml" owner="" nodetype="Leaf" />
     </menu>
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    <menu id="Rank" text="Rank" commandtemplate="Rank.xaml" commandoutputformat="Rank.xml" owner="" nodetype="Leaf" />
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />	
     <menu id="Bin_Numeric_Variables" text="Bin Numeric Variables" commandtemplate="Bin Numeric Variables.xaml" commandoutputformat="Bin Numeric Variables.xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
     <menu id="Recode" text="Recode" commandtemplate="Recode.xaml" commandoutputformat="Recode.xml" owner="" nodetype="Leaf" />
     <menu id="Make_Factor_Variable" text="Make Factor Variable" commandtemplate="Make Factor Variable.xaml" commandoutputformat="Make Factor Variable.xml" owner="" nodetype="Leaf" />
@@ -71,7 +74,7 @@
       <menu id="Reshape_(long_to_wide)" text="Reshape (long to wide)" commandtemplate="Reshape (long to wide).xaml" commandoutputformat="Reshape (long to wide).xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="Set_Weights" text="Set Weights" commandtemplate="Set Weights.xaml" commandoutputformat="Set Weights.xml" owner="" nodetype="Leaf" />
+    <menu id="Weights" text="Weights" commandtemplate="Weights.xaml" commandoutputformat="Weights.xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Data_Legacy" text="Legacy" owner="" nodetype="Parent">
       <menu id="Aggregate_(legacy)" text="Aggregate (legacy)" commandtemplate="Aggregate (legacy).xaml" commandoutputformat="Aggregate (legacy).xml" owner="" nodetype="Leaf" />

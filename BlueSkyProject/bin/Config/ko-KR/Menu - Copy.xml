@@ -40,6 +40,9 @@
       <menu id="Transpose_(Entire_Dataset)" text="조 변경 (전체 데이터 집합)" commandtemplate="Transpose (Entire Dataset).xaml" commandoutputformat="Transpose (Entire Dataset).xml" owner="" nodetype="Leaf" />
       <menu id="Transpose_(Select_Variables)" text="조 변경 (변수 선택)" commandtemplate="Transpose (Select Variables).xaml" commandoutputformat="Transpose (Select Variables).xml" owner="" nodetype="Leaf" />
     </menu>  	
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    <menu id="Rank" text="Rank" commandtemplate="Rank.xaml" commandoutputformat="Rank.xml" owner="" nodetype="Leaf" />
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />	
 	<menu id="Bin_Numeric_Variables" text="Bin 숫자 변수" commandtemplate="Bin Numeric Variables.xaml" commandoutputformat="Bin Numeric Variables.xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
     <menu id="Recode" text="레코딩" commandtemplate="Recode.xaml" commandoutputformat="Recode.xml" owner="" nodetype="Leaf" />
     <menu id="Make_Factor_Variable" text="요인 변수 만들기" commandtemplate="Make Factor Variable.xaml" commandoutputformat="Make Factor Variable.xml" owner="" nodetype="Leaf" />
@@ -71,7 +74,7 @@
       <menu id="Reshape_(long_to_wide)" text="모양새 변경 (길게에서 길게)" commandtemplate="Reshape (long to wide).xaml" commandoutputformat="Reshape (long to wide).xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="Set_Weights" text="가중치 설정" commandtemplate="Set Weights.xaml" commandoutputformat="Set Weights.xml" owner="" nodetype="Leaf" />
+    <menu id="Weights" text="Weights" commandtemplate="Weights.xaml" commandoutputformat="Weights.xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Data_Legacy" text="유산" owner="" nodetype="Parent">
       <menu id="Aggregate_(legacy)" text="총계 (유산)" commandtemplate="Aggregate (legacy).xaml" commandoutputformat="Aggregate (legacy).xml" owner="" nodetype="Leaf" />
