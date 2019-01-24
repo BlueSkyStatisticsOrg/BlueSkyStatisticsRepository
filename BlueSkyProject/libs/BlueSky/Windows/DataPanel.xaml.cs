@@ -1506,7 +1506,7 @@ namespace BlueSky.Windows
 
                     #region if user types in double value in integer(integer in R) field ask to convert the col to double(numeric in R) type
                     //
-                    string msg = "You have entered a non-integer value for a integer variable.\n\nDo you want to convert this column to numeric type which supports decimals?.";
+                    string msg = "You have entered a non-integer value for an integer variable.\n\nDo you want to convert this column to numeric type which supports decimals?.";
                     MessageBoxResult mbr = MessageBox.Show(msg, "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                     if (mbr == MessageBoxResult.Yes)//convert to numeric type
                     {
@@ -1514,10 +1514,10 @@ namespace BlueSky.Windows
                         analyticServ.MakeColNumeric(ds.Name, columnname);
 
                         //refresh only single row or vargrid. 
-                        variables[varidx].DataType = DataColumnTypeEnum.Numeric;
+                        variables[varidx].DataType = DataColumnTypeEnum.Double;
                         variables[varidx].DataClass = "numeric";
                         //need to update following objects too.
-                        ds.Variables[varidx].DataType = DataColumnTypeEnum.Numeric;
+                        ds.Variables[varidx].DataType = DataColumnTypeEnum.Double;
                         ds.Variables[varidx].DataClass = "numeric";
                         variableGrid.Refresh();
                     }
