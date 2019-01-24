@@ -1488,6 +1488,7 @@ namespace BlueSky.Windows
                         //need to update following objects too.
                         ds.Variables[varidx].DataType = DataColumnTypeEnum.Character;
                         ds.Variables[varidx].DataClass = "character";
+                        variableGrid.Refresh();
                     }
                     else
                     {
@@ -1518,6 +1519,7 @@ namespace BlueSky.Windows
                         //need to update following objects too.
                         ds.Variables[varidx].DataType = DataColumnTypeEnum.Numeric;
                         ds.Variables[varidx].DataClass = "numeric";
+                        variableGrid.Refresh();
                     }
                     else
                     {
