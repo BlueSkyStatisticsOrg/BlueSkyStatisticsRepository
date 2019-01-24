@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("BlueSky Statistics")]
 [assembly: AssemblyProduct("MSExcelInterop")]
-[assembly: AssemblyCopyright("Copyright © 2018 BlueSky Statistics")]
+[assembly: AssemblyCopyright("Copyright © 2019 BlueSky Statistics")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

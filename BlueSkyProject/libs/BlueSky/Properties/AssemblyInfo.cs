@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("BlueSky Statistics")]
 [assembly: AssemblyProduct("BlueSky")]
-[assembly: AssemblyCopyright("Copyright © 2018 BlueSky Statistics")]
+[assembly: AssemblyCopyright("Copyright © 2019 BlueSky Statistics")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -49,5 +49,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("5.40.*")]
+[assembly: AssemblyVersion("5.43.*")]
 //[assembly: AssemblyFileVersion("4.15.*")]

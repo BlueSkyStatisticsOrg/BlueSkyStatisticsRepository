@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("BSky.UsageLogger")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("BlueSky Statistics")]
 [assembly: AssemblyProduct("BSky.UsageLogger")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright © 2019 BlueSky Statistics")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
