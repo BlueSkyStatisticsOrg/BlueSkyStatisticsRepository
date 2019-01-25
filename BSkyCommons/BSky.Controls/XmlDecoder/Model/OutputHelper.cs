@@ -1410,8 +1410,13 @@ namespace BSky.XmlDecoder
              public static string GetCommand(string commandformat, DependencyObject obj)
         {
             Dictionary<string, string> CommandKeyValDict = new Dictionary<string, string>();
-            BSkyCanvas obj1 = obj as BSkyCanvas;
-            string customsyntax = obj1.customsyntax;
+            BSkyCanvas obj1 = null;
+            string customsyntax = string.Empty;
+            if (obj != null)
+            {
+                obj1 = obj as BSkyCanvas;
+                customsyntax = obj1.customsyntax;
+            }
            // string KEYWORD = "NoReplaCE";
             string output = string.Empty;
             if (customsyntax=="" || customsyntax==null)
