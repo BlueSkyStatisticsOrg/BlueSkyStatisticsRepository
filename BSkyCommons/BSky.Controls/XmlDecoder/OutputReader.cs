@@ -683,6 +683,8 @@ namespace BSky.XmlDecoder
 										}
 										//grid[i, j] = matrix[i, j] + " " + stars;
                                     }
+                                    if (stars.Trim().Equals("***"))
+                                        stars = "(<.001)***";
                                     grid[i, j] = matrix[i, j] + " " + stars;
                                 }
                                 else
@@ -1519,6 +1521,8 @@ namespace BSky.XmlDecoder
 
                             if (datamatrix[rw, c] != null && datamatrix[rw, c].Trim().Length > 0)
                             {
+                                if (stars.Trim().Equals("***"))
+                                    stars = "(<.001)***";
                                 c1FlexGrid1[rw, c] = datamatrix[rw, c]+" "+stars;
                                 isemptyrow = false;// if it has atleast one column filled then row is not empty
                             }
