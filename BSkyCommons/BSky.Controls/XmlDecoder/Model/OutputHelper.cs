@@ -1508,9 +1508,9 @@ namespace BSky.XmlDecoder
 
                 if (rankby != "")
                 {
-                    output = output + "%>%" + "\n\t group_by(" + rankby + ")";
+                    output = output + "%>%" + " group_by(" + rankby + ")";
                 }
-                output = output + " %>% \n\t mutate("; 
+                output = output + " %>%  mutate("; 
                 string[] values = dest.Split(',');
 
                 int value1;
@@ -1598,7 +1598,7 @@ namespace BSky.XmlDecoder
             //What R understands is layers =NA
             // output = output.Replace("c()", "NA");
             output = handleLayersInCrosstabs(output); // This removes all lines with c()
-
+            output = output.Replace("%>%", "%>%\n\t");
             output = RemoveParametersWithNoValuesInCommandSyntax(output);
             output = FixExtraCommasInCommandSyntax(output);//14Jul2014
             return output;
