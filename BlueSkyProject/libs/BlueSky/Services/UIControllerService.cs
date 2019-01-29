@@ -375,7 +375,10 @@ namespace BlueSky.Services
             datapanel.sortasccolnames = sortasccolnames;
             datapanel.sortdesccolnames = sortdesccolnames;
             datapanel.Data = list;
+            datapanel.Variables = ds.Variables; //Refresh Var grid
             datapanel.DisableEnableAllNavButtons();
+            datapanel.arrangeVarGridCols(); // arranging col positions
+            datapanel.RefreshStatusBar();
 
             // comment following variable refresh, if dont want to update var grid from R datasets. 
             // Arrangement changing. Calling the arrangeVarGridCols() will solve the arrangement problem.
