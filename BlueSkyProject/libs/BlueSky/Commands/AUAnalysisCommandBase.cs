@@ -1573,7 +1573,7 @@ namespace BlueSky.Commands.Analytics.TTest
             #region Create required R package loading syntax for paste
             string pkgs = dlgprop.RequiredRPackages;
             StringBuilder RPkgLoadSyntax = new StringBuilder();
-            string ReqRPkgSyntax = string.Empty;
+            string ReqRPkgSyntax = string.Empty; 
             if (!string.IsNullOrEmpty(pkgs))
             {
                 char[] chars = new char[1] { ';' };
@@ -1586,7 +1586,7 @@ namespace BlueSky.Commands.Analytics.TTest
                         continue; // dont consider empty string package name and jump to next.
                     RPkgLoadSyntax.Append("require(" + current + ");\n");
                 }
-                ReqRPkgSyntax = RPkgLoadSyntax.ToString();
+                ReqRPkgSyntax = RPkgLoadSyntax.Append("\n").ToString();
             }
             #endregion
             #region Get Active output Window

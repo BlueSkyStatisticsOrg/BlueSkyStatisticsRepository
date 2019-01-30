@@ -1598,6 +1598,7 @@ namespace BSky.XmlDecoder
             //What R understands is layers =NA
             // output = output.Replace("c()", "NA");
             output = handleLayersInCrosstabs(output); // This removes all lines with c()
+            output = output.Replace("\n", "\n\n");
             output = output.Replace("%>%", "%>%\n\t");
             output = RemoveParametersWithNoValuesInCommandSyntax(output);
             output = FixExtraCommasInCommandSyntax(output);//14Jul2014
