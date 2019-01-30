@@ -1583,7 +1583,7 @@ namespace BSky.XmlDecoder
                     output = output + ")";
                 }
 
-                output = output + "\n\nBSkyLoadRefreshDataframe(" + dataset+")";
+                output = output + "\nBSkyLoadRefreshDataframe(" + dataset+")";
                 
             }
             else
