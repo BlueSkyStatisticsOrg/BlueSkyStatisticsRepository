@@ -1573,6 +1573,7 @@ namespace BlueSky.Commands.Analytics.TTest
             #region Create required R package loading syntax for paste
             string pkgs = dlgprop.RequiredRPackages;
             StringBuilder RPkgLoadSyntax = new StringBuilder();
+            RPkgLoadSyntax.Append("## [" + dlgprop.DialogTitle + "]\n");
             string ReqRPkgSyntax = string.Empty; 
             if (!string.IsNullOrEmpty(pkgs))
             {
