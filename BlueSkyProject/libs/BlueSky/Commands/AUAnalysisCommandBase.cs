@@ -1573,7 +1573,7 @@ namespace BlueSky.Commands.Analytics.TTest
             #region Create required R package loading syntax for paste
             string pkgs = dlgprop.RequiredRPackages;
             StringBuilder RPkgLoadSyntax = new StringBuilder();
-            RPkgLoadSyntax.Append("## [" + dlgprop.DialogTitle + "]\n");
+            string title = "## [" + dlgprop.DialogTitle + "]\n";
             string ReqRPkgSyntax = string.Empty; 
             if (!string.IsNullOrEmpty(pkgs))
             {
@@ -1603,7 +1603,7 @@ namespace BlueSky.Commands.Analytics.TTest
             //    "\',  filetype=\'"+filetype+"\', worksheetName=NULL, replace_ds=FALSE, csvHeader=TRUE, datasetName=\'" +
             //    UIController.GetActiveDocument().Name + "\' )\n";
             string syncomment = "\n";//31May2015
-            ow.PasteSyntax(syncomment + ReqRPkgSyntax  + cmd.CommandSyntax);//paste command
+            ow.PasteSyntax(syncomment + title + ReqRPkgSyntax  + cmd.CommandSyntax);//paste command
             ow.Show();
             if(ow.WindowState == WindowState.Minimized)
                 ow.WindowState = WindowState.Normal;
