@@ -516,6 +516,9 @@ namespace BlueSky
                 e.Handled = false;
         }
 
-
+        private void Comingsoonbtn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("www.blueskystatistics.com");
+        }
     }
 }

@@ -112,8 +112,22 @@
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Row="0" Grid.Column="0" >
-            <Menu DockPanel.Dock="Top" Name="Menu" VerticalAlignment="Top" Foreground="#FF1579DA">
-            </Menu>
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Menu Grid.Column="0"  Name="Menu" VerticalAlignment="Top" Foreground="#FF1579DA">
+                </Menu>
+                <Button Grid.Column="1" Margin="1" Name="comingsoonbtn" Click="Comingsoonbtn_Click" HorizontalAlignment="Center" >
+                    Coming soon
+                    <!--<Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/BlueSky;component/Images/finddatagrid.png" Height="15" Width="15" ToolTip="Coming Soon"></Image>
+                        </StackPanel>
+                    </Button.Content>-->
+                </Button>
+            </Grid>
         </DockPanel>
         <!--Toolbar Area-->
         <!---MicroSoft's Toolbar-->
