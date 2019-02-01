@@ -1079,7 +1079,7 @@ namespace BlueSky
 
                 if (closinground.Equals(")"))
                 {
-                    end = idxclosinground + 1;
+                    end = end + idxclosinground + 1 - start;
                 }
                 return str + closinground;
             }
