@@ -64,8 +64,8 @@
                         </ContextMenu>
                     </Grid.ContextMenu>
 
-                    <grid:AUParagraph Grid.Row="0" x:Name="tbltitle" Foreground="red"  FontWeight="Normal" HorizontalAlignment="Left" FontSize="18" FontFamily="Arial" Visibility="Collapsed"/>
-                    <grid:AUParagraph Grid.Row="1" x:Name="txtHeader" FontWeight="Normal" HorizontalAlignment="Left" FontSize="16" FontFamily="Arial"/>
+                    <grid:AUParagraph Grid.Row="0" x:Name="tbltitle" Foreground="red"  FontWeight="Normal" HorizontalAlignment="Left" FontSize="18" FontFamily="Times New Roman" Visibility="Collapsed"/>
+                    <grid:AUParagraph Grid.Row="1" x:Name="txtHeader" FontWeight="Normal" HorizontalAlignment="Left" FontSize="16" FontFamily="Times New Roman"/>
                     <Border Grid.Row="2" Name="fgborder"  BorderThickness="0" BorderBrush="Black">
                         <StackPanel Name="gridpanel" CanHorizontallyScroll="True" CanVerticallyScroll="True">
                             <!--<StackPanel.ContextMenu>
@@ -90,11 +90,11 @@
                              RowHeaderSelectedBackground="#AD77DDFF" BorderBrush="Gray"-->
 
                             <grid:AUGrid x:Name="augrid" Margin="3" LostFocus="AUXGrid_LostFocus" 
-                             FontWeight="Normal"   IsReadOnly="True"
+                             FontWeight="Normal"   IsReadOnly="True" FontFamily="Times New Roman"
                              ClipboardCopyMode="IncludeAllHeaders" 
-                             FontSize="14" HorizontalAlignment="Left"
+                             FontSize="15" HorizontalAlignment="Left"
                              AutoGenerateColumns="True" 
-                             ShowSort="True"
+                             ShowSort="False"
 
                             MaxHeight="800" MaxWidth="1400"
                              >
@@ -107,12 +107,12 @@
                             <!-- RowHeaderBackground="#7092BE"  GridLinesBrush="Black" GridLinesVisibility="All"  RowBackground="Smoke"  -->
                         </StackPanel>
                     </Border>
-                    <grid:AUParagraph Grid.Row="3" x:Name="starText"  FontWeight="Light" HorizontalAlignment="Left" FontSize="14" FontFamily="Arial"/>
+                    <grid:AUParagraph Grid.Row="3" x:Name="starText"  FontWeight="Light" HorizontalAlignment="Left" FontSize="14" FontFamily="Times New Roman"/>
 
 
                 </Grid>
             </Border>
-            <grid:AUParagraph Grid.Row="1" x:Name="tableno" FontWeight="Light" HorizontalAlignment="Left" FontSize="14" FontFamily="Arial" Visibility="Collapsed"/>
+            <grid:AUParagraph Grid.Row="1" x:Name="tableno" FontWeight="Light" HorizontalAlignment="Left" FontSize="14" FontFamily="Courier New" Visibility="Collapsed"/>
         </Grid>
     </Border>
     <UserControl.Style>
