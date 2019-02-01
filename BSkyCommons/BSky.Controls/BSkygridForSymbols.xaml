@@ -16,4 +16,5 @@
     <p:FormulaButton Content="^" Height="25" HorizontalAlignment="Left" x:Name="Button7" VerticalAlignment="Top" Width="25" Margin="165,0,0,0" />
     <p:FormulaButton Content="(" Height="25" HorizontalAlignment="Left" x:Name="Button8" VerticalAlignment="Top" Width="25" Margin="190,0,0,0" />
     <p:FormulaButton Content=")" Height="25" HorizontalAlignment="Left" x:Name="Button9" VerticalAlignment="Top" Width="25" Margin="215,0,0,0" />
+    <p:FormulaButton Content="|" Height="25" HorizontalAlignment="Left" x:Name="Button10" VerticalAlignment="Top" Width="25" Margin="240,0,0,0" />
 </Grid>
