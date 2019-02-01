@@ -18,7 +18,7 @@ namespace BSky.Controls
             this.BorderBrush = Brushes.DarkGray;
             this.HeaderGridLinesBrush = Brushes.Gray;
             this.GridLinesBrush = Brushes.LightGray;
-            this.Click += AUGrid_Click;
+            //this.Click += AUGrid_Click;
 
         }
 
