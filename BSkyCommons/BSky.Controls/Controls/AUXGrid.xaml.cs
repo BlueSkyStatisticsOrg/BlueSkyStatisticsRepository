@@ -835,6 +835,7 @@ namespace BSky.Controls
         private void _delete_Click(object sender, RoutedEventArgs e)
         {
             DeleteControl = true;
-        }		
+        }
+
     }
 }

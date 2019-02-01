@@ -827,7 +827,7 @@ namespace BSky.XmlDecoder
 
 
             rowheader.Columns[0].AllowMerging = true;
-            rowheader.Columns[0].VerticalAlignment = VerticalAlignment.Top;
+            rowheader.Columns[0].VerticalAlignment = VerticalAlignment.Center;
 
             if (rowheader.Columns.Count < maxrowdepth)
             {
@@ -835,7 +835,7 @@ namespace BSky.XmlDecoder
                 {
                     C1.WPF.FlexGrid.Column col = new C1.WPF.FlexGrid.Column();
                     col.AllowMerging = true; 
-                    col.VerticalAlignment = VerticalAlignment.Top;
+                    col.VerticalAlignment = VerticalAlignment.Center;
                     rowheader.Columns.Add(col);
                 }
             }
@@ -1276,7 +1276,7 @@ namespace BSky.XmlDecoder
                     colheaders.Rows[0].HorizontalAlignment = HorizontalAlignment.Center;
 
                     rowheaders.Columns[0].AllowMerging = true; 
-                    rowheaders.Columns[0].VerticalAlignment = VerticalAlignment.Top;
+                    rowheaders.Columns[0].VerticalAlignment = VerticalAlignment.Center;
 
 
                     #region Choose theme APA or Normal
@@ -1356,7 +1356,7 @@ namespace BSky.XmlDecoder
                     {
                         C1.WPF.FlexGrid.Column col = new C1.WPF.FlexGrid.Column();
                         col.AllowMerging = true; 
-                        col.VerticalAlignment = VerticalAlignment.Top;
+                        col.VerticalAlignment = VerticalAlignment.Center;
                         rowheaders.Columns.Add(col);
                     }
 
@@ -1590,7 +1590,7 @@ namespace BSky.XmlDecoder
                             colheaders.Rows[0].HorizontalAlignment = HorizontalAlignment.Center;
 
                             rowheaders.Columns[0].AllowMerging = true;  
-                            rowheaders.Columns[0].VerticalAlignment = VerticalAlignment.Top;
+                            rowheaders.Columns[0].VerticalAlignment = VerticalAlignment.Center;
 
 
                             /////////////Col Headers//////////
@@ -1624,7 +1624,7 @@ namespace BSky.XmlDecoder
                             {
                                 C1.WPF.FlexGrid.Column col = new C1.WPF.FlexGrid.Column();
                                 col.AllowMerging = true; 
-                                col.VerticalAlignment = VerticalAlignment.Top;
+                                col.VerticalAlignment = VerticalAlignment.Center;
                                 rowheaders.Columns.Add(col);
                             }
 
