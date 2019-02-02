@@ -2,6 +2,7 @@
   <menu id="FileMenu" text="파일" owner="BSky" nodetype="Parent">
     <menu id="FileMenuNew" text="새로운" command="BlueSky.Commands.File.FileNewCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpen" text="열다" command="BlueSky.Commands.File.FileOpenCommand" owner="BSky" nodetype="Leaf" />
+    <menu id="Load_Dataset_from_a_Package" text="패키지에서 데이터 집합로드" commandtemplate="Load Dataset from a Package.xaml" commandoutputformat="Load Dataset from a Package.xml" owner="" nodetype="Leaf" />	
     <menu id="FileMenuImportData" text="데이터 가져 오기 ..." owner="BSky" nodetype="Parent">
       <menu id="FileMenuOpen" text="SQL 데이터베이스" command="BlueSky.Commands.File.ImportFromSQLCommand" owner="BSky" nodetype="Leaf" />
     </menu>
@@ -27,21 +28,23 @@
     </menu>  
 	</menu>
       <menu id="MissvalSubMenu" text="누락 된 값" owner="" nodetype="Parent">
-    <menu id="Remove_NAs" text="NAs 제거" commandtemplate="Remove NAs.xaml" commandoutputformat="Remove NAs.xml" owner="" nodetype="Leaf" />
+      <menu id="Remove_NAs" text="NAs 제거" commandtemplate="Remove NAs.xaml" commandoutputformat="Remove NAs.xml" owner="" nodetype="Leaf" />
       <menu id="Missing_Values_(Basic)" text="누락 값 (기본)" commandtemplate="Missing Values (Basic).xaml" commandoutputformat="Missing Values (Basic).xml" owner="" nodetype="Leaf" />
       <menu id="Missing_Values_(Formula)" text="누락 값 (수식)" commandtemplate="Missing Values (Formula).xaml" commandoutputformat="Missing Values (Formula).xml" owner="" nodetype="Leaf" />
 	  <menu id="Replace_All_Missing_Values_in_Factor_and_String_variables" text="팩터 및 문자열 변수에 누락 된 값 모두 바꾸기" commandtemplate="Replace All Missing Values in Factor and String variables.xaml" commandoutputformat="Replace All Missing Values in Factor and String variables.xml" owner="" nodetype="Leaf" />
+      <menu id="Missing_Values_(Use_a_models_impute_missing_values)" text="누락 된 값 (누락 된 모델 소멸 값 사용)" commandtemplate="Missing Values (Use a models impute missing values).xaml" commandoutputformat="Missing Values (Use a models impute missing values).xml" owner="" nodetype="Leaf" />	  
     </menu>
     <menu id="ComputeSubMenu" text="계산" owner="" nodetype="Parent">
       <menu id="Compute" text="계산" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
       <menu id="Conditional_Compute" text="조건부 계산" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
+      <menu id="Compute_(Apply_a_function_across_all_rows)" text="계산 (모든 행에 함수 적용)" commandtemplate="Compute (Apply a function across all rows).xaml" commandoutputformat="Compute (Apply a function across all rows).xml" owner="" nodetype="Leaf" />	  
     </menu>
     <menu id="new_id" text="Transpose" owner="" nodetype="Parent">
       <menu id="Transpose_(Entire_Dataset)" text="조 변경 (전체 데이터 집합)" commandtemplate="Transpose (Entire Dataset).xaml" commandoutputformat="Transpose (Entire Dataset).xml" owner="" nodetype="Leaf" />
       <menu id="Transpose_(Select_Variables)" text="조 변경 (변수 선택)" commandtemplate="Transpose (Select Variables).xaml" commandoutputformat="Transpose (Select Variables).xml" owner="" nodetype="Leaf" />
     </menu>  	
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="Rank" text="Rank" commandtemplate="Rank.xaml" commandoutputformat="Rank.xml" owner="" nodetype="Leaf" />
+    <menu id="Rank" text="계급" commandtemplate="Rank.xaml" commandoutputformat="Rank.xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />	
 	<menu id="Bin_Numeric_Variables" text="Bin 숫자 변수" commandtemplate="Bin Numeric Variables.xaml" commandoutputformat="Bin Numeric Variables.xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
     <menu id="Recode" text="레코딩" commandtemplate="Recode.xaml" commandoutputformat="Recode.xml" owner="" nodetype="Leaf" />
@@ -74,7 +77,7 @@
       <menu id="Reshape_(long_to_wide)" text="모양새 변경 (길게에서 길게)" commandtemplate="Reshape (long to wide).xaml" commandoutputformat="Reshape (long to wide).xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="Weights" text="Weights" commandtemplate="Weights.xaml" commandoutputformat="Weights.xml" owner="" nodetype="Leaf" />
+    <menu id="Weights" text="무게" commandtemplate="Weights.xaml" commandoutputformat="Weights.xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Data_Legacy" text="유산" owner="" nodetype="Parent">
       <menu id="Aggregate_(legacy)" text="총계 (유산)" commandtemplate="Aggregate (legacy).xaml" commandoutputformat="Aggregate (legacy).xml" owner="" nodetype="Leaf" />
@@ -83,6 +86,10 @@
     </menu>
   </menu>
   <menu id="analysisMenu" text="분석" nodetype="Parent">
+      <menu id="new_id" text="누락 된 값" owner="" nodetype="Parent">
+      <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_Rows)" text="누락 값 분석 (행에 정렬 된 출력)" commandtemplate="Analysis of Missing Values (Output Arranged in Rows).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in Rows).xml" owner="" nodetype="Leaf" />
+      <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_columns)" text="누락 값 분석 (열에 정렬 된 출력)" commandtemplate="Analysis of Missing Values (Output Arranged in columns).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in columns).xml" owner="" nodetype="Leaf" />
+    </menu> 
     <menu id="SummarySubMenu" text="요약 분석" owner="" nodetype="Parent">
       <menu id="Analysis_of_Missing_Values" text="누락 값 분석" commandtemplate="Analysis of Missing Values.xaml" commandoutputformat="Analysis of Missing Values.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
@@ -201,8 +208,14 @@
   </menu>
 
   <menu id="ModelFittingMenu" text="모델 피팅" owner="" nodetype="Parent">
-    <menu id="Linear_Regression" text="선형 회귀" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf" icon="images/Regression.png" showtoolbaricon="true" />
-	<menu id="Logistic_Regression" text="로지스틱 회귀" commandtemplate="Logistic Regression.xaml" commandoutputformat="Logistic Regression.xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="선형 회귀" owner="" nodetype="Parent">
+      <menu id="Linear_Regression" text="선형 회귀" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf" />
+      <menu id="Linear_Regression_with_Formula" text="공식을 사용한 선형 회귀" commandtemplate="Linear Regression with Formula.xaml" commandoutputformat="Linear Regression with Formula.xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="new_id" text="로지스틱 회귀" owner="" nodetype="Parent">
+      <menu id="Logistic_Regression" text="로지스틱 회귀" commandtemplate="Logistic Regression.xaml" commandoutputformat="Logistic Regression.xml" owner="" nodetype="Leaf" />
+      <menu id="Logistic_Regression_with_Formula" text="수식을 사용한 로지스틱 회귀" commandtemplate="Logistic Regression with Formula.xaml" commandoutputformat="Logistic Regression with Formula.xml" owner="" nodetype="Leaf" />
+    </menu>	  
     <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
     <menu id="Linear_Modeling" text="선형 모델링" commandtemplate="Linear Modeling.xaml" commandoutputformat="Linear Modeling.xml" owner="" nodetype="Leaf" />
     <menu id="Multinomial_Logit" text="다항 로그" commandtemplate="Multinominal Logit.xaml" commandoutputformat="Multinominal Logit.xml" owner="" nodetype="Leaf" />
