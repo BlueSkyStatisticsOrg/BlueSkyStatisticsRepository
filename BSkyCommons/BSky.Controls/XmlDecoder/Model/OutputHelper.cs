@@ -1599,7 +1599,7 @@ namespace BSky.XmlDecoder
             // output = output.Replace("c()", "NA");
             output = handleLayersInCrosstabs(output); // This removes all lines with c()%>%\s*\n
             //output = Regex.Replace(output, @"%>%\s*\n", "%>% ");//removes new line after a pipe sign (newline-tab will be added later/below to format it)
-            output = output.Replace("BSkyLoadRefreshDataframe", "\n\nBSkyLoadRefreshDataframe");//output = Regex.Replace(output, @"\n+", "\n\n");//one blank line between statements
+            //output = Regex.Replace(output, @"\n+BSkyLoadRefreshDataframe", "\n\nBSkyLoadRefreshDataframe");//one blank line between statements
             //output = Regex.Replace(output, @"\n{", "{");//remove extra newline before open curly (got inserted because of the above line)
             output = output.Replace("%>%", "%>%\n\t");
             output = RemoveParametersWithNoValuesInCommandSyntax(output);
