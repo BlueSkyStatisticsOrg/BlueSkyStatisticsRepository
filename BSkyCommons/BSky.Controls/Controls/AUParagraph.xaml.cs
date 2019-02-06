@@ -31,7 +31,11 @@ namespace BSky.Controls
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            set { SetValue(TextProperty, value);
+
+                if (!this.Name.Equals("txtHeader") && !this.Name.Equals("tbltitle") )//apply Courier new to all except Flexgrid tbltitle(first on top) and txtHeader(second item)
+                    this.FontFamily = new FontFamily("Courier New");
+                }
         }
 
         public Brush textcolor
@@ -83,6 +87,7 @@ namespace BSky.Controls
                 {
                     case "Header":
                         this.BSkyControlVisibility = Visibility.Visible;
+                        this.FontFamily = new FontFamily("Arial");
                         break;
                     case "DataSet":
                         this.BSkyControlVisibility = Visibility.Visible;
