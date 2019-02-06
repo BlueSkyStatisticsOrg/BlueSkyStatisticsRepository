@@ -749,7 +749,8 @@ namespace BlueSky
                             }
                             else
                             {
-                                SendCommandToOutput(stmt, "R-Command");
+                                string originalFormatSyn2 = seltext.Substring(start, end).Replace(';','\n');
+                                SendCommandToOutput(originalFormatSyn2, "R-Command");
                                 ExecuteOtherCommand(ow, stmt);
                             }
 
@@ -826,8 +827,8 @@ namespace BlueSky
                             SetSink();
                             break;
                         case RCommandType.RCOMMAND:
-
-                            SendCommandToOutput(stmt, "R-Command");
+                            string originalFormatSyn = seltext.Substring(start, end).Replace(';', '\n');
+                            SendCommandToOutput(originalFormatSyn, "R-Command");
 
                             if (AdvancedLogging) logService.WriteToLogLevel("ExtraLogs: Categorized. Before execution.", LogLevelEnum.Info);
 
