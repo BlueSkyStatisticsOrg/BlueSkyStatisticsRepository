@@ -1318,7 +1318,7 @@ namespace BlueSky
                 {
                     {
                         if (line.Length < 1)//to show blank line in the output newline should be printed instead.
-                            line = "\n";
+                            line = "\t";
                         linetext = line;
                     }
 
