@@ -119,7 +119,7 @@
                 </Grid.ColumnDefinitions>
                 <Menu Grid.Column="0"  Name="Menu" VerticalAlignment="Top" Foreground="#FF1579DA">
                 </Menu>
-                <Button Grid.Column="1" Margin="1" Name="comingsoonbtn" Click="Comingsoonbtn_Click" HorizontalAlignment="Center" >
+                <Button Grid.Column="1" Margin="1" Name="comingsoonbtn" BorderBrush="Transparent" Click="Comingsoonbtn_Click" HorizontalAlignment="Center" >
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/BlueSky;component/Images/comingsoon.png" Height="20" ToolTip="Coming Soon"></Image>
