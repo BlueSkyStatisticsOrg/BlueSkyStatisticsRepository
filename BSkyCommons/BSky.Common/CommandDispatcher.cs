@@ -40,7 +40,7 @@ namespace BSky.Statistics.Common
 
         public abstract UAReturn EmptyDataSourceLoad(ServerDataSource dataSource);//03Jan2014
 
-        public abstract UAReturn DataSourceLoad(ServerDataSource dataSource, string sheetname);//, IOpenDataFileOptions odfo=null
+        public abstract UAReturn DataSourceLoad(ServerDataSource dataSource, string sheetname, bool removeSpacesSPSS=false);//, IOpenDataFileOptions odfo=null
 
         public abstract UAReturn DataFrameLoad(ServerDataSource dataSource, string dframe); //13Feb2014
 

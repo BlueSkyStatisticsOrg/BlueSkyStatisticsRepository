@@ -76,12 +76,12 @@ namespace BSky.Service.Engine
         }
 
         //25Oct2016 Added 'replace' parameter (to overwrite a dataset with new values)
-        public UAReturn DataSourceLoad(string datasetName, string fileName, string sheetname, bool replace = false, IOpenDataFileOptions odfo = null)
+        public UAReturn DataSourceLoad(string datasetName, string fileName, string sheetname, bool removeSpacesSPSS=false,  bool replace = false, IOpenDataFileOptions odfo = null)
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, fileName, datasetName, sheetname, replace, odfo);
-            r = _userSession.DefaultDispatcher.DataSourceLoad(dataSource, sheetname);//,odfo
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, fileName, datasetName, sheetname, removeSpacesSPSS,  replace, odfo);
+            r = _userSession.DefaultDispatcher.DataSourceLoad(dataSource, sheetname, removeSpacesSPSS );//,odfo
             //08Jun2013
             //if ( r.Success)
             //{ 

@@ -7,7 +7,7 @@ namespace BSky.Interfaces.Interfaces
     {
         string GetFreshDatasetName();//t ot get next available Dataframename( Dataset2, Dataset3 and so on)
         DataSource NewDataset();//03Jan2014
-        DataSource Open(string filename, string sheetname, IOpenDataFileOptions odfo=null);
+        DataSource Open(string filename, string sheetname, bool removeSpacesSPSS=false, IOpenDataFileOptions odfo=null);
         DataSource OpenDataframe(string dframename, string sheetname, string fname=""); //31May2018 for passing RData filename //13Feb2014
         UAReturn ImportTableListFromSQL(string sqlcommand);
         object GetOdbcTableList(string filename);//27Jan2014

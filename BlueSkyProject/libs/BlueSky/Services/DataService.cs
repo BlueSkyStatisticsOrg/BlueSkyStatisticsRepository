@@ -104,7 +104,7 @@ namespace BlueSky.Services
             }
             return newdatasetname;
         }
-        public DataSource Open(string filename, string sheetname, IOpenDataFileOptions odfo=null)
+        public DataSource Open(string filename, string sheetname, bool removeSpacesSPSS=false,  IOpenDataFileOptions odfo=null)
         {
             if (sheetname==null || sheetname.Trim().Length == 0) //29Apr2015 just to make sure sheetname should have valid chars and not spaces.
                 sheetname = string.Empty; 
@@ -177,7 +177,7 @@ namespace BlueSky.Services
             //AnalyticsData data = new AnalyticsData();
             //data.Result = datasrc;
             //data.AnalysisType = datasrc.CommandString;//21Oct2013
-            UAReturn datasrc = _analyticService.DataSourceLoad(datasetname, filename, sheetname, replaceDS, odfo);
+            UAReturn datasrc = _analyticService.DataSourceLoad(datasetname, filename, sheetname, removeSpacesSPSS, replaceDS, odfo);
             if (datasrc == null)
             {
                 logService.WriteToLogLevel("Could not open: " + filename , LogLevelEnum.Error);

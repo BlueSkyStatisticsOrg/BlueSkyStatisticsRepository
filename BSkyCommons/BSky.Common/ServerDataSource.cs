@@ -24,6 +24,7 @@ namespace BSky.Statistics.Common
         public string FileNameWithPath { get; private set; }
         public string FileName { get; private set; }
         public string SheetName { get; private set; }//29Apr2015
+        public bool TrimSPSSTrailing { get; set; }//remove trailing spaces from SPSS vars(factor/character) while loading	 
         public int MaxFactors { get; set; }
 
         //25Oct2016 If TRUE that means we need to replace the dataset(may be because it became NULL).
@@ -38,13 +39,14 @@ namespace BSky.Statistics.Common
 
         public List<DataSourceVariable> FewVariables = new List<DataSourceVariable>();
 
-        public ServerDataSource(CommandDispatcher dispatcher, string fileName, string datasetname, string sheetname, bool replace=false, IOpenDataFileOptions odfo=null)
+        public ServerDataSource(CommandDispatcher dispatcher, string fileName, string datasetname, string sheetname, bool removeSpacesSPSS=false, bool replace=false, IOpenDataFileOptions odfo=null)
         {
             fileName = fileName != null ? fileName : string.Empty;//to avoid crash
             this.Dispatcher = dispatcher;
             this.FileNameWithPath = fileName;//.ToLower();
             this.FileName = System.IO.Path.GetFileName(FileNameWithPath);//filename
             this.SheetName = !string.IsNullOrEmpty(sheetname) ? sheetname : string.Empty;//20Jul2018
+			this.TrimSPSSTrailing = removeSpacesSPSS;										 
             this.Name = datasetname;//dataset name assigned by application to the opened dataset(.sav) file
             this.Extension = Path.GetExtension(fileName).Replace('.', ' ').Trim(); //fileName.Substring(fileName.LastIndexOf(".")+1);
             this.Replace = replace;//25Oct2016

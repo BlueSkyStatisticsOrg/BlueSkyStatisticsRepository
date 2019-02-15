@@ -46,7 +46,7 @@ namespace BSky.Statistics.R
             return string.Empty;
         }
 
-        public static string LoadDataSource(ServerDataSource dataSource, string tableOrSheetname = "Sheet1")//, IOpenDataFileOptions odfo=null
+        public static string LoadDataSource(ServerDataSource dataSource, string tableOrSheetname = "Sheet1", bool removeSpacesSPSS=false)//, IOpenDataFileOptions odfo=null
         {
             dataSource.DataSetType = GetDataSetTypeFromExtension(dataSource.Extension);
 
@@ -55,7 +55,7 @@ namespace BSky.Statistics.R
                 //for Excel sheet name must also be set before opening. Anil
                 //16Nov2017 No need do it in LoadDataSourceExt     dataSource.HasHeader = true;
                 //16Nov2017 No need do it in LoadDataSourceExt     dataSource.FieldSperator = ",";
-                return LoadDataSourceExt(dataSource, tableOrSheetname);//, odfo
+                return LoadDataSourceExt(dataSource, tableOrSheetname, removeSpacesSPSS);//, odfo
             }
             return string.Empty;
         }
@@ -76,7 +76,7 @@ namespace BSky.Statistics.R
             return string.Empty;
         }
 
-        private static string LoadDataSourceExt(ServerDataSource dataSource, string sheetOrTablename) //, IOpenDataFileOptions odfo = null
+        private static string LoadDataSourceExt(ServerDataSource dataSource, string sheetOrTablename, bool removeSpacesSPSS=false) //, IOpenDataFileOptions odfo = null
         {
             //uaopendataset(typeoffile, directory,filename,uaperformance)
             string dirPath = Path.GetDirectoryName(dataSource.FileNameWithPath);
@@ -89,6 +89,7 @@ namespace BSky.Statistics.R
             bool replaceDataset = false;
             bool csvHeader = true; //No need of this...similar option below : HasHeader
             string loadMissingValue = "FALSE";//21Apr2014
+			string TrimSPSSTrailing = "FALSE";								  
 
             //16Nov2017 Options for opening data file //
             bool HasHeader = false;
@@ -122,6 +123,7 @@ namespace BSky.Statistics.R
                 if (LoadMisVal.Trim().Length == 0)
                     LoadMisVal = confService.DefaultSettings["loadSavMissingValue"];
                 loadMissingValue = LoadMisVal.ToLower().Equals("true") ? "TRUE" : "FALSE"; /// 
+				TrimSPSSTrailing = removeSpacesSPSS.ToString().ToUpper();														 
             }
 
             if (sheetOrTablename != null)// filetype.Equals("XLS") || filetype.Equals("XLSX"))
@@ -134,17 +136,17 @@ namespace BSky.Statistics.R
             {
                 // return string.Format("BSkyloadDataset(fullpathfilename='{0}', filetype='{1}', worksheetName='{2}',replace_ds=TRUE, load.missing={4}, character.to.factor={5}, datasetName='{3}')", FormatFileName(fullpathfilename), filetype, worksheetname, datasetname, loadMissingValue, characterToFactor);
                 return string.Format("BSkyloadDataset(fullpathfilename='{0}', filetype='{1}', worksheetName='{2}',replace_ds=TRUE," +
-                    " load.missing={4}, character.to.factor={5}, csvHeader={6}, isBasketData={7}, sepChar='{8}', deciChar='{9}',  datasetName='{3}')",
+                    " load.missing={4}, character.to.factor={5}, csvHeader={6}, isBasketData={7}, trimSPSStrailing={8}, sepChar='{9}', deciChar='{10}',  datasetName='{3}')",
                     FormatFileName(fullpathfilename), filetype, worksheetname, datasetname, loadMissingValue, characterToFactor,
-                    HasHeader.ToString().ToUpper(), IsBasketData.ToString().ToUpper(), sepChar, deciChar);
+                    HasHeader.ToString().ToUpper(), IsBasketData.ToString().ToUpper(), TrimSPSSTrailing, sepChar, deciChar);
             }
             else
             {
                 //return string.Format("BSkyloadDataset(fullpathfilename='{0}', filetype='{1}', worksheetName='{2}',load.missing={4}, character.to.factor={5}, datasetName='{3}')", FormatFileName(fullpathfilename), filetype, worksheetname, datasetname, loadMissingValue, characterToFactor);
                 return string.Format("BSkyloadDataset(fullpathfilename='{0}', filetype='{1}', worksheetName='{2}',load.missing={4}, " +
-                    "character.to.factor={5}, csvHeader={6}, isBasketData={7}, sepChar='{8}', deciChar='{9}', datasetName='{3}')",
+                    "character.to.factor={5}, csvHeader={6}, isBasketData={7}, trimSPSStrailing={8}, sepChar='{9}', deciChar='{10}', datasetName='{3}')",
                     FormatFileName(fullpathfilename), filetype, worksheetname, datasetname, loadMissingValue, characterToFactor,
-                    HasHeader.ToString().ToUpper(), IsBasketData.ToString().ToUpper(), sepChar, deciChar);
+                    HasHeader.ToString().ToUpper(), IsBasketData.ToString().ToUpper(), TrimSPSSTrailing, sepChar, deciChar);
             }
         }
 

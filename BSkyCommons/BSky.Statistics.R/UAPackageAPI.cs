@@ -194,12 +194,12 @@ namespace BSky.Statistics.R
             return result;
         }
 
-        public UAReturn OpenDataset(ServerDataSource dataSource, string sheetname)//, IOpenDataFileOptions odfo=null
+        public UAReturn OpenDataset(ServerDataSource dataSource, string sheetname, bool removeSpacesSPSS)//, IOpenDataFileOptions odfo=null
         {
             string fulpathfilename = dataSource.FileNameWithPath.Replace("\\", "/");
             string commstr = string.Empty;
             UAReturn result = new UAReturn() { Success = false };
-            result.CommandString = RCommandStrings.LoadDataSource(dataSource, sheetname);//, odfo
+            result.CommandString = RCommandStrings.LoadDataSource(dataSource, sheetname, removeSpacesSPSS);//, odfo
             commstr = result.CommandString;
 
             //07Jul2015 if file type is not supported commstr will be empty(may be null)
@@ -1541,9 +1541,9 @@ namespace BSky.Statistics.R
             return this.OpenEmptyDataset(dataSource);
         }
 
-        public override UAReturn DataSourceLoad(ServerDataSource dataSource, string sheetname)//, IOpenDataFileOptions odfo
+        public override UAReturn DataSourceLoad(ServerDataSource dataSource, string sheetname, bool removeSpacesSPSS=false)//, IOpenDataFileOptions odfo
         {
-            return this.OpenDataset(dataSource, sheetname);//, odfo
+            return this.OpenDataset(dataSource, sheetname, removeSpacesSPSS);//, odfo
         }
 
         public override UAReturn DataFrameLoad(ServerDataSource dataSource, string dframename) //13Feb2014 

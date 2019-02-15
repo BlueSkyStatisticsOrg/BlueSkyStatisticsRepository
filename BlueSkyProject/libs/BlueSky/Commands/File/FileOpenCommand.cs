@@ -172,6 +172,7 @@ namespace BlueSky.Commands.File
             string errormsg = string.Empty;
             DataSource ds = null;
             IOpenDataFileOptions csvo = new OpenDataFileOptions();//
+			bool removeSpacesSPSS = false;//for SPSS files.											   
 
             if (filename != null && filename.Length > 0)
             {
@@ -295,7 +296,15 @@ namespace BlueSky.Commands.File
                         BSkyMouseBusyHandler.ShowMouseBusy();
                         //do further processing by passing it into service.open()
                     }
-
+                    else if (filename.EndsWith(".sav"))
+                    {
+                        OpenSPSSoptionsWindow spssOpt = new OpenSPSSoptionsWindow();
+                        spssOpt.Owner=appwindow;
+                        BSkyMouseBusyHandler.HideMouseBusy();
+                        spssOpt.ShowDialog();
+                        BSkyMouseBusyHandler.ShowMouseBusy();
+                        removeSpacesSPSS = spssOpt.TrimSpaces;
+                    }
                     logService.WriteToLogLevel("Setting DataSource: ", LogLevelEnum.Info);
 
                     Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
@@ -421,7 +430,7 @@ namespace BlueSky.Commands.File
                     else
                     {
 
-                        ds = service.Open(filename, sheetname, csvo);
+                        ds = service.Open(filename, sheetname, removeSpacesSPSS, csvo);
                         stopwatch.Stop();
                         elapsed = stopwatch.ElapsedMilliseconds;
 

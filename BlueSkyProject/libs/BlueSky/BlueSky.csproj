@@ -243,6 +243,9 @@
     <Compile Include="Commands\File\LoadDatasetFromRPkgWindow.xaml.cs">
       <DependentUpon>LoadDatasetFromRPkgWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\File\OpenSPSSoptionsWindow.xaml.cs">
+      <DependentUpon>OpenSPSSoptionsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Commands\File\SelectRdataDataframesWindow.xaml.cs">
       <DependentUpon>SelectRdataDataframesWindow.xaml</DependentUpon>
     </Compile>
@@ -397,6 +400,10 @@
       <SubType>Designer</SubType>
     </None>
     <Page Include="Commands\File\LoadDatasetFromRPkgWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commands\File\OpenSPSSoptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

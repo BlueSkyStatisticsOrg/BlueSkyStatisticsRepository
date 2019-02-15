@@ -27,7 +27,7 @@ namespace BSky.Statistics.Service.Engine.Interfaces
         UAReturn EmptyDataSourceLoad(string datasetName, string fileName, string sheetname);//03Jan2014
 
         [OperationContract]
-        UAReturn DataSourceLoad(string datasetName, string fileName, string sheetname, bool replace = false, IOpenDataFileOptions odfo = null);
+        UAReturn DataSourceLoad(string datasetName, string fileName, string sheetname, bool removeSpacesSPSS=false, bool replace = false, IOpenDataFileOptions odfo = null);
 
         [OperationContract]
         UAReturn DataFrameLoad(string dframename, string datasetName, string sheetname);//13Feb2014
