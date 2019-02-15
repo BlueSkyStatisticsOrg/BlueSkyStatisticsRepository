@@ -239,6 +239,10 @@
     <Compile Include="Commands\File\FileSaveCommand.cs" />
     <Compile Include="Commands\File\FileSaveAsCommand.cs" />
     <Compile Include="Commands\File\ImportFromSQLCommand.cs" />
+    <Compile Include="Commands\File\LoadDatasetFromRPkgCommand.cs" />
+    <Compile Include="Commands\File\LoadDatasetFromRPkgWindow.xaml.cs">
+      <DependentUpon>LoadDatasetFromRPkgWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Commands\File\SelectRdataDataframesWindow.xaml.cs">
       <DependentUpon>SelectRdataDataframesWindow.xaml</DependentUpon>
     </Compile>
@@ -392,6 +396,10 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <Page Include="Commands\File\LoadDatasetFromRPkgWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Commands\File\SelectRdataDataframesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

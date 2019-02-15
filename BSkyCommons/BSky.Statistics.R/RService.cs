@@ -464,6 +464,19 @@ namespace BSky.Statistics.R
             return _df;
         }
 
+        //This function is only used to fetch two cols of a matrix
+        //specific to fecthing dataset names from a R package.
+        //This function can be made generic to use it for other things if needed.
+        public CharacterMatrix GetChrMatrix(string command)
+        {
+            if (command == null)
+                return null;
+            //bool dsexists = _RServer.Evaluate("exists(\"" + dsname + "\")").AsLogical()[0];
+            //if (!dsexists)
+            //    return null;
+            CharacterMatrix _chrmatrix = _RServer.Evaluate(command).AsCharacterMatrix();
+            return _chrmatrix;
+        } 
 
         #endregion
 

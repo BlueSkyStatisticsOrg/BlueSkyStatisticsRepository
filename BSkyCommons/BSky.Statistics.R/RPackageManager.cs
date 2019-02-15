@@ -126,6 +126,54 @@ namespace BSky.Statistics.R
             return isLoaded;
         }
 
+public string[] GetDatasetListFromRPkg(string packagename)//12Feb2011 Get names of datasets in a R pkg
+        {
+            string joinCharacter = "-";
+            StringBuilder sb = new StringBuilder(); 
+            string[] datasetlist = null;
+            // data()$results is a matrix with dimnames [Package, LibPath, Item, Title]
+            // we will need "Item" and "Title" ( data(package="pkgname")$results[, 3:4] ) which we will join using joinCharacter
+            ////try may help in avoiding crash
+            string commandstring = "try(data(package='"+ packagename + "')$results[, 3:4])"; 
+            _journal.WriteLine(commandstring);
+            RDotNet.CharacterMatrix chrmatrix = _dispatcher.GetChrMatrix(commandstring);
+            if (chrmatrix != null)
+            {
+                if (chrmatrix.ColumnNames != null)
+                {
+                    datasetlist = new string[chrmatrix.RowCount];
+                    //datasetlist[0] = string.Empty;
+                    for (int r = 0; r < chrmatrix.RowCount; r++)
+                    {
+                        sb.Clear();
+                        for (int c = 0; c < chrmatrix.ColumnCount; c++)
+                        {
+                            sb.Append(chrmatrix[r, c]);
+                            if (c < chrmatrix.ColumnCount - 1)
+                            {
+                                sb.Append(" ");
+                                sb.Append(joinCharacter);
+                                sb.Append("[");
+                            }
+                        }
+                        sb.Append("]");
+                        datasetlist[r] = sb.ToString();
+                    }
+                }
+                else
+                {
+                    if (chrmatrix.RowCount == 1 && chrmatrix.ColumnCount == 1)
+                    {
+                        string rmsg = chrmatrix[0, 0];
+                        _journal.WriteLine(rmsg);
+                        datasetlist = new string[1];
+                        datasetlist[0] = "ReRRoE"+rmsg; //to easily identify error message in uber function
+                    }
+                }
+            }
+
+            return datasetlist;
+        }
 
         #endregion
 

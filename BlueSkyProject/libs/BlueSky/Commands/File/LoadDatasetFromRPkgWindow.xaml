@@ -1,0 +1,59 @@
+﻿<Window x:Class="BlueSky.Commands.File.LoadDatasetFromRPkgWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:BlueSky.Commands.File"
+        Title="Load a Dataset From a R Package" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" MaxWidth="1024" >
+    <Window.Resources>
+        <DataTemplate x:Key="Datasets">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding DSName}"></TextBlock>
+                <TextBlock Grid.Column="1" Text="{Binding Title}"></TextBlock>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="3" >
+            <Label >Select a R package from which you want to load a dataset:</Label>
+
+        </StackPanel>
+        
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="3" Height="25" MinWidth="100" MaxWidth="650" VerticalAlignment="Top"
+                  IsEditable="True" Name="RpkgCombo" SelectionChanged="RpkgCombo_SelectionChanged" ></ComboBox>
+
+        <!--<Expander Grid.Row="0" Grid.Column="4" Header="Help:" ExpandDirection="Right"></Expander>-->
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"  Margin="7" HorizontalAlignment="Left" MaxWidth="450"  Foreground="DarkSlateGray">
+                If the R pkg you are looking for is not found in the dropdown,
+                go to Tools > Package > Install/Update Package(s) from CRAN, and enter the R package name, you want to install.
+        </TextBlock>
+
+
+        <Label Grid.Row="2" Grid.Column="0" Margin="3">Select a dataset to load in the datagrid:</Label>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="3" Height="25" IsEditable="True"
+                  MinWidth="100" MaxWidth="650" Name="DatasetCombo"></ComboBox>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
+            <Button Name="OKBtn" Margin="3" Width="60" Click="OKBtn_Click">Ok</Button>
+            <Button Name="CancelBtn" Margin="3" Width="60"  Click="CancelBtn_Click">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -183,6 +183,11 @@ namespace BlueSky.Commands.Tools.Package
             //appwindow.RefreshRecent();
         }
 
+        //Get List of Datasets in a R pacakge
+        public UAReturn GetDatasetListFromRPkg(string packagename)//12Feb2019 Get list of datasets available in a R package
+        {
+            return service.loadRPkgDatasetList(packagename);
+        }
 
         #region Mouse Busy/Free
         Cursor defaultcursor;

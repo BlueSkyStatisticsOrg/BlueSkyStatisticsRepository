@@ -2,7 +2,7 @@
   <menu id="FileMenu" text="File" owner="BSky" nodetype="Parent">
     <menu id="FileMenuNew" text="New" command="BlueSky.Commands.File.FileNewCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpen" text="Open" command="BlueSky.Commands.File.FileOpenCommand" owner="BSky" nodetype="Leaf" />
-    <menu id="Load_Dataset_from_a_Package" text="Load Dataset from a Package" commandtemplate="Load Dataset from a Package.xaml" commandoutputformat="Load Dataset from a Package.xml" owner="" nodetype="Leaf" />	
+      <menu id="Load_Dataset_from_a_Package" text="Load Dataset from a Package" command="BlueSky.Commands.File.LoadDatasetFromRPkgCommand" owner="BSky" nodetype="Leaf" />	
     <menu id="FileMenuImportData" text="Import Data..." owner="BSky" nodetype="Parent">
       <menu id="FileMenuOpen" text="SQL Database" command="BlueSky.Commands.File.ImportFromSQLCommand" owner="BSky" nodetype="Leaf" />
     </menu>

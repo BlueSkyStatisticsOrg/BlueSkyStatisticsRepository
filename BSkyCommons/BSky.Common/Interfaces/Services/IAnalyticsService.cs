@@ -178,6 +178,8 @@ namespace BSky.Statistics.Service.Engine.Interfaces
 
         [OperationContract]
         UAReturn PackageUninstall(string[] packagenames);
+        [OperationContract]
+        UAReturn GetPkgDatasetList(string packagename);
         #endregion
     }
 }

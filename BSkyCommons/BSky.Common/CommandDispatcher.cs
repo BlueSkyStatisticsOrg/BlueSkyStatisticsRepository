@@ -154,6 +154,9 @@ namespace BSky.Statistics.Common
         public abstract UAReturn UnloadPackages(string[] packagenames);
 
         public abstract UAReturn UninstallPackages(string[] packagenames);
+
+        public abstract UAReturn FetchRpkgDatasetList(string packagename);//12Feb2019																			 
+        
         #endregion
     }
 }

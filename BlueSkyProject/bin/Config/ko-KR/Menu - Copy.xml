@@ -2,7 +2,7 @@
   <menu id="FileMenu" text="파일" owner="BSky" nodetype="Parent">
     <menu id="FileMenuNew" text="새로운" command="BlueSky.Commands.File.FileNewCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpen" text="열다" command="BlueSky.Commands.File.FileOpenCommand" owner="BSky" nodetype="Leaf" />
-    <menu id="Load_Dataset_from_a_Package" text="패키지에서 데이터 집합로드" commandtemplate="Load Dataset from a Package.xaml" commandoutputformat="Load Dataset from a Package.xml" owner="" nodetype="Leaf" />	
+      <menu id="Load_Dataset_from_a_Package" text="패키지에서 데이터 집합로드" command="BlueSky.Commands.File.LoadDatasetFromRPkgCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuImportData" text="데이터 가져 오기 ..." owner="BSky" nodetype="Parent">
       <menu id="FileMenuOpen" text="SQL 데이터베이스" command="BlueSky.Commands.File.ImportFromSQLCommand" owner="BSky" nodetype="Leaf" />
     </menu>

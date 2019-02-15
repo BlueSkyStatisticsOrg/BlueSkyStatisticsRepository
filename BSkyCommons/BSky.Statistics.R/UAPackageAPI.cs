@@ -2138,6 +2138,27 @@ namespace BSky.Statistics.R
             result = rpm.UninstallMultiPakckage(packagenames);
             return result;
         }
+
+        //12Feb2019 Fetch list of datasets in a R pkg
+        public override UAReturn FetchRpkgDatasetList(string packagename)
+        {
+            UAReturn result = new UAReturn() { Success = false };
+            string[] dslist = rpm.GetDatasetListFromRPkg(packagename);
+            if (dslist != null)
+            {
+                if (dslist.Count() == 1 && dslist[0].Contains("ReRRoE"))
+                {
+                        result.Error = dslist[0].Replace("ReRRoE","");
+                }
+                else
+                {
+                    result.Success = true;
+                    result.SimpleTypeData = dslist;
+                }
+            }
+
+            return result;
+        }
         #endregion
 
         #region Helpers

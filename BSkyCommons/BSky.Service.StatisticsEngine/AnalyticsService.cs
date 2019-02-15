@@ -567,6 +567,12 @@ namespace BSky.Service.Engine
             r = _userSession.DefaultDispatcher.UninstallPackages(packagenames);
             return r;
         }
+        public UAReturn GetPkgDatasetList(string packagename)//12Feb2019
+        {
+            UAReturn r = null;
+            r = _userSession.DefaultDispatcher.FetchRpkgDatasetList(packagename);
+            return r;
+        }
         #endregion
     }
 }

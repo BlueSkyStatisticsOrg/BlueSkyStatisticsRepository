@@ -44,6 +44,7 @@ namespace BSky.Interfaces.Interfaces
         UAReturn unloadPackage(string[] packagenames);
         UAReturn uninstallPackage(string[] packagenames);
 
+        UAReturn loadRPkgDatasetList(string packagename);
         #endregion
     }
 

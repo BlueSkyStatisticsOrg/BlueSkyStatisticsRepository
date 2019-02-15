@@ -709,6 +709,12 @@ if (ds == null)//20Oct2016 Making UI grid NULL
             //SendToOutput(r);
             return r;
         }
+
+        public UAReturn loadRPkgDatasetList(string packagename) //12Feb2019
+        {
+            UAReturn r = _analyticService.GetPkgDatasetList(packagename);
+            return r;
+        }
         #endregion
     }
 }
