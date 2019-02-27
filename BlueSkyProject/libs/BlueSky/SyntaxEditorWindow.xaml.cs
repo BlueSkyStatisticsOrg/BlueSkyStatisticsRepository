@@ -720,7 +720,16 @@ namespace BlueSky
                 if (AdvancedLogging) logService.WriteToLogLevel("ExtraLogs: Syntax going to execute : " + stmt, LogLevelEnum.Info);
 
                 if (stmt.Trim().IndexOf('#') > 1) //12May2014 if any statment has R comments in the end in same line.
-                    stmt = stmt.Substring(0, stmt.IndexOf("#"));
+                {
+                    if (stmt.Trim().Contains("\"#") || stmt.Trim().Contains("\'#"))//color code = quote-hash e.g. '#00FF00' is not a comment
+                    {
+                        stmt = stmt.Trim().Replace("\"#", "\"$$");
+                        stmt = stmt.Trim().Replace("\'#", "\'$$");
+                    }
+
+                    if (stmt.IndexOf("#") > 1)
+                        stmt = stmt.Substring(0, stmt.IndexOf("#"));
+                }
 
                 object o = null;
 
@@ -735,6 +744,8 @@ namespace BlueSky
 
                 if (AdvancedLogging) logService.WriteToLogLevel("ExtraLogs: Syntax command category : " + rct.ToString(), LogLevelEnum.Info);
 
+                stmt = stmt.Trim().Replace("\"$$", "\"#");
+                stmt = stmt.Trim().Replace("\'$$", "\'#");
                 try
                 {
                     switch (rct)
@@ -1217,7 +1228,10 @@ namespace BlueSky
                         }
                     }
                 }
-
+                if (idx == text.Length) //that means there is no #-comment in that line.
+                {
+                    nocommenttext = text;
+                }
             }
             else//that means there is no #-comment in that line.
             {
