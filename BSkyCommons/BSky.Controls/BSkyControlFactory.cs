@@ -281,6 +281,14 @@ namespace BSky.Controls
                     b.Width = 135;
                     b.Height = 45;
                     break;
+
+                case "BSkySpinnerCtrl":
+                    b = new BSkySpinnerCtrl();
+                    // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
+                    // b1.Ticks = null;
+                    b.Width = 80;
+                    b.Height = 22;
+                    break;
             }
             
             //b.Name = GetName(objtype);

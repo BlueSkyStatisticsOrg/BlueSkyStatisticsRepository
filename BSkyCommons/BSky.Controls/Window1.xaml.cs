@@ -3640,6 +3640,29 @@ namespace BSky.Controls
                     copy.Children.Add(copyAdvancedSlider);
 
                 }
+
+                if (child.GetType().Name == "BSkySpinnerCtrl")
+                {
+                    BSkySpinnerCtrl copySpinner = null;
+                    copySpinner = new BSkySpinnerCtrl();
+                    BSkySpinnerCtrl child1 = null;
+                    child1 = child as BSkySpinnerCtrl;
+
+                    copySpinner.Left = child1.Left;
+                    copySpinner.Top = child1.Top;
+                    copySpinner.Name = child1.Name;
+                    copySpinner.Step = child1.Step;
+                    copySpinner.Text = child1.Text;
+                    //copyAdvancedSlider.Value = child1.Value;
+                    copySpinner.Width = child1.Width;
+                    copySpinner.Height = child1.Height;
+                    copySpinner.CanExecute = child1.CanExecute;
+                    //copyMoveButton.Name = child1.Name;
+                    BSkyCanvas.SetTop(copySpinner, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copySpinner, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copySpinner);
+
+                }
                 if (child.GetType().Name == "BSkyMultiLineLabel")
                 {
                     BSkyMultiLineLabel copyLabel = null;

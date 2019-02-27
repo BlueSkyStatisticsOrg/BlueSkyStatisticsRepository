@@ -176,6 +176,9 @@
     </Compile>
     <Compile Include="Controls\BSkySlider.cs" />
     <Compile Include="Controls\BSkySourceList.cs" />
+    <Compile Include="Controls\BSkySpinnerCtrl.xaml.cs">
+      <DependentUpon>BSkySpinnerCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BSkyTargetList.cs" />
     <Compile Include="Controls\BSkyTextBox.xaml.cs">
       <DependentUpon>BSkyTextBox.xaml</DependentUpon>
@@ -430,6 +433,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\BSkySimpleColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkySpinnerCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -267,10 +267,13 @@
                     <TextBlock Text="Advanced Slider Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
-            
 
-
-
+            <c1:C1ToolbarButton Name="BSkySpinnerCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <TextBlock Text="Spinner Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
         </c1:C1ToolbarStrip>
     </Grid>
 
