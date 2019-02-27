@@ -7,22 +7,22 @@
               >
     <Grid Name="spinnergrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="16"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Column="0" Name="text" MinHeight="20" MaxHeight="22" MinWidth="50" >0</TextBox>
+        <TextBox Grid.Column="0" Name="text" MinHeight="20" MaxHeight="22" >0</TextBox>
         <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button Name="upbtn" MinWidth="15" MinHeight="11" MaxHeight="14" >^
-                <!--<Button.Content>
-                    <Image Source="/BSky.Controls;component/Resources/uparrow.png"></Image>
-                </Button.Content>-->
+            <Button Name="upbtn" MaxWidth="15" MinHeight="10" MaxHeight="11" >
+                <Button.Content>
+                    <Image Source="/BSky.Controls;component/Resources/spinnerup.png"></Image>
+                </Button.Content>
             </Button>
-            <Button Name="downbtn" MinWidth="15" MinHeight="11" MaxHeight="14" >V
-                <!--<Button.Content>
-                    <Image Source="/BSky.Controls;component/Resources/downarrow.png"></Image>
-                </Button.Content>-->
+            <Button Name="downbtn" MaxWidth="15" MinHeight="10" MaxHeight="11" >
+                <Button.Content>
+                    <Image Source="/BSky.Controls;component/Resources/spinnerdown.png"></Image>
+                </Button.Content>
             </Button>
             <!-- minheight=18, max=22-->
-        </StackPanel>
+        </StackPanel>            
     </Grid>
 </UserControl>
