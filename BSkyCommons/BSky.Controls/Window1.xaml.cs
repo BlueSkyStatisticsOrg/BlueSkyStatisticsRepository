@@ -3617,6 +3617,29 @@ namespace BSky.Controls
                     copy.Children.Add(copySlider);
                 }
 
+                if (child.GetType().Name == "BSkyAdvancedSlider")
+                {
+                    BSkyAdvancedSlider copyAdvancedSlider = null;
+                    copyAdvancedSlider = new BSkyAdvancedSlider();
+                    BSkyAdvancedSlider child1 = null;
+                    child1 = child as BSkyAdvancedSlider;
+
+                    copyAdvancedSlider.Left = child1.Left;
+                    copyAdvancedSlider.Top = child1.Top;
+                    copyAdvancedSlider.Name = child1.Name;
+                    copyAdvancedSlider.SliderValue = child1.slValueqwGxzplHapppqa129aM.Minimum;
+                    copyAdvancedSlider.slValueqwGxzplHapppqa129aM.TickFrequency = child1.slValueqwGxzplHapppqa129aM.TickFrequency;
+                    copyAdvancedSlider.slValueqwGxzplHapppqa129aM.Maximum = child1.slValueqwGxzplHapppqa129aM.Maximum;
+                    copyAdvancedSlider.slValueqwGxzplHapppqa129aM.Minimum = child1.slValueqwGxzplHapppqa129aM.Minimum;
+                    copyAdvancedSlider.Width = child1.Width;
+                    copyAdvancedSlider.Height = child1.Height;
+                    copyAdvancedSlider.CanExecute = child1.CanExecute;
+                    //copyMoveButton.Name = child1.Name;
+                    BSkyCanvas.SetTop(copyAdvancedSlider, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copyAdvancedSlider, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copyAdvancedSlider);
+
+                }
                 if (child.GetType().Name == "BSkyMultiLineLabel")
                 {
                     BSkyMultiLineLabel copyLabel = null;
@@ -4682,7 +4705,9 @@ namespace BSky.Controls
                 xaml = xaml.Replace("ItemTemplate=\"{x:Null}\"", "");
                 xaml = xaml.Replace("<assembly:Null />","");
                 xaml = removeTags(xaml, "<BSkyListBox.Resources>", "</BSkyListBox.Resources>");
-                
+                xaml = removeTags(xaml, "<av:DockPanel Name=\"AvdSliderDockp\"", "</av:DockPanel>");// <av:DockPanel
+                xaml = removeTags(xaml, "<av:Grid Name=\"spinnergrid\">", "</av:Grid>");
+
                 XamlReader.Parse(xaml);
             }
             catch (Exception ex)
@@ -4753,6 +4778,8 @@ namespace BSky.Controls
                 //Aaron 11/25/2012 One of the 2 lines below are redundant and need to be removed
                 xaml = xaml.Replace("ItemTemplate=\"{assembly:Null}\"", "");
                 xaml = xaml.Replace("ItemTemplate=\"{x:Null}\"", "");
+                xaml = removeTags(xaml, "<av:DockPanel Name=\"AvdSliderDockp\"", "</av:DockPanel>");// <av:DockPanel
+                xaml = removeTags(xaml, "<av:Grid Name=\"spinnergrid\">", "</av:Grid>");
                 // xaml = xaml.Replace("assembly:Key=\"{assembly:Type av:Border}\"", "av:Key=\"{av:Type av:Border}\"");
                 //Aaron 11/14/2013
                 //The code below adds new canvases to BSKyCanvas.chainOpencanvas

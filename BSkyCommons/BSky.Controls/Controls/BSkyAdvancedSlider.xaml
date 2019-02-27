@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="BSky.Controls.BSkyAdvancedSlider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BSky.Controls.Controls"
+             mc:Ignorable="d" 
+             Width="Auto" Height="Auto">
+    <DockPanel Name="AvdSliderDockp" VerticalAlignment="Center" Margin="1">
+        <TextBox Name="valtxt" DockPanel.Dock="Right" TextAlignment="Right" Width="40" Height="22" />
+        <Slider Maximum="255" TickPlacement="Both" AutoToolTipPrecision="2" Foreground="Black"
+                IsMoveToPointEnabled="True" AutoToolTipPlacement="BottomRight" 
+                TickFrequency="5" IsSnapToTickEnabled="False" Name="slValueqwGxzplHapppqa129aM" />
+    </DockPanel>
+</UserControl>

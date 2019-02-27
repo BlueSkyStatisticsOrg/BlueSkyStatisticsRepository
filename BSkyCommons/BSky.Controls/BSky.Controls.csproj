@@ -138,6 +138,9 @@
     </Compile>
     <Compile Include="Commands\CustomMenuCommands.cs" />
     <Compile Include="CommonFunctions.cs" />
+    <Compile Include="Controls\BSkyAdvancedSlider.xaml.cs">
+      <DependentUpon>BSkyAdvancedSlider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BSkyEditableComboBox.cs" />
     <Compile Include="Controls\BSkyGroupingVariable.xaml.cs">
       <DependentUpon>BSkyGroupingVariable.xaml</DependentUpon>
@@ -379,6 +382,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="BSkySortCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkyAdvancedSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

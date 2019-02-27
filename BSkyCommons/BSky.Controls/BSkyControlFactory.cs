@@ -274,6 +274,13 @@ namespace BSky.Controls
                     //b.Height = 40;
                     break;
 
+                case "AdvancedSliderCtrl":
+                    b = new BSkyAdvancedSlider();
+                    // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
+                    // b1.Ticks = null;
+                    b.Width = 135;
+                    b.Height = 45;
+                    break;
             }
             
             //b.Name = GetName(objtype);
