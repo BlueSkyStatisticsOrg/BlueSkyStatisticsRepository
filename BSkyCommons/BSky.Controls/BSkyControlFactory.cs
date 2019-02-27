@@ -241,7 +241,38 @@ namespace BSky.Controls
                     // bc.Height = 50;
                     //b.Height = 40;
                     break;
-                
+                case "SliderCtrl":
+                    b = new BSkySlider();
+                    // BSkySlider b1 = b as BSkySlider;
+                    // b1.Ticks = null;
+                    b.Width = 135;
+                    b.Height = 40;
+                    //  b1.TickFrequency = 2;
+                    //  b1.Maximum = 10;
+                    //  b1.Minimum = 0;
+                    // b1.TickPlacement = System.Windows.Controls.Primitives.TickPlacement.Both;
+                    //TickFrequency = 2;
+                    // b1.Ticks = null;
+
+                    //DoubleCollection tickMarks = new DoubleCollection();
+                    //tickMarks.Add(0.5);
+                    //tickMarks.Add(1.5);
+                    //tickMarks.Add(2.5);
+                    //tickMarks.Add(3.5);
+                    //tickMarks.Add(4.5);
+                    //tickMarks.Add(5.5);
+                    //tickMarks.Add(6.5);
+                    //tickMarks.Add(7.5);
+                    //tickMarks.Add(8.5);
+                    //tickMarks.Add(9.5);
+                    //b1.Ticks = tickMarks;
+                    //  b1.AutoToolTipPlacement = System.Windows.Controls.Primitives.AutoToolTipPlacement.BottomRight;
+
+                    // BSkyGroupingVariable bc = b as BSkyGroupingVariable;
+                    // bc.oneItemList.Width = 100;
+                    // bc.Height = 50;
+                    //b.Height = 40;
+                    break;
 
             }
             

@@ -171,6 +171,7 @@
     <Compile Include="Controls\BSkySimpleColorPicker.xaml.cs">
       <DependentUpon>BSkySimpleColorPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BSkySlider.cs" />
     <Compile Include="Controls\BSkySourceList.cs" />
     <Compile Include="Controls\BSkyTargetList.cs" />
     <Compile Include="Controls\BSkyTextBox.xaml.cs">

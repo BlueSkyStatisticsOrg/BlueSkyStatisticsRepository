@@ -3594,6 +3594,28 @@ namespace BSky.Controls
 
                 }
 
+                if (child.GetType().Name == "BSkySlider")
+                {
+                    BSkySlider copySlider = null;
+                    copySlider = new BSkySlider();
+                    BSkySlider child1 = null;
+                    child1 = child as BSkySlider;
+
+                    copySlider.Left = child1.Left;
+                    copySlider.Top = child1.Top;
+                    copySlider.Name = child1.Name;
+                    copySlider.Value = child1.Value;
+                    copySlider.TickFrequency = child1.TickFrequency;
+                    copySlider.Maximum = child1.Maximum;
+                    copySlider.Minimum = child1.Minimum;
+                    copySlider.Width = child1.Width;
+                    copySlider.Height = child1.Height;
+                    copySlider.CanExecute = child1.CanExecute;
+                    //copyMoveButton.Name = child1.Name;
+                    BSkyCanvas.SetTop(copySlider, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copySlider, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copySlider);
+                }
 
                 if (child.GetType().Name == "BSkyMultiLineLabel")
                 {
