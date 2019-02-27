@@ -679,6 +679,7 @@ namespace BlueSky
 
             seltext = seltext.Replace('\n', ';').Replace('\r', ' ').Trim();
             seltext = JoinCommaSeparatedStatment(seltext);
+			seltext = JoinPlusSignSeparatedStatment(seltext);		
 			seltext = JoinPipeSeparatedStatment(seltext);
             string stmt = "";
             //////wrap in sink////////
@@ -1009,6 +1010,16 @@ namespace BlueSky
             return comm;
         }
 
+        /// Join the statments Ends in a PLUS sign
+        private string JoinPlusSignSeparatedStatment(string comm)//, int start, ref int end)
+        {
+            //string result = string.Empty;
+            //for (int i = 0; i < comm.Length;i++ )
+            //{
+            //}
+            comm = Regex.Replace(comm, @"\+\s*;", "+");
+            return comm;
+        }
         /// Join the statments Ends in Pipe '%<%'
         private string JoinPipeSeparatedStatment(string comm)//, int start, ref int end)
         {
