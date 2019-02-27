@@ -208,19 +208,19 @@
 
             <c1:C1ToolbarButton Name="Browse" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/RadioGrp.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/folder.png" />
                     <TextBlock Text="Browse" Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="GroupingVariable" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/RadioGrp.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/groupvar.png" />
                     <TextBlock Text="Grouping Variable" Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="gridForSymbols" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Radio.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/MathOperators.png" />
                     <TextBlock Text="Mathematical Operators for Formulas"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
@@ -238,39 +238,37 @@
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="GridforCompute" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/computegrid.png" />
                     <TextBlock Text="Grid for Compute"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="AggregateCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/aggregate.png" />
                     <TextBlock Text="Aggregate Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="SortCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/sort.png" />
                     <TextBlock Text="Sort Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="SliderCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/slider.png" />
                     <TextBlock Text="Slider Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
-
             <c1:C1ToolbarButton Name="AdvancedSliderCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/advslider.png" />
                     <TextBlock Text="Advanced Slider Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
-
             <c1:C1ToolbarButton Name="BSkySpinnerCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/spinner.png" />
                     <TextBlock Text="Spinner Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
