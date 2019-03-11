@@ -146,6 +146,12 @@
                     <TextBlock Text="Label"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
+            <c1:C1ToolbarButton Name="LabelForRequiredFld" Height="20" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Lable.png" />
+                    <TextBlock Text="Required field indicator"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="MultiLabel" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left" MinHeight="20">
                 <StackPanel Orientation="Horizontal">
                     <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Lable.png" />
@@ -272,6 +278,7 @@
                     <TextBlock Text="Spinner Control"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
+           
         </c1:C1ToolbarStrip>
     </Grid>
 

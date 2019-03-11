@@ -3594,6 +3594,30 @@ namespace BSky.Controls
 
                 }
 
+                if (child.GetType().Name == "BSkyLabelReqdField")
+                {
+                    BSkyLabelReqdField copyLabel = null;
+                    copyLabel = new BSkyLabelReqdField();
+                    BSkyLabelReqdField child1 = null;
+                    child1 = child as BSkyLabelReqdField;
+
+                    copyLabel.Left = child1.Left;
+                    copyLabel.Top = child1.Top;
+                    copyLabel.Name = child1.Name;
+                    copyLabel.Text = child1.Text;
+                    copyLabel.Width = child1.Width;
+                    copyLabel.Height = child1.Height;
+                    copyLabel.CanExecute = child1.CanExecute;
+                    copyLabel.Foreground = child1.Foreground;
+
+                    //copyMoveButton.Name = child1.Name;
+                    BSkyCanvas.SetTop(copyLabel, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copyLabel, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copyLabel);
+
+                }
+
+
                 if (child.GetType().Name == "BSkySlider")
                 {
                     BSkySlider copySlider = null;
@@ -3611,6 +3635,7 @@ namespace BSky.Controls
                     copySlider.Width = child1.Width;
                     copySlider.Height = child1.Height;
                     copySlider.CanExecute = child1.CanExecute;
+                    copySlider.Enabled = child1.Enabled;
                     //copyMoveButton.Name = child1.Name;
                     BSkyCanvas.SetTop(copySlider, BSkyCanvas.GetTop(child1));
                     BSkyCanvas.SetLeft(copySlider, BSkyCanvas.GetLeft(child1));
@@ -3627,13 +3652,15 @@ namespace BSky.Controls
                     copyAdvancedSlider.Left = child1.Left;
                     copyAdvancedSlider.Top = child1.Top;
                     copyAdvancedSlider.Name = child1.Name;
-                    copyAdvancedSlider.SliderValue = child1.slValueqwGxzplHapppqa129aM.Minimum;
+                   // copyAdvancedSlider.SliderValue = child1.slValueqwGxzplHapppqa129aM.Minimum;
                     copyAdvancedSlider.slValueqwGxzplHapppqa129aM.TickFrequency = child1.slValueqwGxzplHapppqa129aM.TickFrequency;
                     copyAdvancedSlider.slValueqwGxzplHapppqa129aM.Maximum = child1.slValueqwGxzplHapppqa129aM.Maximum;
                     copyAdvancedSlider.slValueqwGxzplHapppqa129aM.Minimum = child1.slValueqwGxzplHapppqa129aM.Minimum;
+                    copyAdvancedSlider.SliderValue = child1.SliderValue;
                     copyAdvancedSlider.Width = child1.Width;
                     copyAdvancedSlider.Height = child1.Height;
                     copyAdvancedSlider.CanExecute = child1.CanExecute;
+                    copyAdvancedSlider.Enabled = child1.Enabled;
                     //copyMoveButton.Name = child1.Name;
                     BSkyCanvas.SetTop(copyAdvancedSlider, BSkyCanvas.GetTop(child1));
                     BSkyCanvas.SetLeft(copyAdvancedSlider, BSkyCanvas.GetLeft(child1));
@@ -3663,6 +3690,7 @@ namespace BSky.Controls
                     copy.Children.Add(copySpinner);
 
                 }
+
                 if (child.GetType().Name == "BSkyMultiLineLabel")
                 {
                     BSkyMultiLineLabel copyLabel = null;
@@ -4741,17 +4769,23 @@ namespace BSky.Controls
             return xaml;
         }
 
+     
 
-
-
-         private string removeTags(string sourceText, string beginTag, string endTag)
+        
+        private string removeTags(string sourceText, string beginTag, string endTag)
         {
             string removePara = string.Empty;
             do
             {
                 removePara = string.Empty;
+                //Added by Aaron 03/03/2019
+                //Takes care of the case where the end tag can occur before the start tag
                 int startindex = sourceText.IndexOf(beginTag);
-                int endindex = sourceText.IndexOf(endTag);
+                if (startindex == -1)
+                    return sourceText;
+                string following = TextFollowing(sourceText, beginTag);
+               // string following = "test";
+                int endindex = following.IndexOf(endTag)+startindex +beginTag.Length;
                 if (startindex >= 0 && endindex >= 0 && startindex < endindex) //if tag is found
                 {
                     removePara = sourceText.Substring(startindex, (endindex - startindex +  endTag.Length)); //get para that needs to be removed
@@ -4763,6 +4797,24 @@ namespace BSky.Controls
             } while (sourceText.Contains(beginTag)); //keep removing PARAs till all are gone. Just checking begin tag bcoz its XAML
 
             return sourceText; // return final string.
+        }
+
+        //Added new function by Aaron 03/03/2019
+        private string TextFollowing( string txt, string value)
+        {
+            if (!String.IsNullOrEmpty(txt) && !String.IsNullOrEmpty(value))
+            {
+                int index = txt.IndexOf(value);
+                if (-1 < index)
+                {
+                    int start = index + value.Length;
+                    if (start <= txt.Length)
+                    {
+                        return txt.Substring(start);
+                    }
+                }
+            }
+            return null;
         }
 
         //remove text method

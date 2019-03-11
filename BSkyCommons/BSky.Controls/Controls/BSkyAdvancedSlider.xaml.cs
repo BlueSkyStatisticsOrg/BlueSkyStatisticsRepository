@@ -9,6 +9,9 @@ namespace BSky.Controls
     /// <summary>
     /// Interaction logic for BSkyAdvancedSlider.xaml
     /// </summary>
+    /// 
+    [TypeConverter(typeof(PropertySorter))]
+    [DefaultPropertyAttribute("Type")]
     public partial class BSkyAdvancedSlider : UserControl, IBSkyAffectsExecute, IBSkyInputControl, IBSkyControl, IBSkyEnabledControl , INotifyPropertyChanged
     {
         public BSkyAdvancedSlider()
@@ -16,19 +19,52 @@ namespace BSky.Controls
             InitializeComponent();
             //MyProperty = "s";//bind text and slider
             SetTextAndSliderBinding();
+           // valtxt.TextChanged += new System.Windows.Controls.TextChangedEventHandler(valtext_TextChanged);
+            //this.valtext.TextChanged += new System.EventHandler(valtext_TextChanged);
         }
 
+        //private void valtext_TextChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // Convert the text to a Double and assign to slider
+        //        double value;
+        //        if (double.TryParse(valtxt.Text, out value))
+        //        {
+        //            slValueqwGxzplHapppqa129aM.Value = value;
+
+        //            // If the number is valid, display it in Black.
+        //            //valtxt.ForeColor = Color.Black;
+        //          //  valtxt.Foreground = 
+        //        }
+        //        else
+        //        {
+        //            // If the number is invalid, display it in Red.
+        //            //textBox.ForeColor = Color.Red;
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        // If there is an error, display the text using the system colors.
+        //       // textBox.ForeColor = SystemColors.ControlText;
+        //    }
+        //}
         private void SetTextAndSliderBinding()
         {
+            //Added by Aaron
+            //Added a binding delay
+
             DataContext = this;
             Binding bin = new Binding("SliderValue");
             bin.Mode = BindingMode.TwoWay;
+            bin.Delay = 1000;
             bin.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
             valtxt.SetBinding(TextBox.TextProperty, bin);
 
 
             Binding bin2 = new Binding("SliderValue");
             bin2.Mode = BindingMode.TwoWay;
+            bin2.Delay = 1000;
             bin2.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
             slValueqwGxzplHapppqa129aM.SetBinding(Slider.ValueProperty, bin2);
         }
@@ -53,14 +89,21 @@ namespace BSky.Controls
         //    }
         //}
 
+     
+
         private double _sliderValue;
+
+        [Category("Control Settings"), PropertyOrder(8)]
         public double SliderValue
         {
-            get { return _sliderValue; }
+            get { return  Math.Round(_sliderValue,2); }
             set
             {
-                _sliderValue = value;
-                OnPropertyChanged("SliderValue");
+                if (_sliderValue != value)
+                {
+                    _sliderValue = value;
+                    OnPropertyChanged("SliderValue");
+                }
             }
         }
 
@@ -75,11 +118,20 @@ namespace BSky.Controls
             }
         }
 
-
+        [Category("Control Settings"), PropertyOrder(1)]
+        [Description("Gives you a slider control and a text box to display and the slider value")]
+      
+        public string Type
+        {
+            get
+            {
+                return "Advanced Slider Control";
+            }
+        }
 
         [Category("Control Settings"), PropertyOrder(2)]
-        //[Description("Required property. You must specify a unique name for every control added to the canvas. You will not be able to save a dialog definition unless every control on the dialog has a unique name. ")]
-        //  [BSkyLocalizedDescription("BSkyCheckBox_NameDescription", typeof(BSky.GlobalResources.Properties.Resources))]
+        [Description("Required property. You must specify a unique name for every control added to the canvas. You will not be able to save a dialog definition unless every control on the dialog has a unique name. ")]
+      
         public new string Name
         {
             get
@@ -93,7 +145,7 @@ namespace BSky.Controls
         }
 
 
-        [Category("Control Settings"), PropertyOrder(4)]
+        [Category("Control Settings"), PropertyOrder(3)]
         [Description("The maximum value displayed by slider contol")]
         public Double Maximum
         {
@@ -136,9 +188,9 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(1)]
+        [Category("Layout Properties"), PropertyOrder(1)]
         [Description("Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.")]
-        // [BSkyLocalizedDescription("BSkyCheckBox_WidthDescription", typeof(BSky.GlobalResources.Properties.Resources))]
+        
         public new double Width
         {
             get
@@ -151,9 +203,9 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(2)]
+        [Category("Layout Properties"), PropertyOrder(2)]
         [Description("Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.")]
-        //   [BSkyLocalizedDescription("BSkyCheckBox_HeightDescription", typeof(BSky.GlobalResources.Properties.Resources))]
+     
         public new double Height
         {
             get
@@ -165,9 +217,9 @@ namespace BSky.Controls
                 base.Height = value;
             }
         }
-        [Category("Layout Settings"), PropertyOrder(3)]
+        [Category("Layout Properties"), PropertyOrder(3)]
         [Description("Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.")]
-        //  [BSkyLocalizedDescription("BSkyCheckBox_LeftDescription", typeof(BSky.GlobalResources.Properties.Resources))]
+     
         public double Left
         {
             get
@@ -180,9 +232,9 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(4)]
+        [Category("Layout Properties"), PropertyOrder(4)]
         [Description("Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.")]
-        //    [BSkyLocalizedDescription("BSkyCheckBox_TopDescription", typeof(BSky.GlobalResources.Properties.Resources))]
+  
         public double Top
         {
             get
@@ -196,9 +248,9 @@ namespace BSky.Controls
         }
 
         private bool _enabled = true;
-        [Category("Control Settings"), PropertyOrder(7)]
+        [Category("Control Settings"), PropertyOrder(9)]
         [Description("Default is True(enabled). This property controls whether the default state of the control is enabled or disabled. For enabled, select True, for disabled select False. For example, you may want the initial state of the checkbox to be disabled, however you may want to enable it based on a selection made in another control")]
-        //    [BSkyLocalizedDescription("BSkyCheckBox_EnabledDescription", typeof(BSky.GlobalResources.Properties.Resources))]
+  
         public bool Enabled
         {
             get
@@ -220,7 +272,7 @@ namespace BSky.Controls
 
         private bool canExecute = true;
 
-        [Category("Control Settings"), PropertyOrder(5)]
+        [Category("Control Settings"), PropertyOrder(10)]
         [Description("Default value is True. This property controls whether the OK button on the dialog is enabled or disabled. For example, if you don't want the user to click the OK button of the dialog unless this checkbox is checked, set canexecute to False, then define a rule to set canexecute to True when the checkbox is checked. ")]
         public bool CanExecute
         {
@@ -245,7 +297,7 @@ namespace BSky.Controls
         #region IBSkyInputControl Members
 
         [Category("Syntax Settings"), PropertyOrder(1)]
-        [Description("Default value of %%VALUE%% indicates that the control name in the syntax string will be replaced by TRUE when the checkbox is checked and FALSE when the checkbox is unchecked. These values will be used to parameterize the syntax string created when the dialog is executed. If you want a different value, for example 'chisq' to replace the control name when the checkbox is checked, replace %%VALUE%% with 'chisq' (you don't need to enter the single quotes)")]
+        [Description("We will always replace the control in the syntax by the slider value")]
         public string Syntax
         {
             get;

@@ -160,6 +160,7 @@
     <Compile Include="Controls\BSkyGraphicControl.xaml.cs">
       <DependentUpon>BSkyGraphicControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BSkyLabelReqdField.cs" />
     <Compile Include="Controls\BSkyListBoxwBorderForDatasets.xaml.cs">
       <DependentUpon>BSkyListBoxwBorderForDatasets.xaml</DependentUpon>
     </Compile>

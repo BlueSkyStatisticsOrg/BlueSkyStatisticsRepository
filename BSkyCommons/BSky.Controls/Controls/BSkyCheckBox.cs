@@ -78,7 +78,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(1)]
+        [Category("Layout Properties"), PropertyOrder(1)]
         //[Description("Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.")]
         [BSkyLocalizedDescription("BSkyCheckBox_WidthDescription", typeof(BSky.GlobalResources.Properties.Resources))]
         public new double Width
@@ -93,7 +93,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(2)]
+        [Category("Layout Properties"), PropertyOrder(2)]
         //[Description("Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.")]
         [BSkyLocalizedDescription("BSkyCheckBox_HeightDescription", typeof(BSky.GlobalResources.Properties.Resources))]
         public new double Height
@@ -107,7 +107,7 @@ namespace BSky.Controls
                 base.Height = value;
             }
         }
-        [Category("Layout Settings"), PropertyOrder(3)]
+        [Category("Layout Properties"), PropertyOrder(3)]
         //[Description("Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.")]
         [BSkyLocalizedDescription("BSkyCheckBox_LeftDescription", typeof(BSky.GlobalResources.Properties.Resources))]
         public double Left
@@ -122,7 +122,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(4)]
+        [Category("Layout Properties"), PropertyOrder(4)]
         //[Description("Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.")]
         [BSkyLocalizedDescription("BSkyCheckBox_TopDescription", typeof(BSky.GlobalResources.Properties.Resources))]
         public double Top

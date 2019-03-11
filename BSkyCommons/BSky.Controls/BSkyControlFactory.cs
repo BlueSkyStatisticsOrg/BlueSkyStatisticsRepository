@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Drawing;
 
 namespace BSky.Controls
 {
@@ -45,6 +49,8 @@ namespace BSky.Controls
                 return type + 1;
             }
         }
+
+        
 
         public FrameworkElement CreateControl(string objtype)
         {
@@ -114,6 +120,12 @@ namespace BSky.Controls
                     break;
                 case "Label":
                     b = new BSkyLabel();
+                    b.Width = 50;
+                    b.Height = 25;
+                    break;
+
+                case "LabelForRequiredFld":
+                    b = new BSkyLabelReqdField();
                     b.Width = 50;
                     b.Height = 25;
                     break;

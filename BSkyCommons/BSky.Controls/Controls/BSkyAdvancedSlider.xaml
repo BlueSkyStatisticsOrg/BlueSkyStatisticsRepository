@@ -8,8 +8,8 @@
              Width="Auto" Height="Auto">
     <DockPanel Name="AvdSliderDockp" VerticalAlignment="Center" Margin="1">
         <TextBox Name="valtxt" DockPanel.Dock="Right" TextAlignment="Right" Width="40" Height="22" />
-        <Slider Maximum="255" TickPlacement="Both" AutoToolTipPrecision="2" Foreground="Black"
+        <Slider Maximum="1" Minimum="0" TickPlacement="Both" AutoToolTipPrecision="2" Foreground="Black"
                 IsMoveToPointEnabled="True" AutoToolTipPlacement="BottomRight" 
-                TickFrequency="5" IsSnapToTickEnabled="False" Name="slValueqwGxzplHapppqa129aM" />
+                TickFrequency="0.1" IsSnapToTickEnabled="False" Name="slValueqwGxzplHapppqa129aM" />
     </DockPanel>
 </UserControl>

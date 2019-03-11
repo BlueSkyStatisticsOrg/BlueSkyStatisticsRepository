@@ -21,8 +21,8 @@ namespace BSky.Controls
     [DefaultPropertyAttribute("Type")]
     public partial class BSkySpinnerCtrl : UserControl, IBSkyAffectsExecute, IBSkyInputControl, IBSkyControl, IBSkyEnabledControl
     {
-        public string Syntax { get; set; }
-        public bool Enabled { get; set; }
+       
+       // public bool Enabled { get; set; }
 
         public BSkySpinnerCtrl()
         {
@@ -53,6 +53,49 @@ namespace BSky.Controls
                 text.Text = result.ToString();
             }
         }
+
+        [Category("Control Settings"), PropertyOrder(1)]
+        //[Description("Allows you to add descriptive text associated with another control, for example you can use the label control to display a caption above your source variable list titled 'Source Variable List' . ")]
+       
+        public string Type
+        {
+            get
+            {
+                return "Spinner Control";
+            }
+        }
+
+        [Category("Syntax Settings"), PropertyOrder(1)]
+        [Description("The control name in the syntax string will be replaced by the content of the spinner control. These values will be used to parameterize the syntax string created when the dialog is executed. ")]
+        public string Syntax
+        {
+            get;
+            set;
+        }
+
+        private bool _enabled = true;
+        [Category("Control Settings"), PropertyOrder(6)]
+        // [Description("Default is True(enabled). This property controls whether the default state of this radiobutton control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can select this radiobutton, when disabled, you cannot select the radiobutton.")]
+        public bool Enabled
+        {
+            get
+            {
+                if (BSkyCanvas.dialogMode == true)
+                    return _enabled;
+                else return base.IsEnabled;
+            }
+
+            set
+            {
+                if (BSkyCanvas.dialogMode == true)
+                    _enabled = value;
+                else
+                    base.IsEnabled = value;
+            }
+
+        }
+
+
         [Category("Control Settings"), PropertyOrder(2)]
         public new string Name
         {
@@ -67,7 +110,7 @@ namespace BSky.Controls
         }
 
         [Category("Control Settings"), PropertyOrder(2)]
-        public new string Text
+        public  string Text
         {
             get
             {
@@ -81,7 +124,7 @@ namespace BSky.Controls
 
         private double _step;
         [Category("Control Settings"), PropertyOrder(2)]
-        public new double Step
+        public double Step
         {
             get
             {
@@ -93,7 +136,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(1)]
+        [Category("Layout Properties"), PropertyOrder(1)]
         [Description("Default value is the width of this control. To change drag the adorners(corner of the control) or enter a width.")]
         // [BSkyLocalizedDescription("BSkyCheckBox_WidthDescription", typeof(BSky.GlobalResources.Properties.Resources))]
         public new double Width
@@ -108,7 +151,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(2)]
+        [Category("Layout Properties"), PropertyOrder(2)]
         [Description("Default value is the height of this control. To change, drag the adorners(corner of the control) or enter a height.")]
         //   [BSkyLocalizedDescription("BSkyCheckBox_HeightDescription", typeof(BSky.GlobalResources.Properties.Resources))]
         public new double Height
@@ -122,7 +165,7 @@ namespace BSky.Controls
                 base.Height = value;
             }
         }
-        [Category("Layout Settings"), PropertyOrder(3)]
+        [Category("Layout Properties"), PropertyOrder(3)]
         [Description("Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.")]
         //  [BSkyLocalizedDescription("BSkyCheckBox_LeftDescription", typeof(BSky.GlobalResources.Properties.Resources))]
         public double Left
@@ -137,7 +180,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Layout Settings"), PropertyOrder(4)]
+        [Category("Layout Properties"), PropertyOrder(4)]
         [Description("Default value is the Y coordinate of the top left corner of this control. To change drag the control to a different position or enter a Y coordinate.")]
         //    [BSkyLocalizedDescription("BSkyCheckBox_TopDescription", typeof(BSky.GlobalResources.Properties.Resources))]
         public double Top
