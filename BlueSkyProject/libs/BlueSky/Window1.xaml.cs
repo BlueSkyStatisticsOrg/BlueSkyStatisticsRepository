@@ -520,5 +520,12 @@ namespace BlueSky
         {
             System.Diagnostics.Process.Start("www.blueskystatistics.com");
         }
+
+        private void ThemeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ThemeWindow thwin = new ThemeWindow();
+            thwin.Owner = this;
+            thwin.ShowDialog();
+        }
     }
 }

@@ -348,7 +348,7 @@ namespace BlueSky.Windows
             */
 
             //SET DEFAULTS IN MEMORY BUT CLICK SAVE AFTERWARDS TO SAVE TO CONFIG FILE
-            conService.LoadDefaultsinUI();
+            conService.LoadDefaultsinUI("userConfigWin");
             if (!conService.Success)
                 MessageBox.Show(conService.Message);
 

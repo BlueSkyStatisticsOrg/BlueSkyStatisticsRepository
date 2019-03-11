@@ -9,6 +9,8 @@
         Icon="/BlueSky;component/Images/BAnalytics-icon_1.png" 
         WindowStartupLocation="CenterScreen"
         PreviewMouseDown="Window_PreviewMouseDown"
+        xmlns:bskyctrl="clr-namespace:BSky.Controls;assembly=BSky.Controls"
+        xmlns:bskyctrl2="clr-namespace:BSky.Controls.Controls;assembly=BSky.Controls"        
         >
     <Window.Resources>
         <Style TargetType="{x:Type TabItem}">
@@ -110,6 +112,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Row="0" Grid.Column="0" >
             <Grid DockPanel.Dock="Top">
@@ -130,7 +133,7 @@
         </DockPanel>
         <!--Toolbar Area-->
         <!---MicroSoft's Toolbar-->
-        <ToolBarPanel Grid.Row="1" Grid.Column="0" Background="#FF3D6C6C">
+        <ToolBarPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#FF3D6C6C">
             <ToolBar Name="maintoolbar" Background="#FFE1EBF7">
                 <Button Name="bNew" >
                     <Button.Content>
@@ -299,15 +302,20 @@
             </ToolBar>-->
         </ToolBarPanel>
 
+        <Button Grid.Row="0" Grid.Column="1" Margin="0,0,15,0" BorderBrush="Transparent" Name="themeBtn" Click="ThemeBtn_Click">
+            <Button.Content>
+                <Image  Source="/BlueSky;component/Images/Theme-icon.png" Height="18" ToolTip="Set Theme"></Image>
+            </Button.Content>
+        </Button>        
         <!-- Grid for GetModelsControl control 18Sep2017 -->
-        <TextBlock Grid.Row="0" Grid.Column="1" Margin="3,0" Foreground="#FF1579DA" Background="#FFE1EBF7" Text="{x:Static uires:UICtrlResources.ScoringSectionTitle}"></TextBlock>
-        <Grid Grid.Row="1" Grid.Column="1" Name="scoringGrid"  Margin="2,0" Background="#FFE1EBF7"> </Grid>
+        <TextBlock Grid.Row="0" Grid.Column="2" Margin="3,0" Foreground="#FF1579DA" Background="#FFE1EBF7" Text="{x:Static uires:UICtrlResources.ScoringSectionTitle}"></TextBlock>
+        <Grid Grid.Row="1" Grid.Column="2" Name="scoringGrid"  Margin="2,0" Background="#FFE1EBF7"> </Grid>
                 
         
         <!--Document Area "#FF7B7B7B" -->
 
         <!-- Microsoft's Document-->
-        <TabControl Name="documentContainer" Grid.Row="2" Grid.ColumnSpan="2" Background="#FFD4E3F2">
+        <TabControl Name="documentContainer" Grid.Row="2" Grid.ColumnSpan="3" Background="#FFD4E3F2">
         </TabControl>
 
         <!--<StackPanel Grid.Row="3" Orientation="Horizontal" Name="ProgressStatusPanel">

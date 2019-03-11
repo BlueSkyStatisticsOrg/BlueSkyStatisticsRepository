@@ -386,6 +386,9 @@
     <Compile Include="Windows\SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ThemeWindow.xaml.cs">
+      <DependentUpon>ThemeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ValueLabelsSubDialog.xaml.cs">
       <DependentUpon>ValueLabelsSubDialog.xaml</DependentUpon>
     </Compile>
@@ -543,6 +546,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\ThemeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ValueLabelsSubDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -671,6 +678,7 @@
     <Resource Include="Images\nominal.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Theme-icon.PNG" />
     <Resource Include="Images\paginationGray_first.png" />
     <Resource Include="Images\paginationGray_last.png" />
     <Resource Include="Images\paginationGray_next.png" />
