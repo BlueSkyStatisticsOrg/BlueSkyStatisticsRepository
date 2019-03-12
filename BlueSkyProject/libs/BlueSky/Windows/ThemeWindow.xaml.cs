@@ -313,18 +313,28 @@ namespace BlueSky.Windows
         //fill Plot Themes
         private void LoadThemes()
         {
+            //http://www.rpubs.com/Mentors_Ubiqum/ggthemes_1
             List<string> themes = new List<string>();
-            themes.Add("theme_grey()");
+
+            themes.Add("theme_base()");//
             themes.Add("theme_bw()");
-            themes.Add("theme_few()");
             themes.Add("theme_calc()");
             themes.Add("theme_economist()");
+            themes.Add("theme_economist_white()");//
             themes.Add("theme_excel()");
+            themes.Add("theme_few()");
             themes.Add("theme_fivethirtyeight()");
+            themes.Add("theme_foundation()");
             themes.Add("theme_gdocs()");
+            themes.Add("theme_grey()");
             themes.Add("theme_hc()");
+            themes.Add("theme_igray()");//
+            themes.Add("theme_map()");//
             themes.Add("theme_pander()");
+            themes.Add("theme_par()");//
             themes.Add("theme_solarized()");
+            themes.Add("theme_solarized()_2");//
+            themes.Add("theme_solid()");//
             themes.Add("theme_stata()");
             themes.Add("theme_tufte()");
             themes.Add("theme_wsj()");
