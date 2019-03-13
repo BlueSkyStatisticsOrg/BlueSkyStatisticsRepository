@@ -22,13 +22,18 @@ namespace BSky.UsageLogger
                 var lines = File.ReadLines(fullpathlogfilename);
                 foreach (var line in lines)
                 {
-                    string[] KeyValue = line.Split(',');
+                    string[] KeyValue = line.Split(';');
                     int freq = 0;
                     if (!string.IsNullOrEmpty(KeyValue[0]))
                     {
                         if (string.IsNullOrEmpty(KeyValue[1]) || !Int32.TryParse(KeyValue[1], out freq))
                             freq = 0;
-                        usageFreqDict.Add(KeyValue[0], freq);
+                        if (!usageFreqDict.ContainsKey(KeyValue[0]))
+                            usageFreqDict.Add(KeyValue[0], freq);
+                        else
+                        {
+                            int i = 10;
+                        }
                     }
                 }
             }
@@ -42,7 +47,7 @@ namespace BSky.UsageLogger
                 StringBuilder sb = new StringBuilder();
                 foreach (KeyValuePair<string, int> kvp in usageFreqDict)
                 {
-                    sb.Append(kvp.Key + "," + kvp.Value + "\n");
+                    sb.Append(kvp.Key + ";" + kvp.Value + "\n");
                 }
                 details = (sb.ToString());
             }
@@ -71,7 +76,7 @@ namespace BSky.UsageLogger
             {
                 foreach (KeyValuePair<string, int> kvp in usageFreqDict)
                 {
-                    string line = kvp.Key + "," + kvp.Value.ToString();
+                    string line = kvp.Key + ";" + kvp.Value.ToString();
                     file.WriteLine(line);
                 }
             }
