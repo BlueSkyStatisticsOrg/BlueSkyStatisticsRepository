@@ -1,6 +1,7 @@
 ﻿using BSky.ConfService.Intf.Interfaces;
 using BSky.Lifetime;
 using BSky.Lifetime.Interfaces;
+using BSky.Statistics.Common;
 using BSky.Statistics.Service.Engine.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -260,6 +261,7 @@ namespace BlueSky.Windows
         #endregion
 
         #region Populate combo boxes
+        IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
         //Load all combo boxes
         private void LoadComboboxes()
         {
@@ -272,29 +274,46 @@ namespace BlueSky.Windows
         private void LoadFontFamily()
         {
             List<string> fontsfamily = new List<string>();
-            fontsfamily.Add("sans");
-            fontsfamily.Add("serif");
-            fontsfamily.Add("mono");
-            fontsfamily.Add("Calibri");
-            fontsfamily.Add("Times");//short name : serif
-            fontsfamily.Add("Helvetica");//short name : sans
-            fontsfamily.Add("Courier");//short name : mono
+            string[] fonts;
+            CommandRequest cr = new CommandRequest();
+            cr.CommandSyntax = "GetFonts()";
+            object obj = analyticServ.ExecuteR(cr, true, false);
+            if (obj != null && (obj as string[]) != null)
+            {
+                fonts = obj as string[];
+                foreach (string s in fonts)
+                {
+                    if (!string.IsNullOrEmpty(s))
+                            fontsfamily.Add(s);
+                }
+            }
+            
+            if(obj== null || (obj as string[]) == null || fontsfamily.Count<1)
+            { 
+                //hardcoded values if fetch from R fails.
+                fontsfamily.Add("sans");
+                fontsfamily.Add("serif");
+                fontsfamily.Add("mono");
+                //fontsfamily.Add("Calibri");
+                //fontsfamily.Add("Times");//short name : serif
+                //fontsfamily.Add("Helvetica");//short name : sans
+                //fontsfamily.Add("Courier");//short name : mono
 
-            //http://www.cookbook-r.com/Graphs/Fonts/
-            //fontsfamily.Add("AvantGarde");
-            //fontsfamily.Add("Bookman");
-            //fontsfamily.Add("Helvetica-Narrow");
-            //fontsfamily.Add("NewCenturySchoolbook");
-            //fontsfamily.Add("Palatino");
-            //fontsfamily.Add("URWGothic");
-            //fontsfamily.Add("URWBookman");
-            //fontsfamily.Add("NimbusMon");
-            //fontsfamily.Add("NimbusSan");//short name : URWHelvetica
-            //fontsfamily.Add("NimbusSanCond");
-            //fontsfamily.Add("CenturySch");
-            //fontsfamily.Add("URWPalladio");
-            //fontsfamily.Add("NimbusRom");//short name : URWTimes
-
+                //http://www.cookbook-r.com/Graphs/Fonts/
+                //fontsfamily.Add("AvantGarde");
+                //fontsfamily.Add("Bookman");
+                //fontsfamily.Add("Helvetica-Narrow");
+                //fontsfamily.Add("NewCenturySchoolbook");
+                //fontsfamily.Add("Palatino");
+                //fontsfamily.Add("URWGothic");
+                //fontsfamily.Add("URWBookman");
+                //fontsfamily.Add("NimbusMon");
+                //fontsfamily.Add("NimbusSan");//short name : URWHelvetica
+                //fontsfamily.Add("NimbusSanCond");
+                //fontsfamily.Add("CenturySch");
+                //fontsfamily.Add("URWPalladio");
+                //fontsfamily.Add("NimbusRom");//short name : URWTimes
+            }
             fontfamilyCombo.ItemsSource = fontsfamily;
         }
 
@@ -313,32 +332,47 @@ namespace BlueSky.Windows
         //fill Plot Themes
         private void LoadThemes()
         {
-            //http://www.rpubs.com/Mentors_Ubiqum/ggthemes_1
             List<string> themes = new List<string>();
+            string[] themelist;
+            CommandRequest cr = new CommandRequest();
+            cr.CommandSyntax = "GetThemes()";
+            object obj = analyticServ.ExecuteR(cr, true, false);
+            if (obj != null && (obj as string[])!=null )
+            {
+                themelist = obj as string[];
+                foreach (string s in themelist)
+                {
+                    if (!string.IsNullOrEmpty(s))
+                        themes.Add(s+"()");
+                }
+            }
 
-            themes.Add("theme_base()");//
-            themes.Add("theme_bw()");
-            themes.Add("theme_calc()");
-            themes.Add("theme_economist()");
-            themes.Add("theme_economist_white()");//
-            themes.Add("theme_excel()");
-            themes.Add("theme_few()");
-            themes.Add("theme_fivethirtyeight()");
-            themes.Add("theme_foundation()");
-            themes.Add("theme_gdocs()");
-            themes.Add("theme_grey()");
-            themes.Add("theme_hc()");
-            themes.Add("theme_igray()");//
-            themes.Add("theme_map()");//
-            themes.Add("theme_pander()");
-            themes.Add("theme_par()");//
-            themes.Add("theme_solarized()");
-            themes.Add("theme_solarized()_2");//
-            themes.Add("theme_solid()");//
-            themes.Add("theme_stata()");
-            themes.Add("theme_tufte()");
-            themes.Add("theme_wsj()");
-
+            if (obj == null || (obj as string[]) == null || themes.Count < 1)
+            {
+                //http://www.rpubs.com/Mentors_Ubiqum/ggthemes_1
+                themes.Add("theme_base()");//
+                themes.Add("theme_bw()");
+                themes.Add("theme_calc()");
+                themes.Add("theme_economist()");
+                themes.Add("theme_economist_white()");//
+                themes.Add("theme_excel()");
+                themes.Add("theme_few()");
+                themes.Add("theme_fivethirtyeight()");
+                themes.Add("theme_foundation()");
+                themes.Add("theme_gdocs()");
+                themes.Add("theme_grey()");
+                themes.Add("theme_hc()");
+                themes.Add("theme_igray()");//
+                themes.Add("theme_map()");//
+                themes.Add("theme_pander()");
+                themes.Add("theme_par()");//
+                themes.Add("theme_solarized()");
+                themes.Add("theme_solarized()_2");//
+                themes.Add("theme_solid()");//
+                themes.Add("theme_stata()");
+                themes.Add("theme_tufte()");
+                themes.Add("theme_wsj()");
+            }
             themeCombo.ItemsSource = themes;
         }
 
