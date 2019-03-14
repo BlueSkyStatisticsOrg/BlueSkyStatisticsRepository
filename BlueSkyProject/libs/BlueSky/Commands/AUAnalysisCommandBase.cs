@@ -1238,6 +1238,16 @@ namespace BlueSky.Commands.Analytics.TTest
             aup.textcolor = new SolidColorBrush(c); //Colors.Blue);//SlateBlue //DogerBlue
             aup.ControlType = "Header";
             batch.Add(aup);
+
+            //printing dataset name below main title
+            string dsname = UIController.GetActiveDocument().FileName;
+            string dsnameinapp = UIController.GetActiveDocument().Name;
+            AUParagraph dataset = new AUParagraph();
+            dataset.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;
+            dataset.Text = "[" + dsnameinapp + "] - " + dsname;
+            dataset.ControlType = "DataSet";
+            batch.Add(dataset);
+
             SyntaxEditorWindow sewindow = LifetimeService.Instance.Container.Resolve<SyntaxEditorWindow>();
             sewindow.AddToSession(batch); 
         }
