@@ -110,26 +110,26 @@
         <c1:C1ToolbarStrip Grid.Column="0" Grid.Row="1" Name="c1ToolbarStrip1" Orientation="Vertical" >
             <c1:C1ToolbarButton Name="SourceListBox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Source-var-ListBox.png" />
                     <TextBlock Text="Source Variable List"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
 
             <c1:C1ToolbarButton Name="TargetListBox" Height="25" Click="GrpBox_Click" HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Target-var-ListBox.png" />
                     <TextBlock Text="Destination Variable List"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="SourceDatasetList" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Source-Dataset-ListBox.png" />
                     <TextBlock Text="Source Dataset List"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="DestinationDatasetList" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Target-Dataset-ListBox.png" />
                     <TextBlock Text="Destination Dataset List"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
@@ -148,13 +148,13 @@
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="LabelForRequiredFld" Height="20" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Lable.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/required-field-indicator.png" />
                     <TextBlock Text="Required field indicator"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="MultiLabel" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left" MinHeight="20">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Lable.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/multi-line-label.png" />
                     <TextBlock Text="Multi-line Label"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
@@ -167,7 +167,7 @@
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="NonEditCombo" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Combo.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/non-editable-combobox.png" />
                     <TextBlock Text="Non Editable Combo Box"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
@@ -201,7 +201,7 @@
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="MoveButton" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Button.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/move-button.png" />
                     <TextBlock Text="Move Button" Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
@@ -238,7 +238,7 @@
             </c1:C1ToolbarButton>
             <c1:C1ToolbarButton Name="MasterListBox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/ListBox.png" />
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Master-ListBox.png" />
                     <TextBlock Text="Master ListBox"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>

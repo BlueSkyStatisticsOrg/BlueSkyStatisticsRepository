@@ -580,6 +580,11 @@
     <Resource Include="Resources\TextBox.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\required-field-indicator.png" />
+    <Resource Include="Resources\Source-Dataset-ListBox.png" />
+    <Resource Include="Resources\Source-var-ListBox.png" />
+    <Resource Include="Resources\Target-Dataset-ListBox.png" />
+    <Resource Include="Resources\Target-var-ListBox.png" />
     <Resource Include="Resources\spinnerdown.png" />
     <Resource Include="Resources\spinnerup.png" />
     <Resource Include="Resources\slider.png" />
@@ -605,6 +610,10 @@
     <Resource Include="Resources\computegrid.png" />
     <Resource Include="Resources\groupvar.png" />
     <Resource Include="Resources\MathOperators.png" />
+    <Resource Include="Resources\Master-ListBox.png" />
+    <Resource Include="Resources\move-button.png" />
+    <Resource Include="Resources\multi-line-label.png" />
+    <Resource Include="Resources\non-editable-combobox.png" />
     <Content Include="Resources\none.png" />
     <Resource Include="Resources\ordinal.png" />
     <Resource Include="Resources\scale.png" />
