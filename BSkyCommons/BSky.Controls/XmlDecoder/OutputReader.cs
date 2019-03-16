@@ -170,11 +170,13 @@ namespace BSky.XmlDecoder
                         datasetcomm.ControlType = "Command";
                         lst.Add(datasetcomm);
 
-                        AUParagraph dataset = new AUParagraph();
-                        dataset.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;//10Nov2014//13;
-                        dataset.Text = "[" + dsnameinapp + "] - " + dsname;
-                        dataset.ControlType = "DataSet";
-                        lst.Add(dataset);
+                        //Following is not need as we have following code in common place 
+                        //for templated and non-templated dialogs in AUAnalysisCommandBase PrintDialogTitle()
+                        //AUParagraph dataset = new AUParagraph();
+                        //dataset.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;//10Nov2014//13;
+                        //dataset.Text = "[" + dsnameinapp + "] - " + dsname;
+                        //dataset.ControlType = "DataSet";
+                        //lst.Add(dataset);
                     }
                 }
 
