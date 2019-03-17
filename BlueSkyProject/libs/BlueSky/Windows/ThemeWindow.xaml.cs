@@ -345,6 +345,9 @@ namespace BlueSky.Windows
                     if (!string.IsNullOrEmpty(s))
                         themes.Add(s+"()");
                 }
+
+                //this is an extra theme that we want to add by hardcoding
+                themes.Add("theme_grey()");
             }
 
             if (obj == null || (obj as string[]) == null || themes.Count < 1)
