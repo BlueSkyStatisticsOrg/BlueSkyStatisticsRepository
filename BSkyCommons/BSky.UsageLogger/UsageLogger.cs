@@ -16,26 +16,41 @@ namespace BSky.UsageLogger
 
         public void readUsageLogsIfAny()
         {
+            int len;
             usageFreqDict.Clear();
-            if (File.Exists(fullpathlogfilename))
+
+            try
             {
-                var lines = File.ReadLines(fullpathlogfilename);
-                foreach (var line in lines)
+                if (File.Exists(fullpathlogfilename))
                 {
-                    string[] KeyValue = line.Split(';');
-                    int freq = 0;
-                    if (!string.IsNullOrEmpty(KeyValue[0]))
+                    var lines = File.ReadLines(fullpathlogfilename);
+                    foreach (var line in lines)
                     {
-                        if (string.IsNullOrEmpty(KeyValue[1]) || !Int32.TryParse(KeyValue[1], out freq))
-                            freq = 0;
-                        if (!usageFreqDict.ContainsKey(KeyValue[0]))
-                            usageFreqDict.Add(KeyValue[0], freq);
-                        else
+                        string[] KeyValue = line.Split(';');
+                        int freq = 0;
+                        if (!string.IsNullOrEmpty(KeyValue[0]))
                         {
-                            int i = 10;
+                            len = KeyValue.Length;//last item is frequency
+                            if (len > 1)
+                            {
+                                if (string.IsNullOrEmpty(KeyValue[len - 1]) || !Int32.TryParse(KeyValue[len - 1], out freq))
+                                    freq = 0;
+                                if (!usageFreqDict.ContainsKey(KeyValue[0]))
+                                    usageFreqDict.Add(KeyValue[0], freq);
+                            }
                         }
                     }
+                    if (usageFreqDict.Count == 0)
+                    {
+                        RenameUsageLogFile();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                //if we land here then something might have gone wrong reading file contents
+                //we must rename current file and let app create a new one with right format.
+                RenameUsageLogFile();
             }
         }
 
@@ -83,5 +98,20 @@ namespace BSky.UsageLogger
 
         }
 
+        public void RenameUsageLogFile()
+        {
+            DateTime startDate = new DateTime(1970, 1, 1);
+            TimeSpan diff = DateTime.Now - startDate;
+            string milistr = diff.TotalMilliseconds.ToString();
+            string newfname = fullpathlogfilename.Replace(".txt", milistr + ".txt");
+            try
+            {
+                System.IO.File.Move(fullpathlogfilename, newfname);
+            }
+            catch (Exception ex2)
+            {
+                //can't rename
+            }
+        }
     }
 }
