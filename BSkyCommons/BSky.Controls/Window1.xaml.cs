@@ -133,7 +133,6 @@ namespace BSky.Controls
 
             CanvasHost.Child = obj;
             //forcanvas.Children.Add(obj);
-
             myCanvas = obj;
 
             this.Title = nameOfFile = "Dialog1";
@@ -308,6 +307,8 @@ namespace BSky.Controls
             CanClose = false;
             c1ToolbarStrip1.IsEnabled = false;
 
+            logService.WriteToLogLevel("This is a Error log", LogLevelEnum.Error);
+
             //  obj.is = false;
             //Canvashost is the border around the canvas area in the XAML
             //CanvasHost.Child = obj;
@@ -349,7 +350,7 @@ namespace BSky.Controls
                                                              new CategoryAttribute("Variable Settings"),  new CategoryAttribute("Control Settings"), new CategoryAttribute("Syntax Settings"),new CategoryAttribute("Layout Properties"),new CategoryAttribute("Dataset Settings")
                                                           });
 
-
+            logService.WriteToLogLevel("This is a Error log line 2", LogLevelEnum.Error);
             // AttributeCollection testc = new AttributeCollection();
             // Attribute a =new Attribute[];
 
@@ -2904,7 +2905,14 @@ namespace BSky.Controls
                 //Added the line below to ensure that dialogMode the flag that enables or disables the checking of property and control 
                 //names in behaviour.cs is set to true after saving (the xaml is created)
                 BSkyCanvas.dialogMode = true;
-
+                bool allowed = CheckDirectoryAccess(fileName);
+                if (!allowed)
+                {
+                    string message = fileName + ": You do not have write access in this location."+
+                        "Please try 'SaveAs' and save to a location where you have write access";
+                    MessageBox.Show(message);
+                    return false;
+                }
                 FileStream stream = File.Create(Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(fileName) + ".xaml"));
                 TextWriter writer = new StreamWriter(stream);
                 writer.Write(xaml);
@@ -4374,15 +4382,42 @@ namespace BSky.Controls
 
 
 
+        private const string TEMP_FILE = "\\tempFile.tmp";
+        private static bool CheckDirectoryAccess(string directory)
+        {
+            bool success = false;
+            string fullPath = directory + TEMP_FILE;
+
+            if (Directory.Exists(directory))
+            {
+                try
+                {
+                    using (FileStream fs = new FileStream(fullPath, FileMode.CreateNew,
+                                                                    FileAccess.Write))
+                    {
+                        fs.WriteByte(0xff);
+                    }
+
+                    if (File.Exists(fullPath))
+                    {
+                        File.Delete(fullPath);
+                        success = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    success = false;
+                }
+            }
+            return success;
+        }
 
 
 
+            //Aaron 04/28/2013
+            //saveAs tells us whether the file save is invoked from saveAs. 
 
-
-        //Aaron 04/28/2013
-        //saveAs tells us whether the file save is invoked from saveAs. 
-
-        void fileSave(bool saveAs)
+            void fileSave(bool saveAs)
         {
             //copy = new BSkyCanvas();
             string filename = string.Empty;
@@ -4394,6 +4429,14 @@ namespace BSky.Controls
                 lstHelpFiles = firstCanvas.gethelpfilenames(firstCanvas);
                 string fileNamewithoutExt = Path.GetFileNameWithoutExtension(filename);
                 string filePath = Path.GetDirectoryName(filename);
+                bool allowed = CheckDirectoryAccess(filePath);
+                if (!allowed)
+                {
+                    string message = filePath + ": You do not have write access in this location." +
+                        "Please try 'SaveAs' and save to a location where you have write access";
+                    MessageBox.Show(message);
+                    return;
+                }
                 string zipFileName = fileNamewithoutExt;
                 zipFileName = Path.Combine(filePath, zipFileName + ".bsky");
 
