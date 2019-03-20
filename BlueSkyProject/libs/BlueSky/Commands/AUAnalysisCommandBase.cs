@@ -249,6 +249,10 @@ namespace BlueSky.Commands.Analytics.TTest
             #region Run Dialogs prerequisite syntax and see if it generates any error
             PreReqDialogcontrol preReqDlgCtrl = PreReqDialogcontrol.NONE;
             string PreReqCommand = cs.PrereqCommandString;
+            if (PreReqCommand != null && PreReqCommand.Contains("{{%DATASET%}}"))
+            {
+                PreReqCommand=PreReqCommand.Replace("{{%DATASET%}}", UIController.GetActiveDocument().Name);//current dataset substituted
+            }			
             string statusTextControlName = cs.StatusTextBoxName;
 			string EditableComboBoxName = cs.EditableComboBoxName;
             //Aaron: either its status-text or comboBox (or none) but not both.
