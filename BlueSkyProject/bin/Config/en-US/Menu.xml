@@ -202,6 +202,9 @@
     <menu id="Plot" text="Plot" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
     <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />
     <menu id="Q-Q_plot" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
+    <menu id="Bin_2d" text="Bin 2d" commandtemplate="Bin 2d.xaml" commandoutputformat="Bin 2d.xml" owner="" nodetype="Leaf" />
+    <menu id="Contour_Chart" text="Contour Chart" commandtemplate="Contour Chart.xaml" commandoutputformat="Contour Chart.xml" owner="" nodetype="Leaf" />
+    <menu id="Violin" text="Violin" commandtemplate="Violin.xaml" commandoutputformat="Violin.xml" owner="" nodetype="Leaf" />	
   </menu>
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
     <menu id="new_id" text="Linear Regression" owner="" nodetype="Parent">
