@@ -2951,7 +2951,14 @@ namespace BlueSky
                 }
             }
         }		
-    }
+    
+        private void ThemewindowBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ThemeWindow thwin = new ThemeWindow();
+            thwin.Owner = this;
+            thwin.ShowDialog();
+        }	
+	}
 	
     public class PropertyDataTemplateSelector : DataTemplateSelector
     {

@@ -72,9 +72,11 @@
             <Button Name="open" Content="Open" FontSize="10" Width="45" Height="19" HorizontalAlignment="Left" Margin="1,1,1,1" Click="open_Click"></Button>
             <Button Name="dump" Content="Save As" FontSize="10" Width="45" Height="19" HorizontalAlignment="Left" Margin="1,1,1,1" Click="dump_Click"></Button>
         </StackPanel>-->
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" Background="#FFE1EBF7">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="70"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Name="OutputTitle" Foreground="Black" Text="Results of Analysis" Padding="5,1">
@@ -85,7 +87,17 @@
                                 </LinearGradientBrush>
                             </TextBlock.Background>
                         </TextBlock>
-                        <Button Grid.Column="1" Margin="0" HorizontalAlignment="Right" 
+                        <Button Grid.Column="1" Margin="0" HorizontalAlignment="Right" BorderBrush="Transparent"
+                                ToolTip="{x:Static uires:UICtrlResources.themeicontooltip}" 
+                                Name="themewindowBtn" 
+                                Click="ThemewindowBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Name="themeImg" Source="Images/Theme-icon.png"></Image>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Grid.Column="3" Margin="0" HorizontalAlignment="Right" 
                                 ToolTip="{x:Static uires:UICtrlResources.ShowHideSyntaxPanel}" 
                                 Name="syntaxWinShowHideBtn" 
                                 Click="SyntaxWinShowHideBtn_Click">
