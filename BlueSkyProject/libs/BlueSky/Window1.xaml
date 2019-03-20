@@ -302,9 +302,11 @@
             </ToolBar>-->
         </ToolBarPanel>
 
-        <Button Grid.Row="0" Grid.Column="1" Margin="0,0,15,0" BorderBrush="Transparent" Name="themeBtn" Click="ThemeBtn_Click">
+        <Button Grid.Row="0" Grid.Column="1" Margin="0,0,15,0" BorderBrush="Transparent" 
+                ToolTip="{x:Static uires:UICtrlResources.themeicontooltip}"
+                Name="themeBtn" Click="ThemeBtn_Click">
             <Button.Content>
-                <Image  Source="/BlueSky;component/Images/Theme-icon.png" Height="18" ToolTip="Set Theme"></Image>
+                <Image  Source="/BlueSky;component/Images/Theme-icon.png" Height="18"></Image>
             </Button.Content>
         </Button>        
         <!-- Grid for GetModelsControl control 18Sep2017 -->
