@@ -299,10 +299,13 @@ namespace BlueSky
             ILoggerService logService = container.Resolve<ILoggerService>();
             bool CopyfilesToUserProfile = true;
             string appversion = string.Empty;
+            string multiplier = string.Empty;//if sec part of version is a single digit we need to append this to first part.
             string[] verparts = GetAppVersionParts();
             if (verparts != null && verparts.Length >= 3)
             {
-                appversion = verparts[0] + verparts[1]+ verparts[2];
+                if (verparts[1].Length == 1)//if single digit
+                    multiplier = "0";
+                appversion = verparts[0] + multiplier + verparts[1]+ verparts[2];
             }
             else
             {
@@ -332,12 +335,17 @@ namespace BlueSky
             }
             else
             {
+                multiplier = string.Empty;
                 int numOflines = lines.Length;
                 if (numOflines == 2)
                 {
                     string[] parts = lines[1].Split('.');
                     if (parts != null)
-                        versionline = parts[0] + parts[1] + parts[2];//no dots;
+                    {
+                        if (parts[1].Length == 1)
+                            multiplier = "0";
+                        versionline = parts[0] + multiplier + parts[1] + parts[2];//no dots;
+                    }
 
                     isOpen = false;//forcing it to copy config because ver file is old, with two lines. A new will be copied.
                 }
@@ -345,7 +353,11 @@ namespace BlueSky
                 {
                     string[] parts = lines[1].Split('.');
                     if (parts != null)
-                        versionline = parts[0] + parts[1] + parts[2];//no dots;
+                    {
+                        if (parts[1].Length == 1)
+                            multiplier = "0";
+                        versionline = parts[0] + multiplier + parts[1] + parts[2];//no dots;
+                    }
 
                     isOpen = (lines[2] != null && lines[2].Contains("Open")) ? true : false;
                 }
