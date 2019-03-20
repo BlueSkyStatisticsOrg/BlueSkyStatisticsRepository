@@ -26,6 +26,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Xml;
+using System.Windows.Controls;
+using BlueSky.Windows;
 
 namespace BlueSky.Commands.Analytics.TTest
 {
@@ -1811,7 +1813,9 @@ namespace BlueSky.Commands.Analytics.TTest
                     //as, now we may have different cols, we dont want to use dialog in memory that was refering to
                     // column names those are not anymore present
                     //RemoveOldDialogsFromMemory();
-
+                    DataPanel dpnl = ((UIController.GetTabItem(ds) as TabItem).Content as DataPanel);
+                    dpnl.Variables = ds.Variables;
+                    dpnl.arrangeVarGridCols();
                 }
             }
         }
