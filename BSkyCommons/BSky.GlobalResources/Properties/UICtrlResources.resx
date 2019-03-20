@@ -1261,7 +1261,7 @@
     <comment>DataPAnel.xaml : text for ValueLabelsSubDialog providing field for user to enter new level</comment>
   </data>
   <data name="lblExampleRHomeDir2" xml:space="preserve">
-    <value>Example: ./R-3.4.2  OR   ./R-3.4.4</value>
+    <value>Example: ./R-3.4.2  OR  ./R-3.4.4</value>
     <comment>RHomeConfigWindow.xaml : Example below RHome text field</comment>
   </data>
   <data name="RHomeDirLabel" xml:space="preserve">
@@ -1283,5 +1283,9 @@
   <data name="lblShowSyntaxInOutput" xml:space="preserve">
     <value>Show syntax in the Output Window</value>
     <comment>CustomSettingsWindow.xaml : lable for Show/Hide syntax in output window</comment>
+  </data>
+  <data name="themeicontooltip" xml:space="preserve">
+    <value>Set theme</value>
+    <comment>Window1.xaml and OutputWindow.xaml</comment>
   </data>
 </root>

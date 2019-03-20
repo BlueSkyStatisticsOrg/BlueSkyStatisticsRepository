@@ -1114,7 +1114,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Example: ./R-3.4.2  OR   ./R-3.4.4.
+        ///   Looks up a localized string similar to Example: ./R-3.4.2  OR  ./R-3.4.4.
         /// </summary>
         public static string lblExampleRHomeDir2 {
             get {
@@ -2649,6 +2649,15 @@ namespace BSky.GlobalResources.Properties {
         public static string TabTitleUserPackages {
             get {
                 return ResourceManager.GetString("TabTitleUserPackages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set theme.
+        /// </summary>
+        public static string themeicontooltip {
+            get {
+                return ResourceManager.GetString("themeicontooltip", resourceCulture);
             }
         }
         

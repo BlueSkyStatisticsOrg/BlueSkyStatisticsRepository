@@ -1281,4 +1281,8 @@
     <value>출력 창에 구문 표시</value>
     <comment>CustomSettingsWindow.xaml : lable for Show/Hide syntax in output window</comment>
   </data>
+  <data name="themeicontooltip" xml:space="preserve">
+    <value>테마 설정</value>
+    <comment>Window1.xaml and OutputWindow.xaml</comment>
+  </data>
 </root>
