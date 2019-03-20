@@ -603,11 +603,13 @@ namespace BlueSky.Windows
         private string rowid;
         private int rowindex;
         private int varcount = 1;
+		private string oldvalue;						
 
         private void variableGrid_BeginningEdit(object sender, C1.WPF.DataGrid.DataGridBeginningEditEventArgs e)
         {
             rowid = variableGrid.CurrentCell.Row.DataItem.ToString();//gender
             rowindex = variableGrid.CurrentRow.Index;
+			oldvalue = rowid;				 
         }
 
         private void variableGrid_BeganEdit(object sender, DataGridBeganEditEventArgs e)
@@ -627,6 +629,13 @@ namespace BlueSky.Windows
                 return;
             }
 
+            //19Mar2019 If cell is not edited then no need to call R. Just return from this.
+            if (cellValue.Equals(oldvalue))
+            {
+                variableGrid.CancelEdit();
+                return;
+            }
+			
             //15Oct2015 Following two lines to access DataType col value from a current row
             DataSourceVariable dd = variableGrid.CurrentRow.DataItem as DataSourceVariable;
             string rcoltype = ((dd.DataType == DataColumnTypeEnum.Numeric) ||
