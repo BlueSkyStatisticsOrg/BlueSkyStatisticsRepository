@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
 
         <!--<Expander Grid.Row="0" Grid.Column="4" Header="Help:" ExpandDirection="Right"></Expander>-->
         <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"  Margin="7" HorizontalAlignment="Left" MaxWidth="450"  Foreground="DarkSlateGray">
-                If the R pkg you are looking for is not found in the dropdown,
+                If the R package you are looking for is not found in the dropdown,
                 go to Tools > Package > Install/Update Package(s) from CRAN, and enter the R package name, you want to install.
         </TextBlock>
 
@@ -51,6 +51,10 @@
         <ComboBox Grid.Row="2" Grid.Column="1" Margin="3" Height="25" IsEditable="True"
                   MinWidth="100" MaxWidth="650" Name="DatasetCombo"></ComboBox>
 
+        <TextBlock Grid.Row="3" Grid.Column="0" Name="status" Grid.ColumnSpan="2"
+                  Margin="7" Visibility="Collapsed" FontWeight="Bold">
+            If you do not see a dataset in the dropdown, the package does not contain one or more dataset(s).
+        </TextBlock>
         <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
             <Button Name="OKBtn" Margin="3" Width="60" Click="OKBtn_Click">Ok</Button>
             <Button Name="CancelBtn" Margin="3" Width="60"  Click="CancelBtn_Click">Cancel</Button>

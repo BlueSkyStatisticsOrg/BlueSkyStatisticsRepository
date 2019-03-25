@@ -63,6 +63,10 @@ namespace BlueSky.Commands.File
             //    RpkgdsLst.Add(rpkgds);
             //}
             //DatasetCombo.ItemsSource = RpkgdsLst;
+            if (dsnamelist.Count < 1)
+                status.Visibility = Visibility.Visible;
+            else
+                status.Visibility = Visibility.Collapsed;
         }
 
         //Load selected R pkg and then load the select dataset in the grid
