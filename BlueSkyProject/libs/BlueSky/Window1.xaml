@@ -102,7 +102,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#FFD4E3F2">
+    <Grid Background="#FFE1EBF7">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -115,20 +115,38 @@
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Row="0" Grid.Column="0" >
-            <Grid DockPanel.Dock="Top">
+            <Grid DockPanel.Dock="Top" Background="#FFE1EBF7">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Menu Grid.Column="0"  Name="Menu" VerticalAlignment="Top" Foreground="#FF1579DA">
                 </Menu>
-                <Button Grid.Column="1" Margin="1" Name="comingsoonbtn" BorderBrush="Transparent" Click="Comingsoonbtn_Click" HorizontalAlignment="Center" >
+                <Button Grid.Column="2" Name="comingsoonbtn" ToolTip="Coming Soon" Background="Transparent"
+                        BorderThickness="0" VerticalAlignment="Top" VerticalContentAlignment="Stretch"
+                        Click="Comingsoonbtn_Click" HorizontalAlignment="Center">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/BlueSky;component/Images/comingsoon.png" Height="20" ToolTip="Coming Soon"></Image>
+                            <Image Source="/BlueSky;component/Images/comingsoon.png" Height="20" ></Image>
+                            <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Coming Soon</TextBlock>
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                <Button Grid.Column="4" Margin="0,0,15,0" Background="Transparent"
+                BorderThickness="0" VerticalAlignment="Top" VerticalContentAlignment="Stretch"
+                ToolTip="{x:Static uires:UICtrlResources.themeicontooltip}" 
+                Name="themeBtn" Click="ThemeBtn_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Source="/BlueSky;component/Images/Theme-icon.png" ></Image>
+                            <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Theme</TextBlock>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>                
             </Grid>
         </DockPanel>
         <!--Toolbar Area-->
@@ -302,15 +320,8 @@
             </ToolBar>-->
         </ToolBarPanel>
 
-        <Button Grid.Row="0" Grid.Column="1" Margin="0,0,15,0" BorderBrush="Transparent" 
-                ToolTip="{x:Static uires:UICtrlResources.themeicontooltip}"
-                Name="themeBtn" Click="ThemeBtn_Click">
-            <Button.Content>
-                <Image  Source="/BlueSky;component/Images/Theme-icon.png" Height="18"></Image>
-            </Button.Content>
-        </Button>        
         <!-- Grid for GetModelsControl control 18Sep2017 -->
-        <TextBlock Grid.Row="0" Grid.Column="2" Margin="3,0" Foreground="#FF1579DA" Background="#FFE1EBF7" Text="{x:Static uires:UICtrlResources.ScoringSectionTitle}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="2" Margin="3,1" Foreground="#FF1579DA" Background="#FFE1EBF7" Text="{x:Static uires:UICtrlResources.ScoringSectionTitle}"></TextBlock>
         <Grid Grid.Row="1" Grid.Column="2" Name="scoringGrid"  Margin="2,0" Background="#FFE1EBF7"> </Grid>
                 
         
