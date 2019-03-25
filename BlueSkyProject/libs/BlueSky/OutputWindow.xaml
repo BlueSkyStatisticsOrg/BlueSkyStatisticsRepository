@@ -74,9 +74,12 @@
         </StackPanel>-->
                     <Grid Grid.Row="0" Background="#FFE1EBF7">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="70"></ColumnDefinition>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Name="OutputTitle" Foreground="Black" Text="Results of Analysis" Padding="5,1">
@@ -87,17 +90,30 @@
                                 </LinearGradientBrush>
                             </TextBlock.Background>
                         </TextBlock>
-                        <Button Grid.Column="1" Margin="0" HorizontalAlignment="Right" BorderBrush="Transparent"
-                                ToolTip="{x:Static uires:UICtrlResources.themeicontooltip}" 
-                                Name="themewindowBtn" 
-                                Click="ThemewindowBtn_Click">
+                        <Button Grid.Column="2" Name="comingsoonbtn" ToolTip="Coming Soon" Background="Transparent"
+                        BorderThickness="0" VerticalAlignment="Top" VerticalContentAlignment="Stretch"
+                        Click="Comingsoonbtn_Click" HorizontalAlignment="Center">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Name="themeImg" Source="Images/Theme-icon.png"></Image>
+                                    <Image Source="/BlueSky;component/Images/comingsoon.png" Height="20" ></Image>
+                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Coming Soon</TextBlock>
                                 </StackPanel>
                             </Button.Content>
                         </Button>
-                        <Button Grid.Column="3" Margin="0" HorizontalAlignment="Right" 
+                        <Button Grid.Column="4" Margin="0" HorizontalAlignment="Right" Background="Transparent"
+                                BorderThickness="0" VerticalAlignment="Top" VerticalContentAlignment="Stretch"
+                                ToolTip="{x:Static uires:UICtrlResources.themeicontooltip}" 
+                                Name="themewindowBtn" 
+                                Click="ThemeBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image  Source="/BlueSky;component/Images/Theme-icon.png" ></Image>
+                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Theme</TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Grid.Column="6" Margin="0" HorizontalAlignment="Right" Background="Transparent"
+                                BorderThickness="0" VerticalAlignment="Top" VerticalContentAlignment="Stretch"
                                 ToolTip="{x:Static uires:UICtrlResources.ShowHideSyntaxPanel}" 
                                 Name="syntaxWinShowHideBtn" 
                                 Click="SyntaxWinShowHideBtn_Click">
@@ -105,6 +121,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Image Name="expandImg" Source="Images/expandSyn.png"></Image>
                                     <Image Name="collapseImg" Source="Images/collapseSyn.png" Visibility="Collapsed"></Image>
+                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Show/Hide Synax Panel</TextBlock>
                                 </StackPanel>
                             </Button.Content>
                         </Button>
@@ -259,7 +276,7 @@
                         <!--<TextBlock Grid.Column="1" Name="SyntaxTitle" Foreground="Black"  Padding="5,3" Text="R Command Editor">
                         </TextBlock>-->
                         <!-- Code below uses Resources (localization), while code above does not -->
-                        <TextBlock Grid.Column="1" Name="SyntaxTitle" Foreground="Black"  Padding="5,3" Text="{x:Static uires:UICtrlResources.CommandEditorPanelTitle}">
+                        <TextBlock Grid.Column="1" Name="SyntaxTitle" Foreground="Black"  Padding="5,1" Text="{x:Static uires:UICtrlResources.CommandEditorPanelTitle}">
                         </TextBlock>
 
                     </Grid>

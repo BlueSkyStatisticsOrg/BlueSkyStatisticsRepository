@@ -2950,9 +2950,14 @@ namespace BlueSky
                     }
                 }
             }
-        }		
-    
-        private void ThemewindowBtn_Click(object sender, RoutedEventArgs e)
+        }
+
+        private void Comingsoonbtn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("www.blueskystatistics.com");
+        }
+
+        private void ThemeBtn_Click(object sender, RoutedEventArgs e)
         {
             ThemeWindow thwin = new ThemeWindow();
             thwin.Owner = this;
