@@ -17,6 +17,21 @@
     <menu id="FileMenuExit" text="Exit" command="BlueSky.Commands.File.FileExitCommand" owner="BSky" nodetype="Leaf" />
   </menu>
   <menu id="dataMenu" text="Data" nodetype="Parent">
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    <menu id="Bin_Numeric_Variable(s)" text="Bin Numeric Variable(s)" commandtemplate="Bin Numeric Variable(s).xaml" commandoutputformat="Bin Numeric Variable(s).xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
+    <menu id="ComputeSubMenu" text="Compute New Variable(s)" owner="" nodetype="Parent">
+      <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
+      <menu id="Conditional_Compute" text="Conditional Compute" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
+      <menu id="Compute_(Apply_a_function_across_all_rows)" text="Compute (Apply a function across all rows)" commandtemplate="Compute (Apply a function across all rows).xaml" commandoutputformat="Compute (Apply a function across all rows).xml" owner="" nodetype="Leaf" />
+      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="Concatenate_Multiple_Variables_(handling_missing_values)" text="Concatenate Multiple Variables (handling missing values)" commandtemplate="Concatenate Multiple Variables (handling missing values).xaml" commandoutputformat="Concatenate Multiple Variables (handling missing values).xml" owner="" nodetype="Leaf" />
+    <menu id="Convert_Variable(s)_to_Factors" text="Convert Variable(s) to Factors" commandtemplate="Convert Variable(s) to Factors.xaml" commandoutputformat="Convert Variable(s) to Factors.xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="Dates" owner="" nodetype="Parent">
+      <menu id="Convert_String_to_Date" text="Convert String to Date" commandtemplate="Convert String to Date.xaml" commandoutputformat="Convert String to Date.xml" owner="" nodetype="Leaf" />
+      <menu id="Convert_Date_to_String" text="Convert Date to String" commandtemplate="Convert Date to String.xaml" commandoutputformat="Convert Date to String.xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="Delete_Variable(s)" text="Delete Variable(s)" commandtemplate="Delete Variable(s).xaml" commandoutputformat="Delete Variable(s).xml" owner="" nodetype="Leaf" />
     <menu id="MissvalSubMenu" text="Missing Values" owner="" nodetype="Parent">
       <menu id="Remove_NAs" text="Remove NAs" commandtemplate="Remove NAs.xaml" commandoutputformat="Remove NAs.xml" owner="" nodetype="Leaf" />
       <menu id="Missing_Values_(Basic)" text="Missing Values (Basic)" commandtemplate="Missing Values (Basic).xaml" commandoutputformat="Missing Values (Basic).xml" owner="" nodetype="Leaf" />
@@ -25,31 +40,24 @@
       <menu id="Missing_Values_(Use_a_models_impute_missing_values)" text="Missing Values (Use a models impute missing values)" commandtemplate="Missing Values (Use a models impute missing values).xaml" commandoutputformat="Missing Values (Use a models impute missing values).xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="Bin_Numeric_Variable(s)" text="Bin Numeric Variable(s)" commandtemplate="Bin Numeric Variable(s).xaml" commandoutputformat="Bin Numeric Variable(s).xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true"/>
-    <menu id="ComputeSubMenu" text="Compute New Variable(s)" owner="" nodetype="Parent">
-      <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true"/>
-      <menu id="Conditional_Compute" text="Conditional Compute" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
-      <menu id="Compute_(Apply_a_function_across_all_rows)" text="Compute (Apply a function across all rows)" commandtemplate="Compute (Apply a function across all rows).xaml" commandoutputformat="Compute (Apply a function across all rows).xml" owner="" nodetype="Leaf" />
-      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="Concatenate_Multiple_Variables_(handling_missing_values)" text="Concatenate Multiple Variables (handling missing values)" commandtemplate="Concatenate Multiple Variables (handling missing values).xaml" commandoutputformat="Concatenate Multiple Variables (handling missing values).xml" owner="" nodetype="Leaf" />
-    <menu id="Convert_Variable(s)_to_Factors" text="Convert Variable(s) to Factors" commandtemplate="Convert Variable(s) to Factors.xaml" commandoutputformat="Convert Variable(s) to Factors.xml" owner="" nodetype="Leaf" />
-    <menu id="Delete_Variable(s)" text="Delete Variable(s)" commandtemplate="Delete Variable(s).xaml" commandoutputformat="Delete Variable(s).xml" owner="" nodetype="Leaf" />
     <menu id="Rank_Variable(s)" text="Rank Variable(s)" commandtemplate="Rank Variable(s).xaml" commandoutputformat="Rank Variable(s).xml" owner="" nodetype="Leaf" />
     <menu id="Recode_Variable(s)" text="Recode Variable(s)" commandtemplate="Recode Variable(s).xaml" commandoutputformat="Recode Variable(s).xml" owner="" nodetype="Leaf" />
-    <menu id="Standardize_Variable(s)" text="Standardize Variable(s)" commandtemplate="Standardize Variable(s).xaml" commandoutputformat="Standardize Variable(s).xml" owner="" nodetype="Leaf" icon="images/Standardize.png" showtoolbaricon="true"/>
+    <menu id="Standardize_Variable(s)" text="Standardize Variable(s)" commandtemplate="Standardize Variable(s).xaml" commandoutputformat="Standardize Variable(s).xml" owner="" nodetype="Leaf" icon="images/Standardize.png" showtoolbaricon="true" />
     <menu id="Transform_Variable(s)" text="Transform Variable(s)" commandtemplate="Transform Variable(s).xaml" commandoutputformat="Transform Variable(s).xml" owner="" nodetype="Leaf" />
     <menu id="Weight_Variable(s)" text="Weight Variable(s)" commandtemplate="Weight Variable(s).xaml" commandoutputformat="Weight Variable(s).xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="Aggregate_to_Dataset" text="Aggregate to Dataset" commandtemplate="Aggregate to Dataset.xaml" commandoutputformat="Aggregate to Dataset.xml" owner="" nodetype="Leaf" icon="images/Aggregate.png" showtoolbaricon="true"/>
+    <menu id="Aggregate_to_Dataset" text="Aggregate to Dataset" commandtemplate="Aggregate to Dataset.xaml" commandoutputformat="Aggregate to Dataset.xml" owner="" nodetype="Leaf" icon="images/Aggregate.png" showtoolbaricon="true" />
     <menu id="Aggregate_to_Output" text="Aggregate to Output" commandtemplate="Aggregate to Output.xaml" commandoutputformat="Aggregate to Output.xml" owner="" nodetype="Leaf" />
-    <menu id="Merge_Datasets" text="Merge Datasets" commandtemplate="Merge Datasets.xaml" commandoutputformat="Merge Datasets.xml" owner="" nodetype="Leaf" icon="images/Merge.png" showtoolbaricon="true"/>
+    <menu id="Merge_Datasets" text="Merge Datasets" commandtemplate="Merge Datasets.xaml" commandoutputformat="Merge Datasets.xml" owner="" nodetype="Leaf" icon="images/Merge.png" showtoolbaricon="true" />
     <menu id="Refresh_Grid" text="Refresh Data Grid" command="BlueSky.Commands.Data.RefreshDatagridCommand" owner="BSky" nodetype="Leaf" />
     <menu id="Reload_Dataset_from_File" text="Reload Dataset from File" commandtemplate="Reload Dataset from File.xaml" commandoutputformat="Reload Dataset from File.xml" owner="" nodetype="Leaf" />
     <menu id="Re-order_Variables_in_Dataset_Alphabetically" text="Re-order Variables in Dataset Alphabetically" commandtemplate="Re-order Variables in Dataset Alphabetically.xaml" commandoutputformat="Re-order Variables in Dataset Alphabetically.xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="Reshape" owner="" nodetype="Parent">
+      <menu id="Reshape_(wide_to_long)" text="Reshape (wide to long)" commandtemplate="Reshape (wide to long).xaml" commandoutputformat="Reshape (wide to long).xml" owner="" nodetype="Leaf" />
+      <menu id="Reshape_(long_to_wide)" text="Reshape (long to wide)" commandtemplate="Reshape (long to wide).xaml" commandoutputformat="Reshape (long to wide).xml" owner="" nodetype="Leaf" />
+    </menu>
     <menu id="Sample_Dataset" text="Sample Dataset" commandtemplate="Sample Dataset.xaml" commandoutputformat="Sample Dataset.xml" owner="" nodetype="Leaf" />
-    <menu id="Sort_Dataset" text="Sort Dataset" commandtemplate="Sort Dataset.xaml" commandoutputformat="Sort Dataset.xml" owner="" nodetype="Leaf" icon="images/Sort.png" showtoolbaricon="true"/>
+    <menu id="Sort_Dataset" text="Sort Dataset" commandtemplate="Sort Dataset.xaml" commandoutputformat="Sort Dataset.xml" owner="" nodetype="Leaf" icon="images/Sort.png" showtoolbaricon="true" />
     <menu id="Sort_to_Output" text="Sort to Output" commandtemplate="Sort to Output.xaml" commandoutputformat="Sort to Output.xml" owner="" nodetype="Leaf" />
     <menu id="splitMenu" text="Split Dataset" owner="" nodetype="Parent">
       <menu id="AnaSplitSubMenu" text="For Group by Analysis" owner="" nodetype="Parent">
@@ -68,21 +76,13 @@
       <menu id="Transpose_(Select_Variables)" text="Transpose (Select Variables)" commandtemplate="Transpose (Select Variables).xaml" commandoutputformat="Transpose (Select Variables).xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-    <menu id="new_id" text="Dates" owner="" nodetype="Parent">
-      <menu id="Convert_String_to_Date" text="Convert String to Date" commandtemplate="Convert String to Date.xaml" commandoutputformat="Convert String to Date.xml" owner="" nodetype="Leaf" />
-      <menu id="Convert_Date_to_String" text="Convert Date to String" commandtemplate="Convert Date to String.xaml" commandoutputformat="Convert Date to String.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="new_id" text="Reshape" owner="" nodetype="Parent">
-      <menu id="Reshape_(wide_to_long)" text="Reshape (wide to long)" commandtemplate="Reshape (wide to long).xaml" commandoutputformat="Reshape (wide to long).xml" owner="" nodetype="Leaf" />
-      <menu id="Reshape_(long_to_wide)" text="Reshape (long to wide)" commandtemplate="Reshape (long to wide).xaml" commandoutputformat="Reshape (long to wide).xml" owner="" nodetype="Leaf" />
-    </menu>
     <menu id="Data_Legacy" text="Legacy" owner="" nodetype="Parent">
       <menu id="Aggregate_(legacy)" text="Aggregate (legacy)" commandtemplate="Aggregate (legacy).xaml" commandoutputformat="Aggregate (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Sort(legacy)" text="Sort(legacy)" commandtemplate="Sort(legacy).xaml" commandoutputformat="Sort(legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Subset_(legacy)" text="Subset (legacy)" commandtemplate="Subset (legacy).xaml" commandoutputformat="Subset (legacy).xml" owner="" nodetype="Leaf" />
     </menu>
   </menu>
-  <menu id="analysisMenu" text="Analysis" nodetype="Parent">
+ <menu id="analysisMenu" text="Analysis" nodetype="Parent">
     <menu id="new_id" text="Missing Values" owner="" nodetype="Parent">
       <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_Rows)" text="Analysis of Missing Values (Output Arranged in Rows)" commandtemplate="Analysis of Missing Values (Output Arranged in Rows).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in Rows).xml" owner="" nodetype="Leaf" />
       <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_columns)" text="Analysis of Missing Values (Output Arranged in columns)" commandtemplate="Analysis of Missing Values (Output Arranged in columns).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in columns).xml" owner="" nodetype="Leaf" />
