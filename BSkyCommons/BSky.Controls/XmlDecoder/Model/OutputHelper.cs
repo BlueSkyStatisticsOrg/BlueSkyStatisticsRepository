@@ -2779,6 +2779,9 @@ namespace BSky.XmlDecoder
                 //  ggplot(data ={ {% DATASET %} }, aes(eval(parse(text = paste(vars))))) +geom_histogram(col = "{{bordercolor}}",{ { binwidth} }, fill = "{{color}}", alpha = { { alpha} }) 
                 //+labs(x = vars, y = "Counts", title = "{{maintitle}}", title = paste("Histogram for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
 
+                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
+                string themeSyntax = confService.GetThemeParams();
+
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -2954,15 +2957,18 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax+"\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                //output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                //output = output.TrimEnd(Environment.NewLine.ToCharArray());
 
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
+                //IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
+                //string themeSyntax = confService.GetThemeParams();
+                //output = output + " +\n" + themeSyntax;
 
             }
 
