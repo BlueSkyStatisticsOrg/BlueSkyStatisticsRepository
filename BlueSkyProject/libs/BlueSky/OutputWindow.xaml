@@ -119,9 +119,10 @@
                                 Click="SyntaxWinShowHideBtn_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Show/Hide Synax Panel</TextBlock>
                                     <Image Name="expandImg" Source="Images/expandSyn.png"></Image>
                                     <Image Name="collapseImg" Source="Images/collapseSyn.png" Visibility="Collapsed"></Image>
-                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Show/Hide Synax Panel</TextBlock>
+                                    
                                 </StackPanel>
                             </Button.Content>
                         </Button>
