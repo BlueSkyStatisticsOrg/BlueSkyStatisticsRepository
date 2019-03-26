@@ -52,7 +52,7 @@
                   MinWidth="100" MaxWidth="650" Name="DatasetCombo"></ComboBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0" Name="status" Grid.ColumnSpan="2"
-                  Margin="7" Visibility="Collapsed" FontWeight="Bold">
+                  Margin="7" Visibility="Collapsed" FontWeight="Bold" Foreground="#FFF3760D">
             If you do not see a dataset in the dropdown, the package does not contain one or more dataset(s).
         </TextBlock>
         <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
