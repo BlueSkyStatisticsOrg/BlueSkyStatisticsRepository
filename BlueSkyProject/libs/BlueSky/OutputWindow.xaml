@@ -108,7 +108,7 @@
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <Image  Source="/BlueSky;component/Images/Theme-icon.png" ></Image>
-                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Theme</TextBlock>
+                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Themes</TextBlock>
                                 </StackPanel>
                             </Button.Content>
                         </Button>
