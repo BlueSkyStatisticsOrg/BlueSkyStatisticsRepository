@@ -42,7 +42,7 @@
 
         <!--<Expander Grid.Row="0" Grid.Column="4" Header="Help:" ExpandDirection="Right"></Expander>-->
         <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"  Margin="7" HorizontalAlignment="Left" MaxWidth="450"  Foreground="DarkSlateGray">
-                If the R package you are looking for is not found in the dropdown,
+                If the R package you are looking for is not found in the above dropdown,
                 go to Tools > Package > Install/Update Package(s) from CRAN, and enter the R package name, you want to install.
         </TextBlock>
 
