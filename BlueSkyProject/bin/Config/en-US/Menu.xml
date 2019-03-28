@@ -204,7 +204,13 @@
     <menu id="Q-Q_plot" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
     <menu id="Bin_2d" text="Bin 2d" commandtemplate="Bin 2d.xaml" commandoutputformat="Bin 2d.xml" owner="" nodetype="Leaf" />
     <menu id="Contour_Chart" text="Contour Chart" commandtemplate="Contour Chart.xaml" commandoutputformat="Contour Chart.xml" owner="" nodetype="Leaf" />
-    <menu id="Violin" text="Violin" commandtemplate="Violin.xaml" commandoutputformat="Violin.xml" owner="" nodetype="Leaf" />	
+    <menu id="Violin" text="Violin" commandtemplate="Violin.xaml" commandoutputformat="Violin.xml" owner="" nodetype="Leaf" />
+    <menu id="Bar_Graph_(with_Means)" text="Bar Graph (with Means)" commandtemplate="Bar Graph (with Means).xaml" commandoutputformat="Bar Graph (with Means).xml" owner="" nodetype="Leaf" />
+    <menu id="Bin_hex" text="Bin hex" commandtemplate="Bin hex.xaml" commandoutputformat="Bin hex.xml" owner="" nodetype="Leaf" />
+    <menu id="Bulls_Eye" text="Bulls Eye" commandtemplate="Bulls Eye.xaml" commandoutputformat="Bulls Eye.xml" owner="" nodetype="Leaf" />
+    <menu id="Line_Chart(_line_drawn_in_the_order_in_which_variables_occur)" text="Line Chart( line drawn in the order in which variables occur)" commandtemplate="Line Chart( line drawn in the order in which variables occur).xaml" commandoutputformat="Line Chart( line drawn in the order in which variables occur).xml" owner="" nodetype="Leaf" />
+    <menu id="Line_Chart(_stair_step_plot)" text="Line Chart( stair step plot)" commandtemplate="Line Chart( stair step plot).xaml" commandoutputformat="Line Chart( stair step plot).xml" owner="" nodetype="Leaf" />
+    <menu id="Pie_Chart" text="Pie Chart" commandtemplate="Pie Chart.xaml" commandoutputformat="Pie Chart.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
     <menu id="new_id" text="Linear Regression" owner="" nodetype="Parent">

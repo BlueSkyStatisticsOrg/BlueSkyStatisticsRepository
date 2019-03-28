@@ -215,7 +215,7 @@ namespace BSky.XmlDecoder
                 //I need objname to get the control from the canvas. Hence I need to remove the $
                 objname = objname.Replace('^', ' ').Replace('#', ' ').Trim();
                 objname = objname.Replace(newPrefixCharacter[0], ' ').Replace('#', ' ').Trim();
-                prefixEachVariable =true;
+                prefixEachVariable = true;
             }
 
 
@@ -664,7 +664,7 @@ namespace BSky.XmlDecoder
                 DragDropList list = element as DragDropList;
                 string oriSubstituteSettings = "";
                 oriSubstituteSettings = list.SubstituteSettings;
-                
+
 
                 if (boolTilda)
                 {
@@ -672,7 +672,7 @@ namespace BSky.XmlDecoder
                     list.SubstituteSettings = "NoPrefix|UseComma|Enclosed";
 
                 }
-             
+
                 if (overrideSep)
                 {
                     oriSubstituteSettings = list.SubstituteSettings;
@@ -708,11 +708,11 @@ namespace BSky.XmlDecoder
                                 if (list.SubstituteSettings.Contains("Enclosed")) vals += "'" + o.ToString() + "'";
                                 else
                                 {
-//Added by Aaron 07/27/2018
-//This is the only place where I need to pass -var1,-var2
+                                    //Added by Aaron 07/27/2018
+                                    //This is the only place where I need to pass -var1,-var2
                                     if (!prefixEachVariable)
                                         vals += o.ToString();
-                                    else vals = vals+newPrefixCharacter + o.ToString();
+                                    else vals = vals + newPrefixCharacter + o.ToString();
                                 }
                             }
                             //Added by Aaron 02/12/2014
@@ -1206,7 +1206,7 @@ namespace BSky.XmlDecoder
             {
                 BSkyAdvancedSlider advslider = element as BSkyAdvancedSlider;
 
-                 return advslider.SliderValue.ToString();
+                return advslider.SliderValue.ToString();
 
             }
             //Added by Aaron 03/04/2019
@@ -1215,7 +1215,7 @@ namespace BSky.XmlDecoder
                 BSkySpinnerCtrl spinner = element as BSkySpinnerCtrl;
 
                 return spinner.Text;
-                
+
 
             }
 
@@ -1428,9 +1428,12 @@ namespace BSky.XmlDecoder
 
         //The function below replaces the control name by the values in the commmand syntax
 
-        
-             public static string GetCommand(string commandformat, DependencyObject obj)
+
+        public static string GetCommand(string commandformat, DependencyObject obj)
         {
+            IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
+            string themeSyntax = confService.GetThemeParams();
+
             Dictionary<string, string> CommandKeyValDict = new Dictionary<string, string>();
             BSkyCanvas obj1 = null;
             string customsyntax = string.Empty;
@@ -1644,6 +1647,7 @@ namespace BSky.XmlDecoder
                 string jitter = "";
                 string flipaxis = "";
                 string shape = "";
+                string se = "";
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
@@ -1714,27 +1718,31 @@ namespace BSky.XmlDecoder
                     {
                         sm = value;
                     }
-                    if (key=="jitter")
+                    if (key == "jitter")
                     {
                         jitter = value;
                     }
-                    if (key=="flipaxis")
+                    if (key == "flipaxis")
                     {
                         flipaxis = value;
                     }
-                    if (key=="shape")
+                    if (key == "shape")
                     {
                         shape = value;
+                    }
+                    if (key == "se")
+                    {
+                        se = value;
                     }
 
                 }
                 string tempoutput = "";
                 string[] variables = Destination.Split(',');
-                
+
                 foreach (string var in variables)
                 {
 
-                    tempoutput = tempoutput+"ggplot(data=" + dataset + ", aes(x =" + GroupingVariable + "," + "y=" + var;
+                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + GroupingVariable + "," + "y=" + var;
                     if (GroupBy != "")
                     {
                         tempoutput = tempoutput + ",color=" + GroupBy;
@@ -1747,14 +1755,14 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + ",alpha=" + opacity;
                     }
-                    if (shape !="")
+                    if (shape != "")
                     {
                         tempoutput = tempoutput + ",shape=" + shape;
 
                     }
 
 
-                    tempoutput = tempoutput  +"))";
+                    tempoutput = tempoutput + "))";
 
                     if (jitter != "TRUE")
                     {
@@ -1764,12 +1772,12 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t geom_point( position=\"jitter\")";
                     }
-                    if (flipaxis=="TRUE")
+                    if (flipaxis == "TRUE")
                     {
-                        tempoutput = tempoutput + " +\n\t coord_flip()"; 
+                        tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
 
-                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + GroupingVariable + "\"" + ", y =" + "\"" + var + "\"" + "," + "color =" + "\""+ GroupBy + "\"" + ", title= " + "\"Scatter plot for variable " + GroupingVariable + " by " + var + "\")";
+                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + GroupingVariable + "\"" + ", y =" + "\"" + var + "\"" + "," + "color =" + "\"" + GroupBy + "\"" + ", title= " + "\"Scatter plot for variable " + GroupingVariable + " by " + var + "\")";
 
                     if (xlab != "")
                     {
@@ -1783,39 +1791,39 @@ namespace BSky.XmlDecoder
 
                     if (maintitle != "")
                     {
-                        tempoutput = tempoutput + " +\n\t ggtitle("  +"\"" + maintitle + "\"" + ")";
+                        tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
 
                     //+geom_smooth(method ="{{sm}}", color= "{{color}}")
-                    if (!(sm == ""|| sm ==null))
+                    if (!(sm == "" || sm == null))
                     {
                         tempoutput = tempoutput + " +\n\t geom_smooth(method =\"" + sm + "\"";
 
-                        if (!(color == ""|| color==null))
+                        if (!(color == "" || color == null))
                         {
                             tempoutput = tempoutput + ",color=" + "\"" + color + "\"";
-    
+
                         }
+
+                        tempoutput = tempoutput + ",se=" + se;
+
+
                         tempoutput = tempoutput + ")";
-                       
+
                     }
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
-                    tempoutput =tempoutput + "\n\n";
-                    output = output +tempoutput;
-                   
+                    tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
 
@@ -2014,16 +2022,12 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
 
@@ -2158,7 +2162,7 @@ namespace BSky.XmlDecoder
                 {
 
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
-                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var ;
+                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
 
                     if (Groupby != "")
                     {
@@ -2169,13 +2173,13 @@ namespace BSky.XmlDecoder
 
 
                     //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
-                    tempoutput = tempoutput + " +\n\t geom_density( " ;
+                    tempoutput = tempoutput + " +\n\t geom_density( ";
 
 
 
-                    if (rdgrp1!="")
+                    if (rdgrp1 != "")
                     {
-                        tempoutput = tempoutput + ",position = \"" + rdgrp1 +   "\"";
+                        tempoutput = tempoutput + ",position = \"" + rdgrp1 + "\"";
                     }
 
 
@@ -2233,33 +2237,21 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
-
-
-
 
             // ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), y =..count.., fill = { { Groupby} })) +geom_density(fill = "{{barcolor}}", position = "fill", alpha = 0.5) + labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
             //+geom_density(fill = "{{barcolor}}", position = "fill", alpha = 0.5) + labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
             // +facet_grid({ { yfacet} }
             // ~{ { xfacet} })
 
-
-
-
-
             else if (customsyntax == "Graphics-densitycounts")
             {
-               
 
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
@@ -2373,7 +2365,7 @@ namespace BSky.XmlDecoder
                 foreach (string var in variables)
                 {
 
-                //    ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), y =..count.., fill = { { Groupby} }))
+                    //    ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), y =..count.., fill = { { Groupby} }))
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var + ", y =..count..";
 
                     if (Groupby != "")
@@ -2384,12 +2376,12 @@ namespace BSky.XmlDecoder
                     tempoutput = tempoutput + "))";
 
 
-                 //   +geom_density(fill = "{{barcolor}}", position = "fill", alpha = 0.5)
+                    //   +geom_density(fill = "{{barcolor}}", position = "fill", alpha = 0.5)
                     tempoutput = tempoutput + " +\n\t geom_density( ";
 
                     if (Groupby != "")
                     {
-                        tempoutput = tempoutput + ",position = \"fill\"" ;
+                        tempoutput = tempoutput + ",position = \"fill\"";
                     }
 
 
@@ -2420,7 +2412,7 @@ namespace BSky.XmlDecoder
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var +  "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -2447,22 +2439,18 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
 
             else if (customsyntax == "Graphics-plotofmeans")
             {
-               
+
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -2475,15 +2463,15 @@ namespace BSky.XmlDecoder
                 }
 
                 string destination = "";
-                string binwidth ="";
-                
+                string binwidth = "";
+
                 string opacity = "";
 
                 string Facetcolumn = "";
                 string Facetrow = "";
                 string Facetscale = "";
                 string Facetwrap = "";
-               
+
                 string color = "";
                 string dataset = "";
                 string xlab = "";
@@ -2492,7 +2480,7 @@ namespace BSky.XmlDecoder
                 string jitter = "";
                 string flipaxis = "";
                 string xaxis = "";
-              
+
                 string bordercolor = "";
                 string Groupby = "";
                 string conflevel = "";
@@ -2612,7 +2600,7 @@ namespace BSky.XmlDecoder
                     }
                 }
 
-                
+
 
 
                 string tempoutput = "";
@@ -2624,7 +2612,7 @@ namespace BSky.XmlDecoder
                     //# Create a dataset of summaries
                     //  { { datasetForSum} } <- summarySE({ {% DATASET %} }, measurevar = vars, groupvars = c("{{xaxis}}", "{{groupby}}"),conf.interval = { { conflevel} },na.rm = TRUE)
                     //string tempdataset = "";
-                    tempoutput += "temp <-summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " +  conflevel + ",na.rm = TRUE)" ;
+                    tempoutput += "temp <-summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " + conflevel + ",na.rm = TRUE)";
 
                     tempoutput = tempoutput + "\n";
 
@@ -2640,11 +2628,11 @@ namespace BSky.XmlDecoder
                     tempoutput += "pd <- position_dodge(0.3)";
                     tempoutput = tempoutput + "\n";
 
-                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = as.numeric(" + xaxis +")";
+                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = as.numeric(" + xaxis + ")";
 
                     tempoutput += ", y = " + var;
 
-                    if (Groupby !="")
+                    if (Groupby != "")
                     {
                         tempoutput += ", colour = " + Groupby;
                     }
@@ -2656,7 +2644,7 @@ namespace BSky.XmlDecoder
 
                     tempoutput = tempoutput + "))";
 
-                   // +geom_errorbar(aes(ymin = eval(parse(text = paste(vars))) -{ { stderr} }
+                    // +geom_errorbar(aes(ymin = eval(parse(text = paste(vars))) -{ { stderr} }
                     //  { { stddev} }
                     // { { confinterval} }
                     // { { noerrbars} }, ymax = eval(parse(text = paste(vars))) +{ { stderr} }
@@ -2666,7 +2654,7 @@ namespace BSky.XmlDecoder
 
                     tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
 
-                    if (stderr!="")
+                    if (stderr != "")
                     {
                         tempoutput += stderr;
                     }
@@ -2722,9 +2710,9 @@ namespace BSky.XmlDecoder
                     }
 
 
-                   tempoutput += ")  +\n\t geom_point(position = pd) ";
+                    tempoutput += ")  +\n\t geom_point(position = pd) ";
 
-                   // tempoutput = tempoutput + ")";
+                    // tempoutput = tempoutput + ")";
                     // End of heom_histogram
 
                     if (flipaxis == "TRUE")
@@ -2732,9 +2720,9 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
 
-                //    labs(x = "{{xaxis}}", y = vars, fill = "{{Groupby}}", title = paste("Plot for variable ", vars, sep = ''))
+                    //    labs(x = "{{xaxis}}", y = vars, fill = "{{Groupby}}", title = paste("Plot for variable ", vars, sep = ''))
 
-                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ",fill = "+ "\"" + Groupby + "\"" + ", title= " + "\"Plot of means for variable " + var + " by variable "  + xaxis + "\")";
+                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ",fill = " + "\"" + Groupby + "\"" + ", title= " + "\"Plot of means for variable " + var + " by variable " + xaxis + "\")";
 
                     if (xlab != "")
                     {
@@ -2760,27 +2748,362 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
+
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
+            else if (customsyntax == "Graphics-barplotmeans")
+            {
 
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string barcolor = "";
+                string binwidth = "";
+                string rdgrp1 = "";
+                string opacity = "";
+
+                string Facetcolumn = "";
+                string Facetrow = "";
+                string Facetscale = "";
+                string Facetwrap = "";
+
+                string color = "";
+                string dataset = "";
+                string xlab = "";
+                string ylab = "";
+                string maintitle = "";
+                string jitter = "";
+                string flipaxis = "";
+                string xaxis = "";
+
+                string bordercolor = "";
+                string Groupby = "";
+                string conflevel = "";
+                string stddev = "";
+                string confinterval = "";
+                string noerrbars = "";
+                string stderr = "";
+                string yaxis = "";
+                //  { { stddev} }
+                // { { confinterval} }
+                // { { noerrbars} }
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "Groupby")
+                    {
+                        Groupby = value;
+                    }
+
+
+                    if (key == "stderr")
+                    {
+                        stderr = value;
+                    }
+
+                    if (key == "stddev")
+                    {
+                        stddev = value;
+                    }
+
+                    if (key == "confinterval")
+                    {
+                        confinterval = value;
+                    }
+                    if (key == "conflevel")
+                    {
+                        conflevel = value;
+                    }
+
+                    if (key == "noerrbars")
+                    {
+                        noerrbars = value;
+                    }
+
+                    if (key == "barcolor")
+                    {
+                        barcolor = value;
+                    }
+
+                    if (key == "xaxis")
+                    {
+                        xaxis = value;
+                    }
+
+
+                    if (key == "yaxis")
+                    {
+                        yaxis = value;
+                    }
+                    if (key == "binwidth")
+                    {
+                        binwidth = value;
+                    }
+
+                    if (key == "opacity")
+                    {
+                        opacity = value;
+                    }
+                    if (key == "Facetcolumn")
+                    {
+                        Facetcolumn = value;
+                    }
+                    if (key == "Facetrow")
+                    {
+                        Facetrow = value;
+                    }
+                    if (key == "Facetscale")
+                    {
+                        Facetscale = value;
+                    }
+                    if (key == "Facetwrap")
+                    {
+                        Facetwrap = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "xlab")
+                    {
+                        xlab = value;
+                    }
+                    if (key == "ylab")
+                    {
+                        ylab = value;
+                    }
+                    if (key == "maintitle")
+                    {
+                        maintitle = value;
+                    }
+
+                    if (key == "jitter")
+                    {
+                        jitter = value;
+                    }
+                    if (key == "flipaxis")
+                    {
+                        flipaxis = value;
+                    }
+                    if (key == "bordercolor")
+                    {
+                        bordercolor = value;
+                    }
+                    if (key == "color")
+                    {
+                        color = value;
+                    }
+                    if (key == "rdgrp1")
+                    {
+                        rdgrp1 = value;
+                    }
+                }
+
+
+
+
+                string tempoutput = "";
+                string[] variables = yaxis.Split(',');
+
+                foreach (string var in variables)
+                {
+
+                    //# Create a dataset of summaries
+                    //  { { datasetForSum} } <- summarySE({ {% DATASET %} }, measurevar = vars, groupvars = c("{{xaxis}}", "{{groupby}}"),conf.interval = { { conflevel} },na.rm = TRUE)
+                    //string tempdataset = "";
+                    tempoutput += "temp <-summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " + conflevel + ",na.rm = TRUE)";
+
+                    tempoutput = tempoutput + "\n";
+
+                    //  ggplot({ { datasetForSum} }, aes(x ={ { xaxis} }, y = eval(parse(text = paste(vars))), colour ={ { groupby} },group ={ { groupby} })) +geom_errorbar(aes(ymin = eval(parse(text = paste(vars))) -{ { stderr} }
+                    //  { { stddev} }
+                    // { { confinterval} }
+                    // { { noerrbars} }, ymax = eval(parse(text = paste(vars))) +{ { stderr} }
+                    // { { stddev} }
+                    // { { confinterval} }
+                    // { { noerrbars} }), width = .1,position = pd) +geom_line(position = pd) + geom_point(position = pd) + labs(x = "{{xaxis}}", y = vars, fill = "{{Groupby}}", title = paste("Plot for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}" + ggtitle("{{maintitle}}") { { themes} })+facet_grid({ { yfacet} }
+                    // ~{ { xfacet} })
+
+                    tempoutput += "pd <- position_dodge(0.9)";
+                    tempoutput = tempoutput + "\n";
+
+                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = as.numeric(" + xaxis + ")";
+
+                    tempoutput += ", y = " + var;
+
+                    if (Groupby != "")
+                    {
+                        tempoutput += ", fill = " + Groupby;
+                    }
+                    //if (Groupby != "")
+                    //{
+                    //    tempoutput += ", group = " + Groupby;
+                    //}
+
+
+                    tempoutput = tempoutput + "))";
+
+
+                    //Constructing geom_bar
+
+
+
+
+                    tempoutput = tempoutput + " +\n\t geom_bar( position=\"dodge\" ";
+
+
+                    if (opacity != "")
+                    {
+                        tempoutput = tempoutput + ",alpha=" + opacity;
+                    }
+
+                    if (barcolor != "")
+                    {
+                        tempoutput = tempoutput + ",fill =" + "\"" + barcolor + "\"";
+                    }
+
+                    tempoutput = tempoutput + " ,stat=\"identity\"";
+
+                    tempoutput = tempoutput + ")";
+
+
+                    // +geom_errorbar(aes(ymin = eval(parse(text = paste(vars))) -{ { stderr} }
+                    //  { { stddev} }
+                    // { { confinterval} }
+                    // { { noerrbars} }, ymax = eval(parse(text = paste(vars))) +{ { stderr} }
+                    // { { stddev} }
+                    // { { confinterval} }
+                    // { { noerrbars} }), width = .1,position = pd)
+
+                    tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
+
+                    if (stderr != "")
+                    {
+                        tempoutput += stderr;
+                    }
+
+                    if (stddev != "")
+                    {
+                        tempoutput += stddev;
+                    }
+
+                    if (confinterval != "")
+                    {
+                        tempoutput += confinterval;
+                    }
+
+                    if (noerrbars != "")
+                    {
+                        tempoutput += noerrbars;
+                    }
+
+
+                    tempoutput = tempoutput + ", ymax =" + var + "+";
+
+                    if (stderr != "")
+                    {
+                        tempoutput += stderr;
+                    }
+
+                    if (stddev != "")
+                    {
+                        tempoutput += stddev;
+                    }
+
+                    if (confinterval != "")
+                    {
+                        tempoutput += confinterval;
+                    }
+
+                    if (noerrbars != "")
+                    {
+                        tempoutput += noerrbars;
+                    }
+
+
+
+
+                    tempoutput += " ), width = .1, position = pd)";
+
+                    // tempoutput += " + \n\t geom_line(position = pd";
+
+
+
+                    //if (opacity != "")
+                    //{
+                    //    tempoutput = tempoutput + ",alpha=" + opacity;
+                    //}
+
+
+                    //tempoutput += ")  +\n\t geom_point(position = pd) ";
+
+                    // tempoutput = tempoutput + ")";
+                    // End of heom_histogram
+
+                    if (flipaxis == "TRUE")
+                    {
+                        tempoutput = tempoutput + " +\n\t coord_flip()";
+                    }
+
+                    //    labs(x = "{{xaxis}}", y = vars, fill = "{{Groupby}}", title = paste("Plot for variable ", vars, sep = ''))
+
+                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ",fill = " + "\"" + Groupby + "\"" + ", title= " + "\"Plot of means for variable " + var + " by variable " + xaxis + "\")";
+
+                    if (xlab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t xlab(" + "\"" + xlab + "\"" + ")";
+                    }
+
+                    if (ylab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ylab(" + "\"" + ylab + "\"" + ")";
+                    }
+
+                    if (maintitle != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
+                    }
+
+                    //+geom_smooth(method ="{{sm}}", color= "{{color}}")
+
+                    tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
+                    // tempoutput = Wrapinbrackets(tempoutput);
+                    tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
+                    tempoutput = "";
+
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
+                }
+
+                //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
+            }
 
             else if (customsyntax == "Graphics-histogram")
             {
                 //  ggplot(data ={ {% DATASET %} }, aes(eval(parse(text = paste(vars))))) +geom_histogram(col = "{{bordercolor}}",{ { binwidth} }, fill = "{{color}}", alpha = { { alpha} }) 
                 //+labs(x = vars, y = "Counts", title = "{{maintitle}}", title = paste("Histogram for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
 
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
@@ -2959,17 +3282,10 @@ namespace BSky.XmlDecoder
 
                     output = output.TrimEnd(Environment.NewLine.ToCharArray());
                     output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                    output = output + " +\n" + themeSyntax+"\n\n";
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                //output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                //output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                //IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                //string themeSyntax = confService.GetThemeParams();
-                //output = output + " +\n" + themeSyntax;
-
             }
 
             else if (customsyntax == "Graphics-pplot")
@@ -3004,10 +3320,10 @@ namespace BSky.XmlDecoder
                 string jitter = "";
                 string flipaxis = "";
                 string referenceline = "";
-               
+
                 string detrend = "";
                 string band = "";
-               
+
                 string distribution = "";
                 string dparams = "";
 
@@ -3100,7 +3416,7 @@ namespace BSky.XmlDecoder
                     {
                         bordercolor = value;
                     }
-                   
+
                     if (key == "color")
                     {
                         color = value;
@@ -3169,7 +3485,7 @@ namespace BSky.XmlDecoder
                             tempoutput += ",dparams= list(" + dparams + ")";
                         }
 
-                        if (detrend =="TRUE")
+                        if (detrend == "TRUE")
                         {
                             tempoutput += ",detrend = TRUE";
                         }
@@ -3232,17 +3548,12 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
-
             }
 
             // print(ggplot(data = { {% DATASET %} }, mapping = aes(sample = eval(parse(text = paste(vars))), shape = { { Groupby} }))  +stat_qq_band() + stat_qq_line() + stat_qq_point() { { flip} }
@@ -3510,16 +3821,12 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
 
@@ -3528,7 +3835,7 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-boxplot")
             {
-                
+
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -3665,9 +3972,9 @@ namespace BSky.XmlDecoder
                 {
                     //ggplot({ {% DATASET %} }, aes(x = { { GroupingVariable} }, y = eval(parse(text = paste(vars))),fill = { { GroupBy} }))
 
-                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + GroupingVariable + ", y = "+ var;
+                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + GroupingVariable + ", y = " + var;
 
-                    if (GroupBy !="")
+                    if (GroupBy != "")
                     {
                         tempoutput = tempoutput + ",fill = " + GroupBy;
                     }
@@ -3679,7 +3986,7 @@ namespace BSky.XmlDecoder
 
 
                     tempoutput = tempoutput + " +\n\t geom_boxplot(";
-                    
+
                     if (!(barcolor == "" || barcolor == null))
                     {
                         tempoutput = tempoutput + "col =" + "\"" + barcolor + "\"";
@@ -3688,7 +3995,7 @@ namespace BSky.XmlDecoder
 
                     if (outliers == "TRUE")
                     {
-                        if (addcomma==true)
+                        if (addcomma == true)
                         {
                             tempoutput = tempoutput + ",";
                         }
@@ -3703,7 +4010,7 @@ namespace BSky.XmlDecoder
                             tempoutput = tempoutput + ",";
                         }
                         addcomma = true;
-                        tempoutput = tempoutput + "alpha =" +  alpha ;
+                        tempoutput = tempoutput + "alpha =" + alpha;
                     }
 
                     if (notch == "TRUE")
@@ -3713,7 +4020,7 @@ namespace BSky.XmlDecoder
                             tempoutput = tempoutput + ",";
                         }
                         addcomma = true;
-                        tempoutput = tempoutput + "notch = TRUE" ;
+                        tempoutput = tempoutput + "notch = TRUE";
                     }
 
 
@@ -3722,7 +4029,7 @@ namespace BSky.XmlDecoder
                     // End of geomboxplot
 
 
-                    if (plotDataPoints =="Stacked")
+                    if (plotDataPoints == "Stacked")
                     {
                         tempoutput = tempoutput + " +\n\t geom_dotplot(binaxis = 'y', stackdir = 'center', dotsize = 0.1)";
 
@@ -3767,16 +4074,12 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
 
@@ -3784,7 +4087,7 @@ namespace BSky.XmlDecoder
             //  +facet_grid({ { yfacet} }
             // ~{ { xfacet} })
 
-            else if (customsyntax == "Graphics-linechart")
+            else if (customsyntax == "Graphics-linechart(xaxis)")
             {
 
 
@@ -3810,17 +4113,17 @@ namespace BSky.XmlDecoder
                 string Facetscale = "";
                 string Facetwrap = "";
                 string flipaxis = "";
-            
-               
+
+
                 string dataset = "";
                 string xlab = "";
                 string ylab = "";
                 string maintitle = "";
-                
-              
 
 
-                
+
+
+
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
@@ -3831,7 +4134,7 @@ namespace BSky.XmlDecoder
 
                     if (key == "xaxis")
                     {
-                       xaxis = value;
+                        xaxis = value;
                     }
 
 
@@ -3885,7 +4188,7 @@ namespace BSky.XmlDecoder
                         maintitle = value;
                     }
 
-                   
+
                 }
                 string tempoutput = "";
                 bool addcomma = false;
@@ -3895,7 +4198,7 @@ namespace BSky.XmlDecoder
                 {
 
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
-                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" +var +"))";
+                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" + var + "))";
 
                     //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
                     tempoutput = tempoutput + " +\n\t geom_line( stat = \"identity\", position = \"identity\"";
@@ -3903,7 +4206,7 @@ namespace BSky.XmlDecoder
                     if (groupby != "" || shape != "")
                     {
 
-                       
+
                         tempoutput += ", aes (";
 
                         if (groupby != "")
@@ -3936,7 +4239,7 @@ namespace BSky.XmlDecoder
 
 
                     tempoutput = tempoutput + ")";
-                   
+
 
                     if (flipaxis == "TRUE")
                     {
@@ -3948,12 +4251,12 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart for xaxis variable: " + xaxis + " yaxis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";  
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) for X axis variable: " + xaxis + "\\nY axis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
-                       
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart for xaxis variable: " + xaxis + " yaxis variable: " + yaxis + "\")";
+
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) for X axis variable: " + xaxis + "\\n Y axis variable: " + yaxis + "\")";
                     }
 
                     if (xlab != "")
@@ -3971,7 +4274,7 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
 
-                            
+
 
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -3980,16 +4283,420 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
 
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
+            else if (customsyntax == "Graphics-linechart(path)")
+            {
 
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string xaxis = "";
+                string yaxis = "";
+                string groupby = "";
+                string shape = "";
+                string opacity = "";
+
+                string Facetcolumn = "";
+                string Facetrow = "";
+                string Facetscale = "";
+                string Facetwrap = "";
+                string flipaxis = "";
+
+
+                string dataset = "";
+                string xlab = "";
+                string ylab = "";
+                string maintitle = "";
+
+
+
+
+
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "xaxis")
+                    {
+                        xaxis = value;
+                    }
+
+
+                    if (key == "yaxis")
+                    {
+                        yaxis = value;
+                    }
+                    if (key == "groupby")
+                    {
+                        groupby = value;
+                    }
+                    if (key == "shape")
+                    {
+                        shape = value;
+                    }
+
+                    if (key == "opacity")
+                    {
+                        opacity = value;
+                    }
+                    if (key == "Facetcolumn")
+                    {
+                        Facetcolumn = value;
+                    }
+                    if (key == "Facetrow")
+                    {
+                        Facetrow = value;
+                    }
+                    if (key == "Facetscale")
+                    {
+                        Facetscale = value;
+                    }
+                    if (key == "Facetwrap")
+                    {
+                        Facetwrap = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "xlab")
+                    {
+                        xlab = value;
+                    }
+                    if (key == "ylab")
+                    {
+                        ylab = value;
+                    }
+                    if (key == "maintitle")
+                    {
+                        maintitle = value;
+                    }
+
+
+                }
+                string tempoutput = "";
+                bool addcomma = false;
+                string[] variables = yaxis.Split(',');
+
+                foreach (string var in variables)
+                {
+
+                    //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
+                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" + var + "))";
+
+                    //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
+                    tempoutput = tempoutput + " +\n\t geom_path( stat = \"identity\", position = \"identity\"";
+
+                    if (groupby != "" || shape != "")
+                    {
+
+
+                        tempoutput += ", aes (";
+
+                        if (groupby != "")
+
+                        {
+                            tempoutput = tempoutput + "color = " + groupby;
+                            addcomma = true;
+                        }
+
+
+                        if (shape != "")
+                        {
+                            if (!addcomma)
+                            {
+                                tempoutput = tempoutput + ", shape = " + shape;
+                            }
+                            else
+                            {
+                                tempoutput = tempoutput + " shape = " + shape;
+                            }
+                        }
+
+                        tempoutput = tempoutput + ")";
+                    }
+
+                    if (opacity != "")
+                    {
+                        tempoutput = tempoutput + ", alpha=" + opacity;
+                    }
+
+
+                    tempoutput = tempoutput + ")";
+
+
+                    if (flipaxis == "TRUE")
+                    {
+                        tempoutput = tempoutput + " +\n\t coord_flip()";
+                    }
+
+
+                    //   +labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) +
+
+                    if (groupby != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) for X axis variable: " + xaxis + "\\n Y axis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";
+                    }
+                    else
+                    {
+
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) for X axis variable: " + xaxis + "\\nY axis variable: " + yaxis + "\")";
+                    }
+
+                    if (xlab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t xlab(" + "\"" + xlab + "\"" + ")";
+                    }
+
+                    if (ylab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ylab(" + "\"" + ylab + "\"" + ")";
+                    }
+
+                    if (maintitle != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
+                    }
+
+
+
+                    tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
+                    // tempoutput = Wrapinbrackets(tempoutput);
+                    tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
+                    tempoutput = "";
+
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
+                }
+
+                //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
+            }
+
+            else if (customsyntax == "Graphics-linechart(stairstep)")
+            {
+
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string xaxis = "";
+                string yaxis = "";
+                string groupby = "";
+                string shape = "";
+                string opacity = "";
+
+                string Facetcolumn = "";
+                string Facetrow = "";
+                string Facetscale = "";
+                string Facetwrap = "";
+                string flipaxis = "";
+
+
+                string dataset = "";
+                string xlab = "";
+                string ylab = "";
+                string maintitle = "";
+
+
+
+
+
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "xaxis")
+                    {
+                        xaxis = value;
+                    }
+
+
+                    if (key == "yaxis")
+                    {
+                        yaxis = value;
+                    }
+                    if (key == "groupby")
+                    {
+                        groupby = value;
+                    }
+                    if (key == "shape")
+                    {
+                        shape = value;
+                    }
+
+                    if (key == "opacity")
+                    {
+                        opacity = value;
+                    }
+                    if (key == "Facetcolumn")
+                    {
+                        Facetcolumn = value;
+                    }
+                    if (key == "Facetrow")
+                    {
+                        Facetrow = value;
+                    }
+                    if (key == "Facetscale")
+                    {
+                        Facetscale = value;
+                    }
+                    if (key == "Facetwrap")
+                    {
+                        Facetwrap = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "xlab")
+                    {
+                        xlab = value;
+                    }
+                    if (key == "ylab")
+                    {
+                        ylab = value;
+                    }
+                    if (key == "maintitle")
+                    {
+                        maintitle = value;
+                    }
+
+
+                }
+                string tempoutput = "";
+                bool addcomma = false;
+                string[] variables = yaxis.Split(',');
+
+                foreach (string var in variables)
+                {
+
+                    //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
+                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" + var + "))";
+
+                    //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
+                    tempoutput = tempoutput + " +\n\t geom_step( stat = \"identity\", position = \"identity\"";
+
+                    if (groupby != "" || shape != "")
+                    {
+
+
+                        tempoutput += ", aes (";
+
+                        if (groupby != "")
+
+                        {
+                            tempoutput = tempoutput + "color = " + groupby;
+                            addcomma = true;
+                        }
+
+
+                        if (shape != "")
+                        {
+                            if (!addcomma)
+                            {
+                                tempoutput = tempoutput + ", shape = " + shape;
+                            }
+                            else
+                            {
+                                tempoutput = tempoutput + " shape = " + shape;
+                            }
+                        }
+
+                        tempoutput = tempoutput + ")";
+                    }
+
+                    if (opacity != "")
+                    {
+                        tempoutput = tempoutput + ", alpha=" + opacity;
+                    }
+
+
+                    tempoutput = tempoutput + ")";
+
+
+                    if (flipaxis == "TRUE")
+                    {
+                        tempoutput = tempoutput + " +\n\t coord_flip()";
+                    }
+
+
+                    //   +labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) +
+
+                    if (groupby != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (stair step) for xaxis variable: " + xaxis + " ,yaxis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";
+                    }
+                    else
+                    {
+
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (stair step) for xaxis variable: " + xaxis + " ,yaxis variable: " + yaxis + "\")";
+                    }
+
+                    if (xlab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t xlab(" + "\"" + xlab + "\"" + ")";
+                    }
+
+                    if (ylab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ylab(" + "\"" + ylab + "\"" + ")";
+                    }
+
+                    if (maintitle != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
+                    }
+
+
+
+                    tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
+                    // tempoutput = Wrapinbrackets(tempoutput);
+                    tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
+                    tempoutput = "";
+
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
+                }
+
+                //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
 
             else if (customsyntax == "Graphics-contour")
@@ -4019,7 +4726,7 @@ namespace BSky.XmlDecoder
                 string Facetwrap = "";
                 string flipaxis = "";
 
-                    string dataset = "";
+                string dataset = "";
                 string xlab = "";
                 string ylab = "";
                 string maintitle = "";
@@ -4103,7 +4810,7 @@ namespace BSky.XmlDecoder
                     //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
                     tempoutput = tempoutput + " +\n\t geom_density2d( stat = \"density2d\", position = \"identity\"";
 
-                 
+
 
                     if (opacity != "")
                     {
@@ -4124,12 +4831,12 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Contour chart for xaxis variable: " + xaxis + " yaxis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Contour chart for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
 
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Contour chart for xaxis variable: " + xaxis + " yaxis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Contour chart for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
                     }
 
                     if (xlab != "")
@@ -4156,16 +4863,12 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
             else if (customsyntax == "Graphics-violin")
@@ -4332,12 +5035,12 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Violin chart for xaxis variable: " + xaxis + " yaxis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Violin chart for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
-                        
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Violin chart for xaxis variable: " + xaxis + " yaxis variable: " + yaxis + "\")";
+
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Violin chart for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
                     }
 
                     if (xlab != "")
@@ -4364,16 +5067,12 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
             else if (customsyntax == "Graphics-bin2d")
@@ -4488,7 +5187,7 @@ namespace BSky.XmlDecoder
                 {
 
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
-                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis  + ", y =" + var + "))";
+                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" + var + "))";
 
                     //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
                     tempoutput = tempoutput + " +\n\t geom_tile( stat = \"bin2d\", position = \"identity\"";
@@ -4529,8 +5228,10 @@ namespace BSky.XmlDecoder
                     if (bins != "")
 
                     {
-                        tempoutput = tempoutput + ", bins = " + bins;
-
+                        if (bins != "0")
+                        {
+                            tempoutput = tempoutput + ", bins = " + bins;
+                        }
                     }
 
                     tempoutput = tempoutput + ")";
@@ -4546,12 +5247,12 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Bin 2d chart for xaxis variable: " + xaxis + " yaxis variable: " + yaxis + " grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Binned scatterplot (square) for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
 
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Bin 2d chart for xaxis variable: " + xaxis + " yaxis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Binned scatterplot (square) for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
                     }
 
                     if (xlab != "")
@@ -4578,16 +5279,224 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
 
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
+            else if (customsyntax == "Graphics-binhex")
+            {
 
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string xaxis = "";
+                string yaxis = "";
+                string groupby = "";
+                string shape = "";
+                string opacity = "";
+                string bins = "";
+
+                string Facetcolumn = "";
+                string Facetrow = "";
+                string Facetscale = "";
+                string Facetwrap = "";
+                string flipaxis = "";
+
+
+                string dataset = "";
+                string xlab = "";
+                string ylab = "";
+                string maintitle = "";
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "xaxis")
+                    {
+                        xaxis = value;
+                    }
+
+                    if (key == "bins")
+                    {
+                        bins = value;
+                    }
+
+
+                    if (key == "yaxis")
+                    {
+                        yaxis = value;
+                    }
+                    if (key == "groupby")
+                    {
+                        groupby = value;
+                    }
+                    if (key == "shape")
+                    {
+                        shape = value;
+                    }
+
+                    if (key == "opacity")
+                    {
+                        opacity = value;
+                    }
+                    if (key == "Facetcolumn")
+                    {
+                        Facetcolumn = value;
+                    }
+                    if (key == "Facetrow")
+                    {
+                        Facetrow = value;
+                    }
+                    if (key == "Facetscale")
+                    {
+                        Facetscale = value;
+                    }
+                    if (key == "Facetwrap")
+                    {
+                        Facetwrap = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "xlab")
+                    {
+                        xlab = value;
+                    }
+                    if (key == "ylab")
+                    {
+                        ylab = value;
+                    }
+                    if (key == "maintitle")
+                    {
+                        maintitle = value;
+                    }
+
+
+                }
+                string tempoutput = "";
+                bool addcomma = false;
+                string[] variables = yaxis.Split(',');
+
+                foreach (string var in variables)
+                {
+
+                    //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
+                    tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" + var + "))";
+
+                    //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
+                    tempoutput = tempoutput + " +\n\t geom_hex( stat = \"binhex\", position = \"identity\"";
+
+                    if (groupby != "" || shape != "")
+                    {
+
+
+                        tempoutput += ", aes (";
+
+                        if (groupby != "")
+
+                        {
+                            tempoutput = tempoutput + "fill = " + groupby;
+                            addcomma = true;
+                        }
+
+
+                        if (shape != "")
+                        {
+                            if (!addcomma)
+                            {
+                                tempoutput = tempoutput + ", shape = " + shape;
+                            }
+                            else
+                            {
+                                tempoutput = tempoutput + " shape = " + shape;
+                            }
+                        }
+                        tempoutput = tempoutput + ")";
+                    }
+
+                    if (opacity != "")
+                    {
+                        tempoutput = tempoutput + ", alpha=" + opacity;
+                    }
+
+                    if (bins != "")
+
+                    {
+                        if (bins != "0")
+                        {
+                            tempoutput = tempoutput + ", bins = " + bins;
+                        }
+                    }
+
+                    tempoutput = tempoutput + ")";
+
+
+                    if (flipaxis == "TRUE")
+                    {
+                        tempoutput = tempoutput + " +\n\t coord_flip()";
+                    }
+
+
+                    //   +labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) +
+
+                    if (groupby != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\" Binned plot (Hex) for X axis variable: " + xaxis + " ,Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
+                    }
+                    else
+                    {
+
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Binned plot (Hex) for X axis variable: " + xaxis + " ,Y axis variable: " + yaxis + "\")";
+                    }
+
+                    if (xlab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t xlab(" + "\"" + xlab + "\"" + ")";
+                    }
+
+                    if (ylab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ylab(" + "\"" + ylab + "\"" + ")";
+                    }
+
+                    if (maintitle != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
+                    }
+
+
+
+                    tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
+                    // tempoutput = Wrapinbrackets(tempoutput);
+                    tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
+                    tempoutput = "";
+
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
+                }
+
+                //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
 
             else if (customsyntax == "Graphics-barplot")
@@ -4616,7 +5525,7 @@ namespace BSky.XmlDecoder
                 string Facetscale = "";
                 string Facetwrap = "";
                 string fill = "";
-               // string color = "";
+                // string color = "";
                 string dataset = "";
                 string xlab = "";
                 string ylab = "";
@@ -4634,7 +5543,7 @@ namespace BSky.XmlDecoder
                     string value = kv.Value;
                     //create final syntac in 'output'
                     // output = output+","+ key + "=c(" + value + ")";
-               
+
                     if (key == "destination")
                     {
                         Destination = value;
@@ -4687,7 +5596,7 @@ namespace BSky.XmlDecoder
                     {
                         maintitle = value;
                     }
-                   
+
                     if (key == "jitter")
                     {
                         jitter = value;
@@ -4712,29 +5621,29 @@ namespace BSky.XmlDecoder
 
                 }
                 string tempoutput = "";
-                string[] variables = Destination.Split(',');
+                string[] variables = yvariable.Split(',');
                 string ylabel = "Count";
                 foreach (string var in variables)
                 {
                     //x='' handles the case where you want a bar graph for mpg filled by whether the car is automatic or not
                     //library(ggplot2)
-                   // bp < -ggplot(df, aes(x = "", y = value, fill = group)) +
-                   // geom_bar(width = 1, stat = "identity")
+                    // bp < -ggplot(df, aes(x = "", y = value, fill = group)) +
+                    // geom_bar(width = 1, stat = "identity")
 
-                    if (var == "")
+                    if (Destination == "")
                     {
                         tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x ='' ";
                     }
                     else
                     {
-                        tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
+                        tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + Destination;
                     }
-                    
-                   if (yvariable !="")
+
+                    if (var != "")
                     {
 
-                        tempoutput = tempoutput + ",y=" + yvariable;
-                        ylabel = yvariable;
+                        tempoutput = tempoutput + ",y=" + var;
+                        ylabel = var;
 
                     }
                     if (Groupby != "")
@@ -4742,7 +5651,7 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + ",fill=" + Groupby;
                     }
 
-                   
+
 
                     tempoutput = tempoutput + "))";
 
@@ -4768,7 +5677,7 @@ namespace BSky.XmlDecoder
 
                     if (barcolor != "")
                     {
-                        tempoutput = tempoutput + ",fill =" + "\"" + barcolor +"\"";
+                        tempoutput = tempoutput + ",fill =" + "\"" + barcolor + "\"";
                     }
                     if (yvariable != "")
                     {
@@ -4777,7 +5686,7 @@ namespace BSky.XmlDecoder
                     }
 
                     tempoutput = tempoutput + ")";
-                    
+
 
                     if (flipaxis == "TRUE")
                     {
@@ -4787,11 +5696,11 @@ namespace BSky.XmlDecoder
                     //we add Fill to the Barplot title only when it exists
                     if (Groupby == "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bar plot for X axis: " + var + "  ,Y axis: " + ylabel + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + Destination + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bar plot for X axis: " + Destination + "  ,Y axis: " + ylabel + "\")";
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bar plot for X axis: " + var + "  ,Y axis: " + ylabel +  "  ,Fill: " + Groupby+   "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + Destination + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bar plot for X axis: " + Destination + "  ,Y axis: " + ylabel + "  ,Fill: " + Groupby + "\")";
                     }
                     if (xlab != "")
                     {
@@ -4809,7 +5718,7 @@ namespace BSky.XmlDecoder
                     }
 
                     //+geom_smooth(method ="{{sm}}", color= "{{color}}")
-                   
+
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
                     tempoutput = tempoutput + "\n\n";
@@ -4817,19 +5726,500 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
 
-           
+            else if (customsyntax == "Graphics-piechart")
+            {
+                //print(ggplot({ {% DATASET %} }, aes(x = { { GroupingVariable} }, y = eval(parse(text = paste(vars))) ,color = { { GroupBy} },size ={ { size} } ,alpha ={ { opacity} })) +geom_point() + labs(x = "{{GroupingVariable}}", y = vars, color = "{{GroupBy}}", title = paste("Scatter plot for variable ", "{{GroupingVariable}}", " by ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
+                //+facet_grid({  { Facetcolumn} }
+                //~{ { Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )+geom_smooth(method = "{{sm}}", color = "{{color}}"))
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string Destination = "";
+                string Groupby = "";
+                string size = "";
+                string opacity = "";
+                string Facetcolumn = "";
+                string Facetrow = "";
+                string Facetscale = "";
+                string Facetwrap = "";
+                string fill = "";
+                // string color = "";
+                string dataset = "";
+                string xlab = "";
+                string ylab = "";
+                string maintitle = "";
+                string jitter = "";
+                string flipaxis = "";
+                string shape = "";
+                string rdgrp1 = "";
+                string width = "";
+                string yvariable = "";
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "destination")
+                    {
+                        Destination = value;
+                    }
+                    if (key == "yvariable")
+                    {
+                        yvariable = value;
+                    }
+                    if (key == "Groupby")
+                    {
+                        Groupby = value;
+                    }
+                    if (key == "size")
+                    {
+                        size = value;
+                    }
+                    if (key == "opacity")
+                    {
+                        opacity = value;
+                    }
+                    if (key == "Facetcolumn")
+                    {
+                        Facetcolumn = value;
+                    }
+                    if (key == "Facetrow")
+                    {
+                        Facetrow = value;
+                    }
+                    if (key == "Facetscale")
+                    {
+                        Facetscale = value;
+                    }
+                    if (key == "Facetwrap")
+                    {
+                        Facetwrap = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "xlab")
+                    {
+                        xlab = value;
+                    }
+                    if (key == "ylab")
+                    {
+                        ylab = value;
+                    }
+                    if (key == "maintitle")
+                    {
+                        maintitle = value;
+                    }
+
+                    if (key == "jitter")
+                    {
+                        jitter = value;
+                    }
+                    if (key == "flipaxis")
+                    {
+                        flipaxis = value;
+                    }
+                    if (key == "width")
+                    {
+                        width = value;
+                    }
+                    if (key == "rdgrp1")
+                    {
+                        rdgrp1 = value;
+                    }
+                    if (key == "fill")
+                    {
+                        fill = value;
+                    }
+
+
+                }
+                string tempoutput = "";
+                string[] variables = Destination.Split(',');
+                string ylabel = "Count";
+                foreach (string var in variables)
+                {
+                    //x='' handles the case where you want a bar graph for mpg filled by whether the car is automatic or not
+                    //library(ggplot2)
+                    // bp < -ggplot(df, aes(x = "", y = value, fill = group)) +
+                    // geom_bar(width = 1, stat = "identity")
+
+                    if (var == "")
+                    {
+                        tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x ='' ";
+                    }
+                    else
+                    {
+                        tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
+                    }
+
+                    if (yvariable != "")
+                    {
+
+                        tempoutput = tempoutput + ",y=" + yvariable;
+                        ylabel = yvariable;
+
+                    }
+                    if (Groupby != "")
+                    {
+                        tempoutput = tempoutput + ",fill=" + Groupby;
+                    }
+
+
+
+                    tempoutput = tempoutput + "))";
+
+                    //Constructing geom_bar
+
+                    //if (rdgrp1 == "stack")
+                    //{
+                    //    tempoutput = tempoutput + " +\n\t geom_bar( position =\"stack\" ";
+                    //}
+                    //else if (rdgrp1 == "dodge")
+                    //{
+                    //    tempoutput = tempoutput + " +\n\t geom_bar( position=\"dodge\" ";
+                    //}
+
+                    if (rdgrp1 == "fill")
+                    {
+                        tempoutput = tempoutput + " +\n\t geom_bar( position=\"fill\" ";
+                    }
+                    else
+                    {
+                        tempoutput = tempoutput + " +\n\t geom_bar( ";
+
+                    }
+
+                    if (opacity != "")
+                    {
+                        tempoutput = tempoutput + ",alpha=" + opacity;
+                    }
+
+                    if (width != "")
+                    {
+                        tempoutput = tempoutput + ",width =" + width;
+                    }
+                    if (yvariable != "")
+                    {
+                        tempoutput = tempoutput + " ,stat=\"identity\"";
+
+                    }
+
+                    tempoutput = tempoutput + ")";
+
+                    tempoutput = tempoutput + " +\n\t coord_polar(\"y\")";
+
+
+                    if (flipaxis == "TRUE")
+                    {
+                        tempoutput = tempoutput + " +\n\t coord_flip()";
+                    }
+
+                    //we add Fill to the Barplot title only when it exists
+                    if (Groupby == "")
+                    {
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Pie chart for X aesthetic: " + var + "  ,Y aesthetic: " + ylabel + "\")";
+                    }
+                    else
+                    {
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Pie Chart  with X aesthetic: " + var + "  ,Y aesthetic: " + ylabel + "  ,Fill: " + Groupby + "\")";
+                    }
+                    if (xlab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t xlab(" + "\"" + xlab + "\"" + ")";
+                    }
+
+                    if (ylab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ylab(" + "\"" + ylab + "\"" + ")";
+                    }
+
+                    if (maintitle != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
+                    }
+
+                    //+geom_smooth(method ="{{sm}}", color= "{{color}}")
+
+                    tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
+                    // tempoutput = Wrapinbrackets(tempoutput);
+                    tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
+                    tempoutput = "";
+
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
+                }
+
+                //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
+            }
+
+            else if (customsyntax == "Graphics-bullseye")
+            {
+                //print(ggplot({ {% DATASET %} }, aes(x = { { GroupingVariable} }, y = eval(parse(text = paste(vars))) ,color = { { GroupBy} },size ={ { size} } ,alpha ={ { opacity} })) +geom_point() + labs(x = "{{GroupingVariable}}", y = vars, color = "{{GroupBy}}", title = paste("Scatter plot for variable ", "{{GroupingVariable}}", " by ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
+                //+facet_grid({  { Facetcolumn} }
+                //~{ { Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )+geom_smooth(method = "{{sm}}", color = "{{color}}"))
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string Destination = "";
+                string Groupby = "";
+                string size = "";
+                string opacity = "";
+                string Facetcolumn = "";
+                string Facetrow = "";
+                string Facetscale = "";
+                string Facetwrap = "";
+                string fill = "";
+                // string color = "";
+                string dataset = "";
+                string xlab = "";
+                string ylab = "";
+                string maintitle = "";
+                string jitter = "";
+                string flipaxis = "";
+                string shape = "";
+                string rdgrp1 = "";
+                string width = "";
+                string yvariable = "";
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "destination")
+                    {
+                        Destination = value;
+                    }
+                    if (key == "yvariable")
+                    {
+                        yvariable = value;
+                    }
+                    if (key == "Groupby")
+                    {
+                        Groupby = value;
+                    }
+                    if (key == "size")
+                    {
+                        size = value;
+                    }
+                    if (key == "opacity")
+                    {
+                        opacity = value;
+                    }
+                    if (key == "Facetcolumn")
+                    {
+                        Facetcolumn = value;
+                    }
+                    if (key == "Facetrow")
+                    {
+                        Facetrow = value;
+                    }
+                    if (key == "Facetscale")
+                    {
+                        Facetscale = value;
+                    }
+                    if (key == "Facetwrap")
+                    {
+                        Facetwrap = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "xlab")
+                    {
+                        xlab = value;
+                    }
+                    if (key == "ylab")
+                    {
+                        ylab = value;
+                    }
+                    if (key == "maintitle")
+                    {
+                        maintitle = value;
+                    }
+
+                    if (key == "jitter")
+                    {
+                        jitter = value;
+                    }
+                    if (key == "flipaxis")
+                    {
+                        flipaxis = value;
+                    }
+                    if (key == "width")
+                    {
+                        width = value;
+                    }
+                    if (key == "rdgrp1")
+                    {
+                        rdgrp1 = value;
+                    }
+                    if (key == "fill")
+                    {
+                        fill = value;
+                    }
+
+
+                }
+                string tempoutput = "";
+                string[] variables = Destination.Split(',');
+                string ylabel = "Count";
+                foreach (string var in variables)
+                {
+                    //x='' handles the case where you want a bar graph for mpg filled by whether the car is automatic or not
+                    //library(ggplot2)
+                    // bp < -ggplot(df, aes(x = "", y = value, fill = group)) +
+                    // geom_bar(width = 1, stat = "identity")
+
+                    if (var == "")
+                    {
+                        tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x ='' ";
+                    }
+                    else
+                    {
+                        tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
+                    }
+
+                    if (yvariable != "")
+                    {
+
+                        tempoutput = tempoutput + ",y=" + yvariable;
+                        ylabel = yvariable;
+
+                    }
+                    if (Groupby != "")
+                    {
+                        tempoutput = tempoutput + ",fill=" + Groupby;
+                    }
+
+
+
+                    tempoutput = tempoutput + "))";
+
+                    //Constructing geom_bar
+
+                    //if (rdgrp1 == "stack")
+                    //{
+                    //    tempoutput = tempoutput + " +\n\t geom_bar( position =\"stack\" ";
+                    //}
+                    //else if (rdgrp1 == "dodge")
+                    //{
+                    //    tempoutput = tempoutput + " +\n\t geom_bar( position=\"dodge\" ";
+                    //}
+
+                    if (rdgrp1 == "fill")
+                    {
+                        tempoutput = tempoutput + " +\n\t geom_bar( position=\"fill\" ";
+                    }
+                    else
+                    {
+                        tempoutput = tempoutput + " +\n\t geom_bar( ";
+
+                    }
+
+                    if (opacity != "")
+                    {
+                        tempoutput = tempoutput + ",alpha=" + opacity;
+                    }
+
+                    if (width != "")
+                    {
+                        tempoutput = tempoutput + ",width =" + width;
+                    }
+                    if (yvariable != "")
+                    {
+                        tempoutput = tempoutput + " ,stat=\"identity\"";
+
+                    }
+
+                    tempoutput = tempoutput + ")";
+
+                    tempoutput = tempoutput + " +\n\t coord_polar(\"x\")";
+
+
+                    if (flipaxis == "TRUE")
+                    {
+                        tempoutput = tempoutput + " +\n\t coord_flip()";
+                    }
+
+                    //we add Fill to the Barplot title only when it exists
+                    if (Groupby == "")
+                    {
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bulls eye chart for X aesthetic: " + var + "  ,Y aesthetic: " + ylabel + "\")";
+                    }
+                    else
+                    {
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bulls eye Chart  with X aesthetic: " + var + "  ,Y aesthetic: " + ylabel + "  ,Fill: " + Groupby + "\")";
+                    }
+                    if (xlab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t xlab(" + "\"" + xlab + "\"" + ")";
+                    }
+
+                    if (ylab != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ylab(" + "\"" + ylab + "\"" + ")";
+                    }
+
+                    if (maintitle != "")
+                    {
+                        tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
+                    }
+
+                    //+geom_smooth(method ="{{sm}}", color= "{{color}}")
+
+                    tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
+                    // tempoutput = Wrapinbrackets(tempoutput);
+                    tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
+                    tempoutput = "";
+
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
+                }
+
+                //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
+            }
+
             else if (customsyntax == "Graphics-frequencynumeric")
             {
                 //  ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), colour = { { Groupby} }, group = { { Groupby} })) +geom_freqpoly(binwidth ={ { binwidth} }) { { flip} }
@@ -4950,18 +6340,18 @@ namespace BSky.XmlDecoder
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
 
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), colour = { { Groupby} }, group = { { Groupby} }))
-                    if (Groupby !="")
+                    if (Groupby != "")
                     {
-                        tempoutput = tempoutput + ", colour =" +  Groupby + ", group =" + Groupby;
+                        tempoutput = tempoutput + ", colour =" + Groupby + ", group =" + Groupby;
                     }
-                  
+
 
                     tempoutput = tempoutput + "))";
 
-              //      +geom_freqpoly(binwidth ={ { binwidth} }) { { flip} }
+                    //      +geom_freqpoly(binwidth ={ { binwidth} }) { { flip} }
                     tempoutput = tempoutput + " +\n\t geom_freqpoly(";
 
-                 
+
 
                     if (binwidth != "0")
                     {
@@ -4975,7 +6365,7 @@ namespace BSky.XmlDecoder
                     }
 
                     tempoutput = tempoutput + ")";
-                  
+
 
                     if (flipaxis == "TRUE")
                     {
@@ -4992,7 +6382,7 @@ namespace BSky.XmlDecoder
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", colour =" + "\"" + Groupby + "\"" + ", title= " + "\"Frequency chart for variable " + var +  " in colors groups created by variable " +Groupby+   "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", colour =" + "\"" + Groupby + "\"" + ", title= " + "\"Frequency chart for variable " + var + " in colors groups created by variable " + Groupby + "\")";
                     }
 
                     if (xlab != "")
@@ -5019,15 +6409,12 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output +" +\n"+ themeSyntax;
             }
 
             else if (customsyntax == "Graphics-frequencyfactor")
@@ -5036,7 +6423,7 @@ namespace BSky.XmlDecoder
                 //  +labs(x = vars, y = "Count", colour = "{{Groupby}}", title = paste("Frequency chart for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} })
 
                 MatchCollection mcol = re.Matches(commandformat);
-                foreach (Match m in mcol)   
+                foreach (Match m in mcol)
                 {
                     string matchedText = m.Groups[1].Value;
                     string result = GetParam(obj, matchedText);
@@ -5162,7 +6549,7 @@ namespace BSky.XmlDecoder
                     tempoutput = tempoutput + " +\n\t geom_freqpoly(";
 
                     tempoutput = tempoutput + ", stat = \"Count\"";
-                   
+
                     if (opacity != "")
                     {
                         tempoutput = tempoutput + ", alpha=" + opacity;
@@ -5213,16 +6600,12 @@ namespace BSky.XmlDecoder
 
                     tempoutput = "";
 
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output + " +\n" + themeSyntax + "\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                output = output.TrimEnd(Environment.NewLine.ToCharArray());
-
-                IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-                string themeSyntax = confService.GetThemeParams();
-                output = output + " +\n" + themeSyntax;
-
             }
             else
             {
@@ -5252,7 +6635,7 @@ namespace BSky.XmlDecoder
 
         }
 
-        private  static string createfacets(string Facetwrap, string Facetcolumn, string Facetrow, string Facetscale)
+        private static string createfacets(string Facetwrap, string Facetcolumn, string Facetrow, string Facetscale)
         {
             string output = "";
             if (Facetscale == "free_x_and_y")
@@ -5312,7 +6695,7 @@ namespace BSky.XmlDecoder
                     }
                     else
                     {
-                        output = output + " +\n\t facet_grid(" + ". ~" + Facetcolumn + ",scales =" +  "\"" + Facetscale + "\"" + ")";
+                        output = output + " +\n\t facet_grid(" + ". ~" + Facetcolumn + ",scales =" + "\"" + Facetscale + "\"" + ")";
                     }
                 }
             }
@@ -6180,7 +7563,7 @@ namespace BSky.XmlDecoder
             XmlNode normal = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/normal", datanumber));
             XmlNode crosstab = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/crosstab1", datanumber));
             XmlNode crosstab2 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/crosstab2", datanumber));
-            
+
             //For Chi-Sq table. And to get metadata (errors warnings about McNemar and Fisher)
             XmlNode normal1 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/normal1", datanumber));
             XmlNode normal2 = doc.SelectSingleNode(string.Format("/Root/UATableList/Metadata[@tablenumber={0}]/normal2", datanumber));
