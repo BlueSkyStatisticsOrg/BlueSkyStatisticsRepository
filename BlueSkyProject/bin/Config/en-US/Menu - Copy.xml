@@ -82,7 +82,7 @@
       <menu id="Subset_(legacy)" text="Subset (legacy)" commandtemplate="Subset (legacy).xaml" commandoutputformat="Subset (legacy).xml" owner="" nodetype="Leaf" />
     </menu>
   </menu>
- <menu id="analysisMenu" text="Analysis" nodetype="Parent">
+  <menu id="analysisMenu" text="Analysis" nodetype="Parent">
     <menu id="new_id" text="Missing Values" owner="" nodetype="Parent">
       <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_Rows)" text="Analysis of Missing Values (Output Arranged in Rows)" commandtemplate="Analysis of Missing Values (Output Arranged in Rows).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in Rows).xml" owner="" nodetype="Leaf" />
       <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_columns)" text="Analysis of Missing Values (Output Arranged in columns)" commandtemplate="Analysis of Missing Values (Output Arranged in columns).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in columns).xml" owner="" nodetype="Leaf" />
@@ -137,7 +137,7 @@
       <menu id="Two-Way_Crosstab" text="Crosstab, Two-way" commandtemplate="Crosstab, Two-way.xaml" commandoutputformat="Crosstab, Two-way.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="ClusterSubMenu" text="Cluster Analysis" owner="" nodetype="Parent">
-      <menu id="KMeans_Cluster" text="KMeans Cluster" commandtemplate="KMeans Cluster.xaml" commandoutputformat="KMeans Cluster.xml" owner="" nodetype="Leaf" icon="images/K-means.png" showtoolbaricon="true"/>
+      <menu id="KMeans_Cluster" text="KMeans Cluster" commandtemplate="KMeans Cluster.xaml" commandoutputformat="KMeans Cluster.xml" owner="" nodetype="Leaf" icon="images/K-means.png" showtoolbaricon="true" />
       <menu id="Hierarchical_Cluster" text="Hierarchical Cluster" commandtemplate="Hierarchical Cluster.xaml" commandoutputformat="Hierarchical Cluster.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="FactSubMenu" text="Factor Analysis" owner="" nodetype="Parent">
@@ -173,44 +173,44 @@
     <menu id="Reliability_Analysis" text="Reliability Analysis" commandtemplate="Reliability Analysis.xaml" commandoutputformat="Reliability Analysis.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="graphicMenu" text="Graphics" owner="" nodetype="Parent">
+  <menu id="Bar_Chart" text="Bar Chart" commandtemplate="Bar Chart.xaml" commandoutputformat="Bar Chart.xml" owner="" nodetype="Leaf" />
+    <menu id="Bar_Chart_(with_Means)" text="Bar Chart (with Means)" commandtemplate="Bar Chart (with Means).xaml" commandoutputformat="Bar Chart (with Means).xml" owner="" nodetype="Leaf" />
+    <menu id="Bin_hex" text="Bin hex" commandtemplate="Bin hex.xaml" commandoutputformat="Bin hex.xml" owner="" nodetype="Leaf" />
+    <menu id="BoxPlot" text="BoxPlot" commandtemplate="BoxPlot.xaml" commandoutputformat="BoxPlot.xml" owner="" nodetype="Leaf" />
+    <menu id="Bulls_Eye" text="Bulls Eye" commandtemplate="Bulls Eye.xaml" commandoutputformat="Bulls Eye.xml" owner="" nodetype="Leaf" />
+    <menu id="Contour_Plot" text="Contour Plot" commandtemplate="Contour Plot.xaml" commandoutputformat="Contour Plot.xml" owner="" nodetype="Leaf" />
+    <menu id="Density_Plot" text="Density Plot" commandtemplate="Density Plot.xaml" commandoutputformat="Density Plot.xml" owner="" nodetype="Leaf" />
+    <menu id="Density_Plot_(counts)" text="Density Plot (counts)" commandtemplate="Density Plot (counts).xaml" commandoutputformat="Density Plot (counts).xml" owner="" nodetype="Leaf" />
+    <menu id="Frequency_Charts_(factor)" text="Frequency Charts (factor)" commandtemplate="Frequency Charts (factor).xaml" commandoutputformat="Frequency Charts (factor).xml" owner="" nodetype="Leaf" />
+    <menu id="Frequency_Charts_(numeric)" text="Frequency Charts (numeric)" commandtemplate="Frequency Charts (numeric).xaml" commandoutputformat="Frequency Charts (numeric).xml" owner="" nodetype="Leaf" />
+    <menu id="Heatmap" text="Heatmap" commandtemplate="Heatmap.xaml" commandoutputformat="Heatmap.xml" owner="" nodetype="Leaf" />
+    <menu id="Histogram" text="Histogram" commandtemplate="Histogram.xaml" commandoutputformat="Histogram.xml" owner="" nodetype="Leaf" icon="images/Histogram.png" showtoolbaricon="true"/>
+    <menu id="Line_Chart" text="Line Chart" commandtemplate="Line Chart.xaml" commandoutputformat="Line Chart.xml" owner="" nodetype="Leaf" />
+    <menu id="Line_Chart_(line_drawn_in_the_order_in_which_variables_occur)" text="Line Chart (line drawn in the order in which variables occur)" commandtemplate="Line Chart (line drawn in the order in which variables occur).xaml" commandoutputformat="Line Chart (line drawn in the order in which variables occur).xml" owner="" nodetype="Leaf" />
+    <menu id="Line_Chart_(stair_step_plot)" text="Line Chart (stair step plot)" commandtemplate="Line Chart (stair step plot).xaml" commandoutputformat="Line Chart (stair step plot).xml" owner="" nodetype="Leaf" />
     <menu id="MapsSubMenu" text="Maps" owner="" nodetype="Parent">
       <menu id="US_County_Map" text="US County Map" commandtemplate="US County Map.xaml" commandoutputformat="US County Map.xml" owner="" nodetype="Leaf" />
       <menu id="US_State_Map" text="US State Map" commandtemplate="US State Map.xaml" commandoutputformat="US State Map.xml" owner="" nodetype="Leaf" />
-      <menu id="World_Map" text="World Map" commandtemplate="World Map.xaml" commandoutputformat="World Map.xml" owner="" nodetype="Leaf" icon="images/Map.png" showtoolbaricon="true"/>
-    </menu>
-    <menu id="Histogram" text="Histogram" commandtemplate="Histogram.xaml" commandoutputformat="Histogram.xml" owner="" nodetype="Leaf" icon="images/Histogram.png" showtoolbaricon="true" />
-    <menu id="BoxPlot" text="BoxPlot" commandtemplate="BoxPlot.xaml" commandoutputformat="BoxPlot.xml" owner="" nodetype="Leaf" icon="images/Box-Plot.png" showtoolbaricon="true" />
+      <menu id="World_Map" text="World Map" commandtemplate="World Map.xaml" commandoutputformat="World Map.xml" owner="" nodetype="Leaf" icon="images/Map.png" showtoolbaricon="true" />
+    </menu>	
+    <menu id="Means_Plot" text="Means Plot" commandtemplate="Means Plot.xaml" commandoutputformat="Means Plot.xml" owner="" nodetype="Leaf" />
+    <menu id="Pie_Chart" text="Pie Chart" commandtemplate="Pie Chart.xaml" commandoutputformat="Pie Chart.xml" owner="" nodetype="Leaf" />
+    <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />
+    <menu id="Q-Q_Plots" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
+    <menu id="Scatterplot" text="Scatterplot" commandtemplate="Scatterplot.xaml" commandoutputformat="Scatterplot.xml" owner="" nodetype="Leaf" icon="images/Scatter-Plot.png" showtoolbaricon="true"/>
+    <menu id="Scatterplot_3D" text="Scatterplot 3D" commandtemplate="Scatterplot 3D.xaml" commandoutputformat="Scatterplot 3D.xml" owner="" nodetype="Leaf" />
+    <menu id="Scatterplot_Binned" text="Scatterplot Binned" commandtemplate="Scatterplot Binned.xaml" commandoutputformat="Scatterplot Binned.xml" owner="" nodetype="Leaf" />
     <menu id="Stem_and_Leaf_Plot" text="Stem and Leaf Plot" commandtemplate="Stem and Leaf Plot.xaml" commandoutputformat="Stem and Leaf Plot.xml" owner="" nodetype="Leaf" />
-    <menu id="Plot_of_Means" text="Plot of Means" commandtemplate="Plot of Means.xaml" commandoutputformat="Plot of Means.xml" owner="" nodetype="Leaf" />
-    <menu id="3D_Scatterplot" text="3D Scatterplot" commandtemplate="3D Scatterplot.xaml" commandoutputformat="3D Scatterplot.xml" owner="" nodetype="Leaf" />
-    <menu id="Heatmap" text="Heatmap" commandtemplate="Heatmap.xaml" commandoutputformat="Heatmap.xml" owner="" nodetype="Leaf" />
-    <menu id="Bar_Graph" text="Bar Graph" commandtemplate="Bar Graph.xaml" commandoutputformat="Bar Graph.xml" owner="" nodetype="Leaf" />
-    <menu id="Density_Plot" text="Density Plot" commandtemplate="Density Plot.xaml" commandoutputformat="Density Plot.xml" owner="" nodetype="Leaf" />
-    <menu id="Density_Plot_(counts)" text="Density Plot (counts)" commandtemplate="Density Plot (counts).xaml" commandoutputformat="Density Plot (counts).xml" owner="" nodetype="Leaf" />
     <menu id="Strip_Chart" text="Strip Chart" commandtemplate="Strip Chart.xaml" commandoutputformat="Strip Chart.xml" owner="" nodetype="Leaf" />
-    <menu id="Scatterplot" text="Scatterplot" commandtemplate="Scatterplot.xaml" commandoutputformat="Scatterplot.xml" owner="" nodetype="Leaf" icon="images/Scatter-Plot.png" showtoolbaricon="true" />
-    <menu id="OtherPlotsSubMenu" text="Others" owner="" nodetype="Parent">
-      <menu id="Boxplot_(lists_outliers)" text="Boxplot (lists outliers)" commandtemplate="Boxplot (lists outliers).xaml" commandoutputformat="Boxplot (lists outliers).xml" owner="" nodetype="Leaf" />
-      <menu id="Strip_Plot" text="Strip Plot" commandtemplate="Strip Plot.xaml" commandoutputformat="Strip Plot.xml" owner="" nodetype="Leaf" />
+    <menu id="Violin_Plot" text="Violin Plot" commandtemplate="Violin Plot.xaml" commandoutputformat="Violin Plot.xml" owner="" nodetype="Leaf" />
+	<menu id="OtherPlotsSubMenu" text="Legacy" owner="" nodetype="Parent">
+      <menu id="Boxplot_(lists_outliers)" text="Boxplot (lists outliers)" commandtemplate="Boxplot (lists outliers).xaml" commandoutputformat="Boxplot (lists outliers).xml" owner="" nodetype="Leaf" />      
       <menu id="Histogram_(legacy)" text="Histogram (legacy)" commandtemplate="Histogram (legacy).xaml" commandoutputformat="Histogram (legacy).xml" owner="" nodetype="Leaf" />
+	  <menu id="Plot" text="Plot" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
       <menu id="Plot_of_Means_(legacy)" text="Plot of Means (legacy)" commandtemplate="Plot of Means (legacy).xaml" commandoutputformat="Plot of Means (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Scatterplot_(legacy)" text="Scatterplot (legacy)" commandtemplate="Scatterplot (legacy).xaml" commandoutputformat="Scatterplot (legacy).xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="Line_Chart" text="Line Chart" commandtemplate="Line Chart.xaml" commandoutputformat="Line Chart.xml" owner="" nodetype="Leaf" />
-    <menu id="Frequency_Charts_(numeric)" text="Frequency Charts (numeric)" commandtemplate="Frequency Charts (numeric).xaml" commandoutputformat="Frequency Charts (numeric).xml" owner="" nodetype="Leaf" />
-    <menu id="Frequency_Charts(factor)" text="Frequency Charts(factor)" commandtemplate="Frequency Charts(factor).xaml" commandoutputformat="Frequency Charts(factor).xml" owner="" nodetype="Leaf" />
-    <menu id="Plot" text="Plot" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
-    <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />
-    <menu id="Q-Q_plot" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
-    <menu id="Bin_2d" text="Bin 2d" commandtemplate="Bin 2d.xaml" commandoutputformat="Bin 2d.xml" owner="" nodetype="Leaf" />
-    <menu id="Contour_Chart" text="Contour Chart" commandtemplate="Contour Chart.xaml" commandoutputformat="Contour Chart.xml" owner="" nodetype="Leaf" />
-    <menu id="Violin" text="Violin" commandtemplate="Violin.xaml" commandoutputformat="Violin.xml" owner="" nodetype="Leaf" />
-    <menu id="Bar_Graph_(with_Means)" text="Bar Graph (with Means)" commandtemplate="Bar Graph (with Means).xaml" commandoutputformat="Bar Graph (with Means).xml" owner="" nodetype="Leaf" />
-    <menu id="Bin_hex" text="Bin hex" commandtemplate="Bin hex.xaml" commandoutputformat="Bin hex.xml" owner="" nodetype="Leaf" />
-    <menu id="Bulls_Eye" text="Bulls Eye" commandtemplate="Bulls Eye.xaml" commandoutputformat="Bulls Eye.xml" owner="" nodetype="Leaf" />
-    <menu id="Line_Chart(_line_drawn_in_the_order_in_which_variables_occur)" text="Line Chart( line drawn in the order in which variables occur)" commandtemplate="Line Chart( line drawn in the order in which variables occur).xaml" commandoutputformat="Line Chart( line drawn in the order in which variables occur).xml" owner="" nodetype="Leaf" />
-    <menu id="Line_Chart(_stair_step_plot)" text="Line Chart( stair step plot)" commandtemplate="Line Chart( stair step plot).xaml" commandoutputformat="Line Chart( stair step plot).xml" owner="" nodetype="Leaf" />
-    <menu id="Pie_Chart" text="Pie Chart" commandtemplate="Pie Chart.xaml" commandoutputformat="Pie Chart.xml" owner="" nodetype="Leaf" />
+	  <menu id="Strip_Plot" text="Strip Plot" commandtemplate="Strip Chart (legacy).xaml" commandoutputformat="Strip Chart (legacy).xml" owner="" nodetype="Leaf" />
+    </menu>	
   </menu>
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
     <menu id="new_id" text="Linear Regression" owner="" nodetype="Parent">
