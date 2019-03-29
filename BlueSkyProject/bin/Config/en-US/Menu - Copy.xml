@@ -209,7 +209,7 @@
 	  <menu id="Plot" text="Plot" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
       <menu id="Plot_of_Means_(legacy)" text="Plot of Means (legacy)" commandtemplate="Plot of Means (legacy).xaml" commandoutputformat="Plot of Means (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Scatterplot_(legacy)" text="Scatterplot (legacy)" commandtemplate="Scatterplot (legacy).xaml" commandoutputformat="Scatterplot (legacy).xml" owner="" nodetype="Leaf" />
-	  <menu id="Strip_Plot" text="Strip Plot" commandtemplate="Strip Chart (legacy).xaml" commandoutputformat="Strip Chart (legacy).xml" owner="" nodetype="Leaf" />
+	  <menu id="Strip_Plot" text="Strip Chart (legacy)" commandtemplate="Strip Chart (legacy).xaml" commandoutputformat="Strip Chart (legacy).xml" owner="" nodetype="Leaf" />
     </menu>	
   </menu>
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
