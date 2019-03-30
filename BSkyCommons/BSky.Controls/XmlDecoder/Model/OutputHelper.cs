@@ -2567,7 +2567,7 @@ namespace BSky.XmlDecoder
                     //# Create a dataset of summaries
                     //  { { datasetForSum} } <- summarySE({ {% DATASET %} }, measurevar = vars, groupvars = c("{{xaxis}}", "{{groupby}}"),conf.interval = { { conflevel} },na.rm = TRUE)
                     //string tempdataset = "";
-                    tempoutput += "temp <-summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " + conflevel + ",na.rm = TRUE)";
+                    tempoutput += "temp <-Rmisc::summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " + conflevel + ",na.rm = TRUE,.drop=FALSE)";
 
                     tempoutput = tempoutput + "\n";
 
@@ -2873,7 +2873,7 @@ namespace BSky.XmlDecoder
                     //# Create a dataset of summaries
                     //  { { datasetForSum} } <- summarySE({ {% DATASET %} }, measurevar = vars, groupvars = c("{{xaxis}}", "{{groupby}}"),conf.interval = { { conflevel} },na.rm = TRUE)
                     //string tempdataset = "";
-                    tempoutput += "temp <-summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " + conflevel + ",na.rm = TRUE)";
+                    tempoutput += "temp <-Rmisc::summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " + conflevel + ",na.rm = TRUE,.drop = FALSE)";
 
                     tempoutput = tempoutput + "\n";
 
@@ -4142,11 +4142,11 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) \\nfor X axis variable: " + xaxis + ", Y axis variable: " + yaxis + ", grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) \\nfor X axis variable: " + xaxis + ", Y axis variable: " + var + ", grouped in colors by \\nvariable: " + groupby + "\")";
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) \\nfor X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) \\nfor X axis variable: " + xaxis + ", Y axis variable: " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -4328,11 +4328,11 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) \\n for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + ", grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) \\n for X axis variable: " + xaxis + ", Y axis variable: " + var + ", grouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) \\n for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) \\n for X axis variable: " + xaxis + ", Y axis variable: " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -4512,11 +4512,11 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (stair step) for X axis variable: " + xaxis + "\\nY axis variable: " + yaxis + ", grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Line chart (stair step) for X axis variable: " + xaxis + "\\nY axis variable: " + var + ", grouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (stair step) for X axis variable: " + xaxis + "\\nY axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Line chart (stair step) for X axis variable: " + xaxis + "\\nY axis variable: " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -5265,12 +5265,12 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\" Binned plot (Hex) for X axis variable: " + xaxis + " ,Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Binned Scatterplot (Hex) for X axis variable: " + xaxis + " ,Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
 
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Binned plot (Hex) for X axis variable: " + xaxis + " ,Y axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Binned Scatterplot (Hex) for X axis variable: " + xaxis + " ,Y axis variable: " + yaxis + "\")";
                     }
 
                     if (xlab != "")
@@ -6350,7 +6350,7 @@ namespace BSky.XmlDecoder
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", colour =" + "\"" + Groupby + "\"" + ", title= " + "\"Frequency chart for variable " + var + " in groups indicated by different colors defined by \\n levels of variable " + Groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", colour =" + "\"" + Groupby + "\"" + ", title= " + "\"Frequency chart for variable " + var + " in groups of different colors defined by \\n levels of variable " + Groupby + "\")";
                     }
 
                     if (xlab != "")
