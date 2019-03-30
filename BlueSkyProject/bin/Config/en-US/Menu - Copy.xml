@@ -17,7 +17,6 @@
     <menu id="FileMenuExit" text="Exit" command="BlueSky.Commands.File.FileExitCommand" owner="BSky" nodetype="Leaf" />
   </menu>
   <menu id="dataMenu" text="Data" nodetype="Parent">
-    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Bin_Numeric_Variable(s)" text="Bin Numeric Variable(s)" commandtemplate="Bin Numeric Variable(s).xaml" commandoutputformat="Bin Numeric Variable(s).xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
     <menu id="ComputeSubMenu" text="Compute New Variable(s)" owner="" nodetype="Parent">
       <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
@@ -83,74 +82,17 @@
     </menu>
   </menu>
   <menu id="analysisMenu" text="Analysis" nodetype="Parent">
-    <menu id="new_id" text="Missing Values" owner="" nodetype="Parent">
-      <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_Rows)" text="Analysis of Missing Values (Output Arranged in Rows)" commandtemplate="Analysis of Missing Values (Output Arranged in Rows).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in Rows).xml" owner="" nodetype="Leaf" />
-      <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_columns)" text="Analysis of Missing Values (Output Arranged in columns)" commandtemplate="Analysis of Missing Values (Output Arranged in columns).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in columns).xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="SummarySubMenu" text="Summary Analysis" owner="" nodetype="Parent">
-      <menu id="Analysis_of_Missing_Values" text="Analysis of Missing Values" commandtemplate="Analysis of Missing Values.xaml" commandoutputformat="Analysis of Missing Values.xml" owner="" nodetype="Leaf" />
-      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-      <menu id="Frequency_Table" text="Frequency Table" commandtemplate="Frequency Table.xaml" commandoutputformat="Frequency Table.xml" owner="" nodetype="Leaf" />
-      <menu id="Summary_Statistics_for_All_Variables" text="Summary Statistics for All Variables" commandtemplate="Summary Statistics for All Variables.xaml" commandoutputformat="Summary Statistics for All Variables.xml" owner="" nodetype="Leaf" icon="images/Summarize.png" showtoolbaricon="true" />
-      <menu id="Summary_statistics_for_selected_variables" text="Summary Statistics for Selected Variables" commandtemplate="Summary statistics for selected variables.xaml" commandoutputformat="Summary statistics for selected variables.xml" owner="" nodetype="Leaf" />
-      <menu id="Summary_Statistics_by_Group_" text="Summary Statistics by Group " commandtemplate="Summary Statistics by Group .xaml" commandoutputformat="Summary Statistics by Group .xml" owner="" nodetype="Leaf" />
-      <menu id="Numerical_Statistical_Analysis" text="Numerical Statistical Analysis" commandtemplate="Numerical Statistical Analysis.xaml" commandoutputformat="Numerical Statistical Analysis.xml" owner="" nodetype="Leaf" />
-      <menu id="Factor_Variable_Analysis" text="Frequency Table Top N" commandtemplate="Frequency Table Top N.xaml" commandoutputformat="Frequency Table Top N.xml" owner="" nodetype="Leaf" />
-      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-      <menu id="Correlation_Test_(One_Variable)" text="Correlation Test (One Variable)" commandtemplate="Correlation Test (One Variable).xaml" commandoutputformat="Correlation Test (One Variable).xml" owner="" nodetype="Leaf" />
-      <menu id="Correlation_Test_(Multi-variable)" text="Correlation Test (Multi-variable)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
-      <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
-      <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="MeansSubMenu" text="Means" owner="" nodetype="Parent">
-      <menu id="T-Test,_One_Sample" text="T-Test, One Sample" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
-      <menu id="T-Test,_Independent_Samples" text="T-Test, Independent Samples" commandtemplate="BSkyIndSmTTest.xaml" commandoutputformat="BSkyIndSmTTest.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Sample_T-Test" text="One Sample T-Test" commandtemplate="One Sample T-Test.xaml" commandoutputformat="One Sample T-Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Independent_Samples_T-Test" text="Independent Samples T-Test" commandtemplate="Independent Samples T-Test.xaml" commandoutputformat="Independent Samples T-Test.xml" owner="" nodetype="Leaf" />
-      <menu id="T-Test,_Paired_Samples" text="T-Test, Paired Samples" commandtemplate="T-Test, Paired Samples.xaml" commandoutputformat="T-Test, Paired Samples.xml" owner="" nodetype="Leaf" />
-      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-      <menu id="One_Way_Anova" text="One Way Anova" commandtemplate="One Way Anova.xaml" commandoutputformat="One Way Anova.xml" owner="" nodetype="Leaf" />
-      <menu id="Multi_Way_Anova" text="Multi Way Anova" commandtemplate="Multi Way Anova.xaml" commandoutputformat="Multi Way Anova.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Way_Anova_with_Blocks" text="One Way Anova with Blocks" commandtemplate="One Way Anova with Blocks.xaml" commandoutputformat="One Way Anova with Blocks.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Way_Anova_with_Random_Blocks" text="One Way Anova with Random Blocks" commandtemplate="One Way Anova with Random Blocks.xaml" commandoutputformat="One Way Anova with Random Blocks.xml" owner="" nodetype="Leaf" />
-      <menu id="ANCOVA" text="ANCOVA" commandtemplate="ANCOVA.xaml" commandoutputformat="ANCOVA.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="PropSubMenu" text="Proportions" owner="" nodetype="Parent">
-      <menu id="Proportion_Test,_Single_Sample" text="Proportion Test, Single Sample" commandtemplate="Proportion Test, Single Sample.xaml" commandoutputformat="Proportion Test, Single Sample.xml" owner="" nodetype="Leaf" />
-      <menu id="Proportion_Test,_Independent_Samples" text="Proportion Test, Independent Samples" commandtemplate="Proportion Test, Independent Samples.xaml" commandoutputformat="Proportion Test, Independent Samples.xml" owner="" nodetype="Leaf" />
-      <menu id="Binomial_Test,_Single_Sample" text="Binomial Test, Single Sample" commandtemplate="Binomial Test, Single Sample.xaml" commandoutputformat="Binomial Test, Single Sample.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="VarianceSubMenu" text="Variance" owner="" nodetype="Parent">
-      <menu id="Variance_Test,_Two_Samples" text="Variance Test, Two Samples" commandtemplate="Variance Test, Two Samples.xaml" commandoutputformat="Variance Test, Two Samples.xml" owner="" nodetype="Leaf" />
-      <menu id="Bartletts_Test" text="Bartletts Test" commandtemplate="Bartletts Test.xaml" commandoutputformat="Bartletts Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Levene_Test" text="Levene Test" commandtemplate="Levene Test.xaml" commandoutputformat="Levene Test.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="NonParamSubMenu" text="Non Parametric Tests" owner="" nodetype="Parent">
-      <menu id="Chisq_Test" text="Chisq Test" commandtemplate="Chisq Test.xaml" commandoutputformat="Chisq Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Wilcoxon_Test,_Independent_Samples" text="Wilcoxon Test, Independent Samples" commandtemplate="Wilcoxon Test, Independent Samples.xaml" commandoutputformat="Wilcoxon Test, Independent Samples.xml" owner="" nodetype="Leaf" />
-      <menu id="Wilcoxon_Test,_Paired_Samples" text="Wilcoxon Test, Paired Samples" commandtemplate="Wilcoxon Test, Paired Samples.xaml" commandoutputformat="Wilcoxon Test, Paired Samples.xml" owner="" nodetype="Leaf" />
-      <menu id="Friedman_Test" text="Friedman Test" commandtemplate="Friedman Test.xaml" commandoutputformat="Friedman Test.xml" owner="" nodetype="Leaf" />
-      <menu id="Kruskal_Wallis_Test" text="Kruskal Wallis Test" commandtemplate="Kruskal Wallis Test.xaml" commandoutputformat="Kruskal Wallis Test.xml" owner="" nodetype="Leaf" />
+    <menu id="ClusterSubMenu" text="Cluster Analysis" owner="" nodetype="Parent">
+      <menu id="Hierarchical_Cluster" text="Hierarchical Cluster" commandtemplate="Hierarchical Cluster.xaml" commandoutputformat="Hierarchical Cluster.xml" owner="" nodetype="Leaf" />
+      <menu id="KMeans_Cluster" text="KMeans Cluster" commandtemplate="KMeans Cluster.xaml" commandoutputformat="KMeans Cluster.xml" owner="" nodetype="Leaf" icon="images/K-means.png" showtoolbaricon="true" />
     </menu>
     <menu id="ContinSubMenu" text="Contingency Tables" owner="" nodetype="Parent">
       <menu id="BSkyCrossTable" text="Crosstab, Multi-way (Use this)" commandtemplate="BSkyCrossTable.xaml" commandoutputformat="BSkyCrossTable.xml" owner="" nodetype="Leaf" icon="images/Cross-Tab.png" showtoolbaricon="true" />
       <menu id="Two-Way_Crosstab" text="Crosstab, Two-way" commandtemplate="Crosstab, Two-way.xaml" commandoutputformat="Crosstab, Two-way.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="ClusterSubMenu" text="Cluster Analysis" owner="" nodetype="Parent">
-      <menu id="KMeans_Cluster" text="KMeans Cluster" commandtemplate="KMeans Cluster.xaml" commandoutputformat="KMeans Cluster.xml" owner="" nodetype="Leaf" icon="images/K-means.png" showtoolbaricon="true" />
-      <menu id="Hierarchical_Cluster" text="Hierarchical Cluster" commandtemplate="Hierarchical Cluster.xaml" commandoutputformat="Hierarchical Cluster.xml" owner="" nodetype="Leaf" />
-    </menu>
     <menu id="FactSubMenu" text="Factor Analysis" owner="" nodetype="Parent">
       <menu id="Factor_Analysis" text="Factor Analysis" commandtemplate="Factor Analysis.xaml" commandoutputformat="Factor Analysis.xml" owner="" nodetype="Leaf" />
       <menu id="Principal_Component_Analysis" text="Principal Component Analysis" commandtemplate="Principal Component Analysis.xaml" commandoutputformat="Principal Component Analysis.xml" owner="" nodetype="Leaf" />
-    </menu>
-    <menu id="TimeSubMenu" text="Time Series" owner="" nodetype="Parent">
-      <menu id="Plot_TimeSeries_(with_Correlations)" text="Plot TimeSeries (with Correlations)" commandtemplate="Plot TimeSeries (with Correlations).xaml" commandoutputformat="Plot TimeSeries (with Correlations).xml" owner="" nodetype="Leaf" icon="images/Time-Series.png" showtoolbaricon="true" />
-      <menu id="Plot_Time_Series(separate_or_combined)" text="Plot Time Series(separate or combined)" commandtemplate="Plot Time Series(separate or combined).xaml" commandoutputformat="Plot Time Series(separate or combined).xml" owner="" nodetype="Leaf" />
-      <menu id="Automated_Arima" text="Automated Arima" commandtemplate="Automated Arima.xaml" commandoutputformat="Automated Arima.xml" owner="" nodetype="Leaf" />
-      <menu id="Exponential_Smoothing" text="Exponential Smoothing" commandtemplate="Exponential Smoothing.xaml" commandoutputformat="Exponential Smoothing.xml" owner="" nodetype="Leaf" />
-      <menu id="Holt_Winters_Seasonal" text="Holt Winters Seasonal" commandtemplate="Holt Winters Seasonal.xaml" commandoutputformat="Holt Winters Seasonal.xml" owner="" nodetype="Leaf" />
-      <menu id="Non_Seasonal_Holt_Winters" text="Non Seasonal Holt Winters" commandtemplate="Non Seasonal Holt Winters.xaml" commandoutputformat="Non Seasonal Holt Winters.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="MBASubMenu" text="Market Basket" owner="" nodetype="Parent">
       <menu id="BasSubMenu" text="Basket data format" owner="" nodetype="Parent">
@@ -158,6 +100,7 @@
         <menu id="Item_Frequency_Plot_(for_basket_data_format)" text="Item Frequency Plot (for basket data format)" commandtemplate="Item Frequency Plot (for basket data format).xaml" commandoutputformat="Item Frequency Plot (for basket data format).xml" owner="" nodetype="Leaf" />
         <menu id="Targeting_Items_(for_Basket_data_format)" text="Targeting Items (for Basket data format)" commandtemplate="Targeting Items (for Basket data format).xaml" commandoutputformat="Targeting Items (for Basket data format).xml" owner="" nodetype="Leaf" />
       </menu>
+      <menu id="Display_Rules" text="Display Rules" commandtemplate="Display Rules.xaml" commandoutputformat="Display Rules.xml" owner="" nodetype="Leaf" />
       <menu id="MultiLineSubMenu" text="Multi-line transaction format" owner="" nodetype="Parent">
         <menu id="Generate_Rules_(for_Multi-line_transactions)" text="Generate Rules (for Multi-line transactions)" commandtemplate="Generate Rules (for Multi-line transactions).xaml" commandoutputformat="Generate Rules (for Multi-line transactions).xml" owner="" nodetype="Leaf" />
         <menu id="Item_Frequency_Plot_(for_multi-line_transactions)" text="Item Frequency Plot (for multi-line transactions)" commandtemplate="Item Frequency Plot (for multi-line transactions).xaml" commandoutputformat="Item Frequency Plot (for multi-line transactions).xml" owner="" nodetype="Leaf" />
@@ -167,16 +110,72 @@
         <menu id="Generate_Rules_(for_Multi-Variable_Format)" text="Generate Rules (for Multi-Variable Format)" commandtemplate="Generate Rules (for Multi-Variable Format).xaml" commandoutputformat="Generate Rules (for Multi-Variable Format).xml" owner="" nodetype="Leaf" />
         <menu id="Targeting_Items_(for_Multi-Variable_format)" text="Targeting Items (for Multi-Variable format)" commandtemplate="Targeting Items (for Multi-Variable format).xaml" commandoutputformat="Targeting Items (for Multi-Variable format).xml" owner="" nodetype="Leaf" />
       </menu>
-      <menu id="Display_Rules" text="Display Rules" commandtemplate="Display Rules.xaml" commandoutputformat="Display Rules.xml" owner="" nodetype="Leaf" />
       <menu id="Plot_Rules" text="Plot Rules" commandtemplate="Plot Rules.xaml" commandoutputformat="Plot Rules.xml" owner="" nodetype="Leaf" />
     </menu>
+    <menu id="MeansSubMenu" text="Means" owner="" nodetype="Parent">
+      <menu id="Independent_Samples_T-Test" text="Independent Samples T-Test" commandtemplate="Independent Samples T-Test.xaml" commandoutputformat="Independent Samples T-Test.xml" owner="" nodetype="Leaf" />
+      <menu id="One_Sample_T-Test" text="One Sample T-Test" commandtemplate="One Sample T-Test.xaml" commandoutputformat="One Sample T-Test.xml" owner="" nodetype="Leaf" />
+      <menu id="T-Test,_Independent_Samples" text="T-Test, Independent Samples" commandtemplate="BSkyIndSmTTest.xaml" commandoutputformat="BSkyIndSmTTest.xml" owner="" nodetype="Leaf" />
+      <menu id="T-Test,_One_Sample" text="T-Test, One Sample" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
+      <menu id="T-Test,_Paired_Samples" text="T-Test, Paired Samples" commandtemplate="T-Test, Paired Samples.xaml" commandoutputformat="T-Test, Paired Samples.xml" owner="" nodetype="Leaf" />
+      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+      <menu id="ANCOVA" text="ANCOVA" commandtemplate="ANCOVA.xaml" commandoutputformat="ANCOVA.xml" owner="" nodetype="Leaf" />
+      <menu id="Multi_Way_Anova" text="Multi Way Anova" commandtemplate="Multi Way Anova.xaml" commandoutputformat="Multi Way Anova.xml" owner="" nodetype="Leaf" />
+      <menu id="One_Way_Anova" text="One Way Anova" commandtemplate="One Way Anova.xaml" commandoutputformat="One Way Anova.xml" owner="" nodetype="Leaf" />
+      <menu id="One_Way_Anova_with_Blocks" text="One Way Anova with Blocks" commandtemplate="One Way Anova with Blocks.xaml" commandoutputformat="One Way Anova with Blocks.xml" owner="" nodetype="Leaf" />
+      <menu id="One_Way_Anova_with_Random_Blocks" text="One Way Anova with Random Blocks" commandtemplate="One Way Anova with Random Blocks.xaml" commandoutputformat="One Way Anova with Random Blocks.xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="new_id" text="Missing Values" owner="" nodetype="Parent">
+      <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_columns)" text="Analysis of Missing Values (Output Arranged in columns)" commandtemplate="Analysis of Missing Values (Output Arranged in columns).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in columns).xml" owner="" nodetype="Leaf" />
+      <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_Rows)" text="Analysis of Missing Values (Output Arranged in Rows)" commandtemplate="Analysis of Missing Values (Output Arranged in Rows).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in Rows).xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="NonParamSubMenu" text="Non Parametric Tests" owner="" nodetype="Parent">
+      <menu id="Chisq_Test" text="Chisq Test" commandtemplate="Chisq Test.xaml" commandoutputformat="Chisq Test.xml" owner="" nodetype="Leaf" />
+      <menu id="Friedman_Test" text="Friedman Test" commandtemplate="Friedman Test.xaml" commandoutputformat="Friedman Test.xml" owner="" nodetype="Leaf" />
+      <menu id="Kruskal_Wallis_Test" text="Kruskal Wallis Test" commandtemplate="Kruskal Wallis Test.xaml" commandoutputformat="Kruskal Wallis Test.xml" owner="" nodetype="Leaf" />
+      <menu id="Wilcoxon_Test,_Independent_Samples" text="Wilcoxon Test, Independent Samples" commandtemplate="Wilcoxon Test, Independent Samples.xaml" commandoutputformat="Wilcoxon Test, Independent Samples.xml" owner="" nodetype="Leaf" />
+      <menu id="Wilcoxon_Test,_Paired_Samples" text="Wilcoxon Test, Paired Samples" commandtemplate="Wilcoxon Test, Paired Samples.xaml" commandoutputformat="Wilcoxon Test, Paired Samples.xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="PropSubMenu" text="Proportions" owner="" nodetype="Parent">
+      <menu id="Binomial_Test,_Single_Sample" text="Binomial Test, Single Sample" commandtemplate="Binomial Test, Single Sample.xaml" commandoutputformat="Binomial Test, Single Sample.xml" owner="" nodetype="Leaf" />
+      <menu id="Proportion_Test,_Independent_Samples" text="Proportion Test, Independent Samples" commandtemplate="Proportion Test, Independent Samples.xaml" commandoutputformat="Proportion Test, Independent Samples.xml" owner="" nodetype="Leaf" />
+      <menu id="Proportion_Test,_Single_Sample" text="Proportion Test, Single Sample" commandtemplate="Proportion Test, Single Sample.xaml" commandoutputformat="Proportion Test, Single Sample.xml" owner="" nodetype="Leaf" />
+    </menu>
     <menu id="Reliability_Analysis" text="Reliability Analysis" commandtemplate="Reliability Analysis.xaml" commandoutputformat="Reliability Analysis.xml" owner="" nodetype="Leaf" />
+    <menu id="SummarySubMenu" text="Summary Analysis" owner="" nodetype="Parent">
+      <menu id="Analysis_of_Missing_Values" text="Analysis of Missing Values" commandtemplate="Analysis of Missing Values.xaml" commandoutputformat="Analysis of Missing Values.xml" owner="" nodetype="Leaf" />
+      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+      <menu id="Frequency_Table" text="Frequency Table" commandtemplate="Frequency Table.xaml" commandoutputformat="Frequency Table.xml" owner="" nodetype="Leaf" />
+      <menu id="Factor_Variable_Analysis" text="Frequency Table Top N" commandtemplate="Frequency Table Top N.xaml" commandoutputformat="Frequency Table Top N.xml" owner="" nodetype="Leaf" />
+      <menu id="Numerical_Statistical_Analysis" text="Numerical Statistical Analysis" commandtemplate="Numerical Statistical Analysis.xaml" commandoutputformat="Numerical Statistical Analysis.xml" owner="" nodetype="Leaf" />
+      <menu id="Summary_Statistics_by_Group_" text="Summary Statistics by Group " commandtemplate="Summary Statistics by Group .xaml" commandoutputformat="Summary Statistics by Group .xml" owner="" nodetype="Leaf" />
+      <menu id="Summary_Statistics_for_All_Variables" text="Summary Statistics for All Variables" commandtemplate="Summary Statistics for All Variables.xaml" commandoutputformat="Summary Statistics for All Variables.xml" owner="" nodetype="Leaf" icon="images/Summarize.png" showtoolbaricon="true" />
+      <menu id="Summary_statistics_for_selected_variables" text="Summary Statistics for Selected Variables" commandtemplate="Summary statistics for selected variables.xaml" commandoutputformat="Summary statistics for selected variables.xml" owner="" nodetype="Leaf" />
+      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+      <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
+      <menu id="Correlation_Test_(One_Variable)" text="Correlation Test (One Variable)" commandtemplate="Correlation Test (One Variable).xaml" commandoutputformat="Correlation Test (One Variable).xml" owner="" nodetype="Leaf" />
+      <menu id="Correlation_Test_(Multi-variable)" text="Correlation Test (Multi-variable)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
+      <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="TimeSubMenu" text="Time Series" owner="" nodetype="Parent">
+      <menu id="Automated_Arima" text="Automated Arima" commandtemplate="Automated Arima.xaml" commandoutputformat="Automated Arima.xml" owner="" nodetype="Leaf" />
+      <menu id="Exponential_Smoothing" text="Exponential Smoothing" commandtemplate="Exponential Smoothing.xaml" commandoutputformat="Exponential Smoothing.xml" owner="" nodetype="Leaf" />
+      <menu id="Holt_Winters_Seasonal" text="Holt Winters Seasonal" commandtemplate="Holt Winters Seasonal.xaml" commandoutputformat="Holt Winters Seasonal.xml" owner="" nodetype="Leaf" />
+      <menu id="Non_Seasonal_Holt_Winters" text="Non Seasonal Holt Winters" commandtemplate="Non Seasonal Holt Winters.xaml" commandoutputformat="Non Seasonal Holt Winters.xml" owner="" nodetype="Leaf" />
+      <menu id="Plot_TimeSeries_(with_Correlations)" text="Plot TimeSeries (with Correlations)" commandtemplate="Plot TimeSeries (with Correlations).xaml" commandoutputformat="Plot TimeSeries (with Correlations).xml" owner="" nodetype="Leaf" icon="images/Time-Series.png" showtoolbaricon="true" />
+      <menu id="Plot_Time_Series(separate_or_combined)" text="Plot Time Series(separate or combined)" commandtemplate="Plot Time Series(separate or combined).xaml" commandoutputformat="Plot Time Series(separate or combined).xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="VarianceSubMenu" text="Variance" owner="" nodetype="Parent">
+      <menu id="Bartletts_Test" text="Bartletts Test" commandtemplate="Bartletts Test.xaml" commandoutputformat="Bartletts Test.xml" owner="" nodetype="Leaf" />
+      <menu id="Levene_Test" text="Levene Test" commandtemplate="Levene Test.xaml" commandoutputformat="Levene Test.xml" owner="" nodetype="Leaf" />
+      <menu id="Variance_Test,_Two_Samples" text="Variance Test, Two Samples" commandtemplate="Variance Test, Two Samples.xaml" commandoutputformat="Variance Test, Two Samples.xml" owner="" nodetype="Leaf" />
+    </menu>
   </menu>
   <menu id="graphicMenu" text="Graphics" owner="" nodetype="Parent">
-  <menu id="Bar_Chart" text="Bar Chart" commandtemplate="Bar Chart.xaml" commandoutputformat="Bar Chart.xml" owner="" nodetype="Leaf" />
+    <menu id="Bar_Chart" text="Bar Chart" commandtemplate="Bar Chart.xaml" commandoutputformat="Bar Chart.xml" owner="" nodetype="Leaf" />
     <menu id="Bar_Chart_(with_Means)" text="Bar Chart (with Means)" commandtemplate="Bar Chart (with Means).xaml" commandoutputformat="Bar Chart (with Means).xml" owner="" nodetype="Leaf" />
     <menu id="Bin_hex" text="Bin hex" commandtemplate="Bin hex.xaml" commandoutputformat="Bin hex.xml" owner="" nodetype="Leaf" />
-    <menu id="BoxPlot" text="BoxPlot" commandtemplate="BoxPlot.xaml" commandoutputformat="BoxPlot.xml" owner="" nodetype="Leaf" />
+    <menu id="BoxPlot" text="BoxPlot" commandtemplate="BoxPlot.xaml" commandoutputformat="BoxPlot.xml" owner="" nodetype="Leaf"  icon="images/Box-Plot.png" showtoolbaricon="true" />
     <menu id="Bulls_Eye" text="Bulls Eye" commandtemplate="Bulls Eye.xaml" commandoutputformat="Bulls Eye.xml" owner="" nodetype="Leaf" />
     <menu id="Contour_Plot" text="Contour Plot" commandtemplate="Contour Plot.xaml" commandoutputformat="Contour Plot.xml" owner="" nodetype="Leaf" />
     <menu id="Density_Plot" text="Density Plot" commandtemplate="Density Plot.xaml" commandoutputformat="Density Plot.xml" owner="" nodetype="Leaf" />
@@ -184,7 +183,7 @@
     <menu id="Frequency_Charts_(factor)" text="Frequency Charts (factor)" commandtemplate="Frequency Charts (factor).xaml" commandoutputformat="Frequency Charts (factor).xml" owner="" nodetype="Leaf" />
     <menu id="Frequency_Charts_(numeric)" text="Frequency Charts (numeric)" commandtemplate="Frequency Charts (numeric).xaml" commandoutputformat="Frequency Charts (numeric).xml" owner="" nodetype="Leaf" />
     <menu id="Heatmap" text="Heatmap" commandtemplate="Heatmap.xaml" commandoutputformat="Heatmap.xml" owner="" nodetype="Leaf" />
-    <menu id="Histogram" text="Histogram" commandtemplate="Histogram.xaml" commandoutputformat="Histogram.xml" owner="" nodetype="Leaf" icon="images/Histogram.png" showtoolbaricon="true"/>
+    <menu id="Histogram" text="Histogram" commandtemplate="Histogram.xaml" commandoutputformat="Histogram.xml" owner="" nodetype="Leaf" icon="images/Histogram.png" showtoolbaricon="true" />
     <menu id="Line_Chart" text="Line Chart" commandtemplate="Line Chart.xaml" commandoutputformat="Line Chart.xml" owner="" nodetype="Leaf" />
     <menu id="Line_Chart_(line_drawn_in_the_order_in_which_variables_occur)" text="Line Chart (line drawn in the order in which variables occur)" commandtemplate="Line Chart (line drawn in the order in which variables occur).xaml" commandoutputformat="Line Chart (line drawn in the order in which variables occur).xml" owner="" nodetype="Leaf" />
     <menu id="Line_Chart_(stair_step_plot)" text="Line Chart (stair step plot)" commandtemplate="Line Chart (stair step plot).xaml" commandoutputformat="Line Chart (stair step plot).xml" owner="" nodetype="Leaf" />
@@ -192,27 +191,40 @@
       <menu id="US_County_Map" text="US County Map" commandtemplate="US County Map.xaml" commandoutputformat="US County Map.xml" owner="" nodetype="Leaf" />
       <menu id="US_State_Map" text="US State Map" commandtemplate="US State Map.xaml" commandoutputformat="US State Map.xml" owner="" nodetype="Leaf" />
       <menu id="World_Map" text="World Map" commandtemplate="World Map.xaml" commandoutputformat="World Map.xml" owner="" nodetype="Leaf" icon="images/Map.png" showtoolbaricon="true" />
-    </menu>	
-    <menu id="Means_Plot" text="Means Plot" commandtemplate="Means Plot.xaml" commandoutputformat="Means Plot.xml" owner="" nodetype="Leaf" />
+    </menu>
     <menu id="Pie_Chart" text="Pie Chart" commandtemplate="Pie Chart.xaml" commandoutputformat="Pie Chart.xml" owner="" nodetype="Leaf" />
+    <menu id="Plot_of_Means" text="Plot of Means" commandtemplate="Plot of Means.xaml" commandoutputformat="Plot of Means.xml" owner="" nodetype="Leaf" />
     <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />
     <menu id="Q-Q_Plots" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
-    <menu id="Scatterplot" text="Scatterplot" commandtemplate="Scatterplot.xaml" commandoutputformat="Scatterplot.xml" owner="" nodetype="Leaf" icon="images/Scatter-Plot.png" showtoolbaricon="true"/>
+    <menu id="Scatterplot" text="Scatterplot" commandtemplate="Scatterplot.xaml" commandoutputformat="Scatterplot.xml" owner="" nodetype="Leaf" icon="images/Scatter-Plot.png" showtoolbaricon="true" />
     <menu id="Scatterplot_3D" text="Scatterplot 3D" commandtemplate="Scatterplot 3D.xaml" commandoutputformat="Scatterplot 3D.xml" owner="" nodetype="Leaf" />
     <menu id="Scatterplot_Binned" text="Scatterplot Binned" commandtemplate="Scatterplot Binned.xaml" commandoutputformat="Scatterplot Binned.xml" owner="" nodetype="Leaf" />
     <menu id="Stem_and_Leaf_Plot" text="Stem and Leaf Plot" commandtemplate="Stem and Leaf Plot.xaml" commandoutputformat="Stem and Leaf Plot.xml" owner="" nodetype="Leaf" />
     <menu id="Strip_Chart" text="Strip Chart" commandtemplate="Strip Chart.xaml" commandoutputformat="Strip Chart.xml" owner="" nodetype="Leaf" />
     <menu id="Violin_Plot" text="Violin Plot" commandtemplate="Violin Plot.xaml" commandoutputformat="Violin Plot.xml" owner="" nodetype="Leaf" />
-	<menu id="OtherPlotsSubMenu" text="Legacy" owner="" nodetype="Parent">
-      <menu id="Boxplot_(lists_outliers)" text="Boxplot (lists outliers)" commandtemplate="Boxplot (lists outliers).xaml" commandoutputformat="Boxplot (lists outliers).xml" owner="" nodetype="Leaf" />      
+    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+    <menu id="OtherPlotsSubMenu" text="Legacy" owner="" nodetype="Parent">
+      <menu id="Boxplot_(lists_outliers)" text="Boxplot (lists outliers)" commandtemplate="Boxplot (lists outliers).xaml" commandoutputformat="Boxplot (lists outliers).xml" owner="" nodetype="Leaf" />
       <menu id="Histogram_(legacy)" text="Histogram (legacy)" commandtemplate="Histogram (legacy).xaml" commandoutputformat="Histogram (legacy).xml" owner="" nodetype="Leaf" />
-	  <menu id="Plot" text="Plot" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
+      <menu id="Plot" text="Plot" commandtemplate="Plot.xaml" commandoutputformat="Plot.xml" owner="" nodetype="Leaf" />
       <menu id="Plot_of_Means_(legacy)" text="Plot of Means (legacy)" commandtemplate="Plot of Means (legacy).xaml" commandoutputformat="Plot of Means (legacy).xml" owner="" nodetype="Leaf" />
       <menu id="Scatterplot_(legacy)" text="Scatterplot (legacy)" commandtemplate="Scatterplot (legacy).xaml" commandoutputformat="Scatterplot (legacy).xml" owner="" nodetype="Leaf" />
-	  <menu id="Strip_Plot" text="Strip Chart (legacy)" commandtemplate="Strip Chart (legacy).xaml" commandoutputformat="Strip Chart (legacy).xml" owner="" nodetype="Leaf" />
-    </menu>	
+      <menu id="Strip_Plot" text="Strip Chart (legacy)" commandtemplate="Strip Chart (legacy).xaml" commandoutputformat="Strip Chart (legacy).xml" owner="" nodetype="Leaf" />
+    </menu>
   </menu>
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
+    <menu id="Decision_Trees" text="Decision Trees" commandtemplate="Decision Trees.xaml" commandoutputformat="Decision Trees.xml" owner="" nodetype="Leaf" />
+    <menu id="Display_Contrasts" text="Display Contrasts" commandtemplate="Display Contrasts.xaml" commandoutputformat="Display Contrasts.xml" owner="" nodetype="Leaf" />
+    <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="IRT" owner="" nodetype="Parent">
+      <menu id="Simple_Rasch_Model" text="Simple Rasch Model" commandtemplate="Simple Rasch Model.xaml" commandoutputformat="Simple Rasch Model.xml" owner="" nodetype="Leaf" />
+      <menu id="Partial_Credit_Model" text="Partial Credit Model" commandtemplate="Partial Credit Model.xaml" commandoutputformat="Partial Credit Model.xml" owner="" nodetype="Leaf" />
+      <menu id="Partial_Credit_Model_(Multi_Faceted)" text="Partial Credit Model (Multi Faceted)" commandtemplate="Partial Credit Model (Multi Faceted).xaml" commandoutputformat="Partial Credit Model (Multi Faceted).xml" owner="" nodetype="Leaf" />
+      <menu id="Rating_Scale_Model" text="Rating Scale Model" commandtemplate="Rating Scale Model.xaml" commandoutputformat="Rating Scale Model.xml" owner="" nodetype="Leaf" />
+      <menu id="Rating_Scale_Model_(Multi_Faceted)" text="Rating Scale Model (Multi Faceted)" commandtemplate="Rating Scale Model (Multi Faceted).xaml" commandoutputformat="Rating Scale Model (Multi Faceted).xml" owner="" nodetype="Leaf" />
+    </menu>
+    <menu id="KNN" text="KNN" commandtemplate="KNN.xaml" commandoutputformat="KNN.xml" owner="" nodetype="Leaf" />
+    <menu id="Linear_Modeling" text="Linear Modeling" commandtemplate="Linear Modeling.xaml" commandoutputformat="Linear Modeling.xml" owner="" nodetype="Leaf" />
     <menu id="new_id" text="Linear Regression" owner="" nodetype="Parent">
       <menu id="Linear_Regression" text="Linear Regression" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf" />
       <menu id="Linear_Regression_with_Formula" text="Linear Regression with Formula" commandtemplate="Linear Regression with Formula.xaml" commandoutputformat="Linear Regression with Formula.xml" owner="" nodetype="Leaf" />
@@ -221,51 +233,39 @@
       <menu id="Logistic_Regression" text="Logistic Regression" commandtemplate="Logistic Regression.xaml" commandoutputformat="Logistic Regression.xml" owner="" nodetype="Leaf" />
       <menu id="Logistic_Regression_with_Formula" text="Logistic Regression with Formula" commandtemplate="Logistic Regression with Formula.xaml" commandoutputformat="Logistic Regression with Formula.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
-    <menu id="Linear_Modeling" text="Linear Modeling" commandtemplate="Linear Modeling.xaml" commandoutputformat="Linear Modeling.xml" owner="" nodetype="Leaf" />
     <menu id="Multinomial_Logit" text="Multinomial Logit" commandtemplate="Multinomial Logit.xaml" commandoutputformat="Multinomial Logit.xml" owner="" nodetype="Leaf" />
-    <menu id="Ordinal_Regression" text="Ordinal Regression" commandtemplate="Ordinal Regression.xaml" commandoutputformat="Ordinal Regression.xml" owner="" nodetype="Leaf" />
     <menu id="Naive_Bayes" text="Naive Bayes" commandtemplate="Naive Bayes.xaml" commandoutputformat="Naive Bayes.xml" owner="" nodetype="Leaf" />
-    <menu id="Decision_Trees" text="Decision Trees" commandtemplate="Decision Trees.xaml" commandoutputformat="Decision Trees.xml" owner="" nodetype="Leaf" />
+    <menu id="Ordinal_Regression" text="Ordinal Regression" commandtemplate="Ordinal Regression.xaml" commandoutputformat="Ordinal Regression.xml" owner="" nodetype="Leaf" />
     <menu id="RFSubMenu" text="Random Forest" owner="" nodetype="Parent">
       <menu id="Random_Forest" text="Random Forest" commandtemplate="Random Forest.xaml" commandoutputformat="Random Forest.xml" owner="" nodetype="Leaf" />
       <menu id="TuneRF" text="TuneRF" commandtemplate="TuneRF.xaml" commandoutputformat="TuneRF.xml" owner="" nodetype="Leaf" />
       <menu id="Optimal_Number_of_Trees" text="Optimal Number of Trees" commandtemplate="Optimal Number of Trees.xaml" commandoutputformat="Optimal Number of Trees.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="Set_Contrasts" text="Set Contrasts" commandtemplate="Set Contrasts.xaml" commandoutputformat="Set Contrasts.xml" owner="" nodetype="Leaf" />
-    <menu id="Display_Contrasts" text="Display Contrasts" commandtemplate="Display Contrasts.xaml" commandoutputformat="Display Contrasts.xml" owner="" nodetype="Leaf" />
-    <menu id="KNN" text="KNN" commandtemplate="KNN.xaml" commandoutputformat="KNN.xml" owner="" nodetype="Leaf" />
     <menu id="Summarizing_Models_for_each_group" text="Summarizing Models for each group" commandtemplate="Summarizing Models for each group.xaml" commandoutputformat="Summarizing Models for each group.xml" owner="" nodetype="Leaf" />
-    <menu id="new_id" text="IRT" owner="" nodetype="Parent">
-      <menu id="Simple_Rasch_Model" text="Simple Rasch Model" commandtemplate="Simple Rasch Model.xaml" commandoutputformat="Simple Rasch Model.xml" owner="" nodetype="Leaf" />
-      <menu id="Partial_Credit_Model" text="Partial Credit Model" commandtemplate="Partial Credit Model.xaml" commandoutputformat="Partial Credit Model.xml" owner="" nodetype="Leaf" />
-      <menu id="Partial_Credit_Model_(Multi_Faceted)" text="Partial Credit Model (Multi Faceted)" commandtemplate="Partial Credit Model (Multi Faceted).xaml" commandoutputformat="Partial Credit Model (Multi Faceted).xml" owner="" nodetype="Leaf" />
-      <menu id="Rating_Scale_Model" text="Rating Scale Model" commandtemplate="Rating Scale Model.xaml" commandoutputformat="Rating Scale Model.xml" owner="" nodetype="Leaf" />
-      <menu id="Rating_Scale_Model_(Multi_Faceted)" text="Rating Scale Model (Multi Faceted)" commandtemplate="Rating Scale Model (Multi Faceted).xaml" commandoutputformat="Rating Scale Model (Multi Faceted).xml" owner="" nodetype="Leaf" />
-    </menu>
   </menu>
   <menu id="ModelTuningMenu" text="Model Tuning" owner="" nodetype="Parent">
     <menu id="Bootstrap_Resampling" text="Bootstrap Resampling" commandtemplate="Bootstrap Resampling.xaml" commandoutputformat="Bootstrap Resampling.xml" owner="" nodetype="Leaf" />
     <menu id="k-fold_Cross_Validation" text="k-fold Cross Validation" commandtemplate="k-fold Cross Validation.xaml" commandoutputformat="k-fold Cross Validation.xml" owner="" nodetype="Leaf" />
-    <menu id="Repeated_k-fold_Cross_Validation" text="Repeated k-fold Cross Validation" commandtemplate="Repeated k-fold Cross Validation.xaml" commandoutputformat="Repeated k-fold Cross Validation.xml" owner="" nodetype="Leaf" />
     <menu id="Leave_One_Out_Cross_Validation" text="Leave One Out Cross Validation" commandtemplate="Leave One Out Cross Validation.xaml" commandoutputformat="Leave One Out Cross Validation.xml" owner="" nodetype="Leaf" />
+    <menu id="Repeated_k-fold_Cross_Validation" text="Repeated k-fold Cross Validation" commandtemplate="Repeated k-fold Cross Validation.xaml" commandoutputformat="Repeated k-fold Cross Validation.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="ModelStatsMenu" text="Model Statistics" owner="" nodetype="Parent">
-    <menu id="Stepwise" text="Stepwise" commandtemplate="Stepwise.xaml" commandoutputformat="Stepwise.xml" owner="" nodetype="Leaf" />
     <menu id="AIC" text="AIC" commandtemplate="AIC.xaml" commandoutputformat="AIC.xml" owner="" nodetype="Leaf" />
     <menu id="BIC" text="BIC" commandtemplate="BIC.xaml" commandoutputformat="BIC.xml" owner="" nodetype="Leaf" />
-    <menu id="Confidence_Interval" text="Confidence Interval" commandtemplate="Confidence Interval.xaml" commandoutputformat="Confidence Interval.xml" owner="" nodetype="Leaf" />
-    <menu id="Variance_Inflation_Factors" text="Variance Inflation Factors" commandtemplate="Variance Inflation Factors.xaml" commandoutputformat="Variance Inflation Factors.xml" owner="" nodetype="Leaf" />
     <menu id="Bonferroni_Outlier_Test" text="Bonferroni Outlier Test" commandtemplate="Bonferroni Outlier Test.xaml" commandoutputformat="Bonferroni Outlier Test.xml" owner="" nodetype="Leaf" />
-    <menu id="Likelihood_Ratio_Test" text="Likelihood Ratio Test" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />
+    <menu id="Confidence_Interval" text="Confidence Interval" commandtemplate="Confidence Interval.xaml" commandoutputformat="Confidence Interval.xml" owner="" nodetype="Leaf" />
     <menu id="Hosmer-Lemeshow_Test" text="Hosmer-Lemeshow Test" commandtemplate="Hosmer-Lemeshow Test.xaml" commandoutputformat="Hosmer-Lemeshow Test.xml" owner="" nodetype="Leaf" />
-    <menu id="Pseudo_R_squared" text="Pseudo R squared" commandtemplate="Pseudo R squared.xaml" commandoutputformat="Pseudo R squared.xml" owner="" nodetype="Leaf" />
     <menu id="new_id" text="IRT" owner="" nodetype="Parent">
       <menu id="ICC_Plots" text="ICC Plots" commandtemplate="ICC Plots.xaml" commandoutputformat="ICC Plots.xml" owner="" nodetype="Leaf" />
       <menu id="Item_Fit" text="Item Fit" commandtemplate="Item Fit.xaml" commandoutputformat="Item Fit.xml" owner="" nodetype="Leaf" />
       <menu id="Plot_PI_Map" text="Plot PI Map" commandtemplate="Plot PI Map.xaml" commandoutputformat="Plot PI Map.xml" owner="" nodetype="Leaf" />
       <menu id="Item_and_Test_Information" text="Item and Test Information" commandtemplate="Item and Test Information.xaml" commandoutputformat="Item and Test Information.xml" owner="" nodetype="Leaf" />
     </menu>
+    <menu id="Likelihood_Ratio_Test" text="Likelihood Ratio Test" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />
+    <menu id="Pseudo_R_squared" text="Pseudo R squared" commandtemplate="Pseudo R squared.xaml" commandoutputformat="Pseudo R squared.xml" owner="" nodetype="Leaf" />
+    <menu id="Stepwise" text="Stepwise" commandtemplate="Stepwise.xaml" commandoutputformat="Stepwise.xml" owner="" nodetype="Leaf" />
+    <menu id="Variance_Inflation_Factors" text="Variance Inflation Factors" commandtemplate="Variance Inflation Factors.xaml" commandoutputformat="Variance Inflation Factors.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="toolsMenu" text="Tools" owner="BSky" nodetype="Parent">
     <menu id="vct" text="Inspect Dialog" group="true" command="BlueSky.Commands.Tools.InspectorCommand" owner="BSky" nodetype="Leaf" />
