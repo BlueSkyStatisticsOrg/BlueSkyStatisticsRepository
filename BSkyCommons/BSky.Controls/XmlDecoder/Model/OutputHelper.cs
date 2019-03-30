@@ -1432,7 +1432,7 @@ namespace BSky.XmlDecoder
         public static string GetCommand(string commandformat, DependencyObject obj)
         {
             IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
-            string themeSyntax = confService.GetThemeParams();
+            string themeSyntax  = confService.GetThemeParams();
 
             Dictionary<string, string> CommandKeyValDict = new Dictionary<string, string>();
             BSkyCanvas obj1 = null;
@@ -1485,8 +1485,6 @@ namespace BSky.XmlDecoder
                 string nooftiles = "";
                 string dataset = "";
 
-
-
                 //At this point CommandKeyValDict has key and values
                 //Aaron will arrange key-vals as wanted
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
@@ -1528,7 +1526,6 @@ namespace BSky.XmlDecoder
                 }
                 output = dataset + " <- " + dataset + " ";
 
-
                 // output = output + "mutate(";
 
                 if (rankby != "")
@@ -1552,11 +1549,8 @@ namespace BSky.XmlDecoder
                     }
                 }
 
-
-
                 if (rdgrp1 == "Prefix")
                 {
-
                     for (int i = 0; i < values.Length; i++)
                     {
                         // values[i] = values[i].Trim();
@@ -1586,7 +1580,6 @@ namespace BSky.XmlDecoder
                     }
                     output = output.TrimEnd(',');
                     output = output + ")";
-
                 }
                 else
                 {
@@ -1609,7 +1602,6 @@ namespace BSky.XmlDecoder
                 }
 
                 output = output + "\nBSkyLoadRefreshDataframe(" + dataset + ")";
-
             }
 
             else if (customsyntax == "Graphics-scatterplot")
@@ -1734,14 +1726,12 @@ namespace BSky.XmlDecoder
                     {
                         se = value;
                     }
-
                 }
                 string tempoutput = "";
                 string[] variables = Destination.Split(',');
 
                 foreach (string var in variables)
                 {
-
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + GroupingVariable + "," + "y=" + var;
                     if (GroupBy != "")
                     {
@@ -1758,9 +1748,7 @@ namespace BSky.XmlDecoder
                     if (shape != "")
                     {
                         tempoutput = tempoutput + ",shape=" + shape;
-
                     }
-
 
                     tempoutput = tempoutput + "))";
 
@@ -1807,9 +1795,7 @@ namespace BSky.XmlDecoder
 
                         tempoutput = tempoutput + ",se=" + se;
 
-
                         tempoutput = tempoutput + ")";
-
                     }
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -1825,10 +1811,6 @@ namespace BSky.XmlDecoder
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
-
-
-
-
 
             else if (customsyntax == "Graphics-stripchart")
             {
@@ -1942,14 +1924,12 @@ namespace BSky.XmlDecoder
                     {
                         shape = value;
                     }
-
                 }
                 string tempoutput = "";
                 string[] variables = Destination.Split(',');
 
                 foreach (string var in variables)
                 {
-
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + GroupingVariable + "," + "y=" + var;
                     if (GroupBy != "")
                     {
@@ -1968,7 +1948,6 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + ",shape=" + shape;
 
                     }
-
 
                     tempoutput = tempoutput + "))";
 
@@ -2030,18 +2009,14 @@ namespace BSky.XmlDecoder
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
 
-
             //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} }))  + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
             // +geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5) 
             //  +labs(x = vars, y = "Density", fill = "{{Groupby}}", paste("Density plot for variable ", vars, sep = ''))
             //  +facet_grid({ { yfacet} }
             //  ~{ { xfacet} })
 
-
             else if (customsyntax == "Graphics-density")
             {
-
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -2072,7 +2047,6 @@ namespace BSky.XmlDecoder
                 string flipaxis = "";
                 string rdgrp1 = "";
 
-
                 string bordercolor = "";
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
@@ -2086,7 +2060,6 @@ namespace BSky.XmlDecoder
                     {
                         rdgrp1 = value;
                     }
-
 
                     if (key == "destination")
                     {
@@ -2160,7 +2133,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
 
@@ -2171,11 +2143,8 @@ namespace BSky.XmlDecoder
 
                     tempoutput = tempoutput + "))";
 
-
                     //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
                     tempoutput = tempoutput + " +\n\t geom_density( ";
-
-
 
                     if (rdgrp1 != "")
                     {
@@ -2192,7 +2161,6 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + ",alpha=" + opacity;
                     }
 
-
                     tempoutput = tempoutput + ")";
                     // End of geom_density
 
@@ -2200,7 +2168,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
-
 
                     //   +labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) +
 
@@ -2252,7 +2219,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-densitycounts")
             {
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -2281,7 +2247,6 @@ namespace BSky.XmlDecoder
                 string maintitle = "";
                 string jitter = "";
                 string flipaxis = "";
-
 
                 string bordercolor = "";
 
@@ -2364,7 +2329,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     //    ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), y =..count.., fill = { { Groupby} }))
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var + ", y =..count..";
 
@@ -2375,7 +2339,6 @@ namespace BSky.XmlDecoder
 
                     tempoutput = tempoutput + "))";
 
-
                     //   +geom_density(fill = "{{barcolor}}", position = "fill", alpha = 0.5)
                     tempoutput = tempoutput + " +\n\t geom_density( ";
 
@@ -2383,7 +2346,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + ",position = \"fill\"";
                     }
-
 
                     if (!(barcolor == "" || barcolor == null))
                     {
@@ -2393,7 +2355,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + ",alpha=" + opacity;
                     }
-
 
                     tempoutput = tempoutput + ")";
                     // End of geom_density
@@ -2447,10 +2408,8 @@ namespace BSky.XmlDecoder
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
 
-
             else if (customsyntax == "Graphics-plotofmeans")
             {
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -2600,15 +2559,11 @@ namespace BSky.XmlDecoder
                     }
                 }
 
-
-
-
                 string tempoutput = "";
                 string[] variables = yaxis.Split(',');
 
                 foreach (string var in variables)
                 {
-
                     //# Create a dataset of summaries
                     //  { { datasetForSum} } <- summarySE({ {% DATASET %} }, measurevar = vars, groupvars = c("{{xaxis}}", "{{groupby}}"),conf.interval = { { conflevel} },na.rm = TRUE)
                     //string tempdataset = "";
@@ -2640,7 +2595,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput += ", group = " + Groupby;
                     }
-
 
                     tempoutput = tempoutput + "))";
 
@@ -2674,7 +2628,6 @@ namespace BSky.XmlDecoder
                         tempoutput += noerrbars;
                     }
 
-
                     tempoutput = tempoutput + ", ymax =" + var + "+";
 
                     if (stderr != "")
@@ -2697,9 +2650,6 @@ namespace BSky.XmlDecoder
                         tempoutput += noerrbars;
                     }
 
-
-
-
                     tempoutput += " ), width = .1, position = pd)";
 
                     tempoutput += " + \n\t geom_line(position = pd";
@@ -2708,7 +2658,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + ",alpha=" + opacity;
                     }
-
 
                     tempoutput += ")  +\n\t geom_point(position = pd) ";
 
@@ -2751,7 +2700,6 @@ namespace BSky.XmlDecoder
                     output = output.TrimEnd(Environment.NewLine.ToCharArray());
                     output = output.TrimEnd(Environment.NewLine.ToCharArray());
                     output = output + " +\n" + themeSyntax + "\n\n";
-
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
@@ -2759,7 +2707,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-barplotmeans")
             {
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -2918,15 +2865,11 @@ namespace BSky.XmlDecoder
                     }
                 }
 
-
-
-
                 string tempoutput = "";
                 string[] variables = yaxis.Split(',');
 
                 foreach (string var in variables)
                 {
-
                     //# Create a dataset of summaries
                     //  { { datasetForSum} } <- summarySE({ {% DATASET %} }, measurevar = vars, groupvars = c("{{xaxis}}", "{{groupby}}"),conf.interval = { { conflevel} },na.rm = TRUE)
                     //string tempdataset = "";
@@ -2959,17 +2902,10 @@ namespace BSky.XmlDecoder
                     //    tempoutput += ", group = " + Groupby;
                     //}
 
-
                     tempoutput = tempoutput + "))";
 
-
                     //Constructing geom_bar
-
-
-
-
                     tempoutput = tempoutput + " +\n\t geom_bar( position=\"dodge\" ";
-
 
                     if (opacity != "")
                     {
@@ -2994,59 +2930,57 @@ namespace BSky.XmlDecoder
                     // { { confinterval} }
                     // { { noerrbars} }), width = .1,position = pd)
 
-                    tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
-
-                    if (stderr != "")
+                    if (noerrbars != "0")
                     {
-                        tempoutput += stderr;
+                        tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
+
+                        if (stderr != "")
+                        {
+                            tempoutput += stderr;
+                        }
+
+                        if (stddev != "")
+                        {
+                            tempoutput += stddev;
+                        }
+
+                        if (confinterval != "")
+                        {
+                            tempoutput += confinterval;
+                        }
+
+                     //   if (noerrbars != "")
+                      //  {
+                       //     tempoutput += noerrbars;
+                        // }
+
+
+                        tempoutput = tempoutput + ", ymax =" + var + "+";
+
+                        if (stderr != "")
+                        {
+                            tempoutput += stderr;
+                        }
+
+                        if (stddev != "")
+                        {
+                            tempoutput += stddev;
+                        }
+
+                        if (confinterval != "")
+                        {
+                            tempoutput += confinterval;
+                        }
+
+                   //     if (noerrbars != "")
+                    //    {
+                     //       tempoutput += noerrbars;
+                       // }
+
+                        tempoutput += " ), width = .1, position = pd)";
+
+                        // tempoutput += " + \n\t geom_line(position = pd";
                     }
-
-                    if (stddev != "")
-                    {
-                        tempoutput += stddev;
-                    }
-
-                    if (confinterval != "")
-                    {
-                        tempoutput += confinterval;
-                    }
-
-                    if (noerrbars != "")
-                    {
-                        tempoutput += noerrbars;
-                    }
-
-
-                    tempoutput = tempoutput + ", ymax =" + var + "+";
-
-                    if (stderr != "")
-                    {
-                        tempoutput += stderr;
-                    }
-
-                    if (stddev != "")
-                    {
-                        tempoutput += stddev;
-                    }
-
-                    if (confinterval != "")
-                    {
-                        tempoutput += confinterval;
-                    }
-
-                    if (noerrbars != "")
-                    {
-                        tempoutput += noerrbars;
-                    }
-
-
-
-
-                    tempoutput += " ), width = .1, position = pd)";
-
-                    // tempoutput += " + \n\t geom_line(position = pd";
-
-
 
                     //if (opacity != "")
                     //{
@@ -3066,7 +3000,7 @@ namespace BSky.XmlDecoder
 
                     //    labs(x = "{{xaxis}}", y = vars, fill = "{{Groupby}}", title = paste("Plot for variable ", vars, sep = ''))
 
-                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ",fill = " + "\"" + Groupby + "\"" + ", title= " + "\"Plot of means for variable " + var + " by variable " + xaxis + "\")";
+                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ",fill = " + "\"" + Groupby + "\"" + ", title= " + "\"Bar Chart (with means) for Y axis variable " + var + "  , X axis variable " + xaxis + "\")";
 
                     if (xlab != "")
                     {
@@ -3134,7 +3068,6 @@ namespace BSky.XmlDecoder
                 string jitter = "";
                 string flipaxis = "";
 
-
                 string bordercolor = "";
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
@@ -3212,7 +3145,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
 
                     tempoutput = tempoutput + "))";
@@ -3243,7 +3175,6 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + ",alpha=" + opacity;
                     }
 
-
                     tempoutput = tempoutput + ")";
                     // End of heom_histogram
 
@@ -3251,7 +3182,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
-
 
                     //+labs(x = vars, y = "Counts", title = "{{maintitle}}", title = paste("Histogram for variable ", vars, sep = ''))
                     tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", title= " + "\"Histogram for variable " + var + "\")";
@@ -3290,7 +3220,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-pplot")
             {
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -3431,7 +3360,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     //ggplot(data = { {% DATASET %} }, mapping = aes(sample = eval(parse(text = paste(vars))), shape = { { Groupby} }))
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(sample = " + var + ", y = ";
 
@@ -3510,16 +3438,10 @@ namespace BSky.XmlDecoder
 
                     tempoutput += ")";
 
-
-
-
-
-
                     if (flipaxis == "TRUE")
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
-
 
                     //+labs(x = "Theoretical Quantiles", y = "Sample Quantiles", title = paste("pp Plot for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
                     tempoutput = tempoutput + " +\n\t labs(x = \"Probability Points\"" + ", y =" + "\"Cumulative Probability\", title = " + "\"PP Plot for variable " + var + "\")";
@@ -3563,7 +3485,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-qqlot")
             {
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -3726,7 +3647,6 @@ namespace BSky.XmlDecoder
 
                     if (band == "TRUE")
                     {
-
                         tempoutput += " +\n\t stat_qq_band(";
                         if (!(distribution == "" || distribution == null))
                         {
@@ -3783,16 +3703,10 @@ namespace BSky.XmlDecoder
 
                     tempoutput += ")";
 
-
-
-
-
-
                     if (flipaxis == "TRUE")
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
-
 
                     //+labs(x = "Theoretical Quantiles", y = "Sample Quantiles", title = paste("qq Plot for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
                     tempoutput = tempoutput + " +\n\t labs(x = \"Theoretical Quantiles\"" + ", y =" + "\"Sample Quantiles\", title = " + "\"QQ Plot for variable " + var + "\")";
@@ -3823,19 +3737,17 @@ namespace BSky.XmlDecoder
 
                     output = output.TrimEnd(Environment.NewLine.ToCharArray());
                     output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                    output = output + " +\n" + themeSyntax + "\n\n";
+                    output = output + " +\n" + themeSyntax +"\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
-
 
             //  ggplot({ {% DATASET %} }, aes(x = { { GroupingVariable} }, y = eval(parse(text = paste(vars))),fill = { { GroupBy} })) +geom_boxplot(fill = "{{barcolor}}")  { { flipAxes} }
             //   +labs(x = "{{GroupingVariable}}", y = vars, fill = "{{GroupBy}}", title = paste("Box plot for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
 
             else if (customsyntax == "Graphics-boxplot")
             {
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -3869,7 +3781,6 @@ namespace BSky.XmlDecoder
                 string outliers = "";
                 string plotDataPoints = "";
                 string notch = "";
-
 
                 string bordercolor = "";
 
@@ -4023,11 +3934,9 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + "notch = TRUE";
                     }
 
-
                     tempoutput = tempoutput + ")";
 
                     // End of geomboxplot
-
 
                     if (plotDataPoints == "Stacked")
                     {
@@ -4040,12 +3949,10 @@ namespace BSky.XmlDecoder
 
                     }
 
-
                     if (flipaxis == "TRUE")
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
-
 
                     //+labs(x = vars, y = "Counts", title = "{{maintitle}}", title = paste("Histogram for variable ", vars, sep = ''))
                     tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + GroupingVariable + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Boxplot for variable " + var + "\")";
@@ -4082,15 +3989,12 @@ namespace BSky.XmlDecoder
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
 
-
             //   ggplot({ {% DATASET %} }, aes(x ={ { xaxis} }, y = eval(parse(text = paste(vars))), colour ={ { groupby} }, group ={ { groupby} })) +geom_line() + geom_point() + labs(x = "{{xaxis}}", y = vars, colour = "{{Groupby}}", title = paste("Plot for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
             //  +facet_grid({ { yfacet} }
             // ~{ { xfacet} })
 
             else if (customsyntax == "Graphics-linechart(xaxis)")
             {
-
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -4120,11 +4024,6 @@ namespace BSky.XmlDecoder
                 string ylab = "";
                 string maintitle = "";
 
-
-
-
-
-
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
                     string key = kv.Key;
@@ -4136,7 +4035,6 @@ namespace BSky.XmlDecoder
                     {
                         xaxis = value;
                     }
-
 
                     if (key == "yaxis")
                     {
@@ -4187,8 +4085,6 @@ namespace BSky.XmlDecoder
                     {
                         maintitle = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 bool addcomma = false;
@@ -4196,7 +4092,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" + var + "))";
 
@@ -4205,7 +4100,6 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "" || shape != "")
                     {
-
 
                         tempoutput += ", aes (";
 
@@ -4237,26 +4131,22 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + ", alpha=" + opacity;
                     }
 
-
                     tempoutput = tempoutput + ")";
-
 
                     if (flipaxis == "TRUE")
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
 
-
                     //   +labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) +
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) for X axis variable: " + xaxis + "\\nY axis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) \\nfor X axis variable: " + xaxis + ", Y axis variable: " + yaxis + ", grouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
-
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) for X axis variable: " + xaxis + "\\n Y axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (observations connected by order of values on x axis) \\nfor X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
                     }
 
                     if (xlab != "")
@@ -4273,8 +4163,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
-
-
 
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -4293,8 +4181,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-linechart(path)")
             {
-
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -4318,16 +4204,10 @@ namespace BSky.XmlDecoder
                 string Facetwrap = "";
                 string flipaxis = "";
 
-
                 string dataset = "";
                 string xlab = "";
                 string ylab = "";
                 string maintitle = "";
-
-
-
-
-
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
@@ -4391,8 +4271,6 @@ namespace BSky.XmlDecoder
                     {
                         maintitle = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 bool addcomma = false;
@@ -4400,7 +4278,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" + var + "))";
 
@@ -4409,8 +4286,6 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "" || shape != "")
                     {
-
-
                         tempoutput += ", aes (";
 
                         if (groupby != "")
@@ -4441,9 +4316,7 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + ", alpha=" + opacity;
                     }
 
-
                     tempoutput = tempoutput + ")";
-
 
                     if (flipaxis == "TRUE")
                     {
@@ -4455,12 +4328,11 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) for X axis variable: " + xaxis + "\\n Y axis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) \\n for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + ", grouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
-
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) for X axis variable: " + xaxis + "\\nY axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (ordered by occurance of variable values in data) \\n for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
                     }
 
                     if (xlab != "")
@@ -4477,8 +4349,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
-
-
 
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -4497,8 +4367,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-linechart(stairstep)")
             {
-
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -4528,11 +4396,6 @@ namespace BSky.XmlDecoder
                 string ylab = "";
                 string maintitle = "";
 
-
-
-
-
-
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
                     string key = kv.Key;
@@ -4544,7 +4407,6 @@ namespace BSky.XmlDecoder
                     {
                         xaxis = value;
                     }
-
 
                     if (key == "yaxis")
                     {
@@ -4595,8 +4457,6 @@ namespace BSky.XmlDecoder
                     {
                         maintitle = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 bool addcomma = false;
@@ -4604,7 +4464,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + xaxis + ", y =" + var + "))";
 
@@ -4613,8 +4472,6 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "" || shape != "")
                     {
-
-
                         tempoutput += ", aes (";
 
                         if (groupby != "")
@@ -4623,7 +4480,6 @@ namespace BSky.XmlDecoder
                             tempoutput = tempoutput + "color = " + groupby;
                             addcomma = true;
                         }
-
 
                         if (shape != "")
                         {
@@ -4645,26 +4501,22 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + ", alpha=" + opacity;
                     }
 
-
                     tempoutput = tempoutput + ")";
-
 
                     if (flipaxis == "TRUE")
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
 
-
                     //   +labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) +
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (stair step) for xaxis variable: " + xaxis + " ,yaxis variable: " + yaxis + "grouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (stair step) for X axis variable: " + xaxis + "\\nY axis variable: " + yaxis + ", grouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
-
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (stair step) for xaxis variable: " + xaxis + " ,yaxis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Line chart (stair step) for X axis variable: " + xaxis + "\\nY axis variable: " + yaxis + "\")";
                     }
 
                     if (xlab != "")
@@ -4681,8 +4533,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
-
-
 
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -4701,8 +4551,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-contour")
             {
-
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -4794,8 +4642,6 @@ namespace BSky.XmlDecoder
                     {
                         maintitle = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 bool addcomma = false;
@@ -4803,40 +4649,34 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x = " + xaxis + ", y =" + var + "))";
 
                     //+geom_density(position = "{{rdgrp1}}", fill = "{{barcolor}}", alpha = 0.5)
                     tempoutput = tempoutput + " +\n\t geom_density2d( stat = \"density2d\", position = \"identity\"";
 
-
-
                     if (opacity != "")
                     {
                         tempoutput = tempoutput + ", alpha=" + opacity;
                     }
 
-
                     tempoutput = tempoutput + ")";
-
 
                     if (flipaxis == "TRUE")
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
 
-
                     //   +labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) +
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Contour chart for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Contour plot for X axis variable: " + xaxis + ", Y axis variable: " + var + "\\ngrouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
 
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Contour chart for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Contour plot  for X axis variable: " + xaxis + ", Y axis variable: " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -4853,8 +4693,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
-
-
 
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -4873,8 +4711,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-violin")
             {
-
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -4903,11 +4739,6 @@ namespace BSky.XmlDecoder
                 string xlab = "";
                 string ylab = "";
                 string maintitle = "";
-
-
-
-
-
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
@@ -4971,8 +4802,6 @@ namespace BSky.XmlDecoder
                     {
                         maintitle = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 bool addcomma = false;
@@ -4989,8 +4818,6 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "" || shape != "")
                     {
-
-
                         tempoutput += ", aes (";
 
                         if (groupby != "")
@@ -4999,8 +4826,7 @@ namespace BSky.XmlDecoder
                             tempoutput = tempoutput + "fill = " + groupby;
                             addcomma = true;
                         }
-
-
+                        
                         if (shape != "")
                         {
                             if (!addcomma)
@@ -5021,9 +4847,7 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + ", alpha=" + opacity;
                     }
 
-
                     tempoutput = tempoutput + ")";
-
 
                     if (flipaxis == "TRUE")
                     {
@@ -5035,12 +4859,12 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Violin chart for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Violin chart for X axis variable: " + xaxis + ", Y axis variable: " + var + "\\ngrouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
 
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Violin chart for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Violin chart for X axis variable: " + xaxis + ", Y axis variable: " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -5057,8 +4881,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
-
-
 
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -5077,8 +4899,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-bin2d")
             {
-
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -5176,8 +4996,6 @@ namespace BSky.XmlDecoder
                     {
                         maintitle = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 bool addcomma = false;
@@ -5194,8 +5012,6 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "" || shape != "")
                     {
-
-
                         tempoutput += ", aes (";
 
                         if (groupby != "")
@@ -5247,12 +5063,11 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Binned scatterplot (square) for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\\ngrouped in colors by variable: " + groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Binned scatterplot (square) for X axis variable: " + xaxis + ", Y axis variable: " + var + "\\ngrouped in colors by variable: " + groupby + "\")";
                     }
                     else
                     {
-
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + yaxis + "\"" + ", title= " + "\"Binned scatterplot (square) for X axis variable: " + xaxis + ", Y axis variable: " + yaxis + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + xaxis + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Binned scatterplot (square) for X axis variable: " + xaxis + ", Y axis variable: " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -5269,8 +5084,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
-
-
 
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -5289,8 +5102,6 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "Graphics-binhex")
             {
-
-
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -5388,8 +5199,6 @@ namespace BSky.XmlDecoder
                     {
                         maintitle = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 bool addcomma = false;
@@ -5406,8 +5215,6 @@ namespace BSky.XmlDecoder
 
                     if (groupby != "" || shape != "")
                     {
-
-
                         tempoutput += ", aes (";
 
                         if (groupby != "")
@@ -5453,7 +5260,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
-
 
                     //   +labs(x = vars, y = "Count", fill = "{{Groupby}}", title = paste("Density plot for variable ", vars, sep = '')) +
 
@@ -5481,8 +5287,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + " +\n\t ggtitle(" + "\"" + maintitle + "\"" + ")";
                     }
-
-
 
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
@@ -5617,8 +5421,6 @@ namespace BSky.XmlDecoder
                     {
                         fill = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 string[] variables = yvariable.Split(',');
@@ -5641,17 +5443,13 @@ namespace BSky.XmlDecoder
 
                     if (var != "")
                     {
-
                         tempoutput = tempoutput + ",y=" + var;
                         ylabel = var;
-
                     }
                     if (Groupby != "")
                     {
                         tempoutput = tempoutput + ",fill=" + Groupby;
                     }
-
-
 
                     tempoutput = tempoutput + "))";
 
@@ -5687,7 +5485,6 @@ namespace BSky.XmlDecoder
 
                     tempoutput = tempoutput + ")";
 
-
                     if (flipaxis == "TRUE")
                     {
                         tempoutput = tempoutput + " +\n\t coord_flip()";
@@ -5696,11 +5493,11 @@ namespace BSky.XmlDecoder
                     //we add Fill to the Barplot title only when it exists
                     if (Groupby == "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + Destination + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bar plot for X axis: " + Destination + "  ,Y axis: " + ylabel + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + Destination + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bar chart for X axis: " + Destination + "  ,Y axis: " + ylabel + "\")";
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + Destination + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bar plot for X axis: " + Destination + "  ,Y axis: " + ylabel + "  ,Fill: " + Groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + Destination + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bar chart for X axis: " + Destination + "  ,Y axis: " + ylabel + "  ,Fill: " + Groupby + "\")";
                     }
                     if (xlab != "")
                     {
@@ -5852,8 +5649,6 @@ namespace BSky.XmlDecoder
                     {
                         fill = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 string[] variables = Destination.Split(',');
@@ -5876,17 +5671,13 @@ namespace BSky.XmlDecoder
 
                     if (yvariable != "")
                     {
-
                         tempoutput = tempoutput + ",y=" + yvariable;
                         ylabel = yvariable;
-
                     }
                     if (Groupby != "")
                     {
                         tempoutput = tempoutput + ",fill=" + Groupby;
                     }
-
-
 
                     tempoutput = tempoutput + "))";
 
@@ -5923,7 +5714,6 @@ namespace BSky.XmlDecoder
                     if (yvariable != "")
                     {
                         tempoutput = tempoutput + " ,stat=\"identity\"";
-
                     }
 
                     tempoutput = tempoutput + ")";
@@ -6095,8 +5885,6 @@ namespace BSky.XmlDecoder
                     {
                         fill = value;
                     }
-
-
                 }
                 string tempoutput = "";
                 string[] variables = Destination.Split(',');
@@ -6119,17 +5907,13 @@ namespace BSky.XmlDecoder
 
                     if (yvariable != "")
                     {
-
                         tempoutput = tempoutput + ",y=" + yvariable;
                         ylabel = yvariable;
-
                     }
                     if (Groupby != "")
                     {
                         tempoutput = tempoutput + ",fill=" + Groupby;
                     }
-
-
 
                     tempoutput = tempoutput + "))";
 
@@ -6182,11 +5966,11 @@ namespace BSky.XmlDecoder
                     //we add Fill to the Barplot title only when it exists
                     if (Groupby == "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bulls eye chart for X aesthetic: " + var + "  ,Y aesthetic: " + ylabel + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bulls Eye chart for X aesthetic: " + var + "  ,Y aesthetic: " + ylabel + "\")";
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bulls eye Chart  with X aesthetic: " + var + "  ,Y aesthetic: " + ylabel + "  ,Fill: " + Groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + ylabel + "\"" + "," + "fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Bulls Eye chart for X aesthetic: " + var + "  ,Y aesthetic: " + ylabel + "  ,Fill: " + Groupby + "\")";
                     }
                     if (xlab != "")
                     {
@@ -6253,7 +6037,6 @@ namespace BSky.XmlDecoder
                 string maintitle = "";
                 string jitter = "";
                 string flipaxis = "";
-
 
                 string bordercolor = "";
 
@@ -6336,7 +6119,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
 
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), colour = { { Groupby} }, group = { { Groupby} }))
@@ -6344,7 +6126,6 @@ namespace BSky.XmlDecoder
                     {
                         tempoutput = tempoutput + ", colour =" + Groupby + ", group =" + Groupby;
                     }
-
 
                     tempoutput = tempoutput + "))";
 
@@ -6451,7 +6232,6 @@ namespace BSky.XmlDecoder
                 string jitter = "";
                 string flipaxis = "";
 
-
                 string bordercolor = "";
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
@@ -6533,7 +6313,6 @@ namespace BSky.XmlDecoder
 
                 foreach (string var in variables)
                 {
-
                     tempoutput = tempoutput + "ggplot(data=" + dataset + ", aes(x =" + var;
 
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), colour = { { Groupby} }, group = { { Groupby} }))
@@ -6563,9 +6342,7 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
 
-
                     //  +labs(x = vars, y = "Count", colour = "{{Groupby}}", title = paste("Frequency chart for variable ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} })                   
-
 
                     if (Groupby == "")
                     {
@@ -6573,7 +6350,7 @@ namespace BSky.XmlDecoder
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", colour =" + "\"" + Groupby + "\"" + ", title= " + "\"Frequency chart for variable " + var + " in groups indicated by different colors defined by \n levels of variable " + Groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", colour =" + "\"" + Groupby + "\"" + ", title= " + "\"Frequency chart for variable " + var + " in groups indicated by different colors defined by \\n levels of variable " + Groupby + "\")";
                     }
 
                     if (xlab != "")
@@ -6602,11 +6379,12 @@ namespace BSky.XmlDecoder
 
                     output = output.TrimEnd(Environment.NewLine.ToCharArray());
                     output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                    output = output + " +\n" + themeSyntax + "\n\n";
+                    output = output + " +\n" + themeSyntax +"\n\n";
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
+
             else
             {
                 MessageBox.Show("The key used to invoke custom C# code is not supported. You are either using an old version of BlueSky Statistics or have created a dialog incorrectly. Contact support at support@blueskystatistics.com and attach the dialog you are using.");
