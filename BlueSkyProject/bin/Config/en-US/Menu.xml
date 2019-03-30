@@ -174,7 +174,6 @@
   <menu id="graphicMenu" text="Graphics" owner="" nodetype="Parent">
     <menu id="Bar_Chart" text="Bar Chart" commandtemplate="Bar Chart.xaml" commandoutputformat="Bar Chart.xml" owner="" nodetype="Leaf" />
     <menu id="Bar_Chart_(with_Means)" text="Bar Chart (with Means)" commandtemplate="Bar Chart (with Means).xaml" commandoutputformat="Bar Chart (with Means).xml" owner="" nodetype="Leaf" />
-    <menu id="Bin_hex" text="Bin hex" commandtemplate="Bin hex.xaml" commandoutputformat="Bin hex.xml" owner="" nodetype="Leaf" />
     <menu id="BoxPlot" text="BoxPlot" commandtemplate="BoxPlot.xaml" commandoutputformat="BoxPlot.xml" owner="" nodetype="Leaf"  icon="images/Box-Plot.png" showtoolbaricon="true" />
     <menu id="Bulls_Eye" text="Bulls Eye" commandtemplate="Bulls Eye.xaml" commandoutputformat="Bulls Eye.xml" owner="" nodetype="Leaf" />
     <menu id="Contour_Plot" text="Contour Plot" commandtemplate="Contour Plot.xaml" commandoutputformat="Contour Plot.xml" owner="" nodetype="Leaf" />
@@ -193,16 +192,17 @@
       <menu id="World_Map" text="World Map" commandtemplate="World Map.xaml" commandoutputformat="World Map.xml" owner="" nodetype="Leaf" icon="images/Map.png" showtoolbaricon="true" />
     </menu>
     <menu id="Pie_Chart" text="Pie Chart" commandtemplate="Pie Chart.xaml" commandoutputformat="Pie Chart.xml" owner="" nodetype="Leaf" />
-    <menu id="Plot_of_Means" text="Plot of Means" commandtemplate="Plot of Means.xaml" commandoutputformat="Plot of Means.xml" owner="" nodetype="Leaf" />
+    <menu id="Plot_of_Means" text="Plot of Means" commandtemplate="Plot of Means.xaml" commandoutputformat="Plot of Means.xml" owner="" nodetype="Leaf" />	
     <menu id="P-P_Plots" text="P-P Plots" commandtemplate="P-P Plots.xaml" commandoutputformat="P-P Plots.xml" owner="" nodetype="Leaf" />
     <menu id="Q-Q_Plots" text="Q-Q Plots" commandtemplate="Q-Q Plots.xaml" commandoutputformat="Q-Q Plots.xml" owner="" nodetype="Leaf" />
     <menu id="Scatterplot" text="Scatterplot" commandtemplate="Scatterplot.xaml" commandoutputformat="Scatterplot.xml" owner="" nodetype="Leaf" icon="images/Scatter-Plot.png" showtoolbaricon="true" />
     <menu id="Scatterplot_3D" text="Scatterplot 3D" commandtemplate="Scatterplot 3D.xaml" commandoutputformat="Scatterplot 3D.xml" owner="" nodetype="Leaf" />
-    <menu id="Scatterplot_Binned" text="Scatterplot Binned" commandtemplate="Scatterplot Binned.xaml" commandoutputformat="Scatterplot Binned.xml" owner="" nodetype="Leaf" />
-    <menu id="Stem_and_Leaf_Plot" text="Stem and Leaf Plot" commandtemplate="Stem and Leaf Plot.xaml" commandoutputformat="Stem and Leaf Plot.xml" owner="" nodetype="Leaf" />
+    <menu id="Scatterplot_(Binned_hex)" text="Scatterplot (Binned hex)" commandtemplate="Scatterplot (Binned hex).xaml" commandoutputformat="Scatterplot (Binned hex).xml" owner="" nodetype="Leaf" />
+    <menu id="Scatterplot_(Binned_Square)" text="Scatterplot (Binned Square)" commandtemplate="Scatterplot (Binned Square).xaml" commandoutputformat="Scatterplot (Binned Square).xml" owner="" nodetype="Leaf" />	
+    <menu id="Stem_and_Leaf_Plot" text="Stem and Leaf Plot" commandtemplate="Stem and Leaf Plot.xaml" commandoutputformat="Stem and Leaf Plot.xml" owner="" nodetype="Leaf" />	
     <menu id="Strip_Chart" text="Strip Chart" commandtemplate="Strip Chart.xaml" commandoutputformat="Strip Chart.xml" owner="" nodetype="Leaf" />
     <menu id="Violin_Plot" text="Violin Plot" commandtemplate="Violin Plot.xaml" commandoutputformat="Violin Plot.xml" owner="" nodetype="Leaf" />
-    <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+	<menu id="sep" text="---------" owner="BSky" nodetype="Leaf" />
     <menu id="OtherPlotsSubMenu" text="Legacy" owner="" nodetype="Parent">
       <menu id="Boxplot_(lists_outliers)" text="Boxplot (lists outliers)" commandtemplate="Boxplot (lists outliers).xaml" commandoutputformat="Boxplot (lists outliers).xml" owner="" nodetype="Leaf" />
       <menu id="Histogram_(legacy)" text="Histogram (legacy)" commandtemplate="Histogram (legacy).xaml" commandoutputformat="Histogram (legacy).xml" owner="" nodetype="Leaf" />
