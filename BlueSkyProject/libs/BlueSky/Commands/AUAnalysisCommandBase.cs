@@ -122,7 +122,7 @@ namespace BlueSky.Commands.Analytics.TTest
             //for getting dialog xaml filename in logs.
             logService.WriteToLogLevel("XAML name : " + TemplateFileName, LogLevelEnum.Info);
             //MessageBox.Show("Launching: "+ TemplateFileName, "XAML filename");//to find actual dialog XAML filename
-
+            element = null;//fix for preRequsite code getting modifed in GetCommand() call.
             object obj = null;
             string dialogkey = string.Empty;//13Feb2013
             bool isOldDialog = false;//13Feb2013
