@@ -32,46 +32,46 @@
             These settings are only applicable to the dialogs which uses ggplot package. 
         </Label>
         <Label Grid.Row="1" Grid.Column="0">Label Font Family</Label>
-        <ComboBox Grid.Row="2" Grid.Column="0" Margin="3,0" Name="fontfamilyCombo"></ComboBox>
+        <ComboBox Grid.Row="2" Grid.Column="0" Margin="5,0" Name="fontfamilyCombo"></ComboBox>
 
         <Label Grid.Row="1" Grid.Column="1">Label Font Face</Label>
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="3,0" Name="fontfaceCombo"></ComboBox>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5,0" Name="fontfaceCombo"></ComboBox>
 
         <Label Grid.Row="3" Grid.Column="0" Margin="0,5,0,0">Label Font Size</Label>
-        <TextBox Grid.Row="4" Grid.Column="0" Margin="3,0" Name="fontsizeTxt"
+        <TextBox Grid.Row="4" Grid.Column="0" Margin="5,0" Name="fontsizeTxt"
                  Text="{Binding Path=[LabelFontSize], UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
         <Label Grid.Row="3" Grid.Column="1" Margin="0,5,0,0">Label Font Color</Label>
-        <StackPanel Grid.Row="4" Grid.Column="1" Margin="3,0" Name="colorStackPanel" Orientation="Horizontal">
-            <TextBox Name="fontcolorTxt" Margin="3,1,5,1" Width="70" TextChanged="FontcolorTxt_TextChanged"
+        <StackPanel Grid.Row="4" Grid.Column="1" Margin="5,0" Name="colorStackPanel" Orientation="Horizontal">
+            <TextBox Name="fontcolorTxt" Margin="1,1,5,1" Width="70" TextChanged="FontcolorTxt_TextChanged"
                      Text="{Binding Path=[LabelFontColor], UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
             <Rectangle Name="palett" Margin="3" Width="30"  MouseLeftButtonUp="Pallet_MouseLeftButtonUp"></Rectangle>
         </StackPanel>
 
 
         <Label Grid.Row="5" Grid.Column="0" Margin="0,5,0,0">Horizontal Adjust</Label>
-        <TextBox Grid.Row="6" Grid.Column="0" Margin="3,0" Name="HorizAdjTxt"
+        <TextBox Grid.Row="6" Grid.Column="0" Margin="5,0" Name="HorizAdjTxt"
                  Text="{Binding Path=[HorizAdjust], UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
         <Label Grid.Row="5" Grid.Column="1" Margin="0,5,0,0">Vertical Adjust</Label>
-        <TextBox Grid.Row="6" Grid.Column="1" Margin="3,0" Name="VertiAdjTxt"
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="5,0" Name="VertiAdjTxt"
                  Text="{Binding Path=[VertiAdjust], UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
         <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,5,0,0">Plot Theme</Label>
-        <ComboBox Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="3,0" Name="themeCombo"></ComboBox>
+        <ComboBox Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0" Name="themeCombo"></ComboBox>
 
         <Label Grid.Row="9" Grid.Column="0" Margin="0,5,0,0">Image Width</Label>
-        <TextBox Grid.Row="10" Grid.Column="0" Margin="3,0" Name="imgWidthTxt" TextChanged="TextBox_TextChanged"
+        <TextBox Grid.Row="10" Grid.Column="0" Margin="5,0" Name="imgWidthTxt" TextChanged="TextBox_TextChanged"
                  Text="{Binding Path=[imagewidth], UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
         <Label Grid.Row="9" Grid.Column="1" Margin="0,5,0,0">Image Height</Label>
-        <TextBox Grid.Row="10" Grid.Column="1" Margin="3,0" Name="imgHeightTxt" TextChanged="TextBox_TextChanged"
+        <TextBox Grid.Row="10" Grid.Column="1" Margin="5,0" Name="imgHeightTxt" TextChanged="TextBox_TextChanged"
                  Text="{Binding Path=[imageheight], UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
-        <Button Grid.Row="12" Grid.Column="0" Name="defaultBtn" Margin="3" Width="84" HorizontalAlignment="Left" Click="DefaultBtn_Click">Reset Defaults</Button>
+        <Button Grid.Row="12" Grid.Column="0" Name="defaultBtn" Margin="5" Width="84" HorizontalAlignment="Left" Click="DefaultBtn_Click">Reset Defaults</Button>
         <StackPanel Grid.Row="12" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Name="applyBtn" Margin="3" Width="60" Click="ApplyBtn_Click">Save</Button>
-            <Button Name="cancelBtn" Margin="3" Width="60" Click="CancelBtn_Click">Cancel</Button>
+            <Button Name="applyBtn" Margin="5" Width="60" Click="ApplyBtn_Click">Save</Button>
+            <Button Name="cancelBtn" Margin="5" Width="60" Click="CancelBtn_Click">Cancel</Button>
         </StackPanel>
     </Grid>
 </Window>
