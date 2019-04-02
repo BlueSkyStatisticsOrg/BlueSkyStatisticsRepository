@@ -2442,6 +2442,7 @@ namespace BSky.XmlDecoder
 
                 string bordercolor = "";
                 string Groupby = "";
+                string GroupbyCommandSection = string.Empty;
                 string conflevel = "";
                 string stddev = "";
                 string confinterval = "";
@@ -2462,6 +2463,14 @@ namespace BSky.XmlDecoder
                     if (key == "Groupby")
                     {
                         Groupby = value;
+                        if (string.IsNullOrEmpty(Groupby))
+                        {
+                            GroupbyCommandSection = string.Empty;
+                        }
+                        else
+                        {
+                            GroupbyCommandSection = ",\"" + Groupby + "\"";
+                        }
                     }
 
 
@@ -2562,13 +2571,57 @@ namespace BSky.XmlDecoder
                 string tempoutput = "";
                 string[] variables = yaxis.Split(',');
 
+                string tempFacets = "";
+
+
+                //  if (!(Facetcolumn == "" || Facetrow == "" || Facetwrap == "" || Facetcolumn == null || Facetrow == null || Facetwrap == null))
+                if (!(string.IsNullOrEmpty(Facetcolumn) && string.IsNullOrEmpty(Facetrow) && string.IsNullOrEmpty(Facetwrap)))
+                {
+                    int count = 0;
+                    // tempFacets += "c(";
+                    if (!(Facetcolumn == null || Facetcolumn == ""))
+                    {
+                        // tempFacets +=  "\"" + Facetcolumn + "\"";
+                        tempFacets += Facetcolumn;
+                        count++;
+                    }
+
+                    if (!(Facetrow == null || Facetrow == ""))
+                    {
+                        // tempFacets += "\"" + Facetrow + "\"";
+                        tempFacets += Facetrow;
+                        count++;
+                    }
+
+                    if (!(Facetwrap == null || Facetwrap == ""))
+                    {
+                        //tempFacets += "\"" + Facetwrap + "\"";
+                        tempFacets += Facetwrap;
+                        count++;
+                    }
+                    // tempFacets += ")";
+                    if (count > 1)
+                    {
+                        string msg = "Error: You have specified more than one facet. You can only specify one facet at a time (namely one of Facetrow, Facetcol, Facetwrap)";
+                        MessageBox.Show(msg);
+                        return string.Empty;
+                    }
+                }
+
                 foreach (string var in variables)
                 {
                     //# Create a dataset of summaries
                     //  { { datasetForSum} } <- summarySE({ {% DATASET %} }, measurevar = vars, groupvars = c("{{xaxis}}", "{{groupby}}"),conf.interval = { { conflevel} },na.rm = TRUE)
                     //string tempdataset = "";
-                    tempoutput += "temp <-Rmisc::summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " + conflevel + ",na.rm = TRUE,.drop=FALSE)";
 
+                    if (tempFacets == "")
+                    {
+                        tempoutput += "temp <-Rmisc::summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + GroupbyCommandSection + ")" + ",conf.interval = " + conflevel + ",na.rm = TRUE,.drop = TRUE)";
+                    }
+                    else
+                    {
+                        tempoutput += "temp <-Rmisc::summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + GroupbyCommandSection + ",\"" + tempFacets + "\"" + ")" + ",conf.interval = " + conflevel + ",na.rm = TRUE,.drop = TRUE)";
+                    }
                     tempoutput = tempoutput + "\n";
 
                     //  ggplot({ { datasetForSum} }, aes(x ={ { xaxis} }, y = eval(parse(text = paste(vars))), colour ={ { groupby} },group ={ { groupby} })) +geom_errorbar(aes(ymin = eval(parse(text = paste(vars))) -{ { stderr} }
@@ -2606,51 +2659,60 @@ namespace BSky.XmlDecoder
                     // { { confinterval} }
                     // { { noerrbars} }), width = .1,position = pd)
 
-                    tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
-
-                    if (stderr != "")
+                    //tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
+                    if (noerrbars != "0")
                     {
-                        tempoutput += stderr;
+                        tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
+
+                        if (stderr != "")
+                        {
+                            tempoutput += stderr;
+                        }
+
+                        if (stddev != "")
+                        {
+                            tempoutput += stddev;
+                        }
+
+                        if (confinterval != "")
+                        {
+                            tempoutput += confinterval;
+                        }
+
+                        //   if (noerrbars != "")
+                        //  {
+                        //     tempoutput += noerrbars;
+                        // }
+
+
+                        tempoutput = tempoutput + ", ymax =" + var + "+";
+
+                        if (stderr != "")
+                        {
+                            tempoutput += stderr;
+                        }
+
+                        if (stddev != "")
+                        {
+                            tempoutput += stddev;
+                        }
+
+                        if (confinterval != "")
+                        {
+                            tempoutput += confinterval;
+                        }
+
+                        //     if (noerrbars != "")
+                        //    {
+                        //       tempoutput += noerrbars;
+                        // }
+
+                        tempoutput += " ), width = .1, position = pd)";
+
+                        // tempoutput += " + \n\t geom_line(position = pd";
                     }
 
-                    if (stddev != "")
-                    {
-                        tempoutput += stddev;
-                    }
-
-                    if (confinterval != "")
-                    {
-                        tempoutput += confinterval;
-                    }
-
-                    if (noerrbars != "")
-                    {
-                        tempoutput += noerrbars;
-                    }
-
-                    tempoutput = tempoutput + ", ymax =" + var + "+";
-
-                    if (stderr != "")
-                    {
-                        tempoutput += stderr;
-                    }
-
-                    if (stddev != "")
-                    {
-                        tempoutput += stddev;
-                    }
-
-                    if (confinterval != "")
-                    {
-                        tempoutput += confinterval;
-                    }
-
-                    if (noerrbars != "")
-                    {
-                        tempoutput += noerrbars;
-                    }
-
-                    tempoutput += " ), width = .1, position = pd)";
+                    
 
                     tempoutput += " + \n\t geom_line(position = pd";
 
@@ -2690,6 +2752,28 @@ namespace BSky.XmlDecoder
 
                     //+geom_smooth(method ="{{sm}}", color= "{{color}}")
 
+                    if (!(string.IsNullOrEmpty(Facetcolumn) && string.IsNullOrEmpty(Facetrow) && string.IsNullOrEmpty(Facetwrap)))
+                    {
+                        int count = 0;
+
+                        if (!(Facetcolumn == null || Facetcolumn == ""))
+                            count++;
+
+                        if (!(Facetrow == null || Facetrow == ""))
+                            count++;
+
+                        if (!(Facetwrap == null || Facetwrap == ""))
+                            count++;
+
+                        if (count > 1)
+                        {
+                            string msg = "Error: You have specified more than one facet. You can only specify one facet at a time (namely one of Facetrow, Facetcol, Facetwrap).";
+                            MessageBox.Show(msg);
+                            return string.Empty;
+                        }
+                    }
+
+
                     tempoutput = tempoutput + createfacets(Facetwrap, Facetcolumn, Facetrow, Facetscale);
                     // tempoutput = Wrapinbrackets(tempoutput);
                     tempoutput = tempoutput + "\n\n";
@@ -2717,7 +2801,7 @@ namespace BSky.XmlDecoder
                         CommandKeyValDict.Add(matchedText, result);
                     }
                 }
-
+                string hide = "";
                 string barcolor = "";
                 string binwidth = "";
                 string rdgrp1 = "";
@@ -2739,6 +2823,7 @@ namespace BSky.XmlDecoder
 
                 string bordercolor = "";
                 string Groupby = "";
+                string GroupbyCommandSection = string.Empty;
                 string conflevel = "";
                 string stddev = "";
                 string confinterval = "";
@@ -2759,6 +2844,14 @@ namespace BSky.XmlDecoder
                     if (key == "Groupby")
                     {
                         Groupby = value;
+                        if (string.IsNullOrEmpty(Groupby))
+                        {
+                            GroupbyCommandSection = string.Empty;
+                        }
+                        else
+                        {
+                            GroupbyCommandSection = ",\"" + Groupby + "\"";
+                        }
                     }
 
 
@@ -2863,17 +2956,65 @@ namespace BSky.XmlDecoder
                     {
                         rdgrp1 = value;
                     }
+                    if (key == "hide")
+                    {
+                        hide = value;
+                    }
                 }
 
                 string tempoutput = "";
                 string[] variables = yaxis.Split(',');
+                string tempFacets = "";
+
+
+                //  if (!(Facetcolumn == "" || Facetrow == "" || Facetwrap == "" || Facetcolumn == null || Facetrow == null || Facetwrap == null))
+                if (!( string.IsNullOrEmpty(Facetcolumn) && string.IsNullOrEmpty(Facetrow) && string.IsNullOrEmpty(Facetwrap) ))
+                {
+                    int count = 0;
+                   // tempFacets += "c(";
+                    if (!(Facetcolumn == null || Facetcolumn == ""))
+                    {
+                        // tempFacets +=  "\"" + Facetcolumn + "\"";
+                        tempFacets += Facetcolumn;
+                        count++;
+                    }
+
+                    if (!(Facetrow == null || Facetrow == ""))
+                    {
+                        // tempFacets += "\"" + Facetrow + "\"";
+                        tempFacets += Facetrow;
+                        count++;
+                    }
+
+                    if (! (Facetwrap == null || Facetwrap == ""))
+                    {
+                        //tempFacets += "\"" + Facetwrap + "\"";
+                        tempFacets += Facetwrap;
+                        count++;
+                    }
+                    // tempFacets += ")";
+                    if (count > 1)
+                    {
+                        string msg = "Error: Two or more facets selected. Select only one of the Facetrow, Facetcol or Facetwrap.";
+                        MessageBox.Show(msg);
+                        return string.Empty;
+                    }
+                }
 
                 foreach (string var in variables)
                 {
                     //# Create a dataset of summaries
                     //  { { datasetForSum} } <- summarySE({ {% DATASET %} }, measurevar = vars, groupvars = c("{{xaxis}}", "{{groupby}}"),conf.interval = { { conflevel} },na.rm = TRUE)
                     //string tempdataset = "";
-                    tempoutput += "temp <-Rmisc::summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + ",\"" + Groupby + "\")" + ",conf.interval = " + conflevel + ",na.rm = TRUE,.drop = FALSE)";
+
+                    if (tempFacets == "")
+                    {
+                        tempoutput += "temp <-Rmisc::summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + GroupbyCommandSection + ")" + ",conf.interval = " + conflevel + ",na.rm = TRUE,.drop = TRUE)";
+                    }
+                    else
+                    {
+                        tempoutput += "temp <-Rmisc::summarySE( " + dataset + ", measurevar = " + "\"" + var + "\"" + ", groupvars = c(" + "\"" + xaxis + "\"" + GroupbyCommandSection + ",\"" + tempFacets  +"\"" + ")" + ",conf.interval = " + conflevel + ",na.rm = TRUE,.drop = TRUE)";
+                    }
 
                     tempoutput = tempoutput + "\n";
 
@@ -2905,82 +3046,176 @@ namespace BSky.XmlDecoder
                     tempoutput = tempoutput + "))";
 
                     //Constructing geom_bar
-                    tempoutput = tempoutput + " +\n\t geom_bar( position=\"dodge\" ";
 
-                    if (opacity != "")
+                    if (hide == "FALSE")
                     {
-                        tempoutput = tempoutput + ",alpha=" + opacity;
+
+                        tempoutput = tempoutput + " +\n\t geom_bar( position=\"dodge\" ";
+
+                        if (opacity != "")
+                        {
+                            tempoutput = tempoutput + ",alpha=" + opacity;
+                        }
+
+                        if (barcolor != "")
+                        {
+                            tempoutput = tempoutput + ",fill =" + "\"" + barcolor + "\"";
+                        }
+
+                        tempoutput = tempoutput + " ,stat=\"identity\"";
+
+                        tempoutput = tempoutput + ")";
+
+
+                        // +geom_errorbar(aes(ymin = eval(parse(text = paste(vars))) -{ { stderr} }
+                        //  { { stddev} }
+                        // { { confinterval} }
+                        // { { noerrbars} }, ymax = eval(parse(text = paste(vars))) +{ { stderr} }
+                        // { { stddev} }
+                        // { { confinterval} }
+                        // { { noerrbars} }), width = .1,position = pd)
+
+                        if (noerrbars != "0")
+                        {
+                            tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
+
+                            if (stderr != "")
+                            {
+                                tempoutput += stderr;
+                            }
+
+                            if (stddev != "")
+                            {
+                                tempoutput += stddev;
+                            }
+
+                            if (confinterval != "")
+                            {
+                                tempoutput += confinterval;
+                            }
+
+                            //   if (noerrbars != "")
+                            //  {
+                            //     tempoutput += noerrbars;
+                            // }
+
+
+                            tempoutput = tempoutput + ", ymax =" + var + "+";
+
+                            if (stderr != "")
+                            {
+                                tempoutput += stderr;
+                            }
+
+                            if (stddev != "")
+                            {
+                                tempoutput += stddev;
+                            }
+
+                            if (confinterval != "")
+                            {
+                                tempoutput += confinterval;
+                            }
+
+                            //     if (noerrbars != "")
+                            //    {
+                            //       tempoutput += noerrbars;
+                            // }
+
+                            tempoutput += " ), width = .1, position = pd)";
+
+                            // tempoutput += " + \n\t geom_line(position = pd";
+                        }
                     }
 
-                    if (barcolor != "")
+
+                    if (hide =="TRUE")
                     {
-                        tempoutput = tempoutput + ",fill =" + "\"" + barcolor + "\"";
+
+                        if (noerrbars != "0")
+                        {
+                            tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
+
+                            if (stderr != "")
+                            {
+                                tempoutput += stderr;
+                            }
+
+                            if (stddev != "")
+                            {
+                                tempoutput += stddev;
+                            }
+
+                            if (confinterval != "")
+                            {
+                                tempoutput += confinterval;
+                            }
+
+                            //   if (noerrbars != "")
+                            //  {
+                            //     tempoutput += noerrbars;
+                            // }
+
+
+                            tempoutput = tempoutput + ", ymax =" + var + "+";
+
+                            if (stderr != "")
+                            {
+                                tempoutput += stderr;
+                            }
+
+                            if (stddev != "")
+                            {
+                                tempoutput += stddev;
+                            }
+
+                            if (confinterval != "")
+                            {
+                                tempoutput += confinterval;
+                            }
+
+                            //     if (noerrbars != "")
+                            //    {
+                            //       tempoutput += noerrbars;
+                            // }
+
+                            tempoutput += " ), width = .1, position = pd)";
+
+                            // tempoutput += " + \n\t geom_line(position = pd";
+                        }
+
+                        tempoutput = tempoutput + " +\n\t geom_bar( position=\"dodge\" ";
+
+                        if (opacity != "")
+                        {
+                            tempoutput = tempoutput + ",alpha=" + opacity;
+                        }
+
+                        if (barcolor != "")
+                        {
+                            tempoutput = tempoutput + ",fill =" + "\"" + barcolor + "\"";
+                        }
+
+                        tempoutput = tempoutput + " ,stat=\"identity\"";
+
+                        tempoutput = tempoutput + ")";
+
+
+                        // +geom_errorbar(aes(ymin = eval(parse(text = paste(vars))) -{ { stderr} }
+                        //  { { stddev} }
+                        // { { confinterval} }
+                        // { { noerrbars} }, ymax = eval(parse(text = paste(vars))) +{ { stderr} }
+                        // { { stddev} }
+                        // { { confinterval} }
+                        // { { noerrbars} }), width = .1,position = pd)
+
+
+
                     }
 
-                    tempoutput = tempoutput + " ,stat=\"identity\"";
-
-                    tempoutput = tempoutput + ")";
 
 
-                    // +geom_errorbar(aes(ymin = eval(parse(text = paste(vars))) -{ { stderr} }
-                    //  { { stddev} }
-                    // { { confinterval} }
-                    // { { noerrbars} }, ymax = eval(parse(text = paste(vars))) +{ { stderr} }
-                    // { { stddev} }
-                    // { { confinterval} }
-                    // { { noerrbars} }), width = .1,position = pd)
 
-                    if (noerrbars != "0")
-                    {
-                        tempoutput = tempoutput + " + \n\t geom_errorbar( aes(ymin =" + var + "-";
-
-                        if (stderr != "")
-                        {
-                            tempoutput += stderr;
-                        }
-
-                        if (stddev != "")
-                        {
-                            tempoutput += stddev;
-                        }
-
-                        if (confinterval != "")
-                        {
-                            tempoutput += confinterval;
-                        }
-
-                     //   if (noerrbars != "")
-                      //  {
-                       //     tempoutput += noerrbars;
-                        // }
-
-
-                        tempoutput = tempoutput + ", ymax =" + var + "+";
-
-                        if (stderr != "")
-                        {
-                            tempoutput += stderr;
-                        }
-
-                        if (stddev != "")
-                        {
-                            tempoutput += stddev;
-                        }
-
-                        if (confinterval != "")
-                        {
-                            tempoutput += confinterval;
-                        }
-
-                   //     if (noerrbars != "")
-                    //    {
-                     //       tempoutput += noerrbars;
-                       // }
-
-                        tempoutput += " ), width = .1, position = pd)";
-
-                        // tempoutput += " + \n\t geom_line(position = pd";
-                    }
 
                     //if (opacity != "")
                     //{
@@ -3876,6 +4111,11 @@ namespace BSky.XmlDecoder
                         notch = value;
                     }
                 }
+
+                string varTitle = string.Empty;
+                string grpTitle = string.Empty;
+                string fillTitle = string.Empty;
+
                 string tempoutput = "";
                 string[] variables = destination.Split(',');
 
@@ -3954,8 +4194,20 @@ namespace BSky.XmlDecoder
                         tempoutput = tempoutput + " +\n\t coord_flip()";
                     }
 
+                    varTitle = string.Empty;
+                    if (var != null && var.Trim().Length > 0)
+                        varTitle = "Boxplot for variable " + var ;
+
+                    grpTitle = string.Empty;
+                    if (GroupingVariable != null && GroupingVariable.Trim().Length > 0)
+                        grpTitle = ", group by " + GroupingVariable;
+
+                    fillTitle = string.Empty;
+                    if (GroupBy != null && GroupBy.Trim().Length > 0)
+                        fillTitle = ", filled by " + GroupBy;
+
                     //+labs(x = vars, y = "Counts", title = "{{maintitle}}", title = paste("Histogram for variable ", vars, sep = ''))
-                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + GroupingVariable + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\"Boxplot for variable " + var + "\")";
+                    tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + GroupingVariable + "\"" + ", y =" + "\"" + var + "\"" + ", title= " + "\""+varTitle + grpTitle + fillTitle + "\")";
 
                     if (xlab != "")
                     {
