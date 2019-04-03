@@ -45,7 +45,7 @@ namespace BSky.Controls
             //{
             //    if (base.IsEnabled != _enabled) base.IsEnabled = _enabled;
             //}
-
+            
         }
 
 
