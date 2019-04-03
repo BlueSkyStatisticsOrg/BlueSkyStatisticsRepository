@@ -58,6 +58,7 @@ namespace BlueSky.Windows
             //tempfolder.Text = conService.AppSettings.Get("tempfolder");
             //04Mar2016
             SetComboBoxes();
+            SetCurrentValues();//for keeping old values for tracking changes.
         }
 
         private void SetComboBoxes()
@@ -82,7 +83,62 @@ namespace BlueSky.Windows
             }
         }
 
+        #region Values modified or not
+        string[] CurrentValues;
+        private void SetCurrentValues()
+        {
+            CurrentValues = new string[9];
+            CurrentValues[0] = AllAppSettings["FontFamily"];// fontfamilyCombo.SelectedValue.ToString();//font-family
+            CurrentValues[1] = AllAppSettings["FontFace"];// fontfaceCombo.SelectedValue.ToString();//font-face
 
+            CurrentValues[2] = AllAppSettings["LabelFontSize"];// fontsizeTxt.Text;//font-size
+            CurrentValues[3] = AllAppSettings["LabelFontColor"];// fontcolorTxt.Text.ToString();//font-color
+
+            CurrentValues[4] = AllAppSettings["HorizAdjust"];// HorizAdjTxt.Text.ToString();//Horizontal adjust
+            CurrentValues[5] = AllAppSettings["VertiAdjust"];// VertiAdjTxt.Text.ToString();//Vertical adjust
+
+            CurrentValues[6] = AllAppSettings["PlotTheme"];// themeCombo.SelectedValue.ToString();//Theme
+
+            CurrentValues[7] = AllAppSettings["imagewidth"];// imgWidthTxt.Text.ToString();//image width
+            CurrentValues[8] = AllAppSettings["imageheight"];// imgHeightTxt.Text.ToString();//image height
+        }
+
+        string[] ModifiedValues;
+        private void SetModifiedValues()
+        {
+            ModifiedValues = new string[9];
+            ModifiedValues[0] = fontfamilyCombo.SelectedValue.ToString();//font-family
+            ModifiedValues[1] = fontfaceCombo.SelectedValue.ToString();//font-face
+
+            ModifiedValues[2] = fontsizeTxt.Text;//font-size
+            ModifiedValues[3] = fontcolorTxt.Text.ToString();//font-color
+
+            ModifiedValues[4] = HorizAdjTxt.Text.ToString();//Horizontal adjust
+            ModifiedValues[5] = VertiAdjTxt.Text.ToString();//Vertical adjust
+
+            ModifiedValues[6] = themeCombo.SelectedValue.ToString();//Theme
+
+            ModifiedValues[7] = imgWidthTxt.Text.ToString();//image width
+            ModifiedValues[8] = imgHeightTxt.Text.ToString();//image height
+        }
+
+        private bool isValueModified()
+        {
+            bool isModified = false;
+            if (CurrentValues != null && ModifiedValues != null && CurrentValues.Length==ModifiedValues.Length)
+            {
+                for(int i = 0; i < 9; i++)
+                {
+                    if (!(CurrentValues[i].Equals(ModifiedValues[i])))
+                    {
+                        isModified = true;
+                    }
+                }
+            }
+            return isModified;
+        }
+
+        #endregion
 
         #endregion
 
@@ -120,8 +176,10 @@ namespace BlueSky.Windows
         }
 
         //save current setting to file
+        bool isSaveClicked = false;
         private void ApplyBtn_Click(object sender, RoutedEventArgs e)
         {
+            isSaveClicked = true;
             ShowConfirmation = false;
             SaveSettings();
             this.Close();// close Options Window
@@ -136,6 +194,11 @@ namespace BlueSky.Windows
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (!isSaveClicked)
+            {
+                SetModifiedValues();
+                ShowConfirmation = isValueModified();
+            }
             if (ShowConfirmation)
             {
                 MessageBoxResult mbres = MessageBox.Show(this, BSky.GlobalResources.Properties.UICtrlResources.ConfSettingSaveConfirmation,
@@ -380,5 +443,6 @@ namespace BlueSky.Windows
         }
 
         #endregion
+
     }
 }
