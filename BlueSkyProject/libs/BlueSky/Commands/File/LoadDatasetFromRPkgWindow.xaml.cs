@@ -76,10 +76,31 @@ namespace BlueSky.Commands.File
             if (RpkgCombo.SelectedValue != null && RpkgCombo.SelectedValue != null)
             {
                 string rpkgname = (RpkgCombo.SelectedValue as string).Trim();
-                string datasetname = (DatasetCombo.SelectedItem as string).Trim();
-                int idx = datasetname.IndexOf(" ");
-                datasetname = datasetname.Substring(0, idx);
-                LoadDatasetFromRPackage(rpkgname, datasetname);
+                string selectedItem = (DatasetCombo.SelectedItem as string).Trim();
+                //NOTE: it was found that if datasetname has two parts like, bock.table (bock)
+                //then in this case dataset-name will be 'bock' which should be passed to util::data()
+                //and the part that is outside parenthesis i.e. bock.table is the dataset object(actual dataset)
+                //If there are no two part in datasetname (e.g. income) then dataset-name to be passed 
+                //in data() is 'income' as well as the dataset-object is also 'income'.
+                //Above datasets are from 'psych' R package.
+
+                string datasetname = string.Empty;// say bock
+                string datasetobjname = string.Empty;//say bock.table
+                int idx = selectedItem.IndexOf("-["); //format is : "dataset-obj (dataset-name) -[Description]"
+                string datasetObjAndName = selectedItem.Substring(0, idx).Trim();
+                int parenopenidx = datasetObjAndName.IndexOf("(");
+                int parencloseidx = datasetObjAndName.IndexOf(")");
+                if (datasetObjAndName.Contains(" ") && parenopenidx > 0 && parencloseidx > 0)//two part name e.g. "dataset-obj (dataset-name)"
+                {
+                    datasetname = datasetObjAndName.Substring(parenopenidx + 1, (parencloseidx - parenopenidx - 1)).Trim();
+                    datasetobjname = datasetObjAndName.Substring(0, parenopenidx).Trim();
+                }
+                else
+                {
+                    datasetname = datasetObjAndName;
+                    datasetobjname = datasetObjAndName;
+                }
+                LoadDatasetFromRPackage(rpkgname, datasetname, datasetobjname);
             }
         }
 
@@ -200,14 +221,18 @@ namespace BlueSky.Commands.File
         }
 
 
-        private void LoadDatasetFromRPackage(string RPkgName, string DSName)
+        private void LoadDatasetFromRPackage(string RPkgName, string DSName, string DSObj)
         {
             OutputWindowContainer owc = (LifetimeService.Instance.Container.Resolve<IOutputWindowContainer>()) as OutputWindowContainer;
             //it was found in R-GUI that loading R pkg is not necessary to load dataset from it
             //LoadRPackage(RPkgName);
             BSkyMouseBusyHandler.ShowMouseBusy();
-            string commands= "TmP=data('"+DSName+"', package='"+RPkgName+"');"+
-                " BSkyLoadRefreshDataframe("+DSName+")";
+            //string commands = "TmP=data('" + DSName + "', package='" + RPkgName + "');" +
+            //    "eval(parse(text = paste('"+ DSObj + "<- as.data.frame( "+DSObj+")', sep = '')));" +
+            //    " BSkyLoadRefreshDataframe("+ DSObj + ")";
+
+            string commands = "BSkyLoadRpkgDataset('"+ DSName+"','"+ DSObj + "','"+RPkgName+"'); "+ 
+                "BSkyLoadRefreshDataframe(" + DSObj + ")";
             PrintDialogTitle("Open R package dataset");
             SyntaxEditorWindow sewindow = LifetimeService.Instance.Container.Resolve<SyntaxEditorWindow>();
             sewindow.RunCommands(commands, null);
