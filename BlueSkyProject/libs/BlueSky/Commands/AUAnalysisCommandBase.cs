@@ -337,11 +337,12 @@ namespace BlueSky.Commands.Analytics.TTest
                                     continue;
                                 object e2 = cs.FindName(comboname.Trim());
                                 BSkyEditableComboBox edtCmbBx = e2 as BSkyEditableComboBox;
-                                edtCmbBx.IsTextSearchEnabled = false;
+                                edtCmbBx.IsTextSearchEnabled = true;
                                 edtCmbBx.IsTextSearchCaseSensitive = true;
 
                                 if (edtCmbBx != null)
                                 {
+                                    //edtCmbBx.Items.Add(""); //edtCmbBx.IsEditable = false;
                                     foreach (string s in comboBoxVals)
                                     {
                                         if (!edtCmbBx.Items.Contains(s))
