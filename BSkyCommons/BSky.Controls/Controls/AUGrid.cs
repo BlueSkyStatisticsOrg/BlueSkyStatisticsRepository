@@ -27,6 +27,7 @@ namespace BSky.Controls
         {
             //this.AutoSizeFixedColumns(0, 0, 0, true, false);
             this.AutoSizeFixedColumns(0, this.RowHeaders.Columns.Count, 10);//fix for chopped row headers
+            this.AutoSizeColumns(0, this.ColumnHeaders.Columns.Count, 10);//fix for chopped col headers
         }
 
     void AUGrid_LayoutUpdated(object sender, EventArgs e)
