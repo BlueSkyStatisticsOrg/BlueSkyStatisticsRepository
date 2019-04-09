@@ -1094,7 +1094,7 @@
     <comment>LargeResultWarningWindow.xaml : Statement1</comment>
   </data>
   <data name="LargeResultWarningWindowStmt2" xml:space="preserve">
-    <value>- For very large output table you can also display text output which will be faster by printing the object directly from the BlueSky R Command Editor. Example: if SkyFormat(tableobj) is taking too long, type in tableobj in the BlueSky R Command Editor to get text output.</value>
+    <value>- For very large output table you can also display text output which will be faster by printing the object directly from the BlueSky R Command Editor. Example: if BSkyFormat(tableobj) is taking too long, type in tableobj in the BlueSky R Command Editor to get text output.</value>
     <comment>LargeResultWarningWindow.xaml : Statement2</comment>
   </data>
   <data name="LargeResultWarningWindowStmt3" xml:space="preserve">

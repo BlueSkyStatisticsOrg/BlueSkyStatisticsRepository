@@ -979,7 +979,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - For very large output table you can also display text output which will be faster by printing the object directly from the BlueSky R Command Editor. Example: if SkyFormat(tableobj) is taking too long, type in tableobj in the BlueSky R Command Editor to get text output..
+        ///   Looks up a localized string similar to - For very large output table you can also display text output which will be faster by printing the object directly from the BlueSky R Command Editor. Example: if BSkyFormat(tableobj) is taking too long, type in tableobj in the BlueSky R Command Editor to get text output..
         /// </summary>
         public static string LargeResultWarningWindowStmt2 {
             get {
