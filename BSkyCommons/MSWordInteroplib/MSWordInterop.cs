@@ -21,7 +21,7 @@ namespace MSWordInteropLib
 
                 //create a new Word document.
                 WrdAppObj = new Microsoft.Office.Interop.Word.Application();
-                WrdAppObj.Visible = true;
+                WrdAppObj.Visible = false;
                 WrdDocObj = WrdAppObj.Documents.Add(ref missvalobj, ref missvalobj, ref missvalobj, ref missvalobj);
                 
                 #region Inserting First and Second Title
@@ -195,6 +195,8 @@ namespace MSWordInteropLib
                 }
 
                 #endregion
+
+                WrdAppObj.Visible = true;
             }
             catch (Exception ex)
             {
