@@ -2905,7 +2905,9 @@ namespace BSky.Controls
                 //Added the line below to ensure that dialogMode the flag that enables or disables the checking of property and control 
                 //names in behaviour.cs is set to true after saving (the xaml is created)
                 BSkyCanvas.dialogMode = true;
-                bool allowed = CheckDirectoryAccess(fileName);
+                string fileNamewithoutExt = Path.GetFileNameWithoutExtension(fileName);
+                string filePath = Path.GetDirectoryName(fileName);
+                bool allowed = CheckDirectoryAccess(filePath);
                 if (!allowed)
                 {
                     string message = fileName + ": You do not have write access in this location."+
