@@ -18,7 +18,7 @@ namespace BSky.Controls
             //  Standardizing the label font type and font sizes to protect against changes in themes
             this.FontFamily = new System.Windows.Media.FontFamily("Segoe UI");
             this.Foreground = System.Windows.Media.Brushes.Red;
-            this.Content = "!";
+            this.Content = "*";
             this.FontSize = 12;
             // base.Font = new Font("Arial", 12);
             // base.MaximumSize = new Size(100, 0);
