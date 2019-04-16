@@ -1935,7 +1935,7 @@ namespace BSky.Controls
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show(this, "Couldn't install Dialog");
+                        MessageBox.Show(this, "Couldn't install Dialog: "+e.Message);
 						stream.Close();
                         //logService.WriteToLogLevel("Couldn't install Dialog", LogLevelEnum.Error);
                     }
@@ -2585,7 +2585,7 @@ namespace BSky.Controls
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show(this, "Couldn't install Dialog");
+                        MessageBox.Show(this, "Couldn't install Dialog: "+e.Message);
                         //logService.WriteToLogLevel("Couldn't install Dialog", LogLevelEnum.Error);
                     }
                 }
