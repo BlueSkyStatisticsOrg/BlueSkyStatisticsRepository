@@ -3453,7 +3453,7 @@ namespace BSky.XmlDecoder
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
 
-            else if (customsyntax == "Graphics-pplot")
+            else if (customsyntax == "Graphics-ppplot")
             {
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
@@ -3718,7 +3718,7 @@ namespace BSky.XmlDecoder
             //+facet_grid({ { yfacet} }
             //~{ { xfacet} }))
 
-            else if (customsyntax == "Graphics-qqlot")
+            else if (customsyntax == "Graphics-qqplot")
             {
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
