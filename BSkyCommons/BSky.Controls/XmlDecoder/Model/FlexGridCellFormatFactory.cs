@@ -33,6 +33,7 @@ namespace BSky.Controls.XmlDecoder.Model
                 ; //Now Format Cell
                 Grid g = new Grid();
                 StackPanel sp = new StackPanel();
+                sp.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
                 TextBlock tb1 = new TextBlock(); tb1.Text = (value != null) ? value.ToString() : "-";
                 tb1.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                 tb1.Margin = new System.Windows.Thickness(0, 0, 4, 0);
