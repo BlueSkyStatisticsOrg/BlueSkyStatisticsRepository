@@ -126,7 +126,7 @@ namespace BSky.Controls
 
                 case "LabelForRequiredFld":
                     b = new BSkyLabelReqdField();
-                    b.Width = 50;
+                    b.Width = 15;
                     b.Height = 25;
                     break;
 
