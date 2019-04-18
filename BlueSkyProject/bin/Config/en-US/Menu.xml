@@ -36,7 +36,7 @@
       <menu id="Missing_Values_(Basic)" text="Missing Values (Basic)" commandtemplate="Missing Values (Basic).xaml" commandoutputformat="Missing Values (Basic).xml" owner="" nodetype="Leaf" />
       <menu id="Missing_Values_(Formula)" text="Missing Values (Formula)" commandtemplate="Missing Values (Formula).xaml" commandoutputformat="Missing Values (Formula).xml" owner="" nodetype="Leaf" />
       <menu id="Replace_All_Missing_Values_(in_Factor_and_String_variables)" text="Replace All Missing Values (in Factor and String variables)" commandtemplate="Replace All Missing Values (in Factor and String variables).xaml" commandoutputformat="Replace All Missing Values (in Factor and String variables).xml" owner="" nodetype="Leaf" />
-      <menu id="Missing_Values_(Use_a_models_impute_missing_values)" text="Missing Values (Use a models impute missing values)" commandtemplate="Missing Values (Use a models impute missing values).xaml" commandoutputformat="Missing Values (Use a models impute missing values).xml" owner="" nodetype="Leaf" />
+      <menu id="Missing_Values_(Use_models_impute_missing_values)" text="Missing Values (Use models impute missing values)" commandtemplate="Missing Values (Use models impute missing values).xaml" commandoutputformat="Missing Values (Use models impute missing values).xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     </menu>
     <menu id="Rank_Variable(s)" text="Rank Variable(s)" commandtemplate="Rank Variable(s).xaml" commandoutputformat="Rank Variable(s).xml" owner="" nodetype="Leaf" />
@@ -88,7 +88,7 @@
     </menu>
     <menu id="ContinSubMenu" text="Contingency Tables" owner="" nodetype="Parent">
       <menu id="BSkyCrossTable" text="Crosstab, Multi-way (Use this)" commandtemplate="BSkyCrossTable.xaml" commandoutputformat="BSkyCrossTable.xml" owner="" nodetype="Leaf" icon="images/Cross-Tab.png" showtoolbaricon="true" />
-      <menu id="Two-Way_Crosstab" text="Crosstab, Two-way" commandtemplate="Crosstab, Two-way.xaml" commandoutputformat="Crosstab, Two-way.xml" owner="" nodetype="Leaf" />
+      <menu id="Crosstab_Two-way" text="Crosstab Two-way" commandtemplate="Crosstab Two-way.xaml" commandoutputformat="Crosstab Two-way.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="FactSubMenu" text="Factor Analysis" owner="" nodetype="Parent">
       <menu id="Factor_Analysis" text="Factor Analysis" commandtemplate="Factor Analysis.xaml" commandoutputformat="Factor Analysis.xml" owner="" nodetype="Leaf" />
@@ -96,7 +96,7 @@
     </menu>
     <menu id="MBASubMenu" text="Market Basket" owner="" nodetype="Parent">
       <menu id="BasSubMenu" text="Basket data format" owner="" nodetype="Parent">
-        <menu id="Generate_Rules_(for_Basket_data_fomat)" text="Generate Rules (for Basket data fomat)" commandtemplate="Generate Rules (for Basket data fomat).xaml" commandoutputformat="Generate Rules (for Basket data fomat).xml" owner="" nodetype="Leaf" />
+        <menu id="Generate_Rules_(for_basket_data_format)" text="Generate Rules (for basket data format)" commandtemplate="Generate Rules (for basket data format).xaml" commandoutputformat="Generate Rules (for basket data format).xml" owner="" nodetype="Leaf" />
         <menu id="Item_Frequency_Plot_(for_basket_data_format)" text="Item Frequency Plot (for basket data format)" commandtemplate="Item Frequency Plot (for basket data format).xaml" commandoutputformat="Item Frequency Plot (for basket data format).xml" owner="" nodetype="Leaf" />
         <menu id="Targeting_Items_(for_Basket_data_format)" text="Targeting Items (for Basket data format)" commandtemplate="Targeting Items (for Basket data format).xaml" commandoutputformat="Targeting Items (for Basket data format).xml" owner="" nodetype="Leaf" />
       </menu>
@@ -141,7 +141,10 @@
       <menu id="Proportion_Test,_Independent_Samples" text="Proportion Test, Independent Samples" commandtemplate="Proportion Test, Independent Samples.xaml" commandoutputformat="Proportion Test, Independent Samples.xml" owner="" nodetype="Leaf" />
       <menu id="Proportion_Test,_Single_Sample" text="Proportion Test, Single Sample" commandtemplate="Proportion Test, Single Sample.xaml" commandoutputformat="Proportion Test, Single Sample.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="Reliability_Analysis" text="Reliability Analysis" commandtemplate="Reliability Analysis.xaml" commandoutputformat="Reliability Analysis.xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="Reliability Analysis" owner="" nodetype="Parent">
+      <menu id="Reliability_Analysis_(Cronbachs_alpha)" text="Reliability Analysis (Cronbachs alpha)" commandtemplate="Reliability Analysis (Cronbachs alpha).xaml" commandoutputformat="Reliability Analysis (Cronbachs alpha).xml" owner="" nodetype="Leaf" />
+      <menu id="Reliability_Analysis_(McDonalds_omega)" text="Reliability Analysis (McDonalds omega)" commandtemplate="Reliability Analysis (McDonalds omega).xaml" commandoutputformat="Reliability Analysis (McDonalds omega).xml" owner="" nodetype="Leaf" />
+    </menu>
     <menu id="SummarySubMenu" text="Summary Analysis" owner="" nodetype="Parent">
       <menu id="Analysis_of_Missing_Values" text="Analysis of Missing Values" commandtemplate="Analysis of Missing Values.xaml" commandoutputformat="Analysis of Missing Values.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
