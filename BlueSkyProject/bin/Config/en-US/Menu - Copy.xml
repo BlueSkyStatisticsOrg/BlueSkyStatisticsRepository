@@ -95,38 +95,37 @@
       <menu id="Principal_Component_Analysis" text="Principal Component Analysis" commandtemplate="Principal Component Analysis.xaml" commandoutputformat="Principal Component Analysis.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="MBASubMenu" text="Market Basket" owner="" nodetype="Parent">
-      <menu id="BasSubMenu" text="Basket data format" owner="" nodetype="Parent">
-        <menu id="Generate_Rules_(for_basket_data_format)" text="Generate Rules (for basket data format)" commandtemplate="Generate Rules (for basket data format).xaml" commandoutputformat="Generate Rules (for basket data format).xml" owner="" nodetype="Leaf" />
-        <menu id="Item_Frequency_Plot_(for_basket_data_format)" text="Item Frequency Plot (for basket data format)" commandtemplate="Item Frequency Plot (for basket data format).xaml" commandoutputformat="Item Frequency Plot (for basket data format).xml" owner="" nodetype="Leaf" />
-        <menu id="Targeting_Items_(for_Basket_data_format)" text="Targeting Items (for Basket data format)" commandtemplate="Targeting Items (for Basket data format).xaml" commandoutputformat="Targeting Items (for Basket data format).xml" owner="" nodetype="Leaf" />
+      <menu id="BasSubMenu" text="Basket Data Format" owner="" nodetype="Parent">
+        <menu id="Generate_Rules_(for_Basket_Data_Format)" text="Generate Rules (for Basket Data Format)" commandtemplate="Generate Rules (for Basket Data Format).xaml" commandoutputformat="Generate Rules (for Basket Data Format).xml" owner="" nodetype="Leaf" />
+        <menu id="Item_Frequency_Plot_(for_Basket_Data_Format)" text="Item Frequency Plot (for Basket Data Format)" commandtemplate="Item Frequency Plot (for Basket Data Format).xaml" commandoutputformat="Item Frequency Plot (for Basket Data Format).xml" owner="" nodetype="Leaf" />
+        <menu id="Targeting_Items_(for_Basket_Data_Format)" text="Targeting Items (for Basket Data Format)" commandtemplate="Targeting Items (for Basket Data Format).xaml" commandoutputformat="Targeting Items (for Basket Data Format).xml" owner="" nodetype="Leaf" />
       </menu>
       <menu id="Display_Rules" text="Display Rules" commandtemplate="Display Rules.xaml" commandoutputformat="Display Rules.xml" owner="" nodetype="Leaf" />
-      <menu id="MultiLineSubMenu" text="Multi-line transaction format" owner="" nodetype="Parent">
-        <menu id="Generate_Rules_(for_Multi-line_transactions)" text="Generate Rules (for Multi-line transactions)" commandtemplate="Generate Rules (for Multi-line transactions).xaml" commandoutputformat="Generate Rules (for Multi-line transactions).xml" owner="" nodetype="Leaf" />
-        <menu id="Item_Frequency_Plot_(for_multi-line_transactions)" text="Item Frequency Plot (for multi-line transactions)" commandtemplate="Item Frequency Plot (for multi-line transactions).xaml" commandoutputformat="Item Frequency Plot (for multi-line transactions).xml" owner="" nodetype="Leaf" />
-        <menu id="Targeting_Items_(for_Multi-Line_transaction_format)" text="Targeting Items (for Multi-Line transaction format)" commandtemplate="Targeting Items (for Multi-Line transaction format).xaml" commandoutputformat="Targeting Items (for Multi-Line transaction format).xml" owner="" nodetype="Leaf" />
+      <menu id="MultiLineSubMenu" text="Multi-line Transaction Format" owner="" nodetype="Parent">
+        <menu id="Generate_Rules_(for_Multi-line_Transactions)" text="Generate Rules (for Multi-line Transactions)" commandtemplate="Generate Rules (for Multi-line Transactions).xaml" commandoutputformat="Generate Rules (for Multi-line Transactions).xml" owner="" nodetype="Leaf" />
+        <menu id="Item_Frequency_Plot_(for_Multi-line_Transactions)" text="Item Frequency Plot (for Multi-line Transactions)" commandtemplate="Item Frequency Plot (for Multi-line Transactions).xaml" commandoutputformat="Item Frequency Plot (for Multi-line Transactions).xml" owner="" nodetype="Leaf" />
+        <menu id="Targeting_Items_(for_Multi-line_Transaction_Format)" text="Targeting Items (for Multi-line Transaction Format)" commandtemplate="Targeting Items (for Multi-line Transaction Format).xaml" commandoutputformat="Targeting Items (for Multi-line Transaction Format).xml" owner="" nodetype="Leaf" />
       </menu>
       <menu id="new_id" text="Multiple Variable Format" owner="" nodetype="Parent">
-        <menu id="Generate_Rules_(for_Multi-Variable_Format)" text="Generate Rules (for Multi-Variable Format)" commandtemplate="Generate Rules (for Multi-Variable Format).xaml" commandoutputformat="Generate Rules (for Multi-Variable Format).xml" owner="" nodetype="Leaf" />
-        <menu id="Targeting_Items_(for_Multi-Variable_format)" text="Targeting Items (for Multi-Variable format)" commandtemplate="Targeting Items (for Multi-Variable format).xaml" commandoutputformat="Targeting Items (for Multi-Variable format).xml" owner="" nodetype="Leaf" />
+        <menu id="Generate_Rules_(for_Multi-variable_Format)" text="Generate Rules (for Multi-variable Format)" commandtemplate="Generate Rules (for Multi-variable Format).xaml" commandoutputformat="Generate Rules (for Multi-variable Format).xml" owner="" nodetype="Leaf" />
+        <menu id="Targeting_Items_(for_Multi-variable_Format)" text="Targeting Items (for Multi-variable Format)" commandtemplate="Targeting Items (for Multi-variable Format).xaml" commandoutputformat="Targeting Items (for Multi-variable Format).xml" owner="" nodetype="Leaf" />
       </menu>
       <menu id="Plot_Rules" text="Plot Rules" commandtemplate="Plot Rules.xaml" commandoutputformat="Plot Rules.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="MeansSubMenu" text="Means" owner="" nodetype="Parent">
-      <menu id="Independent_Samples_T-Test" text="Independent Samples T-Test" commandtemplate="Independent Samples T-Test.xaml" commandoutputformat="Independent Samples T-Test.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Sample_T-Test" text="One Sample T-Test" commandtemplate="One Sample T-Test.xaml" commandoutputformat="One Sample T-Test.xml" owner="" nodetype="Leaf" />
       <menu id="T-Test,_Independent_Samples" text="T-Test, Independent Samples" commandtemplate="BSkyIndSmTTest.xaml" commandoutputformat="BSkyIndSmTTest.xml" owner="" nodetype="Leaf" />
+      <menu id="T-Test,_Independent_Samples_(Two_Numeric_Variables)" text="T-Test, Independent Samples (Two Numeric Variables)" commandtemplate="T-Test, Independent Samples (Two Numeric Variables).xaml" commandoutputformat="T-Test, Independent Samples (Two Numeric Variables).xml" owner="" nodetype="Leaf" />
       <menu id="T-Test,_One_Sample" text="T-Test, One Sample" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
       <menu id="T-Test,_Paired_Samples" text="T-Test, Paired Samples" commandtemplate="T-Test, Paired Samples.xaml" commandoutputformat="T-Test, Paired Samples.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="ANCOVA" text="ANCOVA" commandtemplate="ANCOVA.xaml" commandoutputformat="ANCOVA.xml" owner="" nodetype="Leaf" />
-      <menu id="Multi_Way_Anova" text="Multi Way Anova" commandtemplate="Multi Way Anova.xaml" commandoutputformat="Multi Way Anova.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Way_Anova" text="One Way Anova" commandtemplate="One Way Anova.xaml" commandoutputformat="One Way Anova.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Way_Anova_with_Blocks" text="One Way Anova with Blocks" commandtemplate="One Way Anova with Blocks.xaml" commandoutputformat="One Way Anova with Blocks.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Way_Anova_with_Random_Blocks" text="One Way Anova with Random Blocks" commandtemplate="One Way Anova with Random Blocks.xaml" commandoutputformat="One Way Anova with Random Blocks.xml" owner="" nodetype="Leaf" />
+      <menu id="Multi_Way_ANOVA" text="Multi Way ANOVA" commandtemplate="Multi Way ANOVA.xaml" commandoutputformat="Multi Way ANOVA.xml" owner="" nodetype="Leaf" />
+      <menu id="One_Way_ANOVA" text="One Way ANOVA" commandtemplate="One Way ANOVA.xaml" commandoutputformat="One Way ANOVA.xml" owner="" nodetype="Leaf" />
+      <menu id="One_Way_ANOVA_with_Blocks" text="One Way ANOVA with Blocks" commandtemplate="One Way ANOVA with Blocks.xaml" commandoutputformat="One Way ANOVA with Blocks.xml" owner="" nodetype="Leaf" />
+      <menu id="One_Way_ANOVA_with_Random_Blocks" text="One Way ANOVA with Random Blocks" commandtemplate="One Way ANOVA with Random Blocks.xaml" commandoutputformat="One Way ANOVA with Random Blocks.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="new_id" text="Missing Values" owner="" nodetype="Parent">
-      <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_columns)" text="Analysis of Missing Values (Output Arranged in columns)" commandtemplate="Analysis of Missing Values (Output Arranged in columns).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in columns).xml" owner="" nodetype="Leaf" />
+      <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_Columns)" text="Analysis of Missing Values (Output Arranged in Columns)" commandtemplate="Analysis of Missing Values (Output Arranged in Columns).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in Columns).xml" owner="" nodetype="Leaf" />
       <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_Rows)" text="Analysis of Missing Values (Output Arranged in Rows)" commandtemplate="Analysis of Missing Values (Output Arranged in Rows).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in Rows).xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="NonParamSubMenu" text="Non Parametric Tests" owner="" nodetype="Parent">
@@ -156,17 +155,17 @@
       <menu id="Summary_statistics_for_selected_variables" text="Summary Statistics for Selected Variables" commandtemplate="Summary statistics for selected variables.xaml" commandoutputformat="Summary statistics for selected variables.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
-      <menu id="Correlation_Test_(One_Variable)" text="Correlation Test (One Variable)" commandtemplate="Correlation Test (One Variable).xaml" commandoutputformat="Correlation Test (One Variable).xml" owner="" nodetype="Leaf" />
+      <menu id="Correlation_Test_(One_Pair)" text="Correlation Test (One Pair)" commandtemplate="Correlation Test (One Pair).xaml" commandoutputformat="Correlation Test (One Pair).xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Test_(Multi-variable)" text="Correlation Test (Multi-variable)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
       <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="TimeSubMenu" text="Time Series" owner="" nodetype="Parent">
-      <menu id="Automated_Arima" text="Automated Arima" commandtemplate="Automated Arima.xaml" commandoutputformat="Automated Arima.xml" owner="" nodetype="Leaf" />
+      <menu id="Automated_ARIMA" text="Automated ARIMA" commandtemplate="Automated ARIMA.xaml" commandoutputformat="Automated ARIMA.xml" owner="" nodetype="Leaf" />
       <menu id="Exponential_Smoothing" text="Exponential Smoothing" commandtemplate="Exponential Smoothing.xaml" commandoutputformat="Exponential Smoothing.xml" owner="" nodetype="Leaf" />
-      <menu id="Holt_Winters_Seasonal" text="Holt Winters Seasonal" commandtemplate="Holt Winters Seasonal.xaml" commandoutputformat="Holt Winters Seasonal.xml" owner="" nodetype="Leaf" />
-      <menu id="Non_Seasonal_Holt_Winters" text="Non Seasonal Holt Winters" commandtemplate="Non Seasonal Holt Winters.xaml" commandoutputformat="Non Seasonal Holt Winters.xml" owner="" nodetype="Leaf" />
-      <menu id="Plot_TimeSeries_(with_Correlations)" text="Plot TimeSeries (with Correlations)" commandtemplate="Plot TimeSeries (with Correlations).xaml" commandoutputformat="Plot TimeSeries (with Correlations).xml" owner="" nodetype="Leaf" icon="images/Time-Series.png" showtoolbaricon="true" />
-      <menu id="Plot_Time_Series(separate_or_combined)" text="Plot Time Series(separate or combined)" commandtemplate="Plot Time Series(separate or combined).xaml" commandoutputformat="Plot Time Series(separate or combined).xml" owner="" nodetype="Leaf" />
+      <menu id="Holt-Winters_Seasonal" text="Holt-Winters Seasonal" commandtemplate="Holt-Winters Seasonal.xaml" commandoutputformat="Holt-Winters Seasonal.xml" owner="" nodetype="Leaf" />
+      <menu id="Holt-Winters,_Non_Seasonal_" text="Holt-Winters, Non Seasonal " commandtemplate="Holt-Winters, Non Seasonal .xaml" commandoutputformat="Holt-Winters, Non Seasonal .xml" owner="" nodetype="Leaf" />
+      <menu id="Plot_Time_Series_(Separate_or_Combined)" text="Plot Time Series (Separate or Combined)" commandtemplate="Plot Time Series (Separate or Combined).xaml" commandoutputformat="Plot Time Series (Separate or Combined).xml" owner="" nodetype="Leaf" />
+      <menu id="Plot_Time_Series_(with_Correlations)" text="Plot Time Series (with Correlations)" commandtemplate="Plot Time Series (with Correlations).xaml" commandoutputformat="Plot Time Series (with Correlations).xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="VarianceSubMenu" text="Variance" owner="" nodetype="Parent">
       <menu id="Bartletts_Test" text="Bartletts Test" commandtemplate="Bartletts Test.xaml" commandoutputformat="Bartletts Test.xml" owner="" nodetype="Leaf" />
@@ -216,8 +215,9 @@
     </menu>
   </menu>
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
+    <menu id="Contrasts_Display" text="Contrasts Display" commandtemplate="Contrasts Display.xaml" commandoutputformat="Contrasts Display.xml" owner="" nodetype="Leaf" />
+    <menu id="Contrasts_Set" text="Contrasts Set" commandtemplate="Contrasts Set.xaml" commandoutputformat="Contrasts Set.xml" owner="" nodetype="Leaf" />  
     <menu id="Decision_Trees" text="Decision Trees" commandtemplate="Decision Trees.xaml" commandoutputformat="Decision Trees.xml" owner="" nodetype="Leaf" />
-    <menu id="Display_Contrasts" text="Display Contrasts" commandtemplate="Display Contrasts.xaml" commandoutputformat="Display Contrasts.xml" owner="" nodetype="Leaf" />
     <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
     <menu id="new_id" text="IRT" owner="" nodetype="Parent">
       <menu id="Simple_Rasch_Model" text="Simple Rasch Model" commandtemplate="Simple Rasch Model.xaml" commandoutputformat="Simple Rasch Model.xml" owner="" nodetype="Leaf" />
@@ -244,14 +244,13 @@
       <menu id="TuneRF" text="TuneRF" commandtemplate="TuneRF.xaml" commandoutputformat="TuneRF.xml" owner="" nodetype="Leaf" />
       <menu id="Optimal_Number_of_Trees" text="Optimal Number of Trees" commandtemplate="Optimal Number of Trees.xaml" commandoutputformat="Optimal Number of Trees.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="Set_Contrasts" text="Set Contrasts" commandtemplate="Set Contrasts.xaml" commandoutputformat="Set Contrasts.xml" owner="" nodetype="Leaf" />
-    <menu id="Summarizing_Models_for_each_group" text="Summarizing Models for each group" commandtemplate="Summarizing Models for each group.xaml" commandoutputformat="Summarizing Models for each group.xml" owner="" nodetype="Leaf" />
+    <menu id="Summarizing_Models_for_Each_Group" text="Summarizing Models for Each Group" commandtemplate="Summarizing Models for Each Group.xaml" commandoutputformat="Summarizing Models for Each Group.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="ModelTuningMenu" text="Model Tuning" owner="" nodetype="Parent">
     <menu id="Bootstrap_Resampling" text="Bootstrap Resampling" commandtemplate="Bootstrap Resampling.xaml" commandoutputformat="Bootstrap Resampling.xml" owner="" nodetype="Leaf" />
-    <menu id="k-fold_Cross_Validation" text="k-fold Cross Validation" commandtemplate="k-fold Cross Validation.xaml" commandoutputformat="k-fold Cross Validation.xml" owner="" nodetype="Leaf" />
+    <menu id="K-Fold_Cross_Validation" text="K-Fold Cross Validation" commandtemplate="K-Fold Cross Validation.xaml" commandoutputformat="K-Fold Cross Validation.xml" owner="" nodetype="Leaf" />
     <menu id="Leave_One_Out_Cross_Validation" text="Leave One Out Cross Validation" commandtemplate="Leave One Out Cross Validation.xaml" commandoutputformat="Leave One Out Cross Validation.xml" owner="" nodetype="Leaf" />
-    <menu id="Repeated_k-fold_Cross_Validation" text="Repeated k-fold Cross Validation" commandtemplate="Repeated k-fold Cross Validation.xaml" commandoutputformat="Repeated k-fold Cross Validation.xml" owner="" nodetype="Leaf" />
+    <menu id="Repeated_K-Fold_Cross_Validation" text="Repeated K-Fold Cross Validation" commandtemplate="Repeated K-Fold Cross Validation.xaml" commandoutputformat="Repeated K-Fold Cross Validation.xml" owner="" nodetype="Leaf" />
   </menu>
   <menu id="ModelStatsMenu" text="Model Statistics" owner="" nodetype="Parent">
     <menu id="AIC" text="AIC" commandtemplate="AIC.xaml" commandoutputformat="AIC.xml" owner="" nodetype="Leaf" />
