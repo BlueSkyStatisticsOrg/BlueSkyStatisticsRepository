@@ -269,7 +269,7 @@ namespace BlueSky.Model
         {
             int fIndex = (int)row;
             if (fIndex < 0)
-                return null;
+                return null; 
 
             CommandRequest cr = new CommandRequest();
             string rcommand = string.Empty;
@@ -340,6 +340,11 @@ namespace BlueSky.Model
                                     else
                                     {
                                         rdata[j] = _DF[fIndex, i].ToString();
+                                    }
+                                    if (rdata[j] != null && rdata[j].Contains('.'))//From R sometimes the seconds has a fraction(.07) part which should be removed.
+                                    {
+                                        int dotidx = rdata[j].IndexOf('.');
+                                        rdata[j] = rdata[j].Substring(0, dotidx);
                                     }
                                 }
                             }
@@ -441,7 +446,7 @@ namespace BlueSky.Model
                     return null;
                 long celldata = 0;
                 bool isparsed = false;
-                bool ToLocalDateTime = true; //25Aug2017: Date will be converted to local date/time
+                bool ToLocalDateTime = false; //25Aug2017: TRUE: Date will be converted to local date/time
                 string dateformat = "yyyy-MM-dd HH:mm:ss"; //25Aug2017
 
                 DateTime dt = new DateTime(1970, 1, 1);
