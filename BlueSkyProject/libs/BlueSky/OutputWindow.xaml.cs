@@ -2954,7 +2954,7 @@ namespace BlueSky
 
         private void Comingsoonbtn_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("www.blueskystatistics.com");
+            System.Diagnostics.Process.Start("https://www.blueskystatistics.com/Articles.asp?ID=298");
         }
 
         private void ThemeBtn_Click(object sender, RoutedEventArgs e)
