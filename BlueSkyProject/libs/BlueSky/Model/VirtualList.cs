@@ -341,10 +341,14 @@ namespace BlueSky.Model
                                     {
                                         rdata[j] = _DF[fIndex, i].ToString();
                                     }
-                                    if (rdata[j] != null && rdata[j].Contains('.'))//From R sometimes the seconds has a fraction(.07) part which should be removed.
+
+                                    if ((_dataSource.FewVariables[j].DataClass.Equals("POSIXct")))
                                     {
-                                        int dotidx = rdata[j].IndexOf('.');
-                                        rdata[j] = rdata[j].Substring(0, dotidx);
+                                        if (rdata[j] != null && rdata[j].Contains('.'))//From R sometimes the seconds has a fraction(.07) part which should be removed for POSIXct.
+                                        {
+                                            int dotidx = rdata[j].IndexOf('.');
+                                            rdata[j] = rdata[j].Substring(0, dotidx);
+                                        }
                                     }
                                 }
                             }
