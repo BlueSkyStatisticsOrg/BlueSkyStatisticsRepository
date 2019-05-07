@@ -451,7 +451,7 @@ namespace BlueSky.Model
                 long celldata = 0;
                 bool isparsed = false;
                 bool ToLocalDateTime = false; //25Aug2017: TRUE: Date will be converted to local date/time
-                string dateformat = "yyyy-MM-dd HH:mm:ss"; //25Aug2017
+                string dateformat = "yyyy-MM-dd HH:mm:ss"; //25Aug2017 yy-MMM-dd hh:mm:ss zzz
 
                 DateTime dt = new DateTime(1970, 1, 1);
                 for (int i = 0; i < _dataSource.FewVariables.Count; ++i)
