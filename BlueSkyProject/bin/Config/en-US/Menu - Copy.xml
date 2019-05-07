@@ -174,7 +174,7 @@
     </menu>
   </menu>
  <menu id="graphicMenu" text="Graphics" owner="" nodetype="Parent">
-    <menu id="Bar_Char,_Counts" text="Bar Char, Counts" commandtemplate="Bar Char, Counts.xaml" commandoutputformat="Bar Char, Counts.xml" owner="" nodetype="Leaf" />
+    <menu id="Bar_Chart,_Counts" text="Bar Chart, Counts" commandtemplate="Bar Chart, Counts.xaml" commandoutputformat="Bar Chart, Counts.xml" owner="" nodetype="Leaf" />
     <menu id="Bar_Chart,_Means" text="Bar Chart, Means" commandtemplate="Bar Chart, Means.xaml" commandoutputformat="Bar Chart, Means.xml" owner="" nodetype="Leaf" />
     <menu id="BoxPlot" text="BoxPlot" commandtemplate="BoxPlot.xaml" commandoutputformat="BoxPlot.xml" owner="" nodetype="Leaf" icon="images/Box-Plot.png" showtoolbaricon="true" />
     <menu id="Bulls_Eye" text="Bulls Eye" commandtemplate="Bulls Eye.xaml" commandoutputformat="Bulls Eye.xml" owner="" nodetype="Leaf" />
