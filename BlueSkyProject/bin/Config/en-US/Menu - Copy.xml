@@ -165,7 +165,7 @@
       <menu id="Holt-Winters,_Seasonal" text="Holt-Winters, Seasonal" commandtemplate="Holt-Winters, Seasonal.xaml" commandoutputformat="Holt-Winters, Seasonal.xml" owner="" nodetype="Leaf" />
       <menu id="Holt-Winters,_Non-seasonal_" text="Holt-Winters, Non-seasonal " commandtemplate="Holt-Winters, Non-seasonal .xaml" commandoutputformat="Holt-Winters, Non-seasonal .xml" owner="" nodetype="Leaf" />
       <menu id="Plot_Time_Series_(Separate_or_Combined)" text="Plot Time Series (Separate or Combined)" commandtemplate="Plot Time Series (Separate or Combined).xaml" commandoutputformat="Plot Time Series (Separate or Combined).xml" owner="" nodetype="Leaf" />
-      <menu id="Plot_Time_Series_(with_Correlations)" text="Plot Time Series (with Correlations)" commandtemplate="Plot Time Series (with Correlations).xaml" commandoutputformat="Plot Time Series (with Correlations).xml" owner="" nodetype="Leaf" />
+      <menu id="Plot_Time_Series_(with_Correlations)" text="Plot Time Series (with Correlations)" commandtemplate="Plot Time Series (with Correlations).xaml" commandoutputformat="Plot Time Series (with Correlations).xml" owner="" nodetype="Leaf"  icon="images/Time-Series.png" showtoolbaricon="true"/>
     </menu>
     <menu id="VarianceSubMenu" text="Variance" owner="" nodetype="Parent">
       <menu id="Bartletts_Test" text="Bartletts Test" commandtemplate="Bartletts Test.xaml" commandoutputformat="Bartletts Test.xml" owner="" nodetype="Leaf" />
