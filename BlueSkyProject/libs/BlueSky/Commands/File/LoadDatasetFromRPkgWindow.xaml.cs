@@ -47,14 +47,28 @@ namespace BlueSky.Commands.File
         //As soon as user select a R package, load all the dataset in the DatasetCombo Combobox
         private void LoadDatasetNames()
         {
+            string nodataset = "If you do not see a dataset in the dropdown, the package does not contain one or more dataset(s).";
+            string nopkg = "The package is not installed. To install the package, see help above.";
+            List<string> dsnamelist = new List<string>();
             //char[] sep = new char[1];
             //sep[0] = '-';
             string rpkgname = RpkgCombo.SelectedValue as string;
-            if (rpkgname == null)
-                return;
-            List<string> dsnamelist = GetListOfDatasetNamesInRPackage(rpkgname);
+            if (rpkgname != null)
+            {
+                dsnamelist = GetListOfDatasetNamesInRPackage(rpkgname);
+                //DatasetCombo.ItemsSource = dsnamelist;
+            }
             DatasetCombo.ItemsSource = dsnamelist;
 
+            //set proper message
+            if (rpkgname == null)
+            {
+                status.Text = nopkg;
+            }
+            else if(dsnamelist.Count < 1)
+            {
+                status.Text = nodataset;
+            }
             //List<RPkgDatasetDetails> RpkgdsLst = new List<RPkgDatasetDetails>();
             //foreach (string s in dsnamelist)
             //{
@@ -63,7 +77,7 @@ namespace BlueSky.Commands.File
             //    RpkgdsLst.Add(rpkgds);
             //}
             //DatasetCombo.ItemsSource = RpkgdsLst;
-            if (dsnamelist.Count < 1)
+            if (rpkgname==null || dsnamelist.Count < 1)
                 status.Visibility = Visibility.Visible;
             else
                 status.Visibility = Visibility.Collapsed;
@@ -272,6 +286,17 @@ namespace BlueSky.Commands.File
             LoadDatasetNames();
         }
 
+        private void RpkgCombo_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
+                (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) ||
+                (e.Key >= Key.A && e.Key <= Key.Z) ||
+                e.Key == Key.Decimal || e.Key == Key.Separator
+                )
+            {
+                LoadDatasetNames();
+            }
+        }
     }
 
     public class RPkgDatasetDetails

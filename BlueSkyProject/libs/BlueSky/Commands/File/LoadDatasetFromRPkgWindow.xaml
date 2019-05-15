@@ -38,7 +38,7 @@
         </StackPanel>
         
         <ComboBox Grid.Row="0" Grid.Column="1" Margin="3" Height="25" MinWidth="100" MaxWidth="650" VerticalAlignment="Top"
-                  IsEditable="True" Name="RpkgCombo" SelectionChanged="RpkgCombo_SelectionChanged" ></ComboBox>
+                  IsEditable="True" Name="RpkgCombo" SelectionChanged="RpkgCombo_SelectionChanged" KeyUp="RpkgCombo_KeyUp"></ComboBox>
 
         <!--<Expander Grid.Row="0" Grid.Column="4" Header="Help:" ExpandDirection="Right"></Expander>-->
         <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"  Margin="7" HorizontalAlignment="Left" MaxWidth="450"  Foreground="DarkSlateGray">
@@ -51,9 +51,9 @@
         <ComboBox Grid.Row="2" Grid.Column="1" Margin="3" Height="25" IsEditable="True"
                   MinWidth="100" MaxWidth="650" Name="DatasetCombo"></ComboBox>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Name="status" Grid.ColumnSpan="2"
+        <TextBlock Grid.Row="3" Grid.Column="0" Name="status" Grid.ColumnSpan="2" TextWrapping="Wrap" MaxWidth="450"
                   Margin="7" Visibility="Collapsed" FontWeight="Bold" Foreground="#FFF3760D">
-            If you do not see a dataset in the dropdown, the package does not contain one or more dataset(s).
+            If you do not see a dataset in the dropdown, either the package does not contain one or more dataset(s) or the package is not installed.
         </TextBlock>
         <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
             <Button Name="OKBtn" Margin="3" Width="60" Click="OKBtn_Click">Ok</Button>
