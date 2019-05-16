@@ -6,6 +6,7 @@ using BSky.Interfaces.Interfaces;
 using BSky.Lifetime;
 using BSky.Lifetime.Interfaces;
 using BSky.Statistics.Common;
+using BSky.Statistics.R;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -35,6 +36,7 @@ namespace BlueSky.Commands.File
         {
             InitializeComponent();
             LoadInstalledRPkgNames();
+            LoadDatasetNames(true);//load datasets from all R installed packages at launch.
         }
 
         //Load names of all (installed) R packages in the RpkgCombo Combobox
@@ -45,27 +47,35 @@ namespace BlueSky.Commands.File
         }
 
         //As soon as user select a R package, load all the dataset in the DatasetCombo Combobox
-        private void LoadDatasetNames()
+        private void LoadDatasetNames(bool loadFrmAllPkgs=false)
         {
             string nodataset = "If you do not see a dataset in the dropdown, the package does not contain one or more dataset(s).";
             string nopkg = "The package is not installed. To install the package, see help above.";
             List<string> dsnamelist = new List<string>();
+            List<RPkgDatasetDetails> PkgDatsetDetailList = null;
             //char[] sep = new char[1];
             //sep[0] = '-';
-            string rpkgname = RpkgCombo.SelectedValue as string;
+            string rpkgname = string.Empty;
+            if(!loadFrmAllPkgs)
+                rpkgname=RpkgCombo.SelectedValue as string;
+
             if (rpkgname != null)
             {
-                dsnamelist = GetListOfDatasetNamesInRPackage(rpkgname);
+                PkgDatsetDetailList = GetListOfDatasetNamesInRPackage(rpkgname);
                 //DatasetCombo.ItemsSource = dsnamelist;
             }
-            DatasetCombo.ItemsSource = dsnamelist;
+            if (PkgDatsetDetailList == null)
+            {
+                PkgDatsetDetailList = new List<RPkgDatasetDetails>();
+            }
+            DatasetCombo.ItemsSource = PkgDatsetDetailList;// dsnamelist;
 
             //set proper message
             if (rpkgname == null)
             {
                 status.Text = nopkg;
             }
-            else if(dsnamelist.Count < 1)
+            else if(PkgDatsetDetailList.Count < 1)
             {
                 status.Text = nodataset;
             }
@@ -77,7 +87,7 @@ namespace BlueSky.Commands.File
             //    RpkgdsLst.Add(rpkgds);
             //}
             //DatasetCombo.ItemsSource = RpkgdsLst;
-            if (rpkgname==null || dsnamelist.Count < 1)
+            if (rpkgname==null || PkgDatsetDetailList.Count < 1)
                 status.Visibility = Visibility.Visible;
             else
                 status.Visibility = Visibility.Collapsed;
@@ -86,11 +96,14 @@ namespace BlueSky.Commands.File
         //Load selected R pkg and then load the select dataset in the grid
         private void OKBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            if (RpkgCombo.SelectedValue != null && RpkgCombo.SelectedValue != null)
+            if (DatasetCombo.SelectedValue != null)
             {
-                string rpkgname = (RpkgCombo.SelectedValue as string).Trim();
-                string selectedItem = (DatasetCombo.SelectedItem as string).Trim();
+                string rpkgname = string.Empty;
+                if(RpkgCombo.SelectedValue != null)
+                    rpkgname = (RpkgCombo.SelectedValue as string).Trim();
+                else
+                    rpkgname = (DatasetCombo.SelectedItem as RPkgDatasetDetails).RPkgname.Trim();
+                string selectedItem = (DatasetCombo.SelectedItem as RPkgDatasetDetails).ToString().Trim();
                 //NOTE: it was found that if datasetname has two parts like, bock.table (bock)
                 //then in this case dataset-name will be 'bock' which should be passed to util::data()
                 //and the part that is outside parenthesis i.e. bock.table is the dataset object(actual dataset)
@@ -100,8 +113,10 @@ namespace BlueSky.Commands.File
 
                 string datasetname = string.Empty;// say bock
                 string datasetobjname = string.Empty;//say bock.table
-                int idx = selectedItem.IndexOf("-["); //format is : "dataset-obj (dataset-name) -[Description]"
-                string datasetObjAndName = selectedItem.Substring(0, idx).Trim();
+                ////int idx = selectedItem.IndexOf("-["); //format is : "dataset-obj (dataset-name) -[Description]"
+                ////string datasetObjAndName = selectedItem.Substring(0, idx).Trim();
+
+                string datasetObjAndName = (DatasetCombo.SelectedItem as RPkgDatasetDetails).DSName;
                 int parenopenidx = datasetObjAndName.IndexOf("(");
                 int parencloseidx = datasetObjAndName.IndexOf(")");
                 if (datasetObjAndName.Contains(" ") && parenopenidx > 0 && parencloseidx > 0)//two part name e.g. "dataset-obj (dataset-name)"
@@ -114,7 +129,19 @@ namespace BlueSky.Commands.File
                     datasetname = datasetObjAndName;
                     datasetobjname = datasetObjAndName;
                 }
-                LoadDatasetFromRPackage(rpkgname, datasetname, datasetobjname);
+
+                if (rpkgname != null && rpkgname.Length > 0 &&
+                    datasetname != null && datasetname.Length > 0 &&
+                    datasetobjname != null && datasetobjname.Length > 0
+                    )
+                {
+                    this.Close();
+                    LoadDatasetFromRPackage(rpkgname, datasetname, datasetobjname);
+                }
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -165,9 +192,10 @@ namespace BlueSky.Commands.File
             return installed;
         }
 
-        private List<string> GetListOfDatasetNamesInRPackage(string RPkgName)
+        private List<RPkgDatasetDetails> GetListOfDatasetNamesInRPackage(string RPkgName)
         {
             List<string> PkgDatsetNames = new List<string>();
+            List<RPkgDatasetDetails> PkgDatsetDetailList = null;
             try
             {
                 PackageHelperMethods phm = new PackageHelperMethods();
@@ -176,19 +204,21 @@ namespace BlueSky.Commands.File
                 {
                     string[] strarr = null;
 
-                    if (r.SimpleTypeData.GetType().Name.Equals("String"))
-                    {
-                        strarr = new string[1];
-                        strarr[0] = r.SimpleTypeData as string;
-                    }
-                    else if (r.SimpleTypeData.GetType().Name.Equals("String[]"))
-                    {
-                        strarr = r.SimpleTypeData as string[];
-                    }
-
+                    //if (r.SimpleTypeData.GetType().Name.Equals("String"))
+                    //{
+                    //    strarr = new string[1];
+                    //    strarr[0] = r.SimpleTypeData as string;
+                    //}
+                    //else if (r.SimpleTypeData.GetType().Name.Equals("String[]"))
+                    //{
+                    //    strarr = r.SimpleTypeData as string[];
+                    //}
                     //strarr to list
-                    foreach (string s in strarr)
-                        PkgDatsetNames.Add(s);
+                    //foreach (string s in strarr)
+                    //    PkgDatsetNames.Add(s);
+
+                    PkgDatsetDetailList = r.SimpleTypeData as List<RPkgDatasetDetails>;
+
                 }
                 else
                 {
@@ -203,7 +233,7 @@ namespace BlueSky.Commands.File
                 MessageBox.Show(ex.Message);
                 logService.WriteToLogLevel("Error:", LogLevelEnum.Error, ex);
             }
-            return PkgDatsetNames;
+            return PkgDatsetDetailList;//PkgDatsetNames;
         }
 
         private void LoadRPackage(string packagename)
@@ -299,14 +329,14 @@ namespace BlueSky.Commands.File
         }
     }
 
-    public class RPkgDatasetDetails
-    {
-        public string DSName { get; set; }
-        public string Title { get; set; }
+    //public class RPkgDatasetDetails
+    //{
+    //    public string DSName { get; set; }
+    //    public string Title { get; set; }
 
-        public override string ToString()
-        {
-            return DSName + Title;
-        }
-    }
+    //    public override string ToString()
+    //    {
+    //        return DSName + Title;
+    //    }
+    //}
 }

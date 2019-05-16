@@ -2143,12 +2143,12 @@ namespace BSky.Statistics.R
         public override UAReturn FetchRpkgDatasetList(string packagename)
         {
             UAReturn result = new UAReturn() { Success = false };
-            string[] dslist = rpm.GetDatasetListFromRPkg(packagename);
+            List<RPkgDatasetDetails> dslist = rpm.GetDatasetListFromRPkg(packagename);
             if (dslist != null)
             {
-                if (dslist.Count() == 1 && dslist[0].Contains("ReRRoE"))
+                if (dslist.Count() == 1 && dslist[0].Title.Contains("ReRRoE"))
                 {
-                        result.Error = dslist[0].Replace("ReRRoE","");
+                        result.Error = dslist[0].Title.Replace("ReRRoE","");
                 }
                 else
                 {

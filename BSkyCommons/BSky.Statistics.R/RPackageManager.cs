@@ -126,38 +126,51 @@ namespace BSky.Statistics.R
             return isLoaded;
         }
 
-public string[] GetDatasetListFromRPkg(string packagename)//12Feb2011 Get names of datasets in a R pkg
+public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Feb2011 Get names of datasets in a R pkg
         {
             string joinCharacter = "-";
+            string commandstring = string.Empty;
             StringBuilder sb = new StringBuilder(); 
-            string[] datasetlist = null;
+            List<RPkgDatasetDetails> datasetlist = null;
             // data()$results is a matrix with dimnames [Package, LibPath, Item, Title]
             // we will need "Item" and "Title" ( data(package="pkgname")$results[, 3:4] ) which we will join using joinCharacter
             ////try may help in avoiding crash
-            string commandstring = "try(data(package='"+ packagename + "')$results[, 3:4])"; 
+            if(string.IsNullOrEmpty(packagename))
+                commandstring = "try(data(package = .packages(all.available = TRUE))$results)"; 
+            else
+                commandstring = "try(data(package='" + packagename + "')$results)";
             _journal.WriteLine(commandstring);
             RDotNet.CharacterMatrix chrmatrix = _dispatcher.GetChrMatrix(commandstring);
             if (chrmatrix != null)
             {
                 if (chrmatrix.ColumnNames != null)
                 {
-                    datasetlist = new string[chrmatrix.RowCount];
-                    //datasetlist[0] = string.Empty;
+                    datasetlist = new List<RPkgDatasetDetails>();//new string[chrmatrix.RowCount];
+                    RPkgDatasetDetails rpdd = null;
                     for (int r = 0; r < chrmatrix.RowCount; r++)
                     {
-                        sb.Clear();
+                        rpdd = new RPkgDatasetDetails();
                         for (int c = 0; c < chrmatrix.ColumnCount; c++)
                         {
-                            sb.Append(chrmatrix[r, c]);
-                            if (c < chrmatrix.ColumnCount - 1)
+                            switch(c)
                             {
-                                sb.Append(" ");
-                                sb.Append(joinCharacter);
-                                sb.Append("[");
+                                case 0:
+                                    rpdd.RPkgname = chrmatrix[r, c];
+                                    break;
+                                case 1:
+                                    rpdd.RPkgPath = chrmatrix[r, c];
+                                    break;
+                                case 2:
+                                    rpdd.DSName = chrmatrix[r, c];
+                                    break;
+                                case 3:
+                                    rpdd.Title = chrmatrix[r, c];
+                                    break;
+                                default:
+                                    break;
                             }
                         }
-                        sb.Append("]");
-                        datasetlist[r] = sb.ToString();
+                        datasetlist.Add(rpdd);
                     }
                 }
                 else
@@ -166,8 +179,11 @@ public string[] GetDatasetListFromRPkg(string packagename)//12Feb2011 Get names 
                     {
                         string rmsg = chrmatrix[0, 0];
                         _journal.WriteLine(rmsg);
-                        datasetlist = new string[1];
-                        datasetlist[0] = "ReRRoE"+rmsg; //to easily identify error message in uber function
+                        datasetlist = new List<RPkgDatasetDetails>();//new string[1];
+                        RPkgDatasetDetails rpd = new RPkgDatasetDetails();
+                        rpd.RPkgname = string.Empty; rpd.RPkgPath = string.Empty;rpd.DSName = string.Empty;
+                        rpd.Title = "ReRRoE"+rmsg; //to easily identify error message in uber function
+                        datasetlist.Add(rpd);
                     }
                 }
             }
@@ -706,5 +722,18 @@ public string[] GetDatasetListFromRPkg(string packagename)//12Feb2011 Get names 
             return isUserRPackage;
         }
         #endregion
+    }
+
+    public class RPkgDatasetDetails
+    {
+        public string RPkgname { get; set; }
+        public string RPkgPath { get; set; }
+        public string DSName { get; set; }
+        public string Title { get; set; }
+
+        public override string ToString()
+        {
+            return DSName +" -["+ Title +"]";
+        }
     }
 }

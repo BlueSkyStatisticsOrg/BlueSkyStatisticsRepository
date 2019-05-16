@@ -754,6 +754,10 @@
       <Project>{65c691e3-e3e9-4a3e-8b70-9f9d25631575}</Project>
       <Name>BSky.Service.StatisticsEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\BSky.Statistics.R\BSky.Statistics.R.csproj">
+      <Project>{9A2C2CE3-C9F3-4829-8F17-62A46F097FD7}</Project>
+      <Name>BSky.Statistics.R</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\BSkyCommons\BSky.UsageLogger\BSky.UsageLogger.csproj">
       <Project>{133c4c72-bf3d-4ad9-86d4-3818d8b24aff}</Project>
       <Name>BSky.UsageLogger</Name>
