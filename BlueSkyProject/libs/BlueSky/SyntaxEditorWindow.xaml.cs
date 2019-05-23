@@ -261,7 +261,7 @@ namespace BlueSky
             }
         }
 
-        public void RunCommands(string commands, BSkyDialogProperties dlgprop = null, string fname="") //30Apr2013
+        public void RunCommands(string commands, BSkyDialogProperties dlgprop = null, string fname = "") //30Apr2013
         {
             try
             {
@@ -273,7 +273,7 @@ namespace BlueSky
                 #region Load registered graphic commands from GraphicCommandList.txt 18Sep2012
                 // loads each time run is clicked. Performance will be effected.
                 string grplstfullfilepath = string.Format(@"{0}GraphicCommandList.txt", BSkyAppData.RoamingUserBSkyConfigPath);
-				
+
                 //if graphic file does not exist the n create one.
                 if (!IsValidFullPathFilename(grplstfullfilepath, true))//17Jan2014
                 {
@@ -346,7 +346,7 @@ namespace BlueSky
                     lst.SelectedForDump = true;
 
                 ////17Nov2017 for opening a flat file that has ; as a field separator. this field separator is not for line termination in R syntax.
-                commands = commands.Replace("\";\"", "'BSkySemiColon'").Replace("';'", "'BSkySemiColon'"); 
+                commands = commands.Replace("\";\"", "'BSkySemiColon'").Replace("';'", "'BSkySemiColon'");
 
                 ////03Oct2014 We should remove R comments right here, before proceeding with execution.
                 string nocommentscommands = RemoveCommentsFromCommands(commands);
@@ -415,7 +415,7 @@ namespace BlueSky
         }
 
         //Checks if number of different types of brakets have openbracket count == closebracket count.
-        private bool AreBracketsBalanced(string commands, out string msg) 
+        private bool AreBracketsBalanced(string commands, out string msg)
         {
             bool balanced = true;
             int roundbrackets = 0;
@@ -424,7 +424,7 @@ namespace BlueSky
             bool dblQuotes = false;
             bool sglQuotes = false;
             string brackets = "()[]{}";
-			char prevchar='\0';
+            char prevchar = '\0';
             //loop thru char by char to find each type
             foreach (char ch in commands)
             {
@@ -447,7 +447,7 @@ namespace BlueSky
                     else if (ch == '[') squarebrackets++;
                     else if (ch == ']') squarebrackets--;
                 }
-				prevchar = ch;
+                prevchar = ch;
             }
 
             if (roundbrackets != 0 || curlybrackets != 0 || squarebrackets != 0)
@@ -491,7 +491,7 @@ namespace BlueSky
         {
             sessionlst.NameOfSession = sessionheader;
             sessionlst.isRSessionOutput = true;
-            
+
             if (sessionlst.Count > 0)//07Nov2014
             {
                 if (selectedOW == null)
@@ -533,7 +533,7 @@ namespace BlueSky
             string tempDir = BSkyAppData.RoamingUserBSkyTempPath;
 
             string synedtimg = Path.Combine(tempDir, synedtimgname);
-            
+
             int percentindex = synedtimg.IndexOf("%");
             int dindex = synedtimg.IndexOf("d", percentindex);
             string percentstr = synedtimg.Substring(percentindex, (dindex - percentindex + 1));
@@ -679,8 +679,8 @@ namespace BlueSky
 
             seltext = seltext.Replace('\n', ';').Replace('\r', ' ').Trim();
             seltext = JoinCommaSeparatedStatment(seltext);
-			seltext = JoinPlusSignSeparatedStatment(seltext);		
-			seltext = JoinPipeSeparatedStatment(seltext);
+            seltext = JoinPlusSignSeparatedStatment(seltext);
+            seltext = JoinPipeSeparatedStatment(seltext);
             string stmt = "";
             //////wrap in sink////////
 
@@ -704,7 +704,7 @@ namespace BlueSky
             {
                 objectname = "";
 
-                end = seltext.IndexOf(';', start) - start;  
+                end = seltext.IndexOf(';', start) - start;
 
                 if (end < 0) // if ; not found
                     end = seltext.IndexOf('\n', start) - start;
@@ -761,7 +761,7 @@ namespace BlueSky
                             }
                             else
                             {
-                                string originalFormatSyn2 = seltext.Substring(start, end).Replace(';','\n');
+                                string originalFormatSyn2 = seltext.Substring(start, end).Replace(';', '\n');
                                 SendCommandToOutput(originalFormatSyn2, "R-Command");
                                 ExecuteOtherCommand(ow, stmt);
                             }
@@ -801,11 +801,11 @@ namespace BlueSky
                             CloseSinkFile();
                             CreateOuput(ow);
                             SendCommandToOutput(stmt, "BSkyFormat");//26Aug2014 blue colored
-                            ExecuteBSkyFormatCommand(stmt, ref bskyfrmtobjcount, ow); 
+                            ExecuteBSkyFormatCommand(stmt, ref bskyfrmtobjcount, ow);
                             OpenSinkFile(@sinkfilefullpathname, "wt");
                             SetSink();
                             break;
-                        case RCommandType.BSKYLOADREFRESHDATAFRAME: 
+                        case RCommandType.BSKYLOADREFRESHDATAFRAME:
                             ResetSink();
                             CloseSinkFile();
                             CreateOuput(ow);
@@ -822,7 +822,7 @@ namespace BlueSky
                             OpenSinkFile(@sinkfilefullpathname, "wt");
                             SetSink();
                             break;
-                        case RCommandType.BSKYREMOVEREFRESHDATAFRAME: 
+                        case RCommandType.BSKYREMOVEREFRESHDATAFRAME:
                             ResetSink();
                             CloseSinkFile();
                             CreateOuput(ow);
@@ -830,7 +830,7 @@ namespace BlueSky
                             OpenSinkFile(@sinkfilefullpathname, "wt");
                             SetSink();
                             break;
-                        case RCommandType.SPLIT: 
+                        case RCommandType.SPLIT:
                             ResetSink();
                             CloseSinkFile();
                             CreateOuput(ow);
@@ -860,7 +860,7 @@ namespace BlueSky
                             if (AdvancedLogging) logService.WriteToLogLevel("ExtraLogs: Categorized. After getting graphic if any.", LogLevelEnum.Info);
 
                             break;
-                        
+
                         case RCommandType.RDOTNET:
                             InitializeRDotNet();
                             RDotNetOpenDataset();
@@ -1037,7 +1037,7 @@ namespace BlueSky
             comm = Regex.Replace(comm, @"%>%\s*;", " %>% ");
             return comm;
         }
-		
+
         ////curly block parser////
         private string CurlyBracketParser(string comm, int start, ref int end)
         {
@@ -1114,21 +1114,24 @@ namespace BlueSky
             bool isroundblock = false;
             string subs = string.Empty;
             int roundbrktidx = comm.IndexOf("(");
-            int curlybrktidx = comm.IndexOf("{");
+            int closingroundbracketidx = IndexOfClosingBracket(comm, roundbrktidx);
 
-            if (roundbrktidx > -1 && curlybrktidx > -1 && roundbrktidx < curlybrktidx)
+            int curlybrktidx = comm.IndexOf("{");
+            int closingcurlybracketidx = IndexOfClosingBracket(comm, curlybrktidx);
+
+            // local( ;{ ..; ..; ..; };
+            // within( abc, ;{ ..; ..; ..; }; 
+            if (roundbrktidx > -1 && curlybrktidx > -1 && 
+                closingcurlybracketidx > -1 && 
+                roundbrktidx < curlybrktidx)
             {
-                subs = comm.Substring(roundbrktidx + 1, curlybrktidx - roundbrktidx - 1);//extract string between ( and {.eg.. local(;{
-                subs = subs.Replace(";", " ");
-                if (subs.Trim().Length > 0)//this is true is there was something in between ( and { eg.. if(condi){
-                {
-                    isroundblock = false;
-                }
-                else //there was nothing in between ( and {. eg.. local(   {
-                {
-                    isroundblock = true;
-                }
+                isroundblock = true;
             }
+            else
+            {
+                isroundblock = false;
+            }
+
             return isroundblock;
         }
 
@@ -1176,6 +1179,102 @@ namespace BlueSky
             return str;
         }
 
+        private int IndexOfClosingBracket(string comm, int indexofOpenbracket)
+        {
+            int indexofclosing = -1;
+            if (!(comm.ElementAt(indexofOpenbracket).Equals('(') ||
+                comm.ElementAt(indexofOpenbracket).Equals('{') ||
+                comm.ElementAt(indexofOpenbracket).Equals('['))
+                )
+            {
+                //this if block means that the indexofOpenbracket is not a index of any of open bracket
+                return indexofclosing; //for closing bracket index not found (-1)
+            }
+            bool squoteregion = false;
+            bool dquoteregion = false;
+            int top = -1;
+            List<string> stack = new List<string>();
+            List<string> result = new List<string>();
+            for (int l = 0; l < comm.Length; l++)
+            {
+                #region skip quotation enclosed text
+                if (comm[l].Equals('\''))//single quote
+                {
+                    if (squoteregion)
+                        squoteregion = false;
+                    else
+                        squoteregion = true;
+                }
+
+                if (squoteregion)
+                    continue;
+
+                if (comm[l].Equals('\"'))//double quote
+                {
+                    if (dquoteregion)
+                        dquoteregion = false;
+                    else
+                        dquoteregion = true;
+                }
+
+                if (dquoteregion)
+                    continue;
+                #endregion
+
+                switch (comm[l])
+                {
+                    case '(':
+                        stack.Add(l.ToString());
+                        top++;
+                        break;
+                    case '{':
+                        stack.Add(l.ToString());
+                        top++;
+                        break;
+                    case '[':
+                        stack.Add(l.ToString());
+                        top++;
+                        break;
+                    case ')':
+                        result.Add(stack[top] + "," + l);
+                        stack.RemoveAt(top);
+                        top--;
+                        break;
+                    case '}':
+                        result.Add(stack[top] + "," + l);
+                        stack.RemoveAt(top);
+                        top--;
+                        break;
+                    case ']':
+                        result.Add(stack[top] + "," + l);
+                        stack.RemoveAt(top);
+                        top--;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            Dictionary<int, int> opencloseindexes = new Dictionary<int, int>();
+            int commaindex = 0;
+            foreach (string st in result)
+            {
+                commaindex = st.IndexOf(",");
+                if (commaindex > 0)
+                {
+                    opencloseindexes.Add(int.Parse(st.Substring(0, commaindex)), int.Parse(st.Substring(commaindex + 1)));
+                }
+            }
+
+            if (!opencloseindexes.TryGetValue(indexofOpenbracket, out indexofclosing))
+            {
+                //key not found
+                indexofclosing = -1;//no need to set as the value is already set on top.
+            }
+
+            return indexofclosing;
+        }
+
         private string RemoveComments_others(string str)//14May2014
         {
             if (str == null || str.Length < 1)
@@ -1183,7 +1282,7 @@ namespace BlueSky
 
             int len = str.Length;
 
-            int sidx = str.IndexOf("#"); 
+            int sidx = str.IndexOf("#");
             int eidx = 0, remvlen = 0;
 
             if (sidx < 0) // if there is no comment
@@ -1380,7 +1479,7 @@ namespace BlueSky
 
                         if (opncurly != -1 && closcurly != -1)
                             commnd = commnd.Substring(opncurly + 1, lencommnd);//could be graphic or BSkyFormat in sink file.
-                        
+
                         if (false)
                         {
                             SendToOutput(sbauparas.ToString(), ref lst, ow);//22May2014
@@ -1404,7 +1503,7 @@ namespace BlueSky
                             }
                             else
                             {
-                                if(linetext.ToString().StartsWith("\n"))//if linetext already has new line then no need to add \n
+                                if (linetext.ToString().StartsWith("\n"))//if linetext already has new line then no need to add \n
                                     sbauparas.Append(linetext.ToString());
                                 else
                                     sbauparas.Append("\n" + linetext.ToString());//all lines separated by new line
@@ -1659,7 +1758,7 @@ namespace BlueSky
             analytics.ExecuteR(sinkcmd, false, false);
         }
 
-        private void ResetSink() 
+        private void ResetSink()
         {
             sinkcmd.CommandSyntax = "sink(stderr(), type=c(\"message\"))";// command
             analytics.ExecuteR(sinkcmd, false, false);
@@ -1866,7 +1965,7 @@ namespace BlueSky
             }
 
             //second mandatory parameter
-            string mandatoryparamtwo = ", singleTableOutputHeader = '" + headername + "'"; 
+            string mandatoryparamtwo = ", singleTableOutputHeader = '" + headername + "'";
 
             if (restparams.Trim().Length > 0 && restparams.Trim().Contains("singleTableOutputHeader"))
             {
@@ -1890,7 +1989,7 @@ namespace BlueSky
             {
                 bskyfrmtobjcount++;
 
-                stmt = "bskyfrmtobj <- " + stmt; 
+                stmt = "bskyfrmtobj <- " + stmt;
                 objectname = "bskyfrmtobj";
                 cmd.CommandSyntax = stmt;// command 
                 o = analytics.ExecuteR(cmd, false, false);//executing BSkyFormat
@@ -2053,7 +2152,7 @@ namespace BlueSky
                 if (!varname.Equals(subcomm))
                     o = analytics.ExecuteR(cmd, false, false);
             }
-            else 
+            else
             {
                 /////25Feb2013 for writing errors in OutputWindow////
                 string sinkfilename = confService.GetConfigValueForKey("tempsink");//23nov2012
@@ -2647,7 +2746,7 @@ namespace BlueSky
                     colheaders[i] = (i + 1).ToString();
             }
 
-           //read configuration and then decide to pull row headers
+            //read configuration and then decide to pull row headers
 
             bool shownumrowheaders = true; /// 
 
@@ -2893,7 +2992,7 @@ namespace BlueSky
             string pattern = @"BSkyFormat\s*\(";
             command = Regex.Replace(command, pattern, "BSkyFormat(");
             #endregion
-			
+
             string firstParam = string.Empty;//for object to be formatted
             string restParams = string.Empty;//for remaining params
             usertitle = string.Empty; //for title if passed in function call by the user.
@@ -3027,12 +3126,12 @@ namespace BlueSky
             BSkyMouseBusyHandler.ShowMouseBusy();
 
             //This code is not supposed to do any sort processing. It just to puts sort images in col headers
-            if (stmt.Contains("%>% arrange(")) 
+            if (stmt.Contains("%>% arrange("))
             {
                 //get asc colnames from command
                 List<string> asccols = null;
                 //get desc colnames from command
-                List<string> desccols = null; 
+                List<string> desccols = null;
 
                 GetAscDescCols(stmt, out asccols, out desccols);
 
@@ -3358,7 +3457,8 @@ namespace BlueSky
             if (extractedCommand.Equals("function(") || extractedCommand.Equals("for(") ||
                 extractedCommand.Equals("while(") || extractedCommand.Equals("if(") ||
                 extractedCommand.Equals("{") ||
-                extractedCommand.Equals("local("))
+                extractedCommand.Equals("local(") ||
+                extractedCommand.Equals("within("))
 
             {
                 iscondloop = true;
@@ -3413,7 +3513,7 @@ namespace BlueSky
             }
             catch (Exception e)
             {
-                MessageBox.Show(this, BSky.GlobalResources.Properties.Resources.ErrOpeningRegGrpLst+"\n" + e.Message);
+                MessageBox.Show(this, BSky.GlobalResources.Properties.Resources.ErrOpeningRegGrpLst + "\n" + e.Message);
                 logService.WriteToLogLevel("Registered Graphics List not found!", LogLevelEnum.Error);
             }
         }
@@ -3824,7 +3924,7 @@ namespace BlueSky
             if (filemustexist && !File.Exists(path))
             {
                 validFile = false;
-                message = BSky.GlobalResources.Properties.Resources.invalidFilename+" " + filename;
+                message = BSky.GlobalResources.Properties.Resources.invalidFilename + " " + filename;
             }
             else
                 validFile = true;
@@ -3836,7 +3936,7 @@ namespace BlueSky
             }
             else
             {
-                message = message + " "+BSky.GlobalResources.Properties.Resources.invalidDir+" " + dir;
+                message = message + " " + BSky.GlobalResources.Properties.Resources.invalidDir + " " + dir;
                 validDir = false;
             }
             if (message.Trim().Length > 0)
@@ -3881,7 +3981,7 @@ namespace BlueSky
                         e.Cancel = true;//stop closing
 
                     Modified = false;
-                    Title = BSky.GlobalResources.Properties.UICtrlResources.CommandEditorPanelTitle+" Window";
+                    Title = BSky.GlobalResources.Properties.UICtrlResources.CommandEditorPanelTitle + " Window";
                 }
             }
         }
@@ -3986,7 +4086,7 @@ namespace BlueSky
         private void inputTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Modified = true;
-            Title = BSky.GlobalResources.Properties.UICtrlResources.CommandEditorPanelTitle +" - < unsaved script >";
+            Title = BSky.GlobalResources.Properties.UICtrlResources.CommandEditorPanelTitle + " - < unsaved script >";
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
@@ -4022,11 +4122,11 @@ namespace BlueSky
         {
             get
             {
-                if (imagewidth > -1 && imageheight > -1) 
+                if (imagewidth > -1 && imageheight > -1)
                 {
                     return true;
                 }
-                else 
+                else
                 {
                     return false;
                 }
