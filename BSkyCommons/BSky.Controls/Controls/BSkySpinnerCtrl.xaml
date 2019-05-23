@@ -7,7 +7,7 @@
               >
     <Grid Name="spinnergrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="67"></ColumnDefinition>
             <ColumnDefinition Width="16"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBox Grid.Column="0" Name="text" MinHeight="20" MaxHeight="22"  >0</TextBox>

@@ -298,7 +298,7 @@ namespace BSky.Controls
                     b = new BSkySpinnerCtrl();
                     // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
                     // b1.Ticks = null;
-                    b.Width = 80;
+                    b.Width = 83;
                     b.Height = 22;
                     break;
             }
