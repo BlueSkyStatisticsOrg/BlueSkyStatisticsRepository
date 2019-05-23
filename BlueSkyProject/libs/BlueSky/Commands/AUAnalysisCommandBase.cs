@@ -399,7 +399,7 @@ namespace BlueSky.Commands.Analytics.TTest
                 return;
             }
             /////13Feb2013 Store obj in dictionary if not already there ////
-            if (!isOldDialog)
+            if (!(isOldDialog || sdc.SessionDialogList.ContainsKey(dialogkey)))
             {
                 sdc.SessionDialogList.Add(dialogkey, obj);
             }
