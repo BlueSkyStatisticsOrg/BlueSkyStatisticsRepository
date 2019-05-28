@@ -58,7 +58,7 @@ namespace BSky.MenuGenerator
             foreach (DashBoardItem dbi in dbis)
             {
                 if (dbi.ID.Equals("analysisMenu") || dbi.ID.Equals("graphicMenu") || dbi.ID.Equals("splitMenu") || dbi.ID.Equals("dataMenu") 
-                || dbi.ID.Equals("ModelFittingMenu") || dbi.ID.Equals("ModelTuningMenu") || dbi.ID.Equals("ModelStatsMenu"))
+                || dbi.ID.Equals("ModelFittingMenu") || dbi.ID.Equals("ModelTuningMenu") || dbi.ID.Equals("ModelStatsMenu") || dbi.ID.Equals("distributionMenu"))
                     _outputmenu.Items.Insert(_outputmenu.Items.Count - 1, CreateItem(dbi)); 
             }
         }
