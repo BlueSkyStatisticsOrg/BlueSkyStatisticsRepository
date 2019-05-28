@@ -2149,7 +2149,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ouput and Syntax Window-.
+        ///   Looks up a localized string similar to Output and Syntax Window-.
         /// </summary>
         public static string OutputWindowMainTitle {
             get {

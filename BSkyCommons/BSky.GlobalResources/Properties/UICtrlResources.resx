@@ -390,7 +390,7 @@
     <comment>Window1.xaml.cs : Error message if for some reason there is some issue generating the menus</comment>
   </data>
   <data name="OutputWindowMainTitle" xml:space="preserve">
-    <value>Ouput and Syntax Window-</value>
+    <value>Output and Syntax Window-</value>
     <comment>OutputWindowContainer.cs : Output Window title text</comment>
   </data>
   <data name="OutputWindowTitleStatus" xml:space="preserve">
