@@ -1113,11 +1113,15 @@ namespace BlueSky
         {
             bool isroundblock = false;
             string subs = string.Empty;
+            int closingroundbracketidx = -1;
+            int closingcurlybracketidx = -1;
             int roundbrktidx = comm.IndexOf("(");
-            int closingroundbracketidx = IndexOfClosingBracket(comm, roundbrktidx);
+            if(roundbrktidx>=0)
+                closingroundbracketidx = IndexOfClosingBracket(comm, roundbrktidx);
 
             int curlybrktidx = comm.IndexOf("{");
-            int closingcurlybracketidx = IndexOfClosingBracket(comm, curlybrktidx);
+            if (curlybrktidx >= 0)
+                closingcurlybracketidx = IndexOfClosingBracket(comm, curlybrktidx);
 
             // local( ;{ ..; ..; ..; };
             // within( abc, ;{ ..; ..; ..; }; 
@@ -1125,7 +1129,10 @@ namespace BlueSky
                 closingcurlybracketidx > -1 && 
                 roundbrktidx < curlybrktidx)
             {
-                isroundblock = true;
+                if (closingroundbracketidx > 0 && closingroundbracketidx < curlybrktidx)
+                    isroundblock = false; 
+                else
+                    isroundblock = true;
             }
             else
             {
@@ -1197,30 +1204,6 @@ namespace BlueSky
             List<string> result = new List<string>();
             for (int l = 0; l < comm.Length; l++)
             {
-                #region skip quotation enclosed text
-                if (comm[l].Equals('\''))//single quote
-                {
-                    if (squoteregion)
-                        squoteregion = false;
-                    else
-                        squoteregion = true;
-                }
-
-                if (squoteregion)
-                    continue;
-
-                if (comm[l].Equals('\"'))//double quote
-                {
-                    if (dquoteregion)
-                        dquoteregion = false;
-                    else
-                        dquoteregion = true;
-                }
-
-                if (dquoteregion)
-                    continue;
-                #endregion
-
                 switch (comm[l])
                 {
                     case '(':
