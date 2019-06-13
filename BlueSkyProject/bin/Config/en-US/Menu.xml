@@ -384,7 +384,7 @@
       <menu id="Item_Fit" text="Item Fit" commandtemplate="Item Fit.xaml" commandoutputformat="Item Fit.xml" owner="" nodetype="Leaf" />
       <menu id="Plot_PI_Map" text="Plot PI Map" commandtemplate="Plot PI Map.xaml" commandoutputformat="Plot PI Map.xml" owner="" nodetype="Leaf" />
       <menu id="Item_and_Test_Information" text="Item and Test Information" commandtemplate="Item and Test Information.xaml" commandoutputformat="Item and Test Information.xml" owner="" nodetype="Leaf" />
-      <menu id="Liklihood_Ratio_and_Beta_plots" text="Liklihood Ratio and Beta plots" commandtemplate="Liklihood Ratio and Beta plots.xaml" commandoutputformat="Liklihood Ratio and Beta plots.xml" owner="" nodetype="Leaf" />
+      <menu id="Likelihood_Ratio_and_Beta_plots" text="Likelihood Ratio and Beta plots" commandtemplate="Likelihood Ratio and Beta plots.xaml" commandoutputformat="Likelihood Ratio and Beta plots.xml" owner="" nodetype="Leaf" />
       <menu id="Personfit" text="Personfit" commandtemplate="Personfit.xaml" commandoutputformat="Personfit.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="Likelihood_Ratio_Test" text="Likelihood Ratio Test" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />
