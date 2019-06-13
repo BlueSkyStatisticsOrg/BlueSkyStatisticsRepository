@@ -98,22 +98,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="BSky.Commands">
+    <Reference Include="BSky.Commands, Version=6.10.7094.31077, Culture=neutral, PublicKeyToken=34d36f20c3f7b758, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BSkyDll\BSky.Commands.dll</HintPath>
     </Reference>
-    <Reference Include="BSky.ConfigService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BSky.ConfigService, Version=6.10.1.1, Culture=neutral, PublicKeyToken=34d36f20c3f7b758, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BSkyDll\BSky.ConfigService.dll</HintPath>
     </Reference>
-    <Reference Include="BSky.ConfService.Intf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BSky.ConfService.Intf, Version=6.10.1.1, Culture=neutral, PublicKeyToken=34d36f20c3f7b758, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BSkyDll\BSky.ConfService.Intf.dll</HintPath>
     </Reference>
-    <Reference Include="BSky.DynamicClassCreator, Version=5.35.6751.30083, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BSky.DynamicClassCreator, Version=6.10.7094.31072, Culture=neutral, PublicKeyToken=34d36f20c3f7b758, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BSkyDll\BSky.DynamicClassCreator.dll</HintPath>
     </Reference>
-    <Reference Include="BSky.ServerBridge">
+    <Reference Include="BSky.ServerBridge, Version=6.10.7094.31077, Culture=neutral, PublicKeyToken=34d36f20c3f7b758, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BSkyDll\BSky.ServerBridge.dll</HintPath>
     </Reference>
     <Reference Include="C1.WPF.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">

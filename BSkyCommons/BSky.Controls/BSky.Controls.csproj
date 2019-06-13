@@ -48,11 +48,11 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BSky.ConfigService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BSky.ConfigService, Version=6.10.1.1, Culture=neutral, PublicKeyToken=34d36f20c3f7b758, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BSkyDll\BSky.ConfigService.dll</HintPath>
     </Reference>
-    <Reference Include="BSky.ConfService.Intf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BSky.ConfService.Intf, Version=6.10.1.1, Culture=neutral, PublicKeyToken=34d36f20c3f7b758, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BSkyDll\BSky.ConfService.Intf.dll</HintPath>
     </Reference>
