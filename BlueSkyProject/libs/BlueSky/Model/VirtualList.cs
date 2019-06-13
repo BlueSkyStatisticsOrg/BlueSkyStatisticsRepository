@@ -478,7 +478,7 @@ namespace BlueSky.Model
 
                             try
                             {
-                                dt = ToLocalDateTime ? new DateTime(1970, 1, 1).AddSeconds(celldata).ToLocalTime() : new DateTime(1970, 1, 1).AddSeconds(celldata);
+                                dt = ToLocalDateTime ? new DateTime(1970, 1, 1).AddSeconds(celldata).ToLocalTime() : new DateTime(1970, 1, 1).AddSeconds(celldata + _dataSource.FewVariables[i].UTCOffset*3600);//UTC in secs +19800
                                 properties[propertiesCounter].SetValue(generetedObject, dt.ToString(dateformat), null);
                             }
                             catch (Exception ex)

@@ -472,6 +472,15 @@ namespace BSky.Statistics.Common
                 // And is set only when we move variable from sourcelist to aggregate target listbox.
             }
         }
+
+        private double _UTCOffset;//Holds UTC offset if class is POSIXct. May be later Date class will be supported too.
+
+        public double UTCOffset
+        {
+            get { return _UTCOffset; }
+            set { _UTCOffset = value; }
+        }
+
     }
 
     //Added by Aaron 08/26/2014

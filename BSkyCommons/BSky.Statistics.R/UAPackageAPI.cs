@@ -496,6 +496,16 @@ namespace BSky.Statistics.R
                             colclass = "";
                         }
 
+                        double UTCoffset = 0;
+                        if (colclass.Equals("POSIXct"))
+                        {
+                            string colUTCoffset = dispatcher.RawEvaluateGetstring(string.Format("GetColUTCoffsetSecs({0}, '{1}')", columnindex, dataSource.Name));
+                            if (colUTCoffset != null)
+                            {
+                                Double.TryParse(colUTCoffset, out UTCoffset);
+                            }
+                        }
+
                         string lab = (gv[2] != null && gv[2].AsCharacter() != null && gv[2].AsCharacter()[0] != null) ? gv[2].AsCharacter()[0].ToString() : string.Empty;
                         DataColumnTypeEnum dtyp = (gv[1] != null && gv[1].AsCharacter() != null && gv[1].AsCharacter()[0] != null) ? GetCovertedDataType(gv[1].AsCharacter()[0].ToString()) : DataColumnTypeEnum.Character;
                         string mistyp = (gv[5] != null && gv[5].AsCharacter() != null && gv[5].AsCharacter()[0] != null) ? gv[5].AsCharacter()[0].ToString() : string.Empty;
@@ -511,7 +521,8 @@ namespace BSky.Statistics.R
                             Decimals = 0,
                             Columns = 8,
                             MissType = mistyp,
-                            RowCount = rowcount 
+                            RowCount = rowcount,
+                            UTCOffset = UTCoffset / 3600   //to make it hours
                         };
 
                         if (symex != null)
@@ -637,7 +648,8 @@ namespace BSky.Statistics.R
                                 Columns = 8,
                                 MissType = var.MissType,
                                 RowCount = var.RowCount,
-                                Alignment = var.Alignment
+                                Alignment = var.Alignment,
+                                UTCOffset = var.UTCOffset
 
                             };
                             dataSource.FewVariables.Add(var2);
@@ -824,6 +836,16 @@ namespace BSky.Statistics.R
                             colclass = "";
                         }
 
+                        double UTCoffset = 0;
+                        if (colclass.Equals("POSIXct"))
+                        {
+                            string colUTCoffset = dispatcher.RawEvaluateGetstring(string.Format("GetColUTCoffsetSecs({0}, '{1}')", columnindex, dataSource.Name));
+                            if (colUTCoffset != null)
+                            {
+                                Double.TryParse(colUTCoffset, out UTCoffset);
+                            }
+                        }
+
                         string lab = (gv[2] != null && gv[2].AsCharacter() != null && gv[2].AsCharacter()[0] != null) ? gv[2].AsCharacter()[0].ToString() : string.Empty;
                         DataColumnTypeEnum dtyp = (gv[1] != null && gv[1].AsCharacter() != null && gv[1].AsCharacter()[0] != null) ? GetCovertedDataType(gv[1].AsCharacter()[0].ToString()) : DataColumnTypeEnum.Character;
                         string mistyp = (gv[5] != null && gv[5].AsCharacter() != null && gv[5].AsCharacter()[0] != null) ? gv[5].AsCharacter()[0].ToString() : string.Empty;
@@ -839,7 +861,8 @@ namespace BSky.Statistics.R
                             Decimals = 0,
                             Columns = 8,
                             MissType = mistyp,
-                            RowCount = rowcount
+                            RowCount = rowcount,
+                            UTCOffset = UTCoffset/3600   //to make it hours
 
                         };
 
@@ -980,7 +1003,8 @@ namespace BSky.Statistics.R
                                 Columns = 8,
                                 MissType = var.MissType,
                                 RowCount = var.RowCount,
-                                Alignment = var.Alignment
+                                Alignment = var.Alignment,
+                                UTCOffset = var.UTCOffset
 
                             };
                             dataSource.FewVariables.Add(var2);
@@ -1147,6 +1171,16 @@ namespace BSky.Statistics.R
                             colclass = "";
                         }
 
+                        double UTCoffset = 0;
+                        if (colclass.Equals("POSIXct"))
+                        {
+                            string colUTCoffset = dispatcher.RawEvaluateGetstring(string.Format("GetColUTCoffsetSecs({0}, '{1}')", columnindex, dataSource.Name));
+                            if (colUTCoffset != null)
+                            {
+                                Double.TryParse(colUTCoffset, out UTCoffset);
+                            }
+                        }
+
                         string lab = (gv[2] != null && gv[2].AsCharacter() != null && gv[2].AsCharacter()[0] != null) ? gv[2].AsCharacter()[0].ToString() : string.Empty;
                         DataColumnTypeEnum dtyp = (gv[1] != null && gv[1].AsCharacter() != null && gv[1].AsCharacter()[0] != null) ? GetCovertedDataType(gv[1].AsCharacter()[0].ToString()) : DataColumnTypeEnum.Character;
                         string mistyp = (gv[5] != null && gv[5].AsCharacter() != null && gv[5].AsCharacter()[0] != null) ? gv[5].AsCharacter()[0].ToString() : string.Empty;
@@ -1162,7 +1196,8 @@ namespace BSky.Statistics.R
                             Decimals = 0,
                             Columns = 8,
                             MissType = mistyp,
-                            RowCount = rowcount 
+                            RowCount = rowcount,
+                            UTCOffset = UTCoffset / 3600   //to make it hours
                         };
 
                         if (symex != null)
@@ -1285,7 +1320,8 @@ namespace BSky.Statistics.R
                                 Columns = 8,
                                 MissType = var.MissType,
                                 RowCount = var.RowCount,
-                                Alignment = var.Alignment
+                                Alignment = var.Alignment,
+                                UTCOffset = var.UTCOffset
 
                             };
                             dataSource.FewVariables.Add(var2);

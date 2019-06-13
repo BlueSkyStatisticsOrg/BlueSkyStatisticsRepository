@@ -1112,6 +1112,10 @@ namespace BlueSky.Windows
             {
                 e.Cancel = true;
             }
+            if (e.Property.Name == "UTCOffset")
+            {
+                e.Cancel = false;
+            }
             if (e.Property.Name == "ImgURL") 
             {
                 e.Cancel = true;
@@ -1551,6 +1555,10 @@ namespace BlueSky.Windows
             //controller.RefreshGrids(ds);// infinite loop
         }
 
+        //private void GridControl1_CommittedEdit(object sender, DataGridCellEventArgs e)
+        //{
+        //    controller.RefreshGrids(ds); //refreshDataGrid();
+        //}
         //Anil.19Sep2014
         //This method returns R side variable name for a C# side var name passed
         private string GetRVarName(string Name)
@@ -2944,6 +2952,8 @@ namespace BlueSky.Windows
                 e.Cancel = true;
             }
         }
+
+
 
         void LoadNextColSet()
         {
