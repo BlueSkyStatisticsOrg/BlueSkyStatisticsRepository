@@ -7133,7 +7133,7 @@ namespace BSky.XmlDecoder
             //listnode may be null if UASummary is not returned from R function
             XmlNode listnode = doc.SelectSingleNode(string.Format("/Root/UASummary/UAList"));
             int notescount = listnode != null ? listnode.ChildNodes.Count : 0; // 1 replaced by 0 on 03jul2013
-            string[] rowheaders = { "Filepath", "Active Dataset", "?", "?", "?", "Total Vars", "Command", "User.Self", "Elapsed", "?", "?" };//must be equal to notescount
+            string[] rowheaders = { "File path", "Active dataset", "Filter", "Weights", "Split variables", "Total rows", "Command", "User.Self", "Elapsed", "?", "?" };//must be equal to notescount
             string[,] uasummary = new string[notescount, 2];
 
             if (notescount == 0) uasummary = null; //03Jul2013
