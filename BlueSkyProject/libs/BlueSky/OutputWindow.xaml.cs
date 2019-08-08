@@ -768,7 +768,7 @@ namespace BlueSky
         private bool BringLastVisibleLeafIntoView(TreeViewItem t)
         {
             bool found = false;
-            if (t.Tag == null && t.Items.Count > 0)// non leaf node
+            if (t.Items.Count > 0)// non leaf node
             {
                 int childcount = t.Items.Count;
                 int indexoflastchild = childcount - 1;//zero based index
@@ -1608,15 +1608,29 @@ namespace BlueSky
 
                 tvi.Selected += new RoutedEventHandler(tvi_Selected);
                 tvi.Unselected += new RoutedEventHandler(tvi_Unselected);//29Jan2013
-				
+
                 ///\MainItem.Items.Add(tvi);
                 if (synedtsession)
+                {
+                    if (control.ControlType.Equals("Title") || control.ControlType.Equals("Header"))// 'Header' for backward compatibilty
+                    {
+                        SessionItem.Tag = control;
+                        AddEventsAndContextMenu(SessionItem);
+                    }
                     SessionItem.Items.Add(tvi);
+
+                }
                 else
                 {
+                    if (control.ControlType.Equals("Title") || control.ControlType.Equals("Header"))// 'Header' for backward compatibilty
+                    {
+                        MainItem.Tag = control;
+                        AddEventsAndContextMenu(MainItem);
+                    }
                     MainItem.Items.Add(tvi);
+
                 }
-				
+
             }
 			/*
             if (synedtsession)
@@ -1630,6 +1644,40 @@ namespace BlueSky
             }			
         }
 
+        private void AddEventsAndContextMenu(TreeViewItem TVI)
+        {
+            //select / unselect
+            TVI.Selected += new RoutedEventHandler(MainItem_Selected);
+            TVI.Unselected += new RoutedEventHandler(MainItem_UnSelected);
+        }
+
+        private void MainItem_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //MessageBox.Show("Show Context");
+        }
+
+        private void MainItem_Selected(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement fe = sender as FrameworkElement;
+            FrameworkElement tag = fe.Tag as FrameworkElement;
+            IAUControl control = tag as IAUControl;
+            string navtreeselcom = confService.GetConfigValueForKey("navtreeselectedcol");//23nov2012
+            byte red = byte.Parse(navtreeselcom.Substring(3, 2), NumberStyles.HexNumber);
+            byte green = byte.Parse(navtreeselcom.Substring(5, 2), NumberStyles.HexNumber);
+            byte blue = byte.Parse(navtreeselcom.Substring(7, 2), NumberStyles.HexNumber);
+            Color c = Color.FromArgb(255, red, green, blue);
+            control.bordercolor = new SolidColorBrush(c);// (Colors.Gold);//05Jun2013
+            control.outerborderthickness = new Thickness(2);
+            tag.BringIntoView(); //treeview leaf node will appear selected as oppose to Focus()
+        }
+
+        private void MainItem_UnSelected(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement fe = sender as FrameworkElement;
+            FrameworkElement tag = fe.Tag as FrameworkElement;
+            IAUControl control = tag as IAUControl;
+            control.bordercolor = new SolidColorBrush(Colors.Transparent);//05Jun2013
+        }
 
         void tvi_Selected(object sender, RoutedEventArgs e)
         {
@@ -1647,8 +1695,8 @@ namespace BlueSky
             Color c = Color.FromArgb(255, red, green, blue);
             control.bordercolor = new SolidColorBrush(c);// (Colors.Gold);//05Jun2013
 			control.outerborderthickness = new Thickness(2);
-            tag.BringIntoView(); 
-
+            tag.BringIntoView();
+            e.Handled = true;
         }
 
 
@@ -1660,7 +1708,7 @@ namespace BlueSky
             IAUControl control = tag as IAUControl;
 
             control.bordercolor = new SolidColorBrush(Colors.Transparent);//05Jun2013
-
+            e.Handled = true;
         }
 
         void cb_Checked(object sender, RoutedEventArgs e)
