@@ -162,10 +162,16 @@ namespace BSky.Controls
                            
                             isdouble = Double.TryParse(nomlevels, out result);
 
+                            int levelsCount = 0;
+                            List<string> droplst = var.Values;
+                            if (droplst.Contains("<NA>"))
+                                levelsCount = var.Values.Count - 1;
+                            else
+                                levelsCount = var.Values.Count;
                             //Added by Aaron on 10/19/2013
                             //decremented the count by 1 to reflect the fact that var.values.count is one more than the 
                             //expected number of levels to handle the .that we add in the grid so that users ca
-                            if ((var.Values.Count-1) == result) measureresult = true;
+                            if ((levelsCount) == result) measureresult = true;
                             else measureresult = false;
                             break;
                         }
