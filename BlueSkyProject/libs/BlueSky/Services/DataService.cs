@@ -91,7 +91,7 @@ namespace BlueSky.Services
             SendToOutput(datasrc);
             return ds;
         }
-        private string GetUniqueNewDatasetname()
+        public string GetUniqueNewDatasetname()
         {
             string newdatasetname = string.Empty;
             for(; ;)

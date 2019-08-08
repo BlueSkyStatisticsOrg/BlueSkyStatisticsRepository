@@ -27,6 +27,7 @@ using System.Windows.Controls.Primitives;
 using RDotNet;
 using BSky.Lifetime.Services;
 using BSky.ConfigService.Services;
+using BlueSky.Services;
 
 namespace BlueSky.Windows
 {
@@ -2423,6 +2424,12 @@ namespace BlueSky.Windows
             ds.Changed = true;
             refreshDataGrid();
             restoreVerticalScroll();
+        }
+
+        private void _pasteClipDS_Click(object sender, RoutedEventArgs e)
+        {
+            PasteClipboardDataset pasteds = new PasteClipboardDataset();
+            pasteds.PasteDatasetFromClipboard();
         }
 
         //From C1forum start. but modified a bit

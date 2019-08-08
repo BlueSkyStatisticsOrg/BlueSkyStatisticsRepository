@@ -114,6 +114,7 @@
                                     CanExecute="RightClickCopyCmdCanExecute" Executed="RightClickCopyCmdExecuted" />
                                 </MenuItem.CommandBindings>
                             </MenuItem>
+                            <MenuItem Header="Paste clipboard dataset in new datagrid" Name="_pasteClipboardDS"  Click="_pasteClipDS_Click"></MenuItem>
                         </ContextMenu>
                     </c1:C1DataGrid.ContextMenu>
                     <c1:C1DataGrid.Background>
