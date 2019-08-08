@@ -523,7 +523,22 @@ namespace BlueSky
             }
 
             if (lastElement != null)
+            {
+                if (lastElement.Visibility != Visibility.Visible)
+                {
+                    int itmcount = output.Count;
+                    for (int idx = itmcount - 1; idx >= 0; idx--)
+                    {
+                        FrameworkElement element = (output[idx] as DependencyObject) as FrameworkElement;
+                        if (element.Visibility == Visibility.Visible)
+                        {
+                            lastElement = element;
+                            break;
+                        }
+                    }
+                }
                 lastElement.BringIntoView();
+            }
             BringOnTop();
 
         }
