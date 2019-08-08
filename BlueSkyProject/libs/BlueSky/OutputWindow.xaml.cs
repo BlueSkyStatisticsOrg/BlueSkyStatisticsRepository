@@ -1591,7 +1591,7 @@ namespace BlueSky
                 else
                     nodetb.Text = nodetext.Substring(0, maxlen).Replace("\n", " ").Replace("\r", " ") + dots;
 
-                nodetb.Margin = new Thickness(1);
+                nodetb.Margin = new Thickness(1,0,0,2);
                 nodetb.GotFocus += new RoutedEventHandler(nodetb_GotFocus);
                 nodetb.LostFocus += new RoutedEventHandler(nodetb_LostFocus);
                 nodetb.ToolTip = BSky.GlobalResources.Properties.UICtrlResources.NavTreeNodeTBTooltip;
