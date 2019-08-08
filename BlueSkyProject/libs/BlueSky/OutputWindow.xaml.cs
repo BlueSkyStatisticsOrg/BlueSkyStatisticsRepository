@@ -2869,9 +2869,31 @@ namespace BlueSky
         private void Image_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             CollapseExpandSyntax();
+            ShowHideSyntaxSpliter();
         }
 
+        private void Verticalsplit_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            ShowHideSyntaxSpliter();
+        }
 
+        private void ShowHideSyntaxSpliter()
+        {
+            double wid = rightmost.Width.Value;
+            if (wid < 15)
+            {
+                rightmost.Width = new GridLength(0);
+                verticalsplit.Visibility = Visibility.Collapsed;
+
+                isSyntaxCollapsed = true;
+                expandImg.Visibility = Visibility.Visible;
+                collapseImg.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                verticalsplit.Visibility = Visibility.Visible;
+            }
+        }
         #endregion
 
         #region Navigation tree Show/hide
@@ -3090,6 +3112,7 @@ namespace BlueSky
                 collapseImg.Visibility = Visibility.Collapsed;
             }
             CollapseExpandSyntax();
+            ShowHideSyntaxSpliter();
         }
 
 
