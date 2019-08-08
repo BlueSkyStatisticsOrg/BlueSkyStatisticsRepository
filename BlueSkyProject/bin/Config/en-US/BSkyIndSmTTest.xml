@@ -28,13 +28,13 @@
 					<labels grouping="list">
 						<list listname="Target" factors="yes"/>
 					</labels>
-					<subrow>
-						<row>
-							<labels grouping="list">
-								<list listname="groupingVariable" factors="yes"/>
+					<subrows>
+						<row nestedrows="yes" > 
+							<labels grouping="list" factors="yes">
+								<list listname="Target2" />
 							</labels>
 						</row>
-					</subrow>
+					</subrows>
 				</row>
 			</rows>
 		</table>
