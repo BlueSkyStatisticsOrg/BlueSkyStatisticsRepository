@@ -1581,7 +1581,10 @@ namespace BlueSky
 				
                 if (isRunFromSyntaxEditor)
                 {
-                    control.BSkyControlVisibility = Visibility.Visible;
+                    if (_note != null)
+                        control.BSkyControlVisibility = Visibility.Collapsed;
+                    else
+                        control.BSkyControlVisibility = Visibility.Visible;
                 }				
 				cbleaf.IsChecked = (control.BSkyControlVisibility== Visibility.Visible) ? true : false;
 
