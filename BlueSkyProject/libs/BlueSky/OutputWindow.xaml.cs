@@ -514,6 +514,7 @@ namespace BlueSky
 
                 PopulateTree(output);
                 outputDataList.Add(analysisdata);
+                setAnalysisReference(analysisdata);
             }
             if (ToDiskFile)
             {
@@ -526,6 +527,37 @@ namespace BlueSky
 
         }
 
+        private void setAnalysisReference(AnalyticsData analysis)
+        {
+            bool isReferenceSet = false;
+            if (analysis.Output != null)
+            {
+                CommandOutput Co = analysis.Output;
+                BSkyOutputOptionsToolbar boot = Co[0] as BSkyOutputOptionsToolbar;
+                if (boot != null)
+                {
+                    boot.Analysis = analysis;
+                    isReferenceSet = true;
+                }
+            }
+
+            if (!isReferenceSet && analysis.SessionOutput != null)
+            {
+                CommandOutput Co = analysis.SessionOutput[0];
+                BSkyOutputOptionsToolbar boot = Co[0] as BSkyOutputOptionsToolbar;
+                if (boot != null)
+                {
+                    boot.Analysis = analysis;
+                    isReferenceSet = true;
+                }
+            }
+
+            if (!isReferenceSet)
+            {
+                //MessageBox.Show("Reference not set: Delete will not work");
+                logService.WriteToLogLevel("Reference not set: Delete will not work", LogLevelEnum.Info);
+            }
+        }
         //18Nov2013
         public void AppendToSyntaxEditorSessionList(CommandOutput co)
         {
@@ -567,16 +599,15 @@ namespace BlueSky
                     SessionItem.IsExpanded = true;
                 }
 
+                analysisdata = new AnalyticsData();
+                analysisdata.SessionOutput = so;//saving reference. so that whole outputwindow can be saved
+                analysisdata.AnalysisType = so.NameOfSession;//For Grand-Parent Node name
+
                 double extraspaceinbeginning = 0;
                 if (mypanel.Children.Count > 0)
                     extraspaceinbeginning = 40;
                 foreach (CommandOutput co in so)
                 {
-                    analysisdata = new AnalyticsData();
-                    analysisdata.Output = co;
-                    analysisdata.AnalysisType = co.NameOfAnalysis;
-
-
                     foreach (DependencyObject obj in co)
                     {
                         FrameworkElement element = obj as FrameworkElement;
@@ -594,8 +625,9 @@ namespace BlueSky
                             lastElement = element;
                     }
                     PopulateTree(co, isRSession);
-                    outputDataList.Add(analysisdata);
                 }
+                outputDataList.Add(analysisdata);
+                setAnalysisReference(analysisdata);
                 if (isRSession)
                     NavTree.Items.Add(SessionItem);//15Nov2013
             }
@@ -668,6 +700,7 @@ namespace BlueSky
             if (ToOutputWindow)
             {
                 outputDataList.Add(analysisdata);
+                setAnalysisReference(analysisdata);
             }
             if (ToDiskFile) 
             {
@@ -800,6 +833,7 @@ namespace BlueSky
             CommandOutput co = new CommandOutput();
             co.NameOfAnalysis = title;
             co.IsFromSyntaxEditor = false;
+            co.Insert(0, new BSkyOutputOptionsToolbar());
 
 
             string rcommcol = confService.GetConfigValueForKey("errorcol");//23nov2012
@@ -1096,7 +1130,24 @@ namespace BlueSky
             foreach (DependencyObject obj in output)
             {
                 FrameworkElement element = obj as FrameworkElement;
-                if ((element as AUParagraph) != null)
+
+                if ((element as BSkyOutputOptionsToolbar) != null)
+                {
+                    BSkyOutputOptionsToolbar boot = element as BSkyOutputOptionsToolbar;
+                    string ctrltype = (boot.ControlType != null) ? boot.ControlType.Replace("\"", "&quot;").Replace("\'", "&apos;") : "-";//09Jul2013
+                    if (boot != null)
+                    {
+                        //controltype
+                        string CONTROLTYPE = (" controltype = \"" + ctrltype + "\" ").Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+
+                        //text
+                        string TEXT = (boot.ToolbarData.Comment).Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("\'", "&apos;");
+                        tempString = (extratags) ? " <boot " + CONTROLTYPE + "> " + TEXT + " </boot>" + newlinechar : TEXT + newlinechar;
+                    }
+                    byte[] arr = uniEncoding.GetBytes(tempString);
+                    fileStream.Write(arr, 0, uniEncoding.GetByteCount(tempString));
+                }
+                else if ((element as AUParagraph) != null)
                 {
                     AUParagraph aup = element as AUParagraph;
                     string ctrltype = (aup.ControlType != null) ? aup.ControlType.Replace("\"", "&quot;").Replace("\'", "&apos;") : "-";//09Jul2013
@@ -1482,6 +1533,13 @@ namespace BlueSky
                 if (_aux != null)
                 {
                     _aux.MSExcelObj = _MSExcelObj;
+                }
+
+                ///Toolbar delete icon saves reference of the analysis output controls ///
+                BSkyOutputOptionsToolbar toolbar = obj as BSkyOutputOptionsToolbar;
+                if (toolbar != null)
+                {
+                    toolbar.AnalysisOutput = output;
                 }
                 ////23Oct2013. for show hide leaf nodes based on checkbox //
                 StackPanel treenodesp = new StackPanel();
@@ -2745,6 +2803,27 @@ namespace BlueSky
                 e.Handled = true;
             else
                 e.Handled = false;
+
+            if (e.OriginalSource.GetType().FullName.Equals("System.Windows.Controls.Image"))
+            {
+                Image img = e.OriginalSource as System.Windows.Controls.Image;
+                if (img.Name.Equals("delimage"))
+                {
+                    BSkyOutputOptionsToolbar boot = img.Tag as BSkyOutputOptionsToolbar;
+
+                    if (boot != null)
+                    {
+                        AnalyticsData analysis = boot.Analysis;//delete this output
+                        if (analysis != null)
+                        {
+                            logService.WriteToLogLevel("Deleting analysis: " + analysis.AnalysisType, LogLevelEnum.Info);
+                            DeleteAnalysis(analysis);
+                        }
+                        else
+                            logService.WriteToLogLevel("Can't delete analysis. Reference not found.", LogLevelEnum.Info);
+                    }
+                }
+            }
         }
 
         #region Syntax Clipboard Events
@@ -2832,14 +2911,120 @@ namespace BlueSky
             }
             CollapseExpandSyntax();
         }
-		
+
+
+        private void DeleteAnalysis(AnalyticsData analysis)
+        {
+            try
+            {
+                CommandOutput co = null;
+                if (analysis.Output != null)
+                {
+                    co = analysis.Output;
+                }
+
+                SessionOutput so = null;
+                if (analysis.SessionOutput != null)
+                {
+                    so = analysis.SessionOutput;
+                }
+
+                //Delete contents of analysis.Output
+                if (co != null && co.Count > 0)
+                {
+                    while (co.Count > 0)
+                    {
+                        DependencyObject obj = co[0];
+                        FrameworkElement fe = obj as FrameworkElement;
+                        if (fe != null)
+                        {
+                            SetControlsDeleteFlag(fe);
+                            DeleteItemInOutput(fe);
+                        }
+                    }
+                }
+
+                //Delete contents of analysis.SessionOutput
+                if (so != null && so.Count > 0)
+                {
+
+                    while (so.Count > 0) //for (int i=0; i< so.Count; i++)
+                    {
+                        CommandOutput com = so[0];//so[i]
+                        if (com != null && com.Count > 0)
+                        {
+                            while (com.Count > 0) //for (int j = 0; j < com.Count; j++) 
+                            {
+                                DependencyObject obj = com[0];// com[j];
+                                FrameworkElement fe = obj as FrameworkElement;
+                                if (fe != null)
+                                {
+                                    SetControlsDeleteFlag(fe);
+
+                                    DeleteItemInOutput(fe);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in deleting the output.");
+                logService.WriteToLogLevel("Error in deleting the output.", LogLevelEnum.Info);
+                logService.WriteToLogLevel(ex.Message, LogLevelEnum.Info);
+            }
+        }
+
+
+        private void SetControlsDeleteFlag(FrameworkElement fe)
+        {
+            #region find control type and set its delete prop
+            AUParagraph aup = fe as AUParagraph;
+            if (aup != null)
+            {
+                aup.DeleteControl = true;
+            }
+
+            BSkyNotes bsn = fe as BSkyNotes;
+            if (bsn != null)
+            {
+                bsn.DeleteControl = true;
+            }
+            BSkyGraphicControl bsgc = fe as BSkyGraphicControl;
+            if (bsgc != null)
+            {
+                bsgc.DeleteControl = true;
+            }
+
+            AUXGrid auxg = fe as AUXGrid;
+            if (auxg != null)
+            {
+                auxg.DeleteControl = true;
+            }
+
+            BSkyOutputOptionsToolbar boot = fe as BSkyOutputOptionsToolbar;
+            if (boot != null)
+            {
+                boot.DeleteControl = true;
+            }
+
+            #endregion
+        }
+
         private void mypanel_ContextMenuClosing(object sender, ContextMenuEventArgs e)
         {
             //MessageBox.Show("Context Menu is closing");
-            bool deleteControl = false;
+            //bool deleteControl = false;
             FrameworkElement fe = e.Source as FrameworkElement;
+            DeleteItemInOutput(fe);
+        }
 
-            #region find control type
+
+        private void DeleteItemInOutput(FrameworkElement fe)
+        {
+            bool deleteControl = false;
+            #region find control type and its delete prop
             AUParagraph aup = fe as AUParagraph;
             if (aup != null)
             {
@@ -2863,8 +3048,14 @@ namespace BlueSky
                 deleteControl = auxg.DeleteControl;
             }
 
-            #endregion
+            BSkyOutputOptionsToolbar boot = fe as BSkyOutputOptionsToolbar;
+            if (boot != null)
+            {
+                deleteControl = boot.DeleteControl;
+            }
 
+            #endregion
+            //deleteControl = true;
             if (deleteControl)
             {
                 TreeViewItem tvi = fe.Tag as TreeViewItem;
@@ -2881,9 +3072,9 @@ namespace BlueSky
 
                 mypanel.Children.Remove(fe);
 
-                //remove from datalist too 
+                //remove from datalist too
                 AnalyticsData ad = outputDataList[pidx];
-                if (aup != null || bsn != null || bsgc != null || auxg != null)
+                if (boot != null || aup != null || bsn != null || bsgc != null || auxg != null)
                 {
                     if (ad.SessionOutput != null && ad.SessionOutput.Count > 0)
                     {
@@ -2915,6 +3106,7 @@ namespace BlueSky
                             if (!co.Remove(fe))
                             {
                                 MessageBox.Show("Can't remove from session");
+                                logService.WriteToLogLevel("Delete output: Can't remove the item from session", LogLevelEnum.Info);
                             }
 
                             //remove co if its empty
@@ -2931,22 +3123,30 @@ namespace BlueSky
                         else
                         {
                             MessageBox.Show("Could not locate the element for deletion");
+                            logService.WriteToLogLevel("Delete output: Could not locate the element for deletion", LogLevelEnum.Info);
                         }
                     }
-                    else
+                    else if (ad.Output != null && ad.Output.Count > 0)
                     {
-                        if (ad.Output != null)
+                        if (!ad.Output.Remove(fe))
                         {
-                            if (!ad.Output.Remove(fe))
-                            {
-                                MessageBox.Show("Can't remove from output");
-                            }
-                            //remove co if its empty
-                            if (ad.Output.Count == 0)
-                            {
-                                //ad.Output.Remove(ad.Output);
-                            }
+                            MessageBox.Show("Can't remove from output");
+                            logService.WriteToLogLevel("Delete output: Can't remove from output", LogLevelEnum.Info);
                         }
+                        //remove co if its empty
+                        if (ad.Output.Count == 0)
+                        {
+                            ad.Output = null;
+                        }
+                    }
+
+                    //if ad Output and Session output is null means that analysis is empty and
+                    //must be removed compeletely
+                    if (ad.Output == null && ad.SessionOutput == null)
+                    {
+                        string analysisTitle = ad.AnalysisType != null ? ad.AnalysisType : "Unnamed analysis";
+                        logService.WriteToLogLevel("Deleted: " + analysisTitle, LogLevelEnum.Info);
+                        outputDataList.Remove(ad);
                     }
                 }
             }
