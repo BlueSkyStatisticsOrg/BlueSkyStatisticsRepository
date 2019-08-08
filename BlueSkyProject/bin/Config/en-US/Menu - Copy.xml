@@ -2,6 +2,7 @@
   <menu id="FileMenu" text="File" owner="BSky" nodetype="Parent">
     <menu id="FileMenuNew" text="New" command="BlueSky.Commands.File.FileNewCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpen" text="Open" command="BlueSky.Commands.File.FileOpenCommand" owner="BSky" nodetype="Leaf" />
+	<menu id="Paste_Dataset_from_the_clipboard" text="Paste Dataset from the clipboard" command="BlueSky.Commands.File.PasteDatasetCommand" owner="BSky" nodetype="Leaf" />	
     <menu id="Load_Dataset_from_a_Package" text="Load Dataset from a Package" command="BlueSky.Commands.File.LoadDatasetFromRPkgCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuImportData" text="Import Data..." owner="BSky" nodetype="Parent">
       <menu id="FileMenuOpen" text="SQL Database" command="BlueSky.Commands.File.ImportFromSQLCommand" owner="BSky" nodetype="Leaf" />
@@ -25,7 +26,13 @@
       <menu id="BSkyCrossTable" text="Crosstab, Multi-way (Use this)" commandtemplate="BSkyCrossTable.xaml" commandoutputformat="BSkyCrossTable.xml" owner="" nodetype="Leaf" icon="images/Cross-Tab.png" showtoolbaricon="true" />
       <menu id="Crosstab_Two-way" text="Crosstab Two-way" commandtemplate="Crosstab Two-way.xaml" commandoutputformat="Crosstab Two-way.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="FactSubMenu" text="Factor Analysis" owner="" nodetype="Parent">
+    <menu id="new_id" text="Correlation" owner="" nodetype="Parent">
+      <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
+      <menu id="Correlation_Test_(One_Pair)" text="Correlation Test (One Pair)" commandtemplate="Correlation Test (One Pair).xaml" commandoutputformat="Correlation Test (One Pair).xml" owner="" nodetype="Leaf" />
+      <menu id="Correlation_Test_(Multi-variable)" text="Correlation Test (Multi-variable)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
+      <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
+    </menu>    
+	<menu id="FactSubMenu" text="Factor Analysis" owner="" nodetype="Parent">
       <menu id="Factor_Analysis" text="Factor Analysis" commandtemplate="Factor Analysis.xaml" commandoutputformat="Factor Analysis.xml" owner="" nodetype="Leaf" />
       <menu id="Principal_Component_Analysis" text="Principal Component Analysis" commandtemplate="Principal Component Analysis.xaml" commandoutputformat="Principal Component Analysis.xml" owner="" nodetype="Leaf" />
     </menu>
@@ -88,11 +95,6 @@
       <menu id="Summary_Statistics_by_Group_" text="Summary Statistics by Group " commandtemplate="Summary Statistics by Group .xaml" commandoutputformat="Summary Statistics by Group .xml" owner="" nodetype="Leaf" />
       <menu id="Summary_Statistics,_All_Variables" text="Summary Statistics, All Variables" commandtemplate="Summary Statistics, All Variables.xaml" commandoutputformat="Summary Statistics, All Variables.xml" owner="" nodetype="Leaf" icon="images/Summarize.png" showtoolbaricon="true" />
       <menu id="Summary_Statistics,_Selected_Variables" text="Summary Statistics, Selected Variables" commandtemplate="Summary Statistics, Selected Variables.xaml" commandoutputformat="Summary Statistics, Selected Variables.xml" owner="" nodetype="Leaf" />
-      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-      <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
-      <menu id="Correlation_Test_(One_Pair)" text="Correlation Test (One Pair)" commandtemplate="Correlation Test (One Pair).xaml" commandoutputformat="Correlation Test (One Pair).xml" owner="" nodetype="Leaf" />
-      <menu id="Correlation_Test_(Multi-variable)" text="Correlation Test (Multi-variable)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
-      <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="TimeSubMenu" text="Time Series" owner="" nodetype="Parent">
       <menu id="Automated_ARIMA" text="Automated ARIMA" commandtemplate="Automated ARIMA.xaml" commandoutputformat="Automated ARIMA.xml" owner="" nodetype="Leaf" />
