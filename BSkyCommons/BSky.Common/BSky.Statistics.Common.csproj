@@ -80,20 +80,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BSkyDll\BSky.ConfService.Intf.dll</HintPath>
     </Reference>
-    <Reference Include="DynamicInterop, Version=0.8.1.0, Culture=neutral, PublicKeyToken=dff4d61ca74fc384, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="DynamicInterop">
       <HintPath>..\..\ThirdParty\RDotNet\DynamicInterop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\..\ThirdParty\Unity\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="RDotNet, Version=1.7.0.0, Culture=neutral, PublicKeyToken=dff4d61ca74fc384, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="RDotNet">
       <HintPath>..\..\ThirdParty\RDotNet\RDotNet.dll</HintPath>
-    </Reference>
-    <Reference Include="RDotNet.NativeLibrary, Version=1.7.0.0, Culture=neutral, PublicKeyToken=dff4d61ca74fc384, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ThirdParty\RDotNet\RDotNet.NativeLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
