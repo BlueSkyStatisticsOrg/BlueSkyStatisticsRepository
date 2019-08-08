@@ -2401,6 +2401,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show/hide navigation tree.
+        /// </summary>
+        public static string ShowHideNavTreePanel {
+            get {
+                return ResourceManager.GetString("ShowHideNavTreePanel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show/Hide R Command Editor Panel.
         /// </summary>
         public static string ShowHideSyntaxPanel {

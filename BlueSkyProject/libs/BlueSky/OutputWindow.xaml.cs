@@ -2712,10 +2712,12 @@ namespace BlueSky
         {
             if (navtreehidden)
             {
-                navtreecol.Width = new GridLength(150, GridUnitType.Pixel);
+                navtreecol.Width = new GridLength(180, GridUnitType.Pixel);
                 navtreecol.MinWidth = 10;
                 navtreemi.Header = BSky.GlobalResources.Properties.UICtrlResources.HideNavTreeText;
                 navtreehidden = false;
+                NavexpandImg.Visibility = Visibility.Collapsed;
+                NavcollapseImg.Visibility = Visibility.Visible;
             }
             else
             {
@@ -2724,6 +2726,8 @@ namespace BlueSky
 
                 navtreemi.Header = BSky.GlobalResources.Properties.UICtrlResources.ShowNavTreeText;
                 navtreehidden = true;
+                NavexpandImg.Visibility = Visibility.Visible;
+                NavcollapseImg.Visibility = Visibility.Collapsed;
             }
         }
         #endregion

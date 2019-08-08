@@ -1288,4 +1288,7 @@
     <value>Set theme</value>
     <comment>Window1.xaml and OutputWindow.xaml</comment>
   </data>
+  <data name="ShowHideNavTreePanel" xml:space="preserve">
+    <value>Show/hide navigation tree</value>
+  </data>
 </root>

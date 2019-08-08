@@ -82,14 +82,19 @@
                             <ColumnDefinition Width="20"></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" Name="OutputTitle" Foreground="Black" Text="Results of Analysis" Padding="5,1">
-                            <TextBlock.Background>
-                                <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
-                                    <GradientStop Color="#FFBFDBFF" Offset="0"/>
-                                    <GradientStop Color="#FFE1EBF7" Offset="1"/>
-                                </LinearGradientBrush>
-                            </TextBlock.Background>
-                        </TextBlock>
+                        <Button Grid.Column="0" Margin="0" HorizontalAlignment="Right" Background="Transparent"
+                                BorderThickness="0" VerticalContentAlignment="Stretch"
+                                ToolTip="{x:Static uires:UICtrlResources.ShowHideNavTreePanel}" 
+                                Name="NavTreeShowHideBtn" 
+                                Click="navtreemi_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Name="NavexpandImg" Source="Images/expandSyn.png"></Image>
+                                    <Image Name="NavcollapseImg" Source="Images/collapseSyn.png" Visibility="Collapsed"></Image>
+                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Show/Hide Navigation</TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
                         <Button Grid.Column="2" Name="comingsoonbtn" ToolTip="Coming Soon" Background="Transparent"
                         BorderThickness="0" VerticalAlignment="Top" VerticalContentAlignment="Stretch"
                         Click="Comingsoonbtn_Click" HorizontalAlignment="Center">

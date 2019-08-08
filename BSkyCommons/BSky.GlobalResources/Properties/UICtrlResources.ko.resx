@@ -1285,4 +1285,7 @@
     <value>테마 설정</value>
     <comment>Window1.xaml and OutputWindow.xaml</comment>
   </data>
+  <data name="ShowHideNavTreePanel" xml:space="preserve">
+    <value>네비게이션 트리 표시 / 숨기기</value>
+  </data>
 </root>
