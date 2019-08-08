@@ -26,15 +26,15 @@ namespace BSky.Controls
         private void AUGrid_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             //this.AutoSizeFixedColumns(0, 0, 0, true, false);
-            this.AutoSizeFixedColumns(0, this.RowHeaders.Columns.Count, 10);//fix for chopped row headers
-            this.AutoSizeColumns(0, this.ColumnHeaders.Columns.Count, 10);//fix for chopped col headers
+            this.AutoSizeFixedColumns(0, this.RowHeaders.Columns.Count-1, 10, true, true);//fix for chopped row headers
+            this.AutoSizeColumns(0, this.ColumnHeaders.Columns.Count-1, 10,true, true);//fix for chopped col headers
         }
 
     void AUGrid_LayoutUpdated(object sender, EventArgs e)
         {
             int extra = 10;
             this.LayoutUpdated -= AUGrid_LayoutUpdated;
-            this.AutoSizeFixedColumns(0, this.RowHeaders.Columns.Count, extra); 
+            this.AutoSizeFixedColumns(0, this.RowHeaders.Columns.Count-1, extra, true, true); 
             this.AutoSizeColumns(0, this.Columns.Count-1, extra, true, true);
         }
 
