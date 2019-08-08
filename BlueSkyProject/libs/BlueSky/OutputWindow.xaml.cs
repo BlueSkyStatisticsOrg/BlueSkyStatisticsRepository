@@ -1548,22 +1548,33 @@ namespace BlueSky
                 int treenodecharlen;
                 bool result = Int32.TryParse(treenocharscount, out treenodecharlen);
                 if (!result)
-                    treenodecharlen = 15;
+                    treenodecharlen = 20;
 
                 TextBlock nodetb = new TextBlock();
                 nodetb.Tag = control;
 
+                string nodetext = control.ControlType; ;// string.Empty;
+                if (_aup != null && _aup.ControlType.Equals("Command"))
+                {
+                    nodetext = _aup.Text;
+                }
+                else
+                {
+                    nodetext = control.ControlType;
+                }
+
                 //maxlen is need to avoid indexoutofbounds when finding Substring()
-                int maxlen = control.ControlType.Length < treenodecharlen ? control.ControlType.Length : (treenodecharlen);
+                int maxlen = nodetext.Length < treenodecharlen ? nodetext.Length : (treenodecharlen);
                 //if (maxlen > 100) maxlen = 100; //this could be used for putting restriction for max. length
 
-                string dots = maxlen < control.ControlType.Length ? " ..." : "";//add dots only if text are getting trimmed.
+                string dots = maxlen < nodetext.Length ? " ..." : "";//add dots only if text are getting trimmed.
 
                 //Show node text with or without dots based on condition.
-                if (maxlen <= 0) //show full length
-                    nodetb.Text = control.ControlType;
+                if (maxlen >= nodetext.Length) //show full length
+                    nodetb.Text = nodetext.Replace("\n", " ").Replace("\r", " ");
                 else
-                    nodetb.Text = control.ControlType.Substring(0, maxlen) + dots;
+                    nodetb.Text = nodetext.Substring(0, maxlen).Replace("\n", " ").Replace("\r", " ") + dots;
+
                 nodetb.Margin = new Thickness(1);
                 nodetb.GotFocus += new RoutedEventHandler(nodetb_GotFocus);
                 nodetb.LostFocus += new RoutedEventHandler(nodetb_LostFocus);
