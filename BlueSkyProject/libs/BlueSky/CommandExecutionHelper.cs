@@ -23,6 +23,7 @@ using System.Windows.Controls;
 using BlueSky.Windows;
 using BSky.ConfService.Intf.Interfaces;
 using BSky.ConfigService.Services;
+using BSky.Controls.Controls;
 
 namespace BlueSky
 {
@@ -571,6 +572,7 @@ namespace BlueSky
                 CommandOutput splitCo = new CommandOutput();
                 splitCo.NameOfAnalysis = "Split:#" + setsplit;
                 splitCo.IsFromSyntaxEditor = false;
+                splitCo.Insert(0, new BSkyOutputOptionsToolbar());
 
                 AUParagraph aup = new AUParagraph();
                 aup.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;//App.HEADER_FONTSIZE;

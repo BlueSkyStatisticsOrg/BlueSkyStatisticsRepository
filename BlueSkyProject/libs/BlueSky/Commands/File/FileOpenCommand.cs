@@ -22,6 +22,7 @@ using BSky.Controls;
 using System.Globalization;
 using BSky.ConfService.Intf.Interfaces;
 using BSky.ConfigService.Services;
+using BSky.Controls.Controls;
 
 namespace BlueSky.Commands.File
 {
@@ -538,6 +539,7 @@ namespace BlueSky.Commands.File
             CommandOutput batch = new CommandOutput();
             batch.NameOfAnalysis = "RData Load Command";
             batch.IsFromSyntaxEditor = false;
+            batch.Insert(0, new BSkyOutputOptionsToolbar());
 
             string rcommcol = confService.GetConfigValueForKey("dctitlecol");//23nov2012 //before was syntitlecol
             byte red = byte.Parse(rcommcol.Substring(3, 2), NumberStyles.HexNumber);

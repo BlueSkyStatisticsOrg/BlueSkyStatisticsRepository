@@ -1,6 +1,7 @@
 ﻿using BlueSky.Commands.Tools.Package;
 using BSky.ConfService.Intf.Interfaces;
 using BSky.Controls;
+using BSky.Controls.Controls;
 using BSky.Interfaces.Commands;
 using BSky.Interfaces.Interfaces;
 using BSky.Lifetime;
@@ -293,6 +294,7 @@ namespace BlueSky.Commands.File
             CommandOutput batch = new CommandOutput();
             batch.NameOfAnalysis = "Open R package dataset";
             batch.IsFromSyntaxEditor = false;
+            batch.Insert(0, new BSkyOutputOptionsToolbar());
 
             string rcommcol = confService.GetConfigValueForKey("dctitlecol");//23nov2012 //before was syntitlecol
             byte red = byte.Parse(rcommcol.Substring(3, 2), NumberStyles.HexNumber);

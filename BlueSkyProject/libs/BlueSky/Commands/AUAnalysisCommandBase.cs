@@ -28,6 +28,7 @@ using System.Windows.Media;
 using System.Xml;
 using System.Windows.Controls;
 using BlueSky.Windows;
+using BSky.Controls.Controls;
 
 namespace BlueSky.Commands.Analytics.TTest
 {
@@ -1232,6 +1233,7 @@ namespace BlueSky.Commands.Analytics.TTest
             CommandOutput batch = new CommandOutput();
             batch.NameOfAnalysis = "Batch Command";
             batch.IsFromSyntaxEditor = false;
+            batch.Insert(0, new BSkyOutputOptionsToolbar());
 
             string rcommcol = confService.GetConfigValueForKey("dctitlecol");//23nov2012 //before was syntitlecol
             byte red = byte.Parse(rcommcol.Substring(3, 2), NumberStyles.HexNumber);

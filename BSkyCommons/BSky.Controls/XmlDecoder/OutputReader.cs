@@ -217,6 +217,8 @@ namespace BSky.XmlDecoder
             ///25Jun2013 creating UI for user Rsults added at the the end of the return structure
             GetUserResult(lst);
 
+            if (string.IsNullOrEmpty(filename))
+                lst.Insert(0, new BSkyOutputOptionsToolbar());
             return lst;
         }
 
@@ -1218,6 +1220,7 @@ namespace BSky.XmlDecoder
                     lst.Add(Title);
                     oldslicename = slicename;
                     slicename = string.Empty;
+                    lst.Insert(0, new BSkyOutputOptionsToolbar());
                 }
 
                 //11May2015 single cell, no title, no row header, no col header, then show it as AUPara rather than AUXGrid
