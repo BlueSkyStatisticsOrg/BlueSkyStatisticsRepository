@@ -194,32 +194,37 @@
                             <ColumnDefinition Name="navtreecol" Width="0"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0" Name="navgrid" Background="White">
+                        <Grid Grid.Column="0" Name="navgrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="1">
+                            <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Orientation="Horizontal" Background="White" Margin="0,0,3,0">
                                 <Label>Selection Mode:</Label>
-                                <StackPanel Orientation="Horizontal" Margin="1">
-                                    <CheckBox Name="SelModeCheckbox" IsThreeState="True" IsChecked="{x:Null}" Checked="SelModeCheckbox_Checked" Unchecked="SelModeCheckbox_Unchecked" Indeterminate="SelModeCheckbox_Indeterminate" Margin="1,1,3,1"></CheckBox>
-                                    <TextBlock Name="SelModeTxt" Text="Default"></TextBlock>
-                                </StackPanel>
+                                <ComboBox Name="SelModeCombobox" Width="70" Margin="3" SelectedIndex="0" DropDownClosed="SelModeCombobox_DropDownClosed" >
+                                    <ComboBoxItem Content="Default"></ComboBoxItem>
+                                    <ComboBoxItem Content="All"></ComboBoxItem>
+                                    <ComboBoxItem Content="None"></ComboBoxItem>
+                                </ComboBox>
                             </StackPanel>
-                            <TreeView Grid.Row="1" Name="NavTree" Margin="0,0,4,0" >
+                            <TreeView Grid.Row="1" Name="NavTree" Margin="0,0,9,0" BorderBrush="Gray" >
                             </TreeView>
                         </Grid>
                         <ScrollViewer  HorizontalScrollBarVisibility="Auto" Name="scrollviewer" Grid.Column="1">
-                            <Grid Name="panelcontainer">
-                                <StackPanel Name="mypanel" Background="White" ContextMenuClosing="mypanel_ContextMenuClosing" >
+                            <Grid Name="panelcontainer" Background="#FF3D6C6C">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="17*"/>
+                                    <RowDefinition Height="429*"/>
+                                </Grid.RowDefinitions>                                
+                                <StackPanel Name="mypanel" Background="White" ContextMenuClosing="mypanel_ContextMenuClosing" Margin="0,0,0,0" Grid.RowSpan="2" >
                                 </StackPanel>
                             </Grid>
                         </ScrollViewer>
-                        <GridSplitter HorizontalAlignment="Right"  Name="gridSplitter1" VerticalAlignment="Stretch" Width="1" Grid.Column="0" Grid.Row="0" Margin="1,0">
+                        <GridSplitter HorizontalAlignment="Right"  Name="gridSplitter1" VerticalAlignment="Stretch" Width="6" Grid.Column="0" Grid.Row="0" Margin="0,0,3,0">
                             <GridSplitter.Background>
                                 <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
                                     <GradientStop Color="#FF808385" Offset="0"/>
-                                    <GradientStop Color="#FFECF1F7" Offset="1"/>
+                                    <GradientStop Color="White" Offset=".8"/>
                                 </LinearGradientBrush>
                             </GridSplitter.Background>
                         </GridSplitter>

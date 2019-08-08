@@ -1921,7 +1921,7 @@ namespace BlueSky
                             cb.IsChecked = false;
                             break;
                         default:
-                            if (control is BSkyNotes)
+                            if (control is BSkyNotes || control.ControlType.Equals("Command"))
                             {
                                 cb.IsChecked = false;
                             }
@@ -1934,32 +1934,37 @@ namespace BlueSky
         }
 
         #region  Select Mode Checkbox events //22Mar2016 check / uncheck left navigation tree checkboxes
-        private void SelModeCheckbox_Checked(object sender, RoutedEventArgs e)
+        private void SelModeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (SelModeTxt != null)
+            ComboClosedOrChanged(sender);
+        }
+
+        private void SelModeCombobox_DropDownClosed(object sender, EventArgs e)
+        {
+            ComboClosedOrChanged(sender);
+        }
+
+        private void ComboClosedOrChanged(object sender)
+        {
+            string statetext = ((sender as ComboBox).SelectedItem as ComboBoxItem).Content.ToString(); ;
+            if (string.IsNullOrEmpty(statetext) || NavTree == null || NavTree.Items == null || NavTree.Items.Count == 0)
+                return;
+            switch (statetext)
             {
-                SelModeTxt.Text = "All";
-                ToggleNavTreeCheckboxes("All", NavTree.Items);// select all checkboxes
+                case "All":
+                    ToggleNavTreeCheckboxes("All", NavTree.Items);
+                    break;
+                case "None":
+                    ToggleNavTreeCheckboxes("None", NavTree.Items);
+                    break;
+                case "Default":
+                    ToggleNavTreeCheckboxes("Default", NavTree.Items);
+                    break;
+                default:
+                    break;
             }
         }
 
-        private void SelModeCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            if (SelModeTxt != null)
-            {
-                SelModeTxt.Text = "None";
-                ToggleNavTreeCheckboxes("None", NavTree.Items);// select none ( clear all checkboxes)
-            }
-        }
-
-        private void SelModeCheckbox_Indeterminate(object sender, RoutedEventArgs e)
-        {
-            if (SelModeTxt != null)
-            {
-                SelModeTxt.Text = "Default";
-                ToggleNavTreeCheckboxes("Default", NavTree.Items);// select all but BSkyNote, which is BSky default setting
-            }
-        }
         #endregion
 
         #endregion
