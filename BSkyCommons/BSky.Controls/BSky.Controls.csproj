@@ -173,6 +173,9 @@
     <Compile Include="Controls\BSkyNotes.xaml.cs">
       <DependentUpon>BSkyNotes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BSkyOutputOptionsToolbar.xaml.cs">
+      <DependentUpon>BSkyOutputOptionsToolbar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BSkyRadioGroup.cs" />
     <Compile Include="Controls\BSkySimpleColorPicker.xaml.cs">
       <DependentUpon>BSkySimpleColorPicker.xaml</DependentUpon>
@@ -435,6 +438,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\BSkyOutputOptionsToolbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\BSkySimpleColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -582,6 +589,7 @@
     <Resource Include="Resources\TextBox.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\re-run.png" />
     <Resource Include="Resources\required-field-indicator.png" />
     <Resource Include="Resources\Source-Dataset-ListBox.png" />
     <Resource Include="Resources\Source-var-ListBox.png" />
@@ -616,6 +624,9 @@
     <Resource Include="Resources\move-button.png" />
     <Resource Include="Resources\multi-line-label.png" />
     <Resource Include="Resources\non-editable-combobox.png" />
+    <Resource Include="Resources\comment.png" />
+    <Resource Include="Resources\cutpaste.png" />
+    <Resource Include="Resources\delete.png" />
     <Content Include="Resources\none.png" />
     <Resource Include="Resources\ordinal.png" />
     <Resource Include="Resources\scale.png" />
