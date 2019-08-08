@@ -2510,47 +2510,8 @@ namespace BSky.Statistics.R
 
         private bool isWritableDirectory(string pstrPath)
         {
-            try
-            {
-                if (!Directory.Exists(pstrPath)) //check if dir exeists. before chcking the access rights
-                {
-                    return false; //dir does not exist
-                }
-
-                bool writeable = false;
-                WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
-                DirectorySecurity security = Directory.GetAccessControl(pstrPath);
-                AuthorizationRuleCollection authRules = security.GetAccessRules(true, true, typeof(SecurityIdentifier));
-
-                foreach (FileSystemAccessRule accessRule in authRules)
-                {
-
-                    if (principal.IsInRole(accessRule.IdentityReference as SecurityIdentifier))
-                    {
-                        if ((FileSystemRights.WriteData & accessRule.FileSystemRights) == FileSystemRights.WriteData)
-                        {
-                            if (accessRule.AccessControlType == AccessControlType.Allow)
-                            {
-                                writeable = true;
-                                break;
-                            }
-                            else if (accessRule.AccessControlType == AccessControlType.Deny)
-                            {
-                                return false;
-                            }
-
-                        }
-                    }
-                }
-                return writeable;
-            }
-            catch (Exception ex)
-            {
-                string m1 = "Exception in isWritableDirectory, for : " + pstrPath;
-                logService.WriteToLogLevel(m1, LogLevelEnum.Error);
-                logService.WriteToLogLevel(ex.Message, LogLevelEnum.Error);
-                return false;
-            }
+            UtilityService util = new UtilityService();
+            return util.isWritableDirectory(pstrPath);
         }
 
 

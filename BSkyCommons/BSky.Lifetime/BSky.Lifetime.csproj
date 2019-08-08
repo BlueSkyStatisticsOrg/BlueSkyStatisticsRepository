@@ -83,6 +83,7 @@
     <Compile Include="RecentItems.cs" />
     <Compile Include="Services\LoggerService.cs" />
     <Compile Include="Services\OpenDataFileOptions.cs" />
+    <Compile Include="Services\UtilityService.cs" />
     <Compile Include="SignificanceCodesHandler.cs" />
     <Compile Include="XMLitemsProcessor.cs" />
   </ItemGroup>

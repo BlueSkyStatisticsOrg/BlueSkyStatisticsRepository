@@ -38,6 +38,7 @@ using System.Linq;
 using System.Windows.Input;
 using BSky.ConfService.Intf.Interfaces;
 using System.Windows.Data;
+using BSky.Lifetime.Services;
 
 //using System.Windows.Forms;
 
@@ -2390,12 +2391,46 @@ namespace BlueSky
         ////26May2015 save current script to a file.
         private void SaveScript(string fullpathfilename)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter(fullpathfilename);
-            file.WriteLine(inputTextbox.Text);
-            file.Close();
+            logService.WriteToLogLevel("Saving R Command Editor script... ", LogLevelEnum.Info);
+            UtilityService util = new UtilityService();
+            string dirname = util.GetDirectoryFromFullPathFilename(fullpathfilename);
+            bool writableDir = util.isWritableDirectory(dirname);
 
-            Modified = false;
-            SyntaxTitle.Text = syntitle + currentScriptFname; //19Feb2013
+            System.IO.StreamWriter file = null;
+            try
+            {
+                if (writableDir)
+                {
+
+                    file = new System.IO.StreamWriter(fullpathfilename);
+                    file.WriteLine(inputTextbox.Text);
+                    //file.Close();
+
+                    Modified = false;//19Feb2013 currently saving. So immediately after save there are no new changes/modifications.
+                    SyntaxTitle.Text = syntitle + currentScriptFname; //19Feb2013
+                    logService.WriteToLogLevel("R Command Editor script saved successfully : " + dirname, LogLevelEnum.Info);
+                }
+                else
+                {
+                    string m1 = "Cannot save script in :\n" + dirname;
+                    string m2 = "Try 'File -> Save-As' and save where you have write permissions.(e.g. Documents)";
+                    MessageBox.Show(this, m1 + "\n" + m2, "No write permission!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    logService.WriteToLogLevel("Failed to save R Command Editor script in : " + dirname, LogLevelEnum.Info);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logService.WriteToLogLevel("Error saving R Command Editor script : ", LogLevelEnum.Error);
+                logService.WriteToLogLevel(ex.Message, LogLevelEnum.Error);
+            }
+            finally
+            {
+                if (file != null)
+                {
+                    file.Close();
+                }
+            }
         }
 
         //26May2015 Reset vars and control values
