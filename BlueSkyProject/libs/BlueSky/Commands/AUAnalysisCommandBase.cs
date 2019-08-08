@@ -1254,7 +1254,7 @@ namespace BlueSky.Commands.Analytics.TTest
             AUParagraph dataset = new AUParagraph();
             dataset.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;
             dataset.Text = "[" + dsnameinapp + "] - " + dsname;
-            dataset.ControlType = "DataSet";
+            dataset.ControlType = "Dataset Name";
             batch.Add(dataset);
 
             SyntaxEditorWindow sewindow = LifetimeService.Instance.Container.Resolve<SyntaxEditorWindow>();
