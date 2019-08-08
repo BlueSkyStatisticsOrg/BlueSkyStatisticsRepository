@@ -159,14 +159,21 @@ namespace BSky.OutputGenerator
                     XmlNode xn = null;
                     switch (ln.Name.Trim())
                     {
-
-                        case "aup":
-                            #region AUPara
-                            AUP = createAUPara(ln, "", ""); 
-                            if (AUP != null)
-                                lst.Add(AUP);
+                        case "boot":
+                            #region BSkyOutputToolbar
+                            BSkyOutputOptionsToolbar BOOT = createOutputToolbar(ln, "", "");
+                            if (BOOT != null)
+                                lst.Add(BOOT);
 
                             #endregion
+                            break;
+                        case "aup":
+                        #region AUPara
+                        AUP = createAUPara(ln, "", ""); 
+                        if (AUP != null)
+                            lst.Add(AUP);
+
+                        #endregion
                             break;
                         case "bskynotes":
                             #region BSkyNotes
@@ -569,6 +576,17 @@ namespace BSky.OutputGenerator
                 }
             }
             return isEmpty;
+        }
+
+        public BSkyOutputOptionsToolbar createOutputToolbar(XmlNode xd, string selectNode, string controType)
+        {
+            XmlNode xn = null;
+            BSkyOutputOptionsToolbar Boot = new BSkyOutputOptionsToolbar();
+            xn = selectNode.Length > 0 ? xd.SelectSingleNode(selectNode) : xd;
+            if (xn == null) return null; //09Jul2013
+            Boot.ToolbarData.Comment = (xn != null) ? xn.InnerText.Trim(' ') : "";
+            Boot.ControlType = "Toolbar";
+            return Boot;
         }
 
         public AUParagraph createAUPara(XmlNode xd, string selectNode, string controType)
