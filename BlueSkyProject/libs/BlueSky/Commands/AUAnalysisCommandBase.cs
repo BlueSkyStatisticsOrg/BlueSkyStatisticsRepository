@@ -1245,7 +1245,7 @@ namespace BlueSky.Commands.Analytics.TTest
             aup.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE;//16;// before it was 16
             aup.FontWeight = FontWeights.DemiBold;
             aup.textcolor = new SolidColorBrush(c); //Colors.Blue);//SlateBlue //DogerBlue
-            aup.ControlType = "Header";
+            aup.ControlType = "Title";
             batch.Add(aup);
 
             //printing dataset name below main title

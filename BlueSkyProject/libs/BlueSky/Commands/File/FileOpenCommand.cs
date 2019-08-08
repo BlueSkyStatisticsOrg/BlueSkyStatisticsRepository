@@ -551,7 +551,7 @@ namespace BlueSky.Commands.File
             aup.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE;//16;// before it was 16
             aup.FontWeight = FontWeights.DemiBold;
             aup.textcolor = new SolidColorBrush(c); //Colors.Blue);//SlateBlue //DogerBlue
-            aup.ControlType = "Header";
+            aup.ControlType = "Title";
             batch.Add(aup);
             SyntaxEditorWindow sewindow = LifetimeService.Instance.Container.Resolve<SyntaxEditorWindow>();
             sewindow.AddToSession(batch);

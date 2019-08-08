@@ -125,7 +125,7 @@ namespace BSky.XmlDecoder
                     Title.FontWeight = FontWeights.DemiBold;
                     Title.textcolor = new SolidColorBrush(c);
 
-                    Title.ControlType = "Header";
+                    Title.ControlType = "Title";
                     lst.Add(Title);
                 }
                 ////// NOTES /////
@@ -1216,7 +1216,7 @@ namespace BSky.XmlDecoder
                     AUParagraph Title = new AUParagraph();
                     Title.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE;//10Nov2014
                     Title.Text = slicename;
-                    Title.ControlType = "Header";
+                    Title.ControlType = "Title";
                     lst.Add(Title);
                     oldslicename = slicename;
                     slicename = string.Empty;

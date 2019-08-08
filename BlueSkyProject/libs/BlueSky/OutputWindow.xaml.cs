@@ -845,7 +845,7 @@ namespace BlueSky
 
             AUParagraph aup = new AUParagraph(); 
             aup.Text = title;
-            aup.ControlType = "Header";
+            aup.ControlType = "Title";
             aup.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE;//10Nov2014;
             aup.FontWeight = FontWeights.DemiBold;
             aup.textcolor = new SolidColorBrush(c);

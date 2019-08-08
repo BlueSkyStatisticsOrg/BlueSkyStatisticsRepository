@@ -577,7 +577,7 @@ namespace BlueSky
                 AUParagraph aup = new AUParagraph();
                 aup.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;//App.HEADER_FONTSIZE;
                 aup.Text = stmt;
-                aup.ControlType = "Header";// treenodename.Length < treenodecharlen ? treenodename : treenodename.Substring(0, treenodecharlen);
+                aup.ControlType = "Title";// treenodename.Length < treenodecharlen ? treenodename : treenodename.Substring(0, treenodecharlen);
                 splitCo.Add(aup);
 
                 //////////  Setting/Unsetting Macro  for SPLIT //////////
