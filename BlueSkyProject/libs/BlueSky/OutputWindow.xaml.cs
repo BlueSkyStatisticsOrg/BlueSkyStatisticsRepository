@@ -1599,7 +1599,11 @@ namespace BlueSky
                 }				
 				cbleaf.IsChecked = (control.BSkyControlVisibility== Visibility.Visible) ? true : false;
 
+                Image img = GetImage(control);
+                img.Margin = new Thickness(0, 0, 2, 2);
+
                 treenodesp.Children.Add(cbleaf);
+                treenodesp.Children.Add(img);
                 treenodesp.Children.Add(nodetb);
 
                 tvi.Header = treenodesp;// cbleaf;//.Substring(0,openbracketindex);/// Leaf Node Text
@@ -1642,6 +1646,61 @@ namespace BlueSky
             {
                 NavTree.Items.Add(MainItem);
             }			
+        }
+
+        private Image GetImage(IAUControl ctrl)
+        {
+            Uri imgUri = null;
+            string controlType = ctrl.ControlType;
+            string tooltip = string.Empty;
+            AUXGrid _aux = ctrl as AUXGrid;
+            if (_aux != null)
+            {
+                controlType = "Table";
+            }
+            switch (controlType)
+            {
+                case "Title":
+                    imgUri = new Uri("/Images/tree-title.png", UriKind.Relative);
+                    tooltip = "Title";
+                    break;
+                case "Notes":
+                    imgUri = new Uri("/Images/tree-notes.png", UriKind.Relative);
+                    tooltip = "Notes";
+                    break;
+                case "Dataset Name":
+                    imgUri = new Uri("/Images/tree-dataset.png", UriKind.Relative);
+                    tooltip = "Dataset Name";
+                    break;
+                case "Graphic":
+                    imgUri = new Uri("/Images/tree-graphs.png", UriKind.Relative);
+                    tooltip = "Plot";
+                    break;
+                case "Error/Warnings":
+                    imgUri = new Uri("/Images/tree-errorwarnings.png", UriKind.Relative);
+                    tooltip = "Error/Warnings";
+                    break;
+                case "Command":
+                    imgUri = new Uri("/Images/tree-syntax.png", UriKind.Relative);
+                    tooltip = "R Syntax";
+                    break;
+                case "Table":
+                    imgUri = new Uri("/Images/tree-tables.png", UriKind.Relative);
+                    tooltip = "Output Table";
+                    break;
+                case "Toolbar":
+                    imgUri = new Uri("/Images/tree-toolbar.png", UriKind.Relative);
+                    tooltip = "Analysis toolbar";
+                    break;
+                default:
+                    imgUri = new Uri("/Images/tree-info.png", UriKind.Relative);
+                    tooltip = "Info";
+                    break;
+            }
+            //Uri imgUri = new Uri("/Images/input.png", UriKind.Relative);
+            Image img = new Image(); img.Source = new BitmapImage(imgUri);
+            img.ToolTip = tooltip;
+            return img;
         }
 
         private void AddEventsAndContextMenu(TreeViewItem TVI)
