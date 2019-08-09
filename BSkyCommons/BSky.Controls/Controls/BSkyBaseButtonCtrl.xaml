@@ -1,0 +1,11 @@
+﻿<Button x:Class="BSky.Controls.BSkyBaseButtonCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Width="50" Height="50" Padding="1"
+             d:DesignHeight="100" d:DesignWidth="100">
+    <!-- <Grid>
+         <Image Name="imageBtn"  Source="pack://application:,,,/BSky.Controls;component/Resources/left.png" ></Image>
+    </Grid> -->
+</Button>

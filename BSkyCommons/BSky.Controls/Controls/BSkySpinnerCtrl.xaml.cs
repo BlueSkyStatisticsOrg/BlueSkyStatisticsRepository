@@ -122,7 +122,7 @@ namespace BSky.Controls
             }
         }
 
-        private double _step;
+        private double _step=1;
         [Category("Control Settings"), PropertyOrder(2)]
         public double Step
         {

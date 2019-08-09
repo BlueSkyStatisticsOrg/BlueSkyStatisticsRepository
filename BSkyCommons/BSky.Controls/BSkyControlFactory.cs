@@ -298,8 +298,42 @@ namespace BSky.Controls
                     b = new BSkySpinnerCtrl();
                     // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
                     // b1.Ticks = null;
-                    b.Width = 83;
+                    b.Width = 83; 
                     b.Height = 22;
+                    break;
+
+
+                case "BSkyInteractionControl":
+                    b = new BSkyInteractionCtrl();
+                    // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
+                    // b1.Ticks = null;
+                    b.Width = 35;
+                    b.Height = 35;
+                    break;
+
+
+                case "BSkyPolynomialCtrl":
+                    b = new BSkyPolynomialCtrl();
+                    // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
+                    // b1.Ticks = null;
+                    b.Width = 35;
+                    b.Height = 35;
+                    break;
+
+                case "BSkyDeleteButton":
+                    b = new BSkyDeleteButton();
+                    // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
+                    // b1.Ticks = null;
+                    b.Width = 35;
+                    b.Height = 35;
+                    break;
+
+                case "BSkyNWayInteraction":
+                    b = new BSkyNWayInteraction();
+                    // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
+                    // b1.Ticks = null;
+                    b.Width = 35;
+                    b.Height = 35;
                     break;
             }
             

@@ -35,7 +35,7 @@ namespace BSky.Controls
         {
             InitializeComponent();
 
-			
+            base.Content = "test";
             imgDest.BeginInit();
             imgDest.UriSource = new Uri(@"pack://application:,,,/BSky.Controls;component/Resources/left.png");
             imgDest.EndInit();

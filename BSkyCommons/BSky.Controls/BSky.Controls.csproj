@@ -126,6 +126,15 @@
       <DependentUpon>BSkyAggregateCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="BSkyAppDir.cs" />
+    <Compile Include="Controls\BSkyNWayInteraction.cs" />
+    <Compile Include="Controls\BSkyInteractionCtrl.cs" />
+    <Compile Include="Controls\BSkyPolynomialCtrl.cs" />
+    <Compile Include="Controls\BSkyDeleteButton.xaml.cs">
+      <DependentUpon>BSkyDeleteButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BSkyBaseButtonCtrl.xaml.cs">
+      <DependentUpon>BSkyBaseButtonCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BSkygridForCompute.xaml.cs">
       <DependentUpon>BSkygridForCompute.xaml</DependentUpon>
     </Compile>
@@ -382,6 +391,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\BSkyDeleteButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BSkyBaseButtonCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BSkygridForCompute.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -589,6 +606,7 @@
     <Resource Include="Resources\TextBox.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\noun_up_143208.png" />
     <Resource Include="Resources\re-run.png" />
     <Resource Include="Resources\required-field-indicator.png" />
     <Resource Include="Resources\Source-Dataset-ListBox.png" />
@@ -627,6 +645,7 @@
     <Resource Include="Resources\comment.png" />
     <Resource Include="Resources\cutpaste.png" />
     <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\asterisk.png" />
     <Content Include="Resources\none.png" />
     <Resource Include="Resources\ordinal.png" />
     <Resource Include="Resources\scale.png" />

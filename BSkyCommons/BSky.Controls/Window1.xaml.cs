@@ -610,6 +610,7 @@ namespace BSky.Controls
             //This is important as I can setup a variablemovebutton with valid source and destination variable lists and the delete any one list
             //and then click save
             retval = checkMoveButton(firstCanvas);
+            retval = checkDeleteButton(firstCanvas);
             //Holds the griditem in the canvasPropertyGrid for the outputDefinition
             if (!retval) return false;
             System.Windows.Forms.GridItem outputDefGridItem;
@@ -1001,6 +1002,29 @@ namespace BSky.Controls
                         case "BSkyBrowse":
                             lst.Add("Browse");
                             break;
+
+
+                        case "BSkyInteractionCtrl":
+                            lst.Add("Interaction Control");
+                            break;
+
+                            
+                          case "BSkyLabelReqdField":
+                            lst.Add("Required label field");
+                            break;  
+
+                        case "BSkySpinnerCtrl":
+                            lst.Add("Spinner Control");
+                            break;
+
+                        case "BSkySlider":
+                            lst.Add("Slider Control");
+                            break;
+
+                        case "BSkyAdvancedSlider":
+                            lst.Add("Advanced Slider Control");
+                            break;
+
                     }
                 } //end of if
                 if (obj is BSkyButton)
@@ -2902,7 +2926,7 @@ namespace BSky.Controls
                 //XamlDesignerSerializationManager manager= new XamlDesignerSerializationManager(new System.Xml.XmlWriter();
                 string xaml = GetXaml();
                 //Added by Aaron 11/21/2013
-                //Added the line below to ensure that dialogMode the flag that enables or disables the checking of property and control 
+                //Added the line below to ensure that dialogMode the flag that enables or disables the 333ing of property and control 
                 //names in behaviour.cs is set to true after saving (the xaml is created)
                 BSkyCanvas.dialogMode = true;
                 string fileNamewithoutExt = Path.GetFileNameWithoutExtension(fileName);
@@ -3062,8 +3086,70 @@ namespace BSky.Controls
         {
             foreach (UIElement child in myCanvas.Children)
             {
-                if (child.GetType().Name == "BSkySourceList" || child.GetType().Name == "BSkyTargetList" || child.GetType().Name == "BSkyGroupingVariable" || child.GetType().Name == "BSkyListBoxwBorderForDatasets" || child.GetType().Name == "BSkyAggregateCtrl" || child.GetType().Name == "BSkySortCtrl")
+                if (child.GetType().Name == "BSkySourceList" || child.GetType().Name == "BSkyTargetList" || child.GetType().Name == "BSkyGroupingVariable" || child.GetType().Name == "BSkyListBoxwBorderForDatasets" || child.GetType().Name == "BSkyAggregateCtrl" || child.GetType().Name == "BSkySortCtrl"   || child.GetType().Name == "BSkySpinnerCtrl")
                 {
+
+
+                    if (child.GetType().Name == "BSkySpinnerCtrl")
+                    {
+                        BSkySpinnerCtrl copySpinner = null;
+                        copySpinner = new BSkySpinnerCtrl();
+                        BSkySpinnerCtrl child1 = null;
+                        child1 = child as BSkySpinnerCtrl;
+
+                        copySpinner.Left = child1.Left;
+                        copySpinner.Top = child1.Top;
+                        copySpinner.Name = child1.Name;
+                        copySpinner.Step = child1.Step;
+                        copySpinner.Text = child1.Text;
+                        //copyAdvancedSlider.Value = child1.Value;
+                        copySpinner.Width = child1.Width;
+                        copySpinner.Height = child1.Height;
+                        copySpinner.CanExecute = child1.CanExecute;
+                        //copyMoveButton.Name = child1.Name;
+                        BSkyCanvas.SetTop(copySpinner, BSkyCanvas.GetTop(child1));
+                        BSkyCanvas.SetLeft(copySpinner, BSkyCanvas.GetLeft(child1));
+                        copy.Children.Add(copySpinner);
+
+                    }
+
+                    if (child.GetType().Name == "BSkyEditableComboBox")
+                    {
+                        BSkyEditableComboBox copyComboBox = null;
+                        copyComboBox = new BSkyEditableComboBox();
+                        copyComboBox.Resources.Clear();
+                        BSkyEditableComboBox child1 = null;
+                        child1 = child as BSkyEditableComboBox;
+                        //copyMoveButton.Name = child1.Name;
+                        copyComboBox.prefixSelectedValue = child1.prefixSelectedValue;
+                        copyComboBox.Name = child1.Name;
+                        copyComboBox.Width = child1.Width;
+                        copyComboBox.Height = child1.Height;
+                        copyComboBox.DefaultSelection = child1.DefaultSelection;
+                        copyComboBox.SelectionChangeBehaviour = child1.SelectionChangeBehaviour;
+                        copyComboBox.NothingSelected = child1.NothingSelected;
+                        copyComboBox.SelectedValue = child1.SelectedValue;
+                        copyComboBox.CanExecute = child1.CanExecute;
+                        foreach (string Item in child1.Items)
+                        {
+                            copyComboBox.Items.Add(Item);
+                        }
+
+
+                        //As we are referencing the text property in Display items, the code below must execute after the Text property is set
+                        // foreach (string displayItem in child1.DisplayItems) copyComboBox.DisplayItems.Add(displayItem);
+                        // copyComboBox.SelectedObject = child1.SelectedObject;
+                        //  copyComboBox.DisplayItems = child1.DisplayItems;
+                        copyComboBox.Syntax = child1.Syntax;
+                        copyComboBox.Enabled = child1.Enabled;
+                        copyComboBox.IsEnabled = child1.Enabled;
+
+                        //copyMoveButton.Top = child1.Top;
+                        BSkyCanvas.SetTop(copyComboBox, BSkyCanvas.GetTop(child1));
+                        BSkyCanvas.SetLeft(copyComboBox, BSkyCanvas.GetLeft(child1));
+                        copy.Children.Add(copyComboBox);
+                    }
+
 
                     if (child.GetType().Name == "BSkySourceList")
                     {
@@ -3678,28 +3764,7 @@ namespace BSky.Controls
 
                 }
 
-                if (child.GetType().Name == "BSkySpinnerCtrl")
-                {
-                    BSkySpinnerCtrl copySpinner = null;
-                    copySpinner = new BSkySpinnerCtrl();
-                    BSkySpinnerCtrl child1 = null;
-                    child1 = child as BSkySpinnerCtrl;
-
-                    copySpinner.Left = child1.Left;
-                    copySpinner.Top = child1.Top;
-                    copySpinner.Name = child1.Name;
-                    copySpinner.Step = child1.Step;
-                    copySpinner.Text = child1.Text;
-                    //copyAdvancedSlider.Value = child1.Value;
-                    copySpinner.Width = child1.Width;
-                    copySpinner.Height = child1.Height;
-                    copySpinner.CanExecute = child1.CanExecute;
-                    //copyMoveButton.Name = child1.Name;
-                    BSkyCanvas.SetTop(copySpinner, BSkyCanvas.GetTop(child1));
-                    BSkyCanvas.SetLeft(copySpinner, BSkyCanvas.GetLeft(child1));
-                    copy.Children.Add(copySpinner);
-
-                }
+                
 
                 if (child.GetType().Name == "BSkyMultiLineLabel")
                 {
@@ -3744,6 +3809,108 @@ namespace BSky.Controls
                     copyMoveButton.TargetList = child1.TargetList;
 
                 }
+
+
+                if (child.GetType().Name == "BSkyDeleteButton")
+                {
+                    BSkyDeleteButton copyDeleteButton = null;
+                    copyDeleteButton = new BSkyDeleteButton();
+                    BSkyDeleteButton child1 = null;
+                    child1 = child as BSkyDeleteButton;
+
+                    copyDeleteButton.Name = child1.Name;
+
+                    //copyDeleteButton.Name = child1.Name;
+
+                    copyDeleteButton.Name = child1.Name;
+                    copyDeleteButton.Width = child1.Width;
+                    copyDeleteButton.Height = child1.Height;
+                    //copyyDeleteButton.Top = child1.Top;
+                    BSkyCanvas.SetTop(copyDeleteButton, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copyDeleteButton, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copyDeleteButton);
+                    // 11/26/2012 the lines below can be executed only after the yDeleteButton is added to the canvas
+                    //copyyDeleteButton.InputList = child1.InputList;
+                    copyDeleteButton.TargetList = child1.TargetList;
+
+                }
+
+                if (child.GetType().Name == "BSkyInteractionCtrl")
+                {
+                    BSkyInteractionCtrl copyInteractionCtrl = null;
+                    copyInteractionCtrl = new BSkyInteractionCtrl();
+                    BSkyInteractionCtrl child1 = null;
+                    child1 = child as BSkyInteractionCtrl;
+
+                    copyInteractionCtrl.Name = child1.Name;
+
+                    //copyMoveButton.Name = child1.Name;
+
+                    copyInteractionCtrl.Name = child1.Name;
+                    copyInteractionCtrl.Width = child1.Width;
+                    copyInteractionCtrl.Height = child1.Height;
+                    //copyMoveButton.Top = child1.Top;
+                    BSkyCanvas.SetTop(copyInteractionCtrl, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copyInteractionCtrl, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copyInteractionCtrl);
+                    // 11/26/2012 the lines below can be executed only after the movebutton is added to the canvas
+                    copyInteractionCtrl.InputList = child1.InputList;
+                    copyInteractionCtrl.TargetList = child1.TargetList;
+
+                }
+
+                if (child.GetType().Name == "BSkyPolynomialCtrl")
+                {
+                    BSkyPolynomialCtrl copyPolynomialCtrl = null;
+                    copyPolynomialCtrl = new BSkyPolynomialCtrl();
+                    BSkyPolynomialCtrl child1 = null;
+                    child1 = child as BSkyPolynomialCtrl;
+
+                    copyPolynomialCtrl.Name = child1.Name;
+                  
+                    //copyMoveButton.Name = child1.Name;
+
+                    copyPolynomialCtrl.Name = child1.Name;
+                    copyPolynomialCtrl.Width = child1.Width;
+                    copyPolynomialCtrl.Height = child1.Height;
+                    //copyMoveButton.Top = child1.Top;
+                    BSkyCanvas.SetTop(copyPolynomialCtrl, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copyPolynomialCtrl, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copyPolynomialCtrl);
+                    // 11/26/2012 the lines below can be executed only after the movebutton is added to the canvas
+                    copyPolynomialCtrl.InputList = child1.InputList;
+                    copyPolynomialCtrl.TargetList = child1.TargetList;
+                    copyPolynomialCtrl.TextBoxForpolynomialOrder = child1.TextBoxForpolynomialOrder;
+
+
+                }
+
+                if (child.GetType().Name == "BSkyNWayInteraction")
+                {
+                    BSkyNWayInteraction copyNWayInteraction = null;
+                    copyNWayInteraction = new BSkyNWayInteraction();
+                    BSkyNWayInteraction child1 = null;
+                    child1 = child as BSkyNWayInteraction;
+
+                    copyNWayInteraction.Name = child1.Name;
+
+                    //copyMoveButton.Name = child1.Name;
+
+                    copyNWayInteraction.Name = child1.Name;
+                    copyNWayInteraction.Width = child1.Width;
+                    copyNWayInteraction.Height = child1.Height;
+                    //copyMoveButton.Top = child1.Top;
+                    BSkyCanvas.SetTop(copyNWayInteraction, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copyNWayInteraction, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copyNWayInteraction);
+                    // 11/26/2012 the lines below can be executed only after the movebutton is added to the canvas
+                    copyNWayInteraction.InputList = child1.InputList;
+                    copyNWayInteraction.TargetList = child1.TargetList;
+                    copyNWayInteraction.ComboBoxForNWayInteraction = child1.ComboBoxForNWayInteraction;
+
+
+                }
+
 
                 if (child.GetType().Name == "BSkyRadioButton")
                 {
@@ -3897,42 +4064,7 @@ namespace BSky.Controls
 
                 }
 
-                if (child.GetType().Name == "BSkyEditableComboBox")
-                {
-                    BSkyEditableComboBox copyComboBox = null;
-                    copyComboBox = new BSkyEditableComboBox();
-                    copyComboBox.Resources.Clear();
-                    BSkyEditableComboBox child1 = null;
-                    child1 = child as BSkyEditableComboBox;
-                    //copyMoveButton.Name = child1.Name;
-                    copyComboBox.prefixSelectedValue = child1.prefixSelectedValue;
-                    copyComboBox.Name = child1.Name;
-                    copyComboBox.Width = child1.Width;
-                    copyComboBox.Height = child1.Height;
-                    copyComboBox.DefaultSelection = child1.DefaultSelection;
-                    copyComboBox.SelectionChangeBehaviour = child1.SelectionChangeBehaviour;
-                    copyComboBox.NothingSelected = child1.NothingSelected;
-                    copyComboBox.SelectedValue = child1.SelectedValue;
-                    copyComboBox.CanExecute = child1.CanExecute;
-                    foreach (string Item in child1.Items)
-                    {
-                        copyComboBox.Items.Add(Item);
-                    }
-
-
-                    //As we are referencing the text property in Display items, the code below must execute after the Text property is set
-                   // foreach (string displayItem in child1.DisplayItems) copyComboBox.DisplayItems.Add(displayItem);
-                    // copyComboBox.SelectedObject = child1.SelectedObject;
-                  //  copyComboBox.DisplayItems = child1.DisplayItems;
-                    copyComboBox.Syntax = child1.Syntax;
-                    copyComboBox.Enabled = child1.Enabled;
-                    copyComboBox.IsEnabled = child1.Enabled;
-
-                    //copyMoveButton.Top = child1.Top;
-                    BSkyCanvas.SetTop(copyComboBox, BSkyCanvas.GetTop(child1));
-                    BSkyCanvas.SetLeft(copyComboBox, BSkyCanvas.GetLeft(child1));
-                    copy.Children.Add(copyComboBox);
-                }
+             
 
                 if (child.GetType().Name == "BSkyNonEditableComboBox")
                 {
@@ -4314,6 +4446,86 @@ namespace BSky.Controls
             //}
         }
 
+
+
+
+
+        bool checkPolynomialCtrl(BSkyCanvas canvas)
+        { 
+         string message = string.Empty;
+            foreach (Object obj in canvas.Children)
+            {
+                if (obj is BSkyPolynomialCtrl)
+                {
+                    BSkyPolynomialCtrl objcast = obj as BSkyPolynomialCtrl;
+                    if (objcast.GetResource(objcast.TextBoxForpolynomialOrder) == null)
+                    {
+                        message = "The polynomial control " + objcast.Name + " must be associated with a spinner contol to specify the degree of the polynomial. Please specify the name of a spinner control on the same canvas ";
+                        MessageBox.Show(message);
+                        //this.selectedElement = objcast;
+                        return false;
+                    }
+                    if (objcast.GetResource(objcast.InputList) == null)
+                    {
+                        message = "The polynomial control  " + objcast.Name + " must be associated with a proper input variable list control. Please click on the polynomial control and check the input variable list name ";
+                        MessageBox.Show(message);
+                        //this.selectedElement = objcast;
+                        return false;
+                    }
+                    if (objcast.GetResource(objcast.TargetList) == null)
+                    {
+                        message = "The polynomial control " + objcast.Name + " is not associated with a proper target variable list control. Please click on the polynomial control and check the target variable list name ";
+                        MessageBox.Show(message);
+                        //this.selectedElement = objcast;
+                        return false;
+                    }
+
+                }
+                if (obj is BSkyButton)
+                {
+                    FrameworkElement fe = obj as FrameworkElement;
+                    BSkyCanvas cs = fe.Resources["dlg"] as BSkyCanvas;
+                    // if (cs != null) lst.AddRange(checkMissingName(cs));
+                    //Added by Aaron 12/27/2013
+                    //Code was added to handle the case of a buttom that is placed on the canvas but we have not defined a subdialog for that button i.e. I have not clicked on designer in the property grid
+                    if (cs != null) checkPolynomialCtrl(cs);
+                }
+            }
+            return true;
+
+        }
+
+        bool checkDeleteButton(BSkyCanvas canvas)
+        {
+            string message = string.Empty;
+            foreach (Object obj in canvas.Children)
+            {
+                if (obj is BSkyDeleteButton)
+                {
+                    BSkyDeleteButton objcast = obj as BSkyDeleteButton;
+                    if (objcast.GetResource(objcast.TargetList) == null)
+                    {
+                        message = "The delete button " + objcast.Name + " is not associated with a proper target variable list control. Please click on the move button and check the target variable list name ";
+                        MessageBox.Show(message);
+                        //this.selectedElement = objcast;
+                        return false;
+                    }
+                    
+
+                }
+                if (obj is BSkyButton)
+                {
+                    FrameworkElement fe = obj as FrameworkElement;
+                    BSkyCanvas cs = fe.Resources["dlg"] as BSkyCanvas;
+                    // if (cs != null) lst.AddRange(checkMissingName(cs));
+                    //Added by Aaron 12/27/2013
+                    //Code was added to handle the case of a buttom that is placed on the canvas but we have not defined a subdialog for that button i.e. I have not clicked on designer in the property grid
+                    if (cs != null) checkDeleteButton(cs);
+                }
+            }
+            return true;
+
+        }
 
         //Added by Aaron 10/24/2013
         //Code below checks the BSkyVariableMoveButton and ensures that the source and destination lists are valid
