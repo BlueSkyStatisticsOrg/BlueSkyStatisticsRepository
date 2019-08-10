@@ -2238,6 +2238,7 @@ namespace BlueSky
             if (isSyntaxCollapsed)
             {
                 CollapseExpandSyntax();
+                ShowHideSyntaxSpliter();
             }
             int oldlinecount = inputTextbox.Lines.Count;// LineCount;// -1;
             int charCountOfOldText = inputTextbox.Text.Length;
