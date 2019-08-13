@@ -90,10 +90,7 @@ namespace BSky.XmlDecoder
             {
                 foreach (string str in lst)
                 {
-                    if (!string.IsNullOrEmpty(output))
-                        output += delimiter + str;
-                    else
-                        output += str;
+                    output += delimiter + str;
                 }
             }
             return output;

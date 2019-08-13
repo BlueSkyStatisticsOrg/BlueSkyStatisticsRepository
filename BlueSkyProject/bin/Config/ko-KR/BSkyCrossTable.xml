@@ -22,10 +22,10 @@
   <tablelist>
     <table ID="Crosstab">
       <table.header>
-        <text stringformat="{0}*{1}*{2} Cross Tabulation">
+        <text stringformat="{0} * {1}{2} Cross Tabulation">
           <macro>%Row%</macro>
           <macro>%Column%</macro>
-          <param datamember="layer" delimiter="*"></param>
+          <param datamember="layer" delimiter=" * "></param>
         </text>
       </table.header>
       <columns>
