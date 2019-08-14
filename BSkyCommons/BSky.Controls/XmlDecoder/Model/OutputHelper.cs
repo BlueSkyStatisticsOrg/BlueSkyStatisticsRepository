@@ -5555,6 +5555,485 @@ namespace BSky.XmlDecoder
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
 
+
+            else if (customsyntax =="Multi-Way Anova")
+            {
+                string target = "";
+                string dest = "";
+                string interaction = "";
+                string type = "";
+                string levene = "";
+                //Pairwise comparisons
+                string combon = "";
+                string adjust = "";
+                string compactly = "";
+                string alpha = "";
+                string diag = "";
+                string plot1 = "";
+                string plot2 = "";
+                string dataset = "";
+
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+
+                }
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+
+                    if (key == "dest")
+                    {
+                        dest = value;
+                    }
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "Interaction")
+                    {
+                        interaction = value;
+                    }
+                    if (key == "type")
+                    {
+                        type = value;
+                    }
+                    if (key == "levene")
+                    {
+                        levene = value;
+                    }
+                    if (key == "combon")
+                    {
+                        combon = value;
+                    }
+                    if (key == "adjust")
+                    {
+                        adjust = value;
+                    }
+                    if (key == "compactly")
+                    {
+                        compactly = value;
+                    }
+                    if (key == "alpha")
+                    {
+                        alpha = value;
+                    }
+                    if (key == "diag")
+                    {
+                        diag = value;
+                    }
+                    if (key == "plot1")
+                    {
+                        plot1 = value;
+                    }
+                    if (key == "plot2")
+                    {
+                        plot2 = value;
+                    }
+                  
+                }
+                string tempoutput = "";
+
+                string[] thevars =null;
+                string variables = "";
+                string group = "";
+                string nointeraction = "";
+                string dependentVars = "";
+                string interactionPlotString = "";
+
+                if (dest.ToLower().Contains(','))
+                {
+                   thevars = dest.Split(',');
+                }
+                else
+                {
+                    variables = dest;
+                }
+                bool multiway = false;
+
+                if ( thevars != null)
+                {
+                    multiway = true;
+                    group = dest.Replace(",", "*");
+                    nointeraction = dest.Replace(",", "+");
+                    interactionPlotString = dest.Replace(",", "~");
+                }
+                else
+                {
+                    multiway = false;
+                }
+               
+                if (multiway == false)
+                {
+                    tempoutput = tempoutput + "#Generating summaries";
+                    tempoutput = tempoutput + "\ntemp <-" + dataset + "%>%\t group_by(" + variables + ") %>%\t summarise(n = n(), mean = mean("
+                        + target + " , na.rm = TRUE), median = median("
+                        + target + ", na.rm = TRUE), min = min("
+                        + target + ", na.rm = TRUE), max = max("
+                        + target + ", na.rm = TRUE), sd = sd("
+                        + target + ", na.rm = TRUE), variance = var("
+                        + target + ", na.rm = TRUE))\n";
+                    tempoutput = tempoutput + "\nnames(temp)[1] =" + "\""+ variables + "\"";
+                    tempoutput = tempoutput + "\nBSkyFormat( as.data.frame(temp), singleTableOutputHeader = \"Summaries for "
+                        + target + " by factor variable " + variables + " \")";
+
+                    tempoutput = tempoutput + "\n\n#Setting contrasts";
+                    tempoutput = tempoutput + "\ncontrasts(" + dataset + "$" + variables + ") <- contr.sum";
+
+                    tempoutput = tempoutput + "\n\n#Creating the model";
+                    tempoutput = tempoutput + "\nBSkyMultiAnova =as.data.frame(summary(MultiAnova <-aov("
+                        + target + "~" + variables + ", data =" + dataset + "))[[1]])";
+
+                    if (diag == "TRUE")
+                    {
+                        tempoutput = tempoutput + "\n\n#Displaying diagnostic plots";
+                        //tempoutput = tempoutput + "\nBSkyGraphicsFormat(noOfGraphics = 4)";
+                        tempoutput = tempoutput + "\nplot(MultiAnova)";
+                    }
+
+                    tempoutput = tempoutput + "\n\n#Creating the Anova table with type I/II/III sum of squares";
+
+                    if (type =="I")
+                    {
+                        tempoutput = tempoutput + "\n\nanovaTable =as.data.frame(stats::anova(MultiAnova))";
+                        tempoutput = tempoutput + "\nBSkyFormat(BSkyMultiAnova, singleTableOutputHeader = \"Anova table with type I sum of squares for " + target
+                             + " by " + variables +"\")";
+
+                    }
+                    else if (type =="II")
+                    {
+                        tempoutput = tempoutput + "\nanovaTable =as.data.frame(car::Anova(MultiAnova, type =\"II\"))";
+                        tempoutput = tempoutput + "\nBSkyFormat(BSkyMultiAnova, singleTableOutputHeader = \"Anova table with type II sum of squares for " + target
+                             + " by " + variables + "\")";
+                    }
+                    else if (type =="III")
+                    {
+                        tempoutput = tempoutput + "\nanovaTable =as.data.frame(car::Anova(MultiAnova, type =\"III\"))";
+                        tempoutput = tempoutput + "\nBSkyFormat(BSkyMultiAnova, singleTableOutputHeader = \"Anova table with type III sum of squares for " + target
+                             + " by " + variables + "\")";
+                    }
+
+                    tempoutput = tempoutput + "\n\n#Displaying estimated marginal means";
+
+                    tempoutput += "\nresultsEmmeans = list()";
+
+                    tempoutput += "\nresultsEmmeans<-emmeans::emmeans(MultiAnova, ~" + variables + ")";
+                    tempoutput += "\nBSkyFormat( as.data.frame(resultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                        target + " by " + variables + "\")";
+
+                    if (levene == "TRUE")
+                    {
+                        tempoutput = tempoutput + "\n\n#Levene's Test";
+                        tempoutput +=  "\nBSky_Levene_Test <-with(" + dataset+ ",car::leveneTest(" + target + ","+  variables+ "))";
+                        tempoutput += "\nBSkyFormat(as.data.frame(BSky_Levene_Test), singleTableOutputHeader = \"Levene's test for homogenity of variances (center=mean) for "
+                            + target+ " against " +variables+ "\")";
+
+                    }
+
+                    //  tempoutput += "\nresultsContrasts = list()";
+                    tempoutput = tempoutput + "\n\n#Post-hoc tests";
+                    tempoutput += "\nresContrasts <-emmeans::contrast(resultsEmmeans,method =  \"" + combon + "\" , adjust = \"" + adjust + "\")";
+                    tempoutput += "\nresSummary <-summary(resContrasts)";
+
+                    tempoutput += "\ncat(\"\\n\\n\\n\")";
+                    tempoutput += "\ncat(attributes(resSummary)$mesg, sep = \"\\n\")";
+                    tempoutput += "\nBSkyFormat(as.data.frame(resContrasts), singleTableOutputHeader = \"Post-hoc tests for " + target +
+                    " by "+ variables + " (using method = " + combon + ")\")";
+
+
+                    if (compactly =="TRUE")
+                    {
+                        tempoutput = tempoutput + "\n\n#Compare means compactly";
+                        tempoutput += "\nresultsContrasts = list()";
+                        tempoutput += "\nresultsContrasts <-multcomp::cld(resultsEmmeans, level = "  +alpha + ")";
+                        tempoutput += "\nBSkyFormat( as.data.frame(resultsContrasts), singleTableOutputHeader = \"Comparing means compactly for " + target + " by " + variables + " using " + combon +" comparison"+ " (p values adjusted using "+ adjust + ")\")";
+
+                    }
+
+                    if (plot1=="TRUE")
+                    {
+                        tempoutput = tempoutput + "\n\n#Plot all comparisons";
+                        //tempoutput += "\nBSkyGraphicsFormat(noOfGraphics = 1)";
+                        // tempoutput += "\nprint(plot(contrast(resultsEmmeans, method = \""+ combon + "\" , adjust = \"" + adjust + "\") + \"geom_vline(xintercept = 0) + ggtitle(\"Plotting all comparisons(\"" +  combon + ") for  " {target}}", "by", vars)))";
+                        tempoutput += "\nplot( contrast(resultsEmmeans, method= \"" + combon + "\", adjust=\"" + adjust + "\") ) +   geom_vline(xintercept = 0) + ggtitle ( \"Plotting all comparisons " +combon + " for " + target + " by " + variables + "\")";
+                    }
+
+                   tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
+                    tempoutput = "";
+
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+
+                    
+
+                }
+                else
+                {
+
+                    //dest has all the variables as a string
+                    //variables  has each variable
+                    //thevars has a string [] of variables
+                    tempoutput = tempoutput + "#Generating summaries";
+                    if (interaction == "TRUE")
+                    {
+                        dependentVars = nointeraction;
+
+                    }
+                    else
+                    {
+                        dependentVars = group;
+
+                    }
+
+
+                    foreach (string vars in thevars)
+                    {
+                     
+                        tempoutput = tempoutput + "\ntemp <-" + dataset + "%>%\t group_by(" + vars + ") %>%\t summarise(n = n(), mean = mean("
+                            + target + " , na.rm = TRUE), median = median("
+                            + target + ", na.rm = TRUE), min = min("
+                            + target + ", na.rm = TRUE), max = max("
+                            + target + ", na.rm = TRUE), sd = sd("
+                            + target + ", na.rm = TRUE), variance = var("
+                            + target + ", na.rm = TRUE))\n";
+                        tempoutput = tempoutput + "\nnames(temp)[1] =" + "\"" + vars + "\"";
+                        tempoutput = tempoutput + "\nBSkyFormat( as.data.frame(temp), singleTableOutputHeader = \"Summaries for "
+                            + target + " by factor variable " + vars + " \")\n";
+                    }
+                  
+                    tempoutput = tempoutput + "\ntemp <-" + dataset + "%>%\t group_by(" + dest + ") %>%\t summarise(n = n(), mean = mean("
+                           + target + " , na.rm = TRUE), median = median("
+                           + target + ", na.rm = TRUE), min = min("
+                           + target + ", na.rm = TRUE), max = max("
+                           + target + ", na.rm = TRUE), sd = sd("
+                           + target + ", na.rm = TRUE), variance = var("
+                           + target + ", na.rm = TRUE))\n";
+                   // tempoutput = tempoutput + "\nnames(temp)[1] =" + "\"" +  + "\"";
+                    tempoutput = tempoutput + "\nBSkyFormat( as.data.frame(temp), singleTableOutputHeader = \"Summaries for "
+                        + target + " by factor variables " + dependentVars + " \")";
+
+                    tempoutput = tempoutput + "\n\n#Setting contrasts";
+                    foreach (string vars in thevars)
+                    {
+                         tempoutput = tempoutput + "\ncontrasts(" + dataset + "$" + vars + ") <- contr.sum";
+                    }
+
+                    
+
+                    tempoutput = tempoutput + "\n\n#Creating the model";
+                   
+                         tempoutput = tempoutput + "\nBSkyMultiAnova =as.data.frame(summary(MultiAnova <-aov("
+                            + target + "~" + dependentVars + ", data =" + dataset + "))[[1]])";
+                  
+
+                    if (diag == "TRUE")
+                    {
+
+                        tempoutput = tempoutput + "\n\n#Displaying diagnostic plots";
+                      //  tempoutput = tempoutput + "\nBSkyGraphicsFormat(noOfGraphics = 4)";
+                        tempoutput = tempoutput + "\nplot(MultiAnova)";
+                    }
+
+                    tempoutput = tempoutput + "\n\n#Creating the Anova table with type I/II/III sum of squares";
+
+                   if (type == "I")
+                   {
+
+                        tempoutput = tempoutput + "\n\nanovaTable =as.data.frame(stats::anova(MultiAnova))";
+                        tempoutput = tempoutput + "\nBSkyFormat(BSkyMultiAnova, singleTableOutputHeader = \"Anova table with type I sum of squares for " + target
+                             + " by " + dependentVars + "\")";
+
+                    }
+                    else if (type == "II")
+                    {
+
+                        tempoutput = tempoutput + "\nanovaTable =as.data.frame(car::Anova(MultiAnova, type =\"II\"))";
+
+                        tempoutput = tempoutput + "\nBSkyFormat(BSkyMultiAnova, singleTableOutputHeader = \"Anova table with type II sum of squares for " + target
+                             + " by " + dependentVars + "\")";
+                    }
+                    else if (type == "III")
+                    {
+                        tempoutput = tempoutput + "\nanovaTable =as.data.frame(car::Anova(MultiAnova, type =\"III\"))";
+
+                        tempoutput = tempoutput + "\nBSkyFormat(BSkyMultiAnova, singleTableOutputHeader = \"Anova table with type III sum of squares for " + target
+                             + " by " + dependentVars + "\")";
+
+                    }
+
+                    tempoutput = tempoutput + "\n\n#Displaying estimated marginal means";
+                    
+                    tempoutput += "\nresEmmeans = list()";
+                    int i = 1;
+                    string index = "";
+                    foreach (string vars in thevars)
+                    {
+                        index = i.ToString();
+
+                        tempoutput += "\nresEmmeans[[" + index +"]]<-emmeans::emmeans(MultiAnova, ~" + vars + ")";
+                        tempoutput += "\nBSkyFormat( as.data.frame(resEmmeans[[" + index + "]]), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                            target + " by " + vars + "\")";
+                        tempoutput += "\n";
+
+                        i++;
+
+                    }
+
+                    if (interaction != "TRUE")
+                        {
+                        //  tempoutput += "\nresultsEmmeans = list()";
+                        tempoutput += "\nresultsEmmeans<-emmeans::emmeans(MultiAnova, ~" + dependentVars + ")";
+                        tempoutput += "\nBSkyFormat( as.data.frame(resultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                            target + " by " + dependentVars + "\")";
+                    }
+                  
+                    if (levene == "TRUE")
+                    {
+                        tempoutput = tempoutput + "\n\n#Levene's Test";
+                        foreach (string vars in thevars)
+                        {
+                            tempoutput += "\nBSky_Levene_Test <-with(" + dataset + ",car::leveneTest(" + target + "," + vars + "))";
+                            tempoutput += "\nBSkyFormat(as.data.frame(BSky_Levene_Test), singleTableOutputHeader = \"Levene's test for homogenity of variances (center=mean) for "
+                                + target + " against " + vars + "\")";
+                            tempoutput += "\n";
+                        }
+
+                    }
+
+                    tempoutput = tempoutput + "\n\n#Post-hoc tests";
+
+                    tempoutput += "\nresultsContrasts = list()";
+                    i = 1;
+                    index = "0";
+                    foreach (string vars in thevars)
+                    {
+                        
+                        index = i.ToString();
+                        tempoutput += "\nresultsContrasts[[" + index+ "]]<-emmeans::contrast(resEmmeans[[" + index+ "]],method =  \"" + combon + "\" , adjust = \"" + adjust + "\")";
+                        tempoutput += "\nresSummary <-summary(resultsContrasts[[" +  index + "]])";
+
+                        tempoutput += "\ncat(\"\\n\\n\\n\")";
+                        tempoutput += "\ncat(attributes(resSummary)$mesg, sep = \"\\n\")";
+                        tempoutput += "\nBSkyFormat(as.data.frame(resultsContrasts[[" + index+ "]]), singleTableOutputHeader = \"Post-hoc tests for " + target +
+                        " by " + vars + " (using method = " + combon + ")\")";
+                        tempoutput += "\n";
+                        i++;
+
+                    }
+
+                    if (interaction != "TRUE")
+                    {
+                        tempoutput += "\nresContrasts <-emmeans::contrast(resultsEmmeans,method =  \"" + combon + "\" , adjust = \"" + adjust + "\")";
+                        tempoutput += "\nresSummary <-summary(resContrasts)";
+
+                        tempoutput += "\ncat(\"\\n\\n\\n\")";
+                        tempoutput += "\ncat(attributes(resSummary)$mesg, sep = \"\\n\")";
+                        tempoutput += "\nBSkyFormat(as.data.frame(resContrasts), singleTableOutputHeader = \"Simple effects for " + target +
+                        " by " + dependentVars + " (using method = " + combon + ")\")";
+                    }   
+                    
+                    // end contrasts
+
+                    //Compactly
+
+                    if (compactly == "TRUE")
+                    {
+                        i = 1;
+                        tempoutput = tempoutput + "\n\n#Compare means compactly";
+
+                        foreach (string vars in thevars)
+                        {
+                        
+                            index = i.ToString();
+                            tempoutput += "\nresultsContrasts = list()";
+                            tempoutput += "\nresultsContrasts[[" + index + "]] <-multcomp::cld(resEmmeans[[" + index + "]], level = "  + alpha + ")";
+                            tempoutput += "\nBSkyFormat( as.data.frame(resultsContrasts[[" + index + "]]), singleTableOutputHeader = \"Comparing means compactly for " + target + " by " + vars + " using " + combon + " comparison" + " (p values adjusted using " + adjust + ")\")\n";
+
+                            i++;
+
+                        }
+
+                        if (interaction != "TRUE")
+                        {
+
+                            tempoutput += "\nresultsContrasts = list()";
+                            tempoutput += "\nresultsContrasts <-multcomp::cld(resultsEmmeans, level = "  + alpha + ")";
+                            tempoutput += "\nBSkyFormat( as.data.frame(resultsContrasts), singleTableOutputHeader = \"Comparing means compactly for " + target + " by " + dependentVars + " using " + combon + " comparison" + " (p values adjusted using " + adjust + ")\")";
+                        }
+                    }
+
+
+                    if (plot1 == "TRUE")
+                    {
+                        tempoutput = tempoutput + "\n\n#Plot all comparisons";
+                        i = 1;
+
+                        foreach (string vars in thevars)
+                        {
+
+                            index = i.ToString();
+                         //   tempoutput += "\nBSkyGraphicsFormat(noOfGraphics = 1)";
+                            // tempoutput += "\nprint(plot(contrast(resultsEmmeans, method = \""+ combon + "\" , adjust = \"" + adjust + "\") + \"geom_vline(xintercept = 0) + ggtitle(\"Plotting all comparisons(\"" +  combon + ") for  " {target}}", "by", vars)))";
+                            tempoutput += "\nplot( contrast(resEmmeans[[" + index + "]], method= \"" + combon + "\", adjust=\"" + adjust + "\") ) +   geom_vline(xintercept = 0) + ggtitle ( \"Plotting all comparisons " + combon + " for " + target + " by " + vars + "\")";
+                                                        
+                            i++;
+                        }
+
+
+                        // tempoutput += "\nBSkyGraphicsFormat(noOfGraphics = 1)";
+
+                        // tempoutput += "\nprint(plot(contrast(resultsEmmeans, method = \""+ combon + "\" , adjust = \"" + adjust + "\") + \"geom_vline(xintercept = 0) + ggtitle(\"Plotting all comparisons(\"" +  combon + ") for  " {target}}", "by", vars)))";
+                        if (interaction != "TRUE")
+                        {
+                            tempoutput += "\nplot( contrast(resultsEmmeans, method= \"" + combon + "\", adjust=\"" + adjust + "\") ) +   geom_vline(xintercept = 0) + ggtitle ( \"Plotting all comparisons " + combon + " for " + target + " by " + dependentVars + "\")";
+                        }
+                    }
+
+                    
+                    if (plot2=="TRUE" )
+                    {
+                        if (interaction != "TRUE")
+                        {
+                            tempoutput = tempoutput + "\n\n#Interaction Plots";
+                            tempoutput += "\nBSkyFormat(\"Interaction plot with Confidence Intervals\")";
+                            //  tempoutput +=  "\nBSkyGraphicsFormat(noOfGraphics = 1)";
+                            tempoutput += "\nemmeans::lsmip(MultiAnova," + interactionPlotString + ", CIs = TRUE)";
+                        }
+
+                    }
+
+                    tempoutput = tempoutput + "\n\n";
+                    output = output + tempoutput;
+
+                    tempoutput = "";
+
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                    output = output.TrimEnd(Environment.NewLine.ToCharArray());
+
+
+                }
+
+
+            }
+
             else if (customsyntax == "Graphics-barplot")
             {
                 //print(ggplot({ {% DATASET %} }, aes(x = { { GroupingVariable} }, y = eval(parse(text = paste(vars))) ,color = { { GroupBy} },size ={ { size} } ,alpha ={ { opacity} })) +geom_point() + labs(x = "{{GroupingVariable}}", y = vars, color = "{{GroupBy}}", title = paste("Scatter plot for variable ", "{{GroupingVariable}}", " by ", vars, sep = '')) + xlab("{{xlab}}") + ylab("{{ylab}}") + ggtitle("{{maintitle}}") { { themes} }
