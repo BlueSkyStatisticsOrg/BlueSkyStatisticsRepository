@@ -123,23 +123,31 @@ namespace BSky.Controls
                     }
                     break;
                 case DataColumnTypeEnum.Numeric:
-                case DataColumnTypeEnum.Double:
-                case DataColumnTypeEnum.Integer:
-                //case DataColumnTypeEnum.Int:
                     if (Filter.Contains("Numeric"))
                     {
                         dataresult = true;
                     }
                     break;
+
+                case DataColumnTypeEnum.Double:
+                case DataColumnTypeEnum.Integer:
+                //case DataColumnTypeEnum.Int:
+                  
                     //08Feb2016 following Date and Logical code added
                 case DataColumnTypeEnum.Date:
-                case DataColumnTypeEnum.POSIXct:
-                case DataColumnTypeEnum.POSIXlt:
                     if (Filter.Contains("Date"))
                     {
                         dataresult = true;
                     }
                     break;
+                case DataColumnTypeEnum.POSIXct:
+                    if (Filter.Contains("POSIXct"))
+                    {
+                        dataresult = true;
+                    }
+                    break;
+                case DataColumnTypeEnum.POSIXlt:
+                   
                 case DataColumnTypeEnum.Logical:
                     if (Filter.Contains("Logical"))
                     {
