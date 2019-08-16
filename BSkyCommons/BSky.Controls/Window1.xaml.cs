@@ -1623,7 +1623,7 @@ namespace BSky.Controls
                         //Old dialogs will not work, that is, variable name var1 var2 will not be show. However in application they will work.
                         var2.RName = "var2";
 
-                        var2.DataType = DataColumnTypeEnum.Character;
+                        var2.DataType = DataColumnTypeEnum.Numeric;
                         var2.Width = 4;
                         var2.Decimals = 0;
                         var2.Label = "var2";
@@ -1638,7 +1638,7 @@ namespace BSky.Controls
                         //Old dialogs will not work, that is, variable name var1 var2 will not be show. However in application they will work.
                         var3.RName = "var3";
 
-                        var3.DataType = DataColumnTypeEnum.Character;
+                        var3.DataType = DataColumnTypeEnum.Numeric;
                         var3.Width = 4;
                         var3.Decimals = 0;
                         var3.Label = "var3";
@@ -1659,7 +1659,7 @@ namespace BSky.Controls
                             var4.DataType = DataColumnTypeEnum.Character;
                             var4.Width = 4;
                             var4.Decimals = 0;
-                            var4.Label = "var4";
+                                var4.Label = "var4";
                             var4.Alignment = DataColumnAlignmentEnum.Left;
                             var4.Measure = DataColumnMeasureEnum.String;
                             var4.ImgURL = "../Resources/String.png";
