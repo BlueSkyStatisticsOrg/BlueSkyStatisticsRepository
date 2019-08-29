@@ -30,7 +30,6 @@
       <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Test_(One_Pair)" text="Correlation Test (One Pair)" commandtemplate="Correlation Test (One Pair).xaml" commandoutputformat="Correlation Test (One Pair).xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Test_(Multi-variable)" text="Correlation Test (Multi-variable)" commandtemplate="Correlation Test (Multi-variable).xaml" commandoutputformat="Correlation Test (Multi-variable).xml" owner="" nodetype="Leaf" />
-      <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
     </menu>    
 	<menu id="FactSubMenu" text="Factor Analysis" owner="" nodetype="Parent">
       <menu id="Factor_Analysis" text="Factor Analysis" commandtemplate="Factor Analysis.xaml" commandoutputformat="Factor Analysis.xml" owner="" nodetype="Leaf" />
@@ -87,11 +86,13 @@
       <menu id="Reliability_Analysis_(McDonalds_omega)" text="Reliability Analysis (McDonalds omega)" commandtemplate="Reliability Analysis (McDonalds omega).xaml" commandoutputformat="Reliability Analysis (McDonalds omega).xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="SummarySubMenu" text="Summary Analysis" owner="" nodetype="Parent">
-      <menu id="Analysis_of_Missing_Values" text="Analysis of Missing Values" commandtemplate="Analysis of Missing Values.xaml" commandoutputformat="Analysis of Missing Values.xml" owner="" nodetype="Leaf" />
-      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="Frequency_Table" text="Frequency Table" commandtemplate="Frequency Table.xaml" commandoutputformat="Frequency Table.xml" owner="" nodetype="Leaf" />
       <menu id="Frequency_Table,_Top_N" text="Frequency Table, Top N" commandtemplate="Frequency Table, Top N.xaml" commandoutputformat="Frequency Table, Top N.xml" owner="" nodetype="Leaf" />
+	  <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="Numerical_Statistical_Analysis" text="Numerical Statistical Analysis" commandtemplate="Numerical Statistical Analysis.xaml" commandoutputformat="Numerical Statistical Analysis.xml" owner="" nodetype="Leaf" />
+	  <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+      <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />	 
+	  <menu id="sep" text="---------" owner="" nodetype="Leaf" />	  
       <menu id="Summary_Statistics_by_Group_" text="Summary Statistics by Group " commandtemplate="Summary Statistics by Group .xaml" commandoutputformat="Summary Statistics by Group .xml" owner="" nodetype="Leaf" />
       <menu id="Summary_Statistics,_All_Variables" text="Summary Statistics, All Variables" commandtemplate="Summary Statistics, All Variables.xaml" commandoutputformat="Summary Statistics, All Variables.xml" owner="" nodetype="Leaf" icon="images/Summarize.png" showtoolbaricon="true" />
       <menu id="Summary_Statistics,_Selected_Variables" text="Summary Statistics, Selected Variables" commandtemplate="Summary Statistics, Selected Variables.xaml" commandoutputformat="Summary Statistics, Selected Variables.xml" owner="" nodetype="Leaf" />
