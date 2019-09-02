@@ -675,6 +675,8 @@ namespace BlueSky
             {
                 SessionItem = new TreeViewItem();//15Nov2013
                 SessionItem.Header = (allanalysis.NameOfSession != null && allanalysis.NameOfSession.Length > 0) ? allanalysis.NameOfSession : "R-Session";//18Nov2013 cb;// 
+                if (string.IsNullOrEmpty(allanalysis.NameOfSession))
+                    allanalysis.NameOfSession = "R-Session";
                 SessionItem.IsExpanded = true;
 
                 analysisdata = new AnalyticsData();
