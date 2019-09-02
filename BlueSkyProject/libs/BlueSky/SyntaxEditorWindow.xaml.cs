@@ -668,9 +668,34 @@ namespace BlueSky
         {
             if (co != null && co.Count > 0)
             {
+                bool hasToolbar = false;
+                if ((co[0] as BSkyOutputOptionsToolbar) != null)
+                    hasToolbar = true;
+                if ((sessionlst != null && sessionlst.Count == 0) && (!hasToolbar))
+                    AddToolbarAndTitle(co);
+
                 sessionlst.Add(co);
                 co = new CommandOutput();//after adding to session new object is allocated for futher output creation
             }
+        }
+
+        private void AddToolbarAndTitle(CommandOutput co)
+        {
+            co.Insert(0, new BSkyOutputOptionsToolbar());
+
+            string rcommcol = confService.GetConfigValueForKey("rcommcol");//23nov2012
+            byte red = byte.Parse(rcommcol.Substring(3, 2), NumberStyles.HexNumber);
+            byte green = byte.Parse(rcommcol.Substring(5, 2), NumberStyles.HexNumber);
+            byte blue = byte.Parse(rcommcol.Substring(7, 2), NumberStyles.HexNumber);
+            Color c = Color.FromArgb(255, red, green, blue);
+
+            AUParagraph aup = new AUParagraph();
+            aup.Text = "R-Syntax";
+            aup.ControlType = "Title";
+            aup.FontSize = BSkyStyler.BSkyConstants.HEADER_FONTSIZE;//10Nov2014;
+            aup.FontWeight = FontWeights.DemiBold;
+            aup.textcolor = new SolidColorBrush(c);//Colors.Blue); //SlateBlue //DogerBlue
+            co.Insert(1, aup);
         }
 
         private void ExecuteCommandsAndCreateSinkFile(OutputWindow ow, CommandOutput lst, string seltext, string fname)//sending message and output to sink file
