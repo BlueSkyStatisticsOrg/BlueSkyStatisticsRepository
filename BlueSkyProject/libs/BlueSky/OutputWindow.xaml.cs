@@ -2413,34 +2413,25 @@ namespace BlueSky
             UtilityService util = new UtilityService();
             string dirname = util.GetDirectoryFromFullPathFilename(fullpathfilename);
             bool writableDir = util.isWritableDirectory(dirname);
+            logService.WriteToLogLevel("Directory [" + dirname + "] appears WRITABLE=" + writableDir.ToString(), LogLevelEnum.Info);
 
             System.IO.StreamWriter file = null;
             try
             {
-                if (writableDir)
-                {
+                file = new System.IO.StreamWriter(fullpathfilename);
+                file.WriteLine(inputTextbox.Text);
 
-                    file = new System.IO.StreamWriter(fullpathfilename);
-                    file.WriteLine(inputTextbox.Text);
-                    //file.Close();
-
-                    Modified = false;//19Feb2013 currently saving. So immediately after save there are no new changes/modifications.
-                    SyntaxTitle.Text = syntitle + currentScriptFname; //19Feb2013
-                    logService.WriteToLogLevel("R Command Editor script saved successfully : " + dirname, LogLevelEnum.Info);
-                }
-                else
-                {
-                    string m1 = "Cannot save script in :\n" + dirname;
-                    string m2 = "Try 'File -> Save-As' and save where you have write permissions.(e.g. Documents)";
-                    MessageBox.Show(this, m1 + "\n" + m2, "No write permission!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    logService.WriteToLogLevel("Failed to save R Command Editor script in : " + dirname, LogLevelEnum.Info);
-                }
-
+                Modified = false;//19Feb2013 currently saving. So immediately after save there are no new changes/modifications.
+                SyntaxTitle.Text = syntitle + currentScriptFname; //19Feb2013
+                logService.WriteToLogLevel("R Command Editor script saved successfully : " + dirname, LogLevelEnum.Info);
             }
             catch (Exception ex)
             {
-                logService.WriteToLogLevel("Error saving R Command Editor script : ", LogLevelEnum.Error);
-                logService.WriteToLogLevel(ex.Message, LogLevelEnum.Error);
+                string m1 = "Cannot save script in :\n" + dirname;
+                string m2 = "Try 'File -> Save-As' and save where you have write permissions.(e.g. Documents)";
+                logService.WriteToLogLevel("Failed to save R Command Editor script in : " + dirname, LogLevelEnum.Info);
+                logService.WriteToLogLevel("Exception:" + ex.Message, LogLevelEnum.Error);
+                MessageBox.Show(this, m1 + "\n" + m2, "No write permission!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
