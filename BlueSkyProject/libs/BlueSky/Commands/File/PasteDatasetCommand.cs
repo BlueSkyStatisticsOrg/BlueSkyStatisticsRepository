@@ -19,7 +19,7 @@ namespace BlueSky.Commands.File
         protected override void OnExecute(object param)
         {
             PasteClipboardDataset pasteds = new PasteClipboardDataset();
-            pasteds.PasteDatasetFromClipboard();
+            pasteds.PasteDatasetFromClipboard(null, true);
         }
 
         protected override void OnPostExecute(object param)

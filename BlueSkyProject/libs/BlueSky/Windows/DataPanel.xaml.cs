@@ -2429,7 +2429,7 @@ namespace BlueSky.Windows
         private void _pasteClipDS_Click(object sender, RoutedEventArgs e)
         {
             PasteClipboardDataset pasteds = new PasteClipboardDataset();
-            pasteds.PasteDatasetFromClipboard();
+            pasteds.PasteDatasetFromClipboard(null, true);
         }
 
         //From C1forum start. but modified a bit

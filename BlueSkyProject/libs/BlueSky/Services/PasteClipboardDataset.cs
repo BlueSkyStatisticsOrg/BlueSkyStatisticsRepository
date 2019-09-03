@@ -14,17 +14,21 @@ namespace BlueSky.Services
         IUnityContainer container = null;
         IDataService service = null;
 
-        public void PasteDatasetFromClipboard()
+        public void PasteDatasetFromClipboard(string dfName = null, bool loadDFinGrid = false)
         {
             container = LifetimeService.Instance.Container;
             service = container.Resolve<IDataService>();
             OutputWindowContainer owc = (LifetimeService.Instance.Container.Resolve<IOutputWindowContainer>()) as OutputWindowContainer;
             BSkyMouseBusyHandler.ShowMouseBusy();
-            string DSName =  service.GetUniqueNewDatasetname();
+            string DSName = string.IsNullOrEmpty(dfName) ? service.GetUniqueNewDatasetname() : dfName.Trim();
             string sheetname = string.Empty;//no sheetname for empty dataset(new dataset)
 
-            string commands = "CreateDFfromClipboard('" + DSName + "'); " +
-                "BSkyLoadRefreshDataframe(" + DSName + ")";
+            string createCommand = "CreateDFfromClipboard('" + DSName + "'); ";
+            string loadInGridCommand = string.Empty;
+
+            if (loadDFinGrid) loadInGridCommand = "BSkyLoadRefreshDataframe(" + DSName + ")";
+
+            string commands = createCommand + loadInGridCommand;
             //PrintDialogTitle("Dataset loaded from the clipboard.");
             SyntaxEditorWindow sewindow = LifetimeService.Instance.Container.Resolve<SyntaxEditorWindow>();
             sewindow.RunCommands(commands, null);
