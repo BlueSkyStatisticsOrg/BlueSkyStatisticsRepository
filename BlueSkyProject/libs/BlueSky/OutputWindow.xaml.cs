@@ -1721,16 +1721,101 @@ namespace BlueSky
             return img;
         }
 
+
+        #region Parent node events and context menu
         private void AddEventsAndContextMenu(TreeViewItem TVI)
         {
             //select / unselect
             TVI.Selected += new RoutedEventHandler(MainItem_Selected);
             TVI.Unselected += new RoutedEventHandler(MainItem_UnSelected);
+
+            //Right click event. used only for selecting treeviewitem when right clicked.
+            TVI.MouseRightButtonUp += MainItem_MouseRightButtonUp;
+
+            //Context menu
+            MenuItem mi1 = new MenuItem();
+            mi1.Header = "Select all";
+            mi1.Click += Mi1_Click;
+            mi1.Tag = TVI;
+            MenuItem mi2 = new MenuItem();
+            mi2.Header = "Unselect all";
+            mi2.Click += Mi2_Click;
+            mi2.Tag = TVI;
+            MenuItem mi3 = new MenuItem();
+            mi3.Header = "Default";
+            mi3.Click += Mi3_Click;
+            mi3.Tag = TVI;
+            ContextMenu cmenu = new ContextMenu();
+            cmenu.Items.Add(mi1);
+            cmenu.Items.Add(mi2);
+            cmenu.Items.Add(mi3);
+            TVI.ContextMenu = cmenu;
+            TVI.ContextMenuOpening += TVI_ContextMenuOpening;
+
+        }
+
+        private void Mi1_Click(object sender, RoutedEventArgs e)
+        {
+            SetParentNodeSelectionMode(sender, "All");
+        }
+
+        private void Mi2_Click(object sender, RoutedEventArgs e)
+        {
+            SetParentNodeSelectionMode(sender, "None");
+        }
+
+        private void Mi3_Click(object sender, RoutedEventArgs e)
+        {
+            SetParentNodeSelectionMode(sender, "Default");
+        }
+
+        private void SetParentNodeSelectionMode(object sender, string mode)
+        {
+            FrameworkElement fe = sender as FrameworkElement;
+            MenuItem mi = fe as MenuItem;
+            TreeViewItem tvi = mi.Tag as TreeViewItem;
+            ToggleNavTreeCheckboxes(mode, tvi.Items);
         }
 
         private void MainItem_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            //MessageBox.Show("Show Context");
+            bool isleafRightClicked = false;
+            string clickeditem = (e.OriginalSource.GetType().Name);
+            if (!string.IsNullOrEmpty(clickeditem) &&
+                (clickeditem.Equals("Rectangle") || clickeditem.Equals("CheckBox") ||
+                clickeditem.Equals("Image") ||
+                (clickeditem.Equals("TextBlock") && ((e.OriginalSource as TextBlock).Parent != null) &&
+                (e.OriginalSource as TextBlock).Parent.GetType().Name.Equals("StackPanel")))
+                )
+            {
+                isleafRightClicked = true;
+            }
+
+            if (!isleafRightClicked)
+            {
+                FrameworkElement fe = sender as FrameworkElement;
+                TreeViewItem tvi = fe as TreeViewItem;
+                tvi.IsSelected = true;
+            }
+        }
+
+        //leaf node Header is stackpanel with checkbox, image and textblock
+        private void TVI_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            bool isleafRightClicked = false;
+            string clickeditem = (e.OriginalSource.GetType().Name);
+            if (!string.IsNullOrEmpty(clickeditem) &&
+                (clickeditem.Equals("Rectangle") || clickeditem.Equals("CheckBox") ||
+                clickeditem.Equals("Image") ||
+                (clickeditem.Equals("TextBlock") && ((e.OriginalSource as TextBlock).Parent != null) &&
+                (e.OriginalSource as TextBlock).Parent.GetType().Name.Equals("StackPanel")))
+                )
+            {
+                isleafRightClicked = true;
+            }
+
+            if (isleafRightClicked)
+                e.Handled = true;
         }
 
         private void MainItem_Selected(object sender, RoutedEventArgs e)
@@ -1755,6 +1840,9 @@ namespace BlueSky
             IAUControl control = tag as IAUControl;
             control.bordercolor = new SolidColorBrush(Colors.Transparent);//05Jun2013
         }
+
+        #endregion
+
 
         void tvi_Selected(object sender, RoutedEventArgs e)
         {
@@ -2896,7 +2984,7 @@ namespace BlueSky
         {
             if (navtreehidden)
             {
-                navtreecol.Width = new GridLength(180, GridUnitType.Pixel);
+                navtreecol.Width = new GridLength(210, GridUnitType.Pixel);
                 navtreecol.MinWidth = 10;
                 navtreemi.Header = BSky.GlobalResources.Properties.UICtrlResources.HideNavTreeText;
                 navtreehidden = false;
