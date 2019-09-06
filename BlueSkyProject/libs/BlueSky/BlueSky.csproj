@@ -142,13 +142,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdParty\C1\C1.WPF.Docking.4.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.FlexGrid.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+    <Reference Include="C1.WPF.FlexGrid.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdParty\C1\C1.WPF.FlexGrid.4.dll</HintPath>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.FlexGrid.4.dll</HintPath>
     </Reference>
     <Reference Include="C1.WPF.FlexGridFilter.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\ComponentOne\Studio for WPF\bin\v4\C1.WPF.FlexGridFilter.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.FlexSheet.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.FlexSheet.4.dll</HintPath>
     </Reference>
     <Reference Include="C1.WPF.RichTextBox.4">
       <HintPath>..\ThirdParty\C1\C1.WPF.RichTextBox.4.dll</HintPath>
@@ -369,6 +373,9 @@
     <Compile Include="Windows\MissingValuesDialog.xaml.cs">
       <DependentUpon>MissingValuesDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\NewDataframeWindow.xaml.cs">
+      <DependentUpon>NewDataframeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\OptionSelection.xaml.cs">
       <DependentUpon>OptionSelection.xaml</DependentUpon>
     </Compile>
@@ -507,6 +514,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MissingValuesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\NewDataframeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,6 +9,7 @@ using System.Windows;
 using BSky.RecentFileHandler;
 using BSky.Interfaces.Interfaces;
 using BSky.ConfService.Intf.Interfaces;
+using BlueSky.Services;
 
 namespace BlueSky.Commands.File
 {
@@ -24,25 +25,21 @@ namespace BlueSky.Commands.File
 
         protected override void OnExecute(object param)
         {
-
+            initGlobalObjects();
             //// Get initial Dir 12Feb2013 ////
             string initDir = confService.GetConfigValueForKey("InitialDirectory");
-                // Start Some animation for loading dataset ///
-                //DatasetLoadingBusyWindow bw = new DatasetLoadingBusyWindow("Please wait while Dataset is Loading...");
-                //bw.Show();
-                //bw.Activate();
-                //bw.Close();//Comment this line after testing and uncomment one below FileOpen
-                //some code from here moved to FileOpen //
-                NewFileOpen("");//openFileDialog.FileName);
 
-                /// Stop the animation after loading ///
-                //bw.Close();
-
-                ///Set initial Dir. 12Feb2013///
-               // initDir = Path.GetDirectoryName("");//openFileDialog.FileName);
-               // confService.ModifyConfig("InitialDirectory", initDir);
-               // confService.RefreshConfig();
-
+            int rowsize = 70, colsize = 30;
+            NewDataframeWindow newDF = new NewDataframeWindow() { RowSize = rowsize, ColSize = colsize };
+            if (appwindow != null) newDF.Owner = appwindow;
+            newDF.ShowDialog();
+            string dfname = newDF.DFName;
+            bool loadInGrid = newDF.LoadInGrid;
+            if (!string.IsNullOrEmpty(dfname))
+            {
+                PasteClipboardDataset pasteds = new PasteClipboardDataset();
+                pasteds.PasteDatasetFromClipboard(dfname, loadInGrid);
+            }
         }
 
 

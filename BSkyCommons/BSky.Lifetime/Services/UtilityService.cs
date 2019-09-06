@@ -21,6 +21,7 @@ namespace BSky.Lifetime.Services
             {
                 if (!Directory.Exists(pstrPath)) //check if dir exeists. before chcking the access rights
                 {
+                    logService.WriteToLogLevel("Path does not exist. "+pstrPath, LogLevelEnum.Error);
                     return false; //dir does not exist so no write access;
                 }
 
@@ -66,6 +67,28 @@ namespace BSky.Lifetime.Services
             string directory = string.Empty;
             directory = Path.GetDirectoryName( Path.GetFullPath(fullpathfilename));
             return directory;
+        }
+
+        //in programing languages we usually have certain rules to declare a name for an object
+        //here we will check following
+        // -must not contain spaces or special characters
+        // -must begin with an alphabet
+        //this basic function can be enhanced further by putting a check for 
+        //programing language key-words/reserve-words and may be other checks.
+        public bool isValidObjectname(string objname)
+        {
+            bool isValid = true;
+            if (string.IsNullOrEmpty(objname))
+                isValid = false;
+            else if (!char.IsLetter(objname[0]))//&& objname[0] != '_'
+                isValid = false;
+            else
+            {
+                for (int ix = 1; ix < objname.Length; ++ix)
+                    if (!char.IsLetterOrDigit(objname[ix]))// && objname[ix] != '_'
+                        isValid = false;
+            }
+            return isValid;
         }
 
     }
