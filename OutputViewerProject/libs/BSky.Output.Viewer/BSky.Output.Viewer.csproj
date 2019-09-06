@@ -217,6 +217,17 @@
       <Name>MSExcelInterop</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tree-dataset.png" />
+    <Resource Include="Images\tree-errorswarnings.png" />
+    <Resource Include="Images\tree-graphs.png" />
+    <Resource Include="Images\tree-info.png" />
+    <Resource Include="Images\tree-notes.png" />
+    <Resource Include="Images\tree-syntax.png" />
+    <Resource Include="Images\tree-tables.png" />
+    <Resource Include="Images\tree-title.png" />
+    <Resource Include="Images\tree-toolbar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
