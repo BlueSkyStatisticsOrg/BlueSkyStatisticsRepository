@@ -241,6 +241,7 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -253,8 +254,8 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblNoDecimalDigits}"  Margin="3" Name="label4"   />
                     <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Path=[noofdecimals], UpdateSourceTrigger=PropertyChanged}"  Margin="3" Name="noofdecimals" />
 
-                    <!--<TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}"  Margin="3" Name="label5"   />
-                    <TextBox Grid.Row="2" Grid.Column="1"   Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}" Margin="3" Name="noofchars" />-->
+                    <TextBlock Grid.Row="2" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.lblShowActualPvalue}" Name="label5b"  Margin="3"  TextWrapping="Wrap"   />
+                    <CheckBox Grid.Row="2" Grid.Column="1" Height="16"  Margin="3" Name="showactualpvalue" IsChecked="{Binding Path=[showActualPValueInOutput], UpdateSourceTrigger=PropertyChanged}"  />
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblLoadMissing}"   Margin="3" Name="label6"   />
                     <CheckBox Grid.Row="3" Grid.Column="1"  Height="16"  Margin="3" Name="loadMissingCheckbox" IsChecked="{Binding Path=[loadSavMissingValue], UpdateSourceTrigger=PropertyChanged}" />

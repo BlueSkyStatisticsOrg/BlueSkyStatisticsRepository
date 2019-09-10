@@ -1291,4 +1291,8 @@
   <data name="ShowHideNavTreePanel" xml:space="preserve">
     <value>Show/hide navigation tree</value>
   </data>
+  <data name="lblShowActualPvalue" xml:space="preserve">
+    <value>Show actual value (e.g. p.value = .0002) in the output tables. If unchecked "&lt;.001***" will be displayed.</value>
+    <comment>CustomSettingsWindow.xaml : Title for show actual p.value</comment>
+  </data>
 </root>

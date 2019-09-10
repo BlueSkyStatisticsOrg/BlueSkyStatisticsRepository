@@ -1465,6 +1465,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show actual value (e.g. p.value = .0002) in the output tables. If unchecked &quot;&lt;.001***&quot; will be displayed..
+        /// </summary>
+        public static string lblShowActualPvalue {
+            get {
+                return ResourceManager.GetString("lblShowActualPvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The R object that contains the results of the analytical function may contain numeric row headers. This option determines whether the row headers are displayed or hidden. When checked, numeric row headers are shown in output grid:.
         /// </summary>
         public static string lblShowHideNumericHeaders {

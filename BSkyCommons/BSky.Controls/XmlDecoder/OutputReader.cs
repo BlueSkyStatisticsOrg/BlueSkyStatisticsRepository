@@ -689,9 +689,12 @@ namespace BSky.XmlDecoder
                                     }
                                     if (stars.Trim().Equals("***"))
                                     {
-                                        stars = "<.001***";
-                                        if (celldata < .001)//if cell data is '< .0001', we don't print it rather
-                                            matrix[i, j] = string.Empty;//we print modified stars msg (<.001***). Bob asked for this.
+                                        if (!GetConfig_for_ShowActualValueInOutput())
+                                        {
+                                            stars = "<.001***";
+                                            if (celldata < .001)//if cell data is '< .0001', we don't print it rather
+                                                matrix[i, j] = string.Empty;//we print modified stars msg (<.001***). Bob asked for this.
+                                        }
                                     }
                                     grid[i, j] = matrix[i, j] + " " + stars;
                                 }
@@ -714,6 +717,15 @@ namespace BSky.XmlDecoder
             }
             grid.CellFactory = new FlexGridCellFormatFactory();
 
+        }
+
+        //if configuration is set to true, Flexgrid will show '.0007***' 
+        //else it will show '<.001***'
+        private bool GetConfig_for_ShowActualValueInOutput()
+        {
+            string ActualValueconfig = confService.GetConfigValueForKey("showActualPValueInOutput");
+            //MessageBox.Show("ActualValue in config : " + ActualValueconfig;
+            return (ActualValueconfig.ToLower().Equals("true")) ? true : false;
         }
 
         //tblno: its added so that we can find out a list of $columnNames for particular table
@@ -1532,9 +1544,12 @@ namespace BSky.XmlDecoder
                             {
                                 if (stars.Trim().Equals("***"))
                                 {
-                                    stars = "<.001***";
-                                    if (celldata < .001)//if cell data is '< .0001', we don't print it rather
-                                        datamatrix[rw, c] = string.Empty;//we print modified stars msg (<.001***). Bob asked for this.
+                                    if (!GetConfig_for_ShowActualValueInOutput())
+                                    {
+                                        stars = "<.001***";
+                                        if (celldata < .001)//if cell data is '< .0001', we don't print it rather
+                                            datamatrix[rw, c] = string.Empty;//we print modified stars msg (<.001***). Bob asked for this.
+                                    }
                                 }
                                 c1FlexGrid1[rw, c] = datamatrix[rw, c]+" "+stars;
                                 isemptyrow = false;// if it has atleast one column filled then row is not empty
