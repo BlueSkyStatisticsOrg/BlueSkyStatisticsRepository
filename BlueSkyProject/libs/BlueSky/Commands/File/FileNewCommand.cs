@@ -22,23 +22,30 @@ namespace BlueSky.Commands.File
         public const String FileNameFilter = "IBM SPSS (*.sav)|*.sav| Excel 2003 (*.xls)|*.xls|Excel 2007-2010 (*.xlsx)|*.xlsx|Comma Seperated (*.csv)|*.csv|DBF (*.dbf)|*.dbf|R Obj (*.RData)|*.RData";
         IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();//12Dec2013
         RecentDocs recentfiles = LifetimeService.Instance.Container.Resolve<RecentDocs>();//21Dec2013
+        bool UseFlexSheetForNewDataframe = false;
 
         protected override void OnExecute(object param)
         {
-            initGlobalObjects();
             //// Get initial Dir 12Feb2013 ////
             string initDir = confService.GetConfigValueForKey("InitialDirectory");
-
-            int rowsize = 70, colsize = 30;
-            NewDataframeWindow newDF = new NewDataframeWindow() { RowSize = rowsize, ColSize = colsize };
-            if (appwindow != null) newDF.Owner = appwindow;
-            newDF.ShowDialog();
-            string dfname = newDF.DFName;
-            bool loadInGrid = newDF.LoadInGrid;
-            if (!string.IsNullOrEmpty(dfname))
+            if (UseFlexSheetForNewDataframe)
             {
-                PasteClipboardDataset pasteds = new PasteClipboardDataset();
-                pasteds.PasteDatasetFromClipboard(dfname, loadInGrid);
+                initGlobalObjects();
+                int rowsize = 70, colsize = 30;
+                NewDataframeWindow newDF = new NewDataframeWindow() { RowSize = rowsize, ColSize = colsize };
+                if (appwindow != null) newDF.Owner = appwindow;
+                newDF.ShowDialog();
+                string dfname = newDF.DFName;
+                bool loadInGrid = newDF.LoadInGrid;
+                if (!string.IsNullOrEmpty(dfname))
+                {
+                    PasteClipboardDataset pasteds = new PasteClipboardDataset();
+                    pasteds.PasteDatasetFromClipboard(dfname, loadInGrid);
+                }
+            }
+            else//use C1Datagrid that we originally had
+            {
+                NewFileOpen("");
             }
         }
 
