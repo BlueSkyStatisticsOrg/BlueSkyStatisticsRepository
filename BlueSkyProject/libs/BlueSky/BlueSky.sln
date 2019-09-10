@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSky.Statistics.R", "..\..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSky.Controls", "..\..\..\BSkyCommons\BSky.Controls\BSky.Controls.csproj", "{40005075-D309-4DE0-B6F5-72D8BA08FCC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSky.MenuGenerator", "..\..\..\BSkyCommons\BSky.MenuGenerator\BSky.MenuGenerator.csproj", "{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSky.Interfaces", "..\..\..\BSkyCommons\BSky.Interfaces\BSky.Interfaces.csproj", "{E3C45C24-AD20-4F94-A816-7A3532F0271C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSky.Output.Viewer", "..\..\..\OutputViewerProject\libs\BSky.Output.Viewer\BSky.Output.Viewer.csproj", "{1575BD88-F790-4B51-9CE0-9F49F15FFFE2}"
@@ -187,21 +185,6 @@ Global
 		{40005075-D309-4DE0-B6F5-72D8BA08FCC9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{40005075-D309-4DE0-B6F5-72D8BA08FCC9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{40005075-D309-4DE0-B6F5-72D8BA08FCC9}.Release|x86.ActiveCfg = Release|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Prototype Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Prototype Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Prototype Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Prototype Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Prototype Debug|x86.ActiveCfg = Debug|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{C71CD002-603E-4F5A-ABC9-AC7F5A272FD0}.Release|x86.ActiveCfg = Release|Any CPU
 		{E3C45C24-AD20-4F94-A816-7A3532F0271C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3C45C24-AD20-4F94-A816-7A3532F0271C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3C45C24-AD20-4F94-A816-7A3532F0271C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
