@@ -114,49 +114,53 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BSkyDll\BSky.DynamicClassCreator.dll</HintPath>
     </Reference>
+    <Reference Include="BSky.MenuGenerator, Version=6.20.7188.33450, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BSkyDll\BSky.MenuGenerator.dll</HintPath>
+    </Reference>
     <Reference Include="BSky.ServerBridge, Version=6.10.7094.31077, Culture=neutral, PublicKeyToken=34d36f20c3f7b758, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BSkyDll\BSky.ServerBridge.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+    <Reference Include="C1.WPF.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdParty\C1\C1.WPF.4.dll</HintPath>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.4.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.DataGrid.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+    <Reference Include="C1.WPF.DataGrid.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdParty\C1\C1.WPF.DataGrid.4.dll</HintPath>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.DataGrid.4.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.DataGrid.Filters.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+    <Reference Include="C1.WPF.DataGrid.Filters.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdParty\C1\C1.WPF.DataGrid.Filters.4.dll</HintPath>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.DataGrid.Filters.4.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.DataGrid.Summaries.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+    <Reference Include="C1.WPF.DataGrid.Summaries.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdParty\C1\C1.WPF.DataGrid.Summaries.4.dll</HintPath>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.DataGrid.Summaries.4.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.DateTimeEditors.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+    <Reference Include="C1.WPF.DateTimeEditors.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdParty\C1\C1.WPF.DateTimeEditors.4.dll</HintPath>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.DateTimeEditors.4.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.Docking.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+    <Reference Include="C1.WPF.Docking.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdParty\C1\C1.WPF.Docking.4.dll</HintPath>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.Docking.4.dll</HintPath>
     </Reference>
     <Reference Include="C1.WPF.FlexGrid.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\ThirdParty\C1\C1.WPF.FlexGrid.4.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.FlexGridFilter.4, Version=4.0.20143.434, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+    <Reference Include="C1.WPF.FlexGridFilter.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\ComponentOne\Studio for WPF\bin\v4\C1.WPF.FlexGridFilter.4.dll</HintPath>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.FlexGridFilter.4.dll</HintPath>
     </Reference>
     <Reference Include="C1.WPF.FlexSheet.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\ThirdParty\C1\C1.WPF.FlexSheet.4.dll</HintPath>
     </Reference>
-    <Reference Include="C1.WPF.RichTextBox.4">
-      <HintPath>..\ThirdParty\C1\C1.WPF.RichTextBox.4.dll</HintPath>
+    <Reference Include="C1.WPF.RichTextBox.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\C1\C1.WPF.RichTextBox.4.dll</HintPath>
     </Reference>
     <Reference Include="DynamicInterop">
       <HintPath>..\..\..\ThirdParty\RDotNet\DynamicInterop.dll</HintPath>
@@ -755,10 +759,6 @@
     <ProjectReference Include="..\..\..\BSkyCommons\BSky.Lifetime\BSky.Lifetime.csproj">
       <Project>{edbc3aeb-6a30-45fd-ba1d-716df4032d00}</Project>
       <Name>BSky.Lifetime</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\BSkyCommons\BSky.MenuGenerator\BSky.MenuGenerator.csproj">
-      <Project>{c71cd002-603e-4f5a-abc9-ac7f5a272fd0}</Project>
-      <Name>BSky.MenuGenerator</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\BSkyCommons\BSky.OutputGenerator\BSky.OutputGenerator.csproj">
       <Project>{a5f3d543-98ec-4f6a-a970-a74809822aa0}</Project>
