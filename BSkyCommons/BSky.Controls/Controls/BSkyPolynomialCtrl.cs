@@ -15,14 +15,14 @@ namespace BSky.Controls
     public class BSkyPolynomialCtrl:BSkyBaseButtonCtrl
     {
 
-        [Description("Allows you to create a full factorial model")]
+        [Description("Raises the variable select by a polynomial order, the order of the polynomial is specified in textbox related with this control")]
 
         [Category("Control Settings"), PropertyOrder(1)]
         public string Type
         {
             get
             {
-                return "Specify a full factorial model";
+                return "Polynomial Control";
             }
         }
 
@@ -188,7 +188,6 @@ namespace BSky.Controls
 
                 newvar = inputVar.Name  + "^" + spin.text.Text;
 
-                
                 //Preferred way
                
                 DataSourceVariable ds = new DataSourceVariable();

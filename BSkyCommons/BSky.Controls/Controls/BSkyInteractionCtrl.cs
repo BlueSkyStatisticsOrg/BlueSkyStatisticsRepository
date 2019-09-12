@@ -15,7 +15,7 @@ namespace BSky.Controls
     public class BSkyInteractionCtrl:BSkyBaseButtonCtrl
     {
 
-        [Description("Allows you to create a full factorial model")]
+        [Description("Specifies all main effects and all interactions")]
 
         [Category("Control Settings"), PropertyOrder(1)]
         public string Type

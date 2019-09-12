@@ -122,6 +122,9 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BSkyAddFixedEffects.xaml.cs">
+      <DependentUpon>BSkyAddFixedEffects.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BSkyAggregateCtrl.xaml.cs">
       <DependentUpon>BSkyAggregateCtrl.xaml</DependentUpon>
     </Compile>
@@ -387,6 +390,10 @@
     <Compile Include="XmlDecoder\OutputReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\BSkyAddFixedEffects.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BSkyAggregateCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -646,6 +653,7 @@
     <Resource Include="Resources\cutpaste.png" />
     <Resource Include="Resources\delete.png" />
     <Resource Include="Resources\asterisk.png" />
+    <Resource Include="Resources\add.png" />
     <Content Include="Resources\none.png" />
     <Resource Include="Resources\ordinal.png" />
     <Resource Include="Resources\scale.png" />

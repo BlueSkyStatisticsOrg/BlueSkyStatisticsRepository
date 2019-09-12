@@ -20,14 +20,14 @@ namespace BSky.Controls
     public class BSkyNWayInteraction:BSkyBaseButtonCtrl
     {
 
-        [Description("Allows you to create a full factorial model")]
+        [Description("Creates N way interactions based on the number of variables selected")]
 
         [Category("Control Settings"), PropertyOrder(1)]
         public string Type
         {
             get
             {
-                return "Specify a full factorial model";
+                return "N way interactions";
             }
         }
 
@@ -95,6 +95,49 @@ namespace BSky.Controls
             this.Resources.MergedDictionaries.Clear();
         }
 
+
+        private static bool NextCombination(IList<int> num, int n, int k)
+        {
+            bool finished;
+
+            var changed = finished = false;
+
+            if (k <= 0) return false;
+
+            for (var i = k - 1; !finished && !changed; i--)
+            {
+                if (num[i] < n - 1 - (k - 1) + i)
+                {
+                    num[i]++;
+
+                    if (i < k - 1)
+                        for (var j = i + 1; j < k; j++)
+                            num[j] = num[j - 1] + 1;
+                    changed = true;
+                }
+                finished = i == 0;
+            }
+
+            return changed;
+        }
+
+        private static IEnumerable<IEnumerable<T>> Combinations<T>(IEnumerable<T> elements, int k)
+        {
+            var elem = elements.ToArray();
+            var size = elem.Length;
+
+            if (k > size) yield break;
+
+            var numbers = new int[k];
+
+            for (var i = 0; i < k; i++)
+                numbers[i] = i;
+
+            do
+            {
+                yield return numbers.Select(n => elem[n]);
+            } while (NextCombination(numbers, size, k));
+        }
 
         static IEnumerable<IEnumerable<T>> GetPermutations<T>(IEnumerable<T> list, int length)
         {
@@ -203,7 +246,22 @@ namespace BSky.Controls
 
                 string interaction = objCombo.SelectedItem as string;
                 int interactionLevel=0;
-                interactionLevel = Convert.ToInt32(interaction[0].ToString());
+                //interactionLevel = Convert.ToInt32(interaction[0].ToString());
+                switch (interaction)
+                {
+                    case "All 2 way":
+                        interactionLevel = 2;
+                        break;
+                    case "All 3 way":
+                        interactionLevel = 3;
+                        break;
+                    case "All 4 way":
+                        interactionLevel = 4;
+                        break;
+                    case "All 5 way":
+                        interactionLevel = 5;
+                        break;
+                }
                 string[] permutationsAsString = null;
 
                 if (noSelectedItems < interactionLevel)
@@ -221,8 +279,8 @@ namespace BSky.Controls
                 }
 
                 permutationsAsString = variableListForCombo.ToArray();
-                permResult = GetPermutations(permutationsAsString, interactionLevel);
-                                        
+                // permResult = GetPermutations(permutationsAsString, interactionLevel);
+                permResult = Combinations(permutationsAsString, interactionLevel);
                 string permutation = "";
                 foreach (IEnumerable<string> itm in permResult)
                 {

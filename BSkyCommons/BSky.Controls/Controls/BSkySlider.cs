@@ -87,7 +87,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Control Settings"), PropertyOrder(4)]
+        [Category("Control Settings"), PropertyOrder(5)]
 
         [Description("The Minimum value displayed by slider contol")]
         public new Double Minimum
@@ -102,7 +102,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Control Settings"), PropertyOrder(5)]
+        [Category("Control Settings"), PropertyOrder(6)]
 
         [Description("The Tick Frequency value displayed by slider contol")]
         public new Double TickFrequency
@@ -149,6 +149,23 @@ namespace BSky.Controls
                 base.Height = value;
             }
         }
+
+
+        [ReadOnly(true)]
+        [Category("Control Settings"), PropertyOrder(1)]
+        [Description("The Slider control allows you to move a slider to select a appropriate numeric value. You can specify a maximum and minimum value and the frequency with with the ticks appear on the scale btween the maximum and minimum value")]
+
+
+        public string Type
+        {
+            get
+            {
+                return "Slider Control";
+            }
+        }
+
+
+
         [Category("Layout Settings"), PropertyOrder(3)]
         [Description("Default value is the X coordinate of the top left corner of this control. To change, drag the control to a different position or enter a X coordinate.")]
       //  [BSkyLocalizedDescription("BSkyCheckBox_LeftDescription", typeof(BSky.GlobalResources.Properties.Resources))]

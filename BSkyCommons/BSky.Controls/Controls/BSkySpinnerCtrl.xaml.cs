@@ -55,7 +55,7 @@ namespace BSky.Controls
         }
 
         [Category("Control Settings"), PropertyOrder(1)]
-        //[Description("Allows you to add descriptive text associated with another control, for example you can use the label control to display a caption above your source variable list titled 'Source Variable List' . ")]
+        [Description("Allow you to slect a nmeric value by moving the up and down arrow keys to simulate a spin action")]
        
         public string Type
         {
@@ -109,7 +109,7 @@ namespace BSky.Controls
             }
         }
 
-        [Category("Control Settings"), PropertyOrder(2)]
+        [Category("Control Settings"), PropertyOrder(3)]
         public  string Text
         {
             get
@@ -123,7 +123,7 @@ namespace BSky.Controls
         }
 
         private double _step=1;
-        [Category("Control Settings"), PropertyOrder(2)]
+        [Category("Control Settings"), PropertyOrder(4)]
         public double Step
         {
             get

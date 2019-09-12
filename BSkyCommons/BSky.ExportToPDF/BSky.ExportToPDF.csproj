@@ -45,6 +45,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ThirdParty\C1\C1.WPF.4.dll</HintPath>
     </Reference>
+    <Reference Include="C1.WPF.FlexGrid.4, Version=4.0.20153.497, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\C1\C1.WPF.FlexGrid.4.dll</HintPath>
+    </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel-WPF">
       <HintPath>..\..\ThirdParty\PDF\MigraDoc.DocumentObjectModel-WPF.dll</HintPath>
     </Reference>

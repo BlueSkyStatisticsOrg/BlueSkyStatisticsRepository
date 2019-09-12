@@ -119,7 +119,7 @@ namespace BSky.Controls
         }
 
         [Category("Control Settings"), PropertyOrder(1)]
-        [Description("Gives you a slider control and a text box to display and the slider value")]
+        [Description("Gives you a slider control with maximum and minimum values and a text box to display and the slider value")]
       
         public string Type
         {

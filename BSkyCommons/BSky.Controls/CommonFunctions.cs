@@ -175,6 +175,41 @@ namespace BSky.Controls
 
 
                 }
+                else if (obj is BSkySpinnerCtrl)
+                {
+                    validProperties = new string[] { "Text", "CanExecute", "Enabled" };
+                    foreach (string x in validProperties)
+                    {
+                        if (x == propertyName) return true;
+                    }
+                    return false;
+
+
+                }
+
+                else if (obj is BSkySlider)
+                {
+                    validProperties = new string[] { "Value", "CanExecute", "Enabled" };
+                    foreach (string x in validProperties)
+                    {
+                        if (x == propertyName) return true;
+                    }
+                    return false;
+
+
+                }
+                else if (obj is BSkyAdvancedSlider)
+                {
+                    validProperties = new string[] { "SliderValue", "CanExecute", "Enabled" };
+                    foreach (string x in validProperties)
+                    {
+                        if (x == propertyName) return true;
+                    }
+                    return false;
+
+
+                }
+
                 else if (obj is BSkyEditableComboBox)
                 {
                     validProperties = new string[] { "DefaultSelection", "NoItemsSelected", "CanExecute", "Enabled" };

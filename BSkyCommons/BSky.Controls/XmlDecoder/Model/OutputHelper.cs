@@ -88,9 +88,16 @@ namespace BSky.XmlDecoder
             }
             if (lst != null)
             {
+                // to fix crosstab title extra astrisk if layer is empty
+                // string format in xml template should only have one star "{0}*{1} {2} Cross Tabulation"
+                // {2} will be prefixed by a star removing commented code. If layer has more vars then each
+                // will be prefixed with a star
                 foreach (string str in lst)
                 {
-                    output += delimiter + str;
+                    //if (!string.IsNullOrEmpty(output))
+                        output += delimiter + str;
+                    //else
+                    //    output += str;
                 }
             }
             return output;
@@ -7111,6 +7118,273 @@ namespace BSky.XmlDecoder
                 }
 
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
+            }
+
+            else if (customsyntax == "MixedModels")
+            {
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+                
+
+                string tvarbox2 = "";
+                string tvarbox1 = "";
+                string NestingVar = "";
+                string chk1 = "";
+                string dataset = "";
+                string chk2 = "";
+                string estimator = "";
+                string cov = "";
+                string randomvars = "";
+                string modelname = "";
+                modelname = "";
+                bool errorRaised = false;
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "modelname")
+                    {
+                        modelname = value;
+                    }
+                    if (key == "tvarbox2")
+                    {
+                        tvarbox2 = value;
+                    }
+
+                    if (key == "tvarbox1")
+                    {
+                        tvarbox1 = value;
+                    }
+                    if (key == "NestingVar")
+                    {
+                        NestingVar = value;
+                    }
+
+                    if (key == "chk1")
+                    {
+                        chk1 = value;
+                    }
+                    if (key == "chk2")
+                    {
+                        chk2 = value;
+                    }
+                    if (key == "estimator")
+                    {   
+                        estimator = value;
+                    }
+                    if (key == "randomvars")
+                    {
+                        randomvars = value;
+                    }
+                    if (key == "Cov")
+                    {
+                        cov = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+
+
+                }
+
+                if (NestingVar == "" || NestingVar == null)
+                {
+                    NestingVar = "";
+                }
+                if (tvarbox2 == "" || tvarbox2 == null)
+                {
+                    tvarbox2 = "";
+                }
+
+                if (randomvars == "" || randomvars == null)
+                {
+                    randomvars = "";
+                }
+                string tempoutput = "";
+
+                if (estimator == "REML")
+                {
+                    estimator = "REML=TRUE";
+                }
+                else
+                { 
+                    estimator = "REML=FALSE";
+                }
+                //Intercept only for fixed effects but no fixed effects defined only nesting unit
+
+                if (NestingVar != "" && tvarbox2 == "" && randomvars == "" )
+                {
+                    if (cov == "Intercept Only")
+                    {
+                        tempoutput +=   modelname + "<-lmer(" + tvarbox1 + "~1 + (1 | " + NestingVar + ")," + estimator +", data =" + dataset + ")";
+                        
+                    }
+                    else
+                    {
+                        tempoutput = "cat (\"The covariance structure you selected: " + cov + " is invalid, you need to select Intercept Only\")";
+                        errorRaised = true;
+                        
+                    }
+
+
+
+                }
+            //fixed effects of time *tx interaction, only a random intercept, nesting unit is subject
+                else if (NestingVar != "" && tvarbox2 != "" && randomvars == ""&& cov == "Intercept Only" )
+                {
+                   // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    tempoutput += modelname + "<-lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
+                    
+
+                }
+                //fixed effects of time *tx interaction, covariance structure is anything but intercept only, nesting unit is subject
+                //I print eror message
+                else if (NestingVar != "" && tvarbox2 != "" && randomvars == "" && cov != "Intercept Only")
+                {
+                    // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    //  tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
+                    tempoutput = "cat (\"The covariance structure you selected: " + cov + " is invalid, as you have selected a nesting unit: " + NestingVar+ " but have not selected to analyze the random variance within that nesting unit. You need to select a different covariance structure.\")";
+                    errorRaised = true;
+
+                }
+                else if (NestingVar != "" && tvarbox2 != "" && randomvars != "" && cov == "Intercept Only")
+                {
+
+                    tempoutput = "cat (\"The covariance structure you selected: " + cov + " is invalid and you are attempting to analyze the random variance of: " + randomvars +" within nesting unit: " +NestingVar+"\")";
+                    errorRaised = true;
+                }
+
+                else if (NestingVar != "" && tvarbox2 != "" && randomvars != "" && cov =="Slopes only")
+                {
+                    // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    //tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
+
+
+                       string[] randomvariables = randomvars.Split(',');
+
+                        tempoutput = tempoutput + modelname + "<-lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    foreach (string vars in randomvariables)
+                    {
+                            tempoutput += "+" + "(0+" + NestingVar + "|" + vars + ")";
+                    }
+
+                    tempoutput += "," + estimator + ", data =" + dataset + ")";
+
+                }
+                else if (NestingVar != "" && tvarbox2 != "" && randomvars != "" && cov == "Intercept and Slopes (correlated)")
+                {
+                    // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    //tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
+
+
+                    string[] randomvariables = randomvars.Split(',');
+
+                    tempoutput = tempoutput + modelname + "<-lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    foreach (string vars in randomvariables)
+                    {
+                        tempoutput += "+" + "(" + NestingVar + "|" + vars + ")";
+                    }
+
+                    tempoutput += "," + estimator + ", data =" + dataset + ")";
+
+                }
+                else if (NestingVar != "" && tvarbox2 != "" && randomvars != "" && cov == "Intercept and Slopes (uncorrelated)")
+                {
+                    // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    //tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
+
+
+                    string[] randomvariables = randomvars.Split(',');
+
+                    tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    foreach (string vars in randomvariables)
+                    {
+                        tempoutput += "+" + "(" + NestingVar + "||" + vars + ")";
+                    }
+
+                    tempoutput += "," + estimator + ", data =" + dataset + ")";
+
+                }
+                //This model has no random intercept but has a random effect / slope of time:
+
+
+
+
+                //else
+                //{
+
+                //    //  string[] variables = tvarbox2.Split(',');
+                //    string[] randomvariables = randomvars.Split(',');
+
+                //    tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                //    if (chk1 == "TRUE")
+                //    {
+                //        foreach (string vars in randomvariables)
+                //        {
+                //            tempoutput += "+" + "(1|" + vars + ")";
+                //        }
+                //    }
+
+                //    if (NestingVar != "")
+                //    {
+                //        foreach (string vars in randomvariables)
+                //        {
+                //            tempoutput += "+" + "(1+" + NestingVar + "|" + vars + ")";
+                //        }
+
+                //    }
+
+
+                //    tempoutput += ", data=" + dataset + ")";
+                //    tempoutput = tempoutput + "\n\n";
+                //    output = output + tempoutput;
+
+                //    tempoutput = "";
+                //}   
+                else if (NestingVar != "" && tvarbox2 != "" && randomvars == "")
+                {
+                    // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
+
+                    tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
+
+
+                }
+
+                if (!errorRaised)
+                {
+                    tempoutput = modelname + "=" + tempoutput + "\n";
+                    tempoutput += "summary(" + modelname + ")" + "\n";
+                }
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                //output = output + " +\n" + themeSyntax + "\n\n";
             }
 
             else

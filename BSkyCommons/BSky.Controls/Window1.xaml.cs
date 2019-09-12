@@ -611,6 +611,7 @@ namespace BSky.Controls
             //and then click save
             retval = checkMoveButton(firstCanvas);
             retval = checkDeleteButton(firstCanvas);
+            retval = checkAddFixedEffects(firstCanvas);
             //Holds the griditem in the canvasPropertyGrid for the outputDefinition
             if (!retval) return false;
             System.Windows.Forms.GridItem outputDefGridItem;
@@ -3763,8 +3764,7 @@ namespace BSky.Controls
                     copy.Children.Add(copyAdvancedSlider);
 
                 }
-
-                
+                                
 
                 if (child.GetType().Name == "BSkyMultiLineLabel")
                 {
@@ -3834,6 +3834,10 @@ namespace BSky.Controls
                     copyDeleteButton.TargetList = child1.TargetList;
 
                 }
+
+               
+
+
 
                 if (child.GetType().Name == "BSkyInteractionCtrl")
                 {
@@ -4064,7 +4068,30 @@ namespace BSky.Controls
 
                 }
 
-             
+                if (child.GetType().Name == "BSkyAddFixedEffects")
+                {
+                    BSkyAddFixedEffects copyMoveButton = null;
+                    copyMoveButton = new BSkyAddFixedEffects();
+                    BSkyAddFixedEffects child1 = null;
+                    child1 = child as BSkyAddFixedEffects;
+
+                    copyMoveButton.Name = child1.Name;
+
+                    //copyMoveButton.Name = child1.Name;
+
+                    copyMoveButton.Name = child1.Name;
+                    copyMoveButton.Width = child1.Width;
+                    copyMoveButton.Height = child1.Height;
+                    //copyMoveButton.Top = child1.Top;
+                    BSkyCanvas.SetTop(copyMoveButton, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copyMoveButton, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copyMoveButton);
+                    // 11/26/2012 the lines below can be executed only after the movebutton is added to the canvas
+                    copyMoveButton.InputList = child1.InputList;
+                    copyMoveButton.TargetList = child1.TargetList;
+
+
+                }
 
                 if (child.GetType().Name == "BSkyNonEditableComboBox")
                 {
@@ -4521,6 +4548,38 @@ namespace BSky.Controls
                     //Added by Aaron 12/27/2013
                     //Code was added to handle the case of a buttom that is placed on the canvas but we have not defined a subdialog for that button i.e. I have not clicked on designer in the property grid
                     if (cs != null) checkDeleteButton(cs);
+                }
+            }
+            return true;
+
+        }
+
+        bool checkAddFixedEffects(BSkyCanvas canvas)
+        {
+            string message = string.Empty;
+            foreach (Object obj in canvas.Children)
+            {
+                if (obj is BSkyAddFixedEffects)
+                {
+                    BSkyAddFixedEffects objcast = obj as BSkyAddFixedEffects;
+                    if (objcast.GetResource(objcast.TargetList) == null)
+                    {
+                        message = "The add fixed effects button " + objcast.Name + " is not associated with a proper target variable list control. Please click on the move button and check the target variable list name ";
+                        MessageBox.Show(message);
+                        //this.selectedElement = objcast;
+                        return false;
+                    }
+
+
+                }
+                if (obj is BSkyButton)
+                {
+                    FrameworkElement fe = obj as FrameworkElement;
+                    BSkyCanvas cs = fe.Resources["dlg"] as BSkyCanvas;
+                    // if (cs != null) lst.AddRange(checkMissingName(cs));
+                    //Added by Aaron 12/27/2013
+                    //Code was added to handle the case of a buttom that is placed on the canvas but we have not defined a subdialog for that button i.e. I have not clicked on designer in the property grid
+                    if (cs != null) checkAddFixedEffects(cs);
                 }
             }
             return true;

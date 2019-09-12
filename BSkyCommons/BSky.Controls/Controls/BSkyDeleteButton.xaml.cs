@@ -35,7 +35,7 @@ namespace BSky.Controls
         {
             InitializeComponent();
             imgDest.BeginInit();
-            imgDest.UriSource = new Uri(@"pack://application:,,,/BSky.Controls;component/Resources/left.png");
+            imgDest.UriSource = new Uri(@"pack://application:,,,/BSky.Controls;component/Resources/delete.png");
             imgDest.EndInit();
 
             this.Width = 40;

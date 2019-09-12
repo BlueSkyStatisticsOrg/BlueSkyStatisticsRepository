@@ -49,7 +49,7 @@
                 <MenuItem Header="Inspect Dialog" Command="w:DesignerCommands.Inspection"></MenuItem>
                 <MenuItem Header="Show Grid Lines" Command="w:DesignerCommands.EnableGridLines"></MenuItem>
                 <MenuItem Header="Remove Grid Lines" Command="w:DesignerCommands.removeGridLines"></MenuItem>
-                
+
             </MenuItem>
         </Menu>
 
@@ -106,8 +106,8 @@
             ResizeDirection="Columns"/>
 
         <my:WindowsFormsHost Name="host" Grid.Row="1" Grid.Column="4" />
-        
-        <c1:C1ToolbarStrip Grid.Column="0" Grid.Row="1" Name="c1ToolbarStrip1" Orientation="Vertical" >
+        <ScrollViewer Grid.Column="0" Grid.Row="1">
+        <c1:C1ToolbarStrip  Name="c1ToolbarStrip1" Orientation="Vertical" >
             <c1:C1ToolbarButton Name="SourceListBox" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
                     <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Source-var-ListBox.png" />
@@ -142,7 +142,7 @@
 
             <c1:C1ToolbarButton Name="Label" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/Lable.png" />
+                    <Image Grid.Column="1" Width="20" Height="20"   Source="Resources/Lable.png" />
                     <TextBlock Text="Label"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
@@ -307,7 +307,15 @@
                 </StackPanel>
             </c1:C1ToolbarButton>
 
+            <c1:C1ToolbarButton Name="BSkyAddFixedEffects" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="1" Width="20" Height="20" Source="Resources/spinner.png" />
+                    <TextBlock Text="Add Fixed Effects"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                </StackPanel>
+            </c1:C1ToolbarButton>
+
         </c1:C1ToolbarStrip>
+        </ScrollViewer>
     </Grid>
 
 </Window>
