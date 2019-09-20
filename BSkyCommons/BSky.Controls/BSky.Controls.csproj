@@ -122,6 +122,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BSkyNesting.cs" />
     <Compile Include="Controls\BSkyAddFixedEffects.xaml.cs">
       <DependentUpon>BSkyAddFixedEffects.xaml</DependentUpon>
     </Compile>

@@ -61,6 +61,10 @@ namespace BSky.Controls
                     ShadowDepth = 0,
                     Opacity = 1
                 };
+
+            ToolTip tt = new ToolTip();
+            tt.Content = "Deletes one or more selected variables from the target variable list";
+            this.ToolTip = tt;
         }
 
       

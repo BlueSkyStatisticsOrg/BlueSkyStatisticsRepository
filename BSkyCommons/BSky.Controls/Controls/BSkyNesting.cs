@@ -12,31 +12,32 @@ using System.Windows.Data;
 
 namespace BSky.Controls
 {
-    public class BSkyInteractionCtrl:BSkyBaseButtonCtrl
+    public class BSkyNestingCtrl : BSkyBaseButtonCtrl
     {
 
-        [Description("Specifies all main effects and all interactions")]
+        [Description("Raises the variable select by a polynomial order, the order of the polynomial is specified in textbox related with this control")]
 
         [Category("Control Settings"), PropertyOrder(1)]
         public string Type
         {
             get
             {
-                return "Specify a full factorial model";
+                return "Nesting Control";
             }
         }
 
-        public BSkyInteractionCtrl()
+
+
+
+
+
+        public BSkyNestingCtrl()
         {
 
 
             imgDest.BeginInit();
-            imgDest.UriSource = new Uri(@"pack://application:,,,/BSky.Controls;component/Resources/asterisk.png");
+            imgDest.UriSource = new Uri(@"pack://application:,,,/BSky.Controls;component/Resources/noun_up_143208.png");
             imgDest.EndInit();
-
-            ToolTip tt = new ToolTip();
-            tt.Content = "Creates a full factorial model with the variables selected from the source variable list";
-            this.ToolTip = tt;
 
             this.Width = 40;
             this.Height = 40;
@@ -44,6 +45,9 @@ namespace BSky.Controls
             imageBtn.Source = imgDest;
 
             this.Tag = TO_DEST;
+            ToolTip tt = new ToolTip();
+            tt.Content = "Specifies a nested effect. The random variable selected is nested within the selected source variable";
+            this.ToolTip = tt;
 
             //Sets the content of the move button to the grid. We add image to the grid
             this.Content = g;
@@ -53,12 +57,9 @@ namespace BSky.Controls
 
         public override void BSkyBaseButtonCtrl_Click(object sender, RoutedEventArgs e)
         {
-
             double maxnoofvars = 0;
             int noSelectedItems = 0;
             int i = 0;
-            int selectionIndex = 0;
-            bool filterResults = false;
             System.Windows.Forms.DialogResult diagResult;
             string varList = "";
             string message = "";
@@ -77,7 +78,7 @@ namespace BSky.Controls
 
             //Destination is a BSkytargetlist 
             noSelectedItems = vInputList.SelectedItems.Count;
-            string interaction = "";
+            string newvar = "";
             //Checking whether variables moved are allowed by the destination filter
             //validVars meet filter requirements
             //invalidVars don't meet filter requirements
@@ -88,7 +89,7 @@ namespace BSky.Controls
 
                 if (noSelectedItems == 0)
                 {
-                    diagResult = System.Windows.Forms.MessageBox.Show("You need to select a variable from the  list before clicking the move button", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                    diagResult = System.Windows.Forms.MessageBox.Show("You need to select a variable from the source variable list before clicking the nesting control", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
                     return;
                 }
 
@@ -99,15 +100,22 @@ namespace BSky.Controls
                     return;
                 }
 
-                if (noSelectedItems <= 1)
+                if (noSelectedItems > 1)
                 {
-                    diagResult = System.Windows.Forms.MessageBox.Show("You need to select more than 1 variable to create a full factorial model", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                    diagResult = System.Windows.Forms.MessageBox.Show("You need to select 1 variable at a time from the source variable list to specify a nested effect. You have more than 1 variable selected in the source variable list", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
                     return;
                 }
 
                 //Added 10/19/2013
                 //Added the code below to support listboxes that only allow a pre-specified number of items or less
                 //I add the number of preexisting items to the number of selected items and if it is greater than limit, I show an error
+
+                if (vTargetList.SelectedItems.Count > 0)
+                {
+                    diagResult = System.Windows.Forms.MessageBox.Show("You need to select 1 variable from the source variable list and 1 variable from the target variable to specify a nested effect. You have more than 1 variable selected in the target variable list.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                    return;
+                }
+
 
                 if (vTargetList.maxNoOfVariables != string.Empty && vTargetList.maxNoOfVariables != null)
                 {
@@ -140,93 +148,53 @@ namespace BSky.Controls
                 }
 
 
-                for (i = 0; i < noSelectedItems; i++)
-                {
-                    //Added by Aaron 08/12/2014
-                    //Line below ensures that I move items from the source to the target only when the items are not in the target
-                    //If Item already exists in target I ignore
-                    //if (!vTargetList.Items.Contains(vInputList.SelectedItems[i]))
-                    //{
-                    //    filterResults = vTargetList.CheckForFilter(vInputList.SelectedItems[i]);
-                    //    if (filterResults)
-                    //    {
 
-                    //        validVars.Add(vInputList.SelectedItems[i]);
-                    //    }
-                    //    else
-                    //    {
-                    //        invalidVars.Add(vInputList.SelectedItems[i]);
-                    //    }
-                    //}
-                    if (i == 0)
-                    {
-                        interaction = interaction + vInputList.SelectedItems[i] as string;
-                    }
-                    else
-                    {
-                        interaction = interaction + "*" + vInputList.SelectedItems[i] as string;
-                    }
-
-                }
-                //If there are valid variables then move them
-                if (interaction != "")
-                {
-
-                    //Option 1
-                    //validVars.Add(vInputList.SelectedItems[0]);
-                    //List<object> tempVars = new List<object>();
-                    //tempVars = validVars;
-                    //foreach (object obj1 in tempVars)
-                    //{
-                    //    DataSourceVariable ds2 = obj1 as DataSourceVariable;
-                    //    ds2.Name = interaction;
-                    //    ds2.RName = interaction;
-                    //    ds2.XName = interaction;
-                    //}
-                    //vTargetList.AddItems(tempVars);
-
-                    //Preferred way
-
-                    DataSourceVariable inputVar = vInputList.SelectedItems[0] as DataSourceVariable;
-
-                    DataSourceVariable ds = new DataSourceVariable();
-                    ds.XName = interaction;
-                    ds.Name = interaction;
-                    ds.RName = interaction;
-
-                    ds.Measure = inputVar.Measure;
-                    ds.DataType = inputVar.DataType;
-                    ds.Width = inputVar.Width;
-                    ds.Decimals = inputVar.Decimals;
-                    ds.Label = inputVar.Label;
-                    ds.Alignment = inputVar.Alignment;
-                    ds.ImgURL = inputVar.ImgURL;
-
-                    validVars.Add(ds as object);
-                    vTargetList.AddItems(validVars);
-
-                    // vInputList.SelectedItems[i]
-                    //    validVars.Add(vInputList.SelectedItems[1]);
+                DataSourceVariable inputVar = vInputList.SelectedItems[0] as DataSourceVariable;
 
 
-                    // vTargetList.AddItems(validVars);
-                    //The code below unselects everything
-                    vTargetList.UnselectAll();
-                    //The code below selects all the items that are moved
-                    vTargetList.SetSelectedItems(validVars);
-                    //vTargetList.SetSelectedItems(arr1);
-                    //Added by Aaron on 12/24/2012 to get the items moved scrolled into view
-                    //Added by Aaron on 12/24/2012. Value is 0 as you want to scroll to the top of the selected items
-                    vTargetList.ScrollIntoView(validVars[0]);
-                    if (vInputList.MoveVariables)
-                    //The compiler is not allowing me to use vInputList.Items.Remove() so I have to use ItemsSource
-                    {
-                        ListCollectionView lcw = vInputList.ItemsSource as ListCollectionView;
-                        foreach (object obj in validVars) lcw.Remove(obj);
-                    }
-                    vTargetList.Focus();
 
-                }
+                //Preferred 
+
+                DataSourceVariable ds = vTargetList.SelectedItems[0] as DataSourceVariable;
+
+                //DataSourceVariable ds = new DataSourceVariable();
+                newvar = inputVar.Name + "(" + ds.Name + ")";
+                ds.XName = newvar;
+                ds.Name = newvar;
+                ds.RName = newvar;
+                ds.Measure = inputVar.Measure;
+                ds.DataType = inputVar.DataType;
+                ds.Width = inputVar.Width;
+                ds.Decimals = inputVar.Decimals;
+                ds.Label = inputVar.Label;
+                ds.Alignment = inputVar.Alignment;
+
+                ds.ImgURL = inputVar.ImgURL;
+                //validVars.Add(ds as object);
+                //  vTargetList.AddItems(validVars);
+
+                // vInputList.SelectedItems[i]
+                //    validVars.Add(vInputList.SelectedItems[1]);
+
+
+                // vTargetList.AddItems(validVars);
+                //The code below unselects everything
+                //      vTargetList.UnselectAll();
+                //The code below selects all the items that are moved
+                //    vTargetList.SetSelectedItems(validVars);
+                //vTargetList.SetSelectedItems(arr1);
+                //Added by Aaron on 12/24/2012 to get the items moved scrolled into view
+                //Added by Aaron on 12/24/2012. Value is 0 as you want to scroll to the top of the selected items
+                //  vTargetList.ScrollIntoView(validVars[0]);
+                //if (vInputList.MoveVariables)
+                //The compiler is not allowing me to use vInputList.Items.Remove() so I have to use ItemsSource
+                //{
+                //  ListCollectionView lcw = vInputList.ItemsSource as ListCollectionView;
+                //foreach (object obj in validVars) lcw.Remove(obj);
+                //}
+                vTargetList.Focus();
+
+
             }
             //Added by Aaron 07/22/2015
             //This is a valid point
@@ -244,40 +212,41 @@ namespace BSky.Controls
             //    //Added by Aaron on 12/24/2012. Value is 0 as you want to scroll to the top of the selected items
             //    vTargetList.ScrollIntoView(validVars[0]);
             //}
-            if (vInputList.MoveVariables)
+            /* if (vInputList.MoveVariables)
             //The compiler is not allowing me to use vInputList.Items.Remove() so I have to use ItemsSource
-            {
+            //{
                 ListCollectionView lcw = vInputList.ItemsSource as ListCollectionView;
                 foreach (object obj in validVars) lcw.Remove(obj);
-            }
+            //} */
             if (vTargetList != null)
                 vTargetList.Focus();
 
             //Added by Aaron 08/13/2014
             //This is for the case that I am moving a variable year to a target list that already contains year
             //validvars.count is 0 as I have already detercted its in the target variable. I now want to high light it in the targetvariable
-            if (validVars.Count == 0)
-            {
-                List<object> firstitem = new List<object>();
-                firstitem.Add(vInputList.SelectedItems[0]);
+            /*  if (validVars.Count == 0)
+             {
+                 List<object> firstitem = new List<object>();
+                 firstitem.Add(vInputList.SelectedItems[0]);
 
-                if (vTargetList != null)
-                {
+                 if (vTargetList != null)
+                 {
 
-                    if (vTargetList.Items.Contains(vInputList.SelectedItems[0]))
-                    {
-                        vTargetList.SetSelectedItems(firstitem);
-                        vTargetList.Focus();
-                    }
-                }
+                     if (vTargetList.Items.Contains(vInputList.SelectedItems[0]))
+                     {
+                         vTargetList.SetSelectedItems(firstitem);
+                         vTargetList.Focus();
+                     }
+                 }
 
-            }
+             } */
             //If there are variables that don't meet filter criteria, inform the user
             if (invalidVars.Count > 0)
             {
                 string cantMove = string.Join(",", invalidVars.ToArray());
                 System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show("The variable(s) \"" + cantMove + "\" cannot be moved, the destination variable list does not allow variables of that type", "Save Changes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
             }
+
         }
 
     }

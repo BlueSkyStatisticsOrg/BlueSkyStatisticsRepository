@@ -3103,6 +3103,8 @@ namespace BSky.Controls
                         copySpinner.Name = child1.Name;
                         copySpinner.Step = child1.Step;
                         copySpinner.Text = child1.Text;
+                        copySpinner.Enabled = child1.Enabled;
+                        copySpinner.IsEnabled = child1.Enabled;
                         //copyAdvancedSlider.Value = child1.Value;
                         copySpinner.Width = child1.Width;
                         copySpinner.Height = child1.Height;
@@ -3731,8 +3733,10 @@ namespace BSky.Controls
                     copySlider.Minimum = child1.Minimum;
                     copySlider.Width = child1.Width;
                     copySlider.Height = child1.Height;
+                  
                     copySlider.CanExecute = child1.CanExecute;
                     copySlider.Enabled = child1.Enabled;
+                    copySlider.IsEnabled = child1.Enabled;
                     //copyMoveButton.Name = child1.Name;
                     BSkyCanvas.SetTop(copySlider, BSkyCanvas.GetTop(child1));
                     BSkyCanvas.SetLeft(copySlider, BSkyCanvas.GetLeft(child1));
@@ -3758,6 +3762,7 @@ namespace BSky.Controls
                     copyAdvancedSlider.Height = child1.Height;
                     copyAdvancedSlider.CanExecute = child1.CanExecute;
                     copyAdvancedSlider.Enabled = child1.Enabled;
+                    copyAdvancedSlider.IsEnabled = child1.Enabled;
                     //copyMoveButton.Name = child1.Name;
                     BSkyCanvas.SetTop(copyAdvancedSlider, BSkyCanvas.GetTop(child1));
                     BSkyCanvas.SetLeft(copyAdvancedSlider, BSkyCanvas.GetLeft(child1));
@@ -3853,6 +3858,7 @@ namespace BSky.Controls
                     copyInteractionCtrl.Name = child1.Name;
                     copyInteractionCtrl.Width = child1.Width;
                     copyInteractionCtrl.Height = child1.Height;
+                  //  copyInteractionCtrl.ToolTip = child1.ToolTip;
                     //copyMoveButton.Top = child1.Top;
                     BSkyCanvas.SetTop(copyInteractionCtrl, BSkyCanvas.GetTop(child1));
                     BSkyCanvas.SetLeft(copyInteractionCtrl, BSkyCanvas.GetLeft(child1));
@@ -3862,6 +3868,36 @@ namespace BSky.Controls
                     copyInteractionCtrl.TargetList = child1.TargetList;
 
                 }
+
+
+                if (child.GetType().Name == "BSkyNestingCtrl")
+                {
+                    BSkyNestingCtrl copyInteractionCtrl = null;
+                    copyInteractionCtrl = new BSkyNestingCtrl();
+                    BSkyNestingCtrl child1 = null;
+                    child1 = child as BSkyNestingCtrl;
+
+                    copyInteractionCtrl.Name = child1.Name;
+
+                    //copyMoveButton.Name = child1.Name;
+
+                    copyInteractionCtrl.Name = child1.Name;
+                    copyInteractionCtrl.Width = child1.Width;
+                    copyInteractionCtrl.Height = child1.Height;
+                   
+                    //  copyInteractionCtrl.ToolTip = child1.ToolTip;
+                    //copyMoveButton.Top = child1.Top;
+                    BSkyCanvas.SetTop(copyInteractionCtrl, BSkyCanvas.GetTop(child1));
+                    BSkyCanvas.SetLeft(copyInteractionCtrl, BSkyCanvas.GetLeft(child1));
+                    copy.Children.Add(copyInteractionCtrl);
+                    // 11/26/2012 the lines below can be executed only after the movebutton is added to the canvas
+                    copyInteractionCtrl.InputList = child1.InputList;
+                    copyInteractionCtrl.TargetList = child1.TargetList;
+
+                }
+
+
+
 
                 if (child.GetType().Name == "BSkyPolynomialCtrl")
                 {

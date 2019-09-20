@@ -93,6 +93,9 @@ namespace BSky.Controls
             this.Content = g;
             this.g.Children.Add(imageBtn);
             this.Resources.MergedDictionaries.Clear();
+            ToolTip tt = new ToolTip();
+            tt.Content = "Creates N way interaction terms from the variables selected in the source variable list. The value of N is obtained from the related combobox control";
+            this.ToolTip = tt;
         }
 
 

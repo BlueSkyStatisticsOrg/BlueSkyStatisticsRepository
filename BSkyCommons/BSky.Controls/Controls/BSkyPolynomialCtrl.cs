@@ -83,6 +83,9 @@ namespace BSky.Controls
             imageBtn.Source = imgDest;
 
             this.Tag = TO_DEST;
+            ToolTip tt = new ToolTip();
+            tt.Content = "Creates a polynomial by raising the variable selected in the source variable list by the power specified in the related spinner control";
+            this.ToolTip = tt;
 
             //Sets the content of the move button to the grid. We add image to the grid
             this.Content = g;

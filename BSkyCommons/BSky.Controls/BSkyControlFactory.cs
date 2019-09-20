@@ -343,6 +343,14 @@ namespace BSky.Controls
                     b.Width = 35;
                     b.Height = 35;
                     break;
+
+                case "BSkyNestingCtrl":
+                    b = new BSkyNestingCtrl();
+                    // BSkyAdvancedSlider b1 = b as BSkyAdvancedSlider;
+                    // b1.Ticks = null;
+                    b.Width = 35;
+                    b.Height = 35;
+                    break;
             }
             
             //b.Name = GetName(objtype);

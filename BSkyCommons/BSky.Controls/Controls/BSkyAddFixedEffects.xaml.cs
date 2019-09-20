@@ -67,6 +67,10 @@ namespace BSky.Controls
                     ShadowDepth = 0,
                     Opacity = 1
                 };
+
+            ToolTip tt = new ToolTip();
+            tt.Content = "Adds variable(s) selected in the source variable list as fixed effects in the target variable list";
+            this.ToolTip = tt;
         }
 
         public string inputListName;

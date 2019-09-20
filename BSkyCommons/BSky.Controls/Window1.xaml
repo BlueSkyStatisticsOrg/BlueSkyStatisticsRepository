@@ -313,8 +313,14 @@
                     <TextBlock Text="Add Fixed Effects"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
                 </StackPanel>
             </c1:C1ToolbarButton>
+                <c1:C1ToolbarButton Name="BSkyNestingCtrl" Height="25" Click="GrpBox_Click"  HorizontalContentAlignment="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Grid.Column="1" Width="20" Height="20" Source="Resources/spinner.png" />
+                        <TextBlock Text="Add Nested Effects"  Margin="3,0,0,0" VerticalAlignment="Center" TextAlignment="Center" />
+                    </StackPanel>
+                </c1:C1ToolbarButton>
 
-        </c1:C1ToolbarStrip>
+            </c1:C1ToolbarStrip>
         </ScrollViewer>
     </Grid>
 
