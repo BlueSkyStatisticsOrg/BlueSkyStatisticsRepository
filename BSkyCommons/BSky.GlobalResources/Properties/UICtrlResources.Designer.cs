@@ -1339,7 +1339,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No. Of Decimal Digits:.
+        ///   Looks up a localized string similar to Number of decimal digits to display..
         /// </summary>
         public static string lblNoDecimalDigits {
             get {
@@ -1420,7 +1420,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retain scientific notation for a very small number (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5)..
+        ///   Looks up a localized string similar to Use scientific notation for a very small and a very large number (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5)..
         /// </summary>
         public static string lblRetainSciNotation {
             get {
@@ -1465,7 +1465,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show actual value (e.g. p.value = .0002) in the output tables. If unchecked &quot;&lt;.001***&quot; will be displayed..
+        ///   Looks up a localized string similar to Show actual p-values (e.g. p-value = .0002) in the output instead of &quot;&lt;.001***&quot;..
         /// </summary>
         public static string lblShowActualPvalue {
             get {
@@ -2586,6 +2586,15 @@ namespace BSky.GlobalResources.Properties {
         public static string TabTitleAdvanced {
             get {
                 return ResourceManager.GetString("TabTitleAdvanced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colors.
+        /// </summary>
+        public static string TabTitleColors {
+            get {
+                return ResourceManager.GetString("TabTitleColors", resourceCulture);
             }
         }
         

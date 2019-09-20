@@ -51,7 +51,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Name="OutputTab" Header="{x:Static uires:UICtrlResources.TabTitleOutput}">
+            <TabItem Name="ColorsTab" Header="{x:Static uires:UICtrlResources.TabTitleColors}">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -93,8 +93,8 @@
                     <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}" Name="label5"   Visibility="Collapsed" />
                     <TextBox Grid.Row="5" Grid.Column="2" Margin="3" Width="25" Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}"  Name="noofchars"  Visibility="Collapsed"/>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblShowSyntaxInOutput}"></TextBlock>
-                    <CheckBox  Grid.Row="6" Grid.Column="2"  Margin="3"  Name="showSynInOutput" IsChecked="{Binding Path=[ShowSyntaxInOutput], UpdateSourceTrigger=PropertyChanged}"  />
+                    <!--<TextBlock Grid.Row="6" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblShowSyntaxInOutput}"></TextBlock>
+                    <CheckBox  Grid.Row="6" Grid.Column="2"  Margin="3"  Name="showSynInOutput" IsChecked="{Binding Path=[ShowSyntaxInOutput], UpdateSourceTrigger=PropertyChanged}"  />-->
 
                 </Grid>
             </TabItem>
@@ -230,9 +230,10 @@
 
             </TabItem>
 
-            <TabItem Name="OthersTab" Header="{x:Static uires:UICtrlResources.TabTitleOthers}">
+            <TabItem Name="OutputTab" Header="{x:Static uires:UICtrlResources.TabTitleOutput}">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -271,6 +272,10 @@
 
                     <TextBlock Grid.Row="7" Grid.Column="0" MaxWidth="550" Margin="3" Text="{x:Static uires:UICtrlResources.ShowRDataWarningMessage}"></TextBlock>
                     <CheckBox Grid.Row="7" Grid.Column="1" Height="16"  Margin="3" Name="RDataOpenWarningChkbx" IsChecked="{Binding Path=[RDataOpenWarning], UpdateSourceTrigger=PropertyChanged}"   />
+
+                    <TextBlock Grid.Row="8" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblShowSyntaxInOutput}"></TextBlock>
+                    <CheckBox  Grid.Row="8" Grid.Column="1"  Margin="3"  Name="showSynInOutput" IsChecked="{Binding Path=[ShowSyntaxInOutput], UpdateSourceTrigger=PropertyChanged}"  />
+
                 </Grid>
 
             </TabItem>

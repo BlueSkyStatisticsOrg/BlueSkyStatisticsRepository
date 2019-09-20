@@ -1292,4 +1292,8 @@
     <value>출력 테이블에 실제 값 표시 (예 : p.value = .0002)</value>
     <comment>CustomSettingsWindow.xaml : Title for show actual p.value</comment>
   </data>
+  <data name="TabTitleColors" xml:space="preserve">
+    <value>그림 물감</value>
+    <comment>CustomSettingsWindow.xaml : Title for Colors tab in settings</comment>
+  </data>
 </root>

@@ -710,7 +710,7 @@
     <comment>CustomSettingsWindow.xaml : label for navigation tree selected item color</comment>
   </data>
   <data name="lblNoDecimalDigits" xml:space="preserve">
-    <value>No. Of Decimal Digits:</value>
+    <value>Number of decimal digits to display.</value>
     <comment>CustomSettingsWindow.xaml : label for number of decimals option</comment>
   </data>
   <data name="lblOpenOptions" xml:space="preserve">
@@ -742,7 +742,7 @@
     <comment>FindReplaceWindow.xaml : label for Replace With</comment>
   </data>
   <data name="lblRetainSciNotation" xml:space="preserve">
-    <value>Retain scientific notation for a very small number (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5).</value>
+    <value>Use scientific notation for a very small and a very large number (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5).</value>
     <comment>CustomSettingsWindow.xaml : label for retain sci notation option</comment>
   </data>
   <data name="lblRHomeDir" xml:space="preserve">
@@ -1292,7 +1292,11 @@
     <value>Show/hide navigation tree</value>
   </data>
   <data name="lblShowActualPvalue" xml:space="preserve">
-    <value>Show actual value (e.g. p.value = .0002) in the output tables. If unchecked "&lt;.001***" will be displayed.</value>
+    <value>Show actual p-values (e.g. p-value = .0002) in the output instead of "&lt;.001***".</value>
     <comment>CustomSettingsWindow.xaml : Title for show actual p.value</comment>
+  </data>
+  <data name="TabTitleColors" xml:space="preserve">
+    <value>Colors</value>
+    <comment>CustomSettingsWindow.xaml : Title for Colors tab in settings</comment>
   </data>
 </root>
