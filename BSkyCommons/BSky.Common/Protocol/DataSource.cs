@@ -237,6 +237,14 @@ namespace BSky.Statistics.Common
             set { replace = value; }
         }
 
+        //True = New blank dataset. This new blank dataset will be processed by removing empty rows and cols
+        //and then this property will be changed to false;
+        private bool _isUnprocessed;
+        public bool isUnprocessed
+        {
+            get { return _isUnprocessed; }
+            set { _isUnprocessed = value; }
+        }
     }
     public class DataSourceVariable
     {

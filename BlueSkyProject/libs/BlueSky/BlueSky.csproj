@@ -343,6 +343,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\CommandAnalyserFactory.cs" />
+    <Compile Include="Services\NewDatasetProcessor.cs" />
     <Compile Include="Services\PasteClipboardDataset.cs" />
     <Compile Include="Services\UIControllerService.cs" />
     <Compile Include="SessionDialogContainer.cs" />

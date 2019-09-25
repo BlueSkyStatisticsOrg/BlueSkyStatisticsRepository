@@ -9,6 +9,7 @@ using BSky.Interfaces.Interfaces;
 using System.Windows.Input;
 using System.Collections.Generic;
 using System.IO;
+using BlueSky.Services;
 
 namespace BlueSky.Commands.File
 {
@@ -28,6 +29,13 @@ namespace BlueSky.Commands.File
             IDataService service = container.Resolve<IDataService>();
             IUIController controller = container.Resolve<IUIController>();
 
+
+            if (controller.GetActiveDocument().isUnprocessed)
+            {
+                NewDatasetProcessor procDS = new NewDatasetProcessor();
+                procDS.ProcessNewDataset("", true);
+                controller.GetActiveDocument().isUnprocessed = false;
+            }
 
             //Get current filetype from loaded dataset. This is file extension and Filter
             DataSource actds = controller.GetActiveDocument();//06Nov2012

@@ -29,6 +29,7 @@ using System.Xml;
 using System.Windows.Controls;
 using BlueSky.Windows;
 using BSky.Controls.Controls;
+using BlueSky.Services;
 
 namespace BlueSky.Commands.Analytics.TTest
 {
@@ -120,6 +121,12 @@ namespace BlueSky.Commands.Analytics.TTest
                 return;
             }
 
+            if (UIController.GetActiveDocument().isUnprocessed)
+            {
+                NewDatasetProcessor procDS = new NewDatasetProcessor();
+                procDS.ProcessNewDataset("", true);
+                UIController.GetActiveDocument().isUnprocessed = false;
+            }
             //for getting dialog xaml filename in logs.
             logService.WriteToLogLevel("XAML name : " + TemplateFileName, LogLevelEnum.Info);
             //MessageBox.Show("Launching: "+ TemplateFileName, "XAML filename");//to find actual dialog XAML filename

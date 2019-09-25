@@ -87,6 +87,7 @@ namespace BlueSky.Commands.File
                     DataSource ds = service.NewDataset();//filename);
                     if (ds != null)
                     {
+                        ds.isUnprocessed = true;
                         controller.LoadNewDataSet(ds);
                         //recentfiles.AddXMLItem(filename);//adding to XML file for recent docs
                     }
