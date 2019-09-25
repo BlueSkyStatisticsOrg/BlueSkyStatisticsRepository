@@ -1745,10 +1745,15 @@ namespace BlueSky
             mi3.Header = "Default";
             mi3.Click += Mi3_Click;
             mi3.Tag = TVI;
+            MenuItem mi4 = new MenuItem();
+            mi4.Header = "Delete Analysis";
+            mi4.Click += Mi4_Click;
+            mi4.Tag = TVI;
             ContextMenu cmenu = new ContextMenu();
             cmenu.Items.Add(mi1);
             cmenu.Items.Add(mi2);
             cmenu.Items.Add(mi3);
+            cmenu.Items.Add(mi4);
             TVI.ContextMenu = cmenu;
             TVI.ContextMenuOpening += TVI_ContextMenuOpening;
 
@@ -1767,6 +1772,19 @@ namespace BlueSky
         private void Mi3_Click(object sender, RoutedEventArgs e)
         {
             SetParentNodeSelectionMode(sender, "Default");
+        }
+
+        private void Mi4_Click(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement fe = sender as FrameworkElement;
+            MenuItem mi = fe as MenuItem;
+            TreeViewItem tvi = mi.Tag as TreeViewItem;//Parent
+            TreeViewItem toolbarTVI = tvi.Items[0] as TreeViewItem;//First child
+            if (toolbarTVI != null)
+            {
+                BSkyOutputOptionsToolbar boot = toolbarTVI.Tag as BSkyOutputOptionsToolbar;//BSkyOutputOptionsToolbar
+                DeleteAnalysis(boot.Analysis);
+            }
         }
 
         private void SetParentNodeSelectionMode(object sender, string mode)
