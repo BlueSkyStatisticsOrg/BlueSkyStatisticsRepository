@@ -124,8 +124,14 @@ namespace BlueSky.Commands.Analytics.TTest
             if (UIController.GetActiveDocument().isUnprocessed)
             {
                 NewDatasetProcessor procDS = new NewDatasetProcessor();
-                procDS.ProcessNewDataset("", true);
-                UIController.GetActiveDocument().isUnprocessed = false;
+                bool isProcessed = procDS.ProcessNewDataset("", true);
+                if (isProcessed)//true:empty rows cols removed successfully. False: whole dataset was empty and nothing was removed.
+                {
+                    UIController.GetActiveDocument().isUnprocessed = false;
+                    PreExecuteSub();// ds = UIController.GetActiveDocument();//processed dataset
+                }
+                else
+                    return;
             }
             //for getting dialog xaml filename in logs.
             logService.WriteToLogLevel("XAML name : " + TemplateFileName, LogLevelEnum.Info);

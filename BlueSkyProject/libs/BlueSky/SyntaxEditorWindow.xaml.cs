@@ -2635,6 +2635,19 @@ namespace BlueSky
                 SendToOutput("", ref lst, ow);//send dataframe/matrix/array to output window or disk file
         }
 
+        public string ExecuteBoolCommand(string stmt)
+        {
+            string res = string.Empty;
+            CommandRequest cmddf = new CommandRequest();
+            //Find class of data passed. data.frame, matrix, or array
+            cmddf.CommandSyntax = stmt; // Row exists
+            object retres = analytics.ExecuteR(cmddf, true, false);
+
+            if (retres != null)
+                res = retres.ToString();
+            return res;
+        }
+
         REngine engine;
 
         private void InitializeRDotNet()

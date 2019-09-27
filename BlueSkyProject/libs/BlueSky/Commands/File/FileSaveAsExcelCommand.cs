@@ -27,12 +27,19 @@ namespace BlueSky.Commands.File
             IDataService service = container.Resolve<IDataService>();
             IUIController controller = container.Resolve<IUIController>();
 
-
             if (controller.GetActiveDocument().isUnprocessed)
             {
                 NewDatasetProcessor procDS = new NewDatasetProcessor();
-                procDS.ProcessNewDataset("", true);
-                controller.GetActiveDocument().isUnprocessed = false;
+                bool isProcessed = procDS.ProcessNewDataset("", true);
+                if (isProcessed)//true:empty rows cols removed successfully. False: whole dataset was empty and nothing was removed.
+                {
+                    controller.GetActiveDocument().isUnprocessed = false;
+                }
+                else
+                {
+                    BSkyMouseBusyHandler.HideMouseBusy();
+                    return;
+                }
             }
 
             //Get current filetype from loaded dataset. This is file extension and Filter
