@@ -1746,7 +1746,7 @@ namespace BlueSky
             mi3.Click += Mi3_Click;
             mi3.Tag = TVI;
             MenuItem mi4 = new MenuItem();
-            mi4.Header = "Delete Analysis";
+            mi4.Header = "Delete";
             mi4.Click += Mi4_Click;
             mi4.Tag = TVI;
             ContextMenu cmenu = new ContextMenu();
