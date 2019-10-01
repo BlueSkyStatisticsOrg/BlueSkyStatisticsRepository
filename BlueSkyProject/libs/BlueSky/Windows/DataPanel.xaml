@@ -83,7 +83,7 @@
                                 CommittingNewRow ="gridControl1_CommittingNewRow"
                                 CommittedNewRow="gridControl1_CommittedNewRow"
                                 Loaded="gridControl1_Loaded" 
-                                
+                                PreviewKeyDown="GridControl1_KeyDown"
                                 CommittingEdit="gridControl1_CommittingEdit"
                                 BeginningEdit="gridControl1_BeginningEdit"
                                 SelectionChanged="gridControl1_SelectionChanged" 

@@ -2960,7 +2960,14 @@ namespace BlueSky.Windows
             }
         }
 
-
+        //end editing if arrow keys pressed in datagrid cell
+        private void GridControl1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Left || e.Key == Key.Up || e.Key == Key.Right || e.Key == Key.Down)
+            {
+                gridControl1.EndEdit(true, true);
+            }
+        }
 
         void LoadNextColSet()
         {
