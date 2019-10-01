@@ -1372,7 +1372,7 @@ namespace BlueSky.Commands.Analytics.TTest
             if (sliceco != null)
                 sewindow.AddToSession(sliceco);
             if (cmd.CommandSyntax != null && cmd.CommandSyntax.Length > 0)
-                sewindow.RunCommands(cmd.CommandSyntax, dlgprop);//, sessionheader);
+                sewindow.RunCommands(cmd.CommandSyntax, dlgprop, ds.FileName);//, sessionheader);
 
             //22Nov2013
             //if sessionTitle is empty that means there are more (split)slices to execute
