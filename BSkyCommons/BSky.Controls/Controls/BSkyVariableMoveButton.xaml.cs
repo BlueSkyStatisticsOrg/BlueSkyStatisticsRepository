@@ -9,9 +9,28 @@ using System.Windows.Media.Effects;
 using BSky.Interfaces.Controls;
 using BSky.Statistics.Common;
 using System.Windows.Data;
+using System.Linq;
+using BSky.Interfaces.Interfaces;
+using BSky.Lifetime;
 
 namespace BSky.Controls
 {
+
+    public class Item
+    {
+
+        public int Id
+        {
+            get; set;
+        }
+
+        public DataSourceVariable Vars
+        {
+            get; set;
+        }
+
+    }
+
     [TypeConverter(typeof(PropertySorter))]
     [DefaultPropertyAttribute("Type")]
     public partial class BSkyVariableMoveButton : Button, IBSkyControl
@@ -576,6 +595,7 @@ namespace BSky.Controls
         }
 
 
+        private List<string> GetAllVars()        {            IUIController UIController;            UIController = LifetimeService.Instance.Container.Resolve<IUIController>();            List<string> originalvarlist = new List<string>();            DataSource ds = UIController.GetActiveDocument();            List<DataSourceVariable> org = ds.Variables;            foreach (DataSourceVariable dsv in org)            {                originalvarlist.Add(dsv.RName);            }            return originalvarlist;        }
 
 
 
@@ -736,12 +756,13 @@ namespace BSky.Controls
                     //If there are valid variables then move them
                     if (validVars.Count != 0)
                     {
-                        vTargetListBoxDatasets.AddItems(validVars);
+                        vTargetListBoxDatasets.AddItems(validVars as List<object>);
                         
                         //The code below unselects everything
                         vTargetListBoxDatasets.UnselectAll();
                         //The code below selects all the items that are moved
-                        vTargetListBoxDatasets.SetSelectedItems(validVars);
+                        vTargetListBoxDatasets.SetSelectedItems(validVars as List<object> );
+                      
                         //Added by Aaron on 12/24/2012 to get the items moved scrolled into view
                         //Added by Aaron on 12/24/2012. Value is 0 as you want to scroll to the top of the selected items
                         vTargetListBoxDatasets.ScrollIntoView(validVars[0]);
@@ -886,11 +907,11 @@ namespace BSky.Controls
                                 }
                             }
 
-                            vTargetList.AddItems(validVars);
+                            vTargetList.AddItems(validVars as List<object>);
                             //The code below unselects everything
                             vTargetList.UnselectAll();
                             //The code below selects all the items that are moved
-                            vTargetList.SetSelectedItems(validVars);
+                            vTargetList.SetSelectedItems(validVars as List<object>);
                             //Added by Aaron on 12/24/2012 to get the items moved scrolled into view
                             //Added by Aaron on 12/24/2012. Value is 0 as you want to scroll to the top of the selected items
                             vTargetList.ScrollIntoView(validVars[0]);
@@ -960,7 +981,7 @@ namespace BSky.Controls
 
                             }
 
-                            tempVars = validVars;
+                            tempVars = validVars as List<object>;
                             for (i = 0; i < noSelectedItems; i++)
                             {
                                 //Added by Aaron 08/12/2014
@@ -1122,7 +1143,8 @@ namespace BSky.Controls
                     //If there are variables that don't meet filter criteria, inform the user
                     if (invalidVars.Count > 0)
                     {
-                        string cantMove = string.Join(",", invalidVars.ToArray());
+                        List<object> ls = invalidVars as List<object>; 
+                        string cantMove = string.Join(",", ls.ToArray());
                         System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show("The variable(s) \"" + cantMove + "\" cannot be moved, the destination variable list does not allow variables of that type", "Save Changes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
                     }
                 }
@@ -1131,7 +1153,11 @@ namespace BSky.Controls
             //Moving from destination to source, there are following cases, moving from dataset list to source, moving from destination variable list to source variable list, moving from grouping variable to source
             else if (Tag.ToString() == TO_SOURCE)
             {
+
+                //string originalOrder;
+                //List <string> originalOrder = new List <String> {"subject","gender","scenario","attitude","frequency","gendeXattitude","subject_attitude" ,"scenaio_attitude" };
                 //Case of moving to a dataset list
+                List<string> originalOrder = GetAllVars();
                 if (vTargetListBoxDatasets != null)
                 {
                     noSelectedItems = vTargetListBoxDatasets.SelectedItems.Count;
@@ -1183,9 +1209,9 @@ namespace BSky.Controls
                     }
                     if (validVars.Count != 0)
                     {
-                        vInputListBoxDatasets.AddItems(validVars);
+                        vInputListBoxDatasets.AddItems(validVars as List<object>);
                         vInputListBoxDatasets.UnselectAll();
-                        vInputListBoxDatasets.SetSelectedItems(validVars);
+                        vInputListBoxDatasets.SetSelectedItems(validVars as List<object>);
                         vInputListBoxDatasets.ScrollIntoView(validVars[0]);
 
 
@@ -1225,96 +1251,133 @@ namespace BSky.Controls
                     if (vTargetList !=null)
                     {
 
-                noSelectedItems = vTargetList.SelectedItems.Count;
+                        noSelectedItems = vTargetList.SelectedItems.Count;
 
-                if (noSelectedItems == 0)
-                {
-                    diagResult = System.Windows.Forms.MessageBox.Show("You need to select a variable from the  list before clicking the move button", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
-                    return;
-                }
-
-
-                if (vInputList.GetType().Name == "SingleItemList" && noSelectedItems > 1)
-                {
-                    diagResult = System.Windows.Forms.MessageBox.Show("You cannot move more than 1 variable into a grouping variable list", "Message", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
-                    return;
-                }
+                        if (noSelectedItems == 0)
+                        {
+                            diagResult = System.Windows.Forms.MessageBox.Show("You need to select a variable from the  list before clicking the move button", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                            return;
+                        }
 
 
-                double maxnoofvars = -1;
-                if (vInputList.maxNoOfVariables != string.Empty && vInputList.maxNoOfVariables != null)
-                {
-                    try
-                    {
-                        maxnoofvars = Convert.ToDouble(vInputList.maxNoOfVariables);
-                        //Console.WriteLine("Converted '{0}' to {1}.", vTargetList.maxNoOfVariables, maxnoofvars);
+                        if (vInputList.GetType().Name == "SingleItemList" && noSelectedItems > 1)
+                        {
+                            diagResult = System.Windows.Forms.MessageBox.Show("You cannot move more than 1 variable into a grouping variable list", "Message", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                            return;
+                        }
 
-                        // diagResult = System.Windows.Forms.MessageBox.Show("An invalid value has been entered for the maximum number of variables in the destination variable list" , "Message", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
-                       // return;
-                    }
-                    catch (FormatException)
-                    {
-                        diagResult = System.Windows.Forms.MessageBox.Show("An invalid value has been entered for the maximum number of variables in the target variable list", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
-                    }
-                    catch (OverflowException)
-                    {
-                        diagResult = System.Windows.Forms.MessageBox.Show("An invalid value has been entered for the maximum number of variables in the target  variable list", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
-                    }
-                    if (maxnoofvars < (noSelectedItems + vInputList.ItemsCount))
-                    {
-                        //e.Effects = DragDropEffects.None;
-                        //e.Handled = true;
-                        message = "The target variable list cannot have more than " + vTargetList.maxNoOfVariables + "variables. Please reduce your selection or remove variables from the target list";
-                        diagResult = System.Windows.Forms.MessageBox.Show(message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
-                        return;
 
-                    }
-                }
-                for (i = 0; i < noSelectedItems; i++)
-                {
-                    //Added by Aaron 08/12/2014
-                    //Line below ensures that I move items from the target to the source only when the items are not in the source
-                    //If Item already exists in target I ignore
-                    if (!vInputList.Items.Contains(vTargetList.SelectedItems[i]))
-                    {
-                        filterResults = vInputList.CheckForFilter(vTargetList.SelectedItems[i]);
-                        if (filterResults) validVars.Add(vTargetList.SelectedItems[i]);
-                        else invalidVars.Add(vTargetList.SelectedItems[i]);
-                    }
-                }
+                        double maxnoofvars = -1;
+                        if (vInputList.maxNoOfVariables != string.Empty && vInputList.maxNoOfVariables != null)
+                        {
+                             try
+                                    {
+                                        maxnoofvars = Convert.ToDouble(vInputList.maxNoOfVariables);
+                                        //Console.WriteLine("Converted '{0}' to {1}.", vTargetList.maxNoOfVariables, maxnoofvars);
+
+                                        // diagResult = System.Windows.Forms.MessageBox.Show("An invalid value has been entered for the maximum number of variables in the destination variable list" , "Message", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                                       // return;
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        diagResult = System.Windows.Forms.MessageBox.Show("An invalid value has been entered for the maximum number of variables in the target variable list", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                                    }
+                                    catch (OverflowException)
+                                    {
+                                        diagResult = System.Windows.Forms.MessageBox.Show("An invalid value has been entered for the maximum number of variables in the target  variable list", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                                    }
+                                    if (maxnoofvars < (noSelectedItems + vInputList.ItemsCount))
+                                    {
+                                        //e.Effects = DragDropEffects.None;
+                                        //e.Handled = true;
+                                        message = "The target variable list cannot have more than " + vTargetList.maxNoOfVariables + "variables. Please reduce your selection or remove variables from the target list";
+                                        diagResult = System.Windows.Forms.MessageBox.Show(message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                                        return;
+
+                                    }
+                                }
+                            for (i = 0; i < noSelectedItems; i++)
+                            {
+                                    //Added by Aaron 08/12/2014
+                                    //Line below ensures that I move items from the target to the source only when the items are not in the source
+                                    //If Item already exists in target I ignore
+                                    if (!vInputList.Items.Contains(vTargetList.SelectedItems[i]))
+                                    {
+                                        filterResults = vInputList.CheckForFilter(vTargetList.SelectedItems[i]);
+                                        if (filterResults) validVars.Add(vTargetList.SelectedItems[i]);
+                                        else invalidVars.Add(vTargetList.SelectedItems[i]);
+                                    }
+                            }
+                 
                 if (validVars.Count != 0)
                 {
 
-                    //if (vTargetDragDropListForSummarize != null)
-                    //{
-                    //    List<object> tempVars = new List<object>();
-                    //    tempVars = validVars;
+                            //if (vTargetDragDropListForSummarize != null)
+                            //{
+                            //    List<object> tempVars = new List<object>();
+                            //    tempVars = validVars;
 
-                    //    foreach (object obj1 in tempVars)
-                    //    {
-                    //        DataSourceVariable ds2 = obj1 as DataSourceVariable;
-                    //        firstpos = ds2.Name.IndexOf(@"(");
-                    //        lastpos = ds2.Name.IndexOf(@")");
-                    //        ds2.XName = ds2.XName.Substring(firstpos + 1, (lastpos - (firstpos + 1)));
-                    //    }
-                    //    vInputList.AddItems(tempVars);
-                    //    vInputList.UnselectAll();
-                    //    vInputList.SetSelectedItems(tempVars);
-                    //    vInputList.ScrollIntoView(tempVars[0]);
+                            //    foreach (object obj1 in tempVars)
+                            //    {
+                            //        DataSourceVariable ds2 = obj1 as DataSourceVariable;
+                            //        firstpos = ds2.Name.IndexOf(@"(");
+                            //        lastpos = ds2.Name.IndexOf(@")");
+                            //        ds2.XName = ds2.XName.Substring(firstpos + 1, (lastpos - (firstpos + 1)));
+                            //    }
+                            //    vInputList.AddItems(tempVars);
+                            //    vInputList.UnselectAll();
+                            //    vInputList.SetSelectedItems(tempVars);
+                            //    vInputList.ScrollIntoView(tempVars[0]);
+
+                            //}
+                            //else
+                            //{
+
+                            //  vInputList.AddItems(validVars);
+
+                            ///////////////////////////////////////////////////////////////////////////////////////////
+                            ListCollectionView view = vInputList.ItemsSource as ListCollectionView;
+
+                            IList<DataSourceVariable> srcVars = view.SourceCollection as IList<DataSourceVariable>;
+
+                            List<string> unorderedSourceVariables = new List<string>();
+
                         
-                    //}
-                    //else
-                    //{
-                        vInputList.AddItems(validVars);
-                        vInputList.UnselectAll();
-                        vInputList.SetSelectedItems(validVars);
-                        vInputList.ScrollIntoView(validVars[0]);
+                            IList<Item> Items = new List<Item>();
+                        
+                            foreach ( DataSourceVariable obj1 in srcVars)
+                            {
+                                Items.Add(new Item() { Id = originalOrder.IndexOf(obj1.RName), Vars= obj1 });
+                            }
+                            foreach (DataSourceVariable obj2 in validVars)
+                            {
+                                Items.Add(new Item() { Id = originalOrder.IndexOf(obj2.RName), Vars = obj2 });
+                            }
+
+                            //09/30/2019
+                            Items = Items.OrderBy(f=>f.Id).ToList();
+
+                            List < DataSourceVariable > newSrcVars = new List<DataSourceVariable>(); 
+
+                            foreach( Item obj4 in Items)
+                            {
+                                newSrcVars.Add(obj4.Vars);
+                            }
+
+
+                             vInputList.ItemsSource = new ListCollectionView(newSrcVars);
+
+                           // vInputList.Items.Insert()
+                            vInputList.UnselectAll();
+                            vInputList.SetSelectedItems(validVars as List<object>);
+                            vInputList.ScrollIntoView(validVars[0]);
                     }
                     
                     if (vTargetList.MoveVariables) 
                     {
                         ListCollectionView lcw = vTargetList.ItemsSource as ListCollectionView;
                         foreach (object obj in validVars) lcw.Remove(obj);
+                        
                     }
 
                     vInputList.Focus();
@@ -1395,7 +1458,7 @@ namespace BSky.Controls
                             //if (vTargetDragDropListForSummarize != null)
                             //{
                             List<object> tempVars = new List<object>();
-                            tempVars = validVars;
+                            tempVars = validVars as List<object>;
                             foreach (object obj1 in tempVars)
                             {
                                     DataSourceVariable ds2 = obj1 as DataSourceVariable;
@@ -1498,7 +1561,8 @@ namespace BSky.Controls
                 
                 if (invalidVars.Count > 0)
                 {
-                    string cantMove = string.Join(",", invalidVars.ToArray());
+                        List <object> ls1 = invalidVars as List<object>;
+                        string cantMove = string.Join(",", ls1.ToArray());
                     //string cantMove = invalidVars.ToString();
                     System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show("The variable(s) \"" + cantMove + "\" cannot be moved, the destination variable list does not allow variables of that type", "Save Changes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
                 }

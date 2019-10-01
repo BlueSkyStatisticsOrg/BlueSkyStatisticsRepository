@@ -82,6 +82,8 @@ namespace BSky.Controls
             //Checking whether variables moved are allowed by the destination filter
             //validVars meet filter requirements
             //invalidVars don't meet filter requirements
+            
+
 
 
             if (vTargetList != null)
@@ -99,7 +101,6 @@ namespace BSky.Controls
                     diagResult = System.Windows.Forms.MessageBox.Show("You cannot move more than 1 variable into a grouping variable list", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
                     return;
                 }
-
                 if (noSelectedItems > 1)
                 {
                     diagResult = System.Windows.Forms.MessageBox.Show("You need to select 1 variable at a time from the source variable list to specify a nested effect. You have more than 1 variable selected in the source variable list", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
@@ -110,12 +111,17 @@ namespace BSky.Controls
                 //Added the code below to support listboxes that only allow a pre-specified number of items or less
                 //I add the number of preexisting items to the number of selected items and if it is greater than limit, I show an error
 
-                if (vTargetList.SelectedItems.Count > 0)
+                if (vTargetList.SelectedItems.Count > 1)
                 {
                     diagResult = System.Windows.Forms.MessageBox.Show("You need to select 1 variable from the source variable list and 1 variable from the target variable to specify a nested effect. You have more than 1 variable selected in the target variable list.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
                     return;
                 }
 
+                if (vTargetList.SelectedItems.Count == 0)
+                {
+                    diagResult = System.Windows.Forms.MessageBox.Show("You need to select 1 variable from the source variable list and 1 variable from the target variable to specify a nested effect. The target variable list is empty. You need to add a variable to the target variable list and then create a nested effect.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                    return;
+                }
 
                 if (vTargetList.maxNoOfVariables != string.Empty && vTargetList.maxNoOfVariables != null)
                 {
@@ -148,14 +154,32 @@ namespace BSky.Controls
                 }
 
 
-
+                
                 DataSourceVariable inputVar = vInputList.SelectedItems[0] as DataSourceVariable;
 
 
 
-                //Preferred 
+                // vTargetList.ItemsSource
+                //vTargetList.ItemsSource
 
-                DataSourceVariable ds = vTargetList.SelectedItems[0] as DataSourceVariable;
+                //Preferred 
+                ListCollectionView temp;
+                temp = vTargetList.ItemsSource as ListCollectionView;
+                int selectedIndex = 0;
+                selectedIndex = vTargetList.SelectedIndex;
+                int count = vTargetList.ItemsCount;
+
+                for (i = 0; i < count; i++)
+                {
+                   validVars.Add(vTargetList.Items[i]);
+                }
+
+                ListCollectionView lcw = vTargetList.ItemsSource as ListCollectionView;
+                foreach (object obj in validVars) lcw.Remove(obj);
+
+                DataSourceVariable ds = validVars[selectedIndex] as DataSourceVariable;
+                
+               // DataSourceVariable ds = preview[index] as DataSourceVariable;
 
                 //DataSourceVariable ds = new DataSourceVariable();
                 newvar = inputVar.Name + "(" + ds.Name + ")";
@@ -170,14 +194,17 @@ namespace BSky.Controls
                 ds.Alignment = inputVar.Alignment;
 
                 ds.ImgURL = inputVar.ImgURL;
-                //validVars.Add(ds as object);
-                //  vTargetList.AddItems(validVars);
+                validVars[selectedIndex] = ds;
+
+               // vTargetList.ItemsSource = preview;
+               // validVars.Add(ds as object);
+                 // vTargetList.AddItems(validVars);
 
                 // vInputList.SelectedItems[i]
                 //    validVars.Add(vInputList.SelectedItems[1]);
 
 
-                // vTargetList.AddItems(validVars);
+                vTargetList.AddItems(validVars);
                 //The code below unselects everything
                 //      vTargetList.UnselectAll();
                 //The code below selects all the items that are moved
@@ -192,6 +219,7 @@ namespace BSky.Controls
                 //  ListCollectionView lcw = vInputList.ItemsSource as ListCollectionView;
                 //foreach (object obj in validVars) lcw.Remove(obj);
                 //}
+                vTargetList.ScrollIntoView(validVars[selectedIndex]);
                 vTargetList.Focus();
 
 
