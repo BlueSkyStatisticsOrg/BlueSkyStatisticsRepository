@@ -1258,7 +1258,7 @@
     <comment>DataPAnel.xaml : text for ValueLabelsSubDialog providing field for user to enter new level</comment>
   </data>
   <data name="lblExampleRHomeDir2" xml:space="preserve">
-    <value>예 : ./R-3.4.2 또는  ./R-3.4.4</value>
+    <value>이 설정을 변경하지 마십시오. 항상 BlueSky Statistics 설치 폴더에 설치된 R을 가리켜 야합니다. 예 : ./R-3.6.1</value>
     <comment>RHomeConfigWindow.xaml : Example below RHome text field</comment>
   </data>
   <data name="RHomeDirLabel" xml:space="preserve">

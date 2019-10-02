@@ -45,7 +45,7 @@
                     <Label Grid.Row="2" Content="{x:Static uires:UICtrlResources.lblRHomeDir}"  Name="labelrhome" />
                     <StackPanel Grid.Row="2" Grid.Column="1">
                         <TextBox  Height="24" Margin="3" Name="rhome" MinWidth="200" Text="{Binding Path=[rhome], UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Margin="4,0" Text="{x:Static uires:UICtrlResources.lblExampleRHomeDir}"></TextBlock>
+                        <TextBlock Margin="4,0" TextWrapping="Wrap" MaxWidth="500" Text="{x:Static uires:UICtrlResources.lblExampleRHomeDir2}"></TextBlock>
                     </StackPanel>
                     <Button Grid.Row="2" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2" Margin="3" Name="rhomebrowse" VerticalAlignment="Top" MinWidth="50" Click="rhomebrowse_Click" />
 

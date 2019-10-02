@@ -1114,7 +1114,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Example: ./R-3.4.2  OR  ./R-3.4.4.
+        ///   Looks up a localized string similar to Do not change this setting. It should always point to the R that is installed under BlueSky Statistics installation folder. Example: ./R-3.6.1.
         /// </summary>
         public static string lblExampleRHomeDir2 {
             get {

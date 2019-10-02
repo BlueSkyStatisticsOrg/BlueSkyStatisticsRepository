@@ -1261,7 +1261,7 @@
     <comment>DataPAnel.xaml : text for ValueLabelsSubDialog providing field for user to enter new level</comment>
   </data>
   <data name="lblExampleRHomeDir2" xml:space="preserve">
-    <value>Example: ./R-3.4.2  OR  ./R-3.4.4</value>
+    <value>Do not change this setting. It should always point to the R that is installed under BlueSky Statistics installation folder. Example: ./R-3.6.1</value>
     <comment>RHomeConfigWindow.xaml : Example below RHome text field</comment>
   </data>
   <data name="RHomeDirLabel" xml:space="preserve">
