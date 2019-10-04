@@ -641,7 +641,7 @@ namespace BlueSky.Commands.File
                         elapsed = stopwatch.ElapsedMilliseconds;
                         if (AdvancedLogging) logService.WriteToLogLevel("PERFORMANCE:Grid loading: Time taken: " + elapsed, LogLevelEnum.Info);
                     }
-                    ds.Changed = true; // keep track of change made, so that it can prompt for saving while closing dataset tab.
+                    //ds.Changed = true; // keep track of change made, so that it can prompt for saving while closing dataset tab.
                     logService.WriteToLogLevel("Finished Loading Dataframe: " + ds.Name, LogLevelEnum.Info);
                     //recentfiles.AddXMLItem(dframename);//adding to XML file for recent docs
                     isSuccess = true;

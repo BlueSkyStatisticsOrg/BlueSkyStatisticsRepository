@@ -362,7 +362,7 @@ namespace BlueSky.Services
                 datapanel.InitializeDynamicColIndexes(); // then reset the start and end indexes (to 0 and 15)
             }
 
-
+            ds.Changed = true;//False +ve cases:scrolling to next page, refreshing grid without modifying
             //IList list = new VirtualListDynamic(_analyticsService, ds);
             VirtualListDynamic vld = new VirtualListDynamic(_analyticsService, ds);
             vld.DataF = _analyticsService.GetDataFrame(ds);
