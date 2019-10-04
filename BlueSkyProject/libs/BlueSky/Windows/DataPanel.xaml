@@ -236,12 +236,17 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="1" Name="statusbar" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text=""></TextBlock>
-            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-                <TextBlock Margin="0,0,5,0" Name="endpagestatus" Foreground="Orange"></TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="2" Name="statusbar" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text=""></TextBlock>
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Image Name="newDShelpimg" Source="pack://application:,,,/BlueSky;component/Images/info.png"/>
+                <TextBlock Name="newDShelptxt" Margin="5,0,0,0" VerticalAlignment="Bottom" Text="">To add new variables click on the "Variables" tab.</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" >
+                <TextBlock Margin="0,0,5,0" Name="endpagestatus" Foreground="DarkOrange"></TextBlock>
                 <Button Name="leftmostpagebutton" Click="leftmostpagebutton_Click" Width="16" Height="16"  Background="Transparent" BorderThickness="0" ToolTip="First">
                     <StackPanel>
                         <Image Name="firstimg" Source="pack://application:,,,/BlueSky;component/Images/pagination_first.png"/>

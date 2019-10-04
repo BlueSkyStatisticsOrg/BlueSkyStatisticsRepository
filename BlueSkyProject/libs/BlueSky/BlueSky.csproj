@@ -708,6 +708,7 @@
     <Resource Include="Images\paginationGray_previous.png" />
     <Resource Include="Images\input.png" />
     <Resource Include="Images\comingsoon.png" />
+    <Resource Include="Images\info.png" />
     <Content Include="Images\none.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
