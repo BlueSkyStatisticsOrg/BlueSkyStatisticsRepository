@@ -380,22 +380,23 @@ namespace BlueSky.Commands.Analytics.TTest
             //Commented 2 Lines below  
             // BSkyCanvas.chainOpenCanvas.Clear();
             // BSkyCanvas.chainOpenCanvas.Add(cs);
+            
             cmd = new CommandRequest();//set Global var
             element = obj as FrameworkElement;////set Global var
             window = new BaseOptionWindow();////set Global var
             window.Template = element;
             element.DataContext = this; // loading vars in left listbox(source)
-
+            window.Topmost = true;
             window.IsEnabled = enableDialog;//this will disable if prerequisite are not met
-
+            
             #region For Spark dialogs only
             //31Jul2017 here we are using package name to detect Spark dialog but 
             //we can add a new bool property to canvas say isSparkDialog to do the same
-////if (cs.RPackages.Contains("SparkR"))
-////{
+            ////if (cs.RPackages.Contains("SparkR"))
+            ////{
 
-////}
-            
+            ////}
+
             #endregion
 
             // If a form is displayed as modal, the code following the ShowDialog method is not executed  
