@@ -306,7 +306,7 @@ namespace BlueSky.Model
                                 if (_DF[fIndex, i].ToString() == "NA" ||
                                    _DF[fIndex, i].ToString().Trim().Equals("-2147483648"))
                                 {
-                                    rdata[j] = "<NA>";
+                                    rdata[j] = "NA";// "<NA>"; 07Oct2019 in integer missing value was<NA> in UI while NA in R. So I replaced <NA> with NA.
                                 }
                                 else if (_DF[fIndex, i].ToString() == "NaN")
                                 {
