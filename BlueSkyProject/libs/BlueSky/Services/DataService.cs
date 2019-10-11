@@ -495,6 +495,7 @@ if (ds == null)//20Oct2016 Making UI grid NULL
             ds.HasHeader = dsourceName.HasHeader;
             ds.IsBasketData = dsourceName.IsBasketData;
 
+            ds.isUnprocessed = dsourceName.isUnprocessed;//for new dataset
             if (ds != null)//03Dec2012
             {
                 
