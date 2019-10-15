@@ -2963,9 +2963,18 @@ namespace BlueSky.Windows
         //end editing if arrow keys pressed in datagrid cell
         private void GridControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Left || e.Key == Key.Up || e.Key == Key.Right || e.Key == Key.Down)
+            if (e.Key == Key.Left || e.Key == Key.Up || e.Key == Key.Right || e.Key == Key.Down || e.Key == Key.Enter)
             {
                 gridControl1.EndEdit(true, true);
+                if (e.Key == Key.Enter)
+                {
+                    if (gridControl1.CurrentCell.Row.Index < gridControl1.Rows.Count - 2)
+                    {
+                        gridControl1.BeginEdit(gridControl1.CurrentCell.Row.Index, gridControl1.CurrentCell.Column.Index);
+                    }
+                    else
+                        return;
+                }
             }
         }
 

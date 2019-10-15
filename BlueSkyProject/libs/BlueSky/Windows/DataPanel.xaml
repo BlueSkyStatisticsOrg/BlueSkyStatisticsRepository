@@ -73,7 +73,7 @@
         <TabControl Grid.Row="0" Name="datavartabs" TabStripPlacement="Bottom" Background="#FFD7E6F7" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="{x:Static uires:UICtrlResources.lblDataTab}"  DataContext="{Binding}">
 
-                <c1:C1DataGrid  HorizontalAlignment="Stretch" 
+                <c1:C1DataGrid  HorizontalAlignment="Stretch"
                                 AutoGenerateColumns="True"  HorizontalScrollBarVisibility="Visible"
                                 ShowGroupingPanel="False" Name="gridControl1"
                                 VerticalAlignment="Top" SelectionMode="SingleRange"
