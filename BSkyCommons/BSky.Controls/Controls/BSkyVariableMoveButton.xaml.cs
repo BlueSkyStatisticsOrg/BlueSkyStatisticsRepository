@@ -595,7 +595,19 @@ namespace BSky.Controls
         }
 
 
-        private List<string> GetAllVars()        {            IUIController UIController;            UIController = LifetimeService.Instance.Container.Resolve<IUIController>();            List<string> originalvarlist = new List<string>();            DataSource ds = UIController.GetActiveDocument();            List<DataSourceVariable> org = ds.Variables;            foreach (DataSourceVariable dsv in org)            {                originalvarlist.Add(dsv.RName);            }            return originalvarlist;        }
+        private List<string> GetAllVars()
+        {
+            IUIController UIController;
+            UIController = LifetimeService.Instance.Container.Resolve<IUIController>();
+            List<string> originalvarlist = new List<string>();
+            DataSource ds = UIController.GetActiveDocument();
+            List<DataSourceVariable> org = ds.Variables;
+            foreach (DataSourceVariable dsv in org)
+            {
+                originalvarlist.Add(dsv.RName);
+            }
+            return originalvarlist;
+        }
 
 
 
