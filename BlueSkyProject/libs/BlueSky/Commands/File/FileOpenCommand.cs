@@ -607,7 +607,10 @@ namespace BlueSky.Commands.File
                 stopwatch.Restart();
                 if (fname.Length == 0)
                 {
-                    fname = dframename;
+                    if (isDatasetNew)//new dataset may not have filename so R dataset obj name(DatasetX or mydf) is used.
+                        fname = dframename;
+                    else
+                        fname = filename;//existing dataframe should retain original filename.
                 }
                 DataSource ds = service.OpenDataframe(dframename, sheetname, fname);
                 //ds.FileName = fname;
