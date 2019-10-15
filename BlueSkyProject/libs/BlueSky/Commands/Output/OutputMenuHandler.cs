@@ -24,7 +24,7 @@ namespace BlueSky.Commands.Output
 
             outputmenu = CreateItem(item); 
             allOutputMenus.Add(outputmenu);//adding output menu to common list
-            AddDefaultOutputMenuItem();
+            //15Aug2019 AddDefaultOutputMenuItem();//NEW and OPEN output in the FILE menu. SAVE dropped.
             if (allOutputMenus.Count > 1) // first item is the output menu from App's main window. When App launches, it is first one to create Output menu
                 CreateClone();/// for newly opened Syntax Editor window ///
         }
