@@ -58,9 +58,7 @@ namespace BlueSky
                 _analyticService = analytics;
                 MainWindowMenuFactory mf = new MainWindowMenuFactory( Menu, maintoolbar, dashBoardService, "test");
 
-                //Menu.Items.Insert(Menu.Items.Count - 2, omh.OutputMenu); Output menu is no more in main menu. It's moved inside File menu
-                (Menu.Items[0] as MenuItem).Items.Insert(6, new Separator());
-                (Menu.Items[0] as MenuItem).Items.Insert(7, omh.OutputMenu);
+                Menu.Items.Insert(Menu.Items.Count - 2, omh.OutputMenu);
                 RefreshRecent();//recent menu
                 Menu.Items.Insert(Menu.Items.Count - 2, chmh.CommandHistMenu);
 
