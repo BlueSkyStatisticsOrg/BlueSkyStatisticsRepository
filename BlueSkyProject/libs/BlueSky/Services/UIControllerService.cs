@@ -352,6 +352,7 @@ namespace BlueSky.Services
         public void RefreshDataSet(DataSource ds)//A.
         {
             TabItem panel = GetTabItem(ds);//04Sep2014
+            if (panel == null) return; //fix for crash when for some reason the existing dataset tab is not found
             //04Sep2014 TabItem panel = docGroup.SelectedItem as TabItem;//we dont want active tab. Instead we need tab that matches the title "Dataset1"
             DataPanel datapanel = panel.Content as DataPanel;
 
@@ -394,6 +395,7 @@ namespace BlueSky.Services
         {
             RefreshDataSet(ds); //Refresh DataGrid
             TabItem panel = GetTabItem(ds);//04Sep2014
+            if (panel == null) return; //fix for crash when for some reason the existing dataset tab is not found
             //04Sep2014 TabItem panel = docGroup.SelectedItem as TabItem;//we dont want active tab. Instead we need tab that matches the title "Dataset1"
             DataPanel datapanel = panel.Content as DataPanel;
             //datapanel.sortcolnames = sortcolnames; //11Apr2014
@@ -414,6 +416,7 @@ namespace BlueSky.Services
         {
             RefreshDataSet(ds); //Refresh DataGrid
             TabItem panel = GetTabItem(ds);//04Sep2014
+            if (panel == null) return; //fix for crash when for some reason the existing dataset tab is not found
             //04Sep2014 TabItem panel = docGroup.SelectedItem as TabItem;//we dont want active tab. Instead we need tab that matches the title "Dataset1"
             DataPanel datapanel = panel.Content as DataPanel;
 
@@ -427,11 +430,14 @@ namespace BlueSky.Services
             //31May2018
             //refresh datagrid tab. (RData files diff names but same dataframe name, so needs tab title refresh too)
             StackPanel sp = panel.Header as StackPanel;
+            string sheetname = string.Empty;//29Apr2015
+            if (ds.SheetName != null && ds.SheetName.Trim().Length > 0)
+                sheetname = "{" + ds.SheetName + "}";
             Label lb = sp.Children[0] as Label;
             lb.ToolTip = ds.FileName;
             var tabtextcolor = new SolidColorBrush(Color.FromArgb(255, (byte)48, (byte)88, (byte)144));//Foreground="#FF1579DA"
             lb.Foreground = tabtextcolor;
-            lb.Content = Path.GetFileName(ds.FileName) + ds.SheetName + " (" + ds.Name + ")";
+            lb.Content = Path.GetFileName(ds.FileName) + sheetname + " (" + ds.Name + ")";
 
             //datapanel.sortcolnames = sortcolnames; //11Apr2014
             //datapanel.sortorder = sortorder; //14Apr2014
@@ -513,8 +519,22 @@ namespace BlueSky.Services
                 ti = docGroup.Items.GetItemAt(idx) as TabItem;
                 tabFilename = (ti.Tag as DataSource).FileName.Trim();
                 tabName = (ti.Tag as DataSource).Name.Trim();
-                if (tabFilename.Equals(Filename) && tabName.Equals(Name))
-                {
+
+                //21Oct2019 if (tabFilename.Equals(Filename) && tabName.Equals(Name)) //this wont work anymore
+                //there was a case when RData's dataframe name was matching to CSV/Excel dataframe name.
+                //same dataframe and different filename. So filename can't be used in the 'if' because it will not match.
+                //Example: load abc.csv -> Save As -> My.Rdata(with abc.csv). abc.csv file closes and My.Rdata opens with
+                // abc.csv as a dataframe name. Now if you load back the file abc.csv the generated dataframe name will be 
+                // abc.csv. But abc.csv dataframe is already in the grid from My.Rdata file. User will get a propmt to
+                // overwrite. If user selects NO, we don't have to do anything. But user selects YES now we need to
+                // replace the MyData.Rdata DataSource wih the abc.csv file's DataSource and so filenames are not 
+                // matching naymore but dataframe names are. So when we try to get the TabItem, which currently has
+                // My.Rdata filename but the DataSource ds that we passed in this function has filename=abc.csv. This
+                // mismatch will not return me any TabItem and we will not be able to refresh the UI tab and grid 
+                // corretly. So filename match is dropped and we are locating the right TabItem using only the dataframe
+                // name, because dataframe name is also unique in the UI grid.
+                if (tabName.Equals(Name)) //21Oct2019 dataset name is also unique for Tabitem(no more comparing filename)
+                {       
                     found = true;
                     break;
                 }
@@ -606,6 +626,7 @@ namespace BlueSky.Services
         public void closeTab()
         { // Close dataset warning message is shown in FileCloseCommand.cs. And service.Close() is also called there.
             TabItem panel = docGroup.SelectedItem as TabItem;
+            if (panel == null) return; //fix for crash when for some reason the existing dataset tab is not found
             ///docGroup.Remove(panel);
             ///docGroup.SelectedTabIndex=0;
             docGroup.Items.Remove(panel); //OR// closeTab(panel);
@@ -618,6 +639,7 @@ namespace BlueSky.Services
         {
             DataSource closeDS = GetDocumentByName(datasetname);
             TabItem panel = GetTabItem(closeDS);
+            if (panel == null) return; //fix for crash when for some reason the existing dataset tab is not found
             ///docGroup.Remove(panel);
             ///docGroup.SelectedTabIndex=0;
             docGroup.Items.Remove(panel); //OR// closeTab(panel);
