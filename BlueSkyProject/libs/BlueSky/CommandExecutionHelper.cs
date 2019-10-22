@@ -998,7 +998,7 @@ namespace BlueSky
                     ds.Variables = new List<DataSourceVariable>();
                     ds.FileName = DSFname;
                     ds.Name = DSname;
-                    ds.SheetName = "";
+                    ds.SheetName = UtilFunctions.GetSheetname(ds_backup);
                     //ds.FileType = Ftype;
 
                     ds.DecimalCharacter = ds_backup.DecimalCharacter;
@@ -1027,5 +1027,19 @@ namespace BlueSky
         #endregion
 
 
+    }
+
+    public static class UtilFunctions
+    {
+        public static string GetSheetname(DataSource ds)
+        {
+            string nameofsheet = "";
+            if (ds != null && ds.FileName != null)
+            {
+                if (ds.FileName.ToLower().EndsWith(".xls") || ds.FileName.ToLower().EndsWith(".xlsx"))
+                    nameofsheet = ds.SheetName;
+            }
+            return nameofsheet;
+        }
     }
 }

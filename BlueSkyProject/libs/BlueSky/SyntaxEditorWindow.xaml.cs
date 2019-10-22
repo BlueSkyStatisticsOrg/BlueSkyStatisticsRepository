@@ -2385,7 +2385,7 @@ namespace BlueSky
                         ds.Variables = new List<DataSourceVariable>();
                         ds.FileName = oldDs.FileName;
                         ds.Name = dataframename;
-                        ds.SheetName = "";
+                        ds.SheetName = UtilFunctions.GetSheetname(oldDs);
 
                         ds.DecimalCharacter = oldDs.DecimalCharacter;
                         ds.FieldSeparator = oldDs.FieldSeparator;

@@ -1881,7 +1881,7 @@ namespace BlueSky.Commands.Analytics.TTest
                     ds.Variables = new List<DataSourceVariable>();
                     ds.FileName = ds_backup.FileName;// DSFname;
                     ds.Name = ds_backup.Name;// DSname;
-                    ds.SheetName = "";
+                    ds.SheetName = UtilFunctions.GetSheetname(ds_backup); 
 
                     ds.DecimalCharacter = ds_backup.DecimalCharacter;
                     ds.FieldSeparator = ds_backup.FieldSeparator;

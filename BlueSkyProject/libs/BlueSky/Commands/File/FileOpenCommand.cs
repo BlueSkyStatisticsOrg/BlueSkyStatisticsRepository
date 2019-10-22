@@ -595,7 +595,7 @@ namespace BlueSky.Commands.File
             {
                 filename = tempds.FileName;
                 //For Excel
-                sheetname = tempds.SheetName;
+                sheetname = UtilFunctions.GetSheetname(tempds);
             }
             if (filename == null) filename = string.Empty;
             if (sheetname == null) sheetname = string.Empty;
