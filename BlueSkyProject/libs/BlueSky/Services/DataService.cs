@@ -9,6 +9,9 @@ using BSky.XmlDecoder;
 using BSky.Interfaces.Model;
 using BSky.Interfaces.Interfaces;
 using System.Text;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace BlueSky.Services
 {
@@ -91,6 +94,7 @@ namespace BlueSky.Services
             SendToOutput(datasrc);
             return ds;
         }
+
         public string GetUniqueNewDatasetname()
         {
             string newdatasetname = string.Empty;
@@ -104,6 +108,38 @@ namespace BlueSky.Services
             }
             return newdatasetname;
         }
+
+        //if Excel sheet is loaded we also need sheetname so that we
+        //can create dataset name like ExcelFilename+Sheetname
+        //other logic below will make sure dataset name does not have 
+        //any other special characters other than _ and .
+        //spaces are also replaced with underscores.
+        //If there is a number in the begining then we prefix 'D' to it.
+        //if fname is empty then we generate Dataset1, Dataset2 etc.
+
+        public string GetDatasetName(string fname = "", string sheetname="")
+        {
+            string datasetname = string.Empty;
+
+            //generate name from filename
+            if (fname.Length > 0)
+            {
+                if (sheetname.Length > 0)
+                    datasetname = Path.GetFileName(fname) + "." + sheetname;
+                else
+                    datasetname = Path.GetFileName(fname);
+                //drop special characters except dots and underscrores with underscores
+                datasetname = Regex.Replace(datasetname, @"[^a-zA-Z0-9.]+", ".").Replace(" ", ".");
+                //  @"[^\w\._]" //should work like above.
+                //@"[^a-zA-Z0-9_.] supports underscore in filename.
+                if (char.IsNumber(datasetname.ToCharArray().ElementAt(0)))
+                    datasetname = "D" + datasetname;
+            }
+            else
+                datasetname = GetUniqueNewDatasetname();
+            return datasetname;
+        }
+
         public DataSource Open(string filename, string sheetname, bool removeSpacesSPSS=false,  IOpenDataFileOptions odfo=null)
         {
             if (sheetname==null || sheetname.Trim().Length == 0) //29Apr2015 just to make sure sheetname should have valid chars and not spaces.
@@ -112,7 +148,11 @@ namespace BlueSky.Services
             //if (i > 0) i = i / j;
             //filename = filename.ToLower();
             string datasetname = "Dataset" + SessionDatasetCounter;
-
+            string fileExtension = Path.GetExtension(filename).ToLower();
+            if (fileExtension.Equals(".xls") || fileExtension.Equals(".xlsx"))
+                datasetname = GetDatasetName(filename, sheetname);
+            else
+                datasetname = GetDatasetName(filename);
             //28May2018
             //Since now we read rdata files and load multiple data.frames sometimes dataframe
             //names are like Dataset2 or Dataset10 as they were saved-as from BSky grid earlier.
@@ -130,37 +170,37 @@ namespace BlueSky.Services
             // like Dataset11 or Dataset12 until unique dataset name is not found. and then we follow the exisitng
             //  logic of adding new name to _datasources  as well as _datasourcenames
 
-            StringBuilder DSName = new StringBuilder();
-            for (; SessionDatasetCounter < 1000;)
-            {
-                DSName.Clear();
-                DSName.Append("Dataset" + SessionDatasetCounter);
-                if (_datasourcenames.Keys.Contains(DSName.ToString()))
-                {
-                    //Folowing code may not be needed but can be use to differentiate between memory and file datasets
-                    // memory datasets have same string for key-values pair
-                    string val = _datasourcenames[DSName.ToString()];
-                    if (val.Equals(DSName.ToString()))
-                    {
+            ////StringBuilder DSName = new StringBuilder();
+            ////for (; SessionDatasetCounter < 1000;)
+            ////{
+            ////    DSName.Clear();
+            ////    DSName.Append("Dataset" + SessionDatasetCounter);//(GetDatasetName(filename));// 
+            ////    if (_datasourcenames.Keys.Contains(DSName.ToString()))
+            ////    {
+            ////        //Folowing code may not be needed but can be use to differentiate between memory and file datasets
+            ////        // memory datasets have same string for key-values pair
+            ////        string val = _datasourcenames[DSName.ToString()];
+            ////        if (val.Equals(DSName.ToString()))
+            ////        {
 
-                    }
+            ////        }
 
-                    //This is what we need to do to make current dataset name (DatasetNN) unique
-                    //from the memory loaded datasets
-                    SessionDatasetCounter++;
-                }
-                else
-                {
-                    datasetname = DSName.ToString();
-                    break;
-                }
-            }
+            ////        //This is what we need to do to make current dataset name (DatasetNN) unique
+            ////        //from the memory loaded datasets
+            ////        SessionDatasetCounter++;
+            ////    }
+            ////    else
+            ////    {
+            ////        datasetname = DSName.ToString();
+            ////        break;
+            ////    }
+            ////}
 
            
 
             bool keyfound = false, replaceDS=false;
             DataSource uids = null;
-            if (_datasources.Keys.Contains(filename + sheetname)) //Check if dataset is already loaded in the grid
+            if (_datasources.Keys.Contains(filename + sheetname)) //Check if filename is same and dataset is already loaded in the grid
             {
                 //25Oct2016
                 uids = _datasources[filename + sheetname];
@@ -172,6 +212,33 @@ namespace BlueSky.Services
                 }
                 else
                     return _datasources[filename + sheetname];
+            }
+
+            DataSource loadedDS = null;//already loaded DataSource whose dataset name is same as the new one
+            bool datasetkeyfound = _datasourcenames.Keys.Contains(datasetname);
+            if (!keyfound && datasetkeyfound)// different file but same dataset name (as already loaded in UI)
+            {
+                //find the existing DataSource that is to be returned (for NO) and overwritten (for YES)
+                foreach (KeyValuePair<string, DataSource> kvp in _datasources)
+                {
+                    loadedDS = kvp.Value as DataSource;
+                    if (loadedDS.Name.Trim().Equals(datasetname))//loaded dataset found
+                        break;
+                }
+
+                //warn user and get user's choice to overwrite already loaded data.frame or not
+                string msg1 = "Dataset with the same name is already loaded in the datagrid.\n";
+                string msg2 = "Do you want to replace it with the new one?";
+
+                MessageBoxResult mbr = MessageBox.Show(msg1+msg2, "Overwrite exisiting dataset?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (mbr == MessageBoxResult.Yes)
+                {
+                    replaceDS = true;//Overwrite DataSource if user selects YES
+                }
+                else
+                {
+                    return loadedDS;// User selects NO, return this DataSource
+                }
             }
             //25Oct2016 string datasetname = "Dataset" + SessionDatasetCounter;//(_datasources.Keys.Count + 1);//can also be filename without path and extention
             //AnalyticsData data = new AnalyticsData();
@@ -237,18 +304,27 @@ namespace BlueSky.Services
             DataSource ds = datasrc.Datasource.ToClientDataSource();
             if(ds!=null)//03Dec2012
             {
-                if (keyfound)//25Oct2016 dataset already existed but was set to null, somehow
-                { 
+                if (keyfound )//25Oct2016 dataset already existed but was set to null, somehow
+                {
                     //remove its old key/val and then add new(outside 'if' )
                     _datasources.Remove(ds.FileName + ds.SheetName);///key filename
-                    _datasourcenames.Remove(datasetname /*+ ds.SheetName*/);//5Mar2014
+                    //21OCt2019 moved in 'if' below _datasourcenames.Remove(datasetname /*+ ds.SheetName*/);//5Mar2014
                 }
+                else
+                {
+                    if(loadedDS!=null)
+                        _datasources.Remove(loadedDS.FileName + loadedDS.SheetName);///key filename
+                }
+
+                if (datasetkeyfound)
+                    _datasourcenames.Remove(datasetname);
+                //Add new keys
                 _datasources.Add(ds.FileName + ds.SheetName, ds);///key filename
                 _datasourcenames.Add(datasetname /*+ ds.SheetName*/, ds.FileName);//5Mar2014
             }
                                                   
             ///incrementing dataset counter //// 14Feb2013
-            if(!keyfound) SessionDatasetCounter++;
+            //16OCt2019 if(!keyfound) SessionDatasetCounter++;
             SendToOutput(datasrc);
             return ds;
         }
@@ -334,8 +410,8 @@ namespace BlueSky.Services
                         ds.FileName = fname;
                     else
                     {
-                       // ds.FileName = dframename;
-                        ds.SheetName = "";
+                        // ds.FileName = dframename;
+                        ds.SheetName = UtilFunctions.GetSheetname(ds);
                     }
                     #endregion
                 }
@@ -348,7 +424,7 @@ namespace BlueSky.Services
                 //20Oct2016 save a copy for using in 'if' below
                 DataSource ds_for_cleanup = ds;
 
-ds = Refresh(ds); //THIS COULD BE THE LINE THATs CAUSING REFRESHDATASET PERFORMANCE ISSUE
+ds = Refresh(ds); 
 
 if (ds == null)//20Oct2016 Making UI grid NULL
 {
@@ -356,7 +432,7 @@ if (ds == null)//20Oct2016 Making UI grid NULL
     ds.Variables = new List<DataSourceVariable>();//making it blank
     ds.FileName = ds_for_cleanup.FileName;
     ds.Name = ds_for_cleanup.Name;
-    ds.SheetName = "";
+    ds.SheetName = UtilFunctions.GetSheetname(ds_for_cleanup);
                     ds.DecimalCharacter = ds_for_cleanup.DecimalCharacter;
                     ds.FieldSeparator = ds_for_cleanup.FieldSeparator;
                     ds.HasHeader = ds_for_cleanup.HasHeader;
@@ -495,16 +571,17 @@ if (ds == null)//20Oct2016 Making UI grid NULL
             ds.HasHeader = dsourceName.HasHeader;
             ds.IsBasketData = dsourceName.IsBasketData;
 
+            ds.SheetName = UtilFunctions.GetSheetname(dsourceName);//fix for Excel dataset becomes null and reload from disk does not work
             ds.isUnprocessed = dsourceName.isUnprocessed;//for new dataset
             if (ds != null)//03Dec2012
             {
                 
                 //03jun2018 _datasources.Remove(dsourceName.FileName + sheetname);//Remove old
                 _datasources.Remove(_datasourcenames[dsourceName.Name] + sheetname);//Remove old
-                if (ds.FileName.Equals(ds.Name))//its a memory dataframe. Sheetname should be blank
-                {
-                    sheetname = "";
-                }
+                //////if (ds.FileName.Equals(ds.Name))//its a memory dataframe. Sheetname should be blank
+                //////{
+                //////    sheetname = "";
+                //////}
                 _datasources.Add(ds.FileName + sheetname, ds);///Replace ds with new one //25Oct2016 added sheetname
                                                   
                 //5Mar2014 No need to do following but we can still do it
@@ -514,7 +591,7 @@ if (ds == null)//20Oct2016 Making UI grid NULL
 
             //Fix for 'Data > Reload Dataset from File' crash, when run on excel dataset. Missing sheetname was causing the problem.
             //This fix needed modification in few locations. So here is BugID for easy search #JM12Apr16
-            ds.SheetName = sheetname;
+            //////ds.SheetName = sheetname;
             ///incrementing dataset counter //// 14Feb2013
             //SessionDatasetCounter++;
 
