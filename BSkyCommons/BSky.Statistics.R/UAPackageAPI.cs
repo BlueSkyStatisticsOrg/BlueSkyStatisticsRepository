@@ -722,6 +722,25 @@ namespace BSky.Statistics.R
             if (columnNames.Distinct().Count() == columnNames.Count())
                 isDuplicate = false;
 
+            #region Get list of duplicates for debugging purpose
+            //List<string> unique = new List<string>();
+            //List<string> duplicates = new List<string>();
+            //foreach (string s in columnNames)
+            //{
+            //    if (!unique.Contains(s))
+            //        unique.Add(s);
+            //    else
+            //        duplicates.Add(s);
+            //}
+            //int uniquescount = unique.Count;
+            //int dupcount = duplicates.Count;
+
+            //if (uniquescount + dupcount == columnNames.Count())
+            //{
+            //    isDuplicate = true;
+            //}
+            #endregion
+
             return isDuplicate;
         }
 
