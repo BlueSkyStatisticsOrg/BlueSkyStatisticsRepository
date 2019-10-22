@@ -168,7 +168,7 @@ namespace BlueSky
             SessionDialogContainer sdc = container.Resolve<SessionDialogContainer>();//13Feb2013
             //Recent Files settings
             RecentDocs rdoc = container.Resolve<RecentDocs>();//21Feb2013
-            rdoc.MaxRecentItems = 7;
+            rdoc.MaxRecentItems = 10;
             rdoc.XMLFilename = string.Format(@"{0}Recent.xml", BSkyAppData.RoamingUserBSkyConfigPath);//23Apr2015 @"./Config/Recent.xml";
             container.RegisterInstance<RecentDocs>(rdoc);
 
