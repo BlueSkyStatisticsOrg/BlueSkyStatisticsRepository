@@ -12,7 +12,7 @@
             <Image Source="/BlueSky;component/Images/BlueSkySplash.png"></Image>
             <ProgressBar Name="progress" IsIndeterminate="True" Height="20" Width="300">
             </ProgressBar>
-            <Label Content="Please Wait..." Width="Auto" Height="24" HorizontalAlignment="Center"  Name="label1" VerticalAlignment="Center" Foreground="Black" FontWeight="ExtraLight"  FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="Transparent" />
+            <Label Content="Please Wait..." Width="Auto" Height="26" HorizontalAlignment="Center"  Name="label1" VerticalAlignment="Center" Foreground="Black" FontWeight="ExtraLight"  FontSize="12" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="Transparent" />
         </StackPanel>
     </Grid>
 </Window>
