@@ -8,6 +8,7 @@ namespace BSky.Interfaces.Interfaces
         string GetFreshDatasetName();//t ot get next available Dataframename( Dataset2, Dataset3 and so on)
         string GetUniqueNewDatasetname();//for pasting the clipboard dataset, we need this.
         DataSource NewDataset();//03Jan2014
+        DataSource FindDataSourceFromDatasetname(string datasetname);
         DataSource Open(string filename, string sheetname, bool removeSpacesSPSS=false, IOpenDataFileOptions odfo=null);
         DataSource OpenDataframe(string dframename, string sheetname, string fname=""); //31May2018 for passing RData filename //13Feb2014
         UAReturn ImportTableListFromSQL(string sqlcommand);

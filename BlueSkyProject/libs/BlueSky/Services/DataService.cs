@@ -80,14 +80,16 @@ namespace BlueSky.Services
                 /// key filename + Sheetname is imp if different sheet from same file 
                 /// are opened there will be no issue. Diff sheetname will force generating diff keys
                 /// duplicate keys cause exeception
-                _datasources.Add(ds.FileName + ds.SheetName, ds);
+                if (!_datasources.ContainsKey(ds.FileName + ds.SheetName))//for avoiding crash
+                    _datasources.Add(ds.FileName + ds.SheetName, ds);
 
                 //Here looks like sheetname is not so imp. rather it causes issue if memory object with same name
                 //exists but it does not have sheetname. Say Dataset2Sheet1 is the key for excel sheet1.
                 //Now Rdata file is opened that has Dataset2. Excel Dataset2 is already overwritten but if you check
                 //following dictionay you will not find a key 'Dataset2'. Because of sheetname the key for tha dataset
                 //with same name was not found.. That's why we should not put sheet as a part of key.
-                _datasourcenames.Add(datasetname /*+ ds.SheetName*/, ds.FileName);//5Mar2014
+                if (!_datasourcenames.ContainsKey(datasetname))//for avoiding crash
+                    _datasourcenames.Add(datasetname /*+ ds.SheetName*/, ds.FileName);//5Mar2014
             }
             ///incrementing dataset counter //// 14Feb2013
             SessionDatasetCounter++;
@@ -138,6 +140,19 @@ namespace BlueSky.Services
             else
                 datasetname = GetUniqueNewDatasetname();
             return datasetname;
+        }
+        
+        //Find existing(already loaded) DataSource by using dataset name
+        public DataSource FindDataSourceFromDatasetname(string datasetname)
+        {
+            DataSource loadedDS = null;
+            foreach (KeyValuePair<string, DataSource> kvp in _datasources)
+            {
+                loadedDS = kvp.Value as DataSource;
+                if (loadedDS.Name.Trim().Equals(datasetname))//loaded dataset found
+                    break;
+            }
+            return loadedDS;
         }
 
         public DataSource Open(string filename, string sheetname, bool removeSpacesSPSS=false,  IOpenDataFileOptions odfo=null)
@@ -219,12 +234,7 @@ namespace BlueSky.Services
             if (!keyfound && datasetkeyfound)// different file but same dataset name (as already loaded in UI)
             {
                 //find the existing DataSource that is to be returned (for NO) and overwritten (for YES)
-                foreach (KeyValuePair<string, DataSource> kvp in _datasources)
-                {
-                    loadedDS = kvp.Value as DataSource;
-                    if (loadedDS.Name.Trim().Equals(datasetname))//loaded dataset found
-                        break;
-                }
+                loadedDS = FindDataSourceFromDatasetname(datasetname);
 
                 //warn user and get user's choice to overwrite already loaded data.frame or not
                 string msg1 = "Dataset with the same name is already loaded in the datagrid.\n";
@@ -318,9 +328,12 @@ namespace BlueSky.Services
 
                 if (datasetkeyfound)
                     _datasourcenames.Remove(datasetname);
+
                 //Add new keys
-                _datasources.Add(ds.FileName + ds.SheetName, ds);///key filename
-                _datasourcenames.Add(datasetname /*+ ds.SheetName*/, ds.FileName);//5Mar2014
+                if(!_datasources.ContainsKey(ds.FileName + ds.SheetName))//for avoiding crash
+                    _datasources.Add(ds.FileName + ds.SheetName, ds);///key filename
+                if (!_datasourcenames.ContainsKey(datasetname))//for avoiding crash
+                    _datasourcenames.Add(datasetname /*+ ds.SheetName*/, ds.FileName);//5Mar2014
             }
                                                   
             ///incrementing dataset counter //// 14Feb2013
@@ -499,8 +512,10 @@ if (ds == null)//20Oct2016 Making UI grid NULL
                 if (ds != null)//03Dec2012
                 {
                     //_datasources.Add(ds.FileName, ds);///key filename
-                    _datasources.Add(ds.FileName + ds.SheetName, ds);///key filename
-                    _datasourcenames.Add(datasetname /*+ ds.SheetName*/, ds.FileName);//5Mar2014
+                    if (!_datasources.ContainsKey(ds.FileName + ds.SheetName))//for avoiding crash
+                        _datasources.Add(ds.FileName + ds.SheetName, ds);///key filename
+                    if (!_datasourcenames.ContainsKey(datasetname))//for avoiding crash
+                        _datasourcenames.Add(datasetname /*+ ds.SheetName*/, ds.FileName);//5Mar2014
                 }
                 ///incrementing dataset counter //// 15Jun2015
                 /// if the name of the Dataset created in syntax matches to the Dataset name generated for UI grid.
@@ -554,11 +569,13 @@ if (ds == null)//20Oct2016 Making UI grid NULL
                 if (_datasources.Keys.Contains(dsourceName.FileName + sheetname)) //Check if dataset is already loaded in the grid
                 {
                     _datasources.Remove(dsourceName.FileName + sheetname);//Remove old
-                    _datasources.Add(dsourceName.FileName + sheetname, dsourceName);///Replace ds with new one
+                    if (!_datasources.ContainsKey(dsourceName.FileName + sheetname))//for avoiding crash
+                        _datasources.Add(dsourceName.FileName + sheetname, dsourceName);///Replace ds with new one
 
                     //5Mar2014 No need to do following but we can still do it
                     _datasourcenames.Remove(dsourceName.Name /*+ sheetname*/);
-                    _datasourcenames.Add(dsourceName.Name /*+sheetname*/, dsourceName.FileName);
+                    if (!_datasourcenames.ContainsKey(dsourceName.Name))//for avoiding crash
+                        _datasourcenames.Add(dsourceName.Name /*+sheetname*/, dsourceName.FileName);
                 }
 
                 logService.WriteToLogLevel("Could not open:" + dsourceName.FileName + ".Invalid format OR issue related to R.Net server.", LogLevelEnum.Error);
@@ -582,11 +599,13 @@ if (ds == null)//20Oct2016 Making UI grid NULL
                 //////{
                 //////    sheetname = "";
                 //////}
-                _datasources.Add(ds.FileName + sheetname, ds);///Replace ds with new one //25Oct2016 added sheetname
+                if (!_datasources.ContainsKey(ds.FileName + sheetname))//for avoiding crash
+                    _datasources.Add(ds.FileName + sheetname, ds);///Replace ds with new one //25Oct2016 added sheetname
                                                   
                 //5Mar2014 No need to do following but we can still do it
                 _datasourcenames.Remove(ds.Name /*+ sheetname*/);
-                _datasourcenames.Add(ds.Name /*+ sheetname*/, ds.FileName);//25Oct2016 added sheetname
+                if (!_datasourcenames.ContainsKey(ds.Name))//for avoiding crash
+                    _datasourcenames.Add(ds.Name /*+ sheetname*/, ds.FileName);//25Oct2016 added sheetname
             }
 
             //Fix for 'Data > Reload Dataset from File' crash, when run on excel dataset. Missing sheetname was causing the problem.
