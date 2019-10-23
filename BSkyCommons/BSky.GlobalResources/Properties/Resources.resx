@@ -166,7 +166,7 @@
     <comment>CommandExecutionHelper.cs : error msg for executing xaml dialog</comment>
   </data>
   <data name="DatasetBecameNull" xml:space="preserve">
-    <value>has been set to NULL. The reason may be, running some analysis or command on the dataset.</value>
+    <value>has been set to NULL. It's likely that you ran some analysis or data manipulation command that made the dataset NULL</value>
     <comment>CommandExecutionHelper.cs : Dataset become null msg</comment>
   </data>
   <data name="DatasetNull" xml:space="preserve">

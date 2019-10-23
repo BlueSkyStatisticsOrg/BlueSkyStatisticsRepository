@@ -1654,7 +1654,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to has been set to NULL. The reason may be, running some analysis or command on the dataset..
+        ///   Looks up a localized string similar to has been set to NULL. It&apos;s likely that you ran some analysis or data manipulation command that made the dataset NULL.
         /// </summary>
         public static string DatasetBecameNull {
             get {
