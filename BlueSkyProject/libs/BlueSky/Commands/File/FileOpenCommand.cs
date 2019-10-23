@@ -23,6 +23,7 @@ using System.Globalization;
 using BSky.ConfService.Intf.Interfaces;
 using BSky.ConfigService.Services;
 using BSky.Controls.Controls;
+using System.Windows.Controls;
 
 namespace BlueSky.Commands.File
 {
@@ -469,6 +470,7 @@ namespace BlueSky.Commands.File
 
                         logService.WriteToLogLevel("Finished Loading: " + ds.Name, LogLevelEnum.Info);
                         recentfiles.AddXMLItem(filename);//adding to XML file for recent docs
+                        ActivateDatagrid(ds);
                     }
                     else
                     {
@@ -607,11 +609,23 @@ namespace BlueSky.Commands.File
                 stopwatch.Restart();
                 if (fname.Length == 0)
                 {
+                    /// It is difficult to diffeneretiate between 
+                    ///(1) BSkyLoadRefreshDataframe(housing) which is a part of 'Compute' analysis on housing dataset and
+                    ///(2) BSkyLoadRefreshDataframe(housing) which is a part of 'Aggregate to dataset' on iris dataset.
+                    /// Ideally, first one should keep the Housing.Rdata filename in DataSource as well as on TabItem
+                    /// TabItem should be "Housing.RData(housing)"
+                    /// And the second on should replace the Housing.Rdata filename in Datasource and TabItem with
+                    /// 'housing'. TabItem should be "housing(housing)"
+                    /// 
+                    ///Since we do not have a way to differentiate the two loadRefresh so A.R. and A.D. decided to
+                    ///leave the filename in DataSource as well as on TabItem in both cases.
                     if (isDatasetNew)//new dataset may not have filename so R dataset obj name(DatasetX or mydf) is used.
                         fname = dframename;
                     else
-                        fname = filename;//existing dataframe should retain original filename.
+                        fname = service.FindDataSourceFromDatasetname(dframename).FileName;//filename;//existing dataframe should retain original filename.
                 }
+                if (!(fname.ToLower().EndsWith(".xls") || fname.ToLower().EndsWith(".xlsx")))
+                    sheetname = string.Empty;
                 DataSource ds = service.OpenDataframe(dframename, sheetname, fname);
                 //ds.FileName = fname;
                 stopwatch.Stop();
@@ -643,6 +657,7 @@ namespace BlueSky.Commands.File
                         stopwatch.Stop();
                         elapsed = stopwatch.ElapsedMilliseconds;
                         if (AdvancedLogging) logService.WriteToLogLevel("PERFORMANCE:Grid loading: Time taken: " + elapsed, LogLevelEnum.Info);
+                        ActivateDatagrid(ds);
                     }
                     //ds.Changed = true; // keep track of change made, so that it can prompt for saving while closing dataset tab.
                     logService.WriteToLogLevel("Finished Loading Dataframe: " + ds.Name, LogLevelEnum.Info);
@@ -724,6 +739,20 @@ namespace BlueSky.Commands.File
             Window1.DatasetReqPackages = missinglist;
 
             return alldefaultloaded;
+        }
+
+        private void ActivateDatagrid(DataSource ds)
+        {
+            TabItem ti = null;
+            if(controller!=null && ds!=null)
+            {
+                ti = controller.GetTabItem(ds);
+                if (ti != null)
+                {
+                    ti.IsSelected = true;
+                    ti.Focus();
+                }
+            }
         }
     }
 }
