@@ -2976,6 +2976,7 @@ namespace BSky.Controls
             copy.Command = myCanvas.Command;
             copy.commandOnly = myCanvas.commandOnly;
             copy.internalhelpfilename = myCanvas.internalhelpfilename;
+            copy.DatasetRequired = myCanvas.DatasetRequired;//01Nov2019
             //Added by Aaron 10/08/2013
             //The code below was developed about 2 months before 10/08/2013
             //The move variable button requires a source and destination variable list.

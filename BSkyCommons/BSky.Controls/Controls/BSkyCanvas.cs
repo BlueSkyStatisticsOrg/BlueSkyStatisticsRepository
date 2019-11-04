@@ -468,6 +468,18 @@ namespace BSky.Controls
             }
         }
 
+        //01Nov2019
+        private bool datasetRequired = true;//if this propery is TRUE then the dialog will require an active non-empty dataset.
+        //and without a dataset the dialog will not work.
+        [Category("Dialog Properties")]
+        //[BSkyLocalizedDescription("BSkyCanvas_splitProcessingDescription", typeof(BSky.GlobalResources.Properties.Resources))]
+        [DisplayName("Dataset required for dialog execution")]
+        public bool DatasetRequired
+        {
+            get { return datasetRequired; }
+            set { datasetRequired = value; }
+        }
+
         [Category("Dialog Properties")]
         [DisplayName("Path in menu where dialog is installed")]
         [Editor(@"BSky.Controls.DesignerSupport.MenuSelector, BSky.Controls, Culture=neutral",
