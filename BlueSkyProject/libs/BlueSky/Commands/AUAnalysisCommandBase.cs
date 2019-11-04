@@ -121,6 +121,19 @@ namespace BlueSky.Commands.Analytics.TTest
                 return;
             }
 
+            #region Get Active Dataset 
+            string DSFilename = UIController.GetActiveDocument() != null ? UIController.GetActiveDocument().FileName : string.Empty;
+            string DSName = UIController.GetActiveDocument() != null ? UIController.GetActiveDocument().Name : string.Empty;
+            if (DSName.Trim().Length < 1)
+            {
+                string msg0 = "You must have atleast one dataset open in the data grid to run any analysis.";
+                string ttl = "No active dataset in the datagrid";
+                MessageBox.Show(msg0, ttl, MessageBoxButton.OK, MessageBoxImage.Information);
+                logService.WriteToLogLevel(msg0+" XAML name : " + TemplateFileName, LogLevelEnum.Info);
+                return;
+            }
+            #endregion
+
             //for getting dialog xaml filename in logs.
             logService.WriteToLogLevel("XAML name : " + TemplateFileName, LogLevelEnum.Info);
             //MessageBox.Show("Launching: "+ TemplateFileName, "XAML filename");//to find actual dialog XAML filename
@@ -134,8 +147,9 @@ namespace BlueSky.Commands.Analytics.TTest
                 BSkyCanvas.applyBehaviors = false;
                 //UIController.GetActiveDocument().Filename ///for .sav filename
                 //UIController.GetActiveDocument().Name // for Dataset1, name
+
                 /// TemplateFilename /// for XAML filename
-                dialogkey = TemplateFileName + UIController.GetActiveDocument().FileName + UIController.GetActiveDocument().Name;
+                dialogkey = TemplateFileName + DSFilename + DSName;
                 //if obj is already in dictionary for particular dataset which is currently open
                 //then load obj from dictionary
                 if (sdc.SessionDialogList.ContainsKey(dialogkey))
@@ -149,7 +163,7 @@ namespace BlueSky.Commands.Analytics.TTest
 
                     //Added by Aaron 06/15/2014
                     //BSkyCanvas.applyBehaviors = false;//taking it out. lets see
-                    string CurrentDatasetName = UIController.GetActiveDocument().Name;
+                    string CurrentDatasetName = DSName;
                     string changedxaml = string.Empty;
 
                     ///////  Using XML logic for modifying GroupName attribute of BskyRadioGroup///////////////
@@ -199,7 +213,7 @@ namespace BlueSky.Commands.Analytics.TTest
             cs.Background = (Brush)converter.ConvertFrom("#FFEEefFf");
 
             #region Process empty dataset
-            if (UIController.GetActiveDocument().isUnprocessed)
+            if (UIController.GetActiveDocument()!= null && UIController.GetActiveDocument().isUnprocessed)
             {
                 NewDatasetProcessor procDS = new NewDatasetProcessor();
                 bool isProcessed = procDS.ProcessNewDataset("", true);
@@ -271,7 +285,7 @@ namespace BlueSky.Commands.Analytics.TTest
 
             //16Sep2016 Because of Pre-Requisite syntax following 3 line are moved here from down somewhere.
             OutputHelper.Reset();
-            OutputHelper.UpdateMacro("%DATASET%", UIController.GetActiveDocument().Name);
+            OutputHelper.UpdateMacro("%DATASET%", DSName);
             OutputHelper.UpdateMacro("%MODEL%", UIController.GetActiveModelName());
 
             #region Run Dialogs prerequisite syntax and see if it generates any error
@@ -279,7 +293,7 @@ namespace BlueSky.Commands.Analytics.TTest
             string PreReqCommand = cs.PrereqCommandString;
             if (PreReqCommand != null && PreReqCommand.Contains("{{%DATASET%}}"))
             {
-                PreReqCommand=PreReqCommand.Replace("{{%DATASET%}}", UIController.GetActiveDocument().Name);//current dataset substituted
+                PreReqCommand=PreReqCommand.Replace("{{%DATASET%}}", DSName);//current dataset substituted
             }			
             string statusTextControlName = cs.StatusTextBoxName;
 			string EditableComboBoxName = cs.EditableComboBoxName;
@@ -435,7 +449,7 @@ namespace BlueSky.Commands.Analytics.TTest
 
             //27Apr2016
             bool DatasetHasSplit = false;
-            object ooo = OutputHelper.GetGlobalMacro(string.Format("GLOBAL.{0}.SPLIT", UIController.GetActiveDocument().Name), string.Empty);//27Apr2016 get split details
+            object ooo = OutputHelper.GetGlobalMacro(string.Format("GLOBAL.{0}.SPLIT", DSName), string.Empty);//27Apr2016 get split details
             if (ooo != null)
             {
                 DatasetHasSplit = true;
@@ -524,7 +538,8 @@ namespace BlueSky.Commands.Analytics.TTest
                         
 						bool xmlTemplateBasedDialog = false;
                         bool isSplitDialog = false; // 27Apr2016 split dialog is neither analytical nor data manipulation dialog
-                        dsvs = UIController.GetActiveDocument().Variables;//list of exisiting vars in active dataset
+                        if(UIController.GetActiveDocument()!=null)
+                            dsvs = UIController.GetActiveDocument().Variables;//list of exisiting vars in active dataset
 
                         string dlgcommands = string.Join(";", dlgprop.Commands);
                         if (dlgcommands.Contains("BSkyIndSmTTest") || dlgcommands.Contains("BSkyOneSmTTest") || dlgcommands.Contains("BSkyCrossTable"))
