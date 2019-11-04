@@ -119,5 +119,13 @@ namespace BlueSky.Commands
             }
         }
 
+        private bool datasetRequired;//if this propery is TRUE then the dialog will require an active non-empty dataset.
+        //and without a dataset the dialog will not work.
+        public bool DatasetRequired
+        {
+            get { return datasetRequired; }
+            set { datasetRequired = value; }
+        }
+
     }
 }

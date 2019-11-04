@@ -121,18 +121,6 @@ namespace BlueSky.Commands.Analytics.TTest
                 return;
             }
 
-            if (UIController.GetActiveDocument().isUnprocessed)
-            {
-                NewDatasetProcessor procDS = new NewDatasetProcessor();
-                bool isProcessed = procDS.ProcessNewDataset("", true);
-                if (isProcessed)//true:empty rows cols removed successfully. False: whole dataset was empty and nothing was removed.
-                {
-                    UIController.GetActiveDocument().isUnprocessed = false;
-                    PreExecuteSub();// ds = UIController.GetActiveDocument();//processed dataset
-                }
-                else
-                    return;
-            }
             //for getting dialog xaml filename in logs.
             logService.WriteToLogLevel("XAML name : " + TemplateFileName, LogLevelEnum.Info);
             //MessageBox.Show("Launching: "+ TemplateFileName, "XAML filename");//to find actual dialog XAML filename
@@ -210,6 +198,30 @@ namespace BlueSky.Commands.Analytics.TTest
             //base.Background = (Brush)converter.ConvertFromString("#FFEDefFf");
             cs.Background = (Brush)converter.ConvertFrom("#FFEEefFf");
 
+            #region Process empty dataset
+            if (UIController.GetActiveDocument().isUnprocessed)
+            {
+                NewDatasetProcessor procDS = new NewDatasetProcessor();
+                bool isProcessed = procDS.ProcessNewDataset("", true);
+                if (isProcessed)//true:empty rows cols removed successfully. False: whole dataset was empty and nothing was removed.
+                {
+                    UIController.GetActiveDocument().isUnprocessed = false;
+                    PreExecuteSub();// ds = UIController.GetActiveDocument();//processed dataset
+                }
+                else
+                {
+                    if (cs.DatasetRequired)
+                    {
+                        string msg1 = "Analysis cannot be run on an empty dataset.";
+                        string msg2 = "Enter data in the grid or open a non-empty dataset.";
+                        string cap = "Analysis cannot be run on an empty dataset.";
+                        MessageBox.Show(msg1 + "\n" + msg2, cap, MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                        return;
+                    }
+                }
+            }
+            #endregion
+            
             #region Check for ModelClass required by the dialog and currently active Model's class
             string dlgmodelclasses = cs.ModelClasses;
             if (dlgmodelclasses != null)
