@@ -14,12 +14,42 @@ using BSky.Controls.Dialogs;
 using System.Windows.Input;
 using BSky.ConfService.Intf.Interfaces;
 using BSky.Lifetime;
+using BSky.Interfaces.Interfaces;
 
 namespace BSky.XmlDecoder
 {
     /// <summary>
     /// Helper file to evaluate variable names to strings.
     /// </summary>
+    /// 
+    public  class listOfFixedEffectsAndCovariates
+    {
+        List<string> fixedEffects;
+        List<string> covariates;
+
+        public void addFixedEffects( List<string> srcFixedEffects)
+        {
+            fixedEffects = srcFixedEffects;
+        }
+
+        public void addCovariates(List<string> srcCovariates )
+        {
+            covariates = srcCovariates;
+        }
+
+        public List<string> getFixedEffects()
+        {
+            //fixedEffects = srcFixedEffects;
+            return fixedEffects;
+        }
+        public List<string> getCovariates()
+        {
+            //fixedEffects = srcFixedEffects;
+            return covariates;
+        }
+
+    }
+
     public static class OutputHelper
     {
         private static Dictionary<string, object> GlobalList = new Dictionary<string, object>();
@@ -4538,7 +4568,6 @@ namespace BSky.XmlDecoder
                 string tempoutput = "";
                 bool addcomma = false;
                 string[] variables = yaxis.Split(',');
-
                 foreach (string var in variables)
                 {
                     //   ggplot(data = { {% DATASET %} }, aes(x = eval(parse(text = paste(vars))), fill = { { Groupby} })) 
@@ -4554,7 +4583,9 @@ namespace BSky.XmlDecoder
                         if (groupby != "")
 
                         {
-                            tempoutput = tempoutput + "color = " + groupby;
+          
+
+                                tempoutput = tempoutput + "color = " + groupby;
                             addcomma = true;
                         }
 
@@ -7140,7 +7171,6 @@ namespace BSky.XmlDecoder
                     }
                 }
                 
-
                 string tvarbox2 = "";
                 string tvarbox1 = "";
                 string NestingVar = "";
@@ -7153,6 +7183,27 @@ namespace BSky.XmlDecoder
                 string modelname = "";
                 modelname = "";
                 bool errorRaised = false;
+                listOfFixedEffectsAndCovariates fixedEffectsAndCovariates =new listOfFixedEffectsAndCovariates();
+                List<string> fixedEffects;
+                List<string> covariates;
+               // string covariates = "";
+                string RAD1 = "";
+                string RAD2 = "";
+                string RAD3 = "";
+                string RAD4 = "";
+                string RAD5 = "";
+                string RAD6 = "";
+                string RAD7 = "";
+                string RAD8 = "";
+                string RAD9 = "";
+                string RAD13 = "";
+                string RAD14= "";
+                string CHB6 = "";
+                string CHQ1 = "";
+                string CHQ5 = "";
+                string CHB7 = "";
+                string CHQ2 = "";
+                string suffix = "";
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
@@ -7165,15 +7216,73 @@ namespace BSky.XmlDecoder
                     {
                         modelname = value;
                     }
+                    if (key == "suffix")
+                    {
+                        suffix = value;
+                    }
+                 
                     if (key == "tvarbox2")
                     {
                         tvarbox2 = value;
+                        fixedEffectsAndCovariates = getFixedEffectsAndCovariates(tvarbox2,obj,"tvarbox2"  );
+                       // covariates = getCovariates(tvarbox2);
+
                     }
 
                     if (key == "tvarbox1")
                     {
                         tvarbox1 = value;
                     }
+
+                    if (key == "RAD1")
+                    {
+                        RAD1 = value;
+                    }
+
+                    if (key == "RAD13")
+                    {
+                        RAD13 = value;
+                    }
+
+                    if (key == "RAD2")
+                    {
+                        RAD2 = value;
+                    }
+                    if (key == "RAD3")
+                    {
+                        RAD3 = value;
+                    }
+
+                    if (key == "RAD4")
+                    {
+                        RAD4 = value;
+                    }
+                    if (key == "RAD5")
+                    {
+                        RAD5 = value;
+                    }
+                    if (key == "RAD6")
+                    {
+                        RAD6 = value;
+                    }
+                    if (key == "RAD7")
+                    {
+                        RAD7 = value;
+                    }
+                    if (key == "RAD8")
+                    {
+                        RAD8 = value;
+                    }
+                    if (key == "RAD9")
+                    {
+                        RAD9 = value;
+                    }
+
+                    if (key == "RAD14")
+                    {
+                        RAD14 = value;
+                    }
+
                     if (key == "NestingVar")
                     {
                         NestingVar = value;
@@ -7203,7 +7312,26 @@ namespace BSky.XmlDecoder
                     {
                         dataset = value;
                     }
-
+                    if (key == "CHB6")
+                    {
+                        CHB6 = value;
+                    }
+                    if (key == "CHQ1")
+                    {
+                        CHQ1 = value;
+                    }
+                    if (key == "CHQ2")
+                    {
+                        CHQ2 = value;
+                    }
+                    if (key == "CHQ5")
+                    {
+                        CHQ5 = value;
+                    }
+                    if (key == "CHB7")
+                    {
+                        CHB7 = value;
+                    }
 
                 }
 
@@ -7232,11 +7360,19 @@ namespace BSky.XmlDecoder
                 }
                 //Intercept only for fixed effects but no fixed effects defined only nesting unit
 
+                fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+                covariates = fixedEffectsAndCovariates.getCovariates();
+
+
+
+
+
+
                 if (NestingVar != "" && tvarbox2 == "" && randomvars == "" )
                 {
                     if (cov == "Intercept Only")
                     {
-                        tempoutput +=   modelname + "<-lmer(" + tvarbox1 + "~1 + (1 | " + NestingVar + ")," + estimator +", data =" + dataset + ")";
+                        tempoutput +=    "lmer(" + tvarbox1 + "~1 + (1 | " + NestingVar + ")," + estimator +", data =" + dataset + ")";
                         
                     }
                     else
@@ -7246,17 +7382,12 @@ namespace BSky.XmlDecoder
                         
                     }
 
-                    
-
                 }
             //fixed effects of time *tx interaction, only a random intercept, nesting unit is subject
                 else if (NestingVar != "" && tvarbox2 != "" && randomvars == ""&& cov == "Intercept Only" )
                 {
                    // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
-
-                    tempoutput += modelname + "<-lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
-                    
-
+                    tempoutput +=  "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
                 }
                 //fixed effects of time *tx interaction, covariance structure is anything but intercept only, nesting unit is subject
                 //I print eror message
@@ -7267,13 +7398,11 @@ namespace BSky.XmlDecoder
                     //  tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
                     tempoutput = "cat (\"The covariance structure you selected: " + cov + " is invalid, as you have selected a nesting unit: " + NestingVar+ " but have not added variables producing slopes within the nesting unit. You need to select a different covariance structure or add variables\")";
                     errorRaised = true;
-
                 }
                 //   Done 09/16/2019 to address the fact that there are no fixed effects
                 //   else if (NestingVar != "" && tvarbox2 != "" && randomvars != "" && cov == "Intercept Only")
                 else if (NestingVar != ""  && randomvars != "" && cov == "Intercept Only")
                 {
-
                     tempoutput = "cat (\"The covariance structure you selected: " + cov + " is invalid as you are attempting to analyze the random variance of: " + randomvars +" within nesting unit: " +NestingVar+ " Please select a different covariance structure or remove the " + randomvars + " variable(s) from the random effects box." + "\")";
                     errorRaised = true;
                 }
@@ -7285,8 +7414,7 @@ namespace BSky.XmlDecoder
 
                     //tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
 
-
-                       string[] randomvariables = randomvars.Split(',');
+                    string[] randomvariables = randomvars.Split(',');
                     //Handling the case when no fixed effect is specified
                     if (tvarbox2 == "")
                     {
@@ -7336,18 +7464,13 @@ namespace BSky.XmlDecoder
 
                     //tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 + "+ (1| " + NestingVar + ")," + estimator + ", data =" + dataset + ")";
 
-
                     string[] randomvariables = randomvars.Split(',');
-
                     //Handling the case when no fixed effect is specified
                     if (tvarbox2 == "")
                     {
                         tvarbox2 = "1";
                     }
-
-
                     tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
-
                     foreach (string vars in randomvariables)
                     {
                         tempoutput += "+" + "(" + vars + "||" + NestingVar + ")";
@@ -7356,43 +7479,9 @@ namespace BSky.XmlDecoder
                     tempoutput += "," + estimator + ", data =" + dataset + ")";
 
                 }
-                //This model has no random intercept but has a random effect / slope of time:
 
-
-
-
-                //else
-                //{
-
-                //    //  string[] variables = tvarbox2.Split(',');
-                //    string[] randomvariables = randomvars.Split(',');
-
-                //    tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
-
-                //    if (chk1 == "TRUE")
-                //    {
-                //        foreach (string vars in randomvariables)
-                //        {
-                //            tempoutput += "+" + "(1|" + vars + ")";
-                //        }
-                //    }
-
-                //    if (NestingVar != "")
-                //    {
-                //        foreach (string vars in randomvariables)
-                //        {
-                //            tempoutput += "+" + "(1+" + NestingVar + "|" + vars + ")";
-                //        }
-
-                //    }
-
-
-                //    tempoutput += ", data=" + dataset + ")";
-                //    tempoutput = tempoutput + "\n\n";
-                //    output = output + tempoutput;
-
-                //    tempoutput = "";
-                //}   
+                
+                
                 else if (NestingVar != "" && tvarbox2 != "" && randomvars == "")
                 {
                     // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
@@ -7411,15 +7500,416 @@ namespace BSky.XmlDecoder
 
                 }
 
+                if (errorRaised)
+                {
+                    return tempoutput;
+                }
                 if (!errorRaised)
                 {
                     tempoutput = modelname + "=" + tempoutput + "\n";
-                    tempoutput += "local({ \n";
+                  //  tempoutput += "local({ \n";
                     tempoutput += "BSkySummaryRes <- summary(" + modelname + ")" + "\n";
                     tempoutput += "# We store the results of the print into an object to suppress the plain text output from R\n";
-                    tempoutput += "BSkySummaryRes <-BSkyprint.summary.merMod (BSkySummaryRes)" + "\n";
-                    tempoutput += "})\n";
+                    tempoutput += "BSkySummaryRes <-BSkyprint.summary.merMod (BSkySummaryRes, correlation =TRUE )" + "\n\n";
+                  
                 }
+                List<string> twoWayInteractions=null;
+                if (RAD2 == "TRUE" || RAD3 == "TRUE")
+                {
+                    //   listOfFixedEffectsAndCovariates getFixedEffectsAndCovariates(string variables, DependencyObject obj, string key);
+                    twoWayInteractions = listOfAll2WayInteractions(tvarbox2);
+
+
+                    char[] delimiters = { ':' };
+                    string[] modelVariables = null;
+                    string printstring = "";
+                    tempoutput += "\n#Interaction Plots";
+                    if (RAD2 == "TRUE")
+                    {
+                        foreach (string interaction in twoWayInteractions)
+                        {
+                            modelVariables = interaction.Split(delimiters);
+
+                            printstring = "Effect of " + modelVariables[0] + " as a function of " + modelVariables[1];
+                            tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines =" + modelVariables[1] + ", labels = list(title = \"" + printstring + "\")))" + "\n";
+
+                            //  tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines ="  + modelVariables[1] + "))"+"\n";
+                            //modelVariables = interaction.Split(delimiters);
+                            // reversedInteraction = modelVariables[1] + ":" + modelVariables[0];
+
+                            printstring = "Effect of " + modelVariables[1] + " as a function of " + modelVariables[0];
+                            tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[1] + ", lines =" + modelVariables[0] + ", bargraph = TRUE" + ", labels = list(title = \"" + printstring + "\")))" + "\n";
+                            //     graph_model({ {% MODEL %} }, y ={ { tvarbox2} }, x = Age:Gender, lines = Gender:Age)
+
+                        }
+                    }
+                    else if (RAD3 == "TRUE")
+                    {
+
+                        //fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+                        foreach (string interaction in twoWayInteractions)
+                        {
+
+                            modelVariables = interaction.Split(delimiters);
+                            printstring = "Effect of " + modelVariables[0] + " as a function of " + modelVariables[1];
+                            tempoutput += "#Interaction plots\n";
+                            tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines =" + modelVariables[1] + ", bargraph = TRUE" + ", labels = list(title = \"" + printstring + "\")))" + "\n";
+                            printstring = "Effect of " + modelVariables[0] + " as a function of " + modelVariables[1];
+                            // reversedInteraction = modelVariables[1] + ":" + modelVariables[0];
+                            tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[1] + ", lines =" + modelVariables[0] + ", bargraph = TRUE" + ", labels = list(title = \"" + printstring + "\")))" + "\n";
+                            //     graph_model({ {% MODEL %} }, y ={ { tvarbox2} }, x = Age:Gender, lines = Gender:Age)
+
+                        }
+
+                    }
+                }
+
+                //Kenward rogers and adjustment none
+
+                if (RAD4 == "TRUE" )
+                {
+
+                   // fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+
+                    foreach (string effect  in fixedEffects)
+                    {
+
+                        //  tempoutput += "emmeans(" + modelname + ", pairwise ~" + effect + ",lmer.df = \"Kenward-Roger\" ,adjust=\"none\"   )" + "\n";
+                        tempoutput += "\n#Estimated Marginal Means using method using Kenward Rogers";
+                        tempoutput += "\nBSkyResultsEmmeans<-emmeans::emmeans(" + modelname + ", pairwise ~" + effect + ")";
+
+                      //  MultiAnova, ~" + variables + ")";
+                        tempoutput += "\nBSkyFormat( as.data.frame(BSkyResultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                            tvarbox1 + " by " + effect + " using method = Kenward-Roger with no adjustment\")\n";
+                        //  emmeans({ {% MODEL %} }, pairwise ~Gender)
+                        //modelVariables = interaction.Split(delimiters);
+                        //tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines =" + modelVariables[1] + ", bargraph = TRUE" + "))" + "\n";
+
+                        // reversedInteraction = modelVariables[1] + ":" + modelVariables[0];
+                        //tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[1] + ", lines =" + modelVariables[0] + ", bargraph = TRUE" + "))" + "\n";
+                        //     graph_model({ {% MODEL %} }, y ={ { tvarbox2} }, x = Age:Gender, lines = Gender:Age)
+
+                    }
+
+                }
+                //Satherthwaite and none
+                if (RAD5 == "TRUE" && RAD6 == "TRUE")
+                {
+
+                   // fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+
+
+                    foreach (string effect in fixedEffects)
+                    {
+                        tempoutput += "\n#Estimated marginal means using method Satterthwaite and no adjustment\n";
+
+                        tempoutput += "BSkyResultsEmmeans<-emmeans::emmeans(" + modelname + ", pairwise ~" + effect + ", lmer.df = \"satterthwaite\", adjust = \"none\" )" + "\n";
+
+                        //  MultiAnova, ~" + variables + ")";
+                        tempoutput += "BSkyFormat( as.data.frame(BSkyResultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                            tvarbox1 + " by " + effect + " using method = Sattherthwaite with no adjustment\")" + "\n";
+
+
+                        //  tempoutput += "emmeans(" + modelname + ", pairwise ~" + effect + ", adjust = \"none\" )" + "\n";
+                        //  emmeans({ {% MODEL %} }, pairwise ~Gender)
+                        //modelVariables = interaction.Split(delimiters);
+                        //tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines =" + modelVariables[1] + ", bargraph = TRUE" + "))" + "\n";
+
+                        // reversedInteraction = modelVariables[1] + ":" + modelVariables[0];
+                        //tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[1] + ", lines =" + modelVariables[0] + ", bargraph = TRUE" + "))" + "\n";
+                        //     graph_model({ {% MODEL %} }, y ={ { tvarbox2} }, x = Age:Gender, lines = Gender:Age)
+
+                    }
+
+                }
+
+                //Satterthwaite and Tukey
+
+                if (RAD5 == "TRUE" && RAD7 == "TRUE")
+                {
+
+                   // fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+
+
+                    foreach (string effect in fixedEffects)
+                    {
+                        tempoutput += "\n#Estimated marginal means using method Satterthwaite and adjustment =Tukey\n";
+                        // tempoutput += "emmeans(" + modelname + ", pairwise ~" + effect + ", adjust = \"tukey\" )" + "\n";
+
+                        tempoutput += "BSkyResultsEmmeans<-emmeans::emmeans(" + modelname + ", pairwise ~" + effect + ", lmer.df = \"satterthwaite\" , adjust = \"tukey\" )" + "\n";
+
+                        //  MultiAnova, ~" + variables + ")";
+                        tempoutput += "BSkyFormat( as.data.frame(BSkyResultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                            tvarbox1 + " by " + effect + " using method = Satterthwaite with adjustment = Tukey\")" + "\n"; 
+
+                        //  emmeans({ {% MODEL %} }, pairwise ~Gender)
+                        //modelVariables = interaction.Split(delimiters);
+                        //tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines =" + modelVariables[1] + ", bargraph = TRUE" + "))" + "\n";
+
+                        // reversedInteraction = modelVariables[1] + ":" + modelVariables[0];
+                        //tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[1] + ", lines =" + modelVariables[0] + ", bargraph = TRUE" + "))" + "\n";
+                        //     graph_model({ {% MODEL %} }, y ={ { tvarbox2} }, x = Age:Gender, lines = Gender:Age)
+
+                    }
+
+                }
+
+                //Satterthwaite and Bonferoni
+                if (RAD5 == "TRUE" && RAD13 == "TRUE")
+                {
+
+                   // fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+
+                    foreach (string effect in fixedEffects)
+                    {
+
+                        // tempoutput += "emmeans(" + modelname + ", pairwise ~" + effect + ", adjust = \"tukey\" )" + "\n";
+                        tempoutput += "\n#Estimated marginal means using method Satterthwaite and adjustment =Bonferroni\n";
+                        tempoutput += "BSkyResultsEmmeans<-emmeans::emmeans(" + modelname + ", pairwise ~" + effect + ", lmer.df = \"satterthwaite\" , adjust = \"bonferroni\" )" + "\n";
+
+                        //  MultiAnova, ~" + variables + ")";
+                        tempoutput += "BSkyFormat( as.data.frame(BSkyResultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                            tvarbox1 + " by " + effect + " using method = Satterthwaite with adjustment = Bonferroni\")" + "\n";
+
+                    }
+
+                }
+
+
+                //Satterthwaite and FDR
+                if (RAD5 == "TRUE" && RAD14 == "TRUE")
+                {
+
+                  //  fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+
+                    foreach (string effect in fixedEffects)
+                    {
+                        tempoutput += "\n#Estimated marginal means using method Satterthwaite and adjustment =FDR";
+                        tempoutput += "\nBSkyResultsEmmeans<-emmeans::emmeans(" + modelname + ", pairwise ~" + effect + ", lmer.df = \"satterthwaite\" , adjust = \"FDR\" )";
+
+                        tempoutput += "\nBSkyFormat( as.data.frame(BSkyResultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                            tvarbox1 + " by " + effect + " using method = Satterthwaite with adjustment = FDR\")" + "\n";
+
+                    }
+
+                }
+
+                
+                //Kenward Rogers  and Tukey
+
+                //if (RAD4 == "TRUE" && RAD7 == "TRUE")
+                //{
+                //    fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+                //    foreach (string effect in fixedEffects)
+                //    {
+
+                
+                //        tempoutput += "\nBSkyResultsEmmeans<-emmeans::emmeans(" + modelname + ", pairwise ~" + effect + ", lmer.df = \"Kenward-Roger\" , adjust = \"tukey\" )" + "\n";
+
+                //        //  MultiAnova, ~" + variables + ")";
+                //        tempoutput += "\nBSkyFormat( as.data.frame(BSkyResultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                //            tvarbox1 + " by " + effect + " with method = Kenward-Roger with adjustment = Tukey\")" + "\n";
+
+                    
+                //    }
+
+                //}
+
+
+                ////Kenward Rogers  and Bonferoni
+                //if (RAD4 == "TRUE" && RAD13 == "TRUE")
+                //{
+
+                //    fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+
+
+                //    foreach (string effect in fixedEffects)
+                //    {
+
+                //        tempoutput += "\nBSkyResultsEmmeans<-emmeans::emmeans(" + modelname + ", pairwise ~" + effect + ", lmer.df = \"Kenward-Roger\" , adjust = \"bonferroni\" )" + "\n";
+
+                //        tempoutput += "\nBSkyFormat( as.data.frame(BSkyResultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                //            tvarbox1 + " by " + effect + " with method = Kenward-Roger with adjustment = Bonferroni\")" + "\n";
+
+                    
+                //    }
+
+                //}
+
+                ////Kenward Rogers  and FDR
+                //if (RAD4 == "TRUE" && RAD14 == "TRUE")
+                //{
+
+                //    fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+
+
+                //    foreach (string effect in fixedEffects)
+                //    {
+
+                //        // tempoutput += "emmeans(" + modelname + ", pairwise ~" + effect + ", adjust = \"tukey\" )" + "\n";
+
+                //        tempoutput += "\nBSkyResultsEmmeans<-emmeans::emmeans(" + modelname + ", pairwise ~" + effect + ", lmer.df = \"Kenward-Roger\" , adjust = \"FDR\" )" + "\n";
+
+                //        //  MultiAnova, ~" + variables + ")";
+                //        tempoutput += "\nBSkyFormat( as.data.frame(BSkyResultsEmmeans), singleTableOutputHeader =\"Estimated Marginal Means for " +
+                //            tvarbox1 + " by " + effect + " with method = Kenward-Roger with adjustment = FDR\")" + "\n";
+                                                      
+                //    }
+
+                //}
+
+                if (CHB6=="TRUE")
+                {
+                    tempoutput += "\n#Simple Effects Tests.";
+                    tempoutput += "\nBSkyResSimpleSlopes <- "+  "simple_slopes(" + modelname + ")\n";
+                    tempoutput += "#Simple slopes returns a dataframe class where columns can be \n #list type, we need to convert it to a string type to display correctly.";
+                    tempoutput += "\nif (!is.null(BSkyResSimpleSlopes))\n{";
+                    tempoutput += "\nBSkyBSkyResSimpleSlopesAsDataframe <- createDataFrameFromList(BSkyResSimpleSlopes)";
+                    tempoutput += "\nBSkyFormat(BSkyBSkyResSimpleSlopesAsDataframe, singleTableOutputHeader = \"Results of Simple Slopes\")";
+                    tempoutput += "\n}";
+                }
+
+                if (CHQ1 == "TRUE" || CHQ2 == "TRUE")
+                {
+                    //  covariates = fixedEffectsAndCovariates.getCovariates();
+                    if (CHQ1 == "TRUE")
+                    {
+                        tempoutput += "\n\n#Observed Spaghetti plots.\n";
+                        // covariates = fixedEffectsAndCovariates.getCovariates();
+
+                        if (covariates.Count > 0)
+                        {
+
+                            foreach (string covar in covariates)
+                            {
+
+                                tempoutput += "ggplot(data =" + dataset + ", aes(x = " + covar + ", y = " + tvarbox1 +
+                            ",group = " + NestingVar + "))" + "+ geom_point() + geom_line() + xlab(\"" + covar + "\")" +
+        "+ ylab(\"" + tvarbox1 + "\")" + " + ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + " +ggtitle(\"Observed Spaghetti plots\")" + " + scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
+
+                            }
+                        }
+                        else
+                        {
+                            tempoutput += "\ncat(\"Observed Spaghetti plots canot be computed as there are no covariates\")";
+                        }
+
+                    }
+
+                    if (CHQ2 == "TRUE")
+                    {
+                        tempoutput += "\n#Estimated Spaghetti plots.\n";
+                        if (covariates.Count != 0)
+                        {
+
+                            if (suffix == null || suffix == "") suffix = "Pred";
+
+                            List<string> variablesToCheckForMissing = new List<string>();
+                            string varsForMissing = "";
+                            variablesToCheckForMissing.Add(tvarbox1);
+                            if (NestingVar != "")
+                            {
+                                variablesToCheckForMissing.Add(NestingVar);
+                            }
+
+                            foreach (string s in covariates)
+                            {
+                                // varsForMissing += "\" + s+  \"";
+                                //varsForMissing += ",";
+                                variablesToCheckForMissing.Add(s);
+                            }
+                            //   output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                            foreach (string s in fixedEffects)
+                            {
+                                //  varsForMissing += "\" + s+  \"";
+                                // varsForMissing += ",";
+                                variablesToCheckForMissing.Add(s);
+                            }
+
+
+                            //variablesToCheckForMissing.Concat(covariates);
+                            //variablesToCheckForMissing.Concat(fixedEffects);
+                            //variablesToCheckForMissing.Add(tvarbox2);
+                            string[] randomvariables1 = randomvars.Split(',');
+
+                            foreach (string s in randomvariables1)
+                            {
+                                if (s != "")
+                                {
+                                    variablesToCheckForMissing.Add(s);
+                                }
+                            }
+
+                            foreach (string s in variablesToCheckForMissing)
+                            {
+                                // variablesToCheckForMissing.Add(s);
+                                varsForMissing += "\"" + s + "\"";
+                                varsForMissing += ",";
+
+                            }
+
+                            varsForMissing = varsForMissing.TrimEnd(',');
+
+
+                            // ra
+                            //variablesToCheckForMissing.Concat(randomvariables1 as List<string>);
+                            // string [] variablesToCheckForMissingString = variablesToCheckForMissing.ToArray();
+
+
+                            //string joinedNames = "\"" + string.Join("\", \"", variablesToCheckForMissing) + "\"";
+                            tempoutput += "if (missingValues(" + dataset + "[,c(" + varsForMissing + ")]" + "))\n";
+                            tempoutput += "{\n";
+                            tempoutput += "cat (\"Estimated Spaghetti plots cannot be plotted as one or more variables being analyzed contain missing values, see Data->Missing Values->Remove NAs\")\n";
+                            tempoutput += "}\n";
+                            tempoutput += "else";
+                            tempoutput += "{\n";
+                            string predictions = tvarbox1 + "_" + suffix;
+                            tempoutput += dataset + "$" + predictions + " <- predict(" + modelname + ")\n";
+                            // tempoutput += "cat (\"Estimated Spaghetti plots cannot be plotted as one or more variables being analyzed contain missing values\")\n";
+
+                            // string predictions = tvarbox1 + "_" + suffix;
+                            // tempoutput += dataset + "$" + predictions + " <- predict(" + modelname + ")\n";
+                            foreach (string covar in covariates)
+                            {
+
+                                tempoutput += "ggplot(data =" + dataset + ", aes(x = " + covar + ", y = " + predictions +
+                            ",group = " + NestingVar + "))" + "+ geom_point() + geom_line() + xlab(\"" + covar + "\")" +
+        "+ ylab(\"" + tvarbox1 + "\")" + " + ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + " +ggtitle(\"Estimated Spaghetti plots\")" + " + scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
+
+                            }
+
+                            tempoutput += "}\n";
+
+                        }
+
+
+                        else
+                        {
+                            tempoutput += "\ncat(\"Estimated Spaghetti plots canot be computed as there are no covariates\")";
+                        }
+
+                    }
+                }
+
+                if ( CHQ5 =="TRUE")
+                    {
+                    tempoutput += "\n#Residual vs. Estimated plot.\n";
+                    tempoutput += "{\n plot(resid(" + modelname + ") ~fitted(" + modelname + "), main =\"Residual vs. Fitted\", xlab = \"Fitted\",ylab = \"Residuals\") \n  abline(h = 0)\n}\n";
+                    }
+
+                   
+                    if ( CHB7=="TRUE")
+                    {
+                    tempoutput += "\n#Normal vs Q-Q Plots.\n";
+                    tempoutput += "qqnorm(ranef(" + modelname + ")$" + NestingVar + "[[1]], main = \"Normal Q-Q Plots\")\n\n";
+                    }
+
+
+
+
+                tempoutput += "rm(BSkyResultsEmmeans, BSkyResSimpleSlopes, BSkyResSimpleSlopesAsDataframe)\n";
+
+              //      tempoutput += "})\n";
                 tempoutput = tempoutput + "\n\n";
                 output = output + tempoutput;
 
@@ -7450,6 +7940,98 @@ namespace BSky.XmlDecoder
             output = FixExtraCommasInCommandSyntax(output);//14Jul2014
             return output;
         }
+
+
+        private static List<string> listOfAll2WayInteractions (string variables)
+        {
+            List<string> all2WayInteractions = new List<string>();
+            char[] delimiterChars = { '+' };
+            string newTerm = "";
+            string[] modelTerms = variables.Split(delimiterChars);
+            foreach (string term in modelTerms)
+            {
+                float i = 0;
+                bool isANumber = float.TryParse(term, out i);
+                if (!isANumber)
+                {
+
+                    if (term.Contains("*") || term.Contains(":"))
+                    {
+                        char[] delimiterChars1 = { '*', ':' };
+                        string[] vars = term.Split(delimiterChars1);
+                        if (vars.Length == 2)
+                        {
+                            newTerm = term.Replace('*', ':');
+                            if (all2WayInteractions.IndexOf(newTerm) == -1)
+                            {
+                                all2WayInteractions.Add(newTerm);
+
+                            }
+
+                        }
+                        //if (fixedEffects.IndexOf(var) == -1 && covariates.IndexOf(var) == -1)
+                        //{
+                        //    foreach (DataSourceVariable variable in org)
+                        //    {
+                        //        if (variable.RName == var && (variable.Measure == DataColumnMeasureEnum.Nominal || variable.Measure == DataColumnMeasureEnum.Ordinal))
+                        //            fixedEffects.Add(var);
+                        //        if (variable.RName == var && (variable.Measure == DataColumnMeasureEnum.Scale))
+                        //            covariates.Add(var);
+                        //    }
+                        //}
+                        
+                    }
+                }
+                
+            }
+
+
+
+            return all2WayInteractions;
+        }
+
+
+            private static listOfFixedEffectsAndCovariates getFixedEffectsAndCovariates(string variables, DependencyObject obj, string key)
+        {
+            char[] delimiterChars = { '*', '+', ':', '^' };
+            List<string> fixedEffects = new List<string>();
+            List<string> covariates = new List<string>();
+            listOfFixedEffectsAndCovariates fixedEffsAndCovars= new listOfFixedEffectsAndCovariates();
+            IUIController UIController;
+            UIController = LifetimeService.Instance.Container.Resolve<IUIController>();
+            List<string> originalvarlist = new List<string>();
+            DataSource ds = UIController.GetActiveDocument();
+            List<DataSourceVariable> org = ds.Variables;
+
+           // string[] fixedEffectsAndCovariates = new < string > ();
+
+            string[] s = variables.Split(delimiterChars);
+            foreach (string var in s)
+            {
+                float i = 0;
+                bool isANumber = float.TryParse(var, out i);
+                if (!isANumber)
+                {
+                    if (fixedEffects.IndexOf(var) == -1 && covariates.IndexOf(var) ==-1)
+                    {
+                        foreach (DataSourceVariable variable in org)
+                        {
+                            if (variable.RName == var && (variable.Measure == DataColumnMeasureEnum.Nominal || variable.Measure == DataColumnMeasureEnum.Ordinal))
+                                    fixedEffects.Add(var);
+                            if (variable.RName == var && (variable.Measure == DataColumnMeasureEnum.Scale ))
+                                covariates.Add(var);
+                        }
+                    }
+                }
+            }
+
+            fixedEffsAndCovars.addCovariates(covariates);
+            fixedEffsAndCovars.addFixedEffects(fixedEffects);
+            //    fixedEffs = fixedEffects;
+            return fixedEffsAndCovars;
+
+        }
+
 
         private static string Wrapinbrackets(string output)
         {

@@ -58,7 +58,7 @@ namespace BSky.Controls
         public bool summaryCtrl
     {
          get;
-            set;
+         set;
     }
         
         public string PrefixTxt

@@ -5108,6 +5108,7 @@ namespace BSky.Controls
                 xaml = xaml.Replace("ItemTemplate=\"{assembly:Null}\"", "");
                 xaml = xaml.Replace("ItemTemplate=\"{x:Null}\"", "");
                 xaml = xaml.Replace("<assembly:Null />","");
+                //The code below is for the listbox and master listbox control, it allows you to save and preview these controls when on the SUB DIALOG
                 xaml = removeTags(xaml, "<BSkyListBox.Resources>", "</BSkyListBox.Resources>");
                 xaml = removeTags(xaml, "<av:DockPanel Name=\"AvdSliderDockp\"", "</av:DockPanel>");// <av:DockPanel
                 xaml = removeTags(xaml, "<av:Grid Name=\"spinnergrid\">", "</av:Grid>");
@@ -5208,6 +5209,10 @@ namespace BSky.Controls
                 xaml = xaml.Replace("ItemTemplate=\"{x:Null}\"", "");
                 xaml = removeTags(xaml, "<av:DockPanel Name=\"AvdSliderDockp\"", "</av:DockPanel>");// <av:DockPanel
                 xaml = removeTags(xaml, "<av:Grid Name=\"spinnergrid\">", "</av:Grid>");
+                //Added by Aaron 10/26/2019 to address Ross issue where listboxes were not savable on subdialogs
+                //The code below is for the listbox and master listbox control, it allows you to save and preview these controls when on the SUB DIALOG
+                xaml = removeTags(xaml, "<BSkyListBox.Resources>", "</BSkyListBox.Resources>");
+              //  xaml = removeTags(xaml, "<av:Style TargetType=\"av:Border\"", "</av:Style>");
                 // xaml = xaml.Replace("assembly:Key=\"{assembly:Type av:Border}\"", "av:Key=\"{av:Type av:Border}\"");
                 //Aaron 11/14/2013
                 //The code below adds new canvases to BSKyCanvas.chainOpencanvas
