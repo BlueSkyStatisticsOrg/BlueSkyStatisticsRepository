@@ -438,20 +438,33 @@ namespace BlueSky
             }
         }
 
-        public static void CopyAll(DirectoryInfo source, DirectoryInfo target)
+        public void CopyAll(DirectoryInfo source, DirectoryInfo target)
         {
-            if (Directory.Exists(target.FullName) == false)
+            ILoggerService logService = container.Resolve<ILoggerService>();
+            string filename = string.Empty;
+            try
             {
-                Directory.CreateDirectory(target.FullName);
-            }
+                // Check if target does not exists, create it.
+                if (Directory.Exists(target.FullName) == false)
+                {
+                    Directory.CreateDirectory(target.FullName);
+                }
 
-            foreach (FileInfo fi in source.GetFiles())
+                // Copy each file from source dir to it's new directory.
+                foreach (FileInfo fi in source.GetFiles())
+                {
+                    //Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
+                    fi.CopyTo(Path.Combine(target.ToString(), fi.Name), true);
+                }
+            }
+            catch (Exception ex)
             {
-                fi.CopyTo(Path.Combine(target.ToString(), fi.Name), true);
+                logService.WriteToLogLevel("ERROR: " + ex.Message, LogLevelEnum.Error);
+                logService.WriteToLogLevel("Unable to copy [" + filename + "] to user roaming.", LogLevelEnum.Error);
             }
         }
 
-#endregion
+        #endregion
 
 
         //copy xml files 
