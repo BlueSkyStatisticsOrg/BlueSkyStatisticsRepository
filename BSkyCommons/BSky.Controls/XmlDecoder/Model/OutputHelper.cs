@@ -2677,7 +2677,7 @@ namespace BSky.XmlDecoder
                     tempoutput += "pd <- position_dodge(0.3)";
                     tempoutput = tempoutput + "\n";
 
-                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = as.numeric(" + xaxis + ")";
+                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = " + xaxis ;
 
                     tempoutput += ", y = " + var;
 
@@ -2753,9 +2753,16 @@ namespace BSky.XmlDecoder
                         // tempoutput += " + \n\t geom_line(position = pd";
                     }
 
-                    
 
-                    tempoutput += " + \n\t geom_line(position = pd";
+
+                    if (Groupby == ""|| Groupby == null)
+                    {
+                        tempoutput += " + \n\t geom_line(position = pd, group=1";
+                    }
+                    else
+                    {
+                        tempoutput += " + \n\t geom_line(position = pd";
+                    }
 
                     if (opacity != "")
                     {
@@ -3071,7 +3078,7 @@ namespace BSky.XmlDecoder
                     tempoutput += "pd <- position_dodge(0.9)";
                     tempoutput = tempoutput + "\n";
 
-                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = (" + xaxis + ")"; //as.numeric removed by Anil
+                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = as.numeric(" + xaxis + ")";
 
                     tempoutput += ", y = " + var;
 
@@ -7855,16 +7862,29 @@ namespace BSky.XmlDecoder
                             //variablesToCheckForMissing.Concat(randomvariables1 as List<string>);
                             // string [] variablesToCheckForMissingString = variablesToCheckForMissing.ToArray();
 
-
-                            //string joinedNames = "\"" + string.Join("\", \"", variablesToCheckForMissing) + "\"";
-                            tempoutput += "if (missingValues(" + dataset + "[,c(" + varsForMissing + ")]" + "))\n";
-                            tempoutput += "{\n";
-                            tempoutput += "cat (\"Estimated Spaghetti plots cannot be plotted as one or more variables being analyzed contain missing values, see Data->Missing Values->Remove NAs\")\n";
-                            tempoutput += "}\n";
-                            tempoutput += "else";
-                            tempoutput += "{\n";
                             string predictions = tvarbox1 + "_" + suffix;
-                            tempoutput += dataset + "$" + predictions + " <- predict(" + modelname + ")\n";
+                            //string joinedNames = "\"" + string.Join("\", \"", variablesToCheckForMissing) + "\"";
+                            tempoutput += "if (!missingValues(" + dataset + "[,c(" + varsForMissing + ")]" + "))\n";
+                            tempoutput += "{\n";
+                            tempoutput += dataset + "$" + predictions + "<- NA\n";
+                            tempoutput += "BSkyPredictedValues <- predict(" +modelname +")\n";
+                            tempoutput += "BSkyNoOfValidRows = length(BSkyPredictedValues)\n";
+
+
+
+                            tempoutput += "for (i in  1: BSkyNoOfValidRows)\n";
+                            tempoutput += "\t{\n";
+                            tempoutput += dataset + "$" + predictions + "[as.numeric(attributes(BSkyPredictedValues[i]))] <- BSkyPredictedValues[i]\n";
+                            tempoutput += "\t}\n";
+                            tempoutput += "}\n";
+                            tempoutput += "else\n";
+                            tempoutput += "{\n";
+                            //  tempoutput += "cat (\"Estimated Spaghetti plots cannot be plotted as one or more variables being analyzed contain missing values, see Data->Missing Values->Remove NAs\")\n";
+                            //   tempoutput += "}\n";
+
+
+                            tempoutput += dataset + "$" + predictions + "<- predict(" + modelname + ")\n";
+                            tempoutput += "}\n";
                             // tempoutput += "cat (\"Estimated Spaghetti plots cannot be plotted as one or more variables being analyzed contain missing values\")\n";
 
                             // string predictions = tvarbox1 + "_" + suffix;
@@ -7878,7 +7898,7 @@ namespace BSky.XmlDecoder
 
                             }
 
-                            tempoutput += "}\n";
+                          
 
                         }
 
@@ -7907,7 +7927,7 @@ namespace BSky.XmlDecoder
 
 
 
-                tempoutput += "rm(BSkyResultsEmmeans, BSkyResSimpleSlopes, BSkyResSimpleSlopesAsDataframe)\n";
+               // tempoutput += "rm(BSkyResultsEmmeans, BSkyResSimpleSlopes, BSkyResSimpleSlopesAsDataframe)\n";
 
               //      tempoutput += "})\n";
                 tempoutput = tempoutput + "\n\n";
