@@ -124,6 +124,7 @@ namespace BlueSky
             }
             catch (Exception ex)
             {
+                HideProgressbar();
                 bool anothersessionrunning = false;
                 if (ex.Message.Contains("used by another process"))
                     anothersessionrunning = true;
