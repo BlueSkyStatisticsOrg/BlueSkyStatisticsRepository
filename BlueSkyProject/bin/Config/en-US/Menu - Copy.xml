@@ -64,10 +64,12 @@
       <menu id="T-Test,_Paired_Samples" text="T-Test, Paired Samples" commandtemplate="T-Test, Paired Samples.xaml" commandoutputformat="T-Test, Paired Samples.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="ANCOVA" text="ANCOVA" commandtemplate="ANCOVA.xaml" commandoutputformat="ANCOVA.xml" owner="" nodetype="Leaf" />
-      <menu id="Multi_Way_ANOVA" text="Multi Way ANOVA" commandtemplate="Multi Way ANOVA.xaml" commandoutputformat="Multi Way ANOVA.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Way_ANOVA" text="One Way ANOVA" commandtemplate="One Way ANOVA.xaml" commandoutputformat="One Way ANOVA.xml" owner="" nodetype="Leaf" />
+      <menu id="ANOVA_(1_Way_and_2_Way)" text="ANOVA (1 Way and 2 Way)" commandtemplate="ANOVA (1 Way and 2 Way).xaml" commandoutputformat="ANOVA (1 Way and 2 Way).xml" owner="" nodetype="Leaf" />
       <menu id="One_Way_ANOVA_with_Blocks" text="One Way ANOVA with Blocks" commandtemplate="One Way ANOVA with Blocks.xaml" commandoutputformat="One Way ANOVA with Blocks.xml" owner="" nodetype="Leaf" />
       <menu id="One_Way_ANOVA_with_Random_Blocks" text="One Way ANOVA with Random Blocks" commandtemplate="One Way ANOVA with Random Blocks.xaml" commandoutputformat="One Way ANOVA with Random Blocks.xml" owner="" nodetype="Leaf" />
+      <menu id="new_id" text="Legacy" owner="" nodetype="Parent">
+        <menu id="One_Way_ANOVA" text="One Way ANOVA" commandtemplate="One Way ANOVA.xaml" commandoutputformat="One Way ANOVA.xml" owner="" nodetype="Leaf" />
+      </menu>
     </menu>
     <menu id="new_id" text="Missing Values" owner="" nodetype="Parent">
       <menu id="Analysis_of_Missing_Values_(Output_Arranged_in_Columns)" text="Analysis of Missing Values (Output Arranged in Columns)" commandtemplate="Analysis of Missing Values (Output Arranged in Columns).xaml" commandoutputformat="Analysis of Missing Values (Output Arranged in Columns).xml" owner="" nodetype="Leaf" />
