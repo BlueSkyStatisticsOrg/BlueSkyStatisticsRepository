@@ -32,7 +32,7 @@ namespace BlueSky.Commands.Tools.Package
                 {
                     string[] pkgfilenames = openFileDialog.FileNames;
                     PackageHelperMethods phm = new PackageHelperMethods();
-                    UAReturn r = phm.PackageFileInstall(pkgfilenames);// PackageFileInstall(pkgfilenames);//openFileDialog.FileName);
+                    UAReturn r = phm.PackageFileInstall(pkgfilenames, true, true);// PackageFileInstall(pkgfilenames);//openFileDialog.FileName);
                     if (r != null && r.Success)
                     {
                         SendToOutputWindow( BSky.GlobalResources.Properties.Resources.InstallPkg, r.SimpleTypeData.ToString(), false);

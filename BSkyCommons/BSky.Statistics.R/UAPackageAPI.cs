@@ -1803,6 +1803,20 @@ namespace BSky.Statistics.R
 
         #region Package related
 
+        public override UAReturn GenerateDefaultUserPersonalRLibPath()
+        {
+            UAReturn result = new UAReturn() { Success = false };
+            object obj = dispatcher.GenerateUserRLibDefaultPath();
+
+            if (obj != null)
+            {
+                string usrRlib = obj.ToString();
+                result.SimpleTypeData = usrRlib;
+                result.Success = true;
+            }
+            return result;
+        }
+
         private bool isNewPackage = true;
 
         private UAReturn LoadPackage()
@@ -1934,6 +1948,19 @@ namespace BSky.Statistics.R
 
             UAReturn result = new UAReturn() { Success = false };
             object obj = rpm.GetInstalledPackages();
+
+            if (obj != null)
+            {
+                result.SimpleTypeData = obj;
+                result.Success = true;
+            }
+            return result;
+        }
+
+        public override UAReturn ShowUserRLibInstalledPackages()
+        {
+            UAReturn result = new UAReturn() { Success = false };
+            object obj = rpm.GetInstalledPackages(false);
 
             if (obj != null)
             {

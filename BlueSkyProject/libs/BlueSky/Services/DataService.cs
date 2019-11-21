@@ -590,6 +590,7 @@ if (ds == null)//20Oct2016 Making UI grid NULL
 
             ds.SheetName = UtilFunctions.GetSheetname(dsourceName);//fix for Excel dataset becomes null and reload from disk does not work
             ds.isUnprocessed = dsourceName.isUnprocessed;//for new dataset
+
             if (ds != null)//03Dec2012
             {
                 
@@ -779,6 +780,12 @@ if (ds == null)//20Oct2016 Making UI grid NULL
         public UAReturn showInstalledPackages()
         {
             UAReturn r = _analyticService.ShowPackageInstalled();
+            //SendToOutput(r);
+            return r;
+        }
+        public UAReturn showUserRLibInstalledPackages()
+        {
+            UAReturn r = _analyticService.ShowUserRlibPackageInstalled();
             //SendToOutput(r);
             return r;
         }

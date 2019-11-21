@@ -144,6 +144,9 @@ namespace BSky.Statistics.Service.Engine.Interfaces
         #region Package Related
 
         [OperationContract]
+        UAReturn GetDefaultUserRLib();
+
+        [OperationContract]
         void LoadDefPackages();//30Mar2015 For loading default packages after showing main window
 
         [OperationContract]
@@ -166,6 +169,9 @@ namespace BSky.Statistics.Service.Engine.Interfaces
 
         [OperationContract]
         UAReturn ShowPackageInstalled();
+
+        [OperationContract]
+        UAReturn ShowUserRlibPackageInstalled();
 
         [OperationContract]
         UAReturn ShowPackageLoaded();

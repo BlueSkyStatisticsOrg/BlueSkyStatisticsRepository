@@ -6,6 +6,8 @@ using System.IO;
 using System.Collections.Generic;
 using ICSharpCode.SharpZipLib.Zip;
 using System;
+using BSky.ConfService.Intf.Interfaces;
+using BSky.Lifetime.Services;
 
 namespace BSky.Statistics.R
 {
@@ -13,6 +15,7 @@ namespace BSky.Statistics.R
     {
         Journal _journal;
         ILoggerService logService = LifetimeService.Instance.Container.Resolve<ILoggerService>();//17Dec2012
+        IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();//23nov2012
         RecentItems userPackageList = LifetimeService.Instance.Container.Resolve<RecentItems>();//06Feb2014
         RService _dispatcher;
 
@@ -33,9 +36,25 @@ namespace BSky.Statistics.R
 
         #region Query Packages
         //Currently Installed Packages.  pk <- installed.packages()
-        public string[] GetInstalledPackages()
+        public string[] GetInstalledPackages(bool AllLibPaths = true)
         {
-            string commandstring = "tmp <- installed.packages(noCache = TRUE)";
+            //Get R User lib from config
+            //R standard rule: If lib is missing in install.packages(), defaults to the first element of .libPaths().
+            //so better pass lib parameter so that user can install his/her own R packages in user personal library.
+            string userRlibConfig = confService.GetConfigValueForKey("userRlib");
+            UAReturn result = IsUserRlibValid(userRlibConfig);
+            if (!result.Success)
+            {
+                string[] error = new string[1];
+                error[0] = result.Error;
+                return error;
+            }
+
+            string commandstring = string.Empty;
+            if (AllLibPaths)
+                commandstring = "tmp <- installed.packages(lib.loc= NULL, noCache = TRUE)";
+            else //only user-R-lib
+                commandstring = "tmp <- installed.packages(lib.loc= '" + userRlibConfig + "', noCache = TRUE)";
             _journal.WriteLine(commandstring);
             _dispatcher.EvaluateToObject(commandstring, false);
 
@@ -202,6 +221,17 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
             string command = string.Empty;
             string retmsg = string.Empty;
             string[] pkgs = packagename.Split(',');
+
+            //Get R User lib from config
+            //R standard rule: If lib is missing in install.packages(), defaults to the first element of .libPaths().
+            //so better pass lib parameter so that user can install his/her own R packages in user personal library.
+            string userRlibConfig = confService.GetConfigValueForKey("userRlib");
+            result = IsUserRlibValid(userRlibConfig);
+            if(!result.Success)
+            {
+                return result;
+            }
+
             string packagenames = GetCommaSeparatedWithSingleQuotes(pkgs);
             if (packagenames == null)//bad string
             {
@@ -220,7 +250,7 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
                     }
                 }
                 string CranUrl = "http://cran.us.r-project.org";
-                  command = string.Format("install.packages(c({0}))", packagenames);
+                  command = string.Format("install.packages(c({0}), lib='" + userRlibConfig + "')", packagenames);
                 retmsg = _dispatcher.EvaluateToString(command);
             }
 
@@ -241,6 +271,17 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
             string command = string.Empty;
             string retmsg = string.Empty;
             string[] pkgs = packagename.Split(',');
+
+            //Get R User lib from config
+            //R standard rule: If lib is missing in install.packages(), defaults to the first element of .libPaths().
+            //so better pass lib parameter so that user can install his/her own R packages in user personal library.
+            string userRlibConfig = confService.GetConfigValueForKey("userRlib");
+            result = IsUserRlibValid(userRlibConfig);
+            if (!result.Success)
+            {
+                return result;
+            }
+
             string packagenames = GetCommaSeparatedWithSingleQuotes(pkgs);
             if (packagenames == null)//bad string
             {
@@ -255,7 +296,7 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
                 {
                     if (!_dispatcher.IsLoaded(pkgnam) && !isPackageInstalled(pkgnam)) // if package is not already loaded and installed. then install it.
                     {
-                        command = string.Format("BSkyInstallPkg('{0}')", pkgnam); //string.Format("install.packages(c({0}))", packagenames);
+                        command = string.Format("BSkyInstallPkg('{0}', lib='{1}')", pkgnam, userRlibConfig); //string.Format("install.packages(c({0}))", packagenames);
                         string retstr = _dispatcher.EvaluateToString(command);
                         if (retstr != null && retstr.Trim().Length > 0)
                             sbmsgs.Append(retstr);
@@ -300,10 +341,22 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
         {
             UAReturn result = new UAReturn() { Success = false };
             string pkgversion = string.Empty;
+
+            //Get R User lib from config
+            //R standard rule: If lib is missing in install.packages(), defaults to the first element of .libPaths().
+            //so better pass lib parameter so that user can install his/her own R packages in user personal library.
+            string userRlibConfig = confService.GetConfigValueForKey("userRlib");
+            result = IsUserRlibValid(userRlibConfig);
+            if (!result.Success)
+            {
+                return result;
+            }
+
             string packagename = GetPackageNameFromZip(fullpathpackagefilename, out pkgversion);// get package name.
             if (packagename.Trim().Length < 1) // no packagename, may be because of error.
             {
                 result.Error = "Error:No Packages Found!";
+                result.Success = false;
                 return result;
             }
 
@@ -333,7 +386,7 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
                 StringBuilder sb = new StringBuilder("");
 
                 //23Oct2015. We found there is a shorter way of following command
-                command = string.Format("install.packages('{0}')", unixstylefullpathzipfilename);
+                command = string.Format("install.packages('{0}',lib='{1}', repos = NULL)", unixstylefullpathzipfilename, userRlibConfig);
                 errmsg = _dispatcher.EvaluateNoReturn(command);
                 _journal.WriteLine(command);
                 if (errmsg != null && errmsg.Trim().Length > 1) //error occurred
@@ -357,6 +410,7 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
             else
             {
                 result.Error = packagename + " already installed.";
+                result.Success = false;
                 pkgnamelist.Add(packagename);
             }
             return result;
@@ -426,13 +480,28 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
         //Uninstall package. detach first and then remove.packages("uadatapackage")
         public UAReturn UninstallPackage(string packagename)
         {
+            UAReturn result = new UAReturn() { Success = false };
+
             //first find the lib where package is installed
             string lib = _dispatcher.EvaluateToObject("find.package('"+packagename.Trim()+"')", true).ToString();//this must be path with forward slash(Unix style)
-            lib = lib.Substring(0, lib.IndexOf(packagename) - 1);
+            lib = lib.Substring(0, lib.LastIndexOf(packagename) - 1);
+
+            bool canWrite = isWritableDirectory(lib);
+            if (!canWrite)
+            {
+                string msg1 = packagename.Trim()+" was found :\n" + lib;
+                string msg2 = "\nYou do not have delete permission in this location.";
+                string msg3 ="\nSo you cannot remove package(s) from this location.";
+                result.Success = false;
+                result.Error = msg1 + msg2 + msg3;
+                logService.WriteToLogLevel(msg1 + msg2 + msg3, LogLevelEnum.Error);
+                return result;
+            }
+
             //Now the pacakge will get removed from right location
             string command = "remove.packages('" + packagename + "', lib='"+lib+"')";
 
-            UAReturn result = new UAReturn() { Success = false };
+            //UAReturn result = new UAReturn() { Success = false };
             UnLoadPackage(packagename); // if its loaded, unload it first.
             // now remove package
             string errmsg = _dispatcher.EvaluateNoReturn(command);//  "Uninstall Package";
@@ -445,6 +514,33 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
 
             result.Success = true;
             result.CommandString = command;
+            return result;
+        }
+
+        private UAReturn IsUserRlibValid(string userRlibConfig)
+        {
+            UAReturn result = new UAReturn() { Success = true };
+            
+            if (!Directory.Exists(userRlibConfig))
+            {
+                string msg1 = "'User R library path' does not exist:\n" + userRlibConfig;
+                string msg2 = "\nGo to Tools -> Configuration Settings -> Path Settings -> and set a valid 'User R library path'";
+                result.Success = false;
+                result.Error = msg1 + msg2;
+                logService.WriteToLogLevel(msg1 + msg2, LogLevelEnum.Error);
+                return result;
+            }
+
+            bool canWrite = isWritableDirectory(userRlibConfig);
+            if (!canWrite)
+            {
+                string msg1 = "You do not have write permission in the current 'User R library path':\n" + userRlibConfig;
+                string msg2 = "\nGo to Tools -> Configuration Settings -> Path Settings -> and set a valid 'User R library path'";
+                result.Success = false;
+                result.Error = msg1 + msg2;
+                logService.WriteToLogLevel(msg1 + msg2, LogLevelEnum.Error);
+                return result;
+            }
             return result;
         }
 
@@ -722,6 +818,13 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
             return isUserRPackage;
         }
         #endregion
+
+        private bool isWritableDirectory(string pstrPath)
+        {
+            UtilityService util = new UtilityService();
+            return util.isWritableDirectory(pstrPath);
+        }
+
     }
 
     public class RPkgDatasetDetails

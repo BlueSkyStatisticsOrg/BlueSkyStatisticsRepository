@@ -1296,4 +1296,12 @@
     <value>그림 물감</value>
     <comment>CustomSettingsWindow.xaml : Title for Colors tab in settings</comment>
   </data>
+  <data name="lblExampleUserRLib" xml:space="preserve">
+    <value>사용자 R 패키지는이 위치에 설치됩니다</value>
+    <comment>CustomSettingsWindow.xaml : Hint for User R library location</comment>
+  </data>
+  <data name="lblUserRLib" xml:space="preserve">
+    <value>사용자 R 라이브러리 경로</value>
+    <comment>CustomSettingsWindow.xaml : Title for User R library location</comment>
+  </data>
 </root>

@@ -131,9 +131,14 @@ namespace BSky.Statistics.Common
         #endregion
 
         #region Package related
+
+        public abstract UAReturn GenerateDefaultUserPersonalRLibPath();
+
         public abstract void LoadDefPacakges();//30Mar2015
 
         public abstract UAReturn ShowInstalledPackages();
+
+        public abstract UAReturn ShowUserRLibInstalledPackages();
 
         public abstract UAReturn ShowLoadedPackages();
 

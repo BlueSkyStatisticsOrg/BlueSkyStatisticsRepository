@@ -15,7 +15,17 @@ namespace BlueSky.Commands.Tools.Package.Dialogs
             loadListBox();
         }
 
-        public string header { set { title.Text = value; } }
+        public string header
+        {
+            set
+            {
+                title.Text = value;
+                if (!value.Equals("Uninstall Package(s)"))//for custom settings (user and default pkgs) we hide tb3.
+                {
+                    tb3.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
 
         string[] _listItems;
         public string[] ListItems 

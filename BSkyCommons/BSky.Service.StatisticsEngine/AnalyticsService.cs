@@ -484,6 +484,14 @@ namespace BSky.Service.Engine
 
         //06Dec2013
         #region Package Related
+
+        public UAReturn GetDefaultUserRLib()
+        {
+            UAReturn r = null;
+            r = _userSession.DefaultDispatcher.GenerateDefaultUserPersonalRLibPath();
+            return r;
+        }
+
         public void LoadDefPackages()
         {
             _userSession.DefaultDispatcher.LoadDefPacakges();
@@ -537,6 +545,13 @@ namespace BSky.Service.Engine
         {
             UAReturn r = null;
             r = _userSession.DefaultDispatcher.ShowInstalledPackages();
+            return r;
+        }
+
+        public UAReturn ShowUserRlibPackageInstalled()
+        {
+            UAReturn r = null;
+            r = _userSession.DefaultDispatcher.ShowUserRLibInstalledPackages();
             return r;
         }
 

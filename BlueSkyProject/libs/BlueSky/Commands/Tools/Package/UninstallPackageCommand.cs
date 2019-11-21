@@ -30,13 +30,14 @@ namespace BlueSky.Commands.Tools.Package
                 //}
 
                 PackageHelperMethods phm = new PackageHelperMethods();
-                UAReturn rlst = phm.ShowInstalledPackages();
+                //UAReturn rlst = phm.ShowInstalledPackages();
+                UAReturn rlst = phm.ShowUserRLibInstalledPackages();
                 string[] strarr = phm.GetUAReturnStringResult(rlst);
 
 
                 //Create UI show list of installed packges so that user can select and load them
                 SelectPackagesWindow spw = new SelectPackagesWindow(strarr);
-                spw.header = "Uninstall Library(s)";
+                spw.header = "Uninstall Package(s)";
                 spw.ShowDialog();
                 IList<string> sel = spw.SelectedItems;
                 if (sel == null)
@@ -58,7 +59,8 @@ namespace BlueSky.Commands.Tools.Package
                 }
                 else
                 {
-                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrUninstallingPkg, "", false);
+                    string err = r.Error != null && r.Error.Length > 1 ? r.Error : string.Empty;
+                    SendToOutputWindow(BSky.GlobalResources.Properties.Resources.ErrUninstallingPkg, err, false);
                 }
             }
             catch (Exception ex)

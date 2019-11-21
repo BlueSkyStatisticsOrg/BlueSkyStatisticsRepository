@@ -113,8 +113,8 @@ namespace BSky.Statistics.R
                 this._RServer.Initialize();
                 this._RServer.AutoPrint = false;
 
-                //logService.WriteToLogLevel("Setting R Personal Lib...", LogLevelEnum.Info);
-                //TrySettingUserPersonalLibrary(); TrySettingShippedRLibraryInFirstLocation
+                logService.WriteToLogLevel("Setting R Personal Lib...", LogLevelEnum.Info);
+                TrySettingUserPersonalLibrary(); ///TrySettingShippedRLibraryInFirstLocation
 
                 logService.WriteToLogLevel("Setting R default Lib in the first location...", LogLevelEnum.Info);
                 TrySettingShippedRLibraryInFirstLocation();
@@ -2351,89 +2351,100 @@ namespace BSky.Statistics.R
 
         public void TrySettingUserPersonalLibrary()
         {
-            bool userlibexists = false;
-            bool writablepathfound = false;
-
-            //Get Personal lib path
-            string usrpath = RawEvaluateGetstring("Sys.getenv('R_LIBS_USER')");
-            logService.WriteToLogLevel("Sys.getenv('R_LIBS_USER') = (" + usrpath + ").", LogLevelEnum.Info);
-
             //Current .libPaths before trying to set to user-libs
             logService.WriteToLogLevel("Current .libPaths(): ", LogLevelEnum.Info);
             LogCurrentLibPaths();
 
-            /*
-            //Get all the .libPaths
-            object libpaths = RawEvaluate(".libPaths()");
-            string[] allLibPaths = null;
-            if (libpaths != null)
-            {
-                Type retType = libpaths.GetType();
-                if (retType.Name == "String[]")//for multicols
-                {
-                    allLibPaths = (String[])libpaths;
-                }
-                else if (retType.Name == "String")//for single col
-                {
-                    allLibPaths = new string[1];
-                    allLibPaths[0] = (String)libpaths;
-                }
-            }
+            bool userlibexists = false;
+            bool writablepathfound = false;
 
-            if (allLibPaths.Contains(usrpath))
-            {
-                userlibexists = true;
-            }
+            //Get Personal lib path from Env var
+            //string usrpath = RawEvaluateGetstring("Sys.getenv('R_LIBS_USER')");
+            //logService.WriteToLogLevel("Sys.getenv('R_LIBS_USER') = (" + usrpath + ").", LogLevelEnum.Info);
 
-            string wrtabllib = string.Empty;
-            foreach (string ulib in allLibPaths)
+            string userRLib = string.Empty;
+            //Get R User lib from config
+            string userRlibConfig = confService.GetConfigValueForKey("userRlib");
+            logService.WriteToLogLevel("User R Lib from configuration = (" + userRlibConfig + ").", LogLevelEnum.Info);
+            if (userRlibConfig.Trim().Length > 0)
             {
-                if (isWritableDirectory(ulib))
+                if (isWritableDirectory(userRlibConfig))
                 {
-                    wrtabllib = ulib;
-                    writablepathfound = true;
-                    break;
+                    userRLib = userRlibConfig;
                 }
             }
-            */
-            //if (writablepathfound)
-            //{
-            //    logService.WriteToLogLevel("Writable path found:" + wrtabllib + ".", LogLevelEnum.Info);
-            //    string setpathcommand = ".libPaths( c('" + wrtabllib + "', .libPaths()))";
-            //    this._RServer.Evaluate(setpathcommand);
-            //}
-            //else 
-            //{
-            //try using user libpath
-
-            if (createLibPathDirectory(usrpath))//if dirctory created successfully
+            else if(userRLib.Length==0) // generate default r user lib path
             {
-                logService.WriteToLogLevel("Setting user personal library : " + usrpath, LogLevelEnum.Info);
-                //Creating User Personal Library same way as R does
-                bool hasModifyAccess = isWritableDirectory(usrpath);
+                //Fully formed path D:\\WinDirs\\Documents/R/win-library/3.4
+                string userlib = GenerateUserRLibDefaultPath();
+                logService.WriteToLogLevel("Generated R standard user lib:" + userlib, LogLevelEnum.Info);
+
+                if (!Directory.Exists(userlib))
+                {
+                    string msg3 = "Path does not exists: "+userlib;
+                    logService.WriteToLogLevel(msg3, LogLevelEnum.Warn);
+
+                    //create path is possible
+                    if (createLibPathDirectory(userlib))//if dirctory created successfully
+                    {
+                        logService.WriteToLogLevel("Setting R user personal library : " + userlib, LogLevelEnum.Info);
+                    }
+                    else
+                    {
+                        logService.WriteToLogLevel("R lib path initialization failed.", LogLevelEnum.Error);
+                        logService.WriteToLogLevel("User personal library is not writable.", LogLevelEnum.Info);
+                        //if path can't be created then return from this function
+                        return;
+                    }
+
+                }
+
+                bool hasModifyAccess = isWritableDirectory(userlib);
                 logService.WriteToLogLevel("Is user personal library writable : " + hasModifyAccess.ToString(), LogLevelEnum.Info);
                 if (hasModifyAccess)
                 {
-                    string command = ".libPaths( c('" + usrpath + "', .libPaths()))";
-                    this._RServer.Evaluate(command);
-                    logService.WriteToLogLevel("User personal library set.", LogLevelEnum.Info);
+                    userRLib = userlib;
                 }
                 else
                 {
-                    logService.WriteToLogLevel("R lib path initialization failed : ", LogLevelEnum.Error);
-                    logService.WriteToLogLevel(usrpath + " not writable.", LogLevelEnum.Info);
+                    logService.WriteToLogLevel("User R lib path initialization failed : ", LogLevelEnum.Error);
+                    logService.WriteToLogLevel(userlib + " not writable.", LogLevelEnum.Info);
                 }
             }
-            else
+
+            if (userRLib.Length > 0)
             {
-                logService.WriteToLogLevel("R lib path initialization failed.", LogLevelEnum.Error);
-                logService.WriteToLogLevel("User personal library is not writable.", LogLevelEnum.Info);
+                string command = ".libPaths( c(.Library,'" + userRLib + "', .libPaths()))";
+                this._RServer.Evaluate(command);
+                logService.WriteToLogLevel("User personal library set in the second position.", LogLevelEnum.Info);
+                confService.ModifyConfig("userRlib", userRLib.Replace('\\', '/'));
+            }
+            else//no path set because of permission issue
+            {
+                string msg3 = "No path set for user's R library. Set a valid path from configuration settings";
+                logService.WriteToLogLevel(msg3, LogLevelEnum.Warn);
             }
 
             //.libPaths after trying to set to user-libs
             logService.WriteToLogLevel("Final .libPaths(): ", LogLevelEnum.Info);
             LogCurrentLibPaths();
-            //}
+        }
+
+        //to generate default path for user personal R library
+        public string GenerateUserRLibDefaultPath()
+        {
+            //Get Documents location
+            string docpath = RawEvaluateGetstring("Sys.getenv('R_USER')");//"D:\\WinDirs\\Documents"
+            logService.WriteToLogLevel("Sys.getenv('R_USER') = (" + docpath + ").", LogLevelEnum.Info);
+
+            //Get R ver e.g. 3.4 or 3.6
+            string Rver = RawEvaluateGetstring("paste(as.character(getRversion()$major),as.character(getRversion()$minor),sep='.')");
+            logService.WriteToLogLevel("R version for doc path:" + Rver, LogLevelEnum.Info);
+
+            //Fully formed path D:\\WinDirs\\Documents/R/win-library/3.4
+            string userlib = docpath + "/R/win-library/" + Rver;
+            logService.WriteToLogLevel("R standard user lib:" + userlib, LogLevelEnum.Info);
+            return userlib;
         }
 
         // in .libPaths() we want to set library path of shipped/embedded R as the first path so that

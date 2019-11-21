@@ -26,6 +26,12 @@ namespace BlueSky.Commands.Tools.Package
             return service.showInstalledPackages();
         }
 
+        // Show Installed Packages in user-R-lib only
+        public UAReturn ShowUserRLibInstalledPackages()//06Dec2013 For loading package in R memory for use
+        {
+            return service.showUserRLibInstalledPackages();
+        }
+
         //Show Laoded Packages
         public UAReturn ShowLoadedPackages()//06Dec2013 For loading package in R memory for use
         {

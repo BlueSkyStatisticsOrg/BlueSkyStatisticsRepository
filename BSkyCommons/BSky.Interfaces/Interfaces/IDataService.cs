@@ -40,6 +40,7 @@ namespace BSky.Interfaces.Interfaces
         UAReturn loadPackageFromList(string[] packagenames);
 
         UAReturn showInstalledPackages();
+        UAReturn showUserRLibInstalledPackages();
         UAReturn showLoadedPackages();
         UAReturn getMissingDefaultRPackages();
 

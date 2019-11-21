@@ -14,6 +14,7 @@ using BlueSky.Commands.Tools.Package.Dialogs;
 using BSky.Statistics.Service.Engine.Interfaces;
 using System.Windows.Data;
 using BSky.ConfService.Intf.Interfaces;
+using BSky.Lifetime.Services;
 
 namespace BlueSky.Windows
 {
@@ -140,6 +141,25 @@ namespace BlueSky.Windows
                     //rhome.Text = folderBrowseDialog.SelectedPath;
                     //OR
                     rhome.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
+                }
+            }
+        }
+
+        //set User R Library
+        private void usrRlibbrowse_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog folderBrowseDialog = new System.Windows.Forms.FolderBrowserDialog();
+            folderBrowseDialog.SelectedPath = usrRlib.Text != null ? usrRlib.Text : string.Empty;
+            System.Windows.Forms.DialogResult result = folderBrowseDialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                if (IsValidDirectory(folderBrowseDialog.SelectedPath))// or blank if defaults are needed
+                {
+                    string unixpath = folderBrowseDialog.SelectedPath.Replace('\\', '/');
+                    AllAppSettings.Set("userRlib", unixpath);//folderBrowseDialog.SelectedPath);
+                    //rhome.Text = folderBrowseDialog.SelectedPath;
+                    //OR
+                    usrRlib.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
                 }
             }
         }
@@ -347,6 +367,14 @@ namespace BlueSky.Windows
             }
             */
 
+            //for populating User R Lib default path when 'Reset Default' button is clicked
+            string unixpath = string.Empty;
+            UAReturn ans = analytics.GetDefaultUserRLib();
+            if (ans != null && ans.SimpleTypeData != null)
+            {
+                unixpath = ans.SimpleTypeData.ToString().Replace('\\', '/');
+            }
+
             //SET DEFAULTS IN MEMORY BUT CLICK SAVE AFTERWARDS TO SAVE TO CONFIG FILE
             conService.LoadDefaultsinUI("userConfigWin");
             if (!conService.Success)
@@ -356,6 +384,7 @@ namespace BlueSky.Windows
             {
                 AllAppSettings = conService.AppSettings;
 
+                conService.DefaultSettings["userRlib"] = unixpath;//Default User R lib restored when 'Reset Default' is cliked
                 //Default Settings is a Dictionary object so no need of INotifyPropertyChanged. AllAppSettings is NameValueCollection so it needs INotify.... 
                 this.DataContext = conService.DefaultSettings;// AllAppSettings;
 
@@ -370,6 +399,12 @@ namespace BlueSky.Windows
         private void ApplyBut_Click(object sender, RoutedEventArgs e)
         {
             ShowConfirmation = false;
+            bool ret = CheckUserRLibPath();
+            if (!ret)
+            {
+                PathTab.IsSelected = true;
+                return;
+            }
             SaveSettings();
             this.Close();// close Options Window
 
@@ -491,6 +526,42 @@ namespace BlueSky.Windows
             //11Jan2018 this.Close();// close Options Window
         }
 
+        private bool CheckUserRLibPath()
+        {
+            string usrlib = usrRlib.Text;
+            bool isPathGood = true;
+            if (usrlib.Trim().Length > 0)
+            {
+                if (!Directory.Exists(usrlib))
+                {
+                    string s1 = "Under 'Path Settings' tab, the 'User R library path' is not found.";
+                    string s2 = "Please set correct path or make it blank to use the default R user personal library path.";
+                    MessageBox.Show(s1 + "\n" + s2, "Invalid user R library path", MessageBoxButton.OK, MessageBoxImage.Stop);
+                    isPathGood = false;
+                }
+                else
+                {
+                    if (!isWritableDirectory(usrlib))
+                    {
+                        string s1 = "Under 'Path Settings' tab, the 'User R library path' does not seem to have write permission.";
+                        string s2 = "User cannot install R packages in this location";
+                        string s3 = "Please set correct path or make it blank to use the default R user personal library path.";
+                        MessageBox.Show(s1 + "\n" + s2 + "\n" + s3, "No write permission in user R library path", MessageBoxButton.OK, MessageBoxImage.Stop);
+                        isPathGood = false;
+                    }
+                }
+            }
+            else //for blank, replace with the default R user lib standard path (that's in Documents...)
+            {
+                UAReturn ans = analytics.GetDefaultUserRLib();
+                if (ans != null && ans.SimpleTypeData != null)
+                {
+                    usrRlib.Text = ans.SimpleTypeData.ToString();
+                }
+            }
+            return isPathGood;
+        }
+        
         //11Jan2018 Aaorn: Window close button should provide options to 'Save' or 'Cancel'. So we need following event.
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -542,6 +613,11 @@ namespace BlueSky.Windows
             }
         }
 
+        private bool isWritableDirectory(string pstrPath)
+        {
+            UtilityService util = new UtilityService();
+            return util.isWritableDirectory(pstrPath);
+        }
 
         #endregion
 

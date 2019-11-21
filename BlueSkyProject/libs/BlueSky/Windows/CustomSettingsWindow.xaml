@@ -35,12 +35,12 @@
                     </Grid.ColumnDefinitions>
                     <!--Content="{x:Static p:Resources.tempfolder}"-->
                     <Label Grid.Row="0" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblTempFolder}" Name="label1" />
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Name="tempfolder" MinWidth="200" Text="{Binding Path=[tempfolder], UpdateSourceTrigger=PropertyChanged}"  />
-                    <Button Grid.Row="0" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2"  Margin="3" Name="tempfolderbrowse" MinWidth="50" Click="tempfolderbrowse_Click" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Name="tempfolder" MinWidth="200" Text="{Binding Path=[tempfolder], UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"  />
+                    <Button Grid.Row="0" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2"  Margin="3" Name="tempfolderbrowse" MinWidth="50" Click="tempfolderbrowse_Click"  IsEnabled="False"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblInitialDirectory}" Name="label2"  />
-                    <TextBox Grid.Row="1" Grid.Column="1"  Margin="3" Name="test" MinWidth="200" Text="{Binding Path=[test], UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button Grid.Row="1" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}" Padding="2"  Margin="3" Name="initfolderbrowse" MinWidth="50" Click="initialfolderbrowse_Click" />
+                    <TextBox Grid.Row="1" Grid.Column="1"  Margin="3" Name="test" MinWidth="200" Text="{Binding Path=[test], UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}" Padding="2"  Margin="3" Name="initfolderbrowse" MinWidth="50" Click="initialfolderbrowse_Click"  IsEnabled="False"/>
 
                     <Label Grid.Row="2" Content="{x:Static uires:UICtrlResources.lblRHomeDir}"  Name="labelrhome" />
                     <StackPanel Grid.Row="2" Grid.Column="1">
@@ -48,6 +48,13 @@
                         <TextBlock Margin="4,0" TextWrapping="Wrap" MaxWidth="500" Text="{x:Static uires:UICtrlResources.lblExampleRHomeDir2}"></TextBlock>
                     </StackPanel>
                     <Button Grid.Row="2" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2" Margin="3" Name="rhomebrowse" VerticalAlignment="Top" MinWidth="50" Click="rhomebrowse_Click" />
+
+                    <Label Grid.Row="3" Content="{x:Static uires:UICtrlResources.lblUserRLib}"  Name="labeluserRlib" />
+                    <StackPanel Grid.Row="3" Grid.Column="1">
+                        <TextBox  Height="24" Margin="3" Name="usrRlib" MinWidth="200" Text="{Binding Path=[userRlib], UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Margin="4,0" TextWrapping="Wrap" MaxWidth="500" Text="{x:Static uires:UICtrlResources.lblExampleUserRLib}"></TextBlock>
+                    </StackPanel>
+                    <Button Grid.Row="3" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2" Margin="3" Name="usrrlibbrowse" VerticalAlignment="Top" MinWidth="50" Click="usrRlibbrowse_Click" />
 
                 </Grid>
             </TabItem>

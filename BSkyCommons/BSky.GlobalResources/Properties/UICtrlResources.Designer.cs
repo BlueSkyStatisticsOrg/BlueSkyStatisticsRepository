@@ -1123,6 +1123,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User R packages will install in this location.
+        /// </summary>
+        public static string lblExampleUserRLib {
+            get {
+                return ResourceManager.GetString("lblExampleUserRLib", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Find:.
         /// </summary>
         public static string lblFind {
@@ -1641,6 +1650,15 @@ namespace BSky.GlobalResources.Properties {
         public static string lblTitleServerInstance {
             get {
                 return ResourceManager.GetString("lblTitleServerInstance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User R library path.
+        /// </summary>
+        public static string lblUserRLib {
+            get {
+                return ResourceManager.GetString("lblUserRLib", resourceCulture);
             }
         }
         
