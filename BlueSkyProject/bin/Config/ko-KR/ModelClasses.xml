@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <recent>
-  <item>randomForest</item>
-  <item>lm</item>
-  <item>NaiveBayes</item>
-  <item>rpart</item>
-  <item>multinom</item>
-  <item>glm</item>
-  <item>polr</item>
-  <item>ksvm</item>
-  <item>knn3</item>
   <item>adaboost</item>
-  <item>real_adaboost</item>
   <item>blasso</item>
+  <item>glm</item>
+  <item>knn3</item>
+  <item>ksvm</item>
+  <item>lm</item>
+  <item>lmerModLmerTest</item>
+  <item>multinom</item>
+  <item>NaiveBayes</item>
   <item>npregression</item>
+  <item>polr</item>
+  <item>randomForest</item>
+  <item>real_adaboost</item>
+  <item>rpart</item>
 </recent>
