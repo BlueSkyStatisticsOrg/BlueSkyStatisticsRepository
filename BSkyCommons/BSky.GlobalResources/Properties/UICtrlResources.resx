@@ -1307,4 +1307,8 @@
     <value>User R library path</value>
     <comment>CustomSettingsWindow.xaml : Title for User R library location</comment>
   </data>
+  <data name="lblNewDatasetStrToFactor" xml:space="preserve">
+    <value>Convert string variables to factor in a new dataset</value>
+    <comment>CustomSettingsWindow.xaml : Newdataset setting in Advanced tab in settings</comment>
+  </data>
 </root>

@@ -1348,6 +1348,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Convert string variables to factor in a new dataset.
+        /// </summary>
+        public static string lblNewDatasetStrToFactor {
+            get {
+                return ResourceManager.GetString("lblNewDatasetStrToFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of decimal digits to display..
         /// </summary>
         public static string lblNoDecimalDigits {

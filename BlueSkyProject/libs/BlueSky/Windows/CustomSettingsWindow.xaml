@@ -205,6 +205,7 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="107.37"></ColumnDefinition>
@@ -233,6 +234,9 @@
 
                     <TextBlock Grid.Row="5" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblCharToFactor}" Grid.ColumnSpan="3"/>
                     <CheckBox Grid.Row="5" Grid.Column="3"  Margin="3"  Name="CSVcharToFactor" IsChecked="{Binding Path=[CSVcharToFactor], UpdateSourceTrigger=PropertyChanged}"  />
+
+                    <TextBlock Grid.Row="6" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblNewDatasetStrToFactor}" Grid.ColumnSpan="3"/>
+                    <CheckBox Grid.Row="6" Grid.Column="3"  Margin="3"  Name="NewDSStrToFactor" IsChecked="{Binding Path=[NewDatasetStrToFactor], UpdateSourceTrigger=PropertyChanged}"  />
                 </Grid>
 
             </TabItem>

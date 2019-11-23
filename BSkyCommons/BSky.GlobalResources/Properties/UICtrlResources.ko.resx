@@ -1304,4 +1304,8 @@
     <value>사용자 R 라이브러리 경로</value>
     <comment>CustomSettingsWindow.xaml : Title for User R library location</comment>
   </data>
+  <data name="lblNewDatasetStrToFactor" xml:space="preserve">
+    <value>문자열 변수를 새 데이터 세트의 요소로 변환</value>
+    <comment>CustomSettingsWindow.xaml : Newdataset setting in Advanced tab in settings</comment>
+  </data>
 </root>

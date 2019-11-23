@@ -1,4 +1,5 @@
-﻿using BSky.Interfaces.Interfaces;
+﻿using BSky.ConfService.Intf.Interfaces;
+using BSky.Interfaces.Interfaces;
 using BSky.Lifetime;
 using Microsoft.Practices.Unity;
 using System;
@@ -14,6 +15,7 @@ namespace BlueSky.Services
         IUnityContainer container = null;
         IDataService service = null;
         IUIController UIController;
+        IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();
 
         public bool ProcessNewDataset(string dfName = null, bool loadDFinGrid = true)
         {
@@ -33,7 +35,9 @@ namespace BlueSky.Services
             if (!isEmpty.Equals("TRUE"))
             {
                 BSkyMouseBusyHandler.ShowMouseBusy();
-                string createCommand = "BsKyTeM<-BSkyProcessNewDataset('" + DSName + "'); ";
+                string strAsFactor = confService.GetConfigValueForKey("NewDatasetStrToFactor");
+                strAsFactor = strAsFactor.ToUpper().Equals("TRUE") ? "TRUE" : "FALSE";
+                string createCommand = "BsKyTeM<-BSkyProcessNewDataset('" + DSName + "', stringAsFactor=" + strAsFactor + "); ";
                 string loadInGridCommand = string.Empty;
 
                 if (loadDFinGrid) loadInGridCommand = "BSkyLoadRefreshDataframe(" + DSName + ")";
