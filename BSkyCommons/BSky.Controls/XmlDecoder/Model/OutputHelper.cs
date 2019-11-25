@@ -7167,6 +7167,7 @@ namespace BSky.XmlDecoder
 
             else if (customsyntax == "MixedModels")
             {
+                
                 MatchCollection mcol = re.Matches(commandformat);
                 foreach (Match m in mcol)
                 {
@@ -7177,7 +7178,7 @@ namespace BSky.XmlDecoder
                         CommandKeyValDict.Add(matchedText, result);
                     }
                 }
-                
+                string varsForMissing = "";
                 string tvarbox2 = "";
                 string tvarbox1 = "";
                 string NestingVar = "";
@@ -7211,6 +7212,7 @@ namespace BSky.XmlDecoder
                 string CHB7 = "";
                 string CHQ2 = "";
                 string suffix = "";
+                string fixedandobserved = "";
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
@@ -7222,6 +7224,10 @@ namespace BSky.XmlDecoder
                     if (key == "modelname")
                     {
                         modelname = value;
+                    }
+                    if (key == "fixedandobserved")
+                    {
+                        fixedandobserved = value;
                     }
                     if (key == "suffix")
                     {
@@ -7369,11 +7375,7 @@ namespace BSky.XmlDecoder
 
                 fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
                 covariates = fixedEffectsAndCovariates.getCovariates();
-
-
-
-
-
+               // tempoutput += "cat(\"Creating and summarizing the mixed model\")\n";
 
                 if (NestingVar != "" && tvarbox2 == "" && randomvars == "" )
                 {
@@ -7501,7 +7503,7 @@ namespace BSky.XmlDecoder
                 else if (NestingVar == "" && tvarbox2 != "" && randomvars == "")
                 {
                     // tempoutput = tempoutput + "lmer(" + tvarbox1 + "~" + tvarbox2;
-
+                   
                     tempoutput += "lmer(" + tvarbox1 + "~" + tvarbox2 +  estimator + ", data =" + dataset + ")";
 
 
@@ -7513,10 +7515,10 @@ namespace BSky.XmlDecoder
                 }
                 if (!errorRaised)
                 {
-                    tempoutput = modelname + "=" + tempoutput + "\n";
+                    tempoutput = "#Creating and summarizing the mixed model\n" + modelname + "=" + tempoutput + "\n";
                   //  tempoutput += "local({ \n";
                     tempoutput += "BSkySummaryRes <- summary(" + modelname + ")" + "\n";
-                    tempoutput += "# We store the results of the print into an object to suppress the plain text output from R\n";
+                    tempoutput += "#We store the results of the print into an object to suppress the plain text output from R\n";
                     tempoutput += "BSkySummaryRes <-BSkyprint.summary.merMod (BSkySummaryRes, correlation =TRUE )" + "\n\n";
                   
                 }
@@ -7530,14 +7532,14 @@ namespace BSky.XmlDecoder
                     char[] delimiters = { ':' };
                     string[] modelVariables = null;
                     string printstring = "";
-                    tempoutput += "\n#Interaction Plots";
+                    tempoutput += "\n#Interaction Plots\n";
                     if (RAD2 == "TRUE")
                     {
                         foreach (string interaction in twoWayInteractions)
                         {
                             modelVariables = interaction.Split(delimiters);
 
-                            printstring = "Effect of " + modelVariables[0] + " as a function of " + modelVariables[1];
+                            printstring = "Effect of " + modelVariables[0] + " as a function of " + modelVariables[1]; 
                             tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines =" + modelVariables[1] + ", labels = list(title = \"" + printstring + "\")))" + "\n";
 
                             //  tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines ="  + modelVariables[1] + "))"+"\n";
@@ -7769,7 +7771,7 @@ namespace BSky.XmlDecoder
                 {
                     tempoutput += "\n#Simple Effects Tests.";
                     tempoutput += "\nBSkyResSimpleSlopes <- "+  "simple_slopes(" + modelname + ")\n";
-                    tempoutput += "#Simple slopes returns a dataframe class where columns can be \n #list type, we need to convert it to a string type to display correctly.";
+                    tempoutput += "#Simple slopes returns a dataframe class where columns can be \n#list type, we need to convert it to a string type to display correctly.";
                     tempoutput += "\nif (!is.null(BSkyResSimpleSlopes))\n{";
                     tempoutput += "\nBSkyBSkyResSimpleSlopesAsDataframe <- createDataFrameFromList(BSkyResSimpleSlopes)";
                     tempoutput += "\nBSkyFormat(BSkyBSkyResSimpleSlopesAsDataframe, singleTableOutputHeader = \"Results of Simple Slopes\")";
@@ -7791,17 +7793,20 @@ namespace BSky.XmlDecoder
                             {
 
                                 tempoutput += "ggplot(data =" + dataset + ", aes(x = " + covar + ", y = " + tvarbox1 +
-                            ",group = " + NestingVar + "))" + "+ geom_point() + geom_line() + xlab(\"" + covar + "\")" +
-        "+ ylab(\"" + tvarbox1 + "\")" + " + ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + " +ggtitle(\"Observed Spaghetti plots\")" + " + scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
+                            ",group = " + NestingVar + "))" + "+\n\t geom_point() +\n\t geom_line() +\n\t xlab(\"" + covar + "\")" +
+        "+\n\t ylab(\"" + tvarbox1 + "\")" + " +\n\t ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + "+\n\t ggtitle(\"Observed Spaghetti plots\")" + "+\n\t scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
 
                             }
                         }
                         else
                         {
-                            tempoutput += "\ncat(\"Observed Spaghetti plots canot be computed as there are no covariates\")";
+                            tempoutput += "cat(\"Observed Spaghetti plots canot be computed as there are no covariates\")\n";
                         }
 
                     }
+
+
+                    varsForMissing = getVariablesInMixedModel(tvarbox1, tvarbox2, NestingVar, covariates, fixedEffects, randomvars);
 
                     if (CHQ2 == "TRUE")
                     {
@@ -7811,52 +7816,7 @@ namespace BSky.XmlDecoder
 
                             if (suffix == null || suffix == "") suffix = "Pred";
 
-                            List<string> variablesToCheckForMissing = new List<string>();
-                            string varsForMissing = "";
-                            variablesToCheckForMissing.Add(tvarbox1);
-                            if (NestingVar != "")
-                            {
-                                variablesToCheckForMissing.Add(NestingVar);
-                            }
-
-                            foreach (string s in covariates)
-                            {
-                                // varsForMissing += "\" + s+  \"";
-                                //varsForMissing += ",";
-                                variablesToCheckForMissing.Add(s);
-                            }
-                            //   output = output.TrimEnd(Environment.NewLine.ToCharArray());
-                            foreach (string s in fixedEffects)
-                            {
-                                //  varsForMissing += "\" + s+  \"";
-                                // varsForMissing += ",";
-                                variablesToCheckForMissing.Add(s);
-                            }
-
-
-                            //variablesToCheckForMissing.Concat(covariates);
-                            //variablesToCheckForMissing.Concat(fixedEffects);
-                            //variablesToCheckForMissing.Add(tvarbox2);
-                            string[] randomvariables1 = randomvars.Split(',');
-
-                            foreach (string s in randomvariables1)
-                            {
-                                if (s != "")
-                                {
-                                    variablesToCheckForMissing.Add(s);
-                                }
-                            }
-
-                            foreach (string s in variablesToCheckForMissing)
-                            {
-                                // variablesToCheckForMissing.Add(s);
-                                varsForMissing += "\"" + s + "\"";
-                                varsForMissing += ",";
-
-                            }
-
-                            varsForMissing = varsForMissing.TrimEnd(',');
-
+                            
 
                             // ra
                             //variablesToCheckForMissing.Concat(randomvariables1 as List<string>);
@@ -7864,27 +7824,31 @@ namespace BSky.XmlDecoder
 
                             string predictions = tvarbox1 + "_" + suffix;
                             //string joinedNames = "\"" + string.Join("\", \"", variablesToCheckForMissing) + "\"";
-                            tempoutput += "if (!missingValues(" + dataset + "[,c(" + varsForMissing + ")]" + "))\n";
-                            tempoutput += "{\n";
-                            tempoutput += dataset + "$" + predictions + "<- NA\n";
-                            tempoutput += "BSkyPredictedValues <- predict(" +modelname +")\n";
-                            tempoutput += "BSkyNoOfValidRows = length(BSkyPredictedValues)\n";
 
 
+                            //This works, I commented it as code could be simplified
+                            //Start comment
+                            //tempoutput += "if (!missingValues(" + dataset + "[,c(" + varsForMissing + ")]" + "))\n";
+                            //tempoutput += "{\n";
+                            //tempoutput += dataset + "$" + predictions + "<- NA\n";
+                            //tempoutput += "BSkyPredictedValues <- predict(" +modelname +     ")\n";
+                            //tempoutput += "BSkyNoOfValidRows = length(BSkyPredictedValues)\n";
 
-                            tempoutput += "for (i in  1: BSkyNoOfValidRows)\n";
-                            tempoutput += "\t{\n";
-                            tempoutput += dataset + "$" + predictions + "[as.numeric(attributes(BSkyPredictedValues[i]))] <- BSkyPredictedValues[i]\n";
-                            tempoutput += "\t}\n";
-                            tempoutput += "}\n";
-                            tempoutput += "else\n";
-                            tempoutput += "{\n";
-                            //  tempoutput += "cat (\"Estimated Spaghetti plots cannot be plotted as one or more variables being analyzed contain missing values, see Data->Missing Values->Remove NAs\")\n";
-                            //   tempoutput += "}\n";
+                            //tempoutput += "for (i in  1: BSkyNoOfValidRows)\n";
+                            //tempoutput += "\t{\n";
+                            //tempoutput += dataset + "$" + predictions + "[as.numeric(attributes(BSkyPredictedValues[i]))] <- BSkyPredictedValues[i]\n";
+                            //tempoutput += "\t}\n";
+                            //tempoutput += "}\n";
+                            //tempoutput += "else\n";
+                            //tempoutput += "{\n";
+
+                            //tempoutput += dataset + "$" + predictions + "<- predict(" + modelname + ")\n";
+                            //tempoutput += "}\n";
+                            //End comments
+
+                            tempoutput += dataset + "$" + predictions + "<- predict(" + modelname + "," + dataset + "[,c(" + varsForMissing + ")]" + ")\n";
 
 
-                            tempoutput += dataset + "$" + predictions + "<- predict(" + modelname + ")\n";
-                            tempoutput += "}\n";
                             // tempoutput += "cat (\"Estimated Spaghetti plots cannot be plotted as one or more variables being analyzed contain missing values\")\n";
 
                             // string predictions = tvarbox1 + "_" + suffix;
@@ -7893,8 +7857,8 @@ namespace BSky.XmlDecoder
                             {
 
                                 tempoutput += "ggplot(data =" + dataset + ", aes(x = " + covar + ", y = " + predictions +
-                            ",group = " + NestingVar + "))" + "+ geom_point() + geom_line() + xlab(\"" + covar + "\")" +
-        "+ ylab(\"" + tvarbox1 + "\")" + " + ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + " +ggtitle(\"Estimated Spaghetti plots\")" + " + scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
+                            ",group = " + NestingVar + "))" + " +\n\t geom_point() +\n\t geom_line() +\n\t xlab(\"" + covar + "\")" +
+        " +\n\t ylab(\"" + tvarbox1 + "\")" + " +\n\t ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + " +\n\t ggtitle(\"Estimated Spaghetti plots\")" + " +\n\t scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
 
                             }
 
@@ -7905,7 +7869,7 @@ namespace BSky.XmlDecoder
 
                         else
                         {
-                            tempoutput += "\ncat(\"Estimated Spaghetti plots canot be computed as there are no covariates\")";
+                            tempoutput += "cat(\"Estimated Spaghetti plots canot be computed as there are no covariates\")\n  ";
                         }
 
                     }
@@ -7921,15 +7885,39 @@ namespace BSky.XmlDecoder
                     if ( CHB7=="TRUE")
                     {
                     tempoutput += "\n#Normal vs Q-Q Plots.\n";
-                    tempoutput += "qqnorm(ranef(" + modelname + ")$" + NestingVar + "[[1]], main = \"Normal Q-Q Plots\")\n\n";
+                    tempoutput += "qqnorm(ranef(" + modelname + ")$" + NestingVar + "[[1]], main = \"Normal Q-Q Plots\")\n";
                     }
 
+                if (fixedandobserved =="TRUE")
+                {
+                    tempoutput += "\n#Plot of fixed effects and observed data\n";
+                    // tempoutput += "BSkyFixedEfectsvsObserved<-visreg(" + modelname + ")\n";
+                    tempoutput += "BSkyFixedEffectsObserved<-visreg(" + modelname + ", main =\"Plot fixed efects and observed data\"," + ", ylab =\"Estimated" + tvarbox1+  "score\")\n";
+                }
 
 
+                tempoutput += "\n#Setting attributes for the dependent and independent variable. This will be used when scoring the model\n";
+                tempoutput += "attr(" + modelname + ", \"depvar\") <-" + "\"'" +tvarbox1 + "'\"\n";
+
+                tempoutput += "attr(" + modelname + ", \"indepvar\") <-" + "\"c(" + varsForMissing + ")\"\n";
+
+               // tempoutput += "\n#Plot fixed effects and observed data\n";
+
+
+               
+
+                tempoutput += "\n#Removing temporary objects\n";
+                tempoutput += "if (exists('BSkySummaryRes')){rm(BSkySummaryRes)}\n";
+                tempoutput += "if (exists('BSkyResultsEmmeans')){rm(BSkyResultsEmmeans)}\n";
+                tempoutput += "if (exists('BSkyResSimpleSlopes')){rm(BSkyResSimpleSlopes)}\n";
+                tempoutput += "if (exists('BSkyResSimpleSlopesAsDataframe')){rm(BSkyResSimpleSlopesAsDataframe)}\n";
+                tempoutput += "if (exists('BSkyFixedEffectsObserved')){rm(BSkyFixedEffectsObserved)}\n";
 
                // tempoutput += "rm(BSkyResultsEmmeans, BSkyResSimpleSlopes, BSkyResSimpleSlopesAsDataframe)\n";
+               //      tempoutput += "})\n";
 
-              //      tempoutput += "})\n";
+
+
                 tempoutput = tempoutput + "\n\n";
                 output = output + tempoutput;
 
@@ -7951,6 +7939,9 @@ namespace BSky.XmlDecoder
             //in this case layers returns "". This gets replaced in the command syntax as layers = c("")
             //What R understands is layers =NA
             // finaloutput = finaloutput.Replace("c()", "NA");
+
+
+
             output = handleLayersInCrosstabs(output); // This removes all lines with c()
             //output = Regex.Replace(output, @"%>%\s*\n", "%>% ");//removes new line after a pipe sign (newline-tab will be added later/below to format it)
             //output = output.Replace("BSkyLoadRefreshDataframe", "\n\nBSkyLoadRefreshDataframe");//output = Regex.Replace(output, @"\n+", "\n\n");//one blank line between statements
@@ -7960,6 +7951,66 @@ namespace BSky.XmlDecoder
             output = FixExtraCommasInCommandSyntax(output);//14Jul2014
             return output;
         }
+
+
+        private static string getVariablesInMixedModel(string tvarbox1, string tvarbox2, string NestingVar, List<string> covariates, List<string> fixedEffects, string randomvars)
+        {
+            string varsForMissing = "";
+            List<string> variablesToCheckForMissing = new List<string>();
+
+            variablesToCheckForMissing.Add(tvarbox1);
+            if (NestingVar != "")
+            {
+                variablesToCheckForMissing.Add(NestingVar);
+            }
+
+            foreach (string s in covariates)
+            {
+                // varsForMissing += "\" + s+  \"";
+                //varsForMissing += ",";
+                variablesToCheckForMissing.Add(s);
+            }
+            //   output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            foreach (string s in fixedEffects)
+            {
+                //  varsForMissing += "\" + s+  \"";
+                // varsForMissing += ",";
+                variablesToCheckForMissing.Add(s);
+            }
+
+
+            //variablesToCheckForMissing.Concat(covariates);
+            //variablesToCheckForMissing.Concat(fixedEffects);
+            //variablesToCheckForMissing.Add(tvarbox2);
+            string[] randomvariables1 = randomvars.Split(',');
+
+            foreach (string s in randomvariables1)
+            {
+                if (s != "")
+                {
+                    variablesToCheckForMissing.Add(s);
+                }
+            }
+
+            foreach (string s in variablesToCheckForMissing)
+            {
+                // variablesToCheckForMissing.Add(s);
+                varsForMissing += "'" + s + "'";
+                varsForMissing += ",";
+
+            }
+
+            varsForMissing = varsForMissing.TrimEnd(',');
+
+            return varsForMissing;
+        }
+
+
+
+
+
+
+
 
 
         private static List<string> listOfAll2WayInteractions (string variables)
