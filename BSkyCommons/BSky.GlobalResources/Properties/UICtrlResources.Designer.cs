@@ -997,7 +997,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User&apos;s Packages (manually loaded by user from.
+        ///   Looks up a localized string similar to List of package(s) user wants to load for a current session, by going into Tools -&gt; Package -&gt; Load user session package(s).
         /// </summary>
         public static string lbl1UserPkg {
             get {
@@ -1015,7 +1015,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Advanced Logging:.
+        ///   Looks up a localized string similar to Log advanced:.
         /// </summary>
         public static string lblAdvancedLogging {
             get {
@@ -1213,7 +1213,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output Image Height:.
+        ///   Looks up a localized string similar to Height, in pixels.
         /// </summary>
         public static string lblImageHeight {
             get {
@@ -1222,7 +1222,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output Image Width:.
+        ///   Looks up a localized string similar to Width, in pixels.
         /// </summary>
         public static string lblImageWidth {
             get {
@@ -1258,7 +1258,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter comma separated list of days (how many days before expiry, reminder should notify you. Blank field loads defaults. Enter 0 or 1 if you dont want to set any days):.
+        ///   Looks up a localized string similar to Expiration reminder(s) for commercial version (enter days separated by commas, or zero for no reminder. Blank field loads defaults):.
         /// </summary>
         public static string lblLicNotifyDays {
             get {
@@ -1267,7 +1267,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Load SAV file&apos;s missing values:.
+        ///   Looks up a localized string similar to SPSS SAV file missing values will be loaded:.
         /// </summary>
         public static string lblLoadMissing {
             get {
@@ -1312,7 +1312,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter maximum number of factor you want:.
+        ///   Looks up a localized string similar to Enter maximum number of factors allowed in scale variable, when converting a scale to norminal or ordinal:.
         /// </summary>
         public static string lblMaxFactor {
             get {
@@ -1339,7 +1339,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Navigation tree selected item box color (in output pane):.
+        ///   Looks up a localized string similar to Navigation tree selected item box color, output pane:.
         /// </summary>
         public static string lblNavTreeSelColor {
             get {
@@ -1348,7 +1348,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Convert string variables to factor in a new dataset.
+        ///   Looks up a localized string similar to Factor automatically created when reading character variables:.
         /// </summary>
         public static string lblNewDatasetStrToFactor {
             get {
@@ -1393,7 +1393,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter comma separated margin values (Left, Top, Right, Bottom):.
+        ///   Looks up a localized string similar to Margin values (left, top, right, bottom).
         /// </summary>
         public static string lblPDFMargins {
             get {
@@ -1402,7 +1402,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter maximum number of table columns per page(including row header columns):.
+        ///   Looks up a localized string similar to Table columns per page (maximum, including row header columns):.
         /// </summary>
         public static string lblPDFMaxCols {
             get {
@@ -1411,7 +1411,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter maximum number of table rows per page(including column header rows):.
+        ///   Looks up a localized string similar to Table row per page(maximum, including column headers rows):.
         /// </summary>
         public static string lblPDFMaxRows {
             get {
@@ -1438,7 +1438,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use scientific notation for a very small and a very large number (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5)..
+        ///   Looks up a localized string similar to Numbers in scientific notation for very small or very large numbers (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5):.
         /// </summary>
         public static string lblRetainSciNotation {
             get {
@@ -1483,7 +1483,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show actual p-values (e.g. p-value = .0002) in the output instead of &quot;&lt;.001***&quot;..
+        ///   Looks up a localized string similar to Number of actual p-value displayed when tiny (e.g. p-value = .0002):.
         /// </summary>
         public static string lblShowActualPvalue {
             get {
@@ -1492,7 +1492,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The R object that contains the results of the analytical function may contain numeric row headers. This option determines whether the row headers are displayed or hidden. When checked, numeric row headers are shown in output grid:.
+        ///   Looks up a localized string similar to Display numeric row headers, if present. R output objects may contain numeric row headers:.
         /// </summary>
         public static string lblShowHideNumericHeaders {
             get {
@@ -1510,7 +1510,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show syntax in the Output Window.
+        ///   Looks up a localized string similar to Display R syntax in output window:.
         /// </summary>
         public static string lblShowSyntaxInOutput {
             get {
@@ -1618,7 +1618,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Threshold number of values per output table for which warning will be displayed informing the user that table generation will be time consuming and giving the user the choice to display the partial results..
+        ///   Looks up a localized string similar to Table length warning  threshold - number of values beyond which user will be warned that table generation will be time consuming:.
         /// </summary>
         public static string lblThresholdCount {
             get {
@@ -2464,7 +2464,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show output tables in APA(American Psychological Association) style..
+        ///   Looks up a localized string similar to Tables in APA(American Psychological Association) style:.
         /// </summary>
         public static string ShowOutputInAPA {
             get {
@@ -2473,7 +2473,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show warning message box when RData file is opened..
+        ///   Looks up a localized string similar to Display warning when RData file is opened:.
         /// </summary>
         public static string ShowRDataWarningMessage {
             get {
@@ -2626,7 +2626,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default Packages.
+        ///   Looks up a localized string similar to Packages, Default.
         /// </summary>
         public static string TabTitleDefaultPackages {
             get {
@@ -2671,7 +2671,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Path Settings.
+        ///   Looks up a localized string similar to Paths.
         /// </summary>
         public static string TabTitlePathSettings {
             get {
@@ -2680,7 +2680,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PDF Settings.
+        ///   Looks up a localized string similar to PDF.
         /// </summary>
         public static string TabTitlePDFSettings {
             get {
@@ -2689,7 +2689,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SQL Settings.
+        ///   Looks up a localized string similar to SQL.
         /// </summary>
         public static string TabTitleSQLSettings {
             get {
@@ -2698,7 +2698,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Packages.
+        ///   Looks up a localized string similar to Packages, User.
         /// </summary>
         public static string TabTitleUserPackages {
             get {

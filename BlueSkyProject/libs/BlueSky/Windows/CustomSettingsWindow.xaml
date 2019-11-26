@@ -34,13 +34,13 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <!--Content="{x:Static p:Resources.tempfolder}"-->
-                    <Label Grid.Row="0" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblTempFolder}" Name="label1" />
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Name="tempfolder" MinWidth="200" Text="{Binding Path=[tempfolder], UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"  />
-                    <Button Grid.Row="0" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2"  Margin="3" Name="tempfolderbrowse" MinWidth="50" Click="tempfolderbrowse_Click"  IsEnabled="False"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblTempFolder}" Name="label1" Visibility="Collapsed" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Name="tempfolder" MinWidth="200" Text="{Binding Path=[tempfolder], UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Visibility="Collapsed" />
+                    <Button Grid.Row="0" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}"  Padding="2"  Margin="3" Name="tempfolderbrowse" MinWidth="50" Click="tempfolderbrowse_Click" IsEnabled="False" Visibility="Collapsed"/>
 
-                    <Label Grid.Row="1" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblInitialDirectory}" Name="label2"  />
-                    <TextBox Grid.Row="1" Grid.Column="1"  Margin="3" Name="test" MinWidth="200" Text="{Binding Path=[test], UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
-                    <Button Grid.Row="1" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}" Padding="2"  Margin="3" Name="initfolderbrowse" MinWidth="50" Click="initialfolderbrowse_Click"  IsEnabled="False"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="{x:Static uires:UICtrlResources.lblInitialDirectory}" Name="label2"  Visibility="Collapsed"/>
+                    <TextBox Grid.Row="1" Grid.Column="1"  Margin="3" Name="test" MinWidth="200" Text="{Binding Path=[test], UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Visibility="Collapsed"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="{x:Static uires:UICtrlResources.buttonBrowse}" Padding="2"  Margin="3" Name="initfolderbrowse" MinWidth="50" Click="initialfolderbrowse_Click" IsEnabled="False" Visibility="Collapsed"/>
 
                     <Label Grid.Row="2" Content="{x:Static uires:UICtrlResources.lblRHomeDir}"  Name="labelrhome" />
                     <StackPanel Grid.Row="2" Grid.Column="1">
@@ -84,18 +84,17 @@
                     <!--<TextBlock Grid.Row="1" Grid.Column="0" Margin="4">Batch Command Title Color:</TextBlock>
                     <Rectangle Grid.Row="1" Grid.Column="2" Name="syntitlecol" Margin="4" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[syntitlecol]}" />-->
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblRSynColor}"></TextBlock>
-                    <Rectangle Grid.Row="1" Grid.Column="2" Width="20" Name="rcommcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[rcommcol], UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblErrorColor}"></TextBlock>
+                    <Rectangle Grid.Row="1" Grid.Column="2" Width="20" Name="errorcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[errorcol], UpdateSourceTrigger=PropertyChanged}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblErrorColor}"></TextBlock>
-                    <Rectangle Grid.Row="2" Grid.Column="2" Width="20" Name="errorcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[errorcol], UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblMouseHoverBoxColor}"></TextBlock>
+                    <Rectangle Grid.Row="2" Grid.Column="2" Width="20" Name="outputmousehovercol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[outputmousehovercol], UpdateSourceTrigger=PropertyChanged}" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblMouseHoverBoxColor}"></TextBlock>
-                    <Rectangle Grid.Row="3" Grid.Column="2" Width="20" Name="outputmousehovercol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[outputmousehovercol], UpdateSourceTrigger=PropertyChanged}" />
-
-
-                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblNavTreeSelColor}"></TextBlock>
-                    <Rectangle Grid.Row="4" Grid.Column="2" Width="20" Name="navtreeselectedcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[navtreeselectedcol], UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblNavTreeSelColor}"></TextBlock>
+                    <Rectangle Grid.Row="3" Grid.Column="2" Width="20" Name="navtreeselectedcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[navtreeselectedcol], UpdateSourceTrigger=PropertyChanged}" />
+                    
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblRSynColor}"></TextBlock>
+                    <Rectangle Grid.Row="4" Grid.Column="2" Width="20" Name="rcommcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[rcommcol], UpdateSourceTrigger=PropertyChanged}" />
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}" Name="label5"   Visibility="Collapsed" />
                     <TextBox Grid.Row="5" Grid.Column="2" Margin="3" Width="25" Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}"  Name="noofchars"  Visibility="Collapsed"/>
@@ -118,15 +117,17 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="70"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblImageWidth}"></TextBlock>
-                    <TextBox Grid.Row="1" Grid.Column="1" Height="22"  Margin="5,0" Text="{Binding Path=[imagewidth], UpdateSourceTrigger=PropertyChanged}"   GotKeyboardFocus="TextBox_GotKeyboardFocus" TextChanged="TextBox_TextChanged"></TextBox>
+                    <TextBlock Grid.Row="1" Grid.Column="0"  Text="{x:Static uires:UICtrlResources.lblImageHeight}"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Height="22" Margin="5,0" Text="{Binding Path=[imageheight], UpdateSourceTrigger=PropertyChanged}" GotKeyboardFocus="TextBox_GotKeyboardFocus" TextChanged="TextBox_TextChanged" ></TextBox>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblImageWidth}"></TextBlock>
+                    <TextBox Grid.Row="3" Grid.Column="1" Height="22"  Margin="5,0" Text="{Binding Path=[imagewidth], UpdateSourceTrigger=PropertyChanged}"   GotKeyboardFocus="TextBox_GotKeyboardFocus" TextChanged="TextBox_TextChanged"></TextBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0"  Text="{x:Static uires:UICtrlResources.lblImageHeight}"></TextBlock>
-                    <TextBox Grid.Row="3" Grid.Column="1" Height="22" Margin="5,0" Text="{Binding Path=[imageheight], UpdateSourceTrigger=PropertyChanged}" GotKeyboardFocus="TextBox_GotKeyboardFocus" TextChanged="TextBox_TextChanged" ></TextBox>
+
                     <TextBlock Grid.Row="6" Grid.Column="0"  Text=""></TextBlock>
                 </Grid>
             </TabItem>
@@ -135,10 +136,10 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
                         <!--<RowDefinition Height="Auto"></RowDefinition>-->
                         <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -148,14 +149,22 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Button Name="dfltMoveUpButton" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="70" Click="dfltMoveUpButton_Click" Content="{x:Static uires:UICtrlResources.buttonMoveUp}"></Button>
-                    <Button Name="dfltMoveDownButton"  Grid.Row="4" Grid.Column="1" Margin="3" MinWidth="70" Click="dfltMoveDownButton_Click" Content="{x:Static uires:UICtrlResources.buttonMoveDown}"></Button>
+                    <Button Name="dfltMoveUpButton" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="70" Click="dfltMoveUpButton_Click" ToolTip="Move item up">
+                        <Button.Content>
+                            <Image Source="/BlueSky;component/Images/angle-arrow-up.png"></Image>
+                        </Button.Content>
+                    </Button>
+                    <Button Name="dfltMoveDownButton"  Grid.Row="4" Grid.Column="1" Margin="3" MinWidth="70" Click="dfltMoveDownButton_Click" ToolTip="Move item down">
+                        <Button.Content>
+                            <Image Source="/BlueSky;component/Images/angle-arrow-down.png"></Image>
+                        </Button.Content>
+                    </Button>
 
                     <Label Grid.Row="0" Grid.Column="2"  VerticalAlignment="Stretch" VerticalContentAlignment="Top" Content="{x:Static uires:UICtrlResources.lblDefPkg}"></Label>
                     <ListBox Name="dfltpackagelistbox" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" SelectionMode="Extended"></ListBox>
 
                     <Button Name="dfltAddPackageButton"  Grid.Row="1" Grid.Column="3" Margin="3" MinWidth="70" Click="dfltAddPackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonAdd}"></Button>
-                    <Button Name="dfltRemovePackageButton"  Grid.Row="2" Grid.Column="3" Margin="3" MinWidth="70" VerticalAlignment="Center" Click="dfltRemovePackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonRemove}"></Button>
+                    <Button Name="dfltRemovePackageButton"  Grid.Row="2" Grid.Column="3" Margin="3" MinWidth="70" Height="24" VerticalAlignment="Center" Click="dfltRemovePackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonRemove}"></Button>
                     <Button Name="dfltResetPackageButton"  Grid.Row="4" Grid.Column="3" Margin="3" MinWidth="70" Click="dfltResetPackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonReset}"></Button>
                     <!--<Button Name="ApplyPackageButton" Grid.Row="3" Margin="10,8,40,8" Click="ApplyPackageButton_Click">Save</Button>-->
                 </Grid>
@@ -165,10 +174,10 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
                         <!--<RowDefinition Height="Auto"></RowDefinition>-->
                         <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -178,17 +187,25 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Button Name="MoveUpButton" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="70" Click="MoveUpButton_Click"  Content="{x:Static uires:UICtrlResources.buttonMoveUp}"></Button>
-                    <Button Name="MoveDownButton" Grid.Row="4" Grid.Column="1" Margin="3" MinWidth="70" Click="MoveDownButton_Click"  Content="{x:Static uires:UICtrlResources.buttonMoveDown}"></Button>
+                    <Button Name="MoveUpButton" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="70" Click="MoveUpButton_Click" ToolTip="Move item up" >
+                        <Button.Content>
+                            <Image Source="/BlueSky;component/Images/angle-arrow-up.png"></Image>
+                        </Button.Content>
+                    </Button>
+                    <Button Name="MoveDownButton" Grid.Row="4" Grid.Column="1" Margin="3" MinWidth="70" Click="MoveDownButton_Click" ToolTip="Move item down" >
+                        <Button.Content>
+                            <Image Source="/BlueSky;component/Images/angle-arrow-down.png"></Image>
+                        </Button.Content>
+                    </Button>
 
-                    <StackPanel Grid.Row="0" Grid.Column="2">
-                        <Label  Margin="2,0,1,0"  Content="{x:Static uires:UICtrlResources.lbl1UserPkg}"></Label>
-                        <Label Margin="2,0,1,0"   VerticalAlignment="Top" Content="{x:Static uires:UICtrlResources.lbl2UserPkg}"></Label>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+                        <Label  Margin="5"  Content="{x:Static uires:UICtrlResources.lbl1UserPkg}"></Label>
+                        <!--<Label Margin="2,0,1,0"   VerticalAlignment="Top" Content="{x:Static uires:UICtrlResources.lbl2UserPkg}"></Label>-->
                     </StackPanel>
 
                     <ListBox Name="packagelistbox" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" SelectionMode="Extended"></ListBox>
                     <Button Name="AddPackageButton" Grid.Row="1" Grid.Column="3" Margin="3" MinWidth="70" Click="AddPackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonAdd}"></Button>
-                    <Button Name="RemovePackageButton" Grid.Row="2" Grid.Column="3" Margin="3" MinWidth="70" VerticalAlignment="Center" Click="RemovePackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonRemove}"></Button>
+                    <Button Name="RemovePackageButton" Grid.Row="2" Grid.Column="3" Margin="3" MinWidth="70" Height="24" VerticalAlignment="Center" Click="RemovePackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonRemove}"></Button>
                     <Button Name="ResetPackageButton" Grid.Row="4" Grid.Column="3" Margin="3" MinWidth="70" Click="ResetPackageButton_Click" Content="{x:Static uires:UICtrlResources.buttonReset}"></Button>
                     <!--<Button Name="ApplyPackageButton" Grid.Row="3" Margin="10,8,40,8" Click="ApplyPackageButton_Click">Save</Button>-->
 
@@ -198,7 +215,6 @@
             <TabItem Name="AdvTab" Header="{x:Static uires:UICtrlResources.TabTitleAdvanced}">
                 <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -229,8 +245,8 @@
                         <ComboBoxItem Content="Fatal" />
                         <ComboBoxItem Content="All" IsSelected="True" />
                     </ComboBox>
-                    <TextBlock Grid.Row="4" Grid.Column="0"  Margin="3" MaxWidth="650"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblThresholdCount}" Grid.ColumnSpan="3"/>
-                    <TextBox Grid.Row="4" Grid.Column="3"  Margin="3" VerticalAlignment="Center" Name="maxflexgridcells" Text="{Binding Path=[maxflexgridcells], UpdateSourceTrigger=PropertyChanged}"/>
+                    <!--<TextBlock Grid.Row="4" Grid.Column="0"  Margin="3" MaxWidth="650"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblThresholdCount}" Grid.ColumnSpan="3"/>
+                    <TextBox Grid.Row="4" Grid.Column="3"  Margin="3" VerticalAlignment="Center" Name="maxflexgridcells" Text="{Binding Path=[maxflexgridcells], UpdateSourceTrigger=PropertyChanged}"/>-->
 
                     <TextBlock Grid.Row="5" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblCharToFactor}" Grid.ColumnSpan="3"/>
                     <CheckBox Grid.Row="5" Grid.Column="3"  Margin="3"  Name="CSVcharToFactor" IsChecked="{Binding Path=[CSVcharToFactor], UpdateSourceTrigger=PropertyChanged}"  />
@@ -244,6 +260,8 @@
             <TabItem Name="OutputTab" Header="{x:Static uires:UICtrlResources.TabTitleOutput}">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -269,11 +287,14 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" MaxWidth="550" Text="{x:Static uires:UICtrlResources.lblShowActualPvalue}" Name="label5b"  Margin="3"  TextWrapping="Wrap"   />
                     <CheckBox Grid.Row="2" Grid.Column="1" Height="16"  Margin="3" Name="showactualpvalue" IsChecked="{Binding Path=[showActualPValueInOutput], UpdateSourceTrigger=PropertyChanged}"  />
 
+                    <!--<TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblMaxCharsNavTree}"  Margin="3" Name="label5"   />
+                    <TextBox Grid.Row="2" Grid.Column="1"   Text="{Binding Path=[nooftreechars], UpdateSourceTrigger=PropertyChanged}" Margin="3" Name="noofchars" />-->
+
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblLoadMissing}"   Margin="3" Name="label6"   />
                     <CheckBox Grid.Row="3" Grid.Column="1"  Height="16"  Margin="3" Name="loadMissingCheckbox" IsChecked="{Binding Path=[loadSavMissingValue], UpdateSourceTrigger=PropertyChanged}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblOpenOptions}" Margin="3" Name="label7"  />
-                    <CheckBox Grid.Row="4" Grid.Column="1" Height="16"  Margin="3" Name="openDatasetOptionChkbx" IsChecked="{Binding Path=[openDatasetOption], UpdateSourceTrigger=PropertyChanged}"  />
+                    <!--<TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblOpenOptions}" IsEnabled="False" Margin="3" Name="label7"  />
+                    <CheckBox Grid.Row="4" Grid.Column="1" Height="16"  Margin="3" Name="openDatasetOptionChkbx" IsEnabled="False" IsChecked="{Binding Path=[openDatasetOption], UpdateSourceTrigger=PropertyChanged}"  />-->
 
                     <TextBlock Grid.Row="5" Grid.Column="0" MaxWidth="550" Margin="3" Text="{x:Static uires:UICtrlResources.lblShowHideNumericHeaders}"     Name="label8" TextWrapping="Wrap" />
                     <CheckBox Grid.Row="5" Grid.Column="1" Height="16"  Margin="3" Name="showNumRowHeadersChkbx" IsChecked="{Binding Path=[numericrowheaders], UpdateSourceTrigger=PropertyChanged}"   />
@@ -286,6 +307,9 @@
 
                     <TextBlock Grid.Row="8" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblShowSyntaxInOutput}"></TextBlock>
                     <CheckBox  Grid.Row="8" Grid.Column="1"  Margin="3"  Name="showSynInOutput" IsChecked="{Binding Path=[ShowSyntaxInOutput], UpdateSourceTrigger=PropertyChanged}"  />
+
+                    <TextBlock Grid.Row="9" Grid.Column="0"  Margin="3" MaxWidth="550"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblThresholdCount}" />
+                    <TextBox Grid.Row="9" Grid.Column="1"  Margin="3" VerticalAlignment="top" Name="maxflexgridcells" Text="{Binding Path=[maxflexgridcells], UpdateSourceTrigger=PropertyChanged}"/>
 
                 </Grid>
 
@@ -341,8 +365,15 @@
                         <ColumnDefinition Width="90"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblPageSize}" Name="PDFpageSize"  Margin="3"  />
-                    <ComboBox Grid.Row="0"  Grid.Column="1" Margin="3" Height="26" Name="PDFpageCombo" IsEnabled="False">
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFFontSize}"></TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3"  Name="pdfTblFontSize" Text="{Binding Path=[PDFTblFontSize], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMargins}"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="3"  Name="pdfMargins" Text="{Binding Path=[PDFPageMargins], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblPageSize}" Name="PDFpageSize"  Margin="3"  />
+                    <ComboBox Grid.Row="2"  Grid.Column="1" Margin="3" Height="26" Name="PDFpageCombo" IsEnabled="False">
                         <ComboBoxItem Content="A0" />
                         <ComboBoxItem Content="A1" />
                         <ComboBoxItem Content="A2" />
@@ -370,17 +401,14 @@
                         <ComboBoxItem Content="Legal" />
                         <ComboBoxItem Content="Letter" />
                     </ComboBox>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMaxCols}"></TextBlock>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="3"  Name="pdfColCount" Text="{Binding Path=[PDFMaxColCount]}" IsEnabled="False"></TextBox>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMargins}"></TextBlock>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="3"  Name="pdfMargins" Text="{Binding Path=[PDFPageMargins], UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMaxCols}"></TextBlock>
-                    <TextBox Grid.Row="2" Grid.Column="1" Margin="3"  Name="pdfColCount" Text="{Binding Path=[PDFMaxColCount]}" IsEnabled="False"></TextBox>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMaxRows}"></TextBlock>
+                    <TextBox Grid.Row="4" Grid.Column="1" Margin="3"  Name="pdfRowCount" Text="{Binding Path=[PDFMaxRowCount]}" IsEnabled="False"></TextBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMaxRows}"></TextBlock>
-                    <TextBox Grid.Row="3" Grid.Column="1" Margin="3"  Name="pdfRowCount" Text="{Binding Path=[PDFMaxRowCount]}" IsEnabled="False"></TextBox>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFFontSize}"></TextBlock>
-                    <TextBox Grid.Row="4" Grid.Column="1" Margin="3"  Name="pdfTblFontSize" Text="{Binding Path=[PDFTblFontSize], UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </Grid>
 
             </TabItem>

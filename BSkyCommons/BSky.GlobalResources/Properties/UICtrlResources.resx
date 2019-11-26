@@ -606,7 +606,7 @@
     <comment>DataPanel.xaml : text for invalid operation performed on scale var</comment>
   </data>
   <data name="lbl1UserPkg" xml:space="preserve">
-    <value>User's Packages (manually loaded by user from</value>
+    <value>List of package(s) user wants to load for a current session, by going into Tools -&gt; Package -&gt; Load user session package(s)</value>
     <comment>CustomSettingsWindow.xaml : First part of the label for user R packages</comment>
   </data>
   <data name="lbl2UserPkg" xml:space="preserve">
@@ -614,7 +614,7 @@
     <comment>CustomSettingsWindow.xaml : Second part of the label for user R packages</comment>
   </data>
   <data name="lblAdvancedLogging" xml:space="preserve">
-    <value>Advanced Logging:</value>
+    <value>Log advanced:</value>
     <comment>CustomSettingsWindow.xaml : label for advanced logging</comment>
   </data>
   <data name="lblCharToFactor" xml:space="preserve">
@@ -654,11 +654,11 @@
     <comment>FindReplaceWindow.xaml : label for Find</comment>
   </data>
   <data name="lblImageHeight" xml:space="preserve">
-    <value>Output Image Height:</value>
+    <value>Height, in pixels</value>
     <comment>CustomSettingsWindow.xaml : label for image height</comment>
   </data>
   <data name="lblImageWidth" xml:space="preserve">
-    <value>Output Image Width:</value>
+    <value>Width, in pixels</value>
     <comment>CustomSettingsWindow.xaml : label for image width</comment>
   </data>
   <data name="lblInitialDirectory" xml:space="preserve">
@@ -674,11 +674,11 @@
     <comment>CustomSettingsWindow.xaml : label for a note about instance name</comment>
   </data>
   <data name="lblLicNotifyDays" xml:space="preserve">
-    <value>Enter comma separated list of days (how many days before expiry, reminder should notify you. Blank field loads defaults. Enter 0 or 1 if you dont want to set any days):</value>
+    <value>Expiration reminder(s) for commercial version (enter days separated by commas, or zero for no reminder. Blank field loads defaults):</value>
     <comment>CustomSettingsWindow.xaml : lable for notify days before license expires</comment>
   </data>
   <data name="lblLoadMissing" xml:space="preserve">
-    <value>Load SAV file's missing values:</value>
+    <value>SPSS SAV file missing values will be loaded:</value>
     <comment>CustomSettingsWindow.xaml : label for loading missing values when SAV file is opened</comment>
   </data>
   <data name="lblLogLevel" xml:space="preserve">
@@ -698,7 +698,7 @@
     <comment>CustomSettingsWindow.xaml : label for max chars in nav tree</comment>
   </data>
   <data name="lblMaxFactor" xml:space="preserve">
-    <value>Enter maximum number of factor you want:</value>
+    <value>Enter maximum number of factors allowed in scale variable, when converting a scale to norminal or ordinal:</value>
     <comment>CustomSettingsWindow.xaml : label for max number of factor allowed</comment>
   </data>
   <data name="lblMouseHoverBoxColor" xml:space="preserve">
@@ -706,7 +706,7 @@
     <comment>CustomSettingsWindow.xaml : label for mouse hover box color</comment>
   </data>
   <data name="lblNavTreeSelColor" xml:space="preserve">
-    <value>Navigation tree selected item box color (in output pane):</value>
+    <value>Navigation tree selected item box color, output pane:</value>
     <comment>CustomSettingsWindow.xaml : label for navigation tree selected item color</comment>
   </data>
   <data name="lblNoDecimalDigits" xml:space="preserve">
@@ -726,15 +726,15 @@
     <comment>CustomSettingsWindow.xaml : label for PDF font size</comment>
   </data>
   <data name="lblPDFMargins" xml:space="preserve">
-    <value>Enter comma separated margin values (Left, Top, Right, Bottom):</value>
+    <value>Margin values (left, top, right, bottom)</value>
     <comment>CustomSettingsWindow.xaml : label for margins for PDF</comment>
   </data>
   <data name="lblPDFMaxCols" xml:space="preserve">
-    <value>Enter maximum number of table columns per page(including row header columns):</value>
+    <value>Table columns per page (maximum, including row header columns):</value>
     <comment>CustomSettingsWindow.xaml : label for max cols in a PDF page</comment>
   </data>
   <data name="lblPDFMaxRows" xml:space="preserve">
-    <value>Enter maximum number of table rows per page(including column header rows):</value>
+    <value>Table row per page(maximum, including column headers rows):</value>
     <comment>CustomSettingsWindow.xaml : label for max rows in a PDF page</comment>
   </data>
   <data name="lblReplaceWith" xml:space="preserve">
@@ -742,7 +742,7 @@
     <comment>FindReplaceWindow.xaml : label for Replace With</comment>
   </data>
   <data name="lblRetainSciNotation" xml:space="preserve">
-    <value>Use scientific notation for a very small and a very large number (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5).</value>
+    <value>Numbers in scientific notation for very small or very large numbers (eg.0.00001234, 1.234e-5, -0.00001234, -1.234e-5):</value>
     <comment>CustomSettingsWindow.xaml : label for retain sci notation option</comment>
   </data>
   <data name="lblRHomeDir" xml:space="preserve">
@@ -754,7 +754,7 @@
     <comment>CustomSettingsWindow.xaml : label for R syntax color</comment>
   </data>
   <data name="lblShowHideNumericHeaders" xml:space="preserve">
-    <value>The R object that contains the results of the analytical function may contain numeric row headers. This option determines whether the row headers are displayed or hidden. When checked, numeric row headers are shown in output grid:</value>
+    <value>Display numeric row headers, if present. R output objects may contain numeric row headers:</value>
     <comment>CustomSettingsWindow.xaml : label for display/hide numeric headers in output tables.</comment>
   </data>
   <data name="lblTempFolder" xml:space="preserve">
@@ -762,7 +762,7 @@
     <comment>CustomSettingsWindow.xaml : label for temporary folder</comment>
   </data>
   <data name="lblThresholdCount" xml:space="preserve">
-    <value>Threshold number of values per output table for which warning will be displayed informing the user that table generation will be time consuming and giving the user the choice to display the partial results.</value>
+    <value>Table length warning  threshold - number of values beyond which user will be warned that table generation will be time consuming:</value>
     <comment>CustomSettingsWindow.xaml : label for threshold number of cells in output table</comment>
   </data>
   <data name="lblTitleDriverPath" xml:space="preserve">
@@ -854,7 +854,7 @@
     <comment>CustomSettingsWindow.xaml : Title  for Colors tab in settings</comment>
   </data>
   <data name="TabTitleDefaultPackages" xml:space="preserve">
-    <value>Default Packages</value>
+    <value>Packages, Default</value>
     <comment>CustomSettingsWindow.xaml : Title for Default Packages tab in settings</comment>
   </data>
   <data name="TabTitleImage" xml:space="preserve">
@@ -870,19 +870,19 @@
     <comment>CustomSettingsWindow.xaml : Title for Others tab in settings</comment>
   </data>
   <data name="TabTitlePathSettings" xml:space="preserve">
-    <value>Path Settings</value>
+    <value>Paths</value>
     <comment>CustomSettingsWindow.xaml : Title  for Path Settings tab in settings</comment>
   </data>
   <data name="TabTitlePDFSettings" xml:space="preserve">
-    <value>PDF Settings</value>
+    <value>PDF</value>
     <comment>CustomSettingsWindow.xaml : Title for PDF Settings tab in settings</comment>
   </data>
   <data name="TabTitleSQLSettings" xml:space="preserve">
-    <value>SQL Settings</value>
+    <value>SQL</value>
     <comment>CustomSettingsWindow.xaml : Title for SQLSettings tab in settings</comment>
   </data>
   <data name="TabTitleUserPackages" xml:space="preserve">
-    <value>User Packages</value>
+    <value>Packages, User</value>
     <comment>CustomSettingsWindow.xaml : Title for User Packages tab in settings</comment>
   </data>
   <data name="ToolTipCloseDataset" xml:space="preserve">
@@ -1245,11 +1245,11 @@
     <comment>DataPanel.xaml.cs : Header text for numeric levels</comment>
   </data>
   <data name="ShowOutputInAPA" xml:space="preserve">
-    <value>Show output tables in APA(American Psychological Association) style.</value>
+    <value>Tables in APA(American Psychological Association) style:</value>
     <comment>CustomSettingsWindow.xaml : To switch ON APA style for output tables.</comment>
   </data>
   <data name="ShowRDataWarningMessage" xml:space="preserve">
-    <value>Show warning message box when RData file is opened.</value>
+    <value>Display warning when RData file is opened:</value>
     <comment>CustomSettingsWindow.xaml : Turn ON/OFF the warning messagebox when RData file is opened. Opening RData can overwrite existing R objects.</comment>
   </data>
   <data name="AppExitConfirmMsg2" xml:space="preserve">
@@ -1281,7 +1281,7 @@
     <comment>OutputWindow.xaml : Tooltip and/or text for show-hide button for showing and hiding syntax panel.</comment>
   </data>
   <data name="lblShowSyntaxInOutput" xml:space="preserve">
-    <value>Show syntax in the Output Window</value>
+    <value>Display R syntax in output window:</value>
     <comment>CustomSettingsWindow.xaml : lable for Show/Hide syntax in output window</comment>
   </data>
   <data name="themeicontooltip" xml:space="preserve">
@@ -1292,7 +1292,7 @@
     <value>Show/hide navigation tree</value>
   </data>
   <data name="lblShowActualPvalue" xml:space="preserve">
-    <value>Show actual p-values (e.g. p-value = .0002) in the output instead of "&lt;.001***".</value>
+    <value>Number of actual p-value displayed when tiny (e.g. p-value = .0002):</value>
     <comment>CustomSettingsWindow.xaml : Title for show actual p.value</comment>
   </data>
   <data name="TabTitleColors" xml:space="preserve">
@@ -1308,7 +1308,7 @@
     <comment>CustomSettingsWindow.xaml : Title for User R library location</comment>
   </data>
   <data name="lblNewDatasetStrToFactor" xml:space="preserve">
-    <value>Convert string variables to factor in a new dataset</value>
+    <value>Factor automatically created when reading character variables:</value>
     <comment>CustomSettingsWindow.xaml : Newdataset setting in Advanced tab in settings</comment>
   </data>
 </root>
