@@ -1577,6 +1577,21 @@ namespace BlueSky.Windows
             return RVarname;
         }
 
+        private DataSourceVariable GetRVariableDSV(string Name)
+        {
+            DataSourceVariable DSV = null;
+
+            foreach (DataSourceVariable tdsv in ds.Variables)
+            {
+                if (tdsv.Name.Equals(Name))//if found get RName, else default is already set.
+                {
+                    DSV = tdsv;
+                    break;
+                }
+            }
+            return DSV;
+        }
+
         //Get var name index
         private int GetRVarNameIndex(string Name)
         {
@@ -1764,6 +1779,19 @@ namespace BlueSky.Windows
                 colheaderpanel.HorizontalAlignment = HorizontalAlignment.Stretch;
                 colheaderpanel.VerticalAlignment = VerticalAlignment.Stretch;
 
+                //putting an icon before the Column name
+                Image classicon = new Image(); //b.MouseLeftButtonUp += new System.Windows.Input.MouseButtonEventHandler(b_MouseLeftButtonUp);
+                DataSourceVariable tempdsv = GetRVariableDSV(e.Property.Name);
+                if (tempdsv != null)
+                {
+                    classicon.ToolTip = tempdsv.DataClass;
+                    classicon.Height = 16.0;
+                    classicon.Width = 22.0;
+                    classicon.Margin = new Thickness(2);
+                    string classpackUri = "pack://application:,,,/BlueSky;component" + tempdsv.ImgURL;
+                    classicon.Source = new ImageSourceConverter().ConvertFromString(classpackUri) as ImageSource;
+                }
+
                 //putting text before sort icon
                 TextBlock txb = new TextBlock();
                 txb.Text = GetRVarName(e.Property.Name);
@@ -1795,6 +1823,7 @@ namespace BlueSky.Windows
                 if (!issortedcol)
                     sortico.Visibility = System.Windows.Visibility.Collapsed;
 
+                colheaderpanel.Children.Add(classicon);
                 colheaderpanel.Children.Add(txb);
                 colheaderpanel.Children.Add(sortico); 
 
