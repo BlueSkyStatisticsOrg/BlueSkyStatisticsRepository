@@ -1463,9 +1463,9 @@ namespace BSky.Controls
                     //23Apr2015 string commtemplate = Path.Combine(@".\Config\" + commandname + ".xaml");
 
                     //17Jun2018 string commtemplate = Path.Combine(string.Format(@"{0}", BSkyAppDir.RoamingUserBSkyConfigL18nPath) + commandname + ".xaml");//23Apr2015
-                    string commtemplate = commandname + ".xaml";//17Jun2018
+                    string commtemplate = commandname.Replace('"','\'') + ".xaml";//17Jun2018
 
-                    XmlNodeList oldxn = dp.Document.SelectNodes("//menus//menu[@commandtemplate=\'" + commtemplate + "\']");
+                    XmlNodeList oldxn = dp.Document.SelectNodes("//menus//menu[@commandtemplate=\"" + commtemplate + "\"]");
                     if (oldxn != null && !isOverwriteCommand)//if found, remove those nodes from menu.xml. AND not overwrite command
                     {
 
