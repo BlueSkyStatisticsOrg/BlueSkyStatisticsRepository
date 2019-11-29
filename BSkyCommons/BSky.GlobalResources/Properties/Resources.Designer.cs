@@ -1465,6 +1465,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open source user can only install maximum of 5 custom dialogs. Extra dialogs will appear disabled (greyed out) in the menu..
+        /// </summary>
+        public static string CstmDlgLmtRchd {
+            get {
+                return ResourceManager.GetString("CstmDlgLmtRchd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A behaviour of the control.
         /// </summary>
         public static string CtrlBehaviourIncorrect1 {

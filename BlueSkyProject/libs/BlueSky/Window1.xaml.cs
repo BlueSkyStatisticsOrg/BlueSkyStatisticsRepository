@@ -64,6 +64,10 @@ namespace BlueSky
 
                 RDataShowWarningDialogCheck = false;
 
+                if (mf.CstmDlgLmtRchd)
+                {
+                    MessageBox.Show(BSky.GlobalResources.Properties.Resources.CstmDlgLmtRchd, "Custom dialog limit reached", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
 
             }
             catch (Exception ex)//17Jan2014
