@@ -1695,7 +1695,7 @@ namespace BlueSky.Windows
         //06Jun2018
         private void Sp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string colname = ((sender as StackPanel).Children[0] as TextBlock).Text;
+            string colname = ((sender as StackPanel).Children[1] as TextBlock).Text;
             LeftMouseDownOnCol(colname);
         }
 
