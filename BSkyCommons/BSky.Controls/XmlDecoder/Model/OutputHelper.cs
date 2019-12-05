@@ -3078,7 +3078,7 @@ namespace BSky.XmlDecoder
                     tempoutput += "pd <- position_dodge(0.9)";
                     tempoutput = tempoutput + "\n";
 
-                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = as.numeric(" + xaxis + ")";
+                    tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = " + xaxis ;
 
                     tempoutput += ", y = " + var;
 
