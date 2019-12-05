@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock  Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblExampleRHomeDir2}"></TextBlock>
+            <TextBlock TextWrapping="Wrap" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblExampleRHomeDir2}"></TextBlock>
             <Button  Grid.Column="1" MinWidth="50" Height="25" 
                      Margin="0,0,3,0" HorizontalAlignment="Right" Name="okBtn" Click="okBtn_Click"
                      Content="{x:Static uires:UICtrlResources.buttonOk}"></Button>
