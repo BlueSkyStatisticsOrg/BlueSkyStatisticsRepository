@@ -794,14 +794,18 @@ namespace BSky.Controls
 
         private List<string> GetAllVars()
         {
-            IUIController UIController;
-            UIController = LifetimeService.Instance.Container.Resolve<IUIController>();
             List<string> originalvarlist = new List<string>();
-            DataSource ds = UIController.GetActiveDocument();
-            List<DataSourceVariable> org = ds.Variables;
-            foreach (DataSourceVariable dsv in org)
+            if (!BSkyCanvas.dialogMode)
             {
-                originalvarlist.Add(dsv.RName);
+                IUIController UIController;
+                UIController = LifetimeService.Instance.Container.Resolve<IUIController>();
+                //List<string> originalvarlist = new List<string>();
+                DataSource ds = UIController.GetActiveDocument();
+                List<DataSourceVariable> org = ds.Variables;
+                foreach (DataSourceVariable dsv in org)
+                {
+                    originalvarlist.Add(dsv.RName);
+                }
             }
             return originalvarlist;
         }
@@ -853,8 +857,7 @@ namespace BSky.Controls
                         //NEW VARIABLES ARE CREATED ONLY WITH THE SORT CONTROL
 
                         IList<DataSourceVariable> srcVars = list.SourceCollection as IList<DataSourceVariable>;
-
-
+                        
                         if (this.MoveVariables == true )
                         {
                             // 09/30/2019
@@ -863,35 +866,37 @@ namespace BSky.Controls
                             if (this is BSkySourceList)
                             {
 
-                                List<DataSourceVariable> newSrcVars = new List<DataSourceVariable>();
-                                List<string> originalOrder = GetAllVars();
-                                IList<Item> NewItems = new List<Item>();
-                                //09/30/2019
-                                //NOTE: THE CODE BELOW IS COMMENTED AS srcVars CANNOT BE NULL AS THE SOURCE VARIABLE LIST IS 
-                                //ALWAYS INITIALIZED EVEN WHEN ALL ITEMS ARE MOVED OUT OF IT
-                                //Here is the case of moving to the source when the  source is empty, here srcVars is null 
-                                //if (srcVars == null)
-                                //{
-                                //    DataSourceVariable var = sourcedata as DataSourceVariable;
-                                //    NewItems.Add(new Item() { Id = originalOrder.IndexOf(var.Name), Vars = var });
+                                if (!BSkyCanvas.previewinspectMode)
+                                {
+                                    List<DataSourceVariable> newSrcVars = new List<DataSourceVariable>();
+                                    List<string> originalOrder = GetAllVars();
+                                    IList<Item> NewItems = new List<Item>();
+                                    //09/30/2019
+                                    //NOTE: THE CODE BELOW IS COMMENTED AS srcVars CANNOT BE NULL AS THE SOURCE VARIABLE LIST IS 
+                                    //ALWAYS INITIALIZED EVEN WHEN ALL ITEMS ARE MOVED OUT OF IT
+                                    //Here is the case of moving to the source when the  source is empty, here srcVars is null 
+                                    //if (srcVars == null)
+                                    //{
+                                    //    DataSourceVariable var = sourcedata as DataSourceVariable;
+                                    //    NewItems.Add(new Item() { Id = originalOrder.IndexOf(var.Name), Vars = var });
 
-                                //    foreach (Item obj4 in NewItems)
-                                //    {
-                                //        newSrcVars.Add(obj4.Vars);
-                                //    }
+                                    //    foreach (Item obj4 in NewItems)
+                                    //    {
+                                    //        newSrcVars.Add(obj4.Vars);
+                                    //    }
 
-                                //    this.ItemsSource = new ListCollectionView(newSrcVars);
-                                //    this.UnselectAll();
-                                //    this.SetSelectedItems(sourcedata as List<object>);
-                                //    this.ScrollIntoView(sourcedata);
+                                    //    this.ItemsSource = new ListCollectionView(newSrcVars);
+                                    //    this.UnselectAll();
+                                    //    this.SetSelectedItems(sourcedata as List<object>);
+                                    //    this.ScrollIntoView(sourcedata);
 
-                                //}
-                                //As there are 1 or more variables in the source variable, srcVars is not null
-                               // else
-                                //{
+                                    //}
+                                    //As there are 1 or more variables in the source variable, srcVars is not null
+                                    // else
+                                    //{
                                     DataSourceVariable var = sourcedata as DataSourceVariable;
 
-                                  
+
                                     foreach (DataSourceVariable obj1 in srcVars)
                                     {
                                         NewItems.Add(new Item() { Id = originalOrder.IndexOf(obj1.RName), Vars = obj1 });
@@ -902,7 +907,7 @@ namespace BSky.Controls
 
                                     NewItems = NewItems.OrderBy(f => f.Id).ToList();
 
-                                  
+
 
                                     foreach (Item obj4 in NewItems)
                                     {
@@ -914,8 +919,20 @@ namespace BSky.Controls
                                     this.UnselectAll();
                                     this.SetSelectedItems(sourcedata as List<object>);
                                     this.ScrollIntoView(sourcedata);
-
+                                }
                                 //}
+                                else
+                                {
+                                    if (list.IndexOf(sourcedata) < 0)
+                                    {
+                                        list.AddNewItem(sourcedata);
+                                        list.CommitNew();
+
+                                        //this.SelectedItem = d;
+                                        //e.Effects =  DragDropEffects.All;
+                                        this.ScrollIntoView(sourcedata);//AutoScroll
+                                    }
+                                }
 
                             }
                             //Added by Aaron 09/30/2019

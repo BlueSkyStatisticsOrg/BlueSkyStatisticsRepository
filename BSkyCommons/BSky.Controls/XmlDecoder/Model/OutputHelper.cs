@@ -5731,7 +5731,7 @@ namespace BSky.XmlDecoder
                 if (multiway == false)
                 {
                     tempoutput = tempoutput + "#Generating summaries";
-                    tempoutput = tempoutput + "\ntemp <-" + dataset + "%>%\t group_by(" + variables + ") %>%\t summarise(n = n(), mean = mean("
+                    tempoutput = tempoutput + "\ntemp <-" + dataset + "%>%\t dplyr::group_by(" + variables + ") %>%\t dplyr::summarise(n = n(), mean = mean("
                         + target + " , na.rm = TRUE), median = median("
                         + target + ", na.rm = TRUE), min = min("
                         + target + ", na.rm = TRUE), max = max("

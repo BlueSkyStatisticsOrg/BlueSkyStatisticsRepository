@@ -1169,7 +1169,7 @@ namespace BSky.Controls
                 //string originalOrder;
                 //List <string> originalOrder = new List <String> {"subject","gender","scenario","attitude","frequency","gendeXattitude","subject_attitude" ,"scenaio_attitude" };
                 //Case of moving to a dataset list
-                List<string> originalOrder = GetAllVars();
+              //  List<string> originalOrder = GetAllVars();
                 if (vTargetListBoxDatasets != null)
                 {
                     noSelectedItems = vTargetListBoxDatasets.SelectedItems.Count;
@@ -1346,43 +1346,54 @@ namespace BSky.Controls
                             //{
 
                             //  vInputList.AddItems(validVars);
-
+                          
                             ///////////////////////////////////////////////////////////////////////////////////////////
-                            ListCollectionView view = vInputList.ItemsSource as ListCollectionView;
-
-                            IList<DataSourceVariable> srcVars = view.SourceCollection as IList<DataSourceVariable>;
-
-                            List<string> unorderedSourceVariables = new List<string>();
-
-                        
-                            IList<Item> Items = new List<Item>();
-                        
-                            foreach ( DataSourceVariable obj1 in srcVars)
+                            if (!BSkyCanvas.previewinspectMode)
                             {
-                                Items.Add(new Item() { Id = originalOrder.IndexOf(obj1.RName), Vars= obj1 });
+                                List<string> originalOrder = GetAllVars();
+                                ListCollectionView view = vInputList.ItemsSource as ListCollectionView;
+
+                                IList<DataSourceVariable> srcVars = view.SourceCollection as IList<DataSourceVariable>;
+
+                                List<string> unorderedSourceVariables = new List<string>();
+
+
+                                IList<Item> Items = new List<Item>();
+
+                                foreach (DataSourceVariable obj1 in srcVars)
+                                {
+                                    Items.Add(new Item() { Id = originalOrder.IndexOf(obj1.RName), Vars = obj1 });
+                                }
+                                foreach (DataSourceVariable obj2 in validVars)
+                                {
+                                    Items.Add(new Item() { Id = originalOrder.IndexOf(obj2.RName), Vars = obj2 });
+                                }
+
+                                //09/30/2019
+                                Items = Items.OrderBy(f => f.Id).ToList();
+
+                                List<DataSourceVariable> newSrcVars = new List<DataSourceVariable>();
+
+                                foreach (Item obj4 in Items)
+                                {
+                                    newSrcVars.Add(obj4.Vars);
+                                }
+
+
+                                vInputList.ItemsSource = new ListCollectionView(newSrcVars);
+
+                                // vInputList.Items.Insert()
+                                vInputList.UnselectAll();
+                                vInputList.SetSelectedItems(validVars as List<object>);
+                                vInputList.ScrollIntoView(validVars[0]);
                             }
-                            foreach (DataSourceVariable obj2 in validVars)
+                            else
                             {
-                                Items.Add(new Item() { Id = originalOrder.IndexOf(obj2.RName), Vars = obj2 });
+                                vInputList.AddItems(validVars);
+                                vInputList.UnselectAll();
+                                vInputList.SetSelectedItems(validVars);
+                                vInputList.ScrollIntoView(validVars[0]);    
                             }
-
-                            //09/30/2019
-                            Items = Items.OrderBy(f=>f.Id).ToList();
-
-                            List < DataSourceVariable > newSrcVars = new List<DataSourceVariable>(); 
-
-                            foreach( Item obj4 in Items)
-                            {
-                                newSrcVars.Add(obj4.Vars);
-                            }
-
-
-                             vInputList.ItemsSource = new ListCollectionView(newSrcVars);
-
-                           // vInputList.Items.Insert()
-                            vInputList.UnselectAll();
-                            vInputList.SetSelectedItems(validVars as List<object>);
-                            vInputList.ScrollIntoView(validVars[0]);
                     }
                     
                     if (vTargetList.MoveVariables) 
