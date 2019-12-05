@@ -22,6 +22,7 @@ using BSky.Lifetime.Interfaces;
 using BSky.OutputGenerator;
 using System.Globalization;
 using MSExcelInterop;
+using MSWordInteropLib;
 using BSky.Interfaces.Interfaces;
 using C1.WPF.FlexGrid;
 using Microsoft.Win32;
@@ -57,6 +58,7 @@ namespace BlueSky
         ILoggerService logService = LifetimeService.Instance.Container.Resolve<ILoggerService>();//13Dec2012
         IConfigService confService = null;//23nov2012
         MSExportToExcel _MSExcelObj;
+        private MSWordInterop _MSWordObj;
         SyntaxEditorWindow sewindow = null;
         RecentDocs recentSyntaxfiles = null;//19May2015
         CommandHistoryMenuHandler chmh = new CommandHistoryMenuHandler();//17Jul2015
@@ -323,6 +325,7 @@ namespace BlueSky
             confService = LifetimeService.Instance.Container.Resolve<IConfigService>();//23nov2012
             this.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             _MSExcelObj = new MSExportToExcel(); //initialize
+            _MSWordObj = new MSWordInterop();
 
             #region Dialog toolbar
             OutputWindowMenuFactory mf = new OutputWindowMenuFactory(menu1, dialogtoolbar, "test");//, dashBoardService);
@@ -1540,17 +1543,24 @@ namespace BlueSky
                 Headers.Add(control.ControlType);
                 TreeViewItem tvi = new TreeViewItem();
 
-                ////Setting common Excel sheet/////
+                ////Setting common Excel sheet and Word doc/////
                 AUParagraph _aup = obj as AUParagraph;
                 if (_aup != null)
+                {
                     _aup.MSExcelObj = _MSExcelObj;
+                    //_aup.MSWordObj = _MSWordObj;
+                }
                 BSkyNotes _note = obj as BSkyNotes;
                 if (_note != null)
+                {
                     _note.MSExcelObj = _MSExcelObj;
+                    //_note.MSWordObj = _MSWordObj;
+                }
                 AUXGrid _aux = obj as AUXGrid;
                 if (_aux != null)
                 {
                     _aux.MSExcelObj = _MSExcelObj;
+                    _aux.MSWordObj = _MSWordObj;
                 }
 
                 ///Toolbar delete icon saves reference of the analysis output controls ///

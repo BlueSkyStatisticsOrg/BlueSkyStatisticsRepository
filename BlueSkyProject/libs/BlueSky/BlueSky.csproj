@@ -790,6 +790,10 @@
       <Project>{fcc4b39a-d3d5-4448-b9ef-6e1ffd45a076}</Project>
       <Name>MSExcelInterop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\BSkyCommons\MSWordInteroplib\MSWordInteropLib.csproj">
+      <Project>{0f68640d-715e-4463-9f85-79b3110ca424}</Project>
+      <Name>MSWordInteropLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

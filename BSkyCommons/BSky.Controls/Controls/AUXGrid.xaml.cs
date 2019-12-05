@@ -1,21 +1,23 @@
-﻿using BSky.ConfigService.Services;
-using BSky.ConfService.Intf.Interfaces;
-using BSky.Interfaces.Controls;
-using BSky.Interfaces.Interfaces;
-using BSky.Lifetime;
-using BSky.Lifetime.Interfaces;
-using C1.WPF.FlexGrid;
-using Microsoft.Win32;
-using MSExcelInterop;
-using MSWordInteropLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using BSky.Interfaces.Controls;
+using C1.WPF.FlexGrid;
+using MSExcelInterop;
+using BSky.Lifetime.Interfaces;
+using BSky.Lifetime;
+using System.Globalization;
+using System.IO;
+using BSky.Lifetime.Services;
+using MSWordInteropLib;
+using BSky.Interfaces.Interfaces;
+using Microsoft.Win32;
+using BSky.ConfService.Intf.Interfaces;
+using BSky.ConfigService.Services;
 
 namespace BSky.Controls
 {
@@ -761,6 +763,10 @@ namespace BSky.Controls
             {
                 MessageBox.Show("Error exporting to MSWord. Make sure MSWord is installed.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 logService.WriteToLogLevel("Error exporting to MSWord. Detailed Message: " + ex.StackTrace, LogLevelEnum.Warn);
+                if (_MSWordObj != null)
+                {
+                    _MSWordObj = null;
+                }
             }
             finally
             {
@@ -835,7 +841,6 @@ namespace BSky.Controls
         private void _delete_Click(object sender, RoutedEventArgs e)
         {
             DeleteControl = true;
-        }
-
+        }		
     }
 }
