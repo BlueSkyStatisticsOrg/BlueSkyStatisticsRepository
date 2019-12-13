@@ -86,6 +86,7 @@
                                 PreviewKeyDown="GridControl1_KeyDown"
                                 CommittingEdit="gridControl1_CommittingEdit"
                                 BeginningEdit="gridControl1_BeginningEdit"
+                                BeganEdit="GridControl1_BeganEdit"
                                 SelectionChanged="gridControl1_SelectionChanged" 
                                 DeletingRows="gridControl1_DeletingRows"
                                 RowsDeleted="gridControl1_RowsDeleted" 

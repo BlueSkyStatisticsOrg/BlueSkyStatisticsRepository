@@ -28,6 +28,7 @@ using RDotNet;
 using BSky.Lifetime.Services;
 using BSky.ConfigService.Services;
 using BlueSky.Services;
+using C1.WPF;
 
 namespace BlueSky.Windows
 {
@@ -3004,6 +3005,46 @@ namespace BlueSky.Windows
                     else
                         return;
                 }
+            }
+        }
+
+
+        private void GridControl1_BeganEdit(object sender, DataGridBeganEditEventArgs e)
+        {
+#if NOMAYO
+            if (e.Column.GetType() == typeof(C1.WPF.DataGrid.DataGridComboBoxColumn))
+            {
+                C1ComboBox editor = e.EditingElement as C1ComboBox;
+                editor.IsEditable = true;
+                editor.Condition = C1.WPF.Condition.Contains;
+                editor.KeyUp += Editor_KeyUp;
+            }
+#endif
+        }
+
+        private void Editor_KeyUp(object sender, KeyEventArgs e)
+        {
+            C1TextEditableContentControl textBox = (sender as C1ComboBox).Template.FindName("ComboHeader", sender as C1ComboBox) as C1TextEditableContentControl;
+            List<String> items = new List<String>();
+            bool shouldRemove = true;
+            for (int i = 0; i < (sender as C1ComboBox).Items.Count; i++)
+            {
+                items.Add(((sender as C1ComboBox).Items.GetItemAt(i)).ToString());
+            }
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (textBox.EditTextBox.Text != "" && items.ElementAt(i).ToLowerInvariant().StartsWith(textBox.EditTextBox.Text.ToLowerInvariant()))
+                {
+                    shouldRemove = false;
+                    break;
+                }
+            }
+            // illegal character input
+            if (textBox.EditTextBox.Text != "" && shouldRemove)
+            {
+                MessageBox.Show("Item not in list");
+                textBox.EditTextBox.Text = textBox.EditTextBox.Text.Remove(textBox.EditTextBox.Text.Length - 1);
+                textBox.EditTextBox.CaretIndex = textBox.EditTextBox.Text.Length;
             }
         }
 
