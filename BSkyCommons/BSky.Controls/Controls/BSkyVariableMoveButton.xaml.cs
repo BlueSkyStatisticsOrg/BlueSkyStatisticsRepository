@@ -717,6 +717,12 @@ namespace BSky.Controls
                 if(vInputListBoxDatasets !=null)
                 {
                     noSelectedItems = vInputListBoxDatasets.SelectedItems.Count;
+                    if (noSelectedItems == 0)
+                    {
+                        diagResult = System.Windows.Forms.MessageBox.Show("You need to select a variable from the  source dataset list before clicking the move button", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Question);
+                        return;
+                    }
+
                     if (vTargetListBoxDatasets.maxNoOfVariables != string.Empty && vTargetListBoxDatasets.maxNoOfVariables != null)
                     {
                         try
@@ -755,12 +761,8 @@ namespace BSky.Controls
                         {
                            // filterResults = vTargetList.CheckForFilter(vInputList.SelectedItems[i]);
                            // if (filterResults) validVars.Add(vInputList.SelectedItems[i]);
-                          //  else invalidVars.Add(vInputList.SelectedItems[i]);
-
-                            
-
-
-                            validVars.Add(vInputListBoxDatasets.SelectedItems[i]);
+                           //  else invalidVars.Add(vInputList.SelectedItems[i]);
+                          validVars.Add(vInputListBoxDatasets.SelectedItems[i]);
                         }
                     }
 
@@ -860,7 +862,6 @@ namespace BSky.Controls
 
                         }
 
-
                         for (i = 0; i < noSelectedItems; i++)
                         {
                             //Added by Aaron 08/12/2014
@@ -871,7 +872,6 @@ namespace BSky.Controls
                                 filterResults = vTargetList.CheckForFilter(vInputList.SelectedItems[i]);
                                 if (filterResults)
                                 {
-
                                     validVars.Add(vInputList.SelectedItems[i]);
                                 }
                                 else
@@ -896,23 +896,49 @@ namespace BSky.Controls
                                     {
                                         int noofitems = vTargetList.ItemsCount;
                                         object[] arr = new object[noofitems];
-
+                                        //Added by Aaron 12/06/2019
+                                        //For a single item list we were not removing the existing variable in the target/destination single item list.
+                                        //This needs to be removed so that the singleitem list contains only a single variable 
+                                        object[] objectsInTargetList = new object[noofitems];
                                         //Adding the items in the target to the source before adding new item to the target
                                         for (i = 0; i < noofitems; i++)
                                         {
                                             //Added by Aaron 08/12/2014
                                             //Added line below, this ensures that if I have a singleitemlist and the target is full, 
                                             //I add items to the source/input list only if that item is not in the input list
+                                            objectsInTargetList[i] = vTargetList.Items[i];
                                             if (!vInputList.Items.Contains(vTargetList.Items[i]))
+                                            {
                                                 arr[i] = vTargetList.Items[i];
+                                            }
                                         }
-                                        vInputList.AddItems(arr);
+
+
+
+                                        for (i = 0; i < noofitems; i++)
+                                        {
+                                            if (arr[i] != null)
+                                            {
+                                                vInputList.AddItems(arr);
+                                            }
+                                        }
                                         //Removing all items from the target
 
                                         //The compiler is not allowing me to use vInputList.Items.Remove() so I have to use ItemsSource
 
                                         ListCollectionView lcw = vTargetList.ItemsSource as ListCollectionView;
-                                        foreach (object obj in arr) lcw.Remove(obj);
+                                        foreach (object obj in objectsInTargetList) lcw.Remove(obj);
+
+                                        //object[] arr = new object[noofitems];
+
+                                        //Adding the items in the target to the source before adding new item to the target
+                                       // for (i = 0; i < noofitems; i++)
+                                        //{
+                                          //  arr[i] = lcw.GetItemAt(i);
+                                            //srcList.AddNewItem(arr[i]);
+                                           // srcList.CommitNew();
+                                        //}
+
                                     }
                                     //Aaron 09/15/2013
                                     //There is no need of an else as the move button is alwats between a source and destination

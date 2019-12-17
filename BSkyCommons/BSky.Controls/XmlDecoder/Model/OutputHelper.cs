@@ -3078,7 +3078,12 @@ namespace BSky.XmlDecoder
                     tempoutput += "pd <- position_dodge(0.9)";
                     tempoutput = tempoutput + "\n";
 
+
+                    // tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = as.numeric(" + xaxis + ")";
                     tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = " + xaxis ;
+
+                 // tempoutput = tempoutput + "ggplot(data=temp" + ", aes(x = " + xaxis ;
+
 
                     tempoutput += ", y = " + var;
 
@@ -7892,7 +7897,7 @@ namespace BSky.XmlDecoder
                 {
                     tempoutput += "\n#Plot of fixed effects and observed data\n";
                     // tempoutput += "BSkyFixedEfectsvsObserved<-visreg(" + modelname + ")\n";
-                    tempoutput += "BSkyFixedEffectsObserved<-visreg(" + modelname + ", main =\"Plot fixed efects and observed data\"," + ", ylab =\"Estimated" + tvarbox1+  "score\")\n";
+                    tempoutput += "BSkyFixedEffectsObserved<-visreg(" + modelname + ", main =\"Plot fixed effects and observed data\"," + ", ylab =\"Estimated" + tvarbox1+  "score\")\n";
                 }
 
 

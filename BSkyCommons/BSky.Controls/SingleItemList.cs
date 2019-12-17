@@ -191,7 +191,7 @@ namespace BSky.Controls
                         e.Effects = DragDropEffects.Copy;
                         Focus();
                     }
-
+                        
                     //Aaron 09/11/2013
                     //If the grouping variable target list box has an item, we want to disallow dragging and dropping from another target to the grouping variable target.
                     //This could crate problems with filter handling
