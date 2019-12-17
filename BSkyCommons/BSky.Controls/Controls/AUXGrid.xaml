@@ -14,7 +14,7 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" Name="tblborder" Margin="2" BorderThickness="2" BorderBrush="LightGray">
+            <Border Grid.Row="0" Name="tblborder" Margin="2" BorderThickness="2" BorderBrush="Transparent">
                 <Grid Background="Transparent">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
