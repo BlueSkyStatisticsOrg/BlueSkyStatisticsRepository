@@ -21,6 +21,7 @@ max(...,na.rm=FALSE)
 min(...,na.rm=FALSE
 data.frame(...,row.names=NULL,check.rows=FALSE,check.names=TRUE,stringsAsFactors=default.stringsAsFactors())
 lines(x,...)
+install.packages()
 curve(expr,from=NULL,to=NULL,n=101,add=FALSE,type="l",xname="x",xlab=xname,ylab=NULL,log=NULL,xlim=NULL,...)
 as.integer(x,...)
 levels(x)
