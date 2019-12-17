@@ -3042,7 +3042,7 @@ namespace BlueSky.Windows
             // illegal character input
             if (textBox.EditTextBox.Text != "" && shouldRemove)
             {
-                MessageBox.Show("Item not in list");
+                MessageBox.Show("Value entered is not a valid factor level.");
                 textBox.EditTextBox.Text = textBox.EditTextBox.Text.Remove(textBox.EditTextBox.Text.Length - 1);
                 textBox.EditTextBox.CaretIndex = textBox.EditTextBox.Text.Length;
             }
