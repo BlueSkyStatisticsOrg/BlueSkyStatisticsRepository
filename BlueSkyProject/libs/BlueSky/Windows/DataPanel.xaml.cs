@@ -1138,6 +1138,10 @@ namespace BlueSky.Windows
             {
                 e.Cancel = true;
             }
+            if (e.Property.Name == "isAllNA") //16Dec2019 Dont generate this col
+            {
+                e.Cancel = true;
+            }
         }
 
         private void variableGrid_BeginningNewRow(object sender, DataGridBeginningNewRowEventArgs e)

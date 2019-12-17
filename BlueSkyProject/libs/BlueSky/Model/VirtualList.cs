@@ -339,12 +339,9 @@ namespace BlueSky.Model
                                     }
                                     else if (_dataSource.FewVariables[j].DataClass.Equals("logical"))
                                     {
+                                        bool allNA = _dataSource.FewVariables[j].isAllNA;
                                         //if all the values in this col are 'True' then change those to NA
-
-                                        rcommand = "all(is.na(" + ds_name + "[" + (j + 1) + "]))";
-                                        cr.CommandSyntax = rcommand;
-                                        datobj = _service.ExecuteR(cr, true, false);
-                                        if (datobj != null && datobj.ToString().Trim().ToLower().Equals("true"))
+                                        if (allNA)
                                         {
                                             rdata[j] = "<NA>";
                                         }

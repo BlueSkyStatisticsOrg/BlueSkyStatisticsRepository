@@ -465,6 +465,7 @@ namespace BSky.Statistics.R
 
                     int columnindex = 1;
                     string colnm = string.Empty;
+                    bool isallNA = false;
                     SymbolicExpression symex = null;
 
                     foreach (object s in columnNames)
@@ -503,6 +504,14 @@ namespace BSky.Statistics.R
                             if (colUTCoffset != null)
                             {
                                 Double.TryParse(colUTCoffset, out UTCoffset);
+                            }
+                        }
+                        if (colclass.Equals("logical"))
+                        {
+                            string allna = dispatcher.RawEvaluateGetstring("all(is.na(" + dataSource.Name + "[" + columnindex + "]))");
+                            if (allna != null && allna.Trim().ToLower().Equals("true"))
+                            {
+                                isallNA = true;
                             }
                         }
 
@@ -548,6 +557,7 @@ namespace BSky.Statistics.R
                                             || var.DataClass == "logical")
                                         {
                                             var.Measure = DataColumnMeasureEnum.Logical;
+                                            var.isAllNA = isallNA;
                                         }
                                         else if (var.DataType == DataColumnTypeEnum.Date
                                            || var.DataClass == "POSIXct" || var.DataClass == "Date")
@@ -649,7 +659,8 @@ namespace BSky.Statistics.R
                                 MissType = var.MissType,
                                 RowCount = var.RowCount,
                                 Alignment = var.Alignment,
-                                UTCOffset = var.UTCOffset
+                                UTCOffset = var.UTCOffset,
+                                isAllNA = var.isAllNA
 
                             };
                             dataSource.FewVariables.Add(var2);
@@ -816,6 +827,7 @@ namespace BSky.Statistics.R
 
                     int columnindex = 1;
                     string colnm = string.Empty;
+                    bool isallNA = false;
                     SymbolicExpression symex = null;
                     string DSvalidated = dispatcher.RawEvaluateGetstring(string.Format("BSkyValidateDataset('{0}')", dataSource.Name));//,true);
                     stopwatch.Restart(); long elapsed2 = 0; bool once = true;
@@ -864,6 +876,14 @@ namespace BSky.Statistics.R
                                 Double.TryParse(colUTCoffset, out UTCoffset);
                             }
                         }
+                        if (colclass.Equals("logical"))
+                        {
+                            string allna = dispatcher.RawEvaluateGetstring("all(is.na(" + dataSource.Name + "[" + columnindex + "]))");
+                            if (allna != null && allna.Trim().ToLower().Equals("true"))
+                            {
+                                isallNA = true;
+                            }
+                        }
 
                         string lab = (gv[2] != null && gv[2].AsCharacter() != null && gv[2].AsCharacter()[0] != null) ? gv[2].AsCharacter()[0].ToString() : string.Empty;
                         DataColumnTypeEnum dtyp = (gv[1] != null && gv[1].AsCharacter() != null && gv[1].AsCharacter()[0] != null) ? GetCovertedDataType(gv[1].AsCharacter()[0].ToString()) : DataColumnTypeEnum.Character;
@@ -908,6 +928,7 @@ namespace BSky.Statistics.R
                                             || var.DataClass == "logical")
                                         {
                                             var.Measure = DataColumnMeasureEnum.Logical;
+                                            var.isAllNA = isallNA;
                                         }
                                         else if (var.DataType == DataColumnTypeEnum.Date
                                             || var.DataClass == "POSIXct" || var.DataClass == "Date")
@@ -1023,7 +1044,8 @@ namespace BSky.Statistics.R
                                 MissType = var.MissType,
                                 RowCount = var.RowCount,
                                 Alignment = var.Alignment,
-                                UTCOffset = var.UTCOffset
+                                UTCOffset = var.UTCOffset,
+                                isAllNA = var.isAllNA
 
                             };
                             dataSource.FewVariables.Add(var2);
@@ -1148,6 +1170,7 @@ namespace BSky.Statistics.R
 
                     int columnindex = 1; long elapsed2 = 0;
                     string colnm = string.Empty;
+                    bool isallNA = false;
                     SymbolicExpression symex = null;
                     string DSvalidated = dispatcher.RawEvaluateGetstring(string.Format("BSkyValidateDataset('{0}')", dataSource.Name));//,true);
 
@@ -1199,6 +1222,14 @@ namespace BSky.Statistics.R
                                 Double.TryParse(colUTCoffset, out UTCoffset);
                             }
                         }
+                        if (colclass.Equals("logical"))
+                        {
+                            string allna = dispatcher.RawEvaluateGetstring("all(is.na(" + dataSource.Name + "[" + columnindex + "]))");
+                            if (allna != null && allna.Trim().ToLower().Equals("true"))
+                            {
+                                isallNA = true;
+                            }
+                        }
 
                         string lab = (gv[2] != null && gv[2].AsCharacter() != null && gv[2].AsCharacter()[0] != null) ? gv[2].AsCharacter()[0].ToString() : string.Empty;
                         DataColumnTypeEnum dtyp = (gv[1] != null && gv[1].AsCharacter() != null && gv[1].AsCharacter()[0] != null) ? GetCovertedDataType(gv[1].AsCharacter()[0].ToString()) : DataColumnTypeEnum.Character;
@@ -1242,6 +1273,7 @@ namespace BSky.Statistics.R
                                             || var.DataClass == "logical")
                                         {
                                             var.Measure = DataColumnMeasureEnum.Nominal;
+                                            var.isAllNA = isallNA;
                                         }
                                         else
                                             var.Measure = DataColumnMeasureEnum.Scale;
@@ -1340,7 +1372,8 @@ namespace BSky.Statistics.R
                                 MissType = var.MissType,
                                 RowCount = var.RowCount,
                                 Alignment = var.Alignment,
-                                UTCOffset = var.UTCOffset
+                                UTCOffset = var.UTCOffset,
+                                isAllNA = var.isAllNA
 
                             };
                             dataSource.FewVariables.Add(var2);

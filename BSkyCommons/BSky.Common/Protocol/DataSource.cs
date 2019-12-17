@@ -489,6 +489,14 @@ namespace BSky.Statistics.Common
             set { _UTCOffset = value; }
         }
 
+        private bool _isAllNA;
+
+        public bool isAllNA
+        {
+            get { return _isAllNA; }
+            set { _isAllNA = value; }
+        }
+
     }
 
     //Added by Aaron 08/26/2014
