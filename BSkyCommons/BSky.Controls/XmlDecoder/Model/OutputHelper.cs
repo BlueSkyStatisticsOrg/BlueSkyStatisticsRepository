@@ -7218,6 +7218,8 @@ namespace BSky.XmlDecoder
                 string CHQ2 = "";
                 string suffix = "";
                 string fixedandobserved = "";
+                string ICC = "";
+                string ls = "";
 
                 foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
                 {
@@ -7350,7 +7352,14 @@ namespace BSky.XmlDecoder
                     {
                         CHB7 = value;
                     }
-
+                    if (key == "ICC")
+                    {
+                        ICC = value;
+                    }
+                    if (key == "ls")
+                    {
+                        ls = value;
+                    }
                 }
 
                 if (NestingVar == "" || NestingVar == null)
@@ -7520,6 +7529,15 @@ namespace BSky.XmlDecoder
                 }
                 if (!errorRaised)
                 {
+
+                    tempoutput += "#Anova and Effect sizes\n";
+                    tempoutput += "BSky.Anova.Table <-anova(" + modelname + ")\n";
+                    tempoutput += "BSkyFormat(as.data.frame(BSky.Anova.Table), singleTableOutputHeader = \"ANOVA Table\")\n";
+                    tempoutput += "#Calculating Effect sizes\n";
+                    tempoutput += "BSky.effect.sizes <- with(BSky.Anova.Table, NumDF / DenDF * BSky.Anova.Table$\"F value\" / (1 + NumDF / DenDF * BSky.Anova.Table$\"F value\"))\n";
+                    tempoutput += "names(BSky.effect.sizes) <-row.names(BSky.Anova.Table)\n";
+                    tempoutput += "BSkyFormat(BSky.effect.sizes, singleTableOutputHeader = \"Effect Sizes: Semi-partial R-squared\")\n";
+
                     tempoutput = "#Creating and summarizing the mixed model\n" + modelname + "=" + tempoutput + "\n";
                   //  tempoutput += "local({ \n";
                     tempoutput += "BSkySummaryRes <- summary(" + modelname + ")" + "\n";
@@ -7527,6 +7545,7 @@ namespace BSky.XmlDecoder
                     tempoutput += "BSkySummaryRes <-BSkyprint.summary.merMod (BSkySummaryRes, correlation =TRUE )" + "\n\n";
                   
                 }
+
                 List<string> twoWayInteractions=null;
                 if (RAD2 == "TRUE" || RAD3 == "TRUE")
                 {
@@ -7607,6 +7626,24 @@ namespace BSky.XmlDecoder
 
                 }
                 //Satherthwaite and none
+
+                if (ICC =="TRUE")
+                {
+
+                    tempoutput += "\n#Intraclass Correlation Coefficient\n";
+                    tempoutput += "BSkyICC <-performance::icc(" +modelname +")\n";
+                    tempoutput += "BSkyICCAsMatrix <-matrix(c(BSkyICC$ICC_adjusted, BSkyICC$ICC_conditional), nrow = 2, ncol = 1, dimnames = list(c(\"adjusted\", \"conditional\"), c(\"Values\")))\n";
+                    tempoutput += "BSkyFormat(BSkyICCAsMatrix, singleTableOutputHeader = \"Intraclass Correlation Coefficient\")\n";
+                }
+
+
+                if (ls == "TRUE")
+                {
+                    tempoutput += "\n#Least square means\n";
+                    tempoutput += "BSkylsmeans <-lmerTest::lsmeansLT(" + modelname + ")\n";
+                    tempoutput += "BSkyFormat(as.data.frame(BSkylsmeans), singleTableOutputHeader =\"Least Square Means\")\n";
+                }
+
                 if (RAD5 == "TRUE" && RAD6 == "TRUE")
                 {
 
@@ -7779,7 +7816,7 @@ namespace BSky.XmlDecoder
                     tempoutput += "#Simple slopes returns a dataframe class where columns can be \n#list type, we need to convert it to a string type to display correctly.";
                     tempoutput += "\nif (!is.null(BSkyResSimpleSlopes))\n{";
                     tempoutput += "\nBSkyBSkyResSimpleSlopesAsDataframe <- createDataFrameFromList(BSkyResSimpleSlopes)";
-                    tempoutput += "\nBSkyFormat(BSkyBSkyResSimpleSlopesAsDataframe, singleTableOutputHeader = \"Results of Simple Slopes\")";
+                    tempoutput += "\nBSkyFormat(BSkyBSkyResSimpleSlopesAsDataframe, singleTableOutputHeader = \"Simple Slopes Analysis\")";
                     tempoutput += "\n}";
                 }
 
@@ -7799,7 +7836,7 @@ namespace BSky.XmlDecoder
 
                                 tempoutput += "ggplot(data =" + dataset + ", aes(x = " + covar + ", y = " + tvarbox1 +
                             ",group = " + NestingVar + "))" + "+\n\t geom_point() +\n\t geom_line() +\n\t xlab(\"" + covar + "\")" +
-        "+\n\t ylab(\"" + tvarbox1 + "\")" + " +\n\t ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + "+\n\t ggtitle(\"Observed Spaghetti plots\")" + "+\n\t scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
+        "+\n\t ylab(\"" + tvarbox1 + "\")" + " +\n\t ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + "+\n\t ggtitle(\"Observed Spaghetti Plots\")" + "+\n\t scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
 
                             }
                         }
@@ -7863,7 +7900,7 @@ namespace BSky.XmlDecoder
 
                                 tempoutput += "ggplot(data =" + dataset + ", aes(x = " + covar + ", y = " + predictions +
                             ",group = " + NestingVar + "))" + " +\n\t geom_point() +\n\t geom_line() +\n\t xlab(\"" + covar + "\")" +
-        " +\n\t ylab(\"" + tvarbox1 + "\")" + " +\n\t ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + " +\n\t ggtitle(\"Estimated Spaghetti plots\")" + " +\n\t scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
+        " +\n\t ylab(\"" + tvarbox1 + "\")" + " +\n\t ylim(min(" + dataset + "$" + tvarbox1 + "),max(" + dataset + "$" + tvarbox1 + "))" + " +\n\t ggtitle(\"Estimated Spaghetti Plots\")" + " +\n\t scale_x_continuous(breaks = seq(min(" + dataset + "$" + covar + "), max(" + dataset + "$" + covar + ")))\n";
 
                             }
 
@@ -7897,7 +7934,7 @@ namespace BSky.XmlDecoder
                 {
                     tempoutput += "\n#Plot of fixed effects and observed data\n";
                     // tempoutput += "BSkyFixedEfectsvsObserved<-visreg(" + modelname + ")\n";
-                    tempoutput += "BSkyFixedEffectsObserved<-visreg(" + modelname + ", main =\"Plot fixed effects and observed data\"," + ", ylab =\"Estimated" + tvarbox1+  "score\")\n";
+                    tempoutput += "BSkyFixedEffectsObserved<-visreg(" + modelname + ", main =\"Plot Fixed Effects and Observed Data\"," + ", ylab =\"Estimated" + tvarbox1+  "score\")\n";
                 }
 
 
