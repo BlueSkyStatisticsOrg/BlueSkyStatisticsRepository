@@ -1033,7 +1033,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to While loading CSV/Excel files, convert &quot;character&quot; columns to &quot;factor&quot;..
+        ///   Looks up a localized string similar to Convert all character columns to factors, when loading CSV/Excel files..
         /// </summary>
         public static string lblCharToFactor {
             get {
@@ -1123,7 +1123,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User R packages will install in this location.
+        ///   Looks up a localized string similar to User R packages will install in this location (to apply changes restart the application).
         /// </summary>
         public static string lblExampleUserRLib {
             get {
@@ -1312,7 +1312,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter maximum number of factors allowed in scale variable, when converting a scale to norminal or ordinal:.
+        ///   Looks up a localized string similar to Enter maximum number of factors allowed in a scale variable, when converting a scale to factor:.
         /// </summary>
         public static string lblMaxFactor {
             get {
@@ -1348,7 +1348,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Factor automatically created when reading character variables:.
+        ///   Looks up a localized string similar to Convert all character columns to factors, when creating new dataset in the datagrid..
         /// </summary>
         public static string lblNewDatasetStrToFactor {
             get {
@@ -1483,7 +1483,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number of actual p-value displayed when tiny (e.g. p-value = .0002):.
+        ///   Looks up a localized string similar to When p-values are smaller than the number of digits allocated to display, show &quot;&lt;.001&quot;..
         /// </summary>
         public static string lblShowActualPvalue {
             get {

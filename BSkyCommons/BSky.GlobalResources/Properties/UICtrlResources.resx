@@ -618,7 +618,7 @@
     <comment>CustomSettingsWindow.xaml : label for advanced logging</comment>
   </data>
   <data name="lblCharToFactor" xml:space="preserve">
-    <value>While loading CSV/Excel files, convert "character" columns to "factor".</value>
+    <value>Convert all character columns to factors, when loading CSV/Excel files.</value>
     <comment>CustomSettingsWindow.xaml : label for character to factor conversion if CSV/Excel files are loaded.</comment>
   </data>
   <data name="lblCommandTitleColor" xml:space="preserve">
@@ -698,7 +698,7 @@
     <comment>CustomSettingsWindow.xaml : label for max chars in nav tree</comment>
   </data>
   <data name="lblMaxFactor" xml:space="preserve">
-    <value>Enter maximum number of factors allowed in scale variable, when converting a scale to norminal or ordinal:</value>
+    <value>Enter maximum number of factors allowed in a scale variable, when converting a scale to factor:</value>
     <comment>CustomSettingsWindow.xaml : label for max number of factor allowed</comment>
   </data>
   <data name="lblMouseHoverBoxColor" xml:space="preserve">
@@ -1292,7 +1292,7 @@
     <value>Show/hide navigation tree</value>
   </data>
   <data name="lblShowActualPvalue" xml:space="preserve">
-    <value>Number of actual p-value displayed when tiny (e.g. p-value = .0002):</value>
+    <value>When p-values are smaller than the number of digits allocated to display, show "&lt;.001".</value>
     <comment>CustomSettingsWindow.xaml : Title for show actual p.value</comment>
   </data>
   <data name="TabTitleColors" xml:space="preserve">
@@ -1300,7 +1300,7 @@
     <comment>CustomSettingsWindow.xaml : Title for Colors tab in settings</comment>
   </data>
   <data name="lblExampleUserRLib" xml:space="preserve">
-    <value>User R packages will install in this location</value>
+    <value>User R packages will install in this location (to apply changes restart the application)</value>
     <comment>CustomSettingsWindow.xaml : Hint for User R library location</comment>
   </data>
   <data name="lblUserRLib" xml:space="preserve">
@@ -1308,7 +1308,7 @@
     <comment>CustomSettingsWindow.xaml : Title for User R library location</comment>
   </data>
   <data name="lblNewDatasetStrToFactor" xml:space="preserve">
-    <value>Factor automatically created when reading character variables:</value>
+    <value>Convert all character columns to factors, when creating new dataset in the datagrid.</value>
     <comment>CustomSettingsWindow.xaml : Newdataset setting in Advanced tab in settings</comment>
   </data>
 </root>
