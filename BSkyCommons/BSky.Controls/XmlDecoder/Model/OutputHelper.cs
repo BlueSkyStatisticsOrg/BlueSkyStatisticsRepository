@@ -9517,8 +9517,11 @@ namespace BSky.XmlDecoder
 
                 if (parts[0] == "GLOBAL")
                 {
-                    FrameworkElement fe = GetGlobalMacro(parts[0] + "." + parts[1] + "." + parts[2], string.Empty) as FrameworkElement;
-                    obj = fe.FindName(parts[3]);
+                    int idxoflastdot = listname.LastIndexOf('.');
+                    string part1 = listname.Substring(0, idxoflastdot);
+                    string part2 = listname.Substring(idxoflastdot + 1);
+                    FrameworkElement fe = GetGlobalMacro(part1, string.Empty) as FrameworkElement;
+                    obj = fe.FindName(part2);
                 }
             }
             if (obj != null)
