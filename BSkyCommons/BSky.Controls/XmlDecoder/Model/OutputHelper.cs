@@ -7170,6 +7170,1374 @@ namespace BSky.XmlDecoder
                 //+facet_grid({ { Facetcolumn} } ~ {{ Facetrow} }, scales ={ { Facetscale} })  +facet_wrap(  { { Facetwrap} } )
             }
 
+            else if (customsyntax == "ReorderFactorByCount")
+            {
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string specifyOrder = "";
+                string txt3 = "";
+                string rd3 = "";
+                string rd2 = "";
+                string rd1 = "";
+                string target = "";
+                string dataset = "";
+                string ordered = "";
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "txt3")
+                    {
+                        txt3 = value;
+                    }
+                    if (key == "specifyOrder")
+                    {
+                        specifyOrder = value;
+                    }
+                    if (key == "rd1")
+                    {
+                        rd1 = value;
+                    }
+
+                    if (key == "rd2")
+                    {
+                        rd2 = value;
+                    }
+
+                    if (key == "rd3")
+                    {
+                        rd3 = value;
+                    }
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "ordered")
+                    {
+                        ordered = value;
+                    }
+                }
+                string tempoutput = "";
+                string[] variables = target.Split(',');
+
+                foreach (string var in variables)
+                {
+
+                    if (specifyOrder == "Descending")
+                    {
+
+                        if (rd1 == "Overwrite")
+                        {
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + var + "<-forcats::fct_infreq(" + dataset + "$" + var + ", ordered =TRUE" + ")\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + var + "<-forcats::fct_infreq(" + dataset + "$" + var + ")\n";
+                            }
+
+                        }
+                        if (rd2 == "Prefix")
+                        {
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_infreq(" + dataset + "$" + var + ", ordered =TRUE" + ")\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_infreq(" + dataset + "$" + var + ")\n";
+                            }
+
+                        }
+                        if (rd3 == "Suffix")
+                        {
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_infreq(" + dataset + "$" + var + ", ordered =TRUE" + ")\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_infreq(" + dataset + "$" + var + ")\n";
+                            }
+
+                        }
+
+
+                    }
+                    else if (specifyOrder == "Ascending")
+                    {
+                        if (rd1 == "Overwrite")
+                        {
+
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + var + "<-forcats::fct_rev(forcats::fct_infreq(" + dataset + "$" + var + ", ordered =TRUE" + "))\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + var + "<-forcats::fct_rev(forcats::fct_infreq(" + dataset + "$" + var + "))\n";
+                            }
+
+
+                        }
+                        if (rd2 == "Prefix")
+                        {
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_rev(forcats::fct_infreq(" + dataset + "$" + var + ", ordered =TRUE" + "))\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_rev(forcats::fct_infreq(" + dataset + "$" + var + "))\n";
+                            }
+                        }
+                        if (rd3 == "Suffix")
+                        {
+
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_rev(forcats::fct_infreq(" + dataset + "$" + var + ", ordered =TRUE" + "))\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_rev(forcats::fct_infreq(" + dataset + "$" + var + "))\n";
+                            }
+                        }
+
+
+                    }
+
+
+                }
+                tempoutput += "BSkyLoadRefreshDataframe(" + dataset + ")\n";
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
+
+            else if (customsyntax == "ReorderFactorByAnother")
+            {
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string specifyOrder = "";
+                string function = "";
+                string variableToOrderBy ="";
+            
+                    string txt3 = "";
+                string rd3 = "";
+                string rd2 = "";
+                string rd1 = "";
+                string target = "";
+                string dataset = "";
+                string ordered = "";
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "txt3")
+                    {
+                        txt3 = value;
+                    }
+
+
+                    if (key == "variableToOrderBy")
+                    {
+                        variableToOrderBy = value;
+                    }
+                    if (key == "function")
+                    {
+                       function = value;
+                    }
+                    if (key == "specifyOrder")
+                    {
+                        specifyOrder = value;
+                    }
+                    if (key == "rd1")
+                    {
+                        rd1 = value;
+                    }
+
+                    if (key == "rd2")
+                    {
+                        rd2 = value;
+                    }
+
+                    if (key == "rd3")
+                    {
+                        rd3 = value;
+                    }
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "ordered")
+                    {
+                        ordered = value;
+                    }
+                }
+                string tempoutput = "";
+                string[] variables = target.Split(',');
+
+                foreach (string var in variables)
+                {
+
+                    if (specifyOrder == "Descending")
+                    {
+
+                        if (rd1 == "Overwrite")
+                        {
+                           tempoutput += dataset + "$" + var + "<-forcats::fct_reorder( .f=" + dataset + "$" + var + ", .x="+ dataset + "$" + variableToOrderBy + ", .fun=" + function +  ", .desc=TRUE" + ")\n";
+                        }
+                        if (rd2 == "Prefix")
+                        {
+
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_reorder( .f=" + dataset + "$" + var + ", .x=" + dataset + "$" + variableToOrderBy + ", .fun=" + function + ", .desc=TRUE" + ")\n";
+                        }
+
+                        
+                        if (rd3 == "Suffix")
+                        {
+
+                             tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_reorder( .f=" + dataset + "$" + var + ", .x=" + dataset + "$" + variableToOrderBy + ", .fun=" + function + ", .desc=TRUE" + ")\n";
+                            
+
+                        }
+
+
+                    }
+                    else if (specifyOrder == "Ascending")
+                    {
+                        if (rd1 == "Overwrite")
+                        {
+
+                            tempoutput += dataset + "$" + var + "<-forcats::fct_reorder( .f=" + dataset + "$" + var + ", .x=" + dataset + "$" + variableToOrderBy + ", .fun=" + function + ", .desc=FALSE" + ")\n";
+
+                        }
+                        if (rd2 == "Prefix")
+                        {
+                            tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_reorder( .f=" + dataset + "$" + var + ", .x=" + dataset + "$" + variableToOrderBy + ", .fun=" + function + ", .desc=FALSE" + ")\n";
+                        }
+                        if (rd3 == "Suffix")
+                        {
+
+                            tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_reorder( .f=" + dataset + "$" + var + ", .x=" + dataset + "$" + variableToOrderBy + ", .fun=" + function + ", .desc=FALSE" + ")\n";
+
+                        }
+
+
+                    }
+
+
+                }
+                tempoutput += "BSkyLoadRefreshDataframe(" + dataset + ")\n";
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
+
+
+            else if (customsyntax == "ReorderFactorByOccurence")
+            {
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string specifyOrder = "";
+                string txt3 = "";
+                string rd3 = "";
+                string rd2 = "";
+                string rd1 = "";
+                string target = "";
+                string dataset = "";
+                string ordered = "";
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "txt3")
+                    {
+                        txt3 = value;
+                    }
+                    if (key == "specifyOrder")
+                    {
+                        specifyOrder = value;
+                    }
+                    if (key == "rd1")
+                    {
+                        rd1 = value;
+                    }
+
+                    if (key == "rd2")
+                    {
+                        rd2 = value;
+                    }
+
+                    if (key == "rd3")
+                    {
+                        rd3 = value;
+                    }
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "ordered")
+                    {
+                        ordered = value;
+                    }
+                }
+                string tempoutput = "";
+                string[] variables = target.Split(',');
+
+                foreach (string var in variables)
+                {
+
+                    if (specifyOrder == "Descending")
+                    {
+
+                        if (rd1 == "Overwrite")
+                        {
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + var + "<-forcats::fct_inorder(" + dataset + "$" + var + ", ordered =TRUE" + ")\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + var + "<-forcats::fct_inorder(" + dataset + "$" + var + ")\n";
+                            }
+
+                        }
+                        if (rd2 == "Prefix")
+                        {
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_inorder(" + dataset + "$" + var + ", ordered =TRUE" + ")\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_inorder(" + dataset + "$" + var + ")\n";
+                            }
+
+                        }
+                        if (rd3 == "Suffix")
+                        {
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_inorder(" + dataset + "$" + var + ", ordered =TRUE" + ")\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_inorder(" + dataset + "$" + var + ")\n";
+                            }
+
+                        }
+
+
+                    }
+                    else if (specifyOrder == "Ascending")
+                    {
+                        if (rd1 == "Overwrite")
+                        {
+
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + var + "<-forcats::fct_rev(forcats::fct_inorder(" + dataset + "$" + var + ", ordered =TRUE" + "))\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + var + "<-forcats::fct_rev(forcats::fct_inorder(" + dataset + "$" + var + "))\n";
+                            }
+
+
+                        }
+                        if (rd2 == "Prefix")
+                        {
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_rev(forcats::fct_inorder(" + dataset + "$" + var + ", ordered =TRUE" + "))\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_rev(forcats::fct_inorder(" + dataset + "$" + var + "))\n";
+                            }
+                        }
+                        if (rd3 == "Suffix")
+                        {
+
+
+                            if (ordered == "TRUE")
+                            {
+                                tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_rev(forcats::fct_inorder(" + dataset + "$" + var + ", ordered =TRUE" + "))\n";
+                            }
+                            else
+                            {
+                                tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_rev(forcats::fct_inorder(" + dataset + "$" + var + "))\n";
+                            }
+                        }
+
+
+                    }
+
+
+                }
+                tempoutput += "BSkyLoadRefreshDataframe(" + dataset + ")\n";
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
+
+            else if (customsyntax == "ReorderLump")
+            {
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string other = "";
+                string txt3 = "";
+                string rd3 = "";
+                string rd2 = "";
+                string rd1 = "";
+                string target = "";
+                string dataset = "";
+                string ordered = "";
+                string defaultOption = "";
+                string proportion1 = "";
+                string categories = "";
+                string ties = "";
+                string varweights = "";
+                string proportion = "";
+                string category = "";
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "txt3")
+                    {
+                        txt3 = value;
+                    }
+                    if (key == "other")
+                    {
+                        other = value;
+                    }
+                    if (key == "rd1")
+                    {
+                        rd1 = value;
+                    }
+
+                    if (key == "rd2")
+                    {
+                        rd2 = value;
+                    }
+
+                    if (key == "rd3")
+                    {
+                        rd3 = value;
+                    }
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "ordered")
+                    {
+                        ordered = value;
+                    }
+
+                    if (key == "defaultOption")
+                    {
+                        defaultOption = value;
+                    }
+
+                    if (key == "proportion1")
+                    {
+                        proportion1 = value;
+                    }
+
+                    if (key == "categories")
+                    {
+                        categories = value;
+                    }
+
+                    if (key == "ties")
+                    {
+                        ties = value;
+                    }
+
+                    if (key == "varweights")
+                    {
+                        varweights = value;
+                    }
+                    if (key == "proportion")
+                    {
+                        proportion = value;
+                    }
+                    if (key == "category")
+                    {
+                        category = value;
+                    }
+
+                }
+                string tempoutput = "";
+                string[] variables = target.Split(',');
+
+                foreach (string var in variables)
+                {
+
+                    if (rd1 == "Overwrite")
+                    {
+
+                        if (defaultOption == "defaultOption")
+                        {
+                            tempoutput += dataset + "$" + var + "<-fct_lump(f =" + dataset + "$" + var + ", w =" + varweights + ", other_level =" + "\""+ other+ "\"" +", ties.method =" + "\""+ ties + "\""+ ")\n";
+                        }
+
+
+                        if (categories == "specifyNoCategories")
+                        {
+                            tempoutput += dataset + "$" + var + "<-fct_lump(f =" + dataset + "$" + var + ", n = " + category + ", w =" + varweights + ", other_level =" + "\"" + other + "\"" + ", ties.method =" + "\"" + ties + "\"" + ")\n";
+                        }
+                        if (proportion1 == "specifyProportion")
+                        {
+                            tempoutput += dataset + "$" + var + "<-fct_lump(f =" + dataset + "$" + var + ", p = " + proportion + ", w =" + varweights + ", other_level =" + "\"" + other + "\"" + ", ties.method =" + "\"" + ties + "\"" + ")\n";
+                        }
+
+                    }
+
+
+                    if (rd2 == "Prefix")
+                    {
+
+
+                        if (defaultOption == "defaultOption")
+                        {
+                            tempoutput += dataset + "$" + txt3 + "_" + var + "<-fct_lump(f =" + dataset + "$" + var + ", w =" + varweights + ", other_level =" + "\"" + other + "\"" + ", ties.method =" + "\"" + ties + "\"" + ")\n";
+                        }
+
+
+                        if (categories == "specifyNoCategories")
+                        {
+                            tempoutput += dataset + "$" + txt3 + "_" + var + "<-fct_lump(f =" + dataset + "$" + var + ", n = " + category + ", w =" + varweights + ", other_level =" + "\"" + other + "\"" + ", ties.method =" + "\"" + ties + "\"" + ")\n";
+
+                        }
+                        if (proportion1 == "specifyProportion")
+                        {
+                            tempoutput += dataset + "$" + txt3 + "_" + var + "<-fct_lump(f =" + dataset + "$" + var + ", p = " + proportion + ", w =" + varweights + ", other_level =" + "\"" + other + "\"" + ", ties.method =" + "\"" + ties + "\"" + ")\n";
+                        }
+
+
+                    }
+
+                    if (rd3 == "Suffix")
+                    {
+
+                        if (defaultOption == "defaultOption")
+                        {
+                            tempoutput += dataset + "$" + var + "_" + txt3 + "<-fct_lump(f =" + dataset + "$" + var + ", w =" + varweights + ", other_level =" + "\"" + other + "\"" + ", ties.method =" + "\"" + ties + "\"" + ")\n";
+                        }
+
+
+                        if (categories == "specifyNoCategories")
+                        {
+                            tempoutput += dataset + "$" + var + "_" + txt3 + "<-fct_lump(f =" + dataset + "$" + var + ", n = " + category + ", w =" + varweights + ", other_level =" + "\"" + other + "\"" + ", ties.method =" + "\"" + ties + "\"" + ")\n";
+
+                        }
+                        if (proportion1 == "specifyProportion")
+                        {
+                            tempoutput += dataset + "$" + var + "_" + txt3 + "<-fct_lump(f =" + dataset + "$" + var + ", p = " + proportion + ", w =" + varweights + ", other_level =" + "\"" + other + "\"" + ", ties.method =" + "\"" + ties + "\"" + ")\n";
+                        }
+
+                    }
+                }
+                tempoutput += "BSkyLoadRefreshDataframe(" + dataset + ")\n";
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
+
+
+            else if (customsyntax == "ReorderLumpLevelsKeepDrop")
+            {
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+
+                string other = "";
+                string txt3 = "";
+                string rd3 = "";
+                string rd2 = "";
+                string rd1 = "";
+                string target = "";
+                string dataset = "";
+                string ordered = "";
+                string dropOption = "";
+                string keepOption = "";
+                string proportion1 = "";
+                string categories = "";
+                string ties = "";
+                string varweights = "";
+                string proportion = "";
+                string category = "";
+                string drop = "";
+                string keep = "";
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "txt3")
+                    {
+                        txt3 = value;
+                    }
+                    if (key == "drop")
+                    {
+                        drop = value;
+                    }
+                    if (key == "keep")
+                    {
+                        keep = value;
+                    }
+                    if (key == "other")
+                    {
+                        other = value;
+                    }
+                    if (key == "rd1")
+                    {
+                        rd1 = value;
+                    }
+
+                    if (key == "rd2")
+                    {
+                        rd2 = value;
+                    }
+
+                    if (key == "rd3")
+                    {
+                        rd3 = value;
+                    }
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                    if (key == "ordered")
+                    {
+                        ordered = value;
+                    }
+
+                    if (key == "dropOption")
+                    {
+                        dropOption = value;
+                    }
+                    if (key == "keepOption")
+                    {
+                        keepOption = value;
+                    }
+                    if (key == "proportion1")
+                    {
+                        proportion1 = value;
+                    }
+
+                    if (key == "categories")
+                    {
+                        categories = value;
+                    }
+
+                    if (key == "ties")
+                    {
+                        ties = value;
+                    }
+
+                    if (key == "varweights")
+                    {
+                        varweights = value;
+                    }
+                    if (key == "proportion")
+                    {
+                        proportion = value;
+                    }
+                    if (key == "category")
+                    {
+                        category = value;
+                    }
+
+                }
+                string tempoutput = "";
+                string[] variables = target.Split(',');
+
+                string[] dropvariables = drop.Split(',');
+                string[] keepvariables = keep.Split(',');
+
+               
+
+                for (int i = 0; i < dropvariables.Length; i++)
+                {
+                    dropvariables[i] = "'" + dropvariables[i] + "'";
+                }
+               string  dropvariablesasarray = "c(" + string.Join(",", dropvariables) + ")";
+
+                for (int i = 0; i < keepvariables.Length; i++)
+                {
+                    keepvariables[i] = "'" + keepvariables[i] + "'";
+                }
+                string keepvariablesasarray = "c(" + string.Join(",", keepvariables) + ")";
+
+                foreach (string var in variables)
+                {
+
+                    if (rd1 == "Overwrite")
+                    {
+
+                        if (keepOption == "keepOption")
+                        {
+                            tempoutput += dataset + "$" + var + "<-forcats::fct_other(f =" + dataset + "$" + var + ", keep =" + keepvariablesasarray + ", other_level =" + "\"" + other + "\""  + ")\n";
+                        }
+
+                        if (dropOption == "dropOption")
+                        {
+                            tempoutput += dataset + "$" + var + "<-forcats::fct_other(f =" + dataset + "$" + var + ", drop =" + dropvariablesasarray + ", other_level =" + "\"" + other + "\"" + ")\n";
+                        }
+                        
+                    }
+
+
+                    if (rd2 == "Prefix")
+                    {
+
+
+                        if (keepOption == "keepOption")
+                        {
+                            tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_other(f =" + dataset + "$" + var + ", keep =" + keepvariablesasarray + ", other_level =" + "\"" + other + "\"" + ")\n";
+                        }
+
+
+                        if (dropOption == "dropOption")
+                        {
+                            tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_other(f =" + dataset + "$" + var + ", drop =" + dropvariablesasarray + ", other_level =" + "\"" + other + "\"" + ")\n";
+
+                        }
+                       
+
+                    }
+
+                    if (rd3 == "Suffix")
+                    {
+
+                        if (keepOption == "keepOption")
+                        {
+                            tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_other(f =" + dataset + "$" + var + ", keep =" + keepvariablesasarray + ", other_level =" + "\"" + other + "\"" + ")\n";
+                        }
+
+
+                        if (dropOption == "dropOption")
+                        {
+                            tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_other(f =" + dataset + "$" + var + ", drop =" + dropvariablesasarray + ", other_level =" + "\"" + other + "\"" + ")\n";
+
+                        }
+                       
+
+                    }
+                }
+                tempoutput += "BSkyLoadRefreshDataframe(" + dataset + ")\n";
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
+
+            else if (customsyntax == "ReorderDropUnusedLevels")
+            {
+
+
+                //{ { levelsToDrop} }
+                //{ { dropUnused} }
+                //{ { levelsToDrop} }
+                //{ { rd2} }
+                //{ { rd1} }
+                //{ { txt3} }
+                //{ { target} }
+                //{ {% DATASET %} }
+                //{ { rd3} }
+                //{ { drop} }
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+                //{ { dropUnused} }
+                //{ { levelsToDrop} }
+                string dropUnused = "";
+                string levelsToDrop = "";
+                string txt3 = "";
+                string rd3 = "";
+                string rd2 = "";
+                string rd1 = "";
+                string target = "";
+                string dataset = "";
+              
+              
+                string drop = "";
+               
+              
+               
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "txt3")
+                    {
+                        txt3 = value;
+                    }
+                    if (key == "drop")
+                    {
+                        drop = value;
+                    }
+                   
+                   
+                    if (key == "rd1")
+                    {
+                        rd1 = value;
+                    }
+
+                    if (key == "rd2")
+                    {
+                        rd2 = value;
+                    }
+
+                    if (key == "rd3")
+                    {
+                        rd3 = value;
+                    }
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+                
+
+                    if (key == "dropUnused")
+                    {
+                        dropUnused = value;
+                    }
+                    if (key == "levelsToDrop")
+                    {
+                        levelsToDrop = value;
+                    }
+            
+                }
+                string tempoutput = "";
+                string[] variables = target.Split(',');
+
+                string[] dropvariables = drop.Split(',');
+              
+                for (int i = 0; i < dropvariables.Length; i++)
+                {
+                    dropvariables[i] = "'" + dropvariables[i] + "'";
+                }
+                string dropvariablesasarray = "c(" + string.Join(",", dropvariables) + ")";
+
+               
+
+                foreach (string var in variables)
+                {
+
+                    if (rd1 == "Overwrite")
+                    {
+
+                        if (dropUnused == "dropUnused")
+                        {
+                            tempoutput += dataset + "$" + var + "<-forcats::fct_drop(f =" + dataset + "$" + var +  ")\n";
+                        }
+
+                        if (levelsToDrop == "levelsToDrop")
+                        {
+                            tempoutput += dataset + "$" + var + "<-forcats::fct_drop(f =" + dataset + "$" + var + ", only =" + dropvariablesasarray  + ")\n";
+                        }
+
+                    }
+
+
+                    if (rd2 == "Prefix")
+                    {
+
+
+                        if (dropUnused == "dropUnused")
+                        {
+                            tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_drop(f =" + dataset + "$" + var + ")\n";
+                        }
+
+
+                        if (levelsToDrop == "levelsToDrop")
+                        {
+                            tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_drop(f =" + dataset + "$" + var + ", only =" + dropvariablesasarray + ")\n";
+
+                        }
+
+
+                    }
+
+                    if (rd3 == "Suffix")
+                    {
+
+                        if (dropUnused == "dropUnused")
+                        {
+                            tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_drop(f =" + dataset + "$" + var + ")\n";
+                        }
+
+
+                        if (levelsToDrop == "levelsToDrop")
+                        {
+                            tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_drop(f =" + dataset + "$" + var + ", only =" + dropvariablesasarray + ")\n";
+
+                        }
+
+
+                    }
+                }
+                tempoutput += "BSkyLoadRefreshDataframe(" + dataset + ")\n";
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
+
+            else if (customsyntax == "ReorderAddLevels")
+            {
+
+
+                //{ { levelsToDrop} }
+                //{ { dropUnused} }
+                //{ { levelsToDrop} }
+                //{ { rd2} }
+                //{ { rd1} }
+                //{ { txt3} }
+                //{ { target} }
+                //{ {% DATASET %} }
+                //{ { rd3} }
+                //{ { drop} }
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+                //{ { dropUnused} }
+                //{ { levelsToDrop} }
+                string newLevels     = "";
+               
+                string txt3 = "";
+                string rd3 = "";
+                string rd2 = "";
+                string rd1 = "";
+                string target = "";
+                string dataset = "";
+               
+
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "txt3")
+                    {
+                        txt3 = value;
+                    }
+                    if (key == "newLevels")
+                    {
+                        newLevels = value;
+                    }
+
+
+                    if (key == "rd1")
+                    {
+                        rd1 = value;
+                    }
+
+                    if (key == "rd2")
+                    {
+                        rd2 = value;
+                    }
+
+                    if (key == "rd3")
+                    {
+                        rd3 = value;
+                    }
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+
+
+                   
+
+                }
+                string tempoutput = "";
+                string[] levelstoadd = newLevels.Split(',');
+
+                string[] variables = target.Split(',');
+
+                for (int i = 0; i < levelstoadd.Length; i++)
+                {
+                    levelstoadd[i] = "'" + levelstoadd[i] + "'";
+                }
+
+               //string dropvariablesasarray = "c(" + string.Join(",", dropvariables) + ")";
+
+                foreach (string var in variables)
+                {
+
+                    if (rd1 == "Overwrite")
+                    {
+                        tempoutput += dataset + "$" + var + "<-forcats::fct_expand(f =" + dataset + "$" + var + "," + string.Join (",",levelstoadd)+ ")\n";
+                    }
+
+
+                    if (rd2 == "Prefix")
+                    {
+
+
+                    //    if (dropUnused == "dropUnused")
+                    //    {
+                          tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_expand(f =" + dataset + "$" + var + "," + string.Join(",", levelstoadd) + ")\n";
+                        //    }
+
+
+                        //    if (levelsToDrop == "levelsToDrop")
+                        //    {
+                        //        tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_drop(f =" + dataset + "$" + var + ", only =" + dropvariablesasarray + ")\n";
+
+                        //    }
+
+
+                    }
+
+                    if (rd3 == "Suffix")
+                    {
+
+                    //    if (dropUnused == "dropUnused")
+                    //    {
+                           tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_expand(f =" + dataset + "$" + var + "," + string.Join(",", levelstoadd) + ")\n";
+                        //    }
+
+
+                        //    if (levelsToDrop == "levelsToDrop")
+                        //    {
+                        //        tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_drop(f =" + dataset + "$" + var + ", only =" + dropvariablesasarray + ")\n";
+
+                        //    }
+
+
+                    }
+                }
+                tempoutput += "BSkyLoadRefreshDataframe(" + dataset + ")\n";
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
+
+
+            else if (customsyntax == "SetLabelForNA")
+            {
+
+
+                //{ { levelsToDrop} }
+                //{ { dropUnused} }
+                //{ { levelsToDrop} }
+                //{ { rd2} }
+                //{ { rd1} }
+                //{ { txt3} }
+                //{ { target} }
+                //{ {% DATASET %} }
+                //{ { rd3} }
+                //{ { drop} }
+
+                MatchCollection mcol = re.Matches(commandformat);
+                foreach (Match m in mcol)
+                {
+                    string matchedText = m.Groups[1].Value;
+                    string result = GetParam(obj, matchedText);
+                    if (!CommandKeyValDict.ContainsKey(matchedText))
+                    {
+                        CommandKeyValDict.Add(matchedText, result);
+                    }
+                }
+                //{ { dropUnused} }
+                //{ { levelsToDrop} }
+                string newLevels = "";
+
+                string txt3 = "";
+                string rd3 = "";
+                string rd2 = "";
+                string rd1 = "";
+                string target = "";
+                string dataset = "";
+
+
+
+                foreach (KeyValuePair<string, string> kv in CommandKeyValDict)
+                {
+                    string key = kv.Key;
+                    string value = kv.Value;
+                    //create final syntac in 'output'
+                    // output = output+","+ key + "=c(" + value + ")";
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "txt3")
+                    {
+                        txt3 = value;
+                    }
+                    if (key == "newLevels")
+                    {
+                        newLevels = value;
+                    }
+
+
+                    if (key == "rd1")
+                    {
+                        rd1 = value;
+                    }
+
+                    if (key == "rd2")
+                    {
+                        rd2 = value;
+                    }
+
+                    if (key == "rd3")
+                    {
+                        rd3 = value;
+                    }
+
+                    if (key == "target")
+                    {
+                        target = value;
+                    }
+                    if (key == "%DATASET%")
+                    {
+                        dataset = value;
+                    }
+
+                }
+                string tempoutput = "";
+              //  string[] levelstoadd = newLevels.Split(',');
+
+                string[] variables = target.Split(',');
+
+              //  for (int i = 0; i < levelstoadd.Length; i++)
+               // {
+               //     levelstoadd[i] = "'" + levelstoadd[i] + "'";
+               ////////// }
+
+                //string dropvariablesasarray = "c(" + string.Join(",", dropvariables) + ")";
+
+                foreach (string var in variables)
+                {
+
+                    if (rd1 == "Overwrite")
+                    {
+                        tempoutput += dataset + "$" + var + "<-forcats::fct_explicit_na(f =" + dataset + "$" + var + "," + "na_level = " + "\"" + newLevels + "\"" + ")\n";
+                    }
+
+
+                    if (rd2 == "Prefix")
+                    {
+
+
+                        //    if (dropUnused == "dropUnused")
+                        //    {
+                        tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_explicit_na(f =" + dataset + "$" + var + "," + "na_level = " + "\"" + newLevels + "\"" + ")\n";
+                        //    }
+
+
+                        //    if (levelsToDrop == "levelsToDrop")
+                        //    {
+                        //        tempoutput += dataset + "$" + txt3 + "_" + var + "<-forcats::fct_drop(f =" + dataset + "$" + var + ", only =" + dropvariablesasarray + ")\n";
+
+                        //    }
+
+
+                    }
+
+                    if (rd3 == "Suffix")
+                    {
+
+                        //    if (dropUnused == "dropUnused")
+                        //    {
+                        tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_explicit_na(f =" + dataset + "$" + var + "," + "na_level = " + "\""+  newLevels + "\""+")\n";
+                        //    }
+
+
+                        //    if (levelsToDrop == "levelsToDrop")
+                        //    {
+                        //        tempoutput += dataset + "$" + var + "_" + txt3 + "<-forcats::fct_drop(f =" + dataset + "$" + var + ", only =" + dropvariablesasarray + ")\n";
+
+                        //    }
+
+
+                    }
+                }
+                tempoutput += "BSkyLoadRefreshDataframe(" + dataset + ")\n";
+                tempoutput = tempoutput + "\n\n";
+                output = output + tempoutput;
+
+                tempoutput = "";
+
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+                output = output.TrimEnd(Environment.NewLine.ToCharArray());
+            }
+
+
+
+
+
             else if (customsyntax == "MixedModels")
             {
                 
@@ -7639,9 +9007,18 @@ namespace BSky.XmlDecoder
 
                 if (ls == "TRUE")
                 {
+
+
                     tempoutput += "\n#Least square means\n";
-                    tempoutput += "BSkylsmeans <-lmerTest::lsmeansLT(" + modelname + ")\n";
-                    tempoutput += "BSkyFormat(as.data.frame(BSkylsmeans), singleTableOutputHeader =\"Least Square Means\")\n";
+                    if (fixedEffects.Count() != 0)
+                    {
+                        tempoutput += "BSkylsmeans <-lmerTest::lsmeansLT(" + modelname + ")\n";
+                        tempoutput += "BSkyFormat(as.data.frame(BSkylsmeans), singleTableOutputHeader =\"Least Square Means\")\n";
+                    }
+                    else
+                    {
+                        tempoutput += "cat(\"Least square means cannot be computed as there are no fixed effects\")\n";
+                    }
                 }
 
                 if (RAD5 == "TRUE" && RAD6 == "TRUE")

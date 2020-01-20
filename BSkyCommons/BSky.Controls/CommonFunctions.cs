@@ -164,6 +164,15 @@ namespace BSky.Controls
                     }
                     return false;
                 }
+                else if (obj is BSkyMasterListBox)
+                {
+                    validProperties = new string[] { "SelectedItemsCount", "CanExecute", "Enabled" };
+                    foreach (string x in validProperties)
+                    {
+                        if (x == propertyName) return true;
+                    }
+                    return false;
+                }
                 else if (obj is BSkyTextBox)
                 {
                     validProperties = new string[] { "Text", "CanExecute", "Enabled" };

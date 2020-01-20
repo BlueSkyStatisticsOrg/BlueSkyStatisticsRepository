@@ -3088,7 +3088,7 @@ namespace BSky.Controls
         {
             foreach (UIElement child in myCanvas.Children)
             {
-                if (child.GetType().Name == "BSkySourceList" || child.GetType().Name == "BSkyTargetList" || child.GetType().Name == "BSkyGroupingVariable" || child.GetType().Name == "BSkyListBoxwBorderForDatasets" || child.GetType().Name == "BSkyAggregateCtrl" || child.GetType().Name == "BSkySortCtrl"   || child.GetType().Name == "BSkySpinnerCtrl")
+                if (child.GetType().Name == "BSkySourceList" || child.GetType().Name == "BSkyTargetList" || child.GetType().Name == "BSkyGroupingVariable" || child.GetType().Name == "BSkyListBoxwBorderForDatasets" || child.GetType().Name == "BSkyAggregateCtrl" || child.GetType().Name == "BSkySortCtrl"   || child.GetType().Name == "BSkySpinnerCtrl" || child.GetType().Name == "BSkyEditableComboBox")
                 {
 
 

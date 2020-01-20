@@ -23,7 +23,7 @@
             </Grid.RowDefinitions>
 
             <c1:C1TabControl x:Name="tab1" Grid.Row="0" >
-                <c1:C1TabItem Header="Arithmethic">
+                <c1:C1TabItem Header="Arithmetic">
                     <Grid >
                         <Grid.RowDefinitions>
                             <!--<RowDefinition Height="Auto"/>-->
@@ -299,12 +299,17 @@
                             <!--<RowDefinition Height="Auto"/>-->
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <!--<RowDefinition Height="38"/>-->
                         </Grid.RowDefinitions>
                         <!--<Label Grid.Row="0">Instructions:</Label>-->                        
                         <TextBlock  TextWrapping ="Wrap" Grid.Row="0">Create a date class(POSIXct) from a string and subtracting dates.</TextBlock>
                         <WrapPanel  Grid.Row="1" Width="275" Margin="15,0,26,0">
                             <p:FormulaComputeButton Content="Create a date (from string)"  Margin ="5,5,5,5" Height="25"  x:Name="Button1025"  Width="150" />
+                           <!-- <p:FormulaComputeButton Content="Date Difference"  Margin ="5,5,5,5" Height="25"  x:Name="Button1026"  Width="100" />-->
+                        </WrapPanel>
+                        <WrapPanel  Grid.Row="2" Width="275" Margin="15,0,26,0">
+                            <!-- <p:FormulaComputeButton Content="Create a date (from string)"  Margin ="5,5,5,5" Height="25"  x:Name="Button1025"  Width="150" />-->
                             <p:FormulaComputeButton Content="Date Difference"  Margin ="5,5,5,5" Height="25"  x:Name="Button1026"  Width="100" />
                         </WrapPanel>
                     </Grid>
