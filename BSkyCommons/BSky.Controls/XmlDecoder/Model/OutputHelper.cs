@@ -1068,13 +1068,23 @@ namespace BSky.XmlDecoder
                     }
                     else if (txt.SubstituteSettings.Contains("CreateArray"))
                     {
-                        string[] strs = txt.Text.Split(',');
-
-                        for (int i = 0; i < strs.Length; i++)
+                        //Added by Aaron 1/24/2020 to handle the case of passing a comma as a seperator for computing dummy variables
+                        //his is for the syntax dummy_cols (split=",") , what was happening is we were getting dummy_cols (split='','')
+                        if (txt.Text == ",")
                         {
-                            strs[i] = "'" + strs[i] + "'";
+                            vals = "c(" + "\"," +  "\"" +  ")";
                         }
-                        vals = "c(" + string.Join(",", strs) + ")";
+                        else
+                        {
+                            string[] strs = txt.Text.Split(',');
+
+                            for (int i = 0; i < strs.Length; i++)
+                            {
+                                strs[i] = "'" + strs[i] + "'";
+                            }
+                            vals = "c(" + string.Join(",", strs) + ")";
+                        }
+
                     }
                     if (txt.SubstituteSettings.Contains("Brackets")) vals = "(" + vals + ")";
                     //having the if below allows you to create a prefix for an enclosed string
@@ -10894,8 +10904,11 @@ namespace BSky.XmlDecoder
 
                 if (parts[0] == "GLOBAL")
                 {
-                    FrameworkElement fe = GetGlobalMacro(parts[0] + "." + parts[1] + "." + parts[2], string.Empty) as FrameworkElement;
-                    obj = fe.FindName(parts[3]);
+                    int idxoflastdot = listname.LastIndexOf('.');
+                    string part1 = listname.Substring(0, idxoflastdot);
+                    string part2 = listname.Substring(idxoflastdot + 1);
+                    FrameworkElement fe = GetGlobalMacro(part1, string.Empty) as FrameworkElement;
+                    obj = fe.FindName(part2);
                 }
             }
             if (obj != null)

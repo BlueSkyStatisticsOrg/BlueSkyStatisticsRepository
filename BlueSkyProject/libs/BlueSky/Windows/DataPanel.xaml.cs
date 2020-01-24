@@ -3015,7 +3015,7 @@ namespace BlueSky.Windows
 
         private void GridControl1_BeganEdit(object sender, DataGridBeganEditEventArgs e)
         {
-#if NOMAYO
+//#if NOMAYO
             if (e.Column.GetType() == typeof(C1.WPF.DataGrid.DataGridComboBoxColumn))
             {
                 C1ComboBox editor = e.EditingElement as C1ComboBox;
@@ -3023,7 +3023,7 @@ namespace BlueSky.Windows
                 editor.Condition = C1.WPF.Condition.Contains;
                 editor.KeyUp += Editor_KeyUp;
             }
-#endif
+//#endif
         }
 
         private void Editor_KeyUp(object sender, KeyEventArgs e)

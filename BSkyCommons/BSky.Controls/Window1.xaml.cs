@@ -2582,6 +2582,11 @@ namespace BSky.Controls
                         // 11/18/2012, code inserted by Aaron to display the predetermined variable list
                         BSkyCanvas canvasobj;
                         canvasobj = obj as BSkyCanvas;
+                        //Added by Aaron 1/20/2019 to address the crash when open a dialog box and clicking on the listbox 
+                        //entries to view them and then clicking OK would result in a null pointer exception
+                        //Open the Model tuning -bot strap resampling to reproduce
+
+                        BSkyCanvas.first = canvasobj;
                         //Added by Aaron 05/12/2014
                         BSkyCanvas.chainOpenCanvas.Add(canvasobj);
 

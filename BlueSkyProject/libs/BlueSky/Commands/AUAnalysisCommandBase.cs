@@ -1426,6 +1426,12 @@ namespace BlueSky.Commands.Analytics.TTest
 
             string finalModifiedCommand = string.Join(";", commands);// string.Empty;
             string allcommands = string.Join(";", commands);
+			
+            //no need to handle split if we are just reloading dataset from the disk
+            if (finalModifiedCommand.StartsWith("BSkyReloadDataset(") && commands.Length == 1)
+            {
+                return finalModifiedCommand;
+            }
             //modifiedCommand = new StringBuilder(string.Join(";", commands));
             ////07Jan2015 if (!commands[0].Contains("bsky"))// FOR NON-BSKY COMMANDS
             {
