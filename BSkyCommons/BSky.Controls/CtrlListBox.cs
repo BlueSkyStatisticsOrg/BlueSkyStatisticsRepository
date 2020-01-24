@@ -113,6 +113,11 @@ namespace BSky.Controls
            
         }
 
+
+
+
+
+
         private bool _enabled = true;
         [Category("Control Settings"), PropertyOrder(8)]
         //[Description("Default is True(enabled). This property controls whether the default state of this variable list control is enabled or disabled. For enabled, select True, for disabled select False. When enabled, you can select items in this control, when disabled, you cannot interact with the control. For example, you may want the initial state of the variable list control to be disabled, however you may want to enable it based on a selection made in another control")]

@@ -2582,6 +2582,11 @@ namespace BSky.Controls
                         // 11/18/2012, code inserted by Aaron to display the predetermined variable list
                         BSkyCanvas canvasobj;
                         canvasobj = obj as BSkyCanvas;
+                        //Added by Aaron 1/20/2019 to address the crash when open a dialog box and clicking on the listbox 
+                        //entries to view them and then clicking OK would result in a null pointer exception
+                        //Open the Model tuning -bot strap resampling to reproduce
+
+                        BSkyCanvas.first = canvasobj;
                         //Added by Aaron 05/12/2014
                         BSkyCanvas.chainOpenCanvas.Add(canvasobj);
 
@@ -3088,7 +3093,7 @@ namespace BSky.Controls
         {
             foreach (UIElement child in myCanvas.Children)
             {
-                if (child.GetType().Name == "BSkySourceList" || child.GetType().Name == "BSkyTargetList" || child.GetType().Name == "BSkyGroupingVariable" || child.GetType().Name == "BSkyListBoxwBorderForDatasets" || child.GetType().Name == "BSkyAggregateCtrl" || child.GetType().Name == "BSkySortCtrl"   || child.GetType().Name == "BSkySpinnerCtrl")
+                if (child.GetType().Name == "BSkySourceList" || child.GetType().Name == "BSkyTargetList" || child.GetType().Name == "BSkyGroupingVariable" || child.GetType().Name == "BSkyListBoxwBorderForDatasets" || child.GetType().Name == "BSkyAggregateCtrl" || child.GetType().Name == "BSkySortCtrl"   || child.GetType().Name == "BSkySpinnerCtrl" || child.GetType().Name == "BSkyEditableComboBox")
                 {
 
 
