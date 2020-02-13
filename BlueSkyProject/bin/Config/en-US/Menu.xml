@@ -1,12 +1,12 @@
 <menus>
   <menu id="FileMenu" text="File" owner="BSky" nodetype="Parent">
-  <menu id="FileMenuNew" text="New" owner="BSky" nodetype="Parent">
-    <menu id="FileMenuNewDS" text="New Dataset" command="BlueSky.Commands.File.FileNewCommand" owner="BSky" nodetype="Leaf" />
-    <menu id="FileMenuNewOW" text="New Output Window" command="BlueSky.Commands.Output.NewOutputWindow" owner="BSky" nodetype="Leaf" />
+    <menu id="FileMenuNew" text="New" owner="BSky" nodetype="Parent">
+      <menu id="FileMenuNewDS" text="New Dataset" command="BlueSky.Commands.File.FileNewCommand" owner="BSky" nodetype="Leaf" />
+      <menu id="FileMenuNewOW" text="New Output Window" command="BlueSky.Commands.Output.NewOutputWindow" owner="BSky" nodetype="Leaf" />
     </menu>
     <menu id="FileMenuOpen" text="Open" command="BlueSky.Commands.File.FileOpenCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpenOutput" text="Open Output" command="BlueSky.Commands.Output.OutputOpenCommand" owner="BSky" nodetype="Leaf" />
-	<menu id="Paste_Dataset_from_the_clipboard" text="Paste Dataset from the clipboard" command="BlueSky.Commands.File.PasteDatasetCommand" owner="BSky" nodetype="Leaf" />	
+    <menu id="Paste_Dataset_from_the_clipboard" text="Paste Dataset from the clipboard" command="BlueSky.Commands.File.PasteDatasetCommand" owner="BSky" nodetype="Leaf" />
     <menu id="Load_Dataset_from_a_Package" text="Load Dataset from a Package" command="BlueSky.Commands.File.LoadDatasetFromRPkgCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuImportData" text="Import Data..." owner="BSky" nodetype="Parent">
       <menu id="FileMenuOpen" text="SQL Database" command="BlueSky.Commands.File.ImportFromSQLCommand" owner="BSky" nodetype="Leaf" />
@@ -34,26 +34,26 @@
       <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Test,_one_pair" text="Correlation Test, one pair" commandtemplate="Correlation Test, one pair.xaml" commandoutputformat="Correlation Test, one pair.xml" owner="" nodetype="Leaf" />
       <menu id="Correlation_Test,_multi-variable" text="Correlation Test, multi-variable" commandtemplate="Correlation Test, multi-variable.xaml" commandoutputformat="Correlation Test, multi-variable.xml" owner="" nodetype="Leaf" />
-    </menu>    
-	<menu id="FactSubMenu" text="Factor Analysis" owner="" nodetype="Parent">
+    </menu>
+    <menu id="FactSubMenu" text="Factor Analysis" owner="" nodetype="Parent">
       <menu id="Factor_Analysis" text="Factor Analysis" commandtemplate="Factor Analysis.xaml" commandoutputformat="Factor Analysis.xml" owner="" nodetype="Leaf" />
       <menu id="Principal_Component_Analysis" text="Principal Component Analysis" commandtemplate="Principal Component Analysis.xaml" commandoutputformat="Principal Component Analysis.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="MBASubMenu" text="Market Basket" owner="" nodetype="Parent">
       <menu id="BasSubMenu" text="Basket Data Format" owner="" nodetype="Parent">
-        <menu id="Generate_Rules_(for_Basket_Data_Format)" text="Generate Rules (for Basket Data Format)" commandtemplate="Generate Rules (for Basket Data Format).xaml" commandoutputformat="Generate Rules (for Basket Data Format).xml" owner="" nodetype="Leaf" />
-        <menu id="Item_Frequency_Plot_(for_Basket_Data_Format)" text="Item Frequency Plot (for Basket Data Format)" commandtemplate="Item Frequency Plot (for Basket Data Format).xaml" commandoutputformat="Item Frequency Plot (for Basket Data Format).xml" owner="" nodetype="Leaf" />
-        <menu id="Targeting_Items_(for_Basket_Data_Format)" text="Targeting Items (for Basket Data Format)" commandtemplate="Targeting Items (for Basket Data Format).xaml" commandoutputformat="Targeting Items (for Basket Data Format).xml" owner="" nodetype="Leaf" />
+        <menu id="Generate_Rules,_basket_data" text="Generate Rules, basket data" commandtemplate="Generate Rules, basket data.xaml" commandoutputformat="Generate Rules, basket data.xml" owner="" nodetype="Leaf" />
+        <menu id="Item_Frequency_Plot,_basket_data" text="Item Frequency Plot, basket data" commandtemplate="Item Frequency Plot, basket data.xaml" commandoutputformat="Item Frequency Plot, basket data.xml" owner="" nodetype="Leaf" />
+        <menu id="Targeting_Items,_basket_data" text="Targeting Items, basket data" commandtemplate="Targeting Items, basket data.xaml" commandoutputformat="Targeting Items, basket data.xml" owner="" nodetype="Leaf" />
       </menu>
       <menu id="Display_Rules" text="Display Rules" commandtemplate="Display Rules.xaml" commandoutputformat="Display Rules.xml" owner="" nodetype="Leaf" />
       <menu id="MultiLineSubMenu" text="Multi-line Transaction Format" owner="" nodetype="Parent">
-        <menu id="Generate_Rules_(for_Multi-line_Transactions)" text="Generate Rules (for Multi-line Transactions)" commandtemplate="Generate Rules (for Multi-line Transactions).xaml" commandoutputformat="Generate Rules (for Multi-line Transactions).xml" owner="" nodetype="Leaf" />
-        <menu id="Item_Frequency_Plot_(for_Multi-line_Transactions)" text="Item Frequency Plot (for Multi-line Transactions)" commandtemplate="Item Frequency Plot (for Multi-line Transactions).xaml" commandoutputformat="Item Frequency Plot (for Multi-line Transactions).xml" owner="" nodetype="Leaf" />
-        <menu id="Targeting_Items_(for_Multi-line_Transaction_Format)" text="Targeting Items (for Multi-line Transaction Format)" commandtemplate="Targeting Items (for Multi-line Transaction Format).xaml" commandoutputformat="Targeting Items (for Multi-line Transaction Format).xml" owner="" nodetype="Leaf" />
+        <menu id="Generate_Rules,_multi-line" text="Generate Rules, multi-line" commandtemplate="Generate Rules, multi-line.xaml" commandoutputformat="Generate Rules, multi-line.xml" owner="" nodetype="Leaf" />
+        <menu id="Item_Frequency_Plot,_multi-line" text="Item Frequency Plot, multi-line" commandtemplate="Item Frequency Plot, multi-line.xaml" commandoutputformat="Item Frequency Plot, multi-line.xml" owner="" nodetype="Leaf" />
+        <menu id="Targeting_Items,_multi-line" text="Targeting Items, multi-line" commandtemplate="Targeting Items, multi-line.xaml" commandoutputformat="Targeting Items, multi-line.xml" owner="" nodetype="Leaf" />
       </menu>
       <menu id="new_id" text="Multiple Variable Format" owner="" nodetype="Parent">
-        <menu id="Generate_Rules_(for_Multi-variable_Format)" text="Generate Rules (for Multi-variable Format)" commandtemplate="Generate Rules (for Multi-variable Format).xaml" commandoutputformat="Generate Rules (for Multi-variable Format).xml" owner="" nodetype="Leaf" />
-        <menu id="Targeting_Items_(for_Multi-variable_Format)" text="Targeting Items (for Multi-variable Format)" commandtemplate="Targeting Items (for Multi-variable Format).xaml" commandoutputformat="Targeting Items (for Multi-variable Format).xml" owner="" nodetype="Leaf" />
+        <menu id="Generate_Rules,_multi-variable" text="Generate Rules, multi-variable" commandtemplate="Generate Rules, multi-variable.xaml" commandoutputformat="Generate Rules, multi-variable.xml" owner="" nodetype="Leaf" />
+        <menu id="Targeting_Items,_multi-variable" text="Targeting Items, multi-variable" commandtemplate="Targeting Items, multi-variable.xaml" commandoutputformat="Targeting Items, multi-variable.xml" owner="" nodetype="Leaf" />
       </menu>
       <menu id="Plot_Rules" text="Plot Rules" commandtemplate="Plot Rules.xaml" commandoutputformat="Plot Rules.xml" owner="" nodetype="Leaf" />
     </menu>
@@ -101,7 +101,7 @@
       <menu id="Shapiro-Wilk_Normality_Test" text="Shapiro-Wilk Normality Test" commandtemplate="Shapiro-Wilk Normality Test.xaml" commandoutputformat="Shapiro-Wilk Normality Test.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="Summary_Statistics,_by_group" text="Summary Statistics, by group" commandtemplate="Summary Statistics, by group.xaml" commandoutputformat="Summary Statistics, by group.xml" owner="" nodetype="Leaf" />
-      <menu id="Summary_Statistics,_all_variables" text="Summary Statistics, all variables" commandtemplate="Summary Statistics, all variables.xaml" commandoutputformat="Summary Statistics, all variables.xml" owner="" nodetype="Leaf"  icon="images/Summarize.png" showtoolbaricon="true"/>
+      <menu id="Summary_Statistics,_all_variables" text="Summary Statistics, all variables" commandtemplate="Summary Statistics, all variables.xaml" commandoutputformat="Summary Statistics, all variables.xml" owner="" nodetype="Leaf" icon="images/Summarize.png" showtoolbaricon="true" />
       <menu id="Summary_Statistics,_selected_variables" text="Summary Statistics, selected variables" commandtemplate="Summary Statistics, selected variables.xaml" commandoutputformat="Summary Statistics, selected variables.xml" owner="" nodetype="Leaf" />
       <menu id="new_id" text="Advanced" owner="" nodetype="Parent">
         <menu id="Summary_Statistics,_all_variables,_control_levels" text="Summary Statistics, all variables, control levels" commandtemplate="Summary Statistics, all variables, control levels.xaml" commandoutputformat="Summary Statistics, all variables, control levels.xml" owner="" nodetype="Leaf" />
@@ -114,7 +114,7 @@
       <menu id="Holt-Winters,_seasonal" text="Holt-Winters, seasonal" commandtemplate="Holt-Winters, seasonal.xaml" commandoutputformat="Holt-Winters, seasonal.xml" owner="" nodetype="Leaf" />
       <menu id="Holt-Winters,_non-seasonal" text="Holt-Winters, non-seasonal" commandtemplate="Holt-Winters, non-seasonal.xaml" commandoutputformat="Holt-Winters, non-seasonal.xml" owner="" nodetype="Leaf" />
       <menu id="Plot_Time_Series,_separate_or_combined" text="Plot Time Series, separate or combined" commandtemplate="Plot Time Series, separate or combined.xaml" commandoutputformat="Plot Time Series, separate or combined.xml" owner="" nodetype="Leaf" />
-      <menu id="Plot_Time_Series,_with_correlations" text="Plot Time Series, with correlations" commandtemplate="Plot Time Series, with correlations.xaml" commandoutputformat="Plot Time Series, with correlations.xml" owner="" nodetype="Leaf"  icon="images/Time-Series.png" showtoolbaricon="true" />
+      <menu id="Plot_Time_Series,_with_correlations" text="Plot Time Series, with correlations" commandtemplate="Plot Time Series, with correlations.xaml" commandoutputformat="Plot Time Series, with correlations.xml" owner="" nodetype="Leaf" icon="images/Time-Series.png" showtoolbaricon="true" />
     </menu>
     <menu id="VarianceSubMenu" text="Variance" owner="" nodetype="Parent">
       <menu id="Bartletts_Test" text="Bartletts Test" commandtemplate="Bartletts Test.xaml" commandoutputformat="Bartletts Test.xml" owner="" nodetype="Leaf" />
@@ -126,17 +126,29 @@
     <menu id="Bin_Numeric_Variable(s)" text="Bin Numeric Variable(s)" commandtemplate="Bin Numeric Variable(s).xaml" commandoutputformat="Bin Numeric Variable(s).xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
     <menu id="ComputeSubMenu" text="Compute New Variable(s)" owner="" nodetype="Parent">
       <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
-      <menu id="Conditional_Compute" text="Conditional Compute" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
       <menu id="Compute,_apply_a_function_across_all_rows" text="Compute, apply a function across all rows" commandtemplate="Compute, apply a function across all rows.xaml" commandoutputformat="Compute, apply a function across all rows.xml" owner="" nodetype="Leaf" />
+      <menu id="Compute_Dummy_Variables" text="Compute Dummy Variables" commandtemplate="Compute Dummy Variables.xaml" commandoutputformat="Compute Dummy Variables.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+      <menu id="Conditional_Compute" text="Conditional Compute" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="Concatenate_Multiple_Variables_(handling_missing_values)" text="Concatenate Multiple Variables (handling missing values)" commandtemplate="Concatenate Multiple Variables (handling missing values).xaml" commandoutputformat="Concatenate Multiple Variables (handling missing values).xml" owner="" nodetype="Leaf" />
+    <menu id="Concatenate_Multiple_Variables,_handling_missing_values" text="Concatenate Multiple Variables, handling missing values" commandtemplate="Concatenate Multiple Variables, handling missing values.xaml" commandoutputformat="Concatenate Multiple Variables, handling missing values.xml" owner="" nodetype="Leaf" />
     <menu id="Convert_Variable(s)_to_Factors" text="Convert Variable(s) to Factors" commandtemplate="Convert Variable(s) to Factors.xaml" commandoutputformat="Convert Variable(s) to Factors.xml" owner="" nodetype="Leaf" />
     <menu id="new_id" text="Dates" owner="" nodetype="Parent">
       <menu id="Convert_String_to_Date" text="Convert String to Date" commandtemplate="Convert String to Date.xaml" commandoutputformat="Convert String to Date.xml" owner="" nodetype="Leaf" />
       <menu id="Convert_Date_to_String" text="Convert Date to String" commandtemplate="Convert Date to String.xaml" commandoutputformat="Convert Date to String.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="Delete_Variable(s)" text="Delete Variable(s)" commandtemplate="Delete Variable(s).xaml" commandoutputformat="Delete Variable(s).xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="Factor Levels" owner="" nodetype="Parent">
+      <menu id="Add_New_Levels" text="Add New Levels" commandtemplate="Add New Levels.xaml" commandoutputformat="Add New Levels.xml" owner="" nodetype="Leaf" />
+      <menu id="Display_Levels" text="Display Levels" commandtemplate="Display Levels.xaml" commandoutputformat="Display Levels.xml" owner="" nodetype="Leaf" />
+      <menu id="Drop_Unused_Levels" text="Drop Unused Levels" commandtemplate="Drop Unused Levels.xaml" commandoutputformat="Drop Unused Levels.xml" owner="" nodetype="Leaf" />
+      <menu id="Label_NA_as_'Missing'" text="Label NA as 'Missing'" commandtemplate="Label NA as 'Missing'.xaml" commandoutputformat="Label NA as 'Missing'.xml" owner="" nodetype="Leaf" />
+      <menu id="Lumping_into_'Other'" text="Lumping into 'Other'" commandtemplate="Lumping into 'Other'.xaml" commandoutputformat="Lumping into 'Other'.xml" owner="" nodetype="Leaf" />
+      <menu id="Reorder_by_Count" text="Reorder by Count" commandtemplate="Reorder by Count.xaml" commandoutputformat="Reorder by Count.xml" owner="" nodetype="Leaf" />
+      <menu id="Reorder_by_Occurence_in_Dataset" text="Reorder by Occurence in Dataset" commandtemplate="Reorder by Occurence in Dataset.xaml" commandoutputformat="Reorder by Occurence in Dataset.xml" owner="" nodetype="Leaf" />
+      <menu id="Reorder_by_One_Other_Variable" text="Reorder by One Other Variable" commandtemplate="Reorder by One Other Variable.xaml" commandoutputformat="Reorder by One Other Variable.xml" owner="" nodetype="Leaf" />
+      <menu id="Specify_levels_to_keep_or_replace_by_'Other'" text="Specify levels to keep or replace by 'Other'" commandtemplate="Specify levels to keep or replace by 'Other'.xaml" commandoutputformat="Specify levels to keep or replace by 'Other'.xml" owner="" nodetype="Leaf" />
+    </menu>
     <menu id="MissvalSubMenu" text="Missing Values" owner="" nodetype="Parent">
       <menu id="Remove_NAs" text="Remove NAs" commandtemplate="Remove NAs.xaml" commandoutputformat="Remove NAs.xml" owner="" nodetype="Leaf" />
       <menu id="Missing_Values,_basic" text="Missing Values, basic" commandtemplate="Missing Values, basic.xaml" commandoutputformat="Missing Values, basic.xml" owner="" nodetype="Leaf" />
@@ -363,14 +375,14 @@
     <menu id="KNN" text="KNN" commandtemplate="KNN.xaml" commandoutputformat="KNN.xml" owner="" nodetype="Leaf" />
     <menu id="Linear_Modeling" text="Linear Modeling" commandtemplate="Linear Modeling.xaml" commandoutputformat="Linear Modeling.xml" owner="" nodetype="Leaf" />
     <menu id="new_id" text="Linear Regression" owner="" nodetype="Parent">
-      <menu id="Linear_Regression" text="Linear Regression" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf"  icon="images/Regression.png" showtoolbaricon="true"/>
+      <menu id="Linear_Regression" text="Linear Regression" commandtemplate="Linear Regression.xaml" commandoutputformat="Linear Regression.xml" owner="" nodetype="Leaf" icon="images/Regression.png" showtoolbaricon="true" />
       <menu id="Linear_Regression_with_Formula" text="Linear Regression with Formula" commandtemplate="Linear Regression with Formula.xaml" commandoutputformat="Linear Regression with Formula.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="new_id" text="Logistic Regression" owner="" nodetype="Parent">
       <menu id="Logistic_Regression" text="Logistic Regression" commandtemplate="Logistic Regression.xaml" commandoutputformat="Logistic Regression.xml" owner="" nodetype="Leaf" />
       <menu id="Logistic_Regression_with_Formula" text="Logistic Regression with Formula" commandtemplate="Logistic Regression with Formula.xaml" commandoutputformat="Logistic Regression with Formula.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="Mixed_Models,_basic" text="Mixed Models, basic" commandtemplate="Mixed Models, basic.xaml" commandoutputformat="Mixed Models, basic.xml" owner="" nodetype="Leaf" />  
+    <menu id="Mixed_Models,_basic" text="Mixed Models, basic" commandtemplate="Mixed Models, basic.xaml" commandoutputformat="Mixed Models, basic.xml" owner="" nodetype="Leaf" />
     <menu id="Multinomial_Logit" text="Multinomial Logit" commandtemplate="Multinomial Logit.xaml" commandoutputformat="Multinomial Logit.xml" owner="" nodetype="Leaf" />
     <menu id="Naive_Bayes" text="Naive Bayes" commandtemplate="Naive Bayes.xaml" commandoutputformat="Naive Bayes.xml" owner="" nodetype="Leaf" />
     <menu id="Ordinal_Regression" text="Ordinal Regression" commandtemplate="Ordinal Regression.xaml" commandoutputformat="Ordinal Regression.xml" owner="" nodetype="Leaf" />
