@@ -489,7 +489,17 @@ namespace BlueSky.Model
 
                             try
                             {
-                                dt = ToLocalDateTime ? new DateTime(1970, 1, 1).AddSeconds(celldata).ToLocalTime() : new DateTime(1970, 1, 1).AddSeconds(celldata + _dataSource.FewVariables[i].UTCOffset*3600);//UTC in secs +19800
+                                //used before 16Feb2020 //dt = ToLocalDateTime ? new DateTime(1970, 1, 1).AddSeconds(celldata).ToLocalTime() : new DateTime(1970, 1, 1).AddSeconds(celldata + _dataSource.FewVariables[i].UTCOffset*3600);//UTC in secs +19800
+                                //Excel dates are in UTC=0 if we do ToLocalTime() it will cause it to shift 
+                                // So we do not do ToLocalTime() on UTC=0
+                                if (_dataSource.FewVariables[i].UTCOffset == 0)
+                                {
+                                    dt = new DateTime(1970, 1, 1).AddSeconds(celldata + _dataSource.FewVariables[i].UTCOffset * 3600);
+                                }
+                                else
+                                {
+                                    dt = new DateTime(1970, 1, 1).AddSeconds(celldata).ToLocalTime();
+                                }
                                 properties[propertiesCounter].SetValue(generetedObject, dt.ToString(dateformat), null);
                             }
                             catch (Exception ex)
