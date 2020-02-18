@@ -131,13 +131,18 @@ namespace BSky.Controls
                         dataresult = true;
                     }
                     break;
-
+                // 02/15/2020
+                    // added the or condition below. This is on the observation from Ross that when he creates a dialog 
+                //that allows dates, when a posixct class is found, we are not allowed to add a date variable with posixct class
                 case DataColumnTypeEnum.Double:
-                    if (Filter.Contains("Numeric"))
+                    if (Filter.Contains("Numeric")|| Filter.Contains("Date"))
                     {
                         dataresult = true;
                     }
+                    
                     break;
+
+                
                 case DataColumnTypeEnum.Integer:
                     if (Filter.Contains("Numeric"))
                     {
@@ -223,7 +228,7 @@ namespace BSky.Controls
                     }
                     break;
                 case DataColumnMeasureEnum.Scale:
-                    if (Filter.Contains("Scale"))
+                    if (Filter.Contains("Scale"))   
                     {
                         measureresult = true;
                     }
