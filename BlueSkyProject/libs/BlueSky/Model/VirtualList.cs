@@ -472,8 +472,8 @@ namespace BlueSky.Model
                     {
                         if (rowdata[i] == "<NA>" || rowdata[i] == "NA")
                         {
-                            dt = ToLocalDateTime? new DateTime(0001, 01, 01).ToLocalTime() : new DateTime(0001, 01, 01) ;
-                            properties[propertiesCounter].SetValue(generetedObject, dt.ToString(dateformat), null);
+                            //dt = ToLocalDateTime? new DateTime(0001, 01, 01).ToLocalTime() : new DateTime(0001, 01, 01) ;
+                            properties[propertiesCounter].SetValue(generetedObject, "NA", null);
                         }
                         else if (rowdata[i].Contains("AM") || rowdata[i].Contains("PM"))//Date string
                         {
@@ -514,8 +514,8 @@ namespace BlueSky.Model
                         dateformat = "yyyy-MM-dd";
                         if (rowdata[i] == "<NA>" || rowdata[i] == "NA")
                         {
-                            dt = ToLocalDateTime ? new DateTime(0001, 01, 01).ToLocalTime() : new DateTime(0001, 01, 01);
-                            properties[propertiesCounter].SetValue(generetedObject, dt.Date.ToString(dateformat), null);
+                            //dt = ToLocalDateTime ? new DateTime(0001, 01, 01).ToLocalTime() : new DateTime(0001, 01, 01);
+                            properties[propertiesCounter].SetValue(generetedObject, "NA", null);
                         }
                         else if (rowdata[i].Contains("AM") || rowdata[i].Contains("PM"))//R Date type when read by R.NET(uses DateTime)
                         {
