@@ -396,6 +396,9 @@
     <Compile Include="Windows\SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\SyntaxFontSettingsWindow.xaml.cs">
+      <DependentUpon>SyntaxFontSettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ThemeWindow.xaml.cs">
       <DependentUpon>ThemeWindow.xaml</DependentUpon>
     </Compile>
@@ -560,6 +563,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\SyntaxFontSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ThemeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -709,6 +716,7 @@
     <Resource Include="Images\input.png" />
     <Resource Include="Images\comingsoon.png" />
     <Resource Include="Images\info.png" />
+    <Resource Include="Images\fontzoom.png" />
     <Content Include="Images\none.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

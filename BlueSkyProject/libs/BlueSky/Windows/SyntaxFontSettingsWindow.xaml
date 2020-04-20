@@ -1,0 +1,24 @@
+﻿<Window x:Class="BlueSky.Windows.SyntaxFontSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlueSky.Windows"
+        Title="Syntax Editor Font Settings" MinWidth="400"
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition > </RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="3">
+            <Label Margin="3">Font size:</Label>
+            <Slider Minimum="10" Maximum="96" Orientation="Horizontal" Width="290" TickPlacement="BottomRight" TickFrequency="2" IsSnapToTickEnabled="True" Name="fontslider" />
+            <TextBox Text="{Binding ElementName=fontslider, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="40" Margin="3"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="3">
+            <Button Name="fontsizecancelbtn" Margin="3" Width="50" Click="Fontsizecancelbtn_Click">Cancel</Button>
+            <Button Name="fontsizeokbtn" Margin="3" Width="50" Click="Fontsizeokbtn_Click">Apply</Button>
+        </StackPanel>
+    </Grid>
+</Window>
