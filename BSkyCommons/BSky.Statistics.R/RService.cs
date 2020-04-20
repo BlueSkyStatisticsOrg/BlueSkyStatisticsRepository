@@ -59,8 +59,8 @@ namespace BSky.Statistics.R
                 string rPath = null;
 
                 //R install path: Reading from Registry
-                string rinstallpath = GetLatestRInstallDirectory();
-                logService.WriteToLogLevel("Registry's R IntallPath = '" + rinstallpath + "'", LogLevelEnum.Info);
+                string rinstallpath = string.Empty;// GetLatestRInstallDirectory();
+                //logService.WriteToLogLevel("Registry's R IntallPath = '" + rinstallpath + "'", LogLevelEnum.Info);
 
                 //R install path: Reading from User's Configuration
                 string rhomeconfig = confService.GetConfigValueForKey("rhome");//05Jul2015
@@ -209,6 +209,8 @@ namespace BSky.Statistics.R
             /////// Compare R Versions //////
             string[] RVersions = registryKey.GetSubKeyNames();
             string LatestRVer = FindHighestBuildVersion(RVersions);
+            if (LatestRVer == null || LatestRVer.Trim().Length == 0)
+                return string.Empty;
             logService.WriteToLogLevel("Highest R Version. '" + LatestRVer + "'", LogLevelEnum.Info);
             registryKey = registryKey.OpenSubKey(LatestRVer);
 
@@ -272,7 +274,8 @@ namespace BSky.Statistics.R
             List<string> OriginalFormat = verArr.ToList<string>();
 
             int TotalRVer = verArr.Length;
-
+            if (TotalRVer == 0) 
+                return string.Empty;
             //Find count of numeric parts
             int maxnumparts = 0;
             for (int idx = 0; idx < TotalRVer; idx++)
