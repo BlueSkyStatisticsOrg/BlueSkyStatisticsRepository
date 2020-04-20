@@ -22,6 +22,7 @@
         <local:ValueLabelConverter x:Key="vlConverter"></local:ValueLabelConverter>
         <local:MissingValueConverter x:Key="mvConverter"></local:MissingValueConverter>
         <local:ComboImageSourceConverter x:Key="ImgConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <DataTemplate x:Key="ComboTemplate" DataType="{x:Type c1:DataGridComboBoxColumn}">
             <StackPanel Orientation="Horizontal" >
                 <Image Source="{Binding Converter={StaticResource ImgConverter}}" Width="16" Height="16" />
@@ -71,7 +72,7 @@
             <!--<RowDefinition Height="Auto"></RowDefinition>-->
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0" Name="datavartabs" TabStripPlacement="Bottom" Background="#FFD7E6F7" SelectionChanged="TabControl_SelectionChanged">
-            <TabItem Header="{x:Static uires:UICtrlResources.lblDataTab}"  DataContext="{Binding}">
+            <TabItem Name="datagridtab" Header="{x:Static uires:UICtrlResources.lblDataTab}"  DataContext="{Binding}">
 
                 <c1:C1DataGrid  HorizontalAlignment="Stretch"
                                 AutoGenerateColumns="True"  HorizontalScrollBarVisibility="Visible"
@@ -242,7 +243,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="2" Name="statusbar" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text=""></TextBlock>
-            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="{Binding  ElementName=datagridtab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Image Name="newDShelpimg" Source="pack://application:,,,/BlueSky;component/Images/info.png"/>
                 <TextBlock Name="newDShelptxt" Margin="5,0,0,0" VerticalAlignment="Bottom" Text="">To add new variables click on the "Variables" tab above.</TextBlock>
             </StackPanel>
