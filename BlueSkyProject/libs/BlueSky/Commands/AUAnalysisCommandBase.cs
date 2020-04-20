@@ -1085,6 +1085,7 @@ namespace BlueSky.Commands.Analytics.TTest
         {
             commands = RemoveSplitCommandFromBatch(commands);
             bool IsSplitCommand= false;
+            bool curDatasetIsTibble = false;
             string allcommands = string.Join(";", commands);
             if(allcommands.Contains("BSkySetDataFrameSplit"))
             {
@@ -1098,7 +1099,28 @@ namespace BlueSky.Commands.Analytics.TTest
 
                 if(AdvancedLogging)logService.WriteToLogLevel("ExtraLogs: BatchCommand begins.", LogLevelEnum.Info);
 
-#region R Batch Command invoker
+                //check if dataframe is 'tibble', if so convert it to data.frame. 
+                //Later after batch exeuction finishes, convert it back to tibble if it was tibble
+                cmd.CommandSyntax = "'tbl_df' %in% class(" + datasetname + ")"; // check if it is tibble
+                string isTibble = analytics.ExecuteR(cmd, true, false).ToString();
+                if (isTibble != null && isTibble.ToString().ToLower().Equals("true"))
+                {
+                    curDatasetIsTibble = true;
+                    //eval(parse(text=paste(datasetname,'<<- as.data.frame(',datasetname,')')))
+                    cmd.CommandSyntax = "eval(parse(text=paste('" + datasetname + "','<- as.data.frame(','" + datasetname + "',')')))";
+                    analytics.ExecuteR(cmd, false, false);
+
+                    //rechecking for tibble. this is for debugging only
+                    cmd.CommandSyntax = "'tbl_df' %in% class(" + datasetname + ")"; // check if it is tibble
+                    isTibble = analytics.ExecuteR(cmd, true, false).ToString();
+                    if (isTibble != null && isTibble.ToString().ToLower().Equals("true"))
+                    {
+                        logService.WriteToLogLevel("Dataset is still a tibble", LogLevelEnum.Info);
+                    }
+
+                }
+
+                #region R Batch Command invoker
                 //11Jul2014 need dialog title for commands those are single lined. if (CommandCountInBatch > 1)
                 {
                     //BSkyFunctionInit()  // Execute in R
@@ -1264,6 +1286,23 @@ namespace BlueSky.Commands.Analytics.TTest
 
                     cmd.CommandSyntax = "BSkyBatchCommand(0)"; // ending batch command
                     analytics.ExecuteR(cmd, false, false);
+
+                    if (curDatasetIsTibble)
+                    {
+                        cmd.CommandSyntax = "require(tidyverse)"; //load R pkg for as_tibble()
+                        analytics.ExecuteR(cmd, false, false);
+
+                        cmd.CommandSyntax = "eval(parse(text=paste('" + datasetname + "','<- as_tibble(','" + datasetname + "',')')))";
+                        analytics.ExecuteR(cmd, false, false);
+
+                        //rechecking for tibble. this is for debugging only
+                        cmd.CommandSyntax = "'tbl_df' %in% class(" + datasetname + ")"; // check if it is tibble
+                        string isTibble = analytics.ExecuteR(cmd, true, false).ToString();
+                        if (isTibble != null && isTibble.ToString().ToLower().Equals("true"))
+                        {
+                            logService.WriteToLogLevel("Dataset is tibble now", LogLevelEnum.Info);
+                        }
+                    }
                 }
             }
         }
