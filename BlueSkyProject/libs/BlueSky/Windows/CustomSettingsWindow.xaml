@@ -70,7 +70,7 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>                        
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -92,7 +92,7 @@
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblNavTreeSelColor}"></TextBlock>
                     <Rectangle Grid.Row="3" Grid.Column="2" Width="20" Name="navtreeselectedcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[navtreeselectedcol], UpdateSourceTrigger=PropertyChanged}" />
-                    
+
                     <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="{x:Static uires:UICtrlResources.lblRSynColor}"></TextBlock>
                     <Rectangle Grid.Row="4" Grid.Column="2" Width="20" Name="rcommcol" Margin="3" MouseLeftButtonUp="color_MouseDown" Fill="{Binding Path=[rcommcol], UpdateSourceTrigger=PropertyChanged}" />
 
@@ -123,7 +123,7 @@
 
                     <TextBlock Grid.Row="1" Grid.Column="0"  Text="{x:Static uires:UICtrlResources.lblImageHeight}"></TextBlock>
                     <TextBox Grid.Row="1" Grid.Column="1" Height="22" Margin="5,0" Text="{Binding Path=[imageheight], UpdateSourceTrigger=PropertyChanged}" GotKeyboardFocus="TextBox_GotKeyboardFocus" TextChanged="TextBox_TextChanged" ></TextBox>
-                    
+
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static uires:UICtrlResources.lblImageWidth}"></TextBlock>
                     <TextBox Grid.Row="3" Grid.Column="1" Height="22"  Margin="5,0" Text="{Binding Path=[imagewidth], UpdateSourceTrigger=PropertyChanged}"   GotKeyboardFocus="TextBox_GotKeyboardFocus" TextChanged="TextBox_TextChanged"></TextBox>
 
@@ -224,20 +224,24 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="107.37"></ColumnDefinition>
+                        <ColumnDefinition Width="14"></ColumnDefinition>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="55"/>
                         <ColumnDefinition Width="10.677"/>
-                        <ColumnDefinition Width="530.323"/>
+                        <ColumnDefinition Width="148"/>
+                        <ColumnDefinition Width="382"/>
                         <ColumnDefinition Width="70"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" TextWrapping="Wrap" MaxWidth="650" Text="{x:Static uires:UICtrlResources.lblLicNotifyDays}" Grid.ColumnSpan="3"></TextBlock>
-                    <TextBox Grid.Row="0" Grid.Column="3"  Margin="3" VerticalAlignment="Center" Name="daysleft" Text="{Binding Path=[daysleftreminder], UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                    <TextBlock Grid.Row="1" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblMaxFactor}" Grid.ColumnSpan="3"/>
-                    <TextBox Grid.Row="1" Grid.Column="3"  Margin="3"  Name="maxfactor" Text="{Binding Path=[maxfactorcount], UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblAdvancedLogging}" Grid.ColumnSpan="3"/>
-                    <CheckBox Grid.Row="2" Grid.Column="3"  Margin="3" Name="advancedlog" IsChecked="{Binding Path=[advancedlogging], UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBlock Grid.Row="3" Grid.Column="0"  Margin="3" Text="{x:Static uires:UICtrlResources.lblLogLevel}" Name="loglabel" Grid.ColumnSpan="3"  />
-                    <ComboBox Grid.Row="3"  Grid.Column="3" Margin="3" Name="loglevel">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3,3,3,249" TextWrapping="Wrap" MaxWidth="650" Text="{x:Static uires:UICtrlResources.lblLicNotifyDays}" Grid.ColumnSpan="7"></TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="7"  Margin="3,14,3,258" VerticalAlignment="Center" Name="daysleft" Text="{Binding Path=[daysleftreminder], UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBlock Grid.Column="0"  Margin="3,42,3,224" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblMaxFactor}" Grid.ColumnSpan="7"/>
+                    <TextBox Grid.Column="7"  Margin="3,42,3,224"  Name="maxfactor" Text="{Binding Path=[maxfactorcount], UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Grid.Column="0"  Margin="3,67,3,201" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblAdvancedLogging}" Grid.ColumnSpan="7"/>
+                    <CheckBox Grid.Column="7"  Margin="3,67,3,201" Name="advancedlog" IsChecked="{Binding Path=[advancedlogging], UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Grid.Column="0"  Margin="3,90,3,172" Text="{x:Static uires:UICtrlResources.lblLogLevel}" Name="loglabel" Grid.ColumnSpan="7"  />
+                    <ComboBox  Grid.Column="7" Margin="3,90,3,172" Name="loglevel">
                         <ComboBoxItem Content="Debug" />
                         <ComboBoxItem Content="Info" />
                         <ComboBoxItem Content="Warn" />
@@ -248,11 +252,11 @@
                     <!--<TextBlock Grid.Row="4" Grid.Column="0"  Margin="3" MaxWidth="650"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblThresholdCount}" Grid.ColumnSpan="3"/>
                     <TextBox Grid.Row="4" Grid.Column="3"  Margin="3" VerticalAlignment="Center" Name="maxflexgridcells" Text="{Binding Path=[maxflexgridcells], UpdateSourceTrigger=PropertyChanged}"/>-->
 
-                    <TextBlock Grid.Row="5" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblCharToFactor}" Grid.ColumnSpan="3"/>
-                    <CheckBox Grid.Row="5" Grid.Column="3"  Margin="3"  Name="CSVcharToFactor" IsChecked="{Binding Path=[CSVcharToFactor], UpdateSourceTrigger=PropertyChanged}"  />
+                    <TextBlock Grid.Column="0"  Margin="3,121,3,148" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblCharToFactor}" Grid.ColumnSpan="7"/>
+                    <CheckBox Grid.Column="7"  Margin="3,121,3,148"  Name="CSVcharToFactor" IsChecked="{Binding Path=[CSVcharToFactor], UpdateSourceTrigger=PropertyChanged}"  />
 
-                    <TextBlock Grid.Row="6" Grid.Column="0"  Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblNewDatasetStrToFactor}" Grid.ColumnSpan="3"/>
-                    <CheckBox Grid.Row="6" Grid.Column="3"  Margin="3"  Name="NewDSStrToFactor" IsChecked="{Binding Path=[NewDatasetStrToFactor], UpdateSourceTrigger=PropertyChanged}"  />
+                    <TextBlock Grid.Column="0"  Margin="3,144,3,125" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblNewDatasetStrToFactor}" Grid.ColumnSpan="7"/>
+                    <CheckBox Grid.Column="7"  Margin="3,144,3,125"  Name="NewDSStrToFactor" IsChecked="{Binding Path=[NewDatasetStrToFactor], UpdateSourceTrigger=PropertyChanged}"  />
                 </Grid>
 
             </TabItem>
@@ -368,7 +372,7 @@
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFFontSize}"></TextBlock>
                     <TextBox Grid.Row="0" Grid.Column="1" Margin="3"  Name="pdfTblFontSize" Text="{Binding Path=[PDFTblFontSize], UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                    
+
                     <TextBlock Grid.Row="1" Grid.Column="0" Margin="3"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMargins}"></TextBlock>
                     <TextBox Grid.Row="1" Grid.Column="1" Margin="3"  Name="pdfMargins" Text="{Binding Path=[PDFPageMargins], UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
@@ -401,7 +405,7 @@
                         <ComboBoxItem Content="Legal" />
                         <ComboBoxItem Content="Letter" />
                     </ComboBox>
-                    
+
                     <TextBlock Grid.Row="3" Grid.Column="0" Margin="3"  TextWrapping="Wrap" Text="{x:Static uires:UICtrlResources.lblPDFMaxCols}"></TextBlock>
                     <TextBox Grid.Row="3" Grid.Column="1" Margin="3"  Name="pdfColCount" Text="{Binding Path=[PDFMaxColCount]}" IsEnabled="False"></TextBox>
 
