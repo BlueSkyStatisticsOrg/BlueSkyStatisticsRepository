@@ -289,7 +289,7 @@ namespace BSky.Controls
             }
         }
 
-        
+
         //private void ScoreCommand()
         //{
         //    DashBoardItem item = new DashBoardItem();
@@ -328,5 +328,15 @@ namespace BSky.Controls
         //}
 
         #endregion
+
+            /// <summary>
+            ///  Scoring Help
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+        private void ScoreHelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            //show help window
+        }
     }
 }

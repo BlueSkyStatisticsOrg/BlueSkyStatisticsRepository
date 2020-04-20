@@ -39,6 +39,7 @@
                     <Button Grid.Row="2" Grid.Column="3" Name="scoreButton" Margin="2,3"  MinWidth="40" Padding="7,0" Content="{x:Static uires:UICtrlResources.buttonScore}"></Button>
                     <Button  Grid.Row="4" Grid.Column="0" Margin="2"  MinWidth="81" HorizontalAlignment="Left" Padding="2,0" Name="savemodelButton" Click="savemodelButton_Click" Content="{x:Static uires:UICtrlResources.buttonSaveModel}"> </Button>
                     <Button  Grid.Row="4" Grid.Column="2" Margin="2"  MinWidth="81" HorizontalAlignment="Left" Padding="2,0" Name="loadmodelButton" Click="loadmodelButton_Click" Content="{x:Static uires:UICtrlResources.buttonLoadModel}"></Button>
+                    <Button Grid.Row="4" Grid.Column="3" Name="scoreHelpButton" Margin="2,3"  MinWidth="40" Padding="7,0" Content="Help" Click="ScoreHelpButton_Click"></Button>
                 </Grid>
             </Border>
         </Grid>
