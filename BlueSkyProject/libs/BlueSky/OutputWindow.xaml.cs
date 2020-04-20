@@ -78,7 +78,7 @@ namespace BlueSky
         private List<string> Keywords2 = null;
         private string AutoCompleteKeywords = null;
         Scintilla inputTextbox = null;
-
+        private double FontSize = 10;
 
         private void ConfigureScintilla()
         {
@@ -88,7 +88,7 @@ namespace BlueSky
             ConfigureRScriptAutoFolding();
             ConifugreRScriptAutoComplete();
 
-            inputTextbox.Margins[0].Width = 30; //Width of the line numbers on the left of the Scintilla text editor.
+            inputTextbox.Margins[0].Width = 20 + (int)FontSize; //Width of the line numbers on the left of the Scintilla text editor.
         }
 
         #region Scintilla Configuration Methods
@@ -151,11 +151,28 @@ namespace BlueSky
 
         private void ConfigureRScriptSyntaxHighlight()
         {
-            //StyleCollection
+            int fsize = (int)FontSize;
+            if (FontSize > 8 && FontSize < 100)
+            {
+                //inputTextbox.Styles[ScintillaNET.Style.Default].Size = fsize;
+
+                //A very rough method to resize the left column that contains the line number.
+                // It will take longer to get it perfect
+                #region Left line number text width sizing
+                int linecount = inputTextbox.Lines.Count;
+                if (linecount < 99)
+                    inputTextbox.Margins[0].Width = 20 + fsize;
+                else if (linecount > 99 && linecount < 999)
+                    inputTextbox.Margins[0].Width = 60 + fsize;
+                else
+                    inputTextbox.Margins[0].Width = 100 + fsize;
+                #endregion
+            }
+                //StyleCollection
 
             inputTextbox.StyleResetDefault();
             inputTextbox.Styles[ScintillaNET.Style.Default].Font = "Consolas";
-            inputTextbox.Styles[ScintillaNET.Style.Default].Size = 10;
+            inputTextbox.Styles[ScintillaNET.Style.Default].Size = fsize;
             inputTextbox.StyleClearAll();
 
             inputTextbox.Styles[ScintillaNET.Style.R.Default].ForeColor = System.Drawing.Color.Brown;
@@ -172,6 +189,11 @@ namespace BlueSky
 
             inputTextbox.Lexer = Lexer.R;
             inputTextbox.SetKeywords(0, string.Join(" ", autoCList));
+        }
+
+        private void ChangeSyntaxFontsize()
+        {
+            ConfigureRScriptSyntaxHighlight();
         }
 
         private void ConifugreRScriptAutoComplete()
@@ -323,7 +345,7 @@ namespace BlueSky
             mypanel.Tag = this;
 
             confService = LifetimeService.Instance.Container.Resolve<IConfigService>();//23nov2012
-            this.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            //this.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             _MSExcelObj = new MSExportToExcel(); //initialize
             _MSWordObj = new MSWordInterop();
 
@@ -2050,7 +2072,14 @@ namespace BlueSky
         }
         #endregion
 
+        private void new_outputwindow_Click(object sender, RoutedEventArgs e)
+        {
+            UAMenuCommand uamc = new UAMenuCommand();
+            uamc.commandformat = _windowname;//using commandformat as temporary for storing windowname
 
+            NewOutputWindow newoutwin = new NewOutputWindow();
+            newoutwin.Execute(uamc);
+        } 
 
         private void open_Click(object sender, RoutedEventArgs e)
         {
@@ -2740,6 +2769,20 @@ namespace BlueSky
         public void CloseFindReplace()
         {
             frw = null;
+        }
+        #endregion
+
+        #region Font releated
+        private void Synfontsize_Click(object sender, RoutedEventArgs e)
+        {
+            SyntaxFontSettingsWindow sfsw = new SyntaxFontSettingsWindow();
+            sfsw.Owner = this;
+            sfsw.FontSize = FontSize;
+            sfsw.ShowDialog();
+            double fsize = sfsw.FontSize;
+            if (fsize >= 10)
+                FontSize = fsize;
+            ChangeSyntaxFontsize();
         }
         #endregion
 

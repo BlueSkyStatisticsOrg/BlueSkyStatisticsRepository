@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:scintilla="clr-namespace:ScintillaNET;assembly=ScintillaNET"
         xmlns:uires="clr-namespace:BSky.GlobalResources.Properties;assembly=BSky.GlobalResources"
-        Title="BlueSky Output and Syntax Window" Name="outwin" 
+        Title="BlueSky Output and Syntax window" Name="outwin" 
         SizeChanged="outwin_SizeChanged"
         Closing="outwin_Closing"
         Closed="outwin_Closed" Icon="/BlueSky;component/Images/BOutput-icon_1.png"
@@ -89,9 +89,9 @@
                                 Click="navtreemi_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Name="NavexpandImg" Source="Images/expandSyn.png"></Image>
-                                    <Image Name="NavcollapseImg" Source="Images/collapseSyn.png" Visibility="Collapsed"></Image>
-                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Show/Hide Navigation</TextBlock>
+                                    <Image Name="NavexpandImg" Source="Images/collapseSyn.png"></Image>
+                                    <Image Name="NavcollapseImg" Source="Images/expandSyn.png" Visibility="Collapsed"></Image>
+                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Show/Hide Output Navigator</TextBlock>
                                 </StackPanel>
                             </Button.Content>
                         </Button>
@@ -124,7 +124,7 @@
                                 Click="SyntaxWinShowHideBtn_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Show/Hide Syntax Panel</TextBlock>
+                                    <TextBlock Foreground="#FF1579DA" Background="Transparent" Margin="3,0">Show/Hide Syntax Editor</TextBlock>
                                     <Image Name="expandImg" Source="Images/expandSyn.png"></Image>
                                     <Image Name="collapseImg" Source="Images/collapseSyn.png" Visibility="Collapsed"></Image>
                                     
@@ -169,6 +169,7 @@
                         </MenuItem>-->
                             <!-- Code below uses Resources (localization), while code above does not -->
                             <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFile}" >
+                                <MenuItem Header="New Output Window" Click="new_outputwindow_Click" ></MenuItem>
                                 <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileOpenOutput}" Click="open_Click" ></MenuItem>
                                 <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileSaveAs}" Click="dump_Click" ></MenuItem>
                                 <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileSaveAsPDF}" Click="SaveAsPDF_Click" ></MenuItem>
@@ -324,6 +325,7 @@
                                 <MenuItem Name="Syncopy" Header="_Copy" Click="copy_button_Click" />
                                 <MenuItem Name="Synpaste" Header="_Paste" Click="paste_button_Click" />
                                 <MenuItem Name="findreplace" Header="Find/Replace" Click="findreplace_Click" />
+                                <MenuItem Name="Synfontsize" Header="Font size" Click="Synfontsize_Click" />
                             </MenuItem>
                             <!-- Code below uses Resources (localization), while code above does not -->
                             <!--<MenuItem Header="{x:Static uires:UICtrlResources.MenuSynFile}">
@@ -383,6 +385,15 @@
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/BlueSky;component/Images/refresh.png"  ToolTip="Refresh Datagrid"></Image>
+                                        <TextBlock></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Separator Margin="5,0" Width="2"></Separator>
+                            <Button Click="Synfontsize_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="/BlueSky;component/Images/fontzoom.png"  ToolTip="change syntax font size"></Image>
                                         <TextBlock></TextBlock>
                                     </StackPanel>
                                 </Button.Content>
