@@ -1160,7 +1160,7 @@ namespace BlueSky.Windows
                     varcount++;
             }
             var.Name = varname;
-            var.Label = varname;
+            var.Label = "";
             var.RName = varname;
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
@@ -2280,7 +2280,7 @@ namespace BlueSky.Windows
                 varcount++;
             } while (isDuplicateColNameAddingNew(varname));//28Jun2016 fixed
             var.Name = varname;
-            var.Label = varname;
+            var.Label = "";
             var.RName = varname;
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
@@ -2310,7 +2310,7 @@ namespace BlueSky.Windows
                 varcount++;
             } while (isDuplicateColNameAddingNew(varname));//28Jun2016 fixed
             var.Name = varname;
-            var.Label = varname;
+            var.Label = "";
             var.RName = varname;
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
@@ -2339,7 +2339,7 @@ namespace BlueSky.Windows
                 varcount++;
             } while (isDuplicateColNameAddingNew(varname));//28Jun2016  fixed
             var.Name = varname;
-            var.Label = varname;
+            var.Label = "";
             var.RName = varname;
             var.DataType = DataColumnTypeEnum.Character;
             var.Measure = DataColumnMeasureEnum.Nominal;
@@ -2372,7 +2372,7 @@ namespace BlueSky.Windows
                 varcount++;
             } while (isDuplicateColNameAddingNew(varname));//28Jun2016 fixed
             var.Name = varname;
-            var.Label = varname;
+            var.Label = "";
             var.RName = varname;
             var.DataType = DataColumnTypeEnum.Character;
             var.Measure = DataColumnMeasureEnum.Nominal;
