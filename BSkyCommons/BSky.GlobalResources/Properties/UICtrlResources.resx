@@ -134,7 +134,7 @@
     <comment>InspectDialog.xaml : syntax button text</comment>
   </data>
   <data name="CommandEditorPanelTitle" xml:space="preserve">
-    <value>R Command Editor</value>
+    <value>R Syntax Editor</value>
     <comment>OutputWindow.xaml : Title for R command editor panel</comment>
   </data>
   <data name="InspectHelpText" xml:space="preserve">
@@ -390,7 +390,7 @@
     <comment>Window1.xaml.cs : Error message if for some reason there is some issue generating the menus</comment>
   </data>
   <data name="OutputWindowMainTitle" xml:space="preserve">
-    <value>Output and Syntax Window-</value>
+    <value>Output and Syntax window-</value>
     <comment>OutputWindowContainer.cs : Output Window title text</comment>
   </data>
   <data name="OutputWindowTitleStatus" xml:space="preserve">
@@ -698,15 +698,15 @@
     <comment>CustomSettingsWindow.xaml : label for max chars in nav tree</comment>
   </data>
   <data name="lblMaxFactor" xml:space="preserve">
-    <value>Enter maximum number of factors allowed in a scale variable, when converting a scale to factor:</value>
+    <value>Enter maximum number of values in a numeric or integer variable when converting to a factor</value>
     <comment>CustomSettingsWindow.xaml : label for max number of factor allowed</comment>
   </data>
   <data name="lblMouseHoverBoxColor" xml:space="preserve">
-    <value>Mouse hover box color (in output pane):</value>
+    <value>Mouse hover box color (in output panel):</value>
     <comment>CustomSettingsWindow.xaml : label for mouse hover box color</comment>
   </data>
   <data name="lblNavTreeSelColor" xml:space="preserve">
-    <value>Navigation tree selected item box color, output pane:</value>
+    <value>Navigation tree selected item box color, output panel:</value>
     <comment>CustomSettingsWindow.xaml : label for navigation tree selected item color</comment>
   </data>
   <data name="lblNoDecimalDigits" xml:space="preserve">
@@ -1138,7 +1138,7 @@
     <comment>GetModelsControl.xaml : Score Model</comment>
   </data>
   <data name="lblModelType" xml:space="preserve">
-    <value>Model Type:</value>
+    <value>Model Class:</value>
     <comment>GetModelsControl.xaml : Model type</comment>
   </data>
   <data name="lblPickModel" xml:space="preserve">
@@ -1277,7 +1277,7 @@
     <comment>SelectRdataDataframesWindow.xaml : Select message on top</comment>
   </data>
   <data name="ShowHideSyntaxPanel" xml:space="preserve">
-    <value>Show/Hide R Command Editor Panel</value>
+    <value>Show/Hide Syntax Editor</value>
     <comment>OutputWindow.xaml : Tooltip and/or text for show-hide button for showing and hiding syntax panel.</comment>
   </data>
   <data name="lblShowSyntaxInOutput" xml:space="preserve">
@@ -1289,7 +1289,7 @@
     <comment>Window1.xaml and OutputWindow.xaml</comment>
   </data>
   <data name="ShowHideNavTreePanel" xml:space="preserve">
-    <value>Show/hide navigation tree</value>
+    <value>Show/Hide Output Navigator</value>
   </data>
   <data name="lblShowActualPvalue" xml:space="preserve">
     <value>When p-values are smaller than the number of digits allocated to display, show "&lt;.001".</value>

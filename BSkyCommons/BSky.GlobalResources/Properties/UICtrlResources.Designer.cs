@@ -448,7 +448,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to R Command Editor.
+        ///   Looks up a localized string similar to R Syntax Editor.
         /// </summary>
         public static string CommandEditorPanelTitle {
             get {
@@ -1312,7 +1312,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter maximum number of factors allowed in a scale variable, when converting a scale to factor:.
+        ///   Looks up a localized string similar to Enter maximum number of values in a numeric or integer variable when converting to a factor.
         /// </summary>
         public static string lblMaxFactor {
             get {
@@ -1321,7 +1321,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Model Type:.
+        ///   Looks up a localized string similar to Model Class:.
         /// </summary>
         public static string lblModelType {
             get {
@@ -1330,7 +1330,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mouse hover box color (in output pane):.
+        ///   Looks up a localized string similar to Mouse hover box color (in output panel):.
         /// </summary>
         public static string lblMouseHoverBoxColor {
             get {
@@ -1339,7 +1339,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Navigation tree selected item box color, output pane:.
+        ///   Looks up a localized string similar to Navigation tree selected item box color, output panel:.
         /// </summary>
         public static string lblNavTreeSelColor {
             get {
@@ -2185,7 +2185,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output and Syntax Window-.
+        ///   Looks up a localized string similar to Output and Syntax window-.
         /// </summary>
         public static string OutputWindowMainTitle {
             get {
@@ -2437,7 +2437,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show/hide navigation tree.
+        ///   Looks up a localized string similar to Show/Hide Output Navigator.
         /// </summary>
         public static string ShowHideNavTreePanel {
             get {
@@ -2446,7 +2446,7 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show/Hide R Command Editor Panel.
+        ///   Looks up a localized string similar to Show/Hide Syntax Editor.
         /// </summary>
         public static string ShowHideSyntaxPanel {
             get {
