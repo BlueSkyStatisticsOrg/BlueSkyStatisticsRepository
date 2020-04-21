@@ -778,7 +778,7 @@ namespace BSky.XmlDecoder
                 fg.ColumnHeaderBackground = Brushes.White;
                 fg.RowHeaderBackground = Brushes.White;
                 fg.TopLeftCellBackground = Brushes.White;
-                fg.BorderBrush = Brushes.WhiteSmoke;
+                fg.BorderBrush = Brushes.White;
                 fg.Background = Brushes.White;
                 fg.RowBackground = Brushes.White;
                 fg.BorderThickness = new Thickness(0, 3, 0, 0);
@@ -1308,7 +1308,7 @@ namespace BSky.XmlDecoder
                         c1FlexGrid1.ColumnHeaderBackground = Brushes.White;
                         c1FlexGrid1.RowHeaderBackground = Brushes.White;
                         c1FlexGrid1.TopLeftCellBackground = Brushes.White;
-                        c1FlexGrid1.BorderBrush = Brushes.WhiteSmoke;
+                        c1FlexGrid1.BorderBrush = Brushes.White;
                         c1FlexGrid1.Background = Brushes.White;
                         c1FlexGrid1.RowBackground = Brushes.White;
                         c1FlexGrid1.BorderThickness = new Thickness(0, 3, 0, 0);
