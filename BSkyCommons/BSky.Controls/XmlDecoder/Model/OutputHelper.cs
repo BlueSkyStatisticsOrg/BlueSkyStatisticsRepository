@@ -2224,11 +2224,11 @@ namespace BSky.XmlDecoder
 
                     if (Groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + " separated by variable " + Groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + " separated by variable " + Groupby + "\")";
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" +  ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -2420,11 +2420,11 @@ namespace BSky.XmlDecoder
 
                     if (Groupby != "")
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + " separated by variable " + Groupby + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" +  ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + " separated by variable " + Groupby + "\")";
                     }
                     else
                     {
-                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" + ", y =" + "\"" + "Counts" + "\"" + ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + "\")";
+                        tempoutput = tempoutput + " +\n\t labs(x =" + "\"" + var + "\"" +  ", fill =" + "\"" + Groupby + "\"" + ", title= " + "\"Density plot for variable " + var + "\")";
                     }
 
                     if (xlab != "")
@@ -9207,6 +9207,9 @@ namespace BSky.XmlDecoder
                     tempoutput += "\n}";
                 }
 
+                varsForMissing = getVariablesInMixedModel(tvarbox1, tvarbox2, NestingVar, covariates, fixedEffects, randomvars);
+
+
                 if (CHQ1 == "TRUE" || CHQ2 == "TRUE")
                 {
                     //  covariates = fixedEffectsAndCovariates.getCovariates();
@@ -9235,7 +9238,7 @@ namespace BSky.XmlDecoder
                     }
 
 
-                    varsForMissing = getVariablesInMixedModel(tvarbox1, tvarbox2, NestingVar, covariates, fixedEffects, randomvars);
+                    
 
                     if (CHQ2 == "TRUE")
                     {
