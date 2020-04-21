@@ -1,9 +1,7 @@
 <menus>
   <menu id="FileMenu" text="File" owner="BSky" nodetype="Parent">
-    <menu id="FileMenuNew" text="New" owner="BSky" nodetype="Parent">
-      <menu id="FileMenuNewDS" text="New Dataset" command="BlueSky.Commands.File.FileNewCommand" owner="BSky" nodetype="Leaf" />
-      <menu id="FileMenuNewOW" text="New Output Window" command="BlueSky.Commands.Output.NewOutputWindow" owner="BSky" nodetype="Leaf" />
-    </menu>
+    <menu id="FileMenuNewDS" text="New Dataset" command="BlueSky.Commands.File.FileNewCommand" owner="BSky" nodetype="Leaf" />
+    <menu id="FileMenuNewOW" text="New Output Window" command="BlueSky.Commands.Output.NewOutputWindow" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpen" text="Open" command="BlueSky.Commands.File.FileOpenCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpenOutput" text="Open Output" command="BlueSky.Commands.Output.OutputOpenCommand" owner="BSky" nodetype="Leaf" />
     <menu id="Paste_Dataset_from_the_clipboard" text="Paste Dataset from the clipboard" command="BlueSky.Commands.File.PasteDatasetCommand" owner="BSky" nodetype="Leaf" />
@@ -22,13 +20,23 @@
     <menu id="FileMenuExit" text="Exit" command="BlueSky.Commands.File.FileExitCommand" owner="BSky" nodetype="Leaf" />
   </menu>
   <menu id="analysisMenu" text="Analysis" nodetype="Parent">
+    <menu id="new_id" text="Agreement Analysis" owner="" nodetype="Parent">
+      <menu id="Bland-Altman_Plot" text="Bland-Altman Plot" commandtemplate="Bland-Altman Plot.xaml" commandoutputformat="Bland-Altman Plot.xml" owner="" nodetype="Leaf" />
+      <menu id="Cohen's_Kappa" text="Cohen's Kappa" commandtemplate="Cohen's Kappa.xaml" commandoutputformat="Cohen's Kappa.xml" owner="" nodetype="Leaf" />
+      <menu id="Diagnostic_Testing" text="Diagnostic Testing" commandtemplate="Diagnostic Testing.xaml" commandoutputformat="Diagnostic Testing.xml" owner="" nodetype="Leaf" />
+      <menu id="Fleiss'_Kappa" text="Fleiss' Kappa" commandtemplate="Fleiss' Kappa.xaml" commandoutputformat="Fleiss' Kappa.xml" owner="" nodetype="Leaf" />
+      <menu id="Intraclass_Correlation_Coefficients" text="Intraclass Correlation Coefficients" commandtemplate="Intraclass Correlation Coefficients.xaml" commandoutputformat="Intraclass Correlation Coefficients.xml" owner="" nodetype="Leaf" />
+    </menu>
     <menu id="ClusterSubMenu" text="Cluster Analysis" owner="" nodetype="Parent">
       <menu id="Hierarchical_Cluster" text="Hierarchical Cluster" commandtemplate="Hierarchical Cluster.xaml" commandoutputformat="Hierarchical Cluster.xml" owner="" nodetype="Leaf" />
       <menu id="K-means_Cluster" text="K-means Cluster" commandtemplate="K-means Cluster.xaml" commandoutputformat="K-means Cluster.xml" owner="" nodetype="Leaf" icon="images/K-means.png" showtoolbaricon="true" />
     </menu>
     <menu id="ContinSubMenu" text="Contingency Tables" owner="" nodetype="Parent">
-      <menu id="BSkyCrossTable" text="Crosstab, Multi-way (Use this)" commandtemplate="BSkyCrossTable.xaml" commandoutputformat="BSkyCrossTable.xml" owner="" nodetype="Leaf" icon="images/Cross-Tab.png" showtoolbaricon="true" />
+      <menu id="Crosstab_List" text="Crosstab List" commandtemplate="Crosstab List.xaml" commandoutputformat="Crosstab List.xml" owner="" nodetype="Leaf" />	
+      <menu id="BSkyCrossTable" text="Crosstab, Multi-way" commandtemplate="BSkyCrossTable.xaml" commandoutputformat="BSkyCrossTable.xml" owner="" nodetype="Leaf" icon="images/Cross-Tab.png" showtoolbaricon="true" />
       <menu id="Crosstab_Two-way" text="Crosstab Two-way" commandtemplate="Crosstab Two-way.xaml" commandoutputformat="Crosstab Two-way.xml" owner="" nodetype="Leaf" />
+      <menu id="Odds_Ratios,_M_by_2_table" text="Odds Ratios, M by 2 table" commandtemplate="Odds Ratios, M by 2 table.xaml" commandoutputformat="Odds Ratios, M by 2 table.xml" owner="" nodetype="Leaf" />
+      <menu id="Relative_Risks,_M_by_2_table" text="Relative Risks, M by 2 table" commandtemplate="Relative Risks, M by 2 table.xaml" commandoutputformat="Relative Risks, M by 2 table.xml" owner="" nodetype="Leaf" />	  
     </menu>
     <menu id="new_id" text="Correlation" owner="" nodetype="Parent">
       <menu id="Correlation_Matrix" text="Correlation Matrix" commandtemplate="Correlation Matrix.xaml" commandoutputformat="Correlation Matrix.xml" owner="" nodetype="Leaf" />
@@ -64,9 +72,9 @@
       <menu id="T-Test,_paired_samples" text="T-Test, paired samples" commandtemplate="T-Test, paired samples.xaml" commandoutputformat="T-Test, paired samples.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="ANCOVA" text="ANCOVA" commandtemplate="ANCOVA.xaml" commandoutputformat="ANCOVA.xml" owner="" nodetype="Leaf" />
-      <menu id="ANOVA_(1_Way_and_2_Way)" text="ANOVA (1 Way and 2 Way)" commandtemplate="ANOVA (1 Way and 2 Way).xaml" commandoutputformat="ANOVA (1 Way and 2 Way).xml" owner="" nodetype="Leaf" />
-      <menu id="One_Way_ANOVA_with_Blocks" text="One Way ANOVA with Blocks" commandtemplate="One Way ANOVA with Blocks.xaml" commandoutputformat="One Way ANOVA with Blocks.xml" owner="" nodetype="Leaf" />
-      <menu id="One_Way_ANOVA_with_Random_Blocks" text="One Way ANOVA with Random Blocks" commandtemplate="One Way ANOVA with Random Blocks.xaml" commandoutputformat="One Way ANOVA with Random Blocks.xml" owner="" nodetype="Leaf" />
+      <menu id="ANOVA,_one-way_and_two-way" text="ANOVA, one-way and two-way" commandtemplate="ANOVA, one-way and two-way.xaml" commandoutputformat="ANOVA, one-way and two-way.xml" owner="" nodetype="Leaf" />
+      <menu id="ANOVA,_one-way_with_blocks" text="ANOVA, one-way with blocks" commandtemplate="ANOVA, one-way with blocks.xaml" commandoutputformat="ANOVA, one-way with blocks.xml" owner="" nodetype="Leaf" />
+      <menu id="ANOVA,_one-way_with_random_blocks" text="ANOVA, one-way with random blocks" commandtemplate="ANOVA, one-way with random blocks.xaml" commandoutputformat="ANOVA, one-way with random blocks.xml" owner="" nodetype="Leaf" />
       <menu id="new_id" text="Legacy" owner="" nodetype="Parent">
         <menu id="One_Way_ANOVA" text="One Way ANOVA" commandtemplate="One Way ANOVA.xaml" commandoutputformat="One Way ANOVA.xml" owner="" nodetype="Leaf" />
       </menu>
@@ -92,9 +100,12 @@
       <menu id="Reliability_Analysis,_McDonalds_Omega" text="Reliability Analysis, McDonalds Omega" commandtemplate="Reliability Analysis, McDonalds Omega.xaml" commandoutputformat="Reliability Analysis, McDonalds Omega.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="SummarySubMenu" text="Summary Analysis" owner="" nodetype="Parent">
+      <menu id="Compare_Dataset" text="Compare Dataset" commandtemplate="Compare Dataset.xaml" commandoutputformat="Compare Dataset.xml" owner="" nodetype="Leaf" />
+      <menu id="Explore_Dataset" text="Explore Dataset" commandtemplate="Explore Dataset.xaml" commandoutputformat="Explore Dataset.xml" owner="" nodetype="Leaf" />	  
+      <menu id="sep" text="---------" owner="" nodetype="Leaf" />	
       <menu id="Frequency_Table" text="Frequency Table" commandtemplate="Frequency Table.xaml" commandoutputformat="Frequency Table.xml" owner="" nodetype="Leaf" />
       <menu id="Frequency_Table,_top_N" text="Frequency Table, top N" commandtemplate="Frequency Table, top N.xaml" commandoutputformat="Frequency Table, top N.xml" owner="" nodetype="Leaf" />
-      <menu id="sep" text="---------" owner="" nodetype="Leaf" />
+      <menu id="sep" text="---------" owner="" nodetype="Leaf" />	  
       <menu id="Numerical_Statistical_Analysis" text="Numerical Statistical Analysis" commandtemplate="Numerical Statistical Analysis.xaml" commandoutputformat="Numerical Statistical Analysis.xml" owner="" nodetype="Leaf" />
       <menu id="Numerical_Statistical_Analysis,_using_describe" text="Numerical Statistical Analysis, using describe" commandtemplate="Numerical Statistical Analysis, using describe.xaml" commandoutputformat="Numerical Statistical Analysis, using describe.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
@@ -108,6 +119,14 @@
         <menu id="Summary_Statistics,_selected_variables,_control_levels" text="Summary Statistics, selected variables, control levels" commandtemplate="Summary Statistics, selected variables, control levels.xaml" commandoutputformat="Summary Statistics, selected variables, control levels.xml" owner="" nodetype="Leaf" />
       </menu>
     </menu>
+    <menu id="new_id" text="Survival Analysis" owner="" nodetype="Parent">
+      <menu id="Kaplan-Meier_Estimation,_compare_groups" text="Kaplan-Meier Estimation, compare groups" commandtemplate="Kaplan-Meier Estimation, compare groups.xaml" commandoutputformat="Kaplan-Meier Estimation, compare groups.xml" owner="" nodetype="Leaf" />
+      <menu id="Kaplan-Meier_Estimation,_one_group" text="Kaplan-Meier Estimation, one group" commandtemplate="Kaplan-Meier Estimation, one group.xaml" commandoutputformat="Kaplan-Meier Estimation, one group.xml" owner="" nodetype="Leaf" />
+    </menu>	
+    <menu id="new_id" text="Tables" owner="" nodetype="Parent">
+      <menu id="Advanced" text="Advanced" commandtemplate="Advanced.xaml" commandoutputformat="Advanced.xml" owner="" nodetype="Leaf" />
+      <menu id="Basic" text="Basic" commandtemplate="Basic.xaml" commandoutputformat="Basic.xml" owner="" nodetype="Leaf" />
+    </menu>	
     <menu id="TimeSubMenu" text="Time Series" owner="" nodetype="Parent">
       <menu id="Automated_ARIMA" text="Automated ARIMA" commandtemplate="Automated ARIMA.xaml" commandoutputformat="Automated ARIMA.xml" owner="" nodetype="Leaf" />
       <menu id="Exponential_Smoothing" text="Exponential Smoothing" commandtemplate="Exponential Smoothing.xaml" commandoutputformat="Exponential Smoothing.xml" owner="" nodetype="Leaf" />
@@ -129,7 +148,8 @@
       <menu id="Compute,_apply_a_function_across_all_rows" text="Compute, apply a function across all rows" commandtemplate="Compute, apply a function across all rows.xaml" commandoutputformat="Compute, apply a function across all rows.xml" owner="" nodetype="Leaf" />
       <menu id="Compute_Dummy_Variables" text="Compute Dummy Variables" commandtemplate="Compute Dummy Variables.xaml" commandoutputformat="Compute Dummy Variables.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
-      <menu id="Conditional_Compute" text="Conditional Compute" commandtemplate="Conditional Compute.xaml" commandoutputformat="Conditional Compute.xml" owner="" nodetype="Leaf" />
+      <menu id="Conditional_Compute,_if-then" text="Conditional Compute, if-then" commandtemplate="Conditional Compute, if-then.xaml" commandoutputformat="Conditional Compute, if-then.xml" owner="" nodetype="Leaf" />
+      <menu id="Conditional_Compute,_if-then-else" text="Conditional Compute, if-then-else" commandtemplate="Conditional Compute, if-then-else.xaml" commandoutputformat="Conditional Compute, if-then-else.xml" owner="" nodetype="Leaf" />	  
     </menu>
     <menu id="Concatenate_Multiple_Variables,_handling_missing_values" text="Concatenate Multiple Variables, handling missing values" commandtemplate="Concatenate Multiple Variables, handling missing values.xaml" commandoutputformat="Concatenate Multiple Variables, handling missing values.xml" owner="" nodetype="Leaf" />
     <menu id="Convert_Variable(s)_to_Factors" text="Convert Variable(s) to Factors" commandtemplate="Convert Variable(s) to Factors.xaml" commandoutputformat="Convert Variable(s) to Factors.xml" owner="" nodetype="Leaf" />
@@ -147,6 +167,7 @@
       <menu id="Reorder_by_Count" text="Reorder by Count" commandtemplate="Reorder by Count.xaml" commandoutputformat="Reorder by Count.xml" owner="" nodetype="Leaf" />
       <menu id="Reorder_by_Occurence_in_Dataset" text="Reorder by Occurence in Dataset" commandtemplate="Reorder by Occurence in Dataset.xaml" commandoutputformat="Reorder by Occurence in Dataset.xml" owner="" nodetype="Leaf" />
       <menu id="Reorder_by_One_Other_Variable" text="Reorder by One Other Variable" commandtemplate="Reorder by One Other Variable.xaml" commandoutputformat="Reorder by One Other Variable.xml" owner="" nodetype="Leaf" />
+      <menu id="Reorder_Levels_Manually" text="Reorder Levels Manually" commandtemplate="Reorder Levels Manually.xaml" commandoutputformat="Reorder Levels Manually.xml" owner="" nodetype="Leaf" />	  
       <menu id="Specify_levels_to_keep_or_replace_by_'Other'" text="Specify levels to keep or replace by 'Other'" commandtemplate="Specify levels to keep or replace by 'Other'.xaml" commandoutputformat="Specify levels to keep or replace by 'Other'.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="MissvalSubMenu" text="Missing Values" owner="" nodetype="Parent">
@@ -166,6 +187,7 @@
     <menu id="Aggregate_to_Dataset" text="Aggregate to Dataset" commandtemplate="Aggregate to Dataset.xaml" commandoutputformat="Aggregate to Dataset.xml" owner="" nodetype="Leaf" icon="images/Aggregate.png" showtoolbaricon="true" />
     <menu id="Aggregate_to_Output" text="Aggregate to Output" commandtemplate="Aggregate to Output.xaml" commandoutputformat="Aggregate to Output.xml" owner="" nodetype="Leaf" />
     <menu id="Merge_Datasets" text="Merge Datasets" commandtemplate="Merge Datasets.xaml" commandoutputformat="Merge Datasets.xml" owner="" nodetype="Leaf" icon="images/Merge.png" showtoolbaricon="true" />
+	<menu id="Merge_Datasets_(Tidy)" text="Merge Datasets (Tidy)" commandtemplate="Merge Datasets (Tidy).xaml" commandoutputformat="Merge Datasets (Tidy).xml" owner="" nodetype="Leaf" />
     <menu id="Refresh_Grid" text="Refresh Data Grid" command="BlueSky.Commands.Data.RefreshDatagridCommand" owner="BSky" nodetype="Leaf" />
     <menu id="Reload_Dataset_from_File" text="Reload Dataset from File" commandtemplate="Reload Dataset from File.xaml" commandoutputformat="Reload Dataset from File.xml" owner="" nodetype="Leaf" />
     <menu id="Re-order_Variables_in_Dataset_Alphabetically" text="Re-order Variables in Dataset Alphabetically" commandtemplate="Re-order Variables in Dataset Alphabetically.xaml" commandoutputformat="Re-order Variables in Dataset Alphabetically.xml" owner="" nodetype="Leaf" />
@@ -186,6 +208,7 @@
         <menu id="Stratified_Sample" text="Stratified Sample" commandtemplate="Stratified Sample.xaml" commandoutputformat="Stratified Sample.xml" owner="" nodetype="Leaf" />
       </menu>
     </menu>
+    <menu id="Stack_Datasets" text="Stack Datasets" commandtemplate="Stack Datasets.xaml" commandoutputformat="Stack Datasets.xml" owner="" nodetype="Leaf" />	
     <menu id="Subset_Dataset" text="Subset Dataset" commandtemplate="Subset Dataset.xaml" commandoutputformat="Subset Dataset.xml" owner="" nodetype="Leaf" />
     <menu id="Subset_to_Output" text="Subset to Output" commandtemplate="Subset to Output.xaml" commandoutputformat="Subset to Output.xml" owner="" nodetype="Leaf" />
     <menu id="new_id" text="Transpose Dataset" owner="" nodetype="Parent">
@@ -362,6 +385,10 @@
   <menu id="ModelFittingMenu" text="Model Fitting" owner="" nodetype="Parent">
     <menu id="Contrasts_Display" text="Contrasts Display" commandtemplate="Contrasts Display.xaml" commandoutputformat="Contrasts Display.xml" owner="" nodetype="Leaf" />
     <menu id="Contrasts_Set" text="Contrasts Set" commandtemplate="Contrasts Set.xaml" commandoutputformat="Contrasts Set.xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="Cox Proportional Hazards Model" owner="" nodetype="Parent">
+      <menu id="Cox_Single_Model" text="Cox Single Model" commandtemplate="Cox Single Model.xaml" commandoutputformat="Cox Single Model.xml" owner="" nodetype="Leaf" />
+      <menu id="Cox_With_Formula" text="Cox With Formula" commandtemplate="Cox With Formula.xaml" commandoutputformat="Cox With Formula.xml" owner="" nodetype="Leaf" />
+    </menu>	
     <menu id="Decision_Trees" text="Decision Trees" commandtemplate="Decision Trees.xaml" commandoutputformat="Decision Trees.xml" owner="" nodetype="Leaf" />
     <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
     <menu id="new_id" text="IRT" owner="" nodetype="Parent">
