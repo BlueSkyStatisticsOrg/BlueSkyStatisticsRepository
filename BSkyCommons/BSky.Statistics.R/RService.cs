@@ -67,32 +67,33 @@ namespace BSky.Statistics.R
                 logService.WriteToLogLevel("BlueSky Statistics config setting, R install path = '" + rhomeconfig + "'", LogLevelEnum.Info);
                 bool isuserconfigvalid = IsValidRInstallPath(rhomeconfig, out rHome, out rPath);
 
-                if (rhomeconfig != null && rhomeconfig.Length > 0 && !isuserconfigvalid) // user configured path is invalid. 
-                {
-                    string m1 = BSky.GlobalResources.Properties.Resources.MsgChosingRFromRegistry;
-                    string m2 = "\n" + BSky.GlobalResources.Properties.Resources.MsgSetRHome;
-                    MessageBox.Show(m1 + m2, BSky.GlobalResources.Properties.Resources.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    logService.WriteToLogLevel("BlueSky Statistics config setting, R install path is not valid = '" + rhomeconfig + "'", LogLevelEnum.Info);
-                }
+                //if (rhomeconfig != null && rhomeconfig.Length > 0 && !isuserconfigvalid) // user configured path is invalid. 
+                //{
+                //    string m1 = BSky.GlobalResources.Properties.Resources.MsgChosingRFromRegistry;
+                //    string m2 = "\n" + BSky.GlobalResources.Properties.Resources.MsgSetRHome;
+                //    MessageBox.Show(m1 + m2, BSky.GlobalResources.Properties.Resources.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    logService.WriteToLogLevel("BlueSky Statistics config setting, R install path is not valid = '" + rhomeconfig + "'", LogLevelEnum.Info);
+                //}
 
                 if (isuserconfigvalid)//rhomeconfig set and path exists
                 {
                     logService.WriteToLogLevel("Using R install path from the BlueSky Statistics config setting = '" + rhomeconfig + "'", LogLevelEnum.Info);
                 }
-                else if (IsValidRInstallPath(rinstallpath, out rHome, out rPath))//registry path exists
-                {
-                    logService.WriteToLogLevel("Using R install path from the registry = '" + rinstallpath + "'", LogLevelEnum.Info);
-                }
+                //else if (IsValidRInstallPath(rinstallpath, out rHome, out rPath))//registry path exists
+                //{
+                //    logService.WriteToLogLevel("Using R install path from the registry = '" + rinstallpath + "'", LogLevelEnum.Info);
+                //}
                 else
                 {
                     rHome = null;
                     rPath = null;
+                    logService.WriteToLogLevel("BlueSky Statistics config setting, R install path is not valid = '" + rhomeconfig + "'", LogLevelEnum.Info);
                 }
 
 
                 //11Sep2016 Try setting the currently selected path back to rhome
-                if (rHome != null && rHome.Length > 0)
-                    confService.ModifyConfig("rhome", rHome.Replace('\\', '/'));
+                //if (rHome != null && rHome.Length > 0)
+                    //confService.ModifyConfig("rhome", rHome.Replace('\\', '/'));
 
                 logService.WriteToLogLevel("Using RHome = '" + rHome + "'", LogLevelEnum.Info);
                 logService.WriteToLogLevel("Using RPath = '" + rPath + "'", LogLevelEnum.Info);
