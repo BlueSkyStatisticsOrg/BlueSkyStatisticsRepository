@@ -2,16 +2,26 @@
 <recent>
   <item>adaboost</item>
   <item>blasso</item>
+  <item>C5.0</item>
+  <item>gbm</item>
   <item>glm</item>
   <item>knn3</item>
   <item>ksvm</item>
   <item>lm</item>
   <item>lmerModLmerTest</item>
+  <item>mlp</item>  
   <item>multinom</item>
   <item>NaiveBayes</item>
+  <item>nnet</item>
+  <item>nnet.formula</item>
   <item>npregression</item>
   <item>polr</item>
   <item>randomForest</item>
+  <item>ranger</item>  
   <item>real_adaboost</item>
+  <item>rlm</item>  
   <item>rpart</item>
+  <item>rsnns</item> 
+  <item>train</item>
+  <item>xgb.Booster</item>
 </recent>
