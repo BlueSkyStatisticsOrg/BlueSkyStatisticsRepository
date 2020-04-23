@@ -442,7 +442,7 @@ namespace BSky.OutputGenerator
                 c1FlexGrid1.ColumnHeaderBackground = Brushes.White;
                 c1FlexGrid1.RowHeaderBackground = Brushes.White;
                 c1FlexGrid1.TopLeftCellBackground = Brushes.White;
-                c1FlexGrid1.BorderBrush = Brushes.WhiteSmoke;
+                c1FlexGrid1.BorderBrush = Brushes.White;
                 c1FlexGrid1.Background = Brushes.White;
                 c1FlexGrid1.RowBackground = Brushes.White;
                 c1FlexGrid1.BorderThickness = new Thickness(0, 3, 0, 0);
