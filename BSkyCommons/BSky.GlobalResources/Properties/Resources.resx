@@ -182,7 +182,7 @@
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="MakeSureRHOME2LatestR" xml:space="preserve">
-    <value>- R_HOME configuration variable is pointing to the correct version of R.</value>
+    <value>- rhome configuration variable is pointing to the correct version of R.</value>
     <comment>App.xaml.cs :Launch time exception message</comment>
   </data>
   <data name="PleaseMakeSure" xml:space="preserve">
