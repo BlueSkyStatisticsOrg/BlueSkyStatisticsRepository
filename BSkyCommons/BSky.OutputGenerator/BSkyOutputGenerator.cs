@@ -384,10 +384,10 @@ namespace BSky.OutputGenerator
                     }
                 }
 
-                if (rowheadercols > 0 && rowheaderrows > 0)
+                //if (rowheadercols > 0 && rowheaderrows > 0)
                 {
                     /////// Rowheader/Data Matrix//////////
-                    rowheadermatrix = new string[rowheaderrows, rowheadercols];
+                    rowheadermatrix = new string[rowheaderrows, rowheadercols];// this can be [1,0]
                     datamatrix = new string[rowheaderrows, datacols];
                     ////fill Row header Matrix and Data Matrix////////
                     int row2 = 0, rhcol, dtcol;
@@ -396,7 +396,7 @@ namespace BSky.OutputGenerator
                         rhcol = 0; dtcol = 0;
                         foreach (XmlNode td in trr.ChildNodes)
                         {
-                            if (rhcol < rowheadercols) // row header col of a row
+                            if (rhcol < rowheadercols && rowheadermatrix != null) // row header col of a row
                             {
                                 rowheadermatrix[row2, rhcol++] = td.InnerText.Trim();
                             }
