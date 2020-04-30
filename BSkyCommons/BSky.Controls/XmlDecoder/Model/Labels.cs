@@ -154,7 +154,35 @@ namespace BSky.XmlDecoder
                         OptionItem item = new OptionItem();
                         item.condition = onode.Attributes[NodeNames.OPTION_CONDITION] == null ? string.Empty :  onode.Attributes[NodeNames.OPTION_CONDITION].Value;
                         item.Text = new ComplexText();
-                        item.Text.Initialize(onode);
+                        if (item.condition.Equals("gpbox2"))// || item.condition.Equals("test2") || item.condition.Equals("test3"))
+                        {
+                            string tagRes = OutputHelper.EvaluateRadioGrpBxTagValue(OutputHelper.AnalyticsData.InputElement, item.condition);
+                            switch (tagRes)//values are also enclosed in single quotes (may be normal in dialog-procession)
+                            {
+                                case "'two.sided'":
+                                    item.Text.Text = "Sig.(2-tail)";//Sig.(two-tailed)
+                                    break;
+                                case "'greater'":
+                                    item.Text.Text = "Sig.(1-tail, >)";//Sig.(upper-tailed)
+                                    break;
+                                case "'less'":
+                                    item.Text.Text = "Sig.(1-tail, <)"; //Sig.(lower-tailed)
+                                    break;
+                                default:
+                                    break;
+                            }
+                            //it has also been found that if item.condition has value after this point then
+                            // the column is completely getting skipped and does not appear in output table
+                            // so we will forcefully make it empty.
+                            //All we wanted to achieve using item.condition was the correct text and
+                            //we do not have any other use for item.condition value.
+                            item.condition = "";
+
+                        }
+                        else
+                        {
+                            item.Text.Initialize(onode);
+                        }
                         optionList.Add(item);
                     }
                     break;

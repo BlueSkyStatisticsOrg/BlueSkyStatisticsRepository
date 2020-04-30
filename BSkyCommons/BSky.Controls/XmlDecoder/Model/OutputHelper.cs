@@ -1275,6 +1275,44 @@ namespace BSky.XmlDecoder
             return string.Empty;
         }
 
+
+        //Added by Anil 28/Apr2020
+        // Sig.(2-tailed) related radio button fix. (we also need Sig.(1-tailed) for Pop.Mean > mu and Pop.Mean < mu
+        // For templated dialogs there are no radio buttons when the template code is processed [the reason for that
+        // when we fill the templated dialog behind the scenes, there is only radio-group-box control whose value is
+        // text, that was return as a result of selection of one of the redio button in that group. Since checked 
+        // state of the radio buttons was  never referenced in the command syntax they virtually do not exist in
+        // the dialog when the templated dialog is populated in the background. So we can't set there true/false
+        //state. And we have this challange of processing "Sig.(2-tailed". So we need to store the TEXT value of the
+        // radio-group-box control in the tag (during the dialog populating process). And when the output is generated
+        // from the XMl template, we will try to get this tag value using the following funtion and then based on
+        // text value ('two.sided', 'less' etc.) we will decide what to put 'Sig.(1-tailed)' or 'Sig.(2-tailed)' etc.
+        public static string EvaluateRadioGrpBxTagValue(DependencyObject obj, string objname)
+        {
+            //Following code is from EvaluateValue and is slightly modified because we are interested in 'Tag'
+            FrameworkElement fe = obj as FrameworkElement;
+            FrameworkElement element = fe.FindName(objname) as FrameworkElement;
+
+            if (element == null)
+                return string.Empty;
+
+            //IBSkyInputControl ctrl = element as IBSkyInputControl;
+            string result = string.Empty;
+            if (typeof(BSkyRadioGroup).IsAssignableFrom(element.GetType()))
+            {
+                BSkyRadioGroup txt = element as BSkyRadioGroup;
+
+                if(txt!=null && txt.Tag!=null)
+                {
+                    if (typeof(string).IsAssignableFrom(txt.Tag.GetType()))
+                    {
+                        result = txt.Tag as string;
+                    }
+                }
+            }
+            return result;
+        }
+         
         #region For Syntax Editor
         //SynEditor set values back to dialog UI elements
         public static void SetValueFromSynEdt(DependencyObject obj, string objname, string args)
@@ -1345,6 +1383,8 @@ namespace BSky.XmlDecoder
             if (typeof(BSkyRadioGroup).IsAssignableFrom(element.GetType()))
             {
                 BSkyRadioGroup txt = element as BSkyRadioGroup;
+                if (args != null && typeof(string).IsAssignableFrom(args.GetType()))//fix for templated t-test dialogs
+                    txt.Tag = args; // where column title in output table changes based on radiobutton-choice (e.g. 'Sig.(2-tailed)' )
                 //txt.Value = args;
                 ////return txt.Value;
             }

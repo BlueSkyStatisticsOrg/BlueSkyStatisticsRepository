@@ -95,7 +95,7 @@
 										<option-value-pairs>
 											<option-value condition="" text="t"/>
 											<option-value condition="" text="df"/>
-											<option-value condition="" text="Sig.(2-tailed)"/>
+											<option-value condition="gpbox2" text="Sig.(2-tail)"/>
 											<option-value condition="" text="Mean Difference"/>
 											<option-value condition="" text="Std. Error Difference"/>
 										</option-value-pairs>
