@@ -38,6 +38,7 @@ namespace BlueSky.Commands.File
                 else
                 {
                     BSkyMouseBusyHandler.HideMouseBusy();
+                    MessageBox.Show("The dataset is empty. Please populate the dataset and save the file.", "Empty Dataset", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
             }
