@@ -763,7 +763,16 @@ namespace BlueSky
                 _command = ExtractCommandName(stmt);//07sep2012
 
                 RCommandType rct = GetRCommandType(_command);
-
+				
+                if (rct == RCommandType.BSKYFORMAT)
+                {
+                    if (stmt.Contains("iskable"))//26May2020 we should actually look for iskable=TRUE but this 
+                    {                       //may have extra space and may fail. Or we can use regex to compare
+                        string pattern = @"iskable\W*TRUE";// find iskable = TRUE with 0 or more spaces around =
+                        if(Regex.IsMatch(stmt, pattern))
+                            rct = RCommandType.RCOMMAND;
+                    }
+                }
                 //17Nov2017 Putting back the semicolon in place of BSkySemiColon
                 stmt = stmt.Replace("'BSkySemiColon'", "';'");
 
