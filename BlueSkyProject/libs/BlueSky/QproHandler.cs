@@ -1,0 +1,142 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BlueSky
+{
+    public static class QproHandler
+    {
+        private static Dictionary<string, QProDatasetInfo> QproDatasetInfoList = new Dictionary<string, QProDatasetInfo>();
+        public static string htmltext = string.Empty;
+        //whenever Qpro dataset is opened, execute this
+        public static void AddQPDatasetInfo(string filename, string apikey, string datasetid,
+            string surveyid, string userid, string datasetname)
+        {
+            QProDatasetInfo qpdsi = new QProDatasetInfo();
+            qpdsi.Filename = filename;
+            qpdsi.ApiKey = apikey;
+            qpdsi.DatasetId = datasetid;//this should be the key but for user 'datasetname' is easier so
+            qpdsi.SurveyId = surveyid;
+            qpdsi.UserId = userid;
+            qpdsi.DatasetName = datasetname; //this is the key for user convenience
+
+            QproDatasetInfoList.Add(datasetname, qpdsi);
+        }
+
+        public static void AddQPDatasetInfo(QProDatasetInfo qpdi)
+        {
+            QproDatasetInfoList.Add(qpdi.DatasetName, qpdi);
+        }
+
+
+        //Get and item from the dictionary
+        public static QProDatasetInfo GetQPDatasetInfo(string datasetid)
+        {
+            if (!string.IsNullOrEmpty(datasetid))
+            {
+                QProDatasetInfo qpdsi = new QProDatasetInfo();
+                bool successs = QproDatasetInfoList.TryGetValue(datasetid, out qpdsi);
+                if (successs)
+                    return qpdsi;
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+
+        //Get QPro filename from the dictionary
+        public static string GetQPDatasetFileName(string datasetid)
+        {
+            if (!string.IsNullOrEmpty(datasetid))
+            {
+                QProDatasetInfo qpdsi = new QProDatasetInfo();
+                bool successs = QproDatasetInfoList.TryGetValue(datasetid, out qpdsi);
+                if (successs)
+                    return qpdsi.Filename;
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+
+        //Get all the keys (i.e. datasetnames) currently available.
+        public static List<string> GetKeys()
+        {
+            List<string> keys = new List<string>();
+            Dictionary<string, QProDatasetInfo>.KeyCollection keycoll = QproDatasetInfoList.Keys;
+            foreach (string key in keycoll)
+                keys.Add(key);
+            return keys;
+        }
+
+        //whenever Qpro dataset is closed, we can execute this
+        public static void RemoveQPDatasetInfo(string datasetid) //datasetid is the key
+        {
+            if (!string.IsNullOrEmpty(datasetid) && QproDatasetInfoList.ContainsKey(datasetid))
+                QproDatasetInfoList.Remove(datasetid);
+        }
+
+        //may be required. Remoes all the keys in one shot.
+        public static void RemoveAllQPDatasetInfo(string datasetid) 
+        {
+                QproDatasetInfoList.Clear();
+        }
+
+    }
+
+    public class QProDatasetInfo
+    {
+        private string filename;
+
+        public string Filename
+        {
+            get { return filename; }
+            set { filename = value; }
+        }
+
+        private string apikey;
+
+        public string ApiKey
+        {
+            get { return apikey; }
+            set { apikey = value; }
+        }
+
+        private string datasetid;
+
+        public string DatasetId
+        {
+            get { return datasetid; }
+            set { datasetid = value; }
+        }
+
+        private string surveyid;
+
+        public string SurveyId
+        {
+            get { return surveyid; }
+            set { surveyid = value; }
+        }
+
+        private string userid;
+
+        public string UserId
+        {
+            get { return userid; }
+            set { userid = value; }
+        }
+
+        private string datasetname; //provided by user from the Qpro GET dialog
+
+        public string DatasetName
+        {
+            get { return datasetname; }
+            set { datasetname = value; }
+        }
+
+    }
+}

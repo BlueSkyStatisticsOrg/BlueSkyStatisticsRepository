@@ -1,0 +1,86 @@
+﻿<Window x:Class="BlueSky.Windows.ExportToQPro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlueSky.Windows"
+        mc:Ignorable="d"
+        Title="Export To QuestionPro" 
+        WindowStartupLocation="CenterOwner" 
+        SizeToContent="WidthAndHeight" 
+        ResizeMode="NoResize"
+        MaxWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="510"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0">Select a dataset:</Label>
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
+            <ComboBox  Name="datasetcombo" SelectionChanged="Datasetcombo_SelectionChanged"></ComboBox>
+            <TextBlock>Select a dataset from the dropdown above to populate its details in the fields below.</TextBlock>
+            <TextBlock TextWrapping="Wrap" Margin="0,5,0,0">NOTE: Dropdown remains empty if you have not opened any dataset using 'File > Open QuestionPro Dataset' from the BlueSky Statistics main window.</TextBlock>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="detailsGrid" Visibility="Collapsed" Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="1" FontWeight="Bold">Details:</Label>
+
+            <Label Grid.Row="1" Grid.Column="0">Base URL:</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="baseurltxt" IsReadOnly="True" 
+                 PreviewMouseDoubleClick="Baseurltxt_MouseDoubleClick"
+                 LostFocus="Baseurltxt_LostFocus"></TextBox>
+
+        <Label Grid.Row="2" Grid.Column="0">API Key:</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="apikeytxt" IsReadOnly="True"
+                 PreviewMouseDoubleClick="Baseurltxt_MouseDoubleClick"
+                 LostFocus="Baseurltxt_LostFocus"></TextBox>
+
+        <Label Grid.Row="3" Grid.Column="0">Dataset ID:</Label>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="datasetidtxt" IsReadOnly="True"
+                 PreviewMouseDoubleClick="Baseurltxt_MouseDoubleClick"
+                 LostFocus="Baseurltxt_LostFocus"></TextBox>
+
+        <Label Grid.Row="4" Grid.Column="0">Survey ID:</Label>
+            <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Name="surveyidtxt" IsReadOnly="True"
+                 PreviewMouseDoubleClick="Baseurltxt_MouseDoubleClick"
+                 LostFocus="Baseurltxt_LostFocus"></TextBox>
+
+        <Label Grid.Row="5" Grid.Column="0">User ID:</Label>
+            <TextBox Grid.Row="5" Grid.Column="1" Margin="5" Name="useridtxt" IsReadOnly="True"
+                 PreviewMouseDoubleClick="Baseurltxt_MouseDoubleClick"
+                 LostFocus="Baseurltxt_LostFocus"></TextBox>
+
+        </Grid>
+        
+        <StackPanel Grid.Row="6" Grid.Column="1" Margin="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="exportBtn" Margin="3" Padding="3" Click="ExportBtn_Click">Export</Button>
+            <Button Name="cancelBtn" Margin="3" Padding="3" Click="CancelBtn_Click">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -342,6 +342,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="QproHandler.cs" />
+    <Compile Include="RESTprocessor.cs" />
     <Compile Include="Services\CommandAnalyserFactory.cs" />
     <Compile Include="Services\NewDatasetProcessor.cs" />
     <Compile Include="Services\PasteClipboardDataset.cs" />
@@ -362,6 +364,9 @@
     </Compile>
     <Compile Include="Windows\DatasetLoadingBusyWindow.xaml.cs">
       <DependentUpon>DatasetLoadingBusyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ExportToQPro.xaml.cs">
+      <DependentUpon>ExportToQPro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\FindDatagridWindow.xaml.cs">
       <DependentUpon>FindDatagridWindow.xaml</DependentUpon>
@@ -502,6 +507,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\DatasetLoadingBusyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ExportToQPro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

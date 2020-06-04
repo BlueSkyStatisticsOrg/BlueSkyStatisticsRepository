@@ -1888,6 +1888,15 @@ namespace BSky.GlobalResources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export output to QuestionPro.
+        /// </summary>
+        public static string MenuOutputFileUploadToQPro {
+            get {
+                return ResourceManager.GetString("MenuOutputFileUploadToQPro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image Size.
         /// </summary>
         public static string MenuOutputImageSize {

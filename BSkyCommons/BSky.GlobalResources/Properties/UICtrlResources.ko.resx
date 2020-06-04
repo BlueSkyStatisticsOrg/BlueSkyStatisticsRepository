@@ -1308,4 +1308,7 @@
     <value>문자열 변수를 새 데이터 세트의 요소로 변환</value>
     <comment>CustomSettingsWindow.xaml : Newdataset setting in Advanced tab in settings</comment>
   </data>
+  <data name="MenuOutputFileUploadToQPro" xml:space="preserve">
+    <value>QuestionPro로 출력 내보내기</value>
+  </data>
 </root>

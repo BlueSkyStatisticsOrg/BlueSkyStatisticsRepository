@@ -1311,4 +1311,8 @@
     <value>Convert all character columns to factors, when creating new dataset in the datagrid.</value>
     <comment>CustomSettingsWindow.xaml : Newdataset setting in Advanced tab in settings</comment>
   </data>
+  <data name="MenuOutputFileUploadToQPro" xml:space="preserve">
+    <value>Export output to QuestionPro</value>
+    <comment>OutputWindow.xaml.cs : Upload current output ot QuestionPro</comment>
+  </data>
 </root>
