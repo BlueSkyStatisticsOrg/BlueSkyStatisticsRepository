@@ -24,6 +24,7 @@ using BSky.ConfService.Intf.Interfaces;
 using BSky.ConfigService.Services;
 using BSky.Controls.Controls;
 using System.Windows.Controls;
+using System.Collections.Generic;
 
 namespace BlueSky.Commands.File
 {
@@ -33,7 +34,7 @@ namespace BlueSky.Commands.File
         {
         }
 
-        public const String FileNameFilter = "All Files (*.*)|*.*|IBM SPSS (*.sav)|*.sav|Excel 2003 (*.xls)|*.xls|Excel 2007-2010 (*.xlsx)|*.xlsx|Comma Seperated (*.csv)|*.csv|DBF (*.dbf)|*.dbf|R Object (*.RData)|*.RData|Dat (*.Dat)|*.Dat|SAS (*.sas7bdat)|*.sas7bdat|Txt (*.Txt)|*.Txt";
+        public const String FileNameFilter = "All Files (*.*)|*.*|IBM SPSS (*.sav)|*.sav|Excel 2003 (*.xls)|*.xls|Excel 2007-2010 (*.xlsx)|*.xlsx|Comma Seperated (*.csv)|*.csv|DBF (*.dbf)|*.dbf|R Object (*.RData)|*.RData|Dat (*.Dat)|*.Dat|SAS (*.sas7bdat)|*.sas7bdat|Txt (*.Txt)|*.Txt|RDa (*.RDa)|*.RDa";
         IConfigService confService = LifetimeService.Instance.Container.Resolve<IConfigService>();//12Dec2013
         ILoggerService logService = LifetimeService.Instance.Container.Resolve<ILoggerService>();//17Dec2012
         RecentDocs recentfiles = LifetimeService.Instance.Container.Resolve<RecentDocs>();//21Dec2013
@@ -174,7 +175,7 @@ namespace BlueSky.Commands.File
             string errormsg = string.Empty;
             DataSource ds = null;
             IOpenDataFileOptions csvo = new OpenDataFileOptions();//
-			bool removeSpacesSPSS = false;//for SPSS files.											   
+            bool removeSpacesSPSS = false;//for SPSS files.
 
             if (filename != null && filename.Length > 0)
             {
@@ -216,7 +217,8 @@ namespace BlueSky.Commands.File
                                 sheetname = stw.SelectedTableName;
                         }
                     }
-                    else if (filename.ToLower().EndsWith(".rdata") && showRDataWarning && !afterSaveAs)//dont show warning if file is auto opened after 'SaveAs'
+                    else if ((filename.ToLower().EndsWith(".rdata") || filename.ToLower().EndsWith(".rda")) 
+                        && showRDataWarning && !afterSaveAs)//dont show warning if file is auto opened after 'SaveAs'
                     {
                         if (!appwindow.RDataShowWarningDialogCheck) //for first time and also when checkbox is not checked
                         {
@@ -314,11 +316,33 @@ namespace BlueSky.Commands.File
 
                     // if RData file then get all the data.frame and tbl_df objects. 
                     //Give users choice to load one or more of available data.frames in the grid.
-                    if (filename.ToLower().EndsWith(".rdata")) //&& !afterSaveAs)
+                    if (filename.ToLower().EndsWith(".rdata") || filename.ToLower().EndsWith(".rda")) //&& !afterSaveAs)
                     {
                         bool isSingleDFinFile = false;//if there is a single data.frame object in a file and no other obj.
                         bool isOneBlank = false;
                         string[] selectedDF = null;
+
+                        //if SAVE(or SAVEaS) on rdata where filename!=datasetname. We close and reopen after datasetname changed
+                        //so we do not want to show the warning this time as we are just replacing the old datasetname with 
+                        // new one rest is same. So grid is connected to the correct data on R side.
+                        if (!afterSaveAs)
+                        {
+                            //check if file with the same name is already loaded in the grid.
+                            //Paths of these file can be different, just compare the names and show
+                            //a warning message "may overwrite already loaded dataset/objects"
+                            List<string> allfullpathfilenames = controller.GetAllOpenFilenamesInGrid(false);
+                            if (allfullpathfilenames != null &&
+                                allfullpathfilenames.Contains(Path.GetFileName(filename).ToLower()))
+                            {
+                                string m1 = "File with the same name (" + Path.GetFileName(filename) + ") is already open in the datagrid. " +
+                                    "Clicking 'Yes' may overwrite the dataset in the grid.\n";
+                                string m2 = "Do you want to continue?";
+                                MessageBoxResult mbr = MessageBox.Show(m1 + m2, "Dataset Overwrite Warning!",
+                                    MessageBoxButton.YesNo, MessageBoxImage.Question);
+                                if (mbr == MessageBoxResult.No)
+                                    return;
+                            }
+                        }
                         //get list of data.frame or tbl_df objects from R
                         object tbls = service.GetRDataDataframeObjList(filename);
                         if (tbls != null && !tbls.ToString().Equals("No Result - Check Command"))
@@ -591,7 +615,7 @@ namespace BlueSky.Commands.File
             BSkyMouseBusyHandler.ShowMouseBusy();// ShowProgressbar_old();//ShowStatusProgressbar();//29Oct2014
 
             bool isSuccess = false;
-            string filename = null, sheetname=null;
+            string filename = null, sheetname = null;
             DataSource tempds = controller.GetActiveDocument();
             if (tempds != null)
             {
@@ -744,7 +768,7 @@ namespace BlueSky.Commands.File
         private void ActivateDatagrid(DataSource ds)
         {
             TabItem ti = null;
-            if(controller!=null && ds!=null)
+            if (controller != null && ds != null)
             {
                 ti = controller.GetTabItem(ds);
                 if (ti != null)
