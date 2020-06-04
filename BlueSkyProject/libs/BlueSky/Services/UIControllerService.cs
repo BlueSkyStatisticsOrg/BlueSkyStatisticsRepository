@@ -716,6 +716,8 @@ namespace BlueSky.Services
                 if (sdc.SessionDialogList.ContainsKey(dlgfullkey))//if it has that key
                     sdc.SessionDialogList.Remove(dlgfullkey); // then remove it
             }
+            //remove QPro dataset related details of Qpro dataset is closed
+            QproHandler.RemoveQPDatasetInfo(removedds.Name);
         }
 
         //Remove session dialogs if dataset column names are added or removed.

@@ -65,12 +65,14 @@ namespace BlueSky
 
         int imgnamecounter;//11Sep2012
         //public static int wincount=0;
+        bool QPro = false; //if export to html code is executing for uploading in QPro
 
         public CommandHistoryMenuHandler History //17Jul2015 accessed form outside for refreshing
         {
             get { return chmh; }
             set { chmh = value; } /// check and remove if not needed
         }
+        string htmltext;
 
         #region Scintilla Textbox
 
@@ -929,6 +931,7 @@ namespace BlueSky
             ///// Creating filename ////
             string filePath = Path.GetDirectoryName(fullpathzipcsvhtmfilename);
             string fileExtension = Path.GetExtension(fullpathzipcsvhtmfilename);
+            FileMode fm = FileMode.Create; //FileMode.Append;
             if (fileExtension.Equals(".bsoz"))
             {
                 fileExtension = ".bso";
@@ -939,7 +942,7 @@ namespace BlueSky
             filelist.Add(fileNamewithoutExt + fileExtension);//myout.bso
             ////// root tag/////
             bool savebskytag = extratags;
-            FileStream fileStream = new FileStream(fullpathbsocsvhtmfilename, FileMode.Append);
+            FileStream fileStream = new FileStream(fullpathbsocsvhtmfilename, fm);
             bool fileExists = File.Exists(fullpathbsocsvhtmfilename);
             string tempString = string.Empty;
             bool oneormorechecked = false;
@@ -951,8 +954,13 @@ namespace BlueSky
             /////
             if (ff == FileFormat.Html && !extratags)//21May2015
             {
-                string styl = "<style>table td, table th { border: 1px solid #666;} table{border: 1px solid #666;} body > span{ line-height: 30px;} </style>";
-                tempString = "<!doctype html><html><head><title>" + fullpathbsocsvhtmfilename + " - BlueSky Output</title>" + styl + "</head> <body>";
+                string styl = "<style> body { font-family: Calibri, 'Trebuchet MS', sans-serif; }" +
+                    "table th { background-color: #CFD8DC; }" +
+                    "table td, table th { border: 1px solid #666; padding-left: 5px; padding-right: 5px;}" +
+                    "table {border-collapse: collapse;} body>span {line-height: 30px;}" +
+                    "h3 { font-size: 20px; font-weight: 700;}" +
+                    "h4 { font-size: 16px; font-weight: 700; margin-bottom: 0px;} </style>";
+                tempString = "<!doctype html><html><head><title>" + (fileNamewithoutExt + fileExtension) + " - BlueSky Output</title>" + styl + "</head> <body>";
                 fileStream.Write(uniEncoding.GetBytes(tempString),
                                     0, uniEncoding.GetByteCount(tempString));
             }
@@ -1042,6 +1050,92 @@ namespace BlueSky
                 CreateBSkyZipOutput(fullpathzipcsvhtmfilename, filelist);
         }
 
+        StringBuilder htmlStrQProPUT = null;
+        public string DumpAllAnalyisOuput_QPro()///C1.WPF.FlexGrid.FileFormat ff, bool extratags)
+        {
+            htmlStrQProPUT = new StringBuilder();
+            ////// Start Mouse Busy ////////
+            BSkyMouseBusyHandler.ShowMouseBusy();
+
+            ///string newlinechar = (ff == C1.WPF.FlexGrid.FileFormat.Html && !extratags) ? " <br> " : "\r\n";
+            ///string tabchar = (ff == C1.WPF.FlexGrid.FileFormat.Html) ? " &nbsp; " : "\t";
+
+            imgnamecounter = 0;//11Sep2012
+            List<string> filelist = new List<string>();//12Sep2012
+            ObservableCollection<AnalyticsData> DataList = null;
+            if (SynEdtDataList.Count > 0)
+            {
+                DataList = SynEdtDataList;
+            }
+            else
+            {
+                DataList = outputDataList;
+            }
+            ///// Creating filename ////
+            ///string filePath = Path.GetDirectoryName(fullpathzipcsvhtmfilename);
+            ///string fileExtension = Path.GetExtension(fullpathzipcsvhtmfilename);
+            QPro = true;
+            string tempString = string.Empty;
+            string styl = "<style> body { font-family: Calibri, 'Trebuchet MS', sans-serif; }" +
+                "table th { background-color: #CFD8DC; }" +
+                "table td, table th { border: 1px solid #666; padding-left: 5px; padding-right: 5px;}" +
+                "table {border-collapse: collapse;} body>span {line-height: 30px;}" +
+                "h3 { font-size: 20px; font-weight: 700;}" +
+                "h4 { font-size: 16px; font-weight: 700; margin-bottom: 0px;} </style>";
+            tempString = "<!doctype html><html><head><title>" + " - BlueSky Output</title>" + styl + "</head> <body>";
+            htmlStrQProPUT.Append(tempString);
+
+            try
+            {
+                //////// looping thru all analysis one by one //////
+                foreach (AnalyticsData analysisdata in DataList)
+                {
+                    //03Aug2012 ICommandAnalyser analyser = CommandAnalyserFactory.GetClientAnalyser(analysisdata);
+                    //CommandOutput output = analyser.Decode(analysisdata);// is this regenerating flexgrid etc.. from template
+                    CommandOutput output = analysisdata.Output;// getting refrence of already generated objects.
+                    SessionOutput sessionoutput = analysisdata.SessionOutput;//27Nov2013 if there is session output
+                    if (output != null)
+                        output.NameOfAnalysis = analysisdata.AnalysisType;//For Parent Node name 02Aug2012
+                    if (sessionoutput != null)
+                        sessionoutput.NameOfSession = analysisdata.AnalysisType;
+
+                    this.ToDiskFile = false;//resetting it back.10Aug2012//Not sure if needed.
+
+                    /////// dumping output //if chkbx based dumping then use commented condition///
+                    //29OCt2013 Saving all output to .bso //if (output.SelectedForDump) // if current analysis is selected for dumping 30May2012.
+                    if (output != null)
+                    {
+                        ExportOutput_QPro(output);
+                    }
+                    else if (sessionoutput != null)
+                    {
+                        foreach (CommandOutput cout in sessionoutput)
+                        {
+                            ExportOutput_QPro(cout);
+                        }
+                    }
+                }//foreach
+            }//try
+            catch (Exception ex)
+            {
+                logService.WriteToLogLevel("Error Occurred in exporting output.", LogLevelEnum.Error);
+                logService.WriteToLogLevel(ex.Message, LogLevelEnum.Info);
+            }
+            finally
+            {
+                ////// End Mouse Busy ////////
+                BSkyMouseBusyHandler.HideMouseBusy();// ShowHideBusy_old(false);
+            }
+
+            tempString = "</body></html>";
+            htmlStrQProPUT.Append(tempString);
+
+            SynEdtDataList.Clear();//Clearing local list after dumping. 08Aug2012
+
+            string htmltextoutput = htmlStrQProPUT.ToString();//will be destroyed automatically
+            htmlStrQProPUT.Clear();//clear memory
+            return htmltextoutput;
+        }
 
         public void SaveAsPDFAllAnalyisOuput(string fullpathzipcsvhtmfilename, C1.WPF.FlexGrid.FileFormat ff, bool extratags)
         {
@@ -1101,8 +1195,6 @@ namespace BlueSky
 
         }
 
-
-
         public void ExportC1FlexGridToPDF(string fullpathzipcsvhtmfilename, string TblTitle, Object obj)
         {
             AUXGrid FGrid = obj as AUXGrid;
@@ -1158,22 +1250,21 @@ namespace BlueSky
             if (output.NameOfAnalysis == null)
                 output.NameOfAnalysis = string.Empty;
 
-            string newlinechar = (ff == C1.WPF.FlexGrid.FileFormat.Html && !extratags) ? " <br> " : " \r\n ";
+            string newlinechar = (ff == C1.WPF.FlexGrid.FileFormat.Html && !extratags) ? "<br>" : " \r\n ";
             string tabchar = (ff == C1.WPF.FlexGrid.FileFormat.Html) ? " &nbsp; " : " \t ";
 
-            ////for export to excel///B/ 
+            ////for export to excel///B/
             string tempString = "<bskyanalysis>" + newlinechar + "<analysisname> " + output.NameOfAnalysis.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;") + " </analysisname>" + newlinechar;
-
 
             //////Writing header tag for each analysis//////
             if (extratags)
                 fileStream.Write(uniEncoding.GetBytes(tempString),
                                     0, uniEncoding.GetByteCount(tempString));
-
+            tempString = string.Empty;
             foreach (DependencyObject obj in output)
             {
                 FrameworkElement element = obj as FrameworkElement;
-
+                tempString = string.Empty;
                 if ((element as BSkyOutputOptionsToolbar) != null)
                 {
                     BSkyOutputOptionsToolbar boot = element as BSkyOutputOptionsToolbar;
@@ -1192,17 +1283,36 @@ namespace BlueSky
                 }
                 else if ((element as AUParagraph) != null)
                 {
+                    bool ExportInvisibleText = true;//True will also export the hidden text from the output window. Else not.
+                    if ((ff == C1.WPF.FlexGrid.FileFormat.Html) && !extratags)//applies to export-to-HTML only. bsoz will  export invisible stuff.
+                    {
+                        ExportInvisibleText = false;
+                    }
+
+                    bool removeUserPaths = !extratags;
+
+                    string auptext = string.Empty;
                     AUParagraph aup = element as AUParagraph;
                     string ctrltype = (aup.ControlType != null) ? aup.ControlType.Replace("\"", "&quot;").Replace("\'", "&apos;") : "-";//09Jul2013
-                    if (aup.Text != null)///// <aup> means AUParagraph
+                    if (aup.Text != null && (aup.IsVisible || ExportInvisibleText))///// <aup> means AUParagraph
                     {
+
+                            if (ctrltype.Equals("Dataset Name") && aup.Text.Contains("]") && removeUserPaths) //saving only filename and not path from where it was opened
+                                auptext = aup.Text.Substring(0, aup.Text.IndexOf("]") + 1);
+                            else if (ctrltype.Equals("Title") && aup.Text.StartsWith("RData file loaded") && removeUserPaths)
+                                auptext = "RData file loaded : " + aup.Text.Substring(aup.Text.LastIndexOf("\\") + 1);
+                            else
+                                auptext = aup.Text;
+
                         //controltype
                         string CONTROLTYPE = (" controltype = \"" + ctrltype + "\" ").Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 
                         //saving color also//
                         SolidColorBrush scb = (SolidColorBrush)aup.textcolor;
-                        string hexcol = scb.Color.ToString();
-                        if (hexcol == null) hexcol = "#FF000000";
+                        System.Windows.Media.Color sysWMC = scb.Color;// this is #AARRGGBB
+                        System.Drawing.Color sysDC = System.Drawing.Color.FromArgb(sysWMC.A, sysWMC.R, sysWMC.G, sysWMC.B);
+                        string hexcol = System.Drawing.ColorTranslator.ToHtml(sysDC);
+                        if (hexcol == null) hexcol = "#000000FF";//We need #RRGGBBAA for HTML
                         string TEXTCOL = (" textcolor = \"" + hexcol + "\" ").Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 
                         //saving font size//
@@ -1221,9 +1331,18 @@ namespace BlueSky
                             FONTWT = fontwt.Trim().Equals("{Normal}") ? "normal" : "bold";
                         }
                         //text
-                        string TEXT = (aup.Text).Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("\'", "&apos;");
+                        string TEXT = (auptext).Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("\'", "&apos;");
                         if (ff == FileFormat.Html && !extratags)
-                            TEXT = "<span style=\"color:" + hexcol + "; font-weight:" + FONTWT + "; font-size:" + fontsize + "px;\">" + TEXT + "</span>";
+                        {
+                            if (ctrltype.Equals("Title"))//apply h3
+                            {
+                                TEXT = "<h3>" + TEXT + "</h3>";
+                            }
+                            else//apply h4
+                            {
+                                TEXT = "<h4>" + TEXT + "</h4>";
+                            }
+                        }
 
                         tempString = (extratags) ? " <aup " + CONTROLTYPE + TEXTCOL + FONTSIZE + FONTWT + "> " + TEXT + " </aup>" + newlinechar : TEXT + newlinechar;
                     }
@@ -1241,7 +1360,8 @@ namespace BlueSky
 
                     ////////// Printing Header //////////  <fgheader> means flexgrid header
                     string header = (extratags) ? newlinechar + "<fgheader> " + xgrid.Header.Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;") + " </fgheader>" + newlinechar : xgrid.Header.Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");// +newlinechar;
-                    string htmlfgheader = "<p><span style=\"color:" + "#FF000000" + "; font-weight:" + "bold" + "; font-size:" + 16 + "px;\">" + header + "</span>";
+                    
+                    string htmlfgheader = "<h4>" + header + "</h4>";
                     if (ff == FileFormat.Html && !extratags)//23May2015
                     {
                         fileStream.Write(uniEncoding.GetBytes(htmlfgheader),
@@ -1282,8 +1402,43 @@ namespace BlueSky
                             fStream.Position = 0;//3 or 4
                             fStream.Read(fgdatarr, 0, fgdatarr.Length);
                             string fgstrdata = System.Text.Encoding.UTF8.GetString(fgdatarr);
+                            #region 
+
+                            string[] fgstrdataArr = fgstrdata.Split('\r');
+                            String innertext = string.Empty;
+                            int innerStart = 0, innerEnd = 0;
+                            for (int line = 0; line < fgstrdataArr.Length; line++)
+                            {
+                                if (fgstrdataArr[line].Contains("<td class=h"))
+                                {
+                                    innerStart = fgstrdataArr[line].IndexOf(">") + 1;
+                                    innerEnd = fgstrdataArr[line].IndexOf("</", innerStart);
+                                    innertext = fgstrdataArr[line].Substring(innerStart, innerEnd - innerStart);
+                                    fgstrdataArr[line] = "<th>" + innertext + "</th>";
+                                }
+                                else if (fgstrdataArr[line].Contains("<style"))
+                                {
+                                    fgstrdataArr[line] = string.Empty;
+                                    while (true)
+                                    {
+                                        line++;
+                                        if (fgstrdataArr[line].Contains("</style>"))
+                                        {
+                                            fgstrdataArr[line] = string.Empty;
+                                            break;
+                                        }
+                                        fgstrdataArr[line] = string.Empty;
+                                    }
+                                }
+                            }
+                            fgstrdata = string.Join("", fgstrdataArr);
+                            
+                            fgstrdata = Regex.Replace(fgstrdata, "class=(h[0-9]|c[0-9])", "");
+
+                            fgstrdata = fgstrdata.Replace('\n', ' ').Replace('\t', ' ');
+                            #endregion
                             int idxhtml = fgstrdata.IndexOf("<html>");
-                            fgstrdata = fgstrdata.Substring(idxhtml).Replace("<html>", "&nbsp;").Replace("<head>", "&nbsp;").Replace("<body>", "&nbsp;").Replace("</body>", "&nbsp;").Replace("</html>", "&nbsp;");
+                            fgstrdata = fgstrdata.Substring(idxhtml).Replace("<html>", "").Replace("<head>", "").Replace("<body>", "").Replace("</body>", "").Replace("</html>", "");
                             fileStream.Write(uniEncoding.GetBytes(fgstrdata), 0, uniEncoding.GetByteCount(fgstrdata));
 
                             fStream.Close();
@@ -1291,17 +1446,16 @@ namespace BlueSky
                     }
                     else
                     {
-
                         grid.Save(fileStream, ff);//change file format here for csv to any other
                     }
                     fileStream.WriteByte(13);
                     fileStream.WriteByte(10);
 
                     /////////////////Printing Footer  ///////////////
-                    //string starfootnotes = string.Empty;
                     bool templatedDialog = false;//There are only 4-5 templated dialogs and they do not have footer text. If they do we can fix this line.
                     if (templatedDialog)
                     {
+                        //I think this works for templated dialogs
                         if (xgrid.FootNotes != null)
                         {
                             if (xgrid.FootNotes.Count > 0)
@@ -1322,13 +1476,19 @@ namespace BlueSky
                     }
                     else
                     {
+                        //This works for non-templated dialogs
                         if (xgrid.StarFootNotes != null)
                         {
                             AUParagraph starfootnote = new AUParagraph();
                             starfootnote.Text = xgrid.StarFootNotes;
-                            header = (extratags) ? "<footermsg> \"" + starfootnote.Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;") + "\" </footermsg> " + newlinechar : "\"" + starfootnote.Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;") + "\" " + newlinechar;
-                            fileStream.Write(uniEncoding.GetBytes(header),
-                                    0, uniEncoding.GetByteCount(header));
+                            bool isemptySignif = starfootnote.Text.Trim().Equals("");
+                            if (!isemptySignif)
+                            {
+                                header = (extratags) ? "<footermsg> \"" + starfootnote.Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;") + "\" </footermsg> " + newlinechar : "\"" + starfootnote.Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;") + "\" " + newlinechar;
+
+                                fileStream.Write(uniEncoding.GetBytes(header),
+                                        0, uniEncoding.GetByteCount(header));
+                            }
                         }
                     }
 
@@ -1340,6 +1500,7 @@ namespace BlueSky
                 }
                 else if ((element as BSkyGraphicControl) != null)//Graphics 31Aug2012
                 {
+                    bool EmbedImageInHTML = true;
                     BSkyGraphicControl bsgc = element as BSkyGraphicControl;
 
                     //Create image filename
@@ -1347,18 +1508,26 @@ namespace BlueSky
                     filelist.Add(Path.GetFileNameWithoutExtension(imgfilename) + ".png");//*.png
                     imgnamecounter++;
 
-                    //Saving Image separately
-                    BSkyGraphicControlToImageFile(bsgc, imgfilename);
+                    string imgtag = string.Empty;
 
-                    //10Nov2014
-                    string imgtag = "<img src=\"" + imgfilename + "\" alt=\"Graphic Here\" >";
+                    //Saving Image separately
+                    if (EmbedImageInHTML && !extratags)
+                    {
+                        string srcvalue = GetBase64StringFromBSkyGraphicControl(bsgc);
+                        imgtag = "<img src=\"" + srcvalue + "\" alt=\"Graphic Here\" >";
+                    }
+                    else
+                    {
+                        BSkyGraphicControlToImageFile(bsgc, imgfilename);//this will be needed for .bsoz to create image file on disk.
+                        //10Nov2014
+                        imgtag = "<img src=\"" + imgfilename + "\" alt=\"Graphic Here\" >";//style=\"width:304px;height:228px\"
+                    }
                     //saving tag in .BSO file
                     string grpcomm = (extratags) ? "<graphic>" + imgfilename + "</graphic>" + newlinechar : imgtag + newlinechar; ////error header
                     fileStream.Write(uniEncoding.GetBytes(grpcomm),
                     0, uniEncoding.GetByteCount(grpcomm));
-
                 }
-                else if ((element as BSkyNotes) != null && extratags) // Notes Control 
+                else if ((element as BSkyNotes) != null && extratags) // Notes Control 05Nov2012. //21May2015 extratags is added to save NOTES only when bsoz file is created and not for other formats.
                 {
                     BSkyNotes bsn = element as BSkyNotes;
                     string ctrltype = (bsn.ControlType != null) ? bsn.ControlType : "-";//09Jul2013
@@ -1400,7 +1569,7 @@ namespace BlueSky
 
                     /// set row index to display /////written to CSV also
                     tempString = (extratags) ? "<notesheading>" + heading.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;") + "</notesheading> " + newlinechar : heading + newlinechar;
-                    //if (extratags) 
+                    //if (extratags)
                     fileStream.Write(uniEncoding.GetBytes(tempString),
                                         0, uniEncoding.GetByteCount(tempString));
                     ///// Notes Data /////not written to CSV but written to HTML and BSO
@@ -1455,6 +1624,184 @@ namespace BlueSky
                                     0, uniEncoding.GetByteCount(tempString.Trim()));
         }
 
+        private void ExportOutput_QPro(CommandOutput output)//csv of excel
+        {
+            if (output.NameOfAnalysis == null)
+                output.NameOfAnalysis = string.Empty;
+
+            string newlinechar = "<br>";
+            string tempString = string.Empty;
+            bool ExportInvisibleItem = false;//True will also export the hidden items from the output window. Else not.
+
+            foreach (DependencyObject obj in output)
+            {
+                FrameworkElement element = obj as FrameworkElement;
+                tempString = string.Empty;
+                if ((element as AUParagraph) != null)
+                {
+                    bool removeUserPaths = true;
+                    string auptext = string.Empty;
+                    AUParagraph aup = element as AUParagraph;
+                    string ctrltype = (aup.ControlType != null) ? aup.ControlType.Replace("\"", "&quot;").Replace("\'", "&apos;") : "-";//09Jul2013
+                    if (aup.Text != null && (aup.IsVisible || ExportInvisibleItem))///// <aup> means AUParagraph
+                    {
+                        if (QPro)
+                        {
+                            if (ctrltype.Equals("Dataset Name"))//do not add Datasetname in Qpro HTML
+                                continue;
+                            else if (ctrltype.Equals("Title") && aup.Text.StartsWith("Open a QuestionPro Dataset") && removeUserPaths)
+                                continue;
+                            else if (ctrltype.Equals("Title") && aup.Text.StartsWith("BSkyOpenNewDataset") && removeUserPaths)
+                                continue;
+                            else if (ctrltype.Equals("Title") && aup.Text.StartsWith("R-Syntax") && removeUserPaths)
+                                continue;
+                            else if (ctrltype.Equals("Title") && aup.Text.StartsWith("RData file loaded") && removeUserPaths)
+                                continue;
+                            else
+                                auptext = aup.Text;
+                        }
+                        //controltype
+                        string CONTROLTYPE = (" controltype = \"" + ctrltype + "\" ").Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+
+                        //saving color also//
+                        SolidColorBrush scb = (SolidColorBrush)aup.textcolor;
+                        System.Windows.Media.Color sysWMC = scb.Color;// this is #AARRGGBB
+                        System.Drawing.Color sysDC = System.Drawing.Color.FromArgb(sysWMC.A, sysWMC.R, sysWMC.G, sysWMC.B);
+                        string hexcol = System.Drawing.ColorTranslator.ToHtml(sysDC);
+                        if (hexcol == null) hexcol = "#000000FF";//We need #RRGGBBAA for HTML
+                        string TEXTCOL = (" textcolor = \"" + hexcol + "\" ").Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+
+                        //saving font size//
+                        string fontsize = Convert.ToString(aup.FontSize);
+                        if (fontsize == null) fontsize = "14";
+                        string FONTSIZE = (" fontsize = \"" + fontsize + "\" ").Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+
+                        //saving font weight//
+                        FontWeight fw = aup.FontWeight;
+                        FontWeightConverter fwc = new FontWeightConverter();
+                        string fontwt = fwc.ConvertToString(fw);
+                        if (fontwt == null) fontwt = "{Normal}";
+                        string FONTWT = (" fontweight = \"" + fontwt + "\" ").Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+                        if (true)/// (ff == FileFormat.Html && !extratags)
+                        {
+                            FONTWT = fontwt.Trim().Equals("{Normal}") ? "normal" : "bold";
+                        }
+                        //text
+                        string TEXT = (auptext).Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("\'", "&apos;");
+                        if (true)/// (ff == FileFormat.Html && !extratags)
+                        {
+                            if (ctrltype.Equals("Title"))//apply h3
+                            {
+                                TEXT = "<h3>" + TEXT + "</h3>";
+                            }
+                            else//apply h4
+                            {
+                                TEXT = "<h4>" + TEXT + "</h4>";
+                            }
+                        }
+
+                        tempString = TEXT + newlinechar;
+                    }
+                    htmlStrQProPUT.Append(tempString);
+                }
+                else if ((element as AUXGrid) != null)
+                {
+                    AUXGrid xgrid = element as AUXGrid; //31Aug2012
+
+                    if (!xgrid.IsVisible && !ExportInvisibleItem)
+                        continue;
+                    ////////// Printing Header //////////  <fgheader> means flexgrid header
+                    string header = xgrid.Header.Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");// +newlinechar;
+                    //string htmlfgheader = "<p><div style=" +  " font-weight:" + "bold" + "; font-size:" + 16 + "px;\">" + header + "</div>";
+                    string htmlfgheader = "<h4>" + header + "</h4>";
+                    htmlStrQProPUT.Append(htmlfgheader);
+
+                    //////// Printing  Grid ////////////
+                    AUGrid grid = xgrid.Grid;
+                    ////getting FlexGrid HTML and modifying it then saving to output HTML file////
+                    using (var fStream = new MemoryStream())
+                    {
+                        //FileStream fStream = new FileStream(@"D:\test", FileMode.Create);
+                        grid.Save(fStream, C1.WPF.FlexGrid.FileFormat.Html);//change file format here for csv to any other
+                        byte[] fgdatarr = new byte[fStream.Length];
+                        fStream.Position = 0;//3 or 4
+                        fStream.Read(fgdatarr, 0, fgdatarr.Length);
+                        string fgstrdata = System.Text.Encoding.UTF8.GetString(fgdatarr);//string[] lines = fgstrdata.Split(new char[]{'\r','\n'});
+                        #region 
+                        //Rename row-headers '<td class=h1>0</td>' to '<thclass=h1>0</th>'
+                        //replace <style> inside of header tag with different style tag
+                        string[] fgstrdataArr = fgstrdata.Split('\r');
+                        String innertext = string.Empty;
+                        int innerStart = 0, innerEnd = 0;
+                        for (int line = 0; line < fgstrdataArr.Length; line++)
+                        {
+                            if (fgstrdataArr[line].Contains("<td class=h"))
+                            {
+                                innerStart = fgstrdataArr[line].IndexOf(">") + 1;
+                                innerEnd = fgstrdataArr[line].IndexOf("</", innerStart);
+                                innertext = fgstrdataArr[line].Substring(innerStart, innerEnd - innerStart);
+                                //fgstrdataArr[line] = fgstrdataArr[line].Replace("<td class=h1>", "<th>").Replace("</td>", "</th>");
+                                fgstrdataArr[line] = "<th>" + innertext + "</th>";
+                            }
+                            else if (fgstrdataArr[line].Contains("<style"))
+                            {
+                                fgstrdataArr[line] = string.Empty;// "<style>table {border-collapse: collapse;}table, th, td {border: 1px solid black;padding-left: 5px;padding-right: 5px;}</style>";
+                                while (true)
+                                {
+                                    line++;
+                                    if (fgstrdataArr[line].Contains("</style>"))
+                                    {
+                                        fgstrdataArr[line] = string.Empty;
+                                        break;
+                                    }
+                                    fgstrdataArr[line] = string.Empty;
+                                }
+                            }
+                        }
+                        fgstrdata = string.Join("", fgstrdataArr);
+                        fgstrdata = Regex.Replace(fgstrdata, "class=(h[0-9]|c[0-9])", "");
+
+                        //remove \n and \t
+                        fgstrdata = fgstrdata.Replace('\n', ' ').Replace('\t', ' ');
+                        #endregion
+                        int idxhtml = fgstrdata.IndexOf("<html>");
+                        fgstrdata = fgstrdata.Substring(idxhtml).Replace("<html>", "").Replace("<head>", "").Replace("<body>", "").Replace("</body>", "").Replace("</html>", "");
+
+                        htmlStrQProPUT.Append(fgstrdata);
+                        fStream.Close();
+                    }
+
+
+                    /////////////////Printing Footer  ///////////////
+                    //This works for non-templated dialogs
+                    if (xgrid.StarFootNotes != null)
+                    {
+                        AUParagraph starfootnote = new AUParagraph();
+                        starfootnote.Text = xgrid.StarFootNotes;
+                        bool isemptySignif = starfootnote.Text.Trim().Equals("");
+                        if (!isemptySignif)
+                        {
+                            header = "\"" + starfootnote.Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;") + "\" " + newlinechar;
+
+                            htmlStrQProPUT.Append(header);
+                        }
+                    }
+                }
+                else if ((element as BSkyGraphicControl) != null)//Graphics 31Aug2012
+                {
+                    BSkyGraphicControl bsgc = element as BSkyGraphicControl;
+
+                    if (!bsgc.IsVisible && !ExportInvisibleItem)
+                        continue;
+                    string imgtag = string.Empty;
+
+                    string srcvalue = GetBase64StringFromBSkyGraphicControl(bsgc);
+                    imgtag = "<img src=\"" + srcvalue + "\" alt=\"Graphic Here\" >" + "<br>";
+                    htmlStrQProPUT.Append(imgtag);
+                }
+            }
+        }
+
         private void BSkyGraphicControlToImageFile(BSkyGraphicControl bsgc, string fullpathimgfilename)
         {
             System.Windows.Controls.Image myImage = new System.Windows.Controls.Image();
@@ -1470,6 +1817,31 @@ namespace BlueSky
             pngBitmapEncoder.Save(stream);
             stream.Flush();
             stream.Close();
+        }
+
+        //BSkyGraphicControl to base64 string + initialcontent
+        private string GetBase64StringFromBSkyGraphicControl(BSkyGraphicControl bsgc)
+        {
+            System.Windows.Controls.Image myImage = new System.Windows.Controls.Image();
+            myImage.Source = bsgc.BSkyImageSource;
+            //BitmapImage bi = im.Source;
+
+            //System.Windows.Controls.Image myImage = ((Image)obj);
+            System.Windows.Media.Imaging.BitmapImage bitmapImage = new System.Windows.Media.Imaging.BitmapImage();
+            bitmapImage = ((System.Windows.Media.Imaging.BitmapImage)myImage.Source);
+
+            var encoder = new PngBitmapEncoder();
+            var frame = BitmapFrame.Create(bitmapImage);
+            encoder.Frames.Add(frame);
+            using (var stream = new MemoryStream())
+            {
+                encoder.Save(stream);
+                //return Convert.ToBase64String(stream.ToArray());
+                string B64S = Convert.ToBase64String(stream.ToArray());
+                string imageType = "png";//Path.GetExtension(imgpath).TrimStart('.')
+                string initialContent = "data:image/" + imageType + ";base64,";
+                return initialContent + B64S;
+            }
         }
 
         #endregion
@@ -3518,8 +3890,17 @@ namespace BlueSky
             ThemeWindow thwin = new ThemeWindow();
             thwin.Owner = this;
             thwin.ShowDialog();
-        }	
-	}
+        }
+
+        //Upload (PUT) to Qpro
+        private void MenuItemQproUpload_Click(object sender, RoutedEventArgs e)
+        {
+            ExportToQPro exportQP = new ExportToQPro(this);
+            exportQP.Owner = this;
+            exportQP.ShowDialog();
+
+        }
+    }
 	
     public class PropertyDataTemplateSelector : DataTemplateSelector
     {

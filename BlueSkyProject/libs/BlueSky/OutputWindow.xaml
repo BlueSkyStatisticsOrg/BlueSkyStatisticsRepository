@@ -172,6 +172,7 @@
                                 <MenuItem Header="New Output Window" Click="new_outputwindow_Click" ></MenuItem>
                                 <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileOpenOutput}" Click="open_Click" ></MenuItem>
                                 <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileSaveAs}" Click="dump_Click" ></MenuItem>
+                                <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileUploadToQPro}" Click="MenuItemQproUpload_Click" ></MenuItem>
                                 <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileSaveAsPDF}" Click="SaveAsPDF_Click" ></MenuItem>
                                 <MenuItem Header="{x:Static uires:UICtrlResources.MenuOutputFileClose}" Click="MenuItemClose_Click" ></MenuItem>
                             </MenuItem>
