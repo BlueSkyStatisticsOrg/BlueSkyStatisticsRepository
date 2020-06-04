@@ -105,6 +105,36 @@ namespace BlueSky.Services
             return dslist;
         }
 
+        //Added by Anil. Get all filenames of all open datasets
+        // note: memory dataset does not have a filename associated, 
+        //so dataset name is used for filename
+        public List<string> GetAllOpenFilenamesInGrid(bool fullpathfilename = true)
+        {
+            List<string> filenamelist = new List<string>();
+            string allDatasetNames = "";
+            DataPanel dp;
+            DataSource ds;
+            ItemCollection itc = DocGroup.Items;
+            foreach (TabItem ti in itc)
+            {
+                dp = ti.Content as DataPanel;
+                ds = dp.DS;
+                string datasetname = ds.FileName;
+                string dataset = ds.Name;
+                if (ds != null && ds.FileName != null)
+                {
+                    if (!string.IsNullOrEmpty(ds.FileName))//preferably add disk filename
+                    {
+                        if (fullpathfilename)
+                            filenamelist.Add(ds.FileName);
+                        else
+                            filenamelist.Add(Path.GetFileName(ds.FileName).ToLower());
+                    }
+                }
+            }
+            return filenamelist;
+        }
+
         // following is not needed. GetTabItem will do the job.
         //Get Datapanel, so that we can run find on the datagrid. This will return the refrence of the current/active datapanel(datagrid)
         public DataPanel GetDataPanel(string datasetname)

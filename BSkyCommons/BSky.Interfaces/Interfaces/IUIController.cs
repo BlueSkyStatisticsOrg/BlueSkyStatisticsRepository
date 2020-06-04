@@ -15,6 +15,7 @@ namespace BSky.Interfaces.Interfaces
 
         void ShowAllOpenDatasetsInGrid();//Added by Anil for testing. May not be needed in actual. Actual function is GetDatasetNames(), below
         List<string> GetAllOpenDatasetsInGrid();
+        List<string> GetAllOpenFilenamesInGrid(bool fullpathfilename = true);
         DataSource GetActiveDocument();
         TabItem GetTabItem(DataSource ds);
         DataSource GetDocumentByName(string datasetname);
