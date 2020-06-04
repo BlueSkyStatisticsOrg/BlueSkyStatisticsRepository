@@ -47,7 +47,7 @@ namespace BSky.Statistics.R
         }
 
         //if you have 200cols in a dataset, you may only want to load 15 
-        private int _maxcolstoload = 15;
+        private int _maxcolstoload = 40;
         public int MaxColsToLoad
         {
             get { return _maxcolstoload; }

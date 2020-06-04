@@ -86,7 +86,7 @@ namespace BlueSky.Windows
         int startcolidx, endcolidx;
         int totalCols;//total cols a dataset have. 
         int maxcolidx = 0;//zero based index
-        readonly int colsToLoad = 15;//at any point this many cols will be loaded in the grid
+        readonly int colsToLoad = 40;//at any point this many cols will be loaded in the grid
 
         readonly int reserved = 15;
 
