@@ -98,6 +98,10 @@ namespace BlueSky.Commands.Analytics.TTest
             set;
         }
 
+        string QproURL = string.Empty;
+        string QPdatasetnamebyuser = string.Empty;
+        bool isQproGetDlg = false;
+
         protected string WrapInputVariable(string key, string val)
         {
             return string.Format(@"<Variable key=""{0}"">{1}</Variable>", key, val);
@@ -111,6 +115,9 @@ namespace BlueSky.Commands.Analytics.TTest
             advlog.RefreshAdvancedLogging();
             AdvancedLogging = AdvancedLoggingService.AdvLog;//01May2015
             bool reloaddiskfiledata = false;
+            QproURL = string.Empty;
+            QPdatasetnamebyuser = string.Empty;
+            isQproGetDlg = false;
             //26Jun2014 isXmlTemplateDefined = false;
             parameter = param;////set Global var
             selectedForDump = false; //this parameter is only for Analytics(or non-Analytics)commands exected from Syntax Editor
@@ -134,6 +141,7 @@ namespace BlueSky.Commands.Analytics.TTest
             }
             #endregion
 
+            if (TemplateFileName.Contains("QuestionPro")) isQproGetDlg = true;
             //for getting dialog xaml filename in logs.
             logService.WriteToLogLevel("XAML name : " + TemplateFileName, LogLevelEnum.Info);
             //MessageBox.Show("Launching: "+ TemplateFileName, "XAML filename");//to find actual dialog XAML filename
@@ -463,6 +471,11 @@ namespace BlueSky.Commands.Analytics.TTest
                 {
                     //following is important as its substituting params with values.
                     cmd.CommandSyntax = OutputHelper.GetCommand(canvas.CommandString, element);// can be used for "Paste" for syntax editor
+                    if (isQproGetDlg)
+                    {
+                        QproURL = OutputHelper.GetCommand("{{url}}", element);
+                        QPdatasetnamebyuser = OutputHelper.GetCommand("{{name}}", element);
+                    }
                     if (cmd.CommandSyntax.Contains("BSkyReloadDataset("))// if its relaod dataset commmand then prepare some parameter before executing the command
                     {
                         reloaddiskfiledata = true;
@@ -1154,7 +1167,7 @@ namespace BlueSky.Commands.Analytics.TTest
                     }
 
                     ///ADDing right side Title for batch commands and associate it with left side leaf node////
-                    PrintDialogTitle(dialogTitle);
+                    if(!isQproGetDlg) PrintDialogTitle(dialogTitle);
                 }
 #endregion
 
@@ -1331,11 +1344,21 @@ namespace BlueSky.Commands.Analytics.TTest
             //printing dataset name below main title
             string dsname = UIController.GetActiveDocument().FileName;
             string dsnameinapp = UIController.GetActiveDocument().Name;
-            AUParagraph dataset = new AUParagraph();
-            dataset.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;
-            dataset.Text = "[" + dsnameinapp + "] - " + dsname;
-            dataset.ControlType = "Dataset Name";
-            batch.Add(dataset);
+
+            if (isQproGetDlg)
+            {
+                string QPfilename = QproHandler.GetQPDatasetFileName(QPdatasetnamebyuser);
+                dsname = QPfilename != null ? QPfilename : string.Empty;
+                dsnameinapp = QPdatasetnamebyuser != null ? QPdatasetnamebyuser : string.Empty;
+            }
+            if (!string.IsNullOrEmpty(dsname) && !string.IsNullOrEmpty(dsnameinapp))
+            {
+                AUParagraph dataset = new AUParagraph();
+                dataset.FontSize = BSkyStyler.BSkyConstants.TEXT_FONTSIZE;
+                dataset.Text = "[" + dsnameinapp + "] - " + dsname;
+                dataset.ControlType = "Dataset Name";
+                batch.Add(dataset);
+            }
 
             SyntaxEditorWindow sewindow = LifetimeService.Instance.Container.Resolve<SyntaxEditorWindow>();
             sewindow.AddToSession(batch); 
@@ -1441,6 +1464,11 @@ namespace BlueSky.Commands.Analytics.TTest
             if (cmd.CommandSyntax != null && cmd.CommandSyntax.Length > 0)
                 sewindow.RunCommands(cmd.CommandSyntax, dlgprop);//, sessionheader);
 
+            #region Qpro Header processing
+            if (isQproGetDlg)
+                ProcessQProGETHeader();
+            #endregion
+
             //22Nov2013
             //if sessionTitle is empty that means there are more (split)slices to execute
             //when the last slice is ready for execution that time sessionTitle 
@@ -1453,6 +1481,16 @@ namespace BlueSky.Commands.Analytics.TTest
             if (AdvancedLogging) logService.WriteToLogLevel("ExtraLogs: After executing in Syntax.", LogLevelEnum.Info);
 
  
+        }
+
+        public async void ProcessQProGETHeader()
+        {
+            RESTprocessor restproc = new RESTprocessor();
+            QProDatasetInfo qpi = new QProDatasetInfo();
+            await restproc.GetRequest(QproURL, qpi);
+            qpi.DatasetName = QPdatasetnamebyuser;
+            QproHandler.AddQPDatasetInfo(qpi);
+            PrintDialogTitle(dialogTitle);
         }
 
         //19Nov2013 substitute slicename$varname in place of varname
