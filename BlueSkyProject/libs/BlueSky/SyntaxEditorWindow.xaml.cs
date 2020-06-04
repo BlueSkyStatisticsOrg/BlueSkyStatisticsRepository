@@ -611,7 +611,7 @@ namespace BlueSky
         private void CloseGraphicsDevice()
         {
             CommandRequest grpcmd = new CommandRequest();
-            grpcmd.CommandSyntax = "if(dev.cur()[[1]] == 2) dev.off()";//09Jun2015 "dev.off()"; // "graphic.off()"; //msg <- 
+            grpcmd.CommandSyntax = "dev.set(2); if(dev.cur()[[1]] == 2) dev.off()";//09Jun2015 "dev.off()"; // "graphic.off()"; //msg <- 
             analytics.ExecuteR(grpcmd, false, false);
         }
 
