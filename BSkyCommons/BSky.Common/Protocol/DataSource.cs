@@ -120,6 +120,7 @@ namespace BSky.Statistics.Common
                 else if (extn.Equals("csv")) ftype = "CSV";
                 else if (extn.Equals("dbf")) ftype = "DBF";
                 else if (extn.Equals("rdata")) ftype = "RDATA";
+                else if (extn.Equals("rda")) ftype = "RDA";
                 else if (extn.Equals("txt")) ftype = "TXT";
 
                 return ftype;

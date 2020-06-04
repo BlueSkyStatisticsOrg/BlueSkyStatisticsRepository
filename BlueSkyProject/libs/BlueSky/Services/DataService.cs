@@ -482,7 +482,7 @@ if (ds == null)//20Oct2016 Making UI grid NULL
                     //Also increament the SessionDatasetCounter in this case because now later 
                     //when you open Dataset from disk is should have name Dataset3 and not Dataset2
                 }
-                if (fname.ToLower().EndsWith(".rdata"))
+                if (fname.ToLower().EndsWith(".rdata") || fname.ToLower().EndsWith(".rda"))
                 {
                     dframename = fname; //pass RData filename
                 }
