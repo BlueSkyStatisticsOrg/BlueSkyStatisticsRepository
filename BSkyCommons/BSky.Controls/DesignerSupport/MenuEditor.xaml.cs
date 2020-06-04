@@ -1314,7 +1314,14 @@ namespace BSky.Controls
         private void addCommand_Click(object sender, RoutedEventArgs e)
         {
             object p = (sender as MenuItem).Parent;
-            AddCommand("New Command Node");
+            try
+            {
+                AddCommand("New Command Node");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Error adding command." + ex.StackTrace, "Error occurred!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Overwrite or Add new Command
