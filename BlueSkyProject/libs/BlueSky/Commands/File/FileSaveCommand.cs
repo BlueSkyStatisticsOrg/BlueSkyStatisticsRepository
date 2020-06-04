@@ -20,6 +20,7 @@ namespace BlueSky.Commands.File
         public const String FileNameFilter = "Excel 2007-2010 (*.xlsx)|*.xlsx" +
                                             "|Comma Seperated (*.csv)|*.csv" +
                                             "|DBF (*.dbf)|*.dbf" +
+                                            "|R Object (*.RDa)|*.RDa"+
                                             "|R Object (*.RData)|*.RData";//"Excel 2003 (*.xls)|*.xls " +
 
         protected override void OnExecute(object param)
@@ -62,6 +63,7 @@ namespace BlueSky.Commands.File
                 case "xlsx": filter = "Excel 2007-2010 (*.xlsx)|*.xlsx"; break;
                 case "dbf": filter = "DBF (*.dbf)|*.dbf"; break;
                 case "rdata": filter = "R Object (*.RData)|*.RData"; break;
+                case "rda": filter = "R Object (*.RDa)|*.RDa"; break;
                 default: filter = "All Files(*.*)|*.*"; break;
             }
 
@@ -141,6 +143,21 @@ namespace BlueSky.Commands.File
 
                 service.SaveAs(filename, controller.GetActiveDocument());// #0
                 controller.GetActiveDocument().Changed = false;//21Mar2014 during close it should not prompt again for saving
+
+                //if the datasetname was changed we must close the grid dataset 
+                //and load from the file again this will refresh and load renamed
+                //dataset. Old datasetname is already NULL even though grid 
+                //does not reflect that.
+                if (!filename.Equals(actds.Name))
+                {
+                    //Close current Dataset on whic Save As was run
+                    FileCloseCommand fcc = new FileCloseCommand();
+                    fcc.CloseDataset(false);
+
+                    //Open Dataset that was SaveAs-ed. 
+                    FileOpenCommand fo = new FileOpenCommand();
+                    fo.FileOpen(filename, true);
+                }
             }
             BSkyMouseBusyHandler.HideMouseBusy();//HideProgressbar_old();
         }
