@@ -340,7 +340,11 @@ namespace BlueSky.Commands.File
                                 MessageBoxResult mbr = MessageBox.Show(m1 + m2, "Dataset Overwrite Warning!",
                                     MessageBoxButton.YesNo, MessageBoxImage.Question);
                                 if (mbr == MessageBoxResult.No)
+                                {
+                                    BSkyMouseBusyHandler.HideMouseBusy();
                                     return;
+                                }
+                                BSkyMouseBusyHandler.ShowMouseBusy();
                             }
                         }
                         //get list of data.frame or tbl_df objects from R
