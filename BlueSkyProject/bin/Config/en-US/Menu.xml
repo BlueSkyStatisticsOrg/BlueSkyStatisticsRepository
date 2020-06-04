@@ -69,7 +69,7 @@
     </menu>
     <menu id="MeansSubMenu" text="Means" owner="" nodetype="Parent">
       <menu id="T-Test,_independent_samples" text="T-Test, independent samples" commandtemplate="BSkyIndSmTTest.xaml" commandoutputformat="BSkyIndSmTTest.xml" owner="" nodetype="Leaf" />
-      <menu id="T-Test,_independent_samples_(two_numeric_variables)" text="T-Test, independent samples (two numeric variables)" commandtemplate="T-Test, independent samples (two numeric variables).xaml" commandoutputformat="T-Test, independent samples (two numeric variables).xml" owner="" nodetype="Leaf" />
+      <menu id="T-Test,_independent_samples,_two_numeric_variables" text="T-Test, independent samples, two numeric variables" commandtemplate="T-Test, independent samples, two numeric variables.xaml" commandoutputformat="T-Test, independent samples, two numeric variables.xml" owner="" nodetype="Leaf" />
       <menu id="T-Test,_one_sample" text="T-Test, one sample" commandtemplate="BSkyOneSmTTest.xaml" commandoutputformat="BSkyOneSmTTest.xml" owner="" nodetype="Leaf" />
       <menu id="T-Test,_paired_samples" text="T-Test, paired samples" commandtemplate="T-Test, paired samples.xaml" commandoutputformat="T-Test, paired samples.xml" owner="" nodetype="Leaf" />
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
