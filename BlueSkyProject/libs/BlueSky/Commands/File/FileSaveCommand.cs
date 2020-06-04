@@ -8,6 +8,7 @@ using BlueSky.CommandBase;
 using BSky.Interfaces.Interfaces;
 using System.Windows.Input;
 using BlueSky.Services;
+using System.IO;
 
 namespace BlueSky.Commands.File
 {
@@ -148,7 +149,7 @@ namespace BlueSky.Commands.File
                 //and load from the file again this will refresh and load renamed
                 //dataset. Old datasetname is already NULL even though grid 
                 //does not reflect that.
-                if (!filename.Equals(actds.Name))
+                if (!Path.GetFileNameWithoutExtension(filename).Equals(actds.Name))
                 {
                     //Close current Dataset on whic Save As was run
                     FileCloseCommand fcc = new FileCloseCommand();
