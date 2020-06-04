@@ -337,6 +337,7 @@ namespace BSky.Controls
         private void ScoreHelpButton_Click(object sender, RoutedEventArgs e)
         {
             //show help window
+            System.Diagnostics.Process.Start("https://www.blueskystatistics.com/Articles.asp?ID=312");
         }
     }
 }
