@@ -11,6 +11,7 @@ using BSky.Interfaces.Controls;
 using BSky.Controls;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System;
 using BlueSky.Commands.Output;
 using System.Windows.Media;
