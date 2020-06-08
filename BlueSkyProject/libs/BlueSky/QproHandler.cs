@@ -10,6 +10,10 @@ namespace BlueSky
     {
         private static Dictionary<string, QProDatasetInfo> QproDatasetInfoList = new Dictionary<string, QProDatasetInfo>();
         public static string htmltext = string.Empty;
+
+        //public static bool overwriteDataset = true;//since QPro dialog will prompt user for overwrite, we always overwrite.
+        //If user clicks NO when overwrite prompt is shown, we never come to this code anyway. So we always overwrite.
+
         //whenever Qpro dataset is opened, execute this
         public static void AddQPDatasetInfo(string filename, string apikey, string datasetid,
             string surveyid, string userid, string datasetname)
@@ -22,22 +26,26 @@ namespace BlueSky
             qpdsi.UserId = userid;
             qpdsi.DatasetName = datasetname; //this is the key for user convenience
 
-            QproDatasetInfoList.Add(datasetname, qpdsi);
+            if(RemoveQPDatasetInfo(datasetname))//remove the key if it exists
+                QproDatasetInfoList.Add(datasetname, qpdsi);//add the key. This is always a non existing key 
+            //as we have deleted the exising one in the above line. 
         }
 
         public static void AddQPDatasetInfo(QProDatasetInfo qpdi)
         {
-            QproDatasetInfoList.Add(qpdi.DatasetName, qpdi);
+            if(RemoveQPDatasetInfo(qpdi.DatasetName))//remove the key if it exists
+                QproDatasetInfoList.Add(qpdi.DatasetName, qpdi);//add the key. This is always a non existing key 
+            //as we have deleted the exising one in the above line. 
         }
 
 
         //Get and item from the dictionary
-        public static QProDatasetInfo GetQPDatasetInfo(string datasetid)
+        public static QProDatasetInfo GetQPDatasetInfo(string datasetname)
         {
-            if (!string.IsNullOrEmpty(datasetid))
+            if (!string.IsNullOrEmpty(datasetname))
             {
                 QProDatasetInfo qpdsi = new QProDatasetInfo();
-                bool successs = QproDatasetInfoList.TryGetValue(datasetid, out qpdsi);
+                bool successs = QproDatasetInfoList.TryGetValue(datasetname, out qpdsi);
                 if (successs)
                     return qpdsi;
                 else
@@ -48,12 +56,12 @@ namespace BlueSky
         }
 
         //Get QPro filename from the dictionary
-        public static string GetQPDatasetFileName(string datasetid)
+        public static string GetQPDatasetFileName(string datasetname)
         {
-            if (!string.IsNullOrEmpty(datasetid))
+            if (!string.IsNullOrEmpty(datasetname))
             {
                 QProDatasetInfo qpdsi = new QProDatasetInfo();
-                bool successs = QproDatasetInfoList.TryGetValue(datasetid, out qpdsi);
+                bool successs = QproDatasetInfoList.TryGetValue(datasetname, out qpdsi);
                 if (successs)
                     return qpdsi.Filename;
                 else
@@ -74,14 +82,16 @@ namespace BlueSky
         }
 
         //whenever Qpro dataset is closed, we can execute this
-        public static void RemoveQPDatasetInfo(string datasetid) //datasetid is the key
+        public static bool RemoveQPDatasetInfo(string datasetname) //datasetid is the key
         {
-            if (!string.IsNullOrEmpty(datasetid) && QproDatasetInfoList.ContainsKey(datasetid))
-                QproDatasetInfoList.Remove(datasetid);
+            bool isSuccess = true;
+            if (!string.IsNullOrEmpty(datasetname) && QproDatasetInfoList.ContainsKey(datasetname))
+                isSuccess=QproDatasetInfoList.Remove(datasetname);
+            return isSuccess;
         }
 
         //may be required. Remoes all the keys in one shot.
-        public static void RemoveAllQPDatasetInfo(string datasetid) 
+        public static void RemoveAllQPDatasetInfo(string datasetname) 
         {
                 QproDatasetInfoList.Clear();
         }
@@ -136,6 +146,14 @@ namespace BlueSky
         {
             get { return datasetname; }
             set { datasetname = value; }
+        }
+
+        private string errorMsg;
+
+        public string ErrorMsg
+        {
+            get { return errorMsg; }
+            set { errorMsg = value; }
         }
 
     }
