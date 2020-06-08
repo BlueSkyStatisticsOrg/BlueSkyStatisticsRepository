@@ -2715,13 +2715,13 @@ namespace BlueSky.Windows
             endpagestatus.Text = string.Empty;
         }
 
-        //disable all buttons if columns less than 16
+        //disable all buttons if columns less than 41
         public void DisableEnableAllNavButtons()
         {
             int totalColumns = 0;
             if(DS!=null && DS.Variables!=null)
                 totalColumns = this.DS.Variables.Count;
-            if (totalColumns > 0 && totalColumns < 16)
+            if (totalColumns > 0 && totalColumns < 41)
             {
                 DisableAllNavigationButtons();
                 endpagestatus.Text = "There is only one page. Use the scrollbar if available under the data grid to see all columns.";
