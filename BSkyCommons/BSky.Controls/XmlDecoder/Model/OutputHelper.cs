@@ -8621,6 +8621,7 @@ namespace BSky.XmlDecoder
                 string RAD1 = "";
                 string RAD2 = "";
                 string RAD3 = "";
+                string forcecont = "";
                 string RAD4 = "";
                 string RAD5 = "";
                 string RAD6 = "";
@@ -8689,6 +8690,10 @@ namespace BSky.XmlDecoder
                     if (key == "RAD3")
                     {
                         RAD3 = value;
+                    }
+                    if (key == "forcecont")
+                    {
+                        forcecont = value;
                     }
 
                     if (key == "RAD4")
@@ -8965,7 +8970,7 @@ namespace BSky.XmlDecoder
                 }
 
                 List<string> twoWayInteractions=null;
-                if (RAD2 == "TRUE" || RAD3 == "TRUE")
+                if (RAD2 == "TRUE" || RAD3 == "TRUE" || forcecont=="TRUE")
                 {
                     //   listOfFixedEffectsAndCovariates getFixedEffectsAndCovariates(string variables, DependencyObject obj, string key);
                     twoWayInteractions = listOfAll2WayInteractions(tvarbox2);
@@ -9013,6 +9018,27 @@ namespace BSky.XmlDecoder
                         }
 
                     }
+                    else if (forcecont == "TRUE")
+                    {
+
+                        //fixedEffects = fixedEffectsAndCovariates.getFixedEffects();
+                        foreach (string interaction in twoWayInteractions)
+                        {
+
+                            modelVariables = interaction.Split(delimiters);
+                            printstring = "Effect of " + modelVariables[0] + " as a function of " + modelVariables[1];
+                            tempoutput += "#Interaction plots\n";
+                            tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[0] + ", lines =" + modelVariables[1] + ", bargraph = FALSE" + ", labels = list(title = \"" + printstring + "\")))" + "\n";
+                            printstring = "Effect of " + modelVariables[0] + " as a function of " + modelVariables[1];
+                            // reversedInteraction = modelVariables[1] + ":" + modelVariables[0];
+                            tempoutput += "print(graph_model(" + modelname + ", y =" + tvarbox1 + ", x = " + modelVariables[1] + ", lines =" + modelVariables[0] + ", bargraph = FALSE" + ", labels = list(title = \"" + printstring + "\")))" + "\n";
+                            //     graph_model({ {% MODEL %} }, y ={ { tvarbox2} }, x = Age:Gender, lines = Gender:Age)
+
+                        }
+
+                    }
+
+
                 }
 
                 //Kenward rogers and adjustment none
