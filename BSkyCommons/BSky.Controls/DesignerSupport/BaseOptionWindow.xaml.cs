@@ -324,7 +324,7 @@ namespace BSky.Interfaces.Commands
         }
 
         #region Help Expander  14May2015
-        double expanderExpandedWidth = 300;
+        double expanderExpandedWidth = 400;
         private void dlgexpander_Expanded(object sender, RoutedEventArgs e)
         {
             this.Width = this.Width + expanderExpandedWidth;

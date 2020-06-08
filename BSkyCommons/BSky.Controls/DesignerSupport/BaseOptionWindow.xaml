@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:y="clr-namespace:BSky.Interfaces.Commands"
         xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
-              MinWidth="310"
+              MinWidth="310" 
         Title="BaseOptionsWindow" ResizeMode="NoResize">
     <Window.Resources>
         <LinearGradientBrush x:Key="purple" EndPoint="0,1" StartPoint="0,0">
@@ -44,7 +44,7 @@
 
 
         </StackPanel>
-        <Expander  Margin="0,10,0,1" MaxWidth="320" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
+        <Expander  Margin="0,10,0,1" MaxWidth="420" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
                   ExpandDirection="Right" Name="dlgexpander" Background="#FFEDefFf" IsExpanded="False"  
                   HorizontalAlignment="Left" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"
                   Expanded="dlgexpander_Expanded" Collapsed="dlgexpander_Collapsed" Header="Help:" BorderThickness="0">
