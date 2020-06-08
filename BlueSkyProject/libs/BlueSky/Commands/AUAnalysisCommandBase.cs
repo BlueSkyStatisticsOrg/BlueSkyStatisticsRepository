@@ -1488,9 +1488,17 @@ namespace BlueSky.Commands.Analytics.TTest
             RESTprocessor restproc = new RESTprocessor();
             QProDatasetInfo qpi = new QProDatasetInfo();
             await restproc.GetRequest(QproURL, qpi);
-            qpi.DatasetName = QPdatasetnamebyuser;
-            QproHandler.AddQPDatasetInfo(qpi);
-            PrintDialogTitle(dialogTitle);
+
+            if (!string.IsNullOrEmpty(qpi.ErrorMsg))//Error occurred
+            {
+                logService.WriteToLogLevel("ProcessQProGETHeader: Error:" + qpi.ErrorMsg, LogLevelEnum.Error);
+            }
+            else
+            {
+                qpi.DatasetName = QPdatasetnamebyuser;
+                QproHandler.AddQPDatasetInfo(qpi);
+                PrintDialogTitle(dialogTitle);
+            }
         }
 
         //19Nov2013 substitute slicename$varname in place of varname

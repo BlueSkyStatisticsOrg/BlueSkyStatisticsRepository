@@ -45,6 +45,7 @@ namespace BlueSky
                     qpdsi.SurveyId = response.Headers.GetValues("surveyid").FirstOrDefault(); ;
                     qpdsi.UserId = response.Headers.GetValues("userid").FirstOrDefault(); ;
                     //qpdsi.DatasetName = "";
+                    qpdsi.ErrorMsg = string.Empty;
 
                     ////get CSV filename
                     //string csvfname = response.Content.Headers.ContentDisposition.FileName;
@@ -69,6 +70,7 @@ namespace BlueSky
             {
                 if (client != null)
                     client.Dispose();
+                qpdsi.ErrorMsg = errmg;
             }
             return Task.CompletedTask;
         }
