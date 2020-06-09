@@ -563,7 +563,15 @@ namespace BlueSky.Commands.Analytics.TTest
                             isSplitDialog = true;                        
                         try
                         {
-                            if (DialogHasHandleSplitFlag)
+                            if (isQproGetDlg)
+                            {
+                                cmd.CommandSyntax = GetSliceSubstitutedCommands(dlgprop.Commands, 1);//string.Join(";", dlgprop.Commands);//
+                                //PrintDialogTitle(dialogTitle);//30Apr2015
+                                if (AdvancedLogging) logService.WriteToLogLevel("ExtraLogs: before executing QPro GET", LogLevelEnum.Info);
+                                ExecuteInSyntaxEditor(true, dialogTitle); 
+                                if (AdvancedLogging) logService.WriteToLogLevel("ExtraLogs: after executing QPro GET.", LogLevelEnum.Info);
+                            }
+                            else if (DialogHasHandleSplitFlag)
                             {
                                 if (handlesplits && ! xmlTemplateBasedDialog) //handle splits in C#
                                 {
