@@ -9,7 +9,7 @@
   <item>ksvm</item>
   <item>lm</item>
   <item>lmerModLmerTest</item>
-  <item>mlp</item>  
+  <item>mlp</item>
   <item>multinom</item>
   <item>NaiveBayes</item>
   <item>nnet</item>
@@ -17,11 +17,14 @@
   <item>npregression</item>
   <item>polr</item>
   <item>randomForest</item>
-  <item>ranger</item>  
+  <item>ranger</item>
   <item>real_adaboost</item>
-  <item>rlm</item>  
+  <item>rlm</item>
   <item>rpart</item>
-  <item>rsnns</item> 
+  <item>rsnns</item>
   <item>train</item>
   <item>xgb.Booster</item>
+  <item>fast_adaboost</item>
+  <item>rq</item>
+  <item>nn</item>
 </recent>

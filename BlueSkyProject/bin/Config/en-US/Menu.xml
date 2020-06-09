@@ -4,6 +4,7 @@
     <menu id="FileMenuNewOW" text="New Output Window" command="BlueSky.Commands.Output.NewOutputWindow" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpen" text="Open" command="BlueSky.Commands.File.FileOpenCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuOpenOutput" text="Open Output" command="BlueSky.Commands.Output.OutputOpenCommand" owner="BSky" nodetype="Leaf" />
+    <menu id="Open_QuestionPro_Dataset" text="Open QuestionPro Dataset" commandtemplate="Open QuestionPro Dataset.xaml" commandoutputformat="Open QuestionPro Dataset.xml" owner="" nodetype="Leaf" />	
     <menu id="Paste_Dataset_from_the_clipboard" text="Paste Dataset from the clipboard" command="BlueSky.Commands.File.PasteDatasetCommand" owner="BSky" nodetype="Leaf" />
     <menu id="Load_Dataset_from_a_Package" text="Load Dataset from a Package" command="BlueSky.Commands.File.LoadDatasetFromRPkgCommand" owner="BSky" nodetype="Leaf" />
     <menu id="FileMenuImportData" text="Import Data..." owner="BSky" nodetype="Parent">
@@ -392,6 +393,7 @@
       <menu id="Cox_With_Formula" text="Cox With Formula" commandtemplate="Cox With Formula.xaml" commandoutputformat="Cox With Formula.xml" owner="" nodetype="Leaf" />
     </menu>	
     <menu id="Decision_Trees" text="Decision Trees" commandtemplate="Decision Trees.xaml" commandoutputformat="Decision Trees.xml" owner="" nodetype="Leaf" />
+    <menu id="Extreme_Gradient_Boosting" text="Extreme Gradient Boosting" commandtemplate="Extreme Gradient Boosting.xaml" commandoutputformat="Extreme Gradient Boosting.xml" owner="" nodetype="Leaf" />	
     <menu id="GLZM" text="GLZM" commandtemplate="GLZM.xaml" commandoutputformat="GLZM.xml" owner="" nodetype="Leaf" />
     <menu id="new_id" text="IRT" owner="" nodetype="Parent">
       <menu id="Simple_Rasch_Model" text="Simple Rasch Model" commandtemplate="Simple Rasch Model.xaml" commandoutputformat="Simple Rasch Model.xml" owner="" nodetype="Leaf" />
@@ -414,6 +416,10 @@
     <menu id="Mixed_Models,_basic" text="Mixed Models, basic" commandtemplate="Mixed Models, basic.xaml" commandoutputformat="Mixed Models, basic.xml" owner="" nodetype="Leaf" />
     <menu id="Multinomial_Logit" text="Multinomial Logit" commandtemplate="Multinomial Logit.xaml" commandoutputformat="Multinomial Logit.xml" owner="" nodetype="Leaf" />
     <menu id="Naive_Bayes" text="Naive Bayes" commandtemplate="Naive Bayes.xaml" commandoutputformat="Naive Bayes.xml" owner="" nodetype="Leaf" />
+    <menu id="new_id" text="Neural Nets" owner="" nodetype="Parent">
+      <menu id="Multi-layer_Perceptron" text="Multi-layer Perceptron" commandtemplate="Multi-layer Perceptron.xaml" commandoutputformat="Multi-layer Perceptron.xml" owner="" nodetype="Leaf" />
+      <menu id="NeuralNets" text="NeuralNets" commandtemplate="NeuralNets.xaml" commandoutputformat="NeuralNets.xml" owner="" nodetype="Leaf" />
+    </menu>	
     <menu id="Ordinal_Regression" text="Ordinal Regression" commandtemplate="Ordinal Regression.xaml" commandoutputformat="Ordinal Regression.xml" owner="" nodetype="Leaf" />
     <menu id="RFSubMenu" text="Random Forest" owner="" nodetype="Parent">
       <menu id="Random_Forest" text="Random Forest" commandtemplate="Random Forest.xaml" commandoutputformat="Random Forest.xml" owner="" nodetype="Leaf" />

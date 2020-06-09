@@ -50,7 +50,7 @@
                 <row>
                   <labels grouping="options" showgrouptotal="no">
                     <option-value-pairs>
-                      <option-value condition="" text="Count"></option-value>
+                      <option-value condition="rowpercent" text="Count"></option-value>
 					  <option-value condition="Expected" text="Expected Count"></option-value>
                       <option-value condition="rowpercent">
                           <text stringformat="% within {0}">

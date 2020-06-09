@@ -31,5 +31,3 @@ BSkyHeatMap
 
 ggplot
 
-graph_model
-
