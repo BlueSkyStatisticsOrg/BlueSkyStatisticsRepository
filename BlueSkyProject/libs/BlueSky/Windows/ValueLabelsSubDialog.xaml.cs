@@ -178,7 +178,8 @@ namespace BlueSky.Windows
                         {
                             if (m.textbox == null || m.textbox.Trim().Length == 0)
                             {
-                                m.textbox = m.labels;
+                                if(!m.labels.Contains("Enter new level(s) separated by comma"))//bug fixed
+                                    m.textbox = m.labels;
                             }
                         }
                         Listbox.ItemsSource = null;
