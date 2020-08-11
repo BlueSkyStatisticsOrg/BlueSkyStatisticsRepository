@@ -52,13 +52,17 @@ namespace BlueSky
         {
             get
             {
-                string CultureName = Thread.CurrentThread.CurrentCulture.Name;
-                if (!CultureName.Equals("en-US") && !CultureName.Equals("ko-KR"))
-                {
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");//US English
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                    CultureName = Thread.CurrentThread.CurrentCulture.Name;
-                }
+                //string CultureName = Thread.CurrentThread.CurrentCulture.Name;
+                //Added by Aaron 07/31/2020
+                //Added the line below
+                string CultureName = "en-US";
+                //Commented lines below 
+                //if (!CultureName.Equals("en-US") && !CultureName.Equals("ko-KR"))
+                //{
+                //    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");//US English
+                //    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                //    CultureName = Thread.CurrentThread.CurrentCulture.Name;
+                //}
                 //return string.Format(@"{0}{1}/", BSkyDataDirRootFwdSlash, BSkyConfig);
                 //string appconfpath = string.Format(@"{0}{1}/", "./", BSkyConfig);
                 string appconfpath = string.Format(@"{0}{1}/{2}/", "./", BSkyConfig,CultureName);
@@ -142,13 +146,16 @@ namespace BlueSky
         {
             get
             {
-                string CultureName = Thread.CurrentThread.CurrentCulture.Name;
-                if (!CultureName.Equals("en-US") && !CultureName.Equals("ko-KR"))
-                {
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");//US English
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                    CultureName = Thread.CurrentThread.CurrentCulture.Name;
-                }
+                //Added line below by Aaron 07/31/2020
+                string CultureName = "en-US";
+                // string CultureName = Thread.CurrentThread.CurrentCulture.Name;
+                //Commented by Aaron 07/31/2020
+                //if (!CultureName.Equals("en-US") && !CultureName.Equals("ko-KR"))
+                //{
+                //    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");//US English
+                //    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                //    CultureName = Thread.CurrentThread.CurrentCulture.Name;
+                //}
                 //return string.Format(@"{0}{1}/{2}/", RoamingUserBSkyPath, BSkyConfig, CultureName);
                 string confL18npath = string.Format(@"{0}{1}\{2}\", RoamingUserBSkyPath, BSkyConfig, CultureName);
                 bool b = CreatePathIfNotExists(confL18npath);

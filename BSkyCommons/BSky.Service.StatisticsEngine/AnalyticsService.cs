@@ -76,12 +76,12 @@ namespace BSky.Service.Engine
         }
 
         //25Oct2016 Added 'replace' parameter (to overwrite a dataset with new values)
-        public UAReturn DataSourceLoad(string datasetName, string fileName, string sheetname, bool removeSpacesSPSS=false,  bool replace = false, IOpenDataFileOptions odfo = null)
+        public UAReturn DataSourceLoad(string datasetName, string fileName, string sheetname, bool removeSpacesSPSS=false, bool replace = false, IOpenDataFileOptions odfo = null)
         {
             UAReturn r;
 
-            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, fileName, datasetName, sheetname, removeSpacesSPSS,  replace, odfo);
-            r = _userSession.DefaultDispatcher.DataSourceLoad(dataSource, sheetname, removeSpacesSPSS );//,odfo
+            ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, fileName, datasetName, sheetname, removeSpacesSPSS, replace, odfo);
+            r = _userSession.DefaultDispatcher.DataSourceLoad(dataSource, sheetname, removeSpacesSPSS);//,odfo
             //08Jun2013
             //if ( r.Success)
             //{ 
@@ -286,13 +286,13 @@ namespace BSky.Service.Engine
             return r; //20Jun2013 return null;
         }
 
-        public UAReturn addNewVariable(string colName, string rdataType, string dgridval, int rowindex, string datasetnameorindex)//15Oct2015 modified
+        public UAReturn addNewVariable(string colName, string rdataType, string dgridval, int rowindex, string dateformat, string datasetnameorindex)//15Oct2015 modified
         {
             UAReturn r;
 
             ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
 
-            if ((r = _userSession.DefaultDispatcher.addNewColDatagrid(colName, rdataType, dgridval, rowindex, dataSource)).Success)//2
+            if ((r = _userSession.DefaultDispatcher.addNewColDatagrid(colName, rdataType, dgridval, rowindex,dateformat, dataSource)).Success)//2
             {
                 return r;
             }
@@ -403,11 +403,11 @@ namespace BSky.Service.Engine
         #endregion
 
         #region datagrid
-        public UAReturn EditDatagridCell(string colName, string celdata, int rowindex, string datasetnameorindex)
+        public UAReturn EditDatagridCell(string colName, string celdata, int rowindex, string datasetnameorindex, string rdataformat)
         {
             UAReturn r = null;
             ServerDataSource dataSource = new ServerDataSource(_userSession.DefaultDispatcher, "", datasetnameorindex, null);
-            r = _userSession.DefaultDispatcher.editDatagridCell(colName, celdata, rowindex, dataSource);//move out of following 'if' condition part
+            r = _userSession.DefaultDispatcher.editDatagridCell(colName, celdata, rowindex, dataSource,rdataformat);//move out of following 'if' condition part
             if (r.Success)
             {
                 return r;
@@ -582,12 +582,14 @@ namespace BSky.Service.Engine
             r = _userSession.DefaultDispatcher.UninstallPackages(packagenames);
             return r;
         }
+
         public UAReturn GetPkgDatasetList(string packagename)//12Feb2019
         {
             UAReturn r = null;
             r = _userSession.DefaultDispatcher.FetchRpkgDatasetList(packagename);
             return r;
         }
+
         #endregion
     }
 }

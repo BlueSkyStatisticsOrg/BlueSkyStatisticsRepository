@@ -85,7 +85,7 @@ namespace BSky.Statistics.Service.Engine.Interfaces
 
         [OperationContract]
 
-        UAReturn addNewVariable(string colName, string rdataType, string dgridval, int rowindex, string datasetnameorindex);//15Oct2015 modified
+        UAReturn addNewVariable(string colName, string rdataType, string dgridval, int rowindex,string dateformat, string datasetnameorindex);//15Oct2015 modified
 
         [OperationContract]
         UAReturn removeVargridColumn(string colName, string datasetnameorindex);
@@ -100,7 +100,7 @@ namespace BSky.Statistics.Service.Engine.Interfaces
         UAReturn AddFactorLevels(string colName, List<string> finalList, string datasetnameorindex);
 
         [OperationContract]
-        UAReturn EditDatagridCell(string colName, string celdata, int rowindex, string datasetnameorindex);
+        UAReturn EditDatagridCell(string colName, string celdata, int rowindex, string datasetnameorindex, string rdateformat);
 
         [OperationContract]
         UAReturn AddNewDatagridRow(string colName, string celdata, string rowdata, int rowindex, string datasetnameorindex);
@@ -171,7 +171,7 @@ namespace BSky.Statistics.Service.Engine.Interfaces
         UAReturn ShowPackageInstalled();
 
         [OperationContract]
-        UAReturn ShowUserRlibPackageInstalled();
+        UAReturn ShowUserRlibPackageInstalled(); 
 
         [OperationContract]
         UAReturn ShowPackageLoaded();
@@ -184,6 +184,7 @@ namespace BSky.Statistics.Service.Engine.Interfaces
 
         [OperationContract]
         UAReturn PackageUninstall(string[] packagenames);
+
         [OperationContract]
         UAReturn GetPkgDatasetList(string packagename);
         #endregion

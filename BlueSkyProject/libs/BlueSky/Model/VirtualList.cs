@@ -321,21 +321,27 @@ namespace BlueSky.Model
                                     }
                                     else if (_dataSource.FewVariables[j].DataClass.Equals("Date"))
                                     {
-                                        double _adddays = 0.0;
-                                        int adddays = 0;
+                                        //double _adddays = 0.0;
+                                        //int adddays = 0;
                                         DateTime begindt = Convert.ToDateTime("01/01/1970");
-                                        DateTime dt2 = Convert.ToDateTime("01/01/1970");
+                                        //DateTime dt2 = Convert.ToDateTime("01/01/1970");
 
-                                        if (Double.TryParse(_DF[fIndex, i].ToString(), out _adddays))
+                                        //if (Double.TryParse(_DF[fIndex, i].ToString(), out _adddays))
+                                        //{
+                                        //    //08Feb2017 Added logic to fix and exception related to date range
+                                        //    long beginTicks = begindt.Ticks;
+                                        //    long perDayTicks = TimeSpan.TicksPerDay;
+                                        //    long addticks =(long) ( perDayTicks * _adddays);
+                                        //    if((beginTicks+addticks) <= DateTime.MaxValue.Ticks && (beginTicks+addticks) >= DateTime.MinValue.Ticks)
+                                        //        dt2 = begindt.AddDays(_adddays);
+                                        //}
+                                        double _adddays = 0;
+                                        long addticks = 0;
+                                        if (Double.TryParse(_DF[fIndex, i].ToString(), out _adddays))//09Aug2016 _DF[fIndex, i].ToString() is double
                                         {
-                                            //08Feb2017 Added logic to fix and exception related to date range
-                                            long beginTicks = begindt.Ticks;
-                                            long perDayTicks = TimeSpan.TicksPerDay;
-                                            long addticks =(long) ( perDayTicks * _adddays);
-                                            if((beginTicks+addticks) <= DateTime.MaxValue.Ticks && (beginTicks+addticks) >= DateTime.MinValue.Ticks)
-                                                dt2 = begindt.AddDays(_adddays);
+                                            addticks = (long)(86400 * _adddays);
                                         }
-                                        rdata[j] = dt2.ToString();
+                                        rdata[j] = addticks.ToString(); 
                                     }
                                     else if (_dataSource.FewVariables[j].DataClass.Equals("logical"))
                                     {
@@ -462,14 +468,23 @@ namespace BlueSky.Model
                 long celldata = 0;
                 bool isparsed = false;
                 bool ToLocalDateTime = false; //25Aug2017: TRUE: Date will be converted to local date/time
-                string dateformat = "yyyy-MM-dd HH:mm:ss"; //25Aug2017 yy-MMM-dd hh:mm:ss zzz
+                string dateformat = ""; //25Aug2017 yy-MMM-dd hh:mm:ss zzz
 
                 DateTime dt = new DateTime(1970, 1, 1);
                 for (int i = 0; i < _dataSource.FewVariables.Count; ++i)
                 {
-                    if ((_dataSource.FewVariables[i].DataClass.Equals("POSIXct") 
+                    if ((_dataSource.FewVariables[i].DataClass.Equals("POSIXct")
+                        || _dataSource.Variables[i].DataClass.Equals("Date")
                         ))
                     {
+                        DateFormatsEnum datefmt = _dataSource.FewVariables[i].DateFormat;
+                        //  dateformat = DateformatConvertor.DateEnumToString(datefmt);
+
+                        //   mSLdSLy, dSLmSLy, ySLmSLd, ySLdSLm, mDAdDAy, dDAmDAy, yDAmDAd, yDAdDAm
+                        //NOTE: dateformat holds the format supported by c#
+
+
+                        dateformat = DateformatConvertor.DateFormatsEnumtoCSharpDate(datefmt);
                         if (rowdata[i] == "<NA>" || rowdata[i] == "NA")
                         {
                             //dt = ToLocalDateTime? new DateTime(0001, 01, 01).ToLocalTime() : new DateTime(0001, 01, 01) ;

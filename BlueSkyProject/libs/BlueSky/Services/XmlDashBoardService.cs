@@ -38,7 +38,11 @@ namespace BlueSky.Services
 
         public XmlDashBoardService()
         {
-            CultureName = Thread.CurrentThread.CurrentCulture.Name;
+            //Added by Aaron 07/31/2020
+            //Comented line below
+            //CultureName = Thread.CurrentThread.CurrentCulture.Name;
+            //Added line below
+            CultureName = "en-US";
             //23Apr2015 const string FileName = @"./Config/menu.xml";
             FileName = string.Format(@"{0}menu.xml", BSkyAppData.RoamingUserBSkyConfigL18nPath);/// + CultureName + "/");//23Apr2015 
 

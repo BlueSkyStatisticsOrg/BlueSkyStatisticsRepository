@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using BSky.Lifetime;
-using BSky.Lifetime.Interfaces;
 using System;
 using System.Text;
 using System.IO;
 using BSky.ConfService.Intf.Interfaces;
+using System.ComponentModel;
 
 namespace BSky.Statistics.Common
 {
-    
+
     public enum UADataType : uint { UAUnKnown, UAInt, UAIntList, UAIntMatrix, UAString, UAStringList, UAStringMatrix, UADouble, UADoubleList, UADoubleMatrix, UAList, UATableList, UADataFrame }
     public enum DataColumnTypeEnum : uint { Integer, Numeric, Double, Factor, Ordinal, Character, Logical, POSIXlt, POSIXct, Date, Unknown }
     public enum DataColumnAlignmentEnum : uint { Left, Right, Center }
     public enum DataColumnMeasureEnum : uint { Scale, Ordinal, Nominal, String, Logical, Date }
     public enum DataColumnRole : uint { Input, Target, Both, None, Partition, Split }
-
+    public enum DateFormatsEnum :uint { NotApplicable, mSLdSLy, dSLmSLy, ySLmSLd, ySLdSLm, mDAdDAy, dDAmDAy, yDAmDAd, yDAdDAm, mSLdSLY, dSLmSLY, YSLmSLd, YSLdSLm, mDAdDAY, dDAmDAY, YDAmDAd, YDAdDAm, mSLdSLySPHCOMCOS, dSLmSLySPHCOMCOS, ySLmSLdSPHCOMCOS, ySLdSLmSPHCOMCOS, mDAdDAySPHCOMCOS, dDAmDAySPHCOMCOS, yDAmDAdSPHCOMCOS, yDAdDAmSPHCOMCOS, mSLdSLYSPHCOMCOS, dSLmSLYSPHCOMCOS, YSLmSLdSPHCOMCOS, YSLdSLmSPHCOMCOS, mDAdDAYSPHCOMCOS, dDAmDAYSPHCOMCOS, YDAmDAdSPHCOMCOS, YDAdDAmSPHCOMCOS }
     public class DataSource
     {
         //public int counter = 0; Just for testing howmany time _DF in virtualList was accessed to fetch visible area of the grid.
@@ -309,6 +309,16 @@ namespace BSky.Statistics.Common
             set { _dataType = value; }
         }
 
+
+        //public DateFormatsEnum _DatesFormatsEnum = new DateFormatsEnum(); //typeof of the col
+        //_DatesFormatsEnum
+        //public DateFormatsEnum DateFormats
+        //{
+        //    get { return _DatesFormatsEnum; }
+        //    set { _DatesFormatsEnum = value; }
+        //}
+
+
         private string _dataClass = ""; //class of the column
 
         public string DataClass
@@ -348,6 +358,16 @@ namespace BSky.Statistics.Common
             get { return _Values; }
             set { _Values = value; }
         }
+
+
+        //private List<string> _DateFormats = new List<string>();
+
+        //public List<string> DateFormats
+        //{
+        //    get { return _DateFormats; }
+        //    set { _DateFormats = value; }
+        //}
+
 
         //////15Jan2018 Numeric Factor Levels (for Joao)
         ////private List<string> _NumFacLevels = new List<string>();
@@ -405,6 +425,21 @@ namespace BSky.Statistics.Common
                 else _ImgURL = "/Images/none.png";
             }
         }
+
+
+        private DateFormatsEnum _DateFormats = DateFormatsEnum.NotApplicable;
+
+        public DateFormatsEnum DateFormat
+        {
+            get { return _DateFormats; }
+            set {
+                _DateFormats = value;
+                _ImgURL = "/Images/Date.png";
+
+            }
+        }
+
+
         private DataColumnRole _Role = DataColumnRole.Input;
 
         public DataColumnRole Role

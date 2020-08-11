@@ -25,8 +25,8 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <DataTemplate x:Key="ComboTemplate" DataType="{x:Type c1:DataGridComboBoxColumn}">
             <StackPanel Orientation="Horizontal" >
-                <Image Source="{Binding Converter={StaticResource ImgConverter}}" Width="16" Height="16" />
-                <Label Height="25" Content="{Binding}" VerticalAlignment="Center" Margin="5,0,0,0" HorizontalAlignment="Center"></Label>
+               <!-- <Image Source="{Binding Converter={StaticResource ImgConverter}}" Width="16" Height="16" /> -->
+                <Label Height="28" Content="{Binding}" VerticalAlignment="Center" Margin="5,0,0,0" HorizontalAlignment="Center"  PreviewMouseLeftButtonUp="Label_PreviewMouseLeftButtonUp"  MouseUp="Label_MouseUp" ></Label>
             </StackPanel>
         </DataTemplate>
         <Style TargetType="{x:Type TabItem}">
@@ -74,7 +74,7 @@
         <TabControl Grid.Row="0" Name="datavartabs" TabStripPlacement="Bottom" Background="#FFD7E6F7" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Name="datagridtab" Header="{x:Static uires:UICtrlResources.lblDataTab}"  DataContext="{Binding}">
 
-                <c1:C1DataGrid  HorizontalAlignment="Stretch"
+                <c1:C1DataGrid  HorizontalAlignment="Stretch" 
                                 AutoGenerateColumns="True"  HorizontalScrollBarVisibility="Visible"
                                 ShowGroupingPanel="False" Name="gridControl1"
                                 VerticalAlignment="Top" SelectionMode="SingleRange"
@@ -182,8 +182,13 @@
                                     <MenuItem Header="Ordinal to Nominal" Name="_ordToNom"  Click="_ordToNom_Click"></MenuItem>-->
                                 <MenuItem Header="Insert New Numeric Variable" Name="_insertNewVar" Click="_insertNewVar_Click"></MenuItem>
                                 <MenuItem Header="Insert New Numeric Variable At End" Name="_insertNewVarAtEnd" Click="_insertNewVarAtEnd_Click"></MenuItem>
-                                <MenuItem Header="Insert New Factor Variable" Name="_insertNewCharVar" Click="_insertNewCharVar_Click"></MenuItem>
-                                <MenuItem Header="Insert New Factor Variable At End" Name="_insertNewCharVarAtEnd" Click="_insertNewCharVarAtEnd_Click"></MenuItem>
+                                <MenuItem Header="Insert New String Variable" Name="_insertStringVar" Click="_insertStringVar_Click"></MenuItem>
+                                <MenuItem Header="Insert New String Variable At End" Name="_insertStringVarAtEnd" Click="_insertStringVarAtEnd_Click"></MenuItem>
+                               <MenuItem Header="Insert New Date Variable" Name="_insertDateVar" Click="_insertDateVar_Click"></MenuItem>
+                                <MenuItem Header="Insert New Date Variable At End" Name="_insertDateVarAtEnd" Click="_insertDateVarAtEnd_Click"></MenuItem>
+
+                                <MenuItem Header="Insert New Factor Variable" Name="_insertNewCharVar" Click="_insertNewFactorVar_Click"></MenuItem>
+                                <MenuItem Header="Insert New Factor Variable At End" Name="_insertNewCharVarAtEnd" Click="_insertNewFactorVarAtEnd_Click"></MenuItem>
                                 <MenuItem Header="Delete Variable" Name="_deleteVar"  Click="_deleteVar_Click"></MenuItem>
                             </ContextMenu>
                         </c1:C1DataGrid.ContextMenu>

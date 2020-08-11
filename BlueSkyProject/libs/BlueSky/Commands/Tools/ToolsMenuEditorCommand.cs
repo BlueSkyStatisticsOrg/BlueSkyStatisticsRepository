@@ -25,8 +25,11 @@ namespace BlueSky.Commands.Tools
             //23Apr2015 const string FileName = @"./Config/menu.xml";
             //FileName = string.Format(@"{0}menu.xml", BSkyAppData.BSkyAppDirConfigPath);//23Apr2015 
 
-
-            CultureName = Thread.CurrentThread.CurrentCulture.Name; //02Oct2017
+            //Added by Aaron 07/31/2020
+            //Comented line below
+            //CultureName = Thread.CurrentThread.CurrentCulture.Name; //02Oct2017
+            //Added line below
+            CultureName = "en-US";
             FileName = string.Format(@"{0}menu.xml", BSkyAppData.RoamingUserBSkyConfigL18nPath);// + CultureName + "/");//02Oct2017
 
 

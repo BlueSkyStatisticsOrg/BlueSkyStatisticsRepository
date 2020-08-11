@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading;
+using BSkyStyler;
 
 namespace BSky.Controls
 {
@@ -26,8 +27,11 @@ namespace BSky.Controls
         {
             get
             {
-                string CultureName = Thread.CurrentThread.CurrentCulture.Name;
-
+                //Added by Aaron 07/31/2020
+                //Comented line below
+                //string CultureName = Thread.CurrentThread.CurrentCulture.Name;
+                //Added line below
+                string CultureName = "en-US";
                 //return string.Format(@"{0}{1}/", BSkyDataDirRootFwdSlash, BSkyConfig);
                 //string appconfpath = string.Format(@"{0}{1}/", "./", BSkyConfig);
                 string appconfpath = string.Format(@"{0}{1}/{2}/", "./", BSkyConfig, CultureName);
@@ -100,7 +104,11 @@ namespace BSky.Controls
         {
             get
             {
-                string CultureName = Thread.CurrentThread.CurrentCulture.Name;
+                //Added by Aaron 07/31/2020
+                //Comented line below
+                //string CultureName = Thread.CurrentThread.CurrentCulture.Name;
+                //Added line below
+                string CultureName = "en-US";
 
                 //return string.Format(@"{0}{1}/", BSkyDataDirRootFwdSlash, BSkyConfig);
                 string temppath = string.Format(@"{0}{1}\{2}\", RoamingUserBSkyPath, BSkyConfig, CultureName).Replace(@"\", @"/"); //uniz style path

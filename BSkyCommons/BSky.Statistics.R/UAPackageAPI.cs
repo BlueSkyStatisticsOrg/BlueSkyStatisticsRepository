@@ -482,7 +482,7 @@ namespace BSky.Statistics.R
                         GenericVector gv = symex.AsList();
 
                         //19Oct2016 for ArgumentOutOfRangeException
-                        if (gv == null || gv.Length < 14) //col props not fetched correctly(may be R side issue). So doesn't make sense to load/refresh dataset
+                        if (gv == null || gv.Length < 15) //col props not fetched correctly(may be R side issue). So doesn't make sense to load/refresh dataset
                         {
                             CloseDataset(dataSource);
                             result.Success = false;
@@ -496,15 +496,39 @@ namespace BSky.Statistics.R
                         {
                             colclass = "";
                         }
+                        string dateformat14 = (gv[14] != null && gv[14].AsCharacter() != null && gv[14].AsCharacter()[0] != null) ? gv[14].AsCharacter()[0].ToString() : string.Empty;
+                        if (dateformat14 == "")
+                        {
+                            dateformat14 = "Not Applicable";
+
+                        }
 
                         double UTCoffset = 0;
                         if (colclass.Equals("POSIXct"))
                         {
+                            if (dateformat14 == "" || dateformat14 == "Not Applicable")
+                            {
+                                dateformat14 = DateformatConvertor.getDateFormat("POSIXct");
+                            }
                             string colUTCoffset = dispatcher.RawEvaluateGetstring(string.Format("GetColUTCoffsetSecs({0}, '{1}')", columnindex, dataSource.Name));
                             if (colUTCoffset != null)
                             {
                                 Double.TryParse(colUTCoffset, out UTCoffset);
                             }
+                        }
+                        if (colclass.Equals("Date"))
+                        {
+
+                            if (dateformat14 == "" || dateformat14 == "Not Applicable")
+                            {
+                                dateformat14 = DateformatConvertor.getDateFormat("Date");
+                            }
+
+                            // string colUTCoffset = dispatcher.RawEvaluateGetstring(string.Format("GetColUTCoffsetSecs({0}, '{1}')", columnindex, dataSource.Name));
+                            //if (colUTCoffset != null)
+                            // {
+                            //   Double.TryParse(colUTCoffset, out UTCoffset);
+                            //}
                         }
                         if (colclass.Equals("logical"))
                         {
@@ -529,6 +553,7 @@ namespace BSky.Statistics.R
                             Width = 4,
                             Decimals = 0,
                             Columns = 8,
+                            DateFormat = DateformatConvertor.DateStringToEnum(dateformat14),
                             MissType = mistyp,
                             RowCount = rowcount,
                             UTCOffset = UTCoffset / 3600   //to make it hours
@@ -656,6 +681,7 @@ namespace BSky.Statistics.R
                                 Width = 4,
                                 Decimals = 0,
                                 Columns = 8,
+                                DateFormat = var.DateFormat,
                                 MissType = var.MissType,
                                 RowCount = var.RowCount,
                                 Alignment = var.Alignment,
@@ -853,7 +879,7 @@ namespace BSky.Statistics.R
                         GenericVector gv = symex.AsList();
 
                         //19Oct2016 for ArgumentOutOfRangeException
-                        if (gv == null || gv.Length < 14) //col props not fetched correctly(may be R side issue). So doesn't make sense to load/refresh dataset
+                        if (gv == null || gv.Length < 15) //col props not fetched correctly(may be R side issue). So doesn't make sense to load/refresh dataset
                         {
                             result.Success = false;
                             result.Error = "Error fetching column properties. Dataset can't be loaded/refreshed.";
@@ -866,15 +892,38 @@ namespace BSky.Statistics.R
                         {
                             colclass = "";
                         }
+                        string dateformat14 = (gv[14] != null && gv[14].AsCharacter() != null && gv[14].AsCharacter()[0] != null) ? gv[14].AsCharacter()[0].ToString() : string.Empty;
+                        if (dateformat14 == "")
+                        {
+                            dateformat14 = "Not Applicable";
 
+                        }
                         double UTCoffset = 0;
                         if (colclass.Equals("POSIXct"))
                         {
+                            if (dateformat14 == "" || dateformat14 == "Not Applicable")
+                            {
+                                dateformat14 = DateformatConvertor.getDateFormat("POSIXct");
+                            }
                             string colUTCoffset = dispatcher.RawEvaluateGetstring(string.Format("GetColUTCoffsetSecs({0}, '{1}')", columnindex, dataSource.Name));
                             if (colUTCoffset != null)
                             {
                                 Double.TryParse(colUTCoffset, out UTCoffset);
                             }
+                        }
+                        if (colclass.Equals("Date"))
+                        {
+
+                            if (dateformat14 == "" || dateformat14 == "Not Applicable")
+                            {
+                                dateformat14 = DateformatConvertor.getDateFormat("Date");
+                            }
+
+                            // string colUTCoffset = dispatcher.RawEvaluateGetstring(string.Format("GetColUTCoffsetSecs({0}, '{1}')", columnindex, dataSource.Name));
+                            //if (colUTCoffset != null)
+                            // {
+                            //   Double.TryParse(colUTCoffset, out UTCoffset);
+                            //}
                         }
                         if (colclass.Equals("logical"))
                         {
@@ -899,6 +948,7 @@ namespace BSky.Statistics.R
                             Width = 4,
                             Decimals = 0,
                             Columns = 8,
+                            DateFormat = DateformatConvertor.DateStringToEnum(dateformat14),
                             MissType = mistyp,
                             RowCount = rowcount,
                             UTCOffset = UTCoffset/3600   //to make it hours
@@ -1041,6 +1091,7 @@ namespace BSky.Statistics.R
                                 Width = 4,
                                 Decimals = 0,
                                 Columns = 8,
+                                DateFormat = var.DateFormat,
                                 MissType = var.MissType,
                                 RowCount = var.RowCount,
                                 Alignment = var.Alignment,
@@ -2465,13 +2516,13 @@ namespace BSky.Statistics.R
             return result;
         }
 
-        public override UAReturn addNewColDatagrid(string colName, string rdataType, string dgridval, int rowindex, ServerDataSource dataSource)//add row in vargrid and col in datagrid
+        public override UAReturn addNewColDatagrid(string colName, string rdataType, string dgridval, int rowindex, string dateformat, ServerDataSource dataSource)//add row in vargrid and col in datagrid
         {
             UAReturn result;
 
             if (colName == null || colName.Length < 1 || dgridval == null || dgridval.Length < 1)//12Jul2013
                 return null;
-            result = addNewCol(colName, rdataType, dgridval, rowindex, dataSource);//15Oct2015 modified
+            result = addNewCol(colName, rdataType, dgridval, rowindex, dateformat, dataSource);//15Oct2015 modified
 
             return result;
         }
@@ -2534,10 +2585,10 @@ namespace BSky.Statistics.R
 
         #region Data grid Toplevel
 
-        public override UAReturn editDatagridCell(string colName, string celdata, int rowindex, ServerDataSource dataSource)
+        public override UAReturn editDatagridCell(string colName, string celdata, int rowindex, ServerDataSource dataSource, string rdateformat)
         {
             UAReturn result;
-            result = changeDatagridCell(colName, celdata, rowindex, dataSource);
+            result = changeDatagridCell(colName, celdata, rowindex, dataSource, rdateformat);
             return result;
         }
 
@@ -2597,9 +2648,9 @@ namespace BSky.Statistics.R
             return (dispatcher.EvaluateToUAReturn(RCommandStrings.SetDatasetMeasureProp(colName, newValue, colLevels, dataSource)));
         }
 
-        private UAReturn addNewCol(string colName, string rdataType, string dgridval, int rowindex, ServerDataSource dataSource)
+        private UAReturn addNewCol(string colName, string rdataType, string dgridval, int rowindex, string dateformat, ServerDataSource dataSource)
         {
-            return (dispatcher.EvaluateToUAReturn(RCommandStrings.AddNewDatagridCol(colName, rdataType, dgridval, rowindex, dataSource)));
+            return (dispatcher.EvaluateToUAReturn(RCommandStrings.AddNewDatagridCol(colName, rdataType, dgridval, rowindex, dateformat, dataSource)));
         }
 
         private UAReturn removeVarCol(string colName, ServerDataSource dataSource)
@@ -2696,9 +2747,9 @@ namespace BSky.Statistics.R
 
         #region datagrid Core
 
-        private UAReturn changeDatagridCell(string colName, string celdata, int rowindex, ServerDataSource dataSource)
+        private UAReturn changeDatagridCell(string colName, string celdata, int rowindex, ServerDataSource dataSource, string rdateformat)
         {
-            return (dispatcher.EvaluateToUAReturn(RCommandStrings.ChangeDatagridCell(colName, celdata, rowindex, dataSource)));
+            return (dispatcher.EvaluateToUAReturn(RCommandStrings.ChangeDatagridCell(colName, celdata, rowindex, dataSource, rdateformat)));
         }
 
         private UAReturn addDatagridRow(string colName, string celdata, string rowdata, int rowindex, ServerDataSource dataSource)

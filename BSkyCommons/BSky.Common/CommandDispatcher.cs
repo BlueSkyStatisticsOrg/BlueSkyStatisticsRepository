@@ -88,7 +88,7 @@ namespace BSky.Statistics.Common
 
         public abstract UAReturn makeColumnNumeric(ServerDataSource dataSource, string colName);//var grid 11Oct2017
 
-        public abstract UAReturn addNewColDatagrid(string colName, string rdataType, string dgridval, int rowindex, ServerDataSource dataSource);//add row in vargrid and col in datagrid //15Oct2015 modified
+        public abstract UAReturn addNewColDatagrid(string colName, string rdataType, string dgridval, int rowindex, string dateformat,ServerDataSource dataSource);//add row in vargrid and col in datagrid //15Oct2015 modified
 
         public abstract UAReturn removeVarGridCol(string colName, ServerDataSource dataSource);//remove row from variable grid
 
@@ -110,7 +110,7 @@ namespace BSky.Statistics.Common
         #endregion
 
         #region datagrid
-        public abstract UAReturn editDatagridCell(string colName, string celdata, int rowindex, ServerDataSource dataSource);//edit existing data row
+        public abstract UAReturn editDatagridCell(string colName, string celdata, int rowindex, ServerDataSource dataSource,string rdataformat);//edit existing data row
 
         public abstract UAReturn addNewDataRow(string colName, string celdata, string rowdata, int rowindex, ServerDataSource dataSource);//add new data row
 
@@ -160,8 +160,8 @@ namespace BSky.Statistics.Common
 
         public abstract UAReturn UninstallPackages(string[] packagenames);
 
-        public abstract UAReturn FetchRpkgDatasetList(string packagename);//12Feb2019																			 
-        
+        public abstract UAReturn FetchRpkgDatasetList(string packagename);//12Feb2019
+
         #endregion
     }
 }

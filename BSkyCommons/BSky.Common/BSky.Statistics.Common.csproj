@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseLog.cs" />
+    <Compile Include="DateformatConvertor.cs" />
     <Compile Include="DirectoryHelper.cs" />
     <Compile Include="FactorMap.cs" />
     <Compile Include="Interfaces\IAnalyticCommands.cs" />

@@ -89,7 +89,7 @@ namespace BSky.Statistics.R
             bool replaceDataset = false;
             bool csvHeader = true; //No need of this...similar option below : HasHeader
             string loadMissingValue = "FALSE";//21Apr2014
-			string TrimSPSSTrailing = "FALSE";								  
+            string TrimSPSSTrailing = "FALSE";
 
             //16Nov2017 Options for opening data file //
             bool HasHeader = false;
@@ -123,7 +123,7 @@ namespace BSky.Statistics.R
                 if (LoadMisVal.Trim().Length == 0)
                     LoadMisVal = confService.DefaultSettings["loadSavMissingValue"];
                 loadMissingValue = LoadMisVal.ToLower().Equals("true") ? "TRUE" : "FALSE"; /// 
-				TrimSPSSTrailing = removeSpacesSPSS.ToString().ToUpper();														 
+                TrimSPSSTrailing = removeSpacesSPSS.ToString().ToUpper();
             }
 
             if (sheetOrTablename != null)// filetype.Equals("XLS") || filetype.Equals("XLSX"))
@@ -240,7 +240,7 @@ namespace BSky.Statistics.R
 
         public static string MakeDatasetColNumeric(ServerDataSource dataSource, string columnName) { return string.Format("BSkyMakeColumnNumeric(colNameOrIndex='{0}', dataSetNameOrIndex='{1}')", columnName, dataSource.Name); }//Anil added(for var view modification) 11Oct2017
 
-        public static string AddNewDatagridCol(string colName, string rdatatype, string dgridval, int rowindex, ServerDataSource dataSource) { return string.Format("BSkyAddVarRow('{0}', '{1}', '{2}', {3}, '{4}')", colName, rdatatype, dgridval, rowindex, dataSource.Name); }//add new col in datagrid and new row in var grid //15Oct2015 modified
+        public static string AddNewDatagridCol(string colName, string rdatatype, string dgridval, int rowindex, string dateformat, ServerDataSource dataSource) { return string.Format("BSkyAddVarRow('{0}', '{1}', '{2}', {3}, '{4}','{5}' )", colName, rdatatype, dgridval, rowindex,dateformat, dataSource.Name); }//add new col in datagrid and new row in var grid //15Oct2015 modified
         public static string RemoveVargridrow(string colName, ServerDataSource dataSource) { return string.Format("BSkyRemoveVarRow(delcolname='{0}', dataSetNameOrIndex='{1}')", colName, dataSource.Name); }
         //public static string RemoveVargridrow(string colName, ServerDataSource dataSource) { return string.Format("BSkyRemoveMultipleVarRows(delcolname='{0}', dataSetNameOrIndex='{1}')", colName, dataSource.Name); }
 
@@ -296,16 +296,16 @@ namespace BSky.Statistics.R
             return string.Format("BSkyAddLevels(colNameOrIndex='{0}', newLevels={1}, dataSetNameOrIndex='{2}')", colName, newLevels, dataSource.Name);
         }
 
-        public static string ChangeDatagridCell(string colName, string celdata, int rowindex, ServerDataSource dataSource)
+        public static string ChangeDatagridCell(string colName, string celdata, int rowindex, ServerDataSource dataSource, string rdateformat)
         {
             if (celdata.Trim().Equals(""))//if someone types blank in datagrid cell, we make that NA in R
             {
                 //celdata = "NA";
                 //return string.Format("BSkyEditDatagrid(colname='{0}', colceldata={1}, rowindex={2}, dataSetNameOrIndex='{3}')", colName, celdata, rowindex, dataSource.Name);
-                return string.Format("BSkyEditDatagrid(colname='{0}', rowindex={1}, dataSetNameOrIndex='{2}')", colName,  rowindex, dataSource.Name);
+                return string.Format("  (colname='{0}', rowindex={1}, dataSetNameOrIndex='{2}')", colName, rowindex, dataSource.Name);
             }
             else
-                return string.Format("BSkyEditDatagrid(colname='{0}', colceldata='{1}', rowindex={2}, dataSetNameOrIndex='{3}')", colName, celdata, rowindex, dataSource.Name);
+                return string.Format("BSkyEditDatagrid(colname='{0}', colceldata='{1}', rowindex={2}, dataSetNameOrIndex='{3}', rdateformat='{4}')", colName, celdata, rowindex, dataSource.Name, rdateformat);
         }
 
         public static string AddNewDatagridRow(string colName, string celdata, string rowdata, int rowindex, ServerDataSource dataSource)

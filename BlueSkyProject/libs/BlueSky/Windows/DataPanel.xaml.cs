@@ -652,6 +652,8 @@ namespace BlueSky.Windows
                 return;
             }
 
+            string dateformat = "";
+
             string colid = variableGrid.CurrentCell.Column.Header.ToString();//eg..Label
 
             switch (e.Column.Name)
@@ -685,6 +687,13 @@ namespace BlueSky.Windows
                     C1.WPF.C1ComboBox combo = e.EditingElement as C1.WPF.C1ComboBox;
                     string value = combo.Text;
                     break;
+                case "DateFormat":
+                    C1.WPF.DataGrid.DataGridComboBoxColumn col1 = e.Column as C1.WPF.DataGrid.DataGridComboBoxColumn;
+                    C1.WPF.C1ComboBox combo1 = e.EditingElement as C1.WPF.C1ComboBox;
+                    dateformat = combo1.Text;
+                    cellValue = dateformat;
+                    dd.DateFormat = DateformatConvertor.DateStringToEnum(dateformat);
+                    break;
                 case "Measure":
                     colLevels = getLevels();
 
@@ -702,7 +711,7 @@ namespace BlueSky.Windows
             {
                 int rowindex = 0;
                 string datagridcolval = ".";
-                analyticServ.addNewVariable(cellValue, rcoltype, datagridcolval, rowindex, ds.Name);
+                analyticServ.addNewVariable(cellValue, rcoltype, datagridcolval, rowindex, dateformat, ds.Name);
 
                 //// Insert on UI side dataset ///
                 DataSourceVariable var = new DataSourceVariable();
@@ -722,6 +731,10 @@ namespace BlueSky.Windows
             {
                 //it would be good if we could verify SUCCESS in 'retval' above and then only this line should execute.
                 (Variables[rowindex] as DataSourceVariable).RName = cellValue;
+                refreshDataGrid();
+            }
+            if (e.Column.Name.Equals("DateFormat"))
+            {
                 refreshDataGrid();
             }
         }
@@ -1114,6 +1127,55 @@ namespace BlueSky.Windows
             {
                 e.Cancel = true;
             }
+            if (e.Property.Name == "DateFormat")
+            {
+                C1.WPF.DataGrid.DataGridComboBoxColumn col1 = (C1.WPF.DataGrid.DataGridComboBoxColumn)e.Column;
+
+                List<string> lst = new List<string>();
+                // mSLdSLy, dSLmSLy, ySLmSLd, ySLdSLm, mDAdDAy, dDAmDAy, yDAmDAd, yDAdDAm
+                lst.Add("Not Applicable");
+                lst.Add("%m/%d/y");
+                lst.Add("%d/%m/%y");
+                lst.Add("%y/%m/%d");
+                lst.Add("%y/%d/%m");
+                lst.Add("%m-%d-%y");
+                lst.Add("%d-%m-%y");
+                lst.Add("%y-%m-%d");
+                lst.Add("%y-%d-%m");
+                lst.Add("%m/%d/Y");
+                lst.Add("%d/%m/%Y");
+                lst.Add("%Y/%m/%d");
+                lst.Add("%Y/%d/%m");
+                lst.Add("%m-%d-%Y");
+                lst.Add("%d-%m-%Y");
+                lst.Add("%Y-%m-%d");
+                lst.Add("%Y-%d-%m");
+
+                lst.Add("%m/%d/y %H:%M:%S");
+                lst.Add("%d/%m/%y %H:%M:%S");
+                lst.Add("%y/%m/%d %H:%M:%S");
+                lst.Add("%y/%d/%m %H:%M:%S");
+                lst.Add("%m-%d-%y %H:%M:%S");
+                lst.Add("%d-%m-%y %H:%M:%S");
+                lst.Add("%y-%m-%d %H:%M:%S");
+                lst.Add("%y-%d-%m %H:%M:%S");
+                lst.Add("%m/%d/Y %H:%M:%S");
+                lst.Add("%d/%m/%Y %H:%M:%S");
+                lst.Add("%Y/%m/%d %H:%M:%S");
+                lst.Add("%Y/%d/%m %H:%M:%S");
+                lst.Add("%m-%d-%Y %H:%M:%S");
+                lst.Add("%d-%m-%Y %H:%M:%S");
+                lst.Add("%Y-%m-%d %H:%M:%S");
+                lst.Add("%Y-%d-%m %H:%M:%S");
+
+
+                //col1.ev
+                col1.ItemsSource = lst;
+                //col.ItemConverter = new AlignConvertor();
+                col1.ItemTemplate = this.FindResource("ComboTemplate") as DataTemplate;
+                col1.Binding.Converter = new AlignConvertor();
+                e.Cancel = false;//don't hide this
+            }
             if (e.Property.Name == "UTCOffset")
             {
                 e.Cancel = false;
@@ -1148,6 +1210,7 @@ namespace BlueSky.Windows
         {
             DataSourceVariable var = new DataSourceVariable();
 
+            string dateformat = "%m/%d/%y";
             string varname = "newvar";
             //getRightClickRowIndex();
             int rowindex = variableGrid.SelectedIndex;
@@ -1164,7 +1227,7 @@ namespace BlueSky.Windows
             var.RName = varname;
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
-            analyticServ.addNewVariable(var.Name, "double", ".", rowindex + 1, ds.Name);
+            analyticServ.addNewVariable(var.Name, "double", ".", rowindex + 1, dateformat,  ds.Name);
 
             this.Variables.Insert(rowindex, var);
             DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
@@ -1450,10 +1513,13 @@ namespace BlueSky.Windows
             }
 
             string currcolclass = ds.Variables[GetRVarNameIndex(GetRVarName(e.Column.Name))].DataClass;
+            DateFormatsEnum dateformatenum = ds.Variables[GetRVarNameIndex(GetRVarName(e.Column.Name))].DateFormat;
+            string rdateformat = DateformatConvertor.DateEnumToString(dateformatenum);
 
             if (currcolclass.Equals("POSIXct") || currcolclass.Equals("Date"))
             {
-                string dateformat = currcolclass.Equals("POSIXct") ? "yyyy-MM-dd HH:mm:ss" : "yyyy-MM-dd";//handles POSIXct and Date type only.
+                string dateformat = DateformatConvertor.DateFormatsEnumtoCSharpDate(dateformatenum);
+                //string dateformat = currcolclass.Equals("POSIXct") ? "yyyy-MM-dd HH:mm:ss" : "yyyy-MM-dd";//handles POSIXct and Date type only.
                 DateTime dtt;
                 bool b = DateTime.TryParseExact(s, dateformat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dtt);
 
@@ -1461,7 +1527,7 @@ namespace BlueSky.Windows
                 {
                     Window ow = Window.GetWindow(this);
 
-                    MessageBox.Show(ow, BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeMsg,
+                    MessageBox.Show(ow, BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeMsg + "Please enter the date in the format " + dateformat + " ",
                         BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                     gridControl1.CancelEdit();
                     return;
@@ -1551,7 +1617,7 @@ namespace BlueSky.Windows
                 }
                 BSkyMouseBusyHandler.ShowMouseBusy();
                 //19Sep2014 result=analyticServ.EditDatagridCell(e.Column.Name, s, e.Row.Index, ds.Name);
-                result = analyticServ.EditDatagridCell(RVarName, s, e.Row.Index, ds.Name);//19Sep2014
+                result = analyticServ.EditDatagridCell(RVarName, s, e.Row.Index, ds.Name, rdateformat);//19Sep2014
                 BSkyMouseBusyHandler.HideMouseBusy();
             }
             ds.Changed = true;
@@ -2264,6 +2330,80 @@ namespace BlueSky.Windows
         {
         }
 
+        //String Variable inserted in the middle
+        private void _insertStringVar_Click(object sender, RoutedEventArgs e)
+        {
+            DataSourceVariable var = new DataSourceVariable();
+            //string RecCount = (this.Variables.Count + 1).ToString();//add 1 because its 0 based
+
+            string varname = "newvar";
+            //getRightClickRowIndex();
+            int rowindex = variableGrid.SelectedIndex;
+
+            //checking duplicate var names
+            do
+            {
+                varname = "newvar" + varcount.ToString();
+                varcount++;
+            } while (isDuplicateColNameAddingNew(varname));//28Jun2016 fixed
+            var.Name = varname;
+            var.Label = "";// varname;
+            var.RName = varname;
+            var.DataType = DataColumnTypeEnum.Character;
+            var.Measure = DataColumnMeasureEnum.String;
+            var.DataClass = "character";
+            // string dateformat = getDateFormat();
+            // var.DateFormat = DateformatConvertor.DateStringToEnum(dateformat);
+            var.DateFormat = DateFormatsEnum.NotApplicable;
+            string dateformat = "Not Applicable";
+            IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
+            analyticServ.addNewVariable(var.Name, "character", ".", rowindex + 1, dateformat, ds.Name);
+
+            this.Variables.Insert(rowindex, var);
+            DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
+
+            renumberRowHeader(variableGrid);
+            ds.Changed = true;
+            refreshDataGrid();
+        }
+
+
+        private void _insertStringVarAtEnd_Click(object sender, RoutedEventArgs e)
+        {
+            DataSourceVariable var = new DataSourceVariable();
+            //string RecCount = (this.Variables.Count + 1).ToString();//add 1 because its 0 based
+            string dateformat = "%m/%d/%y";
+            string varname = "newvar";
+
+            //getRightClickRowIndex();
+            int rowindex = Variables.Count;// variableGrid.SelectedIndex;
+
+            //checking duplicate var names
+            do
+            {
+                varname = "newvar" + varcount.ToString();
+                varcount++;
+            } while (isDuplicateColNameAddingNew(varname));//28Jun2016 fixed
+            var.Name = varname;
+            var.Label = "";// varname;
+            var.RName = varname;
+            var.DataType = DataColumnTypeEnum.Character;
+            var.Measure = DataColumnMeasureEnum.String;
+            var.DataClass = "character";
+
+
+            IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
+            analyticServ.addNewVariable(var.Name, "character", ".", rowindex + 1, dateformat, ds.Name);
+
+            this.Variables.Insert(rowindex, var);
+            DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
+
+            renumberRowHeader(variableGrid);
+            ds.Changed = true;
+            refreshDataGrid();
+
+        }
+
         //Numeric Variable inserted in the middle
         private void _insertNewVar_Click(object sender, RoutedEventArgs e)
         {
@@ -2282,9 +2422,14 @@ namespace BlueSky.Windows
             var.Name = varname;
             var.Label = "";
             var.RName = varname;
+            var.DataType = DataColumnTypeEnum.Double;
+            var.Measure = DataColumnMeasureEnum.Scale;
+            var.DataClass = "numeric";
+            string dateformat = "Not Applicable";
+            var.DateFormat = DateFormatsEnum.NotApplicable;
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
-            analyticServ.addNewVariable(var.Name, "double", ".", rowindex + 1, ds.Name);
+            analyticServ.addNewVariable(var.Name, "double", ".", rowindex + 1, dateformat, ds.Name);
 
             this.Variables.Insert(rowindex, var);
             DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
@@ -2294,11 +2439,87 @@ namespace BlueSky.Windows
             refreshDataGrid();
         }
 
+        //Date Variable inserted in the middle
+        private void _insertDateVar_Click(object sender, RoutedEventArgs e)
+        {
+            DataSourceVariable var = new DataSourceVariable();
+            //string RecCount = (this.Variables.Count + 1).ToString();//add 1 because its 0 based
+            // string dateformat = "%m/%d/%y";
+            string varname = "newvar";
+            //getRightClickRowIndex();
+            int rowindex = variableGrid.SelectedIndex;
+
+            //checking duplicate var names
+            do
+            {
+                varname = "newvar" + varcount.ToString();
+                varcount++;
+            } while (isDuplicateColNameAddingNew(varname));//28Jun2016 fixed
+            var.Name = varname;
+            var.Label = varname;// varname;
+            var.RName = varname;
+            var.DataType = DataColumnTypeEnum.Double;
+            var.Measure = DataColumnMeasureEnum.Date;
+            var.DataClass = "POSIXct";
+            string dateformat = DateformatConvertor.getDateFormat("POSIXct");
+
+            var.DateFormat = DateformatConvertor.DateStringToEnum(dateformat);
+
+            IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
+            analyticServ.addNewVariable(var.Name, "POSIXct", ".", rowindex + 1, dateformat, ds.Name);
+
+            this.Variables.Insert(rowindex, var);
+            DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
+
+            renumberRowHeader(variableGrid);
+            ds.Changed = true;
+            refreshDataGrid();
+        }
+
+        private void _insertDateVarAtEnd_Click(object sender, RoutedEventArgs e)
+        {
+            DataSourceVariable var = new DataSourceVariable();
+            //string RecCount = (this.Variables.Count + 1).ToString();//add 1 because its 0 based
+            // string dateformat = "%m-%d-%y";
+            string varname = "newvar";
+
+            //getRightClickRowIndex();
+            int rowindex = Variables.Count;// variableGrid.SelectedIndex;
+
+            //checking duplicate var names
+            do
+            {
+                varname = "newvar" + varcount.ToString();
+                varcount++;
+            } while (isDuplicateColNameAddingNew(varname));//28Jun2016 fixed
+            var.Name = varname;
+            var.Label = "";// varname;
+            var.RName = varname;
+            var.DataType = DataColumnTypeEnum.Double;
+            var.Measure = DataColumnMeasureEnum.Date;
+            var.DataClass = "POSIXct";
+            string dateformat = DateformatConvertor.getDateFormat("POSIXct");
+            var.DateFormat = DateformatConvertor.DateStringToEnum(dateformat);
+
+
+            IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
+            analyticServ.addNewVariable(var.Name, "POSIXct", ".", rowindex + 1, dateformat, ds.Name);
+
+            this.Variables.Insert(rowindex, var);
+            DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
+
+            renumberRowHeader(variableGrid);
+            ds.Changed = true;
+            refreshDataGrid();
+
+        }
+
+
         //Numeric Variable inserted at the end
         private void _insertNewVarAtEnd_Click(object sender, RoutedEventArgs e)
         {
             DataSourceVariable var = new DataSourceVariable();
-
+            string dateformat = "%m/%d/%y";
             string varname = "newvar";
 
             int rowindex = Variables.Count;
@@ -2312,9 +2533,12 @@ namespace BlueSky.Windows
             var.Name = varname;
             var.Label = "";
             var.RName = varname;
+            var.DataType = DataColumnTypeEnum.Double;
+            var.Measure = DataColumnMeasureEnum.Scale;
+            var.DataClass = "numeric";
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
-            analyticServ.addNewVariable(var.Name, "double", ".", rowindex + 1, ds.Name);
+            analyticServ.addNewVariable(var.Name, "double", ".", rowindex + 1, dateformat, ds.Name);
 
             this.Variables.Insert(rowindex, var);
             DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
@@ -2325,10 +2549,10 @@ namespace BlueSky.Windows
         }
 
         //Character Variable inserted in the middle
-        private void _insertNewCharVar_Click(object sender, RoutedEventArgs e)
+        private void _insertNewFactorVar_Click(object sender, RoutedEventArgs e)
         {
             DataSourceVariable var = new DataSourceVariable();
-
+            string dateformat = "%m/%d/%y";
             string varname = "newvar";
             int rowindex = variableGrid.SelectedIndex;
 
@@ -2341,11 +2565,13 @@ namespace BlueSky.Windows
             var.Name = varname;
             var.Label = "";
             var.RName = varname;
-            var.DataType = DataColumnTypeEnum.Character;
+            var.DataType = DataColumnTypeEnum.Integer;
             var.Measure = DataColumnMeasureEnum.Nominal;
+            var.Values = new List<string>(new string[] { "<NA>" });
+            var.DataClass = "factor";
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
-            analyticServ.addNewVariable(var.Name, "character", ".", rowindex + 1, ds.Name);
+            analyticServ.addNewVariable(var.Name, "character", ".", rowindex + 1, dateformat, ds.Name);
 
             this.Variables.Insert(rowindex, var);
             DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
@@ -2354,14 +2580,14 @@ namespace BlueSky.Windows
             ds.Changed = true;
             refreshDataGrid();
 
-            _makeFactor_Click(sender, e); // making it a factor
+           // _makeFactor_Click(sender, e); // making it a factor
         }
 
         //Character Variable inserted at the end
-        private void _insertNewCharVarAtEnd_Click(object sender, RoutedEventArgs e)
+        private void _insertNewFactorVarAtEnd_Click(object sender, RoutedEventArgs e)
         {
             DataSourceVariable var = new DataSourceVariable();
-
+            string dateformat = "%m/%d/%y";
             string varname = "newvar";
             int rowindex = Variables.Count;
 
@@ -2374,11 +2600,13 @@ namespace BlueSky.Windows
             var.Name = varname;
             var.Label = "";
             var.RName = varname;
-            var.DataType = DataColumnTypeEnum.Character;
+            var.DataType = DataColumnTypeEnum.Integer;
             var.Measure = DataColumnMeasureEnum.Nominal;
+            var.Values = new List<string>(new string[] { "<NA>" });
+            var.DataClass = "factor";
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
-            analyticServ.addNewVariable(var.Name, "character", ".", rowindex + 1, ds.Name);
+            analyticServ.addNewVariable(var.Name, "character", ".", rowindex + 1, dateformat, ds.Name);
 
             this.Variables.Insert(rowindex, var);
             DS.Variables.Insert(rowindex, var);
@@ -2388,7 +2616,7 @@ namespace BlueSky.Windows
             refreshDataGrid();
 
             //Now make new variable a factor.
-            makeVariableFactor(rowindex);
+            //makeVariableFactor(rowindex);
         }
 
         private void _deleteVar_Click(object sender, RoutedEventArgs e)
@@ -3052,6 +3280,15 @@ namespace BlueSky.Windows
             }
         }
 
+        private void Label_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Label_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            variableGrid.Focus();
+        }
         void LoadNextColSet()
         {
             preserveVerticalScroll();
@@ -3080,12 +3317,18 @@ namespace BlueSky.Windows
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value.ToString();
+            //return value.ToString();
+            DateFormatsEnum newval = (DateFormatsEnum)value;
+
+            string dateformat = DateformatConvertor.DateEnumToString(newval);
+            return dateformat;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Enum.Parse(typeof(DataColumnAlignmentEnum), value.ToString());
+            //return Enum.Parse(typeof(DataColumnAlignmentEnum), value.ToString());
+            string datestring = value.ToString();
+            return DateformatConvertor.DateStringToEnum(datestring);
         }
     }
 

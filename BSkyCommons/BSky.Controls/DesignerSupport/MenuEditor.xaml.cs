@@ -51,7 +51,11 @@ namespace BSky.Controls
             ////dp.DataChanged += new EventHandler(dp_DataChanged);
             newcommlocXpath = "//menu[@id='analyisMenu']";// for new command default location 
 
-            CultureName = Thread.CurrentThread.CurrentCulture.Name;
+            //Added by Aaron 07/31/2020
+            //Comented line below
+            //CultureName = Thread.CurrentThread.CurrentCulture.Name;
+            //Added line below
+            string CultureName = "en-US";
         }
 
         public MenuEditor(string commandname)
@@ -1320,7 +1324,7 @@ namespace BSky.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, "Error adding command." + ex.StackTrace, "Error occurred!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(this,"Error adding command." + ex.StackTrace, "Error occurred!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
