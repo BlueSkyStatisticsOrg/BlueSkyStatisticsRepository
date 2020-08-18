@@ -71,6 +71,8 @@
             <LineBreak /> Ampersand force use of the character following the ampersand as a seperator (Destination listbox only).
             <LineBreak /> @ force the use of a comma (,) as separator and enclose each variable by '', with no prefix (Destination listbox only).
             <LineBreak /> ^ prefix each variable by the character following the ^ (Destination listbox only).
+            <LineBreak /> When using the pipe ( %>% ), multiple pipe characters must be specified in a single line.
+            We will automatically insert a line break (for readability) after each pipe character, when pasting the syntax.
         </TextBlock>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">
