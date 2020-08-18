@@ -187,6 +187,9 @@ namespace BSky.Statistics.Service.Engine.Interfaces
 
         [OperationContract]
         UAReturn GetPkgDatasetList(string packagename);
+
+        [OperationContract]
+        UAReturn GetPkgfuncNames(string packagename);
         #endregion
     }
 }

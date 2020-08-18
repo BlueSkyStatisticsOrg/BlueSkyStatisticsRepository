@@ -210,6 +210,31 @@ public List<RPkgDatasetDetails> GetDatasetListFromRPkg(string packagename)//12Fe
             return datasetlist;
         }
 
+        public List<string> GetFunctionnamesFromRPkg(string packagename)//16Aug2020 Get names of functions in a R pkg
+        {
+            string joinCharacter = "-";
+            string commandstring = string.Empty;
+            StringBuilder sb = new StringBuilder();
+            List<string> funcNames = null;
+            // data()$results is a matrix with dimnames [Package, LibPath, Item, Title]
+            // we will need "Item" and "Title" ( data(package="pkgname")$results[, 3:4] ) which we will join using joinCharacter
+            ////try may help in avoiding crash
+            commandstring = "require(utils); require(" + packagename + "); unclass(utils::lsf.str('package:" + packagename + "'))";
+            _journal.WriteLine(commandstring);
+            RDotNet.CharacterVector chrarr = _dispatcher.GetChrVector(commandstring);
+            if (chrarr != null && chrarr.Length > 0)
+            {
+                string[] items = chrarr.ToArray();
+                funcNames = new List<string>();
+                foreach (string funcname in items)
+                {
+                    funcNames.Add(funcname);
+                }
+            }
+
+            return funcNames;
+        }
+		
         #endregion
 
         #region Methods for Single Package operations

@@ -1,0 +1,61 @@
+﻿<Window x:Class="BlueSky.Commands.Help.RFunctionHelp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlueSky.Commands.Help"
+        Title="R Function Help" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" MaxWidth="1024">
+    <Window.Resources>
+        <DataTemplate x:Key="Datasets">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding DSName}"></TextBlock>
+                <TextBlock Grid.Column="1" Text="{Binding Title}"></TextBlock>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="3" >
+            <Label >Optionally select a R package for the function you need help on:</Label>
+
+        </StackPanel>
+
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="3" Height="25" MinWidth="100" MaxWidth="650" VerticalAlignment="Top"
+                  IsEditable="True" Name="RpkgCombo" SelectionChanged="RpkgCombo_SelectionChanged"></ComboBox>
+
+        <!--<Expander Grid.Row="0" Grid.Column="4" Header="Help:" ExpandDirection="Right"></Expander>-->
+
+
+        <Label Grid.Row="2" Grid.Column="0" Margin="3">Enter the name of the function you need help on:</Label>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="3" Height="25" IsEditable="True"
+                  MinWidth="100" MaxWidth="650" Name="FunctionCombo"></ComboBox>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Name="status" Grid.ColumnSpan="2" TextWrapping="Wrap" MaxWidth="450"
+                  Margin="7" Visibility="Collapsed" FontWeight="Bold" Foreground="#FFF3760D">
+            If you do not see a dataset in the dropdown, either the package does not contain one or more dataset(s) or the package is not installed.
+        </TextBlock>
+        <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
+            <Button Name="OKBtn" Margin="3" Width="60" Click="OKBtn_Click">Ok</Button>
+            <Button Name="CancelBtn" Margin="3" Width="60"  Click="CancelBtn_Click">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

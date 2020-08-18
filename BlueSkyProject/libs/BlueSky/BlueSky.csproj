@@ -259,6 +259,14 @@
     </Compile>
     <Compile Include="Commands\Help\BlueSkyWebsiteCommand.cs" />
     <Compile Include="Commands\Help\CustomSettingsCommand.cs" />
+    <Compile Include="Commands\Help\RFunctionHelp.xaml.cs">
+      <DependentUpon>RFunctionHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\Help\RFunctionHelpCommand.cs" />
+    <Compile Include="Commands\Help\RPackageHelp.xaml.cs">
+      <DependentUpon>RPackageHelp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\Help\RPackageHelpCommand.cs" />
     <Compile Include="Commands\History\CommandHistoryMenuHandler.cs" />
     <Compile Include="Commands\Output\NewOutputWindow.cs" />
     <Compile Include="Commands\Output\OutputMenuHandler.cs" />
@@ -433,6 +441,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Commands\File\SelectTableWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commands\Help\RFunctionHelp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commands\Help\RPackageHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

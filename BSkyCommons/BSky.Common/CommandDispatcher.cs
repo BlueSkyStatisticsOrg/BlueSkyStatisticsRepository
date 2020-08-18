@@ -162,6 +162,7 @@ namespace BSky.Statistics.Common
 
         public abstract UAReturn FetchRpkgDatasetList(string packagename);//12Feb2019
 
+        public abstract UAReturn FetchRpkgFuncNames(string packagename);//16Aug2020
         #endregion
     }
 }

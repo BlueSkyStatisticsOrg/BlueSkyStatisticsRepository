@@ -2325,6 +2325,27 @@ namespace BSky.Statistics.R
 
             return result;
         }
+
+        //16Aug2020 Fetch list of functions in a R pkg 
+        public override UAReturn FetchRpkgFuncNames(string packagename)
+        {
+            UAReturn result = new UAReturn() { Success = false };
+            List<string> dslist = rpm.GetFunctionnamesFromRPkg(packagename);
+            if (dslist != null)
+            {
+                if (dslist.Count() == 0)
+                {
+                    result.Error = "Error occurred fetching function names from R package";
+                }
+                else
+                {
+                    result.Success = true;
+                    result.SimpleTypeData = dslist;
+                }
+            }
+
+            return result;
+        }
         #endregion
 
         #region Helpers

@@ -590,6 +590,13 @@ namespace BSky.Service.Engine
             return r;
         }
 
+        public UAReturn GetPkgfuncNames(string packagename)//16Aug2020
+        {
+            UAReturn r = null;
+            r = _userSession.DefaultDispatcher.FetchRpkgFuncNames(packagename);
+            return r;
+        }
+
         #endregion
     }
 }

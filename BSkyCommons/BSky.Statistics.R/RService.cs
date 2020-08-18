@@ -481,6 +481,17 @@ namespace BSky.Statistics.R
             CharacterMatrix _chrmatrix = _RServer.Evaluate(command).AsCharacterMatrix();
             return _chrmatrix;
         } 
+		
+        public CharacterVector GetChrVector(string command)
+        {
+            if (command == null)
+                return null;
+            //bool dsexists = _RServer.Evaluate("exists(\"" + dsname + "\")").AsLogical()[0];
+            //if (!dsexists)
+            //    return null;
+            CharacterVector _chrmatrix = _RServer.Evaluate(command).AsCharacter();
+            return _chrmatrix;
+        }
 
         #endregion
 

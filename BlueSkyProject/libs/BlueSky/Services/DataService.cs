@@ -819,6 +819,11 @@ if (ds == null)//20Oct2016 Making UI grid NULL
             UAReturn r = _analyticService.GetPkgDatasetList(packagename);
             return r;
         }
+        public UAReturn loadRPkgFunctionNames(string packagename) //16Aug2020
+        {
+            UAReturn r = _analyticService.GetPkgfuncNames(packagename);
+            return r;
+        }
         #endregion
     }
 }

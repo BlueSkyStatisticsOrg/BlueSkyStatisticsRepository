@@ -195,6 +195,11 @@ namespace BlueSky.Commands.Tools.Package
             return service.loadRPkgDatasetList(packagename);
         }
 
+        public UAReturn GetFunctionnamesFromRPkg(string packagename)//16Aug2020 Get list of functions
+        {
+            return service.loadRPkgFunctionNames(packagename);
+        }
+
         #region Mouse Busy/Free
         Cursor defaultcursor;
         private void ShowMouseBusy()
