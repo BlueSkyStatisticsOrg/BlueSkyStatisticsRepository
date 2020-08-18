@@ -1527,7 +1527,7 @@ namespace BlueSky.Windows
                 {
                     Window ow = Window.GetWindow(this);
 
-                    MessageBox.Show(ow, BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeMsg + "Please enter the date in the format " + dateformat + " ",
+                    MessageBox.Show(ow, BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeMsg + " Please enter the date in the format " + dateformat + " ",
                         BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                     gridControl1.CancelEdit();
                     return;
