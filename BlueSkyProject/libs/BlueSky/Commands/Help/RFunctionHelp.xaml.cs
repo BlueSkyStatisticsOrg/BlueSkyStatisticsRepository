@@ -46,7 +46,8 @@ namespace BlueSky.Commands.Help
         private void LoadfunctionNames(bool loadFrmAllPkgs = false)
         {
             string nofunctions = "Functions not found.";
-            string nopkg = "Package not found.";
+            string nopkg = "R Package not found. You can install a new R package from CRAN";
+            string nopkg2 = "Go to: Tools > Package > Install/Update package(s) from CRAN";
             List<string> dsnamelist = new List<string>();
             List<string> PkgDatsetDetailList = null;
             //char[] sep = new char[1];
@@ -68,7 +69,7 @@ namespace BlueSky.Commands.Help
             //set proper message
             if (rpkgname == null)//user typed garbage text that is not in combo
             {
-                status.Text = nopkg;
+                status.Text = nopkg+"\n"+nopkg2;
             }
             //else if (PkgDatsetDetailList.Count < 1)
             //{

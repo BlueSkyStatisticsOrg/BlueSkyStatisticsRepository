@@ -39,14 +39,17 @@
 
         </StackPanel>
 
-        <ComboBox Grid.Row="0" Grid.Column="1" Margin="3" Height="25" MinWidth="100" MaxWidth="650" VerticalAlignment="Top"
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="3" Height="25" MinWidth="100" MaxWidth="650" VerticalAlignment="Top" 
                   IsEditable="True" Name="RpkgCombo" SelectionChanged="RpkgCombo_SelectionChanged"></ComboBox>
 
         <!--<Expander Grid.Row="0" Grid.Column="4" Header="Help:" ExpandDirection="Right"></Expander>-->
 
-
-        <Label Grid.Row="2" Grid.Column="0" Margin="3">Enter the name of the function you need help on:</Label>
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="3" Height="25" IsEditable="True"
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="3" Orientation="Horizontal">
+            <TextBlock Margin="5,0,1,0">Enter the name of the function you need help on:</TextBlock>
+            <TextBlock Foreground="#FFEE0E0E" >*</TextBlock>
+        </StackPanel>
+        
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="3" Height="25" IsEditable="True" 
                   MinWidth="100" MaxWidth="650" Name="FunctionCombo"></ComboBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0" Name="status" Grid.ColumnSpan="2" TextWrapping="Wrap" MaxWidth="450"
