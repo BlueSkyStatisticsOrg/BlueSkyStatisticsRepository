@@ -1,30 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <recent>
   <item>adaboost</item>
+  <item>BinaryTree</item>
   <item>blasso</item>
+  <item>coxph</item>
   <item>C5.0</item>
+  <item>c5.0</item>
+  <item>fast_adaboost</item>
   <item>gbm</item>
   <item>glm</item>
+  <item>glmnet</item>
+  <item>gls</item>
   <item>knn3</item>
   <item>ksvm</item>
   <item>lm</item>
+  <item>lme</item>
   <item>lmerModLmerTest</item>
+  <item>loess</item>
+  <item>loglm</item>
+  <item>lognet</item>
+  <item>mlm</item>
   <item>mlp</item>
+  <item>MLP</item>
   <item>multinom</item>
   <item>NaiveBayes</item>
+  <item>negbin</item>
+  <item>nls</item>
+  <item>nn</item>
   <item>nnet</item>
   <item>nnet.formula</item>
   <item>npregression</item>
   <item>polr</item>
+  <item>quantmod</item>
   <item>randomForest</item>
   <item>ranger</item>
   <item>real_adaboost</item>
   <item>rlm</item>
   <item>rpart</item>
+  <item>rq</item>
   <item>rsnns</item>
+  <item>survreg</item>
   <item>train</item>
   <item>xgb.Booster</item>
-  <item>fast_adaboost</item>
-  <item>rq</item>
-  <item>nn</item>
 </recent>
