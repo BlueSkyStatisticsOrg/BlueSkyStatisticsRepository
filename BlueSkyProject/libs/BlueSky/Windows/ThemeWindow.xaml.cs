@@ -411,14 +411,28 @@ namespace BlueSky.Windows
 
                 //this is an extra theme that we want to add by hardcoding
                 themes.Add("theme_grey()");
+                //More from B
+                themes.Add("theme_bw()");//from B
+                themes.Add("theme_classic()");//from B
+                themes.Add("theme_dark()");//from B
+                themes.Add("theme_gray()"); //from B
+                themes.Add("theme_light()");//from B
+                themes.Add("theme_linedraw()");//from B
+                themes.Add("theme_minimal()");//from B
+                themes.Add("theme_test()");//from B
+                themes.Add("theme_void()");//from B
+
+                themes.Sort();
             }
 
             if (obj == null || (obj as string[]) == null || themes.Count < 1)
             {
                 //http://www.rpubs.com/Mentors_Ubiqum/ggthemes_1
                 themes.Add("theme_base()");//
-                themes.Add("theme_bw()");
+                themes.Add("theme_bw()");//from B
                 themes.Add("theme_calc()");
+                themes.Add("theme_classic()");//from B
+                themes.Add("theme_dark()");//from B
                 themes.Add("theme_economist()");
                 themes.Add("theme_economist_white()");//
                 themes.Add("theme_excel()");
@@ -426,17 +440,23 @@ namespace BlueSky.Windows
                 themes.Add("theme_fivethirtyeight()");
                 themes.Add("theme_foundation()");
                 themes.Add("theme_gdocs()");
+                themes.Add("theme_gray()"); //from B
                 themes.Add("theme_grey()");
                 themes.Add("theme_hc()");
                 themes.Add("theme_igray()");//
+                themes.Add("theme_light()");//from B
+                themes.Add("theme_linedraw()");//from B
                 themes.Add("theme_map()");//
+                themes.Add("theme_minimal()");//from B
                 themes.Add("theme_pander()");
                 themes.Add("theme_par()");//
                 themes.Add("theme_solarized()");
                 themes.Add("theme_solarized()_2");//
                 themes.Add("theme_solid()");//
                 themes.Add("theme_stata()");
+                themes.Add("theme_test()");//from B
                 themes.Add("theme_tufte()");
+                themes.Add("theme_void()");//from B
                 themes.Add("theme_wsj()");
             }
             themeCombo.ItemsSource = themes;
