@@ -147,10 +147,10 @@
   </menu>
   <menu id="dataMenu" text="Data" nodetype="Parent">
     <menu id="Bin_Numeric_Variable(s)" text="Bin Numeric Variable(s)" commandtemplate="Bin Numeric Variable(s).xaml" commandoutputformat="Bin Numeric Variable(s).xml" owner="" nodetype="Leaf" icon="images/Binning.png" showtoolbaricon="true" />
-      <menu id="Compute_Dummy_Variables" text="Compute Dummy Variables" commandtemplate="Compute Dummy Variables.xaml" commandoutputformat="Compute Dummy Variables.xml" owner="" nodetype="Leaf" />	
     <menu id="ComputeSubMenu" text="Compute New Variable(s)" owner="" nodetype="Parent">
       <menu id="Compute" text="Compute" commandtemplate="Compute.xaml" commandoutputformat="Compute.xml" owner="" nodetype="Leaf" icon="images/Compute.png" showtoolbaricon="true" />
       <menu id="Compute,_apply_a_function_across_all_rows" text="Compute, apply a function across all rows" commandtemplate="Compute, apply a function across all rows.xaml" commandoutputformat="Compute, apply a function across all rows.xml" owner="" nodetype="Leaf" />
+      <menu id="Compute_Dummy_Variables" text="Compute Dummy Variables" commandtemplate="Compute Dummy Variables.xaml" commandoutputformat="Compute Dummy Variables.xml" owner="" nodetype="Leaf" />	  
       <menu id="sep" text="---------" owner="" nodetype="Leaf" />
       <menu id="Conditional_Compute,_if-then" text="Conditional Compute, if-then" commandtemplate="Conditional Compute, if-then.xaml" commandoutputformat="Conditional Compute, if-then.xml" owner="" nodetype="Leaf" />
       <menu id="Conditional_Compute,_if-then-else" text="Conditional Compute, if-then-else" commandtemplate="Conditional Compute, if-then-else.xaml" commandoutputformat="Conditional Compute, if-then-else.xml" owner="" nodetype="Leaf" />	  
@@ -162,7 +162,7 @@
       <menu id="Convert_Date_to_String" text="Convert Date to String" commandtemplate="Convert Date to String.xaml" commandoutputformat="Convert Date to String.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="Delete_Variable(s)" text="Delete Variable(s)" commandtemplate="Delete Variable(s).xaml" commandoutputformat="Delete Variable(s).xml" owner="" nodetype="Leaf" />
-	<menu id="Expand_Data_by_Weights" text="Expand Data by Weights" commandtemplate="Expand Data by Weights.xaml" commandoutputformat="Expand Data by Weights.xml" owner="" nodetype="Leaf" />	
+	<menu id="Expand_Data_by_Weights" text="Expand Data by Weights" commandtemplate="Expand Data by Weights.xaml" commandoutputformat="Expand Data by Weights.xml" owner="" nodetype="Leaf" />		   
     <menu id="new_id" text="Factor Levels" owner="" nodetype="Parent">
       <menu id="Add_New_Levels" text="Add New Levels" commandtemplate="Add New Levels.xaml" commandoutputformat="Add New Levels.xml" owner="" nodetype="Leaf" />
       <menu id="Display_Levels" text="Display Levels" commandtemplate="Display Levels.xaml" commandoutputformat="Display Levels.xml" owner="" nodetype="Leaf" />
