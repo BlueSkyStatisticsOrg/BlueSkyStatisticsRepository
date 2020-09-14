@@ -1520,18 +1520,25 @@ namespace BlueSky.Windows
             {
                 string dateformat = DateformatConvertor.DateFormatsEnumtoCSharpDate(dateformatenum);
                 //string dateformat = currcolclass.Equals("POSIXct") ? "yyyy-MM-dd HH:mm:ss" : "yyyy-MM-dd";//handles POSIXct and Date type only.
-                DateTime dtt;
-                bool b = DateTime.TryParseExact(s, dateformat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dtt);
-
-                if (!b)//invalid date 
+				if (s.Trim().Length == 0)
                 {
-                    Window ow = Window.GetWindow(this);
-
-                    MessageBox.Show(ow, BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeMsg + " Please enter the date in the format " + dateformat + " ",
-                        BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeTitle, MessageBoxButton.OK, MessageBoxImage.Error);
-                    gridControl1.CancelEdit();
-                    return;
+                    gridControl1.CurrentCell.Value = "NA";
                 }
+				else
+				{
+					DateTime dtt;
+					bool b = DateTime.TryParseExact(s, dateformat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dtt);
+
+					if (!b)//invalid date 
+					{
+						Window ow = Window.GetWindow(this);
+
+						MessageBox.Show(ow, BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeMsg + " Please enter the date in the format " + dateformat + " ",
+							BSky.GlobalResources.Properties.UICtrlResources.InvalidDateTimeTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+						gridControl1.CancelEdit();
+						return;
+					}
+				}
             }
 
             UAReturn result = null;
@@ -1615,6 +1622,19 @@ namespace BlueSky.Windows
                     #endregion
 
                 }
+				
+                if (s.Trim().Length == 0  &&
+					(ds.Variables[varidx].DataClass.Equals("integer") ||
+                    ds.Variables[varidx].DataClass.Equals("numeric") ||
+                    ds.Variables[varidx].DataClass.Equals("character")))//31Aug2020 replacing empty with NA in the cell.
+                {
+                    gridControl1.CurrentCell.Value = "NA";
+                }
+                else if (s.Trim().Length == 0 &&
+                ds.Variables[varidx].DataClass.Equals("factor"))//31Aug2020 replacing empty with <NA> in the cell.
+                {
+                    gridControl1.CurrentCell.Value = "<NA>";
+                }				
                 BSkyMouseBusyHandler.ShowMouseBusy();
                 //19Sep2014 result=analyticServ.EditDatagridCell(e.Column.Name, s, e.Row.Index, ds.Name);
                 result = analyticServ.EditDatagridCell(RVarName, s, e.Row.Index, ds.Name, rdateformat);//19Sep2014
@@ -2571,7 +2591,7 @@ namespace BlueSky.Windows
             var.DataClass = "factor";
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
-            analyticServ.addNewVariable(var.Name, "character", ".", rowindex + 1, dateformat, ds.Name);
+            analyticServ.addNewVariable(var.Name, "factor", ".", rowindex + 1, dateformat, ds.Name);
 
             this.Variables.Insert(rowindex, var);
             DS.Variables.Insert(rowindex, var);//one more refresh needed. I guess
@@ -2606,7 +2626,7 @@ namespace BlueSky.Windows
             var.DataClass = "factor";
 
             IAnalyticsService analyticServ = LifetimeService.Instance.Container.Resolve<IAnalyticsService>();
-            analyticServ.addNewVariable(var.Name, "character", ".", rowindex + 1, dateformat, ds.Name);
+            analyticServ.addNewVariable(var.Name, "factor", ".", rowindex + 1, dateformat, ds.Name);
 
             this.Variables.Insert(rowindex, var);
             DS.Variables.Insert(rowindex, var);
@@ -3243,7 +3263,7 @@ namespace BlueSky.Windows
 
         private void GridControl1_BeganEdit(object sender, DataGridBeganEditEventArgs e)
         {
-//#if NOMAYO
+
             if (e.Column.GetType() == typeof(C1.WPF.DataGrid.DataGridComboBoxColumn))
             {
                 C1ComboBox editor = e.EditingElement as C1ComboBox;
@@ -3251,7 +3271,7 @@ namespace BlueSky.Windows
                 editor.Condition = C1.WPF.Condition.Contains;
                 editor.KeyUp += Editor_KeyUp;
             }
-//#endif
+
         }
 
         private void Editor_KeyUp(object sender, KeyEventArgs e)

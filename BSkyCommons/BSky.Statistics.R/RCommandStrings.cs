@@ -302,7 +302,7 @@ namespace BSky.Statistics.R
             {
                 //celdata = "NA";
                 //return string.Format("BSkyEditDatagrid(colname='{0}', colceldata={1}, rowindex={2}, dataSetNameOrIndex='{3}')", colName, celdata, rowindex, dataSource.Name);
-                return string.Format("  (colname='{0}', rowindex={1}, dataSetNameOrIndex='{2}')", colName, rowindex, dataSource.Name);
+                return string.Format("BSkyEditDatagrid(colname='{0}', rowindex={1}, dataSetNameOrIndex='{2}', rdateformat='{3}')", colName, rowindex, dataSource.Name, rdateformat);
             }
             else
                 return string.Format("BSkyEditDatagrid(colname='{0}', colceldata='{1}', rowindex={2}, dataSetNameOrIndex='{3}', rdateformat='{4}')", colName, celdata, rowindex, dataSource.Name, rdateformat);
