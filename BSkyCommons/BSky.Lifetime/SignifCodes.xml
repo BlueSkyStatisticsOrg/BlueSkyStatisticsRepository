@@ -60,7 +60,7 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes>  
+  </colsigcodes>
   <colsigcodes>
     <colname>p.value</colname>
     <sigcodes>
@@ -90,7 +90,7 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes>   
+  </colsigcodes>
   <colsigcodes>
     <colname>Sig.</colname>
     <sigcodes>
@@ -120,9 +120,9 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes>   
+  </colsigcodes>
   <colsigcodes>
-   <colname>Sig.(2-tailed)</colname>
+    <colname>Sig.(2-tailed)</colname>
     <sigcodes>
       <sigcode>
         <from>0</from>
@@ -150,7 +150,7 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes>     
+  </colsigcodes>
   <colsigcodes>
     <colname>p-value</colname>
     <sigcodes>
@@ -180,7 +180,7 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes>   
+  </colsigcodes>
   <colsigcodes>
     <colname>Pr(>|z|)</colname>
     <sigcodes>
@@ -210,8 +210,8 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes>    
- <colsigcodes>
+  </colsigcodes>
+  <colsigcodes>
     <colname>Pr(>Chi)</colname>
     <sigcodes>
       <sigcode>
@@ -240,8 +240,8 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes>   
- <colsigcodes>
+  </colsigcodes>
+  <colsigcodes>
     <colname>p.value(z)</colname>
     <sigcodes>
       <sigcode>
@@ -270,8 +270,8 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes> 
- <colsigcodes>
+  </colsigcodes>
+  <colsigcodes>
     <colname>p.value(t)</colname>
     <sigcodes>
       <sigcode>
@@ -300,9 +300,9 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes>   
+  </colsigcodes>
   <colsigcodes>
-   <colname>Sig.(2-tail)</colname>
+    <colname>Sig.(2-tail)</colname>
     <sigcodes>
       <sigcode>
         <from>0</from>
@@ -330,9 +330,9 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes> 
+  </colsigcodes>
   <colsigcodes>
-   <colname>Sig.(1-tail, &gt;)</colname>
+    <colname>Sig.(1-tail, &gt;)</colname>
     <sigcodes>
       <sigcode>
         <from>0</from>
@@ -360,9 +360,9 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes> 
+  </colsigcodes>
   <colsigcodes>
-   <colname>Sig.(1-tail, &lt;)</colname>
+    <colname>Sig.(1-tail, &lt;)</colname>
     <sigcodes>
       <sigcode>
         <from>0</from>
@@ -390,5 +390,95 @@
         <starchar xml:space="preserve" > </starchar>
       </sigcode>
     </sigcodes>
-  </colsigcodes> 
+  </colsigcodes>
+  <colsigcodes>
+    <colname>Pr(>Chisq)</colname>
+    <sigcodes>
+      <sigcode>
+        <from>0</from>
+        <to>0.001</to>
+        <starchar>***</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.001</from>
+        <to>0.01</to>
+        <starchar>**</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.01</from>
+        <to>0.05</to>
+        <starchar>*</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.05</from>
+        <to>0.1</to>
+        <starchar>.</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.1</from>
+        <to>1</to>
+        <starchar xml:space="preserve" > </starchar>
+      </sigcode>
+    </sigcodes>
+  </colsigcodes>
+  <colsigcodes>
+    <colname>P(>|Chi|)</colname>
+    <sigcodes>
+      <sigcode>
+        <from>0</from>
+        <to>0.001</to>
+        <starchar>***</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.001</from>
+        <to>0.01</to>
+        <starchar>**</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.01</from>
+        <to>0.05</to>
+        <starchar>*</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.05</from>
+        <to>0.1</to>
+        <starchar>.</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.1</from>
+        <to>1</to>
+        <starchar xml:space="preserve" > </starchar>
+      </sigcode>
+    </sigcodes>
+  </colsigcodes>
+  <colsigcodes>
+    <colname>Pr(Chi)</colname>
+    <sigcodes>
+      <sigcode>
+        <from>0</from>
+        <to>0.001</to>
+        <starchar>***</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.001</from>
+        <to>0.01</to>
+        <starchar>**</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.01</from>
+        <to>0.05</to>
+        <starchar>*</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.05</from>
+        <to>0.1</to>
+        <starchar>.</starchar>
+      </sigcode>
+      <sigcode>
+        <from>0.1</from>
+        <to>1</to>
+        <starchar xml:space="preserve" > </starchar>
+      </sigcode>
+    </sigcodes>
+  </colsigcodes>
 </root>
