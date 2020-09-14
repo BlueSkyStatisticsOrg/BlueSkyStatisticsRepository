@@ -315,7 +315,7 @@ namespace BlueSky.Commands.File
 
         private void RpkgCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadDatasetNames();
+            //LoadDatasetNames();
         }
 
         private void RpkgCombo_KeyUp(object sender, KeyEventArgs e)
@@ -326,8 +326,18 @@ namespace BlueSky.Commands.File
                 e.Key == Key.Decimal || e.Key == Key.Separator
                 )
             {
-                LoadDatasetNames();
+                //LoadDatasetNames();
             }
+        }
+
+        private void RpkgCombo_GotFocus(object sender, RoutedEventArgs e)
+        {
+            status.Visibility = Visibility.Collapsed;
+        }
+
+        private void RpkgCombo_LostFocus(object sender, RoutedEventArgs e)
+        {
+            LoadDatasetNames();
         }
     }
 

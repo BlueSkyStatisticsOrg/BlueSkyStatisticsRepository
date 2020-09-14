@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,6 +51,7 @@ namespace BlueSky.Commands.Help
             string nopkg2 = "Go to: Tools > Package > Install/Update package(s) from CRAN";
             List<string> dsnamelist = new List<string>();
             List<string> PkgDatsetDetailList = null;
+            FunctionCombo.ItemsSource = null;
             //char[] sep = new char[1];
             //sep[0] = '-';
             string rpkgname = string.Empty;
@@ -214,7 +216,8 @@ namespace BlueSky.Commands.Help
 
         private void RpkgCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadfunctionNames();
+            //Thread.Sleep(1000);
+            //LoadfunctionNames();
         }
 
         private void RpkgCombo_KeyUp(object sender, KeyEventArgs e)
@@ -229,5 +232,14 @@ namespace BlueSky.Commands.Help
             }
         }
 
+        private void RpkgCombo_LostFocus(object sender, RoutedEventArgs e)
+        {
+            LoadfunctionNames();
+        }
+
+        private void RpkgCombo_GotFocus(object sender, RoutedEventArgs e)
+        {
+            status.Visibility = Visibility.Collapsed;
+        }
     }
 }

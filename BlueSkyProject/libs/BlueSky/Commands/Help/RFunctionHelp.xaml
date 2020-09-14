@@ -40,7 +40,7 @@
         </StackPanel>
 
         <ComboBox Grid.Row="0" Grid.Column="1" Margin="3" Height="25" MinWidth="100" MaxWidth="650" VerticalAlignment="Top" 
-                  IsEditable="True" Name="RpkgCombo" SelectionChanged="RpkgCombo_SelectionChanged"></ComboBox>
+                  IsEditable="True" Name="RpkgCombo" GotFocus="RpkgCombo_GotFocus" LostFocus="RpkgCombo_LostFocus"></ComboBox>
 
         <!--<Expander Grid.Row="0" Grid.Column="4" Header="Help:" ExpandDirection="Right"></Expander>-->
 
