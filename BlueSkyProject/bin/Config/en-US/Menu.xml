@@ -162,6 +162,7 @@
       <menu id="Convert_Date_to_String" text="Convert Date to String" commandtemplate="Convert Date to String.xaml" commandoutputformat="Convert Date to String.xml" owner="" nodetype="Leaf" />
     </menu>
     <menu id="Delete_Variable(s)" text="Delete Variable(s)" commandtemplate="Delete Variable(s).xaml" commandoutputformat="Delete Variable(s).xml" owner="" nodetype="Leaf" />
+	<menu id="Expand_Data_by_Weights" text="Expand Data by Weights" commandtemplate="Expand Data by Weights.xaml" commandoutputformat="Expand Data by Weights.xml" owner="" nodetype="Leaf" />	
     <menu id="new_id" text="Factor Levels" owner="" nodetype="Parent">
       <menu id="Add_New_Levels" text="Add New Levels" commandtemplate="Add New Levels.xaml" commandoutputformat="Add New Levels.xml" owner="" nodetype="Leaf" />
       <menu id="Display_Levels" text="Display Levels" commandtemplate="Display Levels.xaml" commandoutputformat="Display Levels.xml" owner="" nodetype="Leaf" />
