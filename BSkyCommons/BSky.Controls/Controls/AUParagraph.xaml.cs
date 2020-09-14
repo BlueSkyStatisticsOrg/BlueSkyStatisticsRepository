@@ -50,7 +50,7 @@ namespace BSky.Controls
 
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string),
-              typeof(AUParagraph), new UIPropertyMetadata("Sample Text"));
+              typeof(AUParagraph), new UIPropertyMetadata(""));
 
         private void MyBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
