@@ -187,7 +187,6 @@
     <menu id="Recode_Variable(s)" text="Recode Variable(s)" commandtemplate="Recode Variable(s).xaml" commandoutputformat="Recode Variable(s).xml" owner="" nodetype="Leaf" />
     <menu id="Standardize_Variable(s)" text="Standardize Variable(s)" commandtemplate="Standardize Variable(s).xaml" commandoutputformat="Standardize Variable(s).xml" owner="" nodetype="Leaf" icon="images/Standardize.png" showtoolbaricon="true" />
     <menu id="Transform_Variable(s)" text="Transform Variable(s)" commandtemplate="Transform Variable(s).xaml" commandoutputformat="Transform Variable(s).xml" owner="" nodetype="Leaf" />
-    <menu id="Weight_Variable(s)" text="Weight Variable(s)" commandtemplate="Weight Variable(s).xaml" commandoutputformat="Weight Variable(s).xml" owner="" nodetype="Leaf" />
     <menu id="sep" text="---------" owner="" nodetype="Leaf" />
     <menu id="Aggregate_to_Dataset" text="Aggregate to Dataset" commandtemplate="Aggregate to Dataset.xaml" commandoutputformat="Aggregate to Dataset.xml" owner="" nodetype="Leaf" icon="images/Aggregate.png" showtoolbaricon="true" />
     <menu id="Aggregate_to_Output" text="Aggregate to Output" commandtemplate="Aggregate to Output.xaml" commandoutputformat="Aggregate to Output.xml" owner="" nodetype="Leaf" />
