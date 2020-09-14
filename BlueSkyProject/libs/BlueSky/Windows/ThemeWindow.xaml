@@ -29,7 +29,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            These settings are only applicable to the dialogs which uses ggplot package. 
+            These settings are only applicable to the dialogs which use the ggplot2 package. 
         </Label>
         <Label Grid.Row="1" Grid.Column="0">Label Font Family</Label>
         <ComboBox Grid.Row="2" Grid.Column="0" Margin="5,0" Name="fontfamilyCombo"></ComboBox>
