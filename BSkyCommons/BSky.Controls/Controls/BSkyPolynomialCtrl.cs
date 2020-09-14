@@ -187,46 +187,73 @@ namespace BSky.Controls
                 }
                 //If there are valid variables then move them
                 BSkySpinnerCtrl spin = objspin as BSkySpinnerCtrl;
+                // IList<DataSourceVariable> Items = new List<DataSourceVariable>();
+                List<DataSourceVariable> Items = new List<DataSourceVariable>();
                 DataSourceVariable inputVar = vInputList.SelectedItems[0] as DataSourceVariable;
-
-                newvar = inputVar.Name  + "^" + spin.text.Text;
-
-                //Preferred way
-               
-                DataSourceVariable ds = new DataSourceVariable();
+                int polynomialdegree = Int32.Parse(spin.text.Text);
+                int startingpolynomialdegree = 1;
+                bool itemIsInTarget = false;
+                //Lets say the degree of the polynomial is 4, so engine^4, then we need to add
+                //I(engine^4) and I(engine^3) and I(engine^2) and I(engine^1) 
+                //Now if you add I(engine^5), only I(engine^5) should be added as I(engine^4) are already there
+                while (polynomialdegree != 0)
+                {
+                    newvar = "I(" + inputVar.Name + "^" + startingpolynomialdegree + ")";
+                    //Preferred way
+                    DataSourceVariable ds = new DataSourceVariable();
                     ds.XName = newvar;
                     ds.Name = newvar;
                     ds.RName = newvar;
-                ds.Measure = inputVar.Measure;
-                ds.DataType = inputVar.DataType;
-                ds.Width = inputVar.Width;
-                ds.Decimals = inputVar.Decimals;
-                ds.Label = inputVar.Label;
-                ds.Alignment = inputVar.Alignment;
-               
-                ds.ImgURL = inputVar.ImgURL;
-                validVars.Add(ds as object);
-                    vTargetList.AddItems(validVars);
+                    ds.Measure = inputVar.Measure;
+                    ds.DataType = inputVar.DataType;
+                    ds.Width = inputVar.Width;
+                    ds.Decimals = inputVar.Decimals;
+                    ds.Label = inputVar.Label;
+                    ds.Alignment = inputVar.Alignment;
+                    ds.ImgURL = inputVar.ImgURL;
 
-                    // vInputList.SelectedItems[i]
-                    //    validVars.Add(vInputList.SelectedItems[1]);
-
-
-                    // vTargetList.AddItems(validVars);
-                    //The code below unselects everything
-                    vTargetList.UnselectAll();
-                    //The code below selects all the items that are moved
-                    vTargetList.SetSelectedItems(validVars);
-                    //vTargetList.SetSelectedItems(arr1);
-                    //Added by Aaron on 12/24/2012 to get the items moved scrolled into view
-                    //Added by Aaron on 12/24/2012. Value is 0 as you want to scroll to the top of the selected items
-                    vTargetList.ScrollIntoView(validVars[0]);
-                    if (vInputList.MoveVariables)
-                    //The compiler is not allowing me to use vInputList.Items.Remove() so I have to use ItemsSource
+                    if (vTargetList.ItemsCount == 0)
                     {
-                        ListCollectionView lcw = vInputList.ItemsSource as ListCollectionView;
-                        foreach (object obj in validVars) lcw.Remove(obj);
-                     }
+                        Items.Add(ds);
+                    }
+                    else
+                    {
+                        foreach (DataSourceVariable obj in vTargetList.Items)
+                        {
+                            if (obj.RName == ds.RName)
+                                itemIsInTarget = true;
+
+                               
+                        }
+                        if (!itemIsInTarget) Items.Add(ds);
+                    }
+
+                    polynomialdegree = polynomialdegree - 1;
+                    startingpolynomialdegree = startingpolynomialdegree + 1;
+                    itemIsInTarget = false;
+
+                }
+            
+               
+
+
+
+                //vTargetList.SetSelectedItems(arr1);
+                //Added by Aaron on 12/24/2012 to get the items moved scrolled into view
+                //Added by Aaron on 12/24/2012. Value is 0 as you want to scroll to the top of the selected items
+                if (Items.Count != 0)
+                {
+                    vTargetList.AddItems(Items);
+                    vTargetList.ScrollIntoView(Items[0]);
+                }
+                // Added by Aaron 06/09/2020
+                // We will never remove the variable being moved from the source variable list
+                // if (vInputList.MoveVariables)
+                    ////The compiler is not allowing me to use vInputList.Items.Remove() so I have to use ItemsSource
+                    //{
+                    //    ListCollectionView lcw = vInputList.ItemsSource as ListCollectionView;
+                    //    foreach (object obj in validVars) lcw.Remove(obj);
+                    // }
                     vTargetList.Focus();
 
                 
