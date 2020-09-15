@@ -454,7 +454,6 @@
       <menu id="Likelihood_Ratio_and_Beta_plots" text="Likelihood Ratio and Beta plots" commandtemplate="Likelihood Ratio and Beta plots.xaml" commandoutputformat="Likelihood Ratio and Beta plots.xml" owner="" nodetype="Leaf" />
       <menu id="Personfit" text="Personfit" commandtemplate="Personfit.xaml" commandoutputformat="Personfit.xml" owner="" nodetype="Leaf" />
     </menu>
-    <menu id="Likelihood_Ratio_Test" text="Likelihood Ratio Test" commandtemplate="Likelihood Ratio Test.xaml" commandoutputformat="Likelihood Ratio Test.xml" owner="" nodetype="Leaf" />
     <menu id="Model_Level_Statistics" text="Model Level Statistics" commandtemplate="Model Level Statistics.xaml" commandoutputformat="Model Level Statistics.xml" owner="" nodetype="Leaf" />
     <menu id="Parameter_Level_Statistics" text="Parameter Level Statistics" commandtemplate="Parameter Level Statistics.xaml" commandoutputformat="Parameter Level Statistics.xml" owner="" nodetype="Leaf" />
 	<menu id="Plot_a_Model" text="Plot a Model" commandtemplate="Plot a Model.xaml" commandoutputformat="Plot a Model.xml" owner="" nodetype="Leaf" />
